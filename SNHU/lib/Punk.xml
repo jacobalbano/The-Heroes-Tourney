@@ -1,0 +1,4275 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Punk</name>
+    </assembly>
+    <members>
+        <member name="T:Punk.Camera">
+            <summary>
+            Camera class. Allows rotation, scale and positioning of the render view.
+            Also supports viewports for split-screen, minimaps, etc.
+            </summary>
+        </member>
+        <member name="F:Punk.Camera.X">
+            <summary>
+            Position of the camera.
+            </summary>
+        </member>
+        <member name="F:Punk.Camera.Y">
+            <summary>
+            Position of the camera.
+            </summary>
+        </member>
+        <member name="F:Punk.Camera.Angle">
+            <summary>
+            Rotation of the camera.
+            </summary>
+        </member>
+        <member name="P:Punk.Camera.Zoom">
+            <summary>
+            Zoom of the camera.
+            </summary>
+        </member>
+        <member name="T:Punk.Debugging.Console">
+            <summary>
+            Description of Class.
+            </summary>
+        </member>
+        <member name="F:Punk.Debugging.Console._visible">
+            @private 
+        </member>
+        <member name="F:Punk.Debugging.Console._enabled">
+            @private 
+        </member>
+        <member name="F:Punk.Debugging.Console._paused">
+            @private 
+        </member>
+        <member name="F:Punk.Debugging.Console._debug">
+            @private 
+        </member>
+        <member name="F:Punk.Debugging.Console._scrolling">
+            @private 
+        </member>
+        <member name="F:Punk.Debugging.Console._selecting">
+            @private 
+        </member>
+        <member name="F:Punk.Debugging.Console._dragging">
+            @private 
+        </member>
+        <member name="F:Punk.Debugging.Console._panning">
+            @private 
+        </member>
+        <member name="P:Punk.Debugging.Console.Paused">
+            If the Console is currently in paused mode.
+        </member>
+        <member name="T:Punk.Engine">
+            <summary>
+            Main game class. Manages the game loop.
+            </summary>
+        </member>
+        <member name="F:Punk.Engine.Paused">
+            <summary>
+            If the game should stop updating/rendering.
+            </summary>
+        </member>
+        <member name="F:Punk.Engine.MaxElapsed">
+            <summary>
+            Cap on the elapsed time (default at 30 FPS). Raise this to allow for lower framerates (eg. 1 / 10).
+            </summary>
+        </member>
+        <member name="F:Punk.Engine.MaxFrameSkip">
+            <summary>
+            The max amount of frames that can be skipped in fixed framerate mode.
+            </summary>
+        </member>
+        <member name="F:Punk.Engine.SkipRate">
+            <summary>
+            The amount of milliseconds between ticks in fixed framerate mode.
+            </summary>
+        </member>
+        <member name="F:Punk.Engine.ClearColor">
+            <summary>
+            The screen refresh color. Defaults to black.
+            </summary>
+        </member>
+        <member name="M:Punk.Engine.#ctor(System.UInt32,System.UInt32,System.Single)">
+            <summary>
+            Engine constructor
+            </summary>
+            <param name="width">The width of your game.</param>
+            <param name="height">The height of your game.</param>
+            <param name="framerate">The game framerate, in frames per second (default 60).</param>
+        </member>
+        <member name="M:Punk.Engine.Init">
+            <summary>
+            Override this; called when the Engine starts up.
+            </summary>
+        </member>
+        <member name="M:Punk.Engine.Update">
+            <summary>
+            Updates the engine.
+            </summary>
+        </member>
+        <member name="T:Punk.Entity">
+            <summary>
+            Main game Entity class updated by World.
+            </summary>
+        </member>
+        <member name="T:Punk.Tweener">
+            <summary>
+            Updateable Tween container.
+            </summary>
+        </member>
+        <member name="F:Punk.Tweener.PERSIST">
+            <summary>
+            Persistent Tween type, will stop when it finishes.
+            </summary>
+        </member>
+        <member name="F:Punk.Tweener.LOOPING">
+            <summary>
+            Looping Tween type, will restart immediately when it finishes.
+            </summary>
+        </member>
+        <member name="F:Punk.Tweener.ONESHOT">
+            <summary>
+            Oneshot Tween type, will stop and remove itself from its core container when it finishes.
+            </summary>
+        </member>
+        <member name="M:Punk.Tweener.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="F:Punk.Tweener.Active">
+            <summary>
+            If the Tweener should update.
+            </summary>
+        </member>
+        <member name="F:Punk.Tweener.AutoClear">
+            <summary>
+            If the Tweener should clear on removal. For Entities, this is when they are
+            removed from a World, and for World this is when the active World is switched.
+            </summary>
+        </member>
+        <member name="M:Punk.Tweener.Update">
+            <summary>
+            Updates the Tween container
+            </summary>
+        </member>
+        <member name="M:Punk.Tweener.AddTween(Punk.Tween,System.Boolean)">
+            <summary>
+            Adds a new Tween.
+            </summary>
+            <param name="t">The Tween to add.</param>
+            <param name="start">If the Tween should call start() immediately.</param>
+            <returns>The added Tween.</returns>
+        </member>
+        <member name="M:Punk.Tweener.RemoveTween(Punk.Tween)">
+            <summary>
+            The Tween to remove.
+            </summary>
+            <param name="t">The Tween to remove.</param>
+            <returns>The removed Tween</returns>
+        </member>
+        <member name="M:Punk.Tweener.ClearTweens">
+            <summary>
+            Removes all Tweens.
+            </summary>
+        </member>
+        <member name="M:Punk.Tweener.UpdateTweens">
+            <summary>
+            Updates all contained tweens.
+            </summary>
+        </member>
+        <member name="F:Punk.Entity.Visible">
+            If the Entity should render.
+        </member>
+        <member name="F:Punk.Entity.Collidable">
+            If the Entity should respond to collision checks.
+        </member>
+        <member name="F:Punk.Entity.X">
+            X position of the Entity in the World.
+        </member>
+        <member name="F:Punk.Entity.Y">
+            Y position of the Entity in the World.
+        </member>
+        <member name="F:Punk.Entity.Width">
+            Width of the Entity's hitbox.
+        </member>
+        <member name="F:Punk.Entity.Height">
+            Height of the Entity's hitbox.
+        </member>
+        <member name="F:Punk.Entity.OriginX">
+            X origin of the Entity's hitbox.
+        </member>
+        <member name="F:Punk.Entity.OriginY">
+            Y origin of the Entity's hitbox.
+        </member>
+        <member name="M:Punk.Entity.#ctor(System.Single,System.Single,Punk.Graphics.Graphic,Punk.Masks.Mask)">
+            <summary>
+            Constructor. Can be usd to place the Entity and assign a graphic and mask.
+            </summary>
+            <param name="x">X position to place the Entity (default 0).</param>
+            <param name="y">Y position to place the Entity (default 0).</param>
+            <param name="graphic">Graphic to assign to the Entity (default null).</param>
+            <param name="mask">Mask to assign to the Entity (default null).</param>
+        </member>
+        <member name="M:Punk.Entity.Added">
+            <summary>
+            Override this, called when the Entity is added to a World.
+            </summary>
+        </member>
+        <member name="M:Punk.Entity.Removed">
+            <summary>
+            Override this, called when the Entity is removed from a World.
+            </summary>
+        </member>
+        <member name="M:Punk.Entity.Update">
+            <summary>
+            Updates the Entity.
+            </summary>
+        </member>
+        <member name="M:Punk.Entity.Render">
+            <summary>
+            Renders the Entity. If you override this for special behaviour,
+            remember to call base.render() to render the Entity's graphic.
+            </summary>
+        </member>
+        <member name="M:Punk.Entity.OnMessage(System.String,System.Object[])">
+            <summary>
+            Called when this recieves a message broadcast from the World
+            </summary>
+            <param name="message">The name of the message.</param>
+            <param name="arguments">A set of arguments.</param>
+        </member>
+        <member name="M:Punk.Entity.AddResponse(System.String,Punk.Entity.MessageResponse)">
+            <summary>
+            Add a message response.
+            </summary>
+            <param name="message">The message type.</param>
+            <param name="response">The response callback to add.</param>
+        </member>
+        <member name="M:Punk.Entity.RemoveResponse(System.String,Punk.Entity.MessageResponse)">
+            <summary>
+            Remove a message response.
+            </summary>
+            <param name="message">The message type to remove the response from.</param>
+            <param name="response">The response callback to remove.</param>
+        </member>
+        <member name="M:Punk.Entity.Load(System.Xml.XmlNode)">
+            <summary>
+            Override this to specify behavior when this is being loaded from an Ogmo XML Entity.
+            </summary>
+            <param name="node">The XML node that describes the entity.</param>
+        </member>
+        <member name="M:Punk.Entity.Collide(System.String,System.Single,System.Single)">
+            <summary>
+            Checks for a collision against an Entity type.
+            </summary>
+            <param name="type">The Entity type to check for.</param>
+            <param name="x">Virtual x position to place this Entity.</param>
+            <param name="y">Virtual y position to place this Entity.</param>
+            <returns>The first Entity collided with, or null if none were collided.</returns>
+        </member>
+        <member name="M:Punk.Entity.CollideTypes(System.Collections.Generic.IEnumerable{System.String},System.Single,System.Single)">
+            <summary>
+            Checks for collision against multiple Entity types.
+            </summary>
+            <param name="types">A collection (array, List, etc) of Entity types to check for.</param>
+            <param name="x">Virtual x position to place this Entity.</param>
+            <param name="y">Virtual y position to place this Entity.</param>
+            <returns>The first Entity collided with, or null if none were collided.</returns>
+        </member>
+        <member name="M:Punk.Entity.CollideWith(Punk.Entity,System.Single,System.Single)">
+            <summary>
+            Checks if this Entity collides with a specific Entity.
+            </summary>
+            <param name="e">The Entity to collide against.</param>
+            <param name="x">Virtual x position to place this Entity.</param>
+            <param name="y">Virtual y position to place this Entity.</param>
+            <returns>The Entity if they overlap, or null if they don't.</returns>
+        </member>
+        <member name="M:Punk.Entity.CollideRect(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Checks if this Entity overlaps the specified rectangle.
+            </summary>
+            <param name="x">Virtual x position to place this Entity.</param>
+            <param name="y">Virtual y position to place this Entity.</param>
+            <param name="rX">X position of the rectangle.</param>
+            <param name="rY">Y position of the rectangle.</param>
+            <param name="rWidth">Width of the rectangle.</param>
+            <param name="rHeight">Height of the rectangle.</param>
+            <returns>If they overlap.</returns>
+        </member>
+        <member name="M:Punk.Entity.CollidePoint(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Checks if this Entity overlaps the specified position.
+            </summary>
+            <param name="x">Virtual x position to place this Entity.</param>
+            <param name="y">Virtual y position to place this Entity.</param>
+            <param name="pX">X position.</param>
+            <param name="pY">Y position.</param>
+            <returns>If the Entity intersects with the position.</returns>
+        </member>
+        <member name="M:Punk.Entity.CollideInto(System.String,System.Single,System.Single,System.Collections.Generic.List{Punk.Entity})">
+            <summary>
+            Populates an array with all collided Entities of a type.
+            </summary>
+            <param name="type">The Entity type to check for.</param>
+            <param name="x">Virtual x position to place this Entity.</param>
+            <param name="y">Virtual y position to place this Entity.</param>
+            <param name="array">The Array or Vector object to populate.</param>
+        </member>
+        <member name="M:Punk.Entity.CollideTypesInto(System.Collections.Generic.IEnumerable{System.String},System.Single,System.Single,System.Collections.Generic.List{Punk.Entity})">
+            <summary>
+            Populates a List with all collided Entities of multiple types.
+            </summary>
+            <param name="types">A collection (array, List, etc) of Entity types to check for.</param>
+            <param name="x">Virtual x position to place this Entity.</param>
+            <param name="y">Virtual y position to place this Entity.</param>
+            <param name="array">The List to populate.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Punk.Entity.AddLogic(Punk.Logic)">
+            <summary>
+            Add a Logic component to the Entity.
+            </summary>
+            <param name="l">The Logic component to remove.</param>
+            <returns>The added Logic component.</returns>
+        </member>
+        <member name="M:Punk.Entity.RemoveLogic(Punk.Logic)">
+            <summary>
+            Removes a Logic component to the Entity.
+            </summary>
+            <param name="l">The Logic component to remove.</param>
+            <returns>The removed Logic component.</returns>
+        </member>
+        <member name="M:Punk.Entity.AddGraphic(Punk.Graphics.Graphic)">
+            <summary>
+            Adds the graphic to the Entity via a Graphiclist.
+            </summary>
+            <param name="g">Graphic to add.</param>
+            <returns>The added Graphic.</returns>
+        </member>
+        <member name="M:Punk.Entity.SetHitbox(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sets the Entity's hitbox properties.
+            </summary>
+            <param name="width">Width of the hitbox.</param>
+            <param name="height">Height of the hitbox.</param>
+            <param name="originX">X origin of the hitbox.</param>
+            <param name="originY">Y origin of the hitbox.</param>
+        </member>
+        <member name="M:Punk.Entity.SetHitboxTo(System.Object)">
+            <summary>
+            Sets the Entity's hitbox to match that of the provided object.
+            </summary>
+            <param name="o">The object defining the hitbox (eg. an Image or Rectangle).</param>
+        </member>
+        <member name="M:Punk.Entity.SetOrigin(System.Int32,System.Int32)">
+            <summary>
+            Sets the origin of the Entity.
+            </summary>
+            <param name="x">X origin.</param>
+            <param name="y">Y origin.</param>
+        </member>
+        <member name="M:Punk.Entity.CenterOrigin">
+            <summary>
+            Center's the Entity's origin (half width and height).
+            </summary>
+        </member>
+        <member name="M:Punk.Entity.DistanceFrom(Punk.Entity,System.Boolean)">
+            <summary>
+            Calculates the distance from another Entity.
+            </summary>
+            <param name="e">The other Entity.</param>
+            <param name="useHitboxes">If hitboxes should be used to determine the distance. If not, the Entities' x/y positions are used.</param>
+            <returns>The distance.</returns>
+        </member>
+        <member name="M:Punk.Entity.DistanceToPoint(System.Single,System.Single,System.Boolean)">
+            <summary>
+            Calculates the distance from this Entity to the point.
+            </summary>
+            <param name="px">X position.</param>
+            <param name="py">Y position.</param>
+            <param name="useHitbox">If hitboxes should be used to determine the distance. If not, the Entities' x/y positions are used.</param>
+            <returns>The distance.</returns>
+        </member>
+        <member name="M:Punk.Entity.DistanceToRect(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Calculates the distance from this Entity to the rectangle.
+            </summary>
+            <param name="rx">X position of the rectangle.</param>
+            <param name="ry">Y position of the rectangle.</param>
+            <param name="rwidth">Width of the rectangle.</param>
+            <param name="rheight">Height of the rectangle.</param>
+            <returns>The distance.</returns>
+        </member>
+        <member name="M:Punk.Entity.ToString">
+            <summary>
+            Gets the class name as a string.
+            </summary>
+            <returns>A string representing the class name.</returns>
+        </member>
+        <member name="M:Punk.Entity.MoveBy(System.Single,System.Single,System.Object,System.Boolean)">
+            <summary>
+            Moves the Entity by the amount, retaining integer values for its x and y.
+            </summary>
+            <param name="x">Horizontal offset.</param>
+            <param name="y">Vertical offset.</param>
+            <param name="solidType">An optional collision type (or array of types) to stop flush against upon collision.</param>
+            <param name="sweep">If sweeping should be used (prevents fast-moving objects from going through solidType).</param>
+        </member>
+        <member name="M:Punk.Entity.MoveTo(System.Single,System.Single,System.Object,System.Boolean)">
+            <summary>
+            Moves the Entity to the position, retaining integer values for its x and y.
+            </summary>
+            <param name="x">X position.</param>
+            <param name="y">Y position.</param>
+            <param name="solidType">An optional collision type (or array of types) to stop flush against upon collision.</param>
+            <param name="sweep">If sweeping should be used (prevents fast-moving objects from going through solidType).</param>
+        </member>
+        <member name="M:Punk.Entity.MoveTowards(System.Single,System.Single,System.Single,System.Object,System.Boolean)">
+            <summary>
+            Moves towards the target position, retaining integer values for its x and y.
+            </summary>
+            <param name="x">X target.</param>
+            <param name="y">Y target.</param>
+            <param name="amount">Amount to move.</param>
+            <param name="solidType">An optional collision type (or array of types) to stop flush against upon collision.</param>
+            <param name="sweep">If sweeping should be used (prevents fast-moving objects from going through solidType).</param>
+        </member>
+        <member name="M:Punk.Entity.MoveCollideX(Punk.Entity)">
+            <summary>
+            When this collide with an Entity on the x-axis with moveTo() or moveBy().
+            </summary>
+            <param name="e">The Entity this collided with.</param>
+            <returns>Whether movement should be halted.</returns>
+        </member>
+        <member name="M:Punk.Entity.MoveCollideY(Punk.Entity)">
+            <summary>
+            When this collide with an Entity on the y-axis with moveTo() or moveBy().
+            </summary>
+            <param name="e">The Entity this collided with.</param>
+            <returns>Whether movement should be halted.</returns>
+        </member>
+        <member name="M:Punk.Entity.ClampHorizontal(System.Single,System.Single,System.Single)">
+            <summary>
+            Clamps the Entity's hitbox on the x-axis.
+            </summary>
+            <param name="left">Left bounds.</param>
+            <param name="right">Right bounds.</param>
+            <param name="padding">Optional padding on the clamp.</param>
+        </member>
+        <member name="M:Punk.Entity.ClampVertical(System.Single,System.Single,System.Single)">
+            <summary>
+            Clamps the Entity's hitbox on the y axis.
+            </summary>
+            <param name="top">Min bounds.</param>
+            <param name="bottom">Max bounds.</param>
+            <param name="padding">Optional padding on the clamp.</param>
+        </member>
+        <member name="P:Punk.Entity.OnCamera">
+            <summary>
+            If the Entity collides with the camera rectangle.
+            </summary>
+        </member>
+        <member name="P:Punk.Entity.World">
+            <summary>
+            The World object this Entity has been added to.
+            </summary>
+        </member>
+        <member name="P:Punk.Entity.HalfWidth">
+            <summary>
+            Half the Entity's width.
+            </summary>
+        </member>
+        <member name="P:Punk.Entity.HalfHeight">
+            <summary>
+            Half the Entity's height.
+            </summary>
+        </member>
+        <member name="P:Punk.Entity.CenterX">
+            <summary>
+            The center x position of the Entity's hitbox.
+            </summary>
+        </member>
+        <member name="P:Punk.Entity.CenterY">
+            <summary>
+            The center y position of the Entity's hitbox.
+            </summary>
+        </member>
+        <member name="P:Punk.Entity.Left">
+            <summary>
+            The leftmost position of the Entity's hitbox.
+            </summary>
+        </member>
+        <member name="P:Punk.Entity.Right">
+            <summary>
+            The rightmost position of the Entity's hitbox.
+            </summary>
+        </member>
+        <member name="P:Punk.Entity.Top">
+            <summary>
+            The topmost position of the Entity's hitbox.
+            </summary>
+        </member>
+        <member name="P:Punk.Entity.Bottom">
+            <summary>
+            The bottommost position of the Entity's hitbox.
+            </summary>
+        </member>
+        <member name="P:Punk.Entity.Layer">
+            <summary>
+            The rendering layer of this Entity. Higher layers are rendered first.
+            </summary>
+        </member>
+        <member name="P:Punk.Entity.Type">
+            <summary>
+            The collision type, used for collision checking.
+            </summary>
+        </member>
+        <member name="P:Punk.Entity.Mask">
+            <summary>
+            An optional Mask component, used for specialized collision. If this is
+            not assigned, collision checks will use the Entity's hitbox by default.
+            </summary>
+        </member>
+        <member name="P:Punk.Entity.Graphic">
+            <summary>
+            Graphical component to render to the screen.
+            </summary>
+        </member>
+        <member name="P:Punk.Entity.Name">
+            <summary>
+            The Entity's instance name. Use this to uniquely identify single
+            game Entities, which can then be looked-up with World.GetInstance().
+            </summary>
+        </member>
+        <member name="T:Punk.Entity.MessageResponse">
+            <summary>
+            Callback type for message responses.
+            </summary>
+        </member>
+        <member name="T:Punk.FP">
+            <summary>
+            Static catch-all class used to access global properties and functions.
+            </summary>
+        </member>
+        <member name="F:Punk.FP.DEG">
+            <summary>
+            Multiply a radian angle value by this to convert it to degrees.
+            </summary>
+        </member>
+        <member name="F:Punk.FP.RAD">
+            <summary>
+            Multiply a degree angle by this to convert it to radians.
+            </summary>
+        </member>
+        <member name="F:Punk.FP.Width">
+            <summary>
+            Width of the game.
+            </summary>
+        </member>
+        <member name="F:Punk.FP.Height">
+            <summary>
+            Height of the game.
+            </summary>
+        </member>
+        <member name="F:Punk.FP.Fixed">
+            <summary>
+            If the game is running at a fixed framerate.
+            </summary>
+        </member>
+        <member name="F:Punk.FP.TimeInFrames">
+            <summary>
+            If times should be given in frames (as opposed to seconds).
+            Default is true in fixed timestep mode and false in variable timestep mode.
+            </summary>
+        </member>
+        <member name="F:Punk.FP.Framerate">
+            <summary>
+            The assigned framerate
+            </summary>
+        </member>
+        <member name="F:Punk.FP.Elapsed">
+            <summary>
+            Time elapsed since the last frame (in seconds).
+            </summary>
+        </member>
+        <member name="F:Punk.FP.Timescale">
+            <summary>
+            Timescale assigned to Elapsed.
+            </summary>
+        </member>
+        <member name="F:Punk.FP.Screen">
+            <summary>
+            The display window.
+            </summary>
+        </member>
+        <member name="F:Punk.FP.Camera">
+            <summary>
+            The view camera. Can be rotated or scaled as well as positioned.
+            </summary>
+        </member>
+        <member name="F:Punk.FP.Focused">
+            <summary>
+            If the game currently has input focus or not.
+            </summary>
+        </member>
+        <member name="M:Punk.FP.Resize(System.UInt32,System.UInt32)">
+            <summary>
+            Resize the window.
+            </summary>
+            <param name="width">New width</param>
+            <param name="height">New height</param>
+        </member>
+        <member name="M:Punk.FP.Choose``1(``0[])">
+            <summary>
+            Randomly chooses and returns one of the provided values.
+            </summary>
+            <param name="choices">The Objects you want to randomly choose from. Can be ints, floats, Points, etc.</param>
+            <returns>A randomly chosen one of the provided parameters.</returns>
+        </member>
+        <member name="M:Punk.FP.Sign(System.Single)">
+            <summary>
+            Finds the sign of the provided value.
+            </summary>
+            <param name="value">The value to evaluate.</param>
+            <returns>1 if value is greater than 0, -1 if value is less than 0, and 0 when value == 0.</returns>
+        </member>
+        <member name="M:Punk.FP.Approach(System.Single,System.Single,System.Single)">
+            <summary>
+            Approaches the value towards the target, by the specified amount, without overshooting the target.
+            </summary>
+            <param name="value">The starting value.</param>
+            <param name="target">The target that you want value to approach.</param>
+            <param name="amount">How much you want the value to approach target by.</param>
+            <returns>The new value.</returns>
+        </member>
+        <member name="M:Punk.FP.Lerp(System.Single,System.Single,System.Single)">
+            <summary>
+            Linear interpolation between two values.
+            </summary>
+            <param name="a">First value</param>
+            <param name="b">Second value</param>
+            <param name="t">Interpolation factor</param>
+            <returns>When t=0, returns a. When t=1, returns b. When t=0.5, will return halfway between a and b. Etc.</returns>
+        </member>
+        <member name="M:Punk.FP.ColorLerp(System.UInt32,System.UInt32,System.Single)">
+            <summary>
+            Linear interpolation between two colors.
+            </summary>
+            <param name="from">First color.</param>
+            <param name="to">Second color.</param>
+            <param name="t">Interpolation value. Clamped to the range [0, 1].</param>
+            <returns>RGB component-interpolated color value.</returns>
+        </member>
+        <member name="M:Punk.FP.StepTowards(System.Single@,System.Single@,System.Single,System.Single,System.Single)">
+            <summary>
+            Steps X and Y coordinates towards a point.
+            </summary>
+            <param name="x">The X value to move</param>
+            <param name="y">The Y value to move</param>
+            <param name="toX">X position to step towards.</param>
+            <param name="toY">Y position to step towards.</param>
+            <param name="distance">The distance to step (will not overshoot target).</param>
+        </member>
+        <member name="M:Punk.FP.AnchorTo(System.Single@,System.Single@,System.Single,System.Single,System.Single)">
+            <summary>
+            Anchors the object to a position
+            </summary>
+            <param name="objX">X of the object to anchor</param>
+            <param name="objY">Y of the object to anchor</param>
+            <param name="anchorX">X of the anchor</param>
+            <param name="anchorY">Y of the anchor</param>
+            <param name="distance">The max distance that the object can be from the anchor</param>
+        </member>
+        <member name="M:Punk.FP.RotateAround(System.Single@,System.Single@,System.Single,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Rotates the object around the anchor by the specified amount.
+            </summary>
+            <param name="objX">X position of the object to rotate around the anchor.</param>
+            <param name="objY">Y position of the object to rotate around the anchor.</param>
+            <param name="anchorX">X position of the anchor to rotate around.</param>
+            <param name="anchorY">Y position of the anchor to rotate around.</param>
+            <param name="angle">The amount of degrees to rotate by.</param>
+            <param name="relative">Whether the rotation is relative (default true).</param>
+        </member>
+        <member name="M:Punk.FP.Angle(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Finds the angle (in degrees) from point 1 to point 2.
+            </summary>
+            <param name="x1">The first x-position.</param>
+            <param name="y1">The first y-position.</param>
+            <param name="x2">The second x-position.</param>
+            <param name="y2">The second y-position.</param>
+            <returns>The angle from (x1, y1) to (x2, y2).</returns>
+        </member>
+        <member name="M:Punk.FP.AngleXY(System.Single@,System.Single@,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Sets the x/y values of an object to a vector of the specified angle and length.
+            </summary>
+            <param name="X">X coordinate of the object to set.</param>
+            <param name="Y">Y coordinate of the object to set.</param>
+            <param name="angle">The angle of the vector, in degrees.</param>
+            <param name="length">The distance to the vector from (0, 0).</param>
+            <param name="xOffset">X offset.</param>
+            <param name="yOffset">Y offset.</param>
+        </member>
+        <member name="M:Punk.FP.AngleDiff(System.Single,System.Single)">
+            <summary>
+            Gets the difference of two angles, wrapped around to the range -180 to 180.
+            </summary>
+            <param name="a">First angle in degrees.</param>
+            <param name="b">Second angle in degrees.</param>
+            <returns>Difference in angles, wrapped around to the range -180 to 180.</returns>
+        </member>
+        <member name="M:Punk.FP.Distance(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Find the distance between two points.
+            </summary>
+            <param name="x1">The first x-position.</param>
+            <param name="y1">The first y-position.</param>
+            <param name="x2">The second x-position.</param>
+            <param name="y2">The second y-position.</param>
+            <returns>The distance.</returns>
+        </member>
+        <member name="M:Punk.FP.DistanceRects(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Find the distance between two rectangles. Will return 0 if the rectangles overlap.
+            </summary>
+            <param name="x1">The x-position of the first rect.</param>
+            <param name="y1">The y-position of the first rect.</param>
+            <param name="w1">The width of the first rect.</param>
+            <param name="h1">The height of the first rect.</param>
+            <param name="x2">The x-position of the second rect.</param>
+            <param name="y2">The y-position of the second rect.</param>
+            <param name="w2">The width of the second rect.</param>
+            <param name="h2">The height of the second rect.</param>
+            <returns>The distance.</returns>
+        </member>
+        <member name="M:Punk.FP.DistanceRectPoint(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Find the distance between a point and a rectangle. Returns 0 if the point is within the rectangle.
+            </summary>
+            <param name="px">The x-position of the point.</param>
+            <param name="py">The y-position of the point.</param>
+            <param name="rx">The x-position of the rect.</param>
+            <param name="ry">The y-position of the rect.</param>
+            <param name="rw">The width of the rect.</param>
+            <param name="rh">The height of the rect.</param>
+            <returns>The distance.</returns>
+        </member>
+        <member name="M:Punk.FP.Clamp``1(``0,``0,``0)">
+            <summary>
+            Clamps the value within the minimum and maximum values.
+            </summary>
+            <param name="value">The Number to evaluate.</param>
+            <param name="min">The minimum range.</param>
+            <param name="max">The maximum range.</param>
+            <returns>The clamped value.</returns>
+        </member>
+        <member name="M:Punk.FP.ClampInRect(System.Single@,System.Single@,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Clamps the object inside the rectangle.
+            </summary>
+            <param name="objX">The X property of the object to clamp.</param>
+            <param name="objY">The Y property of the object to clamp.</param>
+            <param name="x">Rectangle's x.</param>
+            <param name="y">Rectangle's y.</param>
+            <param name="width">Rectangle's width.</param>
+            <param name="height">Rectangle's height.</param>
+            <param name="padding">Optional padding around the edges.</param>
+        </member>
+        <member name="M:Punk.FP.Scale(System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Transfers a value from one scale to another scale. For example, scale(.5, 0, 1, 10, 20) == 15, and scale(3, 0, 5, 100, 0) == 40.
+            </summary>
+            <param name="value">The value on the first scale.</param>
+            <param name="min">The minimum range of the first scale.</param>
+            <param name="max">The maximum range of the first scale.</param>
+            <param name="min2">The minimum range of the second scale.</param>
+            <param name="max2">The maximum range of the second scale.</param>
+            <returns>The scaled value.</returns>
+        </member>
+        <member name="M:Punk.FP.ScaleClamped(System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Transfers a value from one scale to another scale, but clamps the return value within the second scale.
+            </summary>
+            <param name="value">The value on the first scale.</param>
+            <param name="min">The minimum range of the first scale.</param>
+            <param name="max">The maximum range of the first scale.</param>
+            <param name="min2">The minimum range of the second scale.</param>
+            <param name="max2">The maximum range of the second scale.</param>
+            <returns>The scaled and clamped value.</returns>
+        </member>
+        <member name="M:Punk.FP.RandomizeSeed">
+            <summary>
+            Randomizes the random seed using C#'s Random class.
+            </summary>
+        </member>
+        <member name="M:Punk.FP.Rand(System.UInt32)">
+            <summary>
+            Returns a pseudo-random uint.
+            </summary>
+            <param name="amount">The returned value will always be [0, result, amount].</param>
+            <returns>The value.</returns>
+        </member>
+        <member name="M:Punk.FP.Next``1(``0,System.Collections.Generic.IList{``0},System.Boolean)">
+            <summary>
+            Returns the next item after current in the list of options.
+            </summary>
+            <param name="current">The currently selected item (must be one of the options).</param>
+            <param name="options">An array of all the items to cycle through.</param>
+            <param name="loop">If true, will jump to the first item after the last item is reached.</param>
+            <returns>The next item in the list.</returns>
+        </member>
+        <member name="M:Punk.FP.Prev``1(``0,System.Collections.Generic.IList{``0},System.Boolean)">
+            <summary>
+            Returns the previous item before current in the list of options.
+            </summary>
+            <param name="current">The currently selected item (must be one of the options).</param>
+            <param name="options">An array of all the items to cycle through.</param>
+            <param name="loop">If true, will jump to the last item after the first item is reached.</param>
+            <returns>The next item in the list.</returns>
+        </member>
+        <member name="M:Punk.FP.Swap``1(``0,``0,``0)">
+            <summary>
+            Swaps the current item between a and b. Useful for quick state/string/value swapping.
+            </summary>
+            <param name="current">The currently selected item.</param>
+            <param name="a">Item a</param>
+            <param name="b">Item b</param>
+            <returns>Returns a if current is b, and b if current is a.</returns>
+        </member>
+        <member name="M:Punk.FP.GetColorRGB(System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Creates a color value by combining the chosen RGB values.
+            </summary>
+            <param name="r">The red value of the color, from 0 to 255.</param>
+            <param name="g">The green value of the color, from 0 to 255.</param>
+            <param name="b">The blue value of the color, from 0 to 255.</param>
+            <returns>The combined color.</returns>
+        </member>
+        <member name="M:Punk.FP.GetColorHSV(System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Creates a color value with the chosen HSV values.
+            </summary>
+            <param name="h">The hue of the color (from 0 to 1).</param>
+            <param name="s">The saturation of the color (from 0 to 1).</param>
+            <param name="v">The value of the color (from 0 to 1).</param>
+            <returns>The created color</returns>
+        </member>
+        <member name="M:Punk.FP.GetRed(System.UInt32)">
+            <summary>
+            Finds the red factor of a color.
+            </summary>
+            <param name="color">The color to evaluate.</param>
+            <returns>A uint from 0 to 255.</returns>
+        </member>
+        <member name="M:Punk.FP.GetGreen(System.UInt32)">
+            <summary>
+            Finds the green factor of a color.
+            </summary>
+            <param name="color">The color to evaluate.</param>
+            <returns>A uint from 0 to 255.</returns>
+        </member>
+        <member name="M:Punk.FP.GetBlue(System.UInt32)">
+            <summary>
+            Finds the blue factor of a color.
+            </summary>
+            <param name="color">The color to evaluate.</param>
+            <returns>A uint from 0 to 255.</returns>
+        </member>
+        <member name="M:Punk.FP.Color(System.UInt32)">
+            <summary>
+            Create an SFML color instance from a Flash-style uint (0xRRGGBB)
+            </summary>
+            <param name="color">A Flash-style color (0xRRGGBB)</param>
+            <returns>The converted color</returns>
+        </member>
+        <member name="M:Punk.FP.HexColor(SFML.Graphics.Color)">
+            <summary>
+            Create a Flash-style color (0xRRGGBB) from an SFML color instance.
+            </summary>
+            <param name="color">An SFML color instance.</param>
+            <returns>The converted color.</returns>
+        </member>
+        <member name="M:Punk.FP.TimeFlag">
+            <summary>
+            Sets a time flag.
+            </summary>
+            <returns>Time elapsed (in milliseconds) since the last time flag was set.</returns>
+        </member>
+        <member name="M:Punk.FP.Log(System.Object[])">
+            <summary>
+            Logs data to the console
+            </summary>
+            <param name="data">The data parameters to log, can be variables, objects, etc. Parameters will be separated by a space (" ").</param>
+        </member>
+        <member name="M:Punk.FP.Tween(System.Object,System.Object,System.Single,System.Object)">
+            <summary>
+            Tweens numeric public properties of an Object.
+            Shorthand for creating a MultiVarTween tween, starting it and adding it to a Tweener.
+            </summary>
+            <param name="target">The object containing the properties to tween.</param>
+            <param name="values">An object containing key/value pairs of properties and target values.</param>
+            <param name="duration">Duration of the tween.</param>
+            <param name="options">An object containing key/value pairs of the following optional parameters:
+            							type 		Tween type.
+            							complete 	Optional completion callback function.
+            							ease 		Optional easer function.
+            							tweener 	The Tweener to add this Tween to.
+            							delay 		A length of time to wait before starting this tween.
+            </param>
+            <example>FP.Tween(object, new { x = 500, y = 350 }, 2.0f, new { ease = easeFunction, complete = onComplete } );</example>
+            <returns>The added MultiVarTween object.</returns>
+        </member>
+        <member name="M:Punk.FP.Alarm(System.Single,Punk.Tween.OnComplete,System.UInt32,Punk.Tweener)">
+            <summary>
+            Schedules a callback for the future.
+            Shorthand for creating an Alarm tween, starting it and adding it to a Tweener.
+            </summary>
+            <param name="delay">The duration to wait before calling the callback.</param>
+            <param name="complete">The function to be called.</param>
+            <param name="type">The tween type (PERSIST, LOOPING or ONESHOT). Defaults to ONESHOT.</param>
+            <param name="tweener">The Tweener object to add this Alarm to. Defaults to FP.Tweener.</param>
+            <returns>The added Alarm object.</returns>
+        </member>
+        <member name="M:Punk.FP.MakeFrames(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Gets an array of frame indices.
+            </summary>
+            <param name="from">Starting frame.</param>
+            <param name="to">Ending frame.</param>
+            <param name="skip">Skip amount every frame (eg. use 1 for every 2nd frame).</param>
+            <returns></returns>
+        </member>
+        <member name="M:Punk.FP.Frames(System.Int32[])">
+            <summary>
+            Create a frame array.
+            </summary>
+            <param name="frames">The frames to insert into the array</param>
+            <returns>The frame array.</returns>
+        </member>
+        <member name="M:Punk.FP.Shuffle``1(System.Collections.Generic.List{``0})">
+            <summary>
+            Shuffles the elements in a list.
+            </summary>
+            <param name="shuffle">The list to shuffle</param>
+        </member>
+        <member name="M:Punk.FP.GetTimer">
+            <summary>
+            High-resolution timer.
+            </summary>
+            <returns>Milliseconds since the Engine started up.</returns>
+        </member>
+        <member name="F:Punk.FP.Timer">
+            <summary>
+            Time since the game started
+            </summary>
+        </member>
+        <member name="F:Punk.FP.Engine">
+            <summary>
+            The currently active Engine.
+            </summary>
+        </member>
+        <member name="P:Punk.FP.HalfWidth">
+            <summary>
+            Half width of the game.
+            </summary>
+        </member>
+        <member name="P:Punk.FP.HalfHeight">
+            <summary>
+            Half height of the game.
+            </summary>
+        </member>
+        <member name="P:Punk.FP.Bounds">
+            <summary>
+            A rectangle representing the size of the screen.
+            </summary>
+        </member>
+        <member name="P:Punk.FP.World">
+            <summary>
+            The currently active World.
+            </summary>
+        </member>
+        <member name="P:Punk.FP.Volume">
+            <summary>
+            Global sound volume. All sounds will be multiplied by this value.
+            </summary>
+        </member>
+        <member name="P:Punk.FP.Pan">
+            <summary>
+            Global sound pan. All sounds will be offset by this value.
+            </summary>
+        </member>
+        <member name="P:Punk.FP.RandomSeed">
+            <summary>
+            The random seed used by FP's random functions.
+            </summary>
+        </member>
+        <member name="P:Punk.FP.Random">
+            <summary>
+            A pseudo-random float produced using FP's random seed, where the result is greater than 0 and less than 1.
+            </summary>
+        </member>
+        <member name="P:Punk.FP.Tweener">
+            <summary>
+            Global Tweener for tweening values across multiple worlds.
+            </summary>
+        </member>
+        <member name="T:Punk.Graphics.Anim">
+            <summary>
+            Template used by Spritemap to define animations. Don't create
+            these yourself, instead you can fetch them with Spritemap's Add().
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Anim.Play(System.Boolean)">
+            <summary>
+            Plays the animation.
+            </summary>
+            <param name="reset">If the animation should force-restart if it is already playing.</param>
+        </member>
+        <member name="P:Punk.Graphics.Anim.Name">
+            <summary>
+            The name of the animation
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Anim.Frames">
+            <summary>
+            Array of frame indices to animate.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Anim.FrameRate">
+            <summary>
+            Animation speed.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Anim.Loop">
+            <summary>
+            If the animation loops.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Anim.FrameCount">
+            <summary>
+            Amount of frames in the animation.
+            </summary>
+        </member>
+        <member name="T:Punk.Graphics.Backdrop">
+            <summary>
+            Description of Backdrop.
+            </summary>
+        </member>
+        <member name="T:Punk.Graphics.Graphic">
+            <summary>
+            Base class for all graphical types that can be drawn by Entity.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Graphic.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Graphic.Active">
+            <summary>
+            If the graphic should update.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Graphic.Visible">
+            <summary>
+            If the graphic should render.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Graphic.X">
+            <summary>
+            If the graphic should render.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Graphic.Y">
+            <summary>
+            Y offset.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Graphic.ScrollX">
+            <summary>
+            X scrollfactor, effects how much the camera offsets the drawn graphic.
+            Can be used for parallax effect, eg. Set to 0 to follow the camera,
+            0.5 to move at half-speed of the camera, or 1 (default) to stay still.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Graphic.ScrollY">
+            <summary>
+            Y scrollfactor, effects how much the camera offsets the drawn graphic.
+            Can be used for parallax effect, eg. Set to 0 to follow the camera,
+            0.5 to move at half-speed of the camera, or 1 (default) to stay still.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Graphic.Relative">
+            <summary>
+            If the graphic should render at its position relative to its parent Entity's position.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Graphic.Shader">
+            <summary>
+            An optional shader to draw the image with
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Graphic.Update">
+            <summary>
+            Updates the graphic.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Graphic.Render(System.Single,System.Single,Punk.Camera)">
+            <summary>
+            Renders the graphic to the screen buffer.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Graphic.Assign">
+            <summary>
+            Callback for when the graphic is assigned to an Entity
+            </summary>
+        </member>
+        <member name="T:Punk.Graphics.Graphic.OnAssign">
+            <summary>
+            Callback for when the Graphic is assigned to an entity.
+            </summary>
+        </member>
+        <member name="T:Punk.Graphics.Emitter">
+            <summary>
+            Particle emitter used for emitting and rendering particle sprites.
+            Good rendering performance with large amounts of particles.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Emitter.#ctor(SFML.Graphics.Texture,System.Int32,System.Int32)">
+            <summary>
+            Constructor. Sets the source image to use for newly added particle types.
+            </summary>
+            <param name="source">Source texture.</param>
+            <param name="frameWidth">Frame width.</param>
+            <param name="frameHeight">Frame height.</param>
+        </member>
+        <member name="M:Punk.Graphics.Emitter.SetSource(SFML.Graphics.Texture,System.Int32,System.Int32)">
+            <summary>
+            Changes the source image to use for newly added particle types.
+            </summary>
+            <param name="source">Source image.</param>
+            <param name="frameWidth">Frame width.</param>
+            <param name="frameHeight">Frame height.</param>
+        </member>
+        <member name="M:Punk.Graphics.Emitter.Update">
+            <summary>
+            Update the graphic.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Emitter.Render(System.Single,System.Single,Punk.Camera)">
+            <summary>
+            Renders the particles.
+            </summary>
+            <param name="x">X position of the owning entity.</param>
+            <param name="y">Y position of the owning entity.</param>
+        </member>
+        <member name="M:Punk.Graphics.Emitter.NewType(System.String,System.Int32[])">
+            <summary>
+            Creates a new Particle type for this Emitter.
+            </summary>
+            <param name="name">Name of the particle type.</param>
+            <param name="frames">Array of frame indices for the particles to animate.</param>
+            <returns>A new ParticleType object.</returns>
+        </member>
+        <member name="M:Punk.Graphics.Emitter.SetMotion(System.String,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,Punk.Graphics.Emitter.Easer)">
+            <summary>
+            Defines the motion range for a particle type.
+            </summary>
+            <param name="name">The particle type.</param>
+            <param name="angle">Launch Direction.</param>
+            <param name="distance">Distance to travel.</param>
+            <param name="duration">Particle duration.</param>
+            <param name="angleRange">Random amount to add to the particle's direction.</param>
+            <param name="distanceRange">Random amount to add to the particle's distance.</param>
+            <param name="durationRange">Random amount to add to the particle's duration.</param>
+            <param name="ease">Optional easer function.</param>
+            <returns>The ParticleType object being modified.</returns>
+        </member>
+        <member name="M:Punk.Graphics.Emitter.SetGravity(System.String,System.Single,System.Single)">
+            <summary>
+            Sets the gravity range for a particle type.
+            </summary>
+            <param name="name">The particle type.</param>
+            <param name="gravity">Gravity amount to affect to the particle y velocity.</param>
+            <param name="gravityRange">Random amount to add to the particle's gravity.</param>
+            <returns>The ParticleType object being modified.</returns>
+        </member>
+        <member name="M:Punk.Graphics.Emitter.SetAlpha(System.String,System.Single,System.Single,Punk.Graphics.Emitter.Easer)">
+            <summary>
+            Sets the alpha range of the particle type.
+            </summary>
+            <param name="name">The particle type.</param>
+            <param name="start">The starting alpha.</param>
+            <param name="finish">The finish alpha.</param>
+            <param name="ease">Optional easer function.</param>
+            <returns>The ParticleType object being modified.</returns>
+        </member>
+        <member name="M:Punk.Graphics.Emitter.SetColor(System.String,SFML.Graphics.Color,SFML.Graphics.Color,Punk.Graphics.Emitter.Easer)">
+            <summary>
+            Sets the color range of the particle type.
+            </summary>
+            <param name="name">The particle type.</param>
+            <param name="start">The starting color.</param>
+            <param name="finish">The finish color.</param>
+            <param name="ease">Optional easer function.</param>
+            <returns>The ParticleType object being modified.</returns>
+        </member>
+        <member name="M:Punk.Graphics.Emitter.Emit(System.String,System.Single,System.Single)">
+            <summary>
+            Emits a particle.
+            </summary>
+            <param name="name">Particle type to emit.</param>
+            <param name="x">X point to emit from.</param>
+            <param name="y">Y point to emit from.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Punk.Graphics.Emitter.ParticleCount">
+            <summary>
+            Amount of currently existing particles.
+            </summary>
+        </member>
+        <member name="T:Punk.Graphics.Graphiclist">
+            <summary>
+            A Graphic that can contain multiple Graphics of one or various types.
+            Useful for drawing sprites with multiple different parts, etc.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Graphiclist.#ctor(Punk.Graphics.Graphic[])">
+            <summary>
+            Constructor
+            </summary>
+            <param name="graphics">Graphic objects to add to the list.</param>
+        </member>
+        <member name="M:Punk.Graphics.Graphiclist.Update">
+            <summary>
+            Updates the graphics in the list.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Graphiclist.First``1">
+            <summary>
+            Get the first graphic of a type.
+            </summary>
+            <returns>The first graphic found, or null if none exist.</returns>
+        </member>
+        <member name="M:Punk.Graphics.Graphiclist.Render(System.Single,System.Single,Punk.Camera)">
+            <summary>
+            Render the Graphic.
+            </summary>
+            <param name="x">X position of the owning Entity.</param>
+            <param name="y">Y position of the owning Entity.</param>
+        </member>
+        <member name="M:Punk.Graphics.Graphiclist.Add(Punk.Graphics.Graphic)">
+            <summary>
+            Adds the Graphic to the list.
+            </summary>
+            <param name="graphic">The Graphic to add.</param>
+            <returns>The added Graphic.</returns>
+        </member>
+        <member name="M:Punk.Graphics.Graphiclist.Remove(Punk.Graphics.Graphic)">
+            <summary>
+            Removes the Graphic from the list.
+            </summary>
+            <param name="graphic">The Graphic to remove.</param>
+            <returns>The removed Graphic.</returns>
+        </member>
+        <member name="M:Punk.Graphics.Graphiclist.RemoveAt(System.Int32)">
+            <summary>
+            Removes the Graphic from the position in the list.
+            </summary>
+            <param name="index">Index to remove.</param>
+        </member>
+        <member name="M:Punk.Graphics.Graphiclist.RemoveAll">
+            <summary>
+            Removes all Graphics from the list.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Graphiclist.UpdateCheck">
+            <summary>
+            Check if the Graphiclist should update.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Graphiclist.Children">
+            <summary>
+            All Graphics in this list.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Graphiclist.Count">
+            <summary>
+            Amount of Graphics in this list.
+            </summary>
+        </member>
+        <member name="T:Punk.Graphics.Image">
+            <summary>
+            Non-animated image. Can be drawn to the screen with transformations.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image.Angle">
+            <summary>
+            Rotation of the image, in degrees.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image.Scale">
+            <summary>
+            Scale of the image, affects both x and y scale.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image.ScaleX">
+            <summary>
+            X scale of the image.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image.ScaleY">
+            <summary>
+            Y scale of the image.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image.OriginX">
+            <summary>
+            X origin of the image, determines transformation point.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image.OriginY">
+            <summary>
+            Y origin of the image, determines transformation point.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Image.UpdateTextureRect">
+            <summary>
+            Updates the texture rectangle.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image.Smooth">
+            <summary>
+            If the image should be drawn transformed with pixel smoothing.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Image.#ctor">
+            <summary>
+            Simple constructor for shape functions lol
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Image.#ctor(SFML.Graphics.Texture,System.Nullable{SFML.Graphics.IntRect})">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="texture">Source image.</param>
+            <param name="clipRect">Optional rectangle defining area of the source image to draw.</param>
+        </member>
+        <member name="M:Punk.Graphics.Image.Init(SFML.Graphics.Texture,System.Nullable{SFML.Graphics.IntRect})">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="texture">Source image.</param>
+            <param name="clipRect">Optional rectangle defining area of the source image to draw.</param>
+        </member>
+        <member name="M:Punk.Graphics.Image.CreateRect(System.UInt32,System.UInt32,SFML.Graphics.Color)">
+            <summary>
+            Create a solid-color rectangle image.
+            </summary>
+            <param name="width">The width of the image.</param>
+            <param name="height">The height of the image.</param>
+            <param name="color">The color of the image.</param>
+            <returns>The created image.</returns>
+        </member>
+        <member name="M:Punk.Graphics.Image.CreateCircle(System.UInt32,SFML.Graphics.Color)">
+            <summary>
+            Create a solid-color circle image.
+            </summary>
+            <param name="radius">The radius of the image.</param>
+            <param name="color">The color of the image.</param>
+            <returns>The created image.</returns>
+        </member>
+        <member name="M:Punk.Graphics.Image.Render(System.Single,System.Single,Punk.Camera)">
+            <summary>
+            Renders the graphic to the screen buffer.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Image.CenterOrigin">
+            <summary>
+            Centers the Image's originX/Y to its center.
+            </summary>		
+        </member>
+        <member name="M:Punk.Graphics.Image.CenterOO">
+            <summary>
+            Centers the Image's originX/Y to its center.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image._spriteMode">
+            <summary>
+            Whether the image is rendered with a sprite or a shape
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image._source">
+            <summary>
+            The texture to be rendered with the sprite
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image._sprite">
+            <summary>
+            If the image is in sprite mode, this is the sprite it will render
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image._shape">
+            <summary>
+            If the image is in shape mode, this is the shape it will render
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image._sourceRect">
+            <summary>
+            The clipping rectangle
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image._sourceRectSize">
+            <summary>
+            The size of the clipping rectangle, used for accurate flipping.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image._sourceSize">
+            <summary>
+            The size of the image's texture or shape.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image._alpha">
+            <summary>
+            The transparency of the image
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image._color">
+            <summary>
+            The tint color of the image.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image._flipX">
+            <summary>
+            Whether the image is flipped on the X axis.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Image._flipY">
+            <summary>
+            Whether the image is flipped on the Y axis.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.FlippedX">
+            <summary>
+            If you want to draw the image horizontally flipped.
+            This will flip the texture without moving it, as would happen if you set ScaleX to -1.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.FlippedY">
+            <summary>
+            If you want to draw the image vertically flipped.
+            This will flip the texture without moving it, as would happen if you set ScaleY to -1.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.Width">
+            <summary>
+            The width of the image
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.Height">
+            <summary>
+            The height of the image
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.ScaledWidth">
+            <summary>
+            The scaled width of the image.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.ScaledHeight">
+            <summary>
+            The scaled height of the image.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.ClipRect">
+            <summary>
+            Clipping rectangle for the image.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.Source">
+            <summary>
+            The texture that the image uses (null if in Shape mode).
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.Alpha">
+            <summary>
+            The alpha of the image
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.Color">
+            <summary>
+            Set the tint color of the image. Setting this to White (255, 255, 255 or 0xffffff) will disable tinting.
+            If you set the alpha of this property, it will be overwritten by the Alpha property when the color transform is updated.
+            </summary>
+        </member>
+        <member name="T:Punk.Graphics.Nineslice">
+            <summary>
+            A box that automatically repeats portions of its source texture to create a seamlessly tiled image.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Nineslice.Angle">
+            <summary>
+            Rotation of the image, in degrees.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Nineslice.Scale">
+            <summary>
+            Scale of the image, affects both x and y scale.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Nineslice.ScaleX">
+            <summary>
+            X scale of the image.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Nineslice.ScaleY">
+            <summary>
+            Y scale of the image.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Nineslice.OriginX">
+            <summary>
+            X origin of the image, determines transformation point.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Nineslice.OriginY">
+            <summary>
+            Y origin of the image, determines transformation point.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Nineslice.#ctor(SFML.Graphics.Texture,System.UInt32,System.UInt32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="source">The source texture. Should be divisible by three in both directions.</param>
+            <param name="columns">How many columns wide the graphic is.</param>
+            <param name="rows">How many rows high the graphic is.</param>
+        </member>
+        <member name="M:Punk.Graphics.Nineslice.Render(System.Single,System.Single,Punk.Camera)">
+            <summary>
+            Renders the graphic.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="camera"></param>
+        </member>
+        <member name="M:Punk.Graphics.Nineslice.BuildCornerTopLeft(SFML.Window.Vector2f[])">
+             All vertices are wound clockwise beginning at the top-left corner.
+             Slices correspond to array indices thusly:
+             0, 1, 2
+             3, 4, 5
+             6, 7, 8
+            
+        </member>
+        <member name="F:Punk.Graphics.Nineslice.StretchCenter">
+            <summary>
+            Whether the texture should be stretched instead of repeating.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Nineslice.StretchTop">
+            <summary>
+            Whether the texture should be stretched instead of repeating.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Nineslice.StretchLeft">
+            <summary>
+            Whether the texture should be stretched instead of repeating.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Nineslice.StretchBottom">
+            <summary>
+            Whether the texture should be stretched instead of repeating.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Nineslice.StretchRight">
+            <summary>
+            Whether the texture should be stretched instead of repeating.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Nineslice.Columns">
+            <summary>
+            How many columns to render
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Nineslice.Rows">
+            <summary>
+            How many rows to render
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Nineslice.Width">
+            <summary>
+            The width of the graphic
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Nineslice.Height">
+            <summary>
+            The height of the graphic
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Nineslice.ScaledWidth">
+            <summary>
+            The scaled width of the image.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Nineslice.ScaledHeight">
+            <summary>
+            The scaled height of the image.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Nineslice.Alpha">
+            <summary>
+            The alpha of the image
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Nineslice.Color">
+            <summary>
+            Set the tint color of the image. Setting this to White (255, 255, 255 or 0xffffff) will disable tinting.
+            If you set the alpha of this property, it will be overwritten by the Alpha property when the color transform is updated.
+            </summary>
+        </member>
+        <member name="T:Punk.Graphics.Particle">
+            <summary>
+            Description of Particle.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Particle.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="T:Punk.Graphics.ParticleType">
+            <summary>
+            Template used to define a particle type used by the Emitter class. Instead
+            of creating this object yourself, fetch one with Emitter's NewType() function.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.ParticleType.#ctor(System.String,System.Int32[],SFML.Graphics.Texture,System.Int32,System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="name">Name of the particle type.</param>
+            <param name="frames">Array of frame indices to animate through.</param>
+            <param name="source">Source image.</param>
+            <param name="frameWidth">Frame width.</param>
+            <param name="frameHeight">Frame height.</param>
+        </member>
+        <member name="M:Punk.Graphics.ParticleType.SetMotion(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,Punk.Graphics.Emitter.Easer)">
+            <summary>
+            Defines the motion range for this particle type.
+            </summary>
+            <param name="angle">Launch Direction.</param>
+            <param name="distance">Distance to travel.</param>
+            <param name="duration">Particle duration.</param>
+            <param name="angleRange">Random amount to add to the particle's direction.</param>
+            <param name="distanceRange">Random amount to add to the particle's distance.</param>
+            <param name="durationRange">Random amount to add to the particle's duration.</param>
+            <param name="ease">Optional easer function.</param>
+            <returns>This ParticleType object.</returns>
+        </member>
+        <member name="M:Punk.Graphics.ParticleType.SetMotionVector(System.Single,System.Single,System.Single,System.Single,Punk.Graphics.Emitter.Easer)">
+            <summary>
+            Defines the motion range for this particle type based on the vector.
+            </summary>
+            <param name="x">X distance to move.</param>
+            <param name="y">Y distance to move.</param>
+            <param name="duration">Particle duration.</param>
+            <param name="durationRange">Random amount to add to the particle's duration.</param>
+            <param name="ease">Optional easer function.</param>
+            <returns>This ParticleType object.</returns>
+        </member>
+        <member name="M:Punk.Graphics.ParticleType.SetGravity(System.Single,System.Single)">
+            <summary>
+            Sets the gravity range of this particle type.
+            </summary>
+            <param name="gravity">Gravity amount to affect to the particle y velocity.</param>
+            <param name="gravityRange">Random amount to add to the particle's gravity.</param>
+            <returns>This ParticleType object.</returns>
+        </member>
+        <member name="M:Punk.Graphics.ParticleType.SetAlpha(System.Single,System.Single,Punk.Graphics.Emitter.Easer)">
+            <summary>
+            Sets the alpha range of this particle type.
+            </summary>
+            <param name="start">The starting alpha.</param>
+            <param name="finish">The finish alpha.</param>
+            <param name="ease">Optional easer function.</param>
+            <returns>This ParticleType object.</returns>
+        </member>
+        <member name="M:Punk.Graphics.ParticleType.SetColor(SFML.Graphics.Color,SFML.Graphics.Color,Punk.Graphics.Emitter.Easer)">
+            <summary>
+            Sets the color range of this particle type.
+            </summary>
+            <param name="start">The starting color.</param>
+            <param name="finish">The finish color.</param>
+            <param name="ease">Optional easer function.</param>
+            <returns>This ParticleType object.</returns>
+        </member>
+        <member name="T:Punk.Graphics.SpineAnimation">
+            <summary>
+            Skeletal animation. Displays animations created with Spine by Esoteric Software.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.SpineAnimation.#ctor(System.String,System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="animationFolder">The folder the animation, skeleton, and spritesheet data are found in.</param>
+            <param name="skin">An optional skin to use in the animation, if supported.</param>
+        </member>
+        <member name="M:Punk.Graphics.SpineAnimation.Update">
+            <summary>
+            Update the animation.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.SpineAnimation.Render(System.Single,System.Single,Punk.Camera)">
+            <summary>
+            Renders the graphic to the screen buffer.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.SpineAnimation.Play(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Plays an animation.
+            </summary>
+            <param name="name">Name of the animation to play.</param>
+            <param name="loop">If the animation should loop (defaults to true).</param>
+            <param name="reset">If the animation should be restarted if it is already playing (defaults to false).</param>
+        </member>
+        <member name="F:Punk.Graphics.SpineAnimation.Angle">
+            <summary>
+            Rotation of the image, in degrees.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.SpineAnimation.Scale">
+            <summary>
+            Scale of the image, affects both x and y scale.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.SpineAnimation.ScaleX">
+            <summary>
+            X scale of the image.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.SpineAnimation.ScaleY">
+            <summary>
+            Y scale of the image.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.SpineAnimation.OriginX">
+            <summary>
+            X origin of the image, determines transformation point.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.SpineAnimation.OriginY">
+            <summary>
+            Y origin of the image, determines transformation point.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.SpineAnimation.Callback">
+            <summary>
+            Optional callback function for animation end.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.SpineAnimation.Rate">
+            <summary>
+            Animation speed factor, alter this to speed up/slow down all animations.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.SpineAnimation.FlippedX">
+            <summary>
+            If you want to draw the image horizontally flipped.
+            This will flip the texture without moving it, as would happen if you set ScaleX to -1.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.SpineAnimation.Complete">
+            <summary>
+            If the animation has stopped.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.SpineAnimation.FlippedY">
+            <summary>
+            If you want to draw the image vertically flipped.
+            This will flip the texture without moving it, as would happen if you set ScaleY to -1.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.SpineAnimation.CurrentAnim">
+            <summary>
+            The currently playing animation.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.SpineAnimation.Skin">
+            <summary>
+            The skin of the animation.
+            </summary>
+        </member>
+        <member name="T:Punk.Graphics.SpineAnimation.OnComplete">
+            <summary>
+            Callback type for when animations complete.
+            </summary>
+        </member>
+        <member name="M:Spine.Animation.Apply(Spine.Skeleton,System.Single,System.Boolean)">
+            Poses the skeleton at the specified time for this animation. 
+        </member>
+        <member name="M:Spine.Animation.Mix(Spine.Skeleton,System.Single,System.Boolean,System.Single)">
+            Poses the skeleton at the specified time for this animation mixed with the current pose.
+            @param alpha The amount of this animation that affects the current pose. 
+        </member>
+        <member name="M:Spine.Animation.binarySearch(System.Single[],System.Single,System.Int32)">
+            @param target After the first and before the last entry. 
+        </member>
+        <member name="M:Spine.Timeline.Apply(Spine.Skeleton,System.Single,System.Single)">
+            Sets the value(s) for the specified time. 
+        </member>
+        <member name="T:Spine.CurveTimeline">
+            Base class for frames that use an interpolation bezier curve. 
+        </member>
+        <member name="M:Spine.CurveTimeline.SetCurve(System.Int32,System.Single,System.Single,System.Single,System.Single)">
+            Sets the control handle positions for an interpolation bezier curve used to transition from this keyframe to the next.
+            cx1 and cx2 are from 0 to 1, representing the percent of time between the two keyframes. cy1 and cy2 are the percent of
+            the difference between the keyframe's values. 
+        </member>
+        <member name="M:Spine.RotateTimeline.SetFrame(System.Int32,System.Single,System.Single)">
+            Sets the time and value of the specified keyframe. 
+        </member>
+        <member name="M:Spine.TranslateTimeline.SetFrame(System.Int32,System.Single,System.Single,System.Single)">
+            Sets the time and value of the specified keyframe. 
+        </member>
+        <member name="M:Spine.ColorTimeline.setFrame(System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            Sets the time and value of the specified keyframe. 
+        </member>
+        <member name="M:Spine.AttachmentTimeline.setFrame(System.Int32,System.Single,System.String)">
+            Sets the time and value of the specified keyframe. 
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Spine.AnimationState.AddAnimation(Spine.Animation,System.Boolean,System.Single)" -->
+        <member name="M:Spine.AnimationState.IsComplete">
+            Returns true if no animation is set or if the current time is greater than the animation duration, regardless of looping. 
+        </member>
+        <member name="M:Spine.Atlas.readTuple(System.IO.TextReader,System.String[])">
+            Returns the number of tuple values read (2 or 4). 
+        </member>
+        <member name="M:Spine.Atlas.FindRegion(System.String)">
+            Returns the first region found with the specified name. This method uses string comparison to find the region, so the result
+            should be cached rather than calling this method multiple times.
+            @return The region, or null. 
+        </member>
+        <member name="M:Spine.AttachmentLoader.NewAttachment(Spine.Skin,Spine.AttachmentType,System.String)">
+            @return May be null to not load any attachment. 
+        </member>
+        <member name="T:Spine.RegionAttachment">
+            Attachment that displays a texture region. 
+        </member>
+        <member name="M:Spine.Bone.#ctor(Spine.BoneData,Spine.Bone)">
+            @param parent May be null. 
+        </member>
+        <member name="M:Spine.Bone.UpdateWorldTransform(System.Boolean,System.Boolean)">
+            Computes the world SRT using the parent bone and the local SRT. 
+        </member>
+        <member name="M:Spine.BoneData.#ctor(System.String,Spine.BoneData)">
+            @param parent May be null. 
+        </member>
+        <member name="P:Spine.BoneData.Parent">
+            May be null. 
+        </member>
+        <member name="T:Spine.Json">
+             <summary>
+             This class encodes and decodes JSON strings.
+             Spec. details, see http://www.json.org/
+            
+             JSON uses Arrays and Objects. These correspond here to the datatypes IList and IDictionary.
+             All numbers are parsed to floats.
+             </summary>
+        </member>
+        <member name="M:Spine.Json.Deserialize(System.IO.TextReader)">
+            <summary>
+            Parses the string json into a value
+            </summary>
+            <param name="json">A JSON string.</param>
+            <returns>An List&lt;object&gt;, a Dictionary&lt;string, object&gt;, a float, an integer,a string, null, true, or false</returns>
+        </member>
+        <member name="M:Spine.Json.Serialize(System.Object)">
+            <summary>
+            Converts a IDictionary / IList object or a simple type (string, int, etc.) into a JSON string
+            </summary>
+            <param name="json">A Dictionary&lt;string, object&gt; / List&lt;object&gt;</param>
+            <returns>A JSON encoded string, or null if object 'json' is not serializable</returns>
+        </member>
+        <member name="T:Punk.Graphics.Spine.PunkTextureLoader">
+            <summary>
+            Description of PunkTextureLoader.
+            </summary>
+        </member>
+        <member name="M:Spine.Skeleton.UpdateWorldTransform">
+            Updates the world transform for each bone. 
+        </member>
+        <member name="M:Spine.Skeleton.SetToSetupPose">
+            Sets the bones and slots to their setup pose values. 
+        </member>
+        <member name="M:Spine.Skeleton.FindBone(System.String)">
+            @return May be null. 
+        </member>
+        <member name="M:Spine.Skeleton.FindBoneIndex(System.String)">
+            @return -1 if the bone was not found. 
+        </member>
+        <member name="M:Spine.Skeleton.FindSlot(System.String)">
+            @return May be null. 
+        </member>
+        <member name="M:Spine.Skeleton.FindSlotIndex(System.String)">
+            @return -1 if the bone was not found. 
+        </member>
+        <member name="M:Spine.Skeleton.SetSkin(System.String)">
+            Sets a skin by name.
+            @see #setSkin(Skin) 
+        </member>
+        <member name="M:Spine.Skeleton.SetSkin(Spine.Skin)">
+            Sets the skin used to look up attachments not found in the {@link SkeletonData#getDefaultSkin() default skin}. Attachments
+            from the new skin are attached if the corresponding attachment from the old skin was attached.
+            @param newSkin May be null. 
+        </member>
+        <member name="M:Spine.Skeleton.GetAttachment(System.String,System.String)">
+            @return May be null. 
+        </member>
+        <member name="M:Spine.Skeleton.GetAttachment(System.Int32,System.String)">
+            @return May be null. 
+        </member>
+        <member name="M:Spine.Skeleton.SetAttachment(System.String,System.String)">
+            @param attachmentName May be null. 
+        </member>
+        <member name="F:Spine.SkeletonData.DefaultSkin">
+            May be null. 
+        </member>
+        <member name="M:Spine.SkeletonData.FindBone(System.String)">
+            @return May be null. 
+        </member>
+        <member name="M:Spine.SkeletonData.FindBoneIndex(System.String)">
+            @return -1 if the bone was not found. 
+        </member>
+        <member name="M:Spine.SkeletonData.FindSlot(System.String)">
+            @return May be null. 
+        </member>
+        <member name="M:Spine.SkeletonData.FindSlotIndex(System.String)">
+            @return -1 if the bone was not found. 
+        </member>
+        <member name="M:Spine.SkeletonData.FindSkin(System.String)">
+            @return May be null. 
+        </member>
+        <member name="M:Spine.SkeletonData.FindAnimation(System.String)">
+            @return May be null. 
+        </member>
+        <member name="T:Spine.Skin">
+            Stores attachments by slot index and attachment name. 
+        </member>
+        <member name="M:Spine.Skin.GetAttachment(System.Int32,System.String)">
+            @return May be null. 
+        </member>
+        <member name="M:Spine.Skin.AttachAll(Spine.Skeleton,Spine.Skin)">
+            Attach all attachments from this skin if the corresponding attachment from the old skin is currently attached. 
+        </member>
+        <member name="F:Spine.Slot.attachment">
+            May be null. 
+        </member>
+        <member name="P:Spine.SlotData.AttachmentName">
+            @param attachmentName May be null. 
+        </member>
+        <member name="T:Punk.Graphics.Spritemap">
+            <summary>
+            Animated Image. Can have multiple animations,
+            which draw frames from the provided source image to the screen.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Spritemap.Complete">
+            <summary>
+            If the animation has stopped.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Spritemap.Callback">
+            <summary>
+            Optional callback function for animation end.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Spritemap.Rate">
+            <summary>
+            Animation speed factor, alter this to speed up/slow down all animations.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Spritemap.#ctor(SFML.Graphics.Texture,System.Int32,System.Int32,Punk.Graphics.Spritemap.OnComplete)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="texture">Source image.</param>
+            <param name="frameWidth">Frame width.</param>
+            <param name="frameHeight">Frame height.</param>
+            <param name="complete">Optional callback function for animation end.</param>
+        </member>
+        <member name="M:Punk.Graphics.Spritemap.UpdateBuffer">
+            <summary>
+            Updates the spritemap's buffer.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Spritemap.Update">
+            <summary>
+            Updates the animation.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Spritemap.Add(System.String,System.Int32[],System.Single,System.Boolean)">
+            <summary>
+            Add an Animation.
+            </summary>
+            <param name="name">Name of the animation.</param>
+            <param name="frames">Array of frame indices to animate through.</param>
+            <param name="frameRate">Animation speed.</param>
+            <param name="loop">If the animation should loop.</param>
+            <returns>A new Anim object for the animation.</returns>
+        </member>
+        <member name="M:Punk.Graphics.Spritemap.Play(System.String,System.Boolean,System.Int32)">
+            <summary>
+            Plays an animation.
+            </summary>
+            <param name="name">Name of the animation to play.</param>
+            <param name="reset">If the animation should force-restart if it is already playing.</param>
+            <param name="frame">Frame of the animation to start from, if restarted.</param>
+            <returns>Anim object representing the played animation.</returns>
+        </member>
+        <member name="M:Punk.Graphics.Spritemap.GetFrame(System.Int32,System.Int32)">
+            <summary>
+            Gets the frame index based on the column and row of the source image.
+            </summary>
+            <param name="column">Frame column.</param>
+            <param name="row">Frame row.</param>
+            <returns>Frame index.</returns>
+        </member>
+        <member name="M:Punk.Graphics.Spritemap.SetFrame(System.Int32,System.Int32)">
+            <summary>
+            Sets the current display frame based on the column and row of the source image.
+            When you set the frame, any animations playing will be stopped to force the frame.
+            </summary>
+            <param name="column">Frame column.</param>
+            <param name="row">Frame row.</param>
+        </member>
+        <member name="M:Punk.Graphics.Spritemap.RandFrame">
+            <summary>
+            Assigns the Spritemap to a random frame.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Spritemap.SetAnimFrame(System.String,System.Int32)">
+            <summary>
+            Sets the frame to the frame index of an animation.
+            </summary>
+            <param name="name">Animation to draw the frame frame.</param>
+            <param name="index">Index of the frame of the animation to set to.</param>
+        </member>
+        <member name="F:Punk.Graphics.Spritemap._width">
+            <summary>
+            The width of the Spritemap.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Spritemap._height">
+            <summary>
+            The height of the Spritemap.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Spritemap._frame">
+            <summary>
+            The current animation frame.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Spritemap.Frame">
+            <summary>
+            The current frame index. When you set this, any
+            animations playing will be stopped to force the frame.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Spritemap.Index">
+            <summary>
+            Current index of the playing animation.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Spritemap.FrameCount">
+            <summary>
+            The amount of frames in the Spritemap.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Spritemap.Columns">
+            <summary>
+            Columns in the Spritemap.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Spritemap.Rows">
+            <summary>
+            Rows in the Spritemap.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Spritemap.CurrentAnim">
+            <summary>
+            The currently playing animation.
+            </summary>
+        </member>
+        <member name="T:Punk.Graphics.Spritemap.OnComplete">
+            <summary>
+            Callback type for when animations complete.
+            </summary>
+        </member>
+        <member name="T:Punk.Graphics.Stamp">
+            <summary>
+            A simple non-transformed, non-animated graphic.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Stamp.#ctor(SFML.Graphics.Texture,System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="texture">Source image.</param>
+            <param name="x">X offset.</param>
+            <param name="y">Y offset.</param>
+        </member>
+        <member name="M:Punk.Graphics.Stamp.Render(System.Single,System.Single,Punk.Camera)">
+            <summary>
+            Renders the graphic.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+        </member>
+        <member name="F:Punk.Graphics.Stamp.Source">
+            <summary>
+            Source texture.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Stamp.Width">
+            <summary>
+            Width of the stamp.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Stamp.Height">
+            <summary>
+            Height of the stamp.
+            </summary>
+        </member>
+        <member name="T:Punk.Graphics.Text">
+            <summary>
+            Used for drawing text using embedded fonts.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Text.font">
+            <summary>
+            The font to assign to new Text objects.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Text.size">
+            <summary>
+            The font size to assign to new Text objects.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Text.#ctor(System.String,System.Single,System.Single,System.UInt32,System.UInt32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="text">Text to display</param>
+            <param name="x">X offset</param>
+            <param name="y">Y offset</param>
+            <param name="width">Image width (leave as 0 to size to the starting text string).</param>
+            <param name="height">Image height (leave as 0 to size to the starting text string).</param>
+        </member>
+        <member name="M:Punk.Graphics.Text.CenterOrigin">
+            <summary>
+            Centers the Text's originX/Y to its center.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Text._field">
+            @private 
+        </member>
+        <member name="F:Punk.Graphics.Text._width">
+            @private 
+        </member>
+        <member name="F:Punk.Graphics.Text._height">
+            @private 
+        </member>
+        <member name="F:Punk.Graphics.Text._text">
+            @private 
+        </member>
+        <member name="F:Punk.Graphics.Text._font">
+            @private 
+        </member>
+        <member name="F:Punk.Graphics.Text._size">
+            @private 
+        </member>
+        <member name="P:Punk.Graphics.Text.Bolded">
+            <summary>
+            If the text has bolded.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Text.Italicized">
+            <summary>
+            If the text is italicized.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Text.Underlined">
+            <summary>
+            If the text is underlined.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Text.String">
+            <summary>
+            Text string.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Text.Font">
+            <summary>
+            Font family.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Text.Size">
+            <summary>
+            Font size.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Text.Width">
+            <summary>
+            Width of the text image.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Text.Height">
+            <summary>
+            Height of the text image.
+            </summary>
+        </member>
+        <member name="T:Punk.Graphics.Text.Styles">
+            <summary>
+            Text style types.
+            </summary>
+        </member>
+        <member name="T:Punk.Library">
+            <summary>
+            Content management and caching.
+            </summary>
+        </member>
+        <member name="M:Punk.Library.GetXml(System.String)">
+            <summary>
+            Load an XML document.
+            </summary>
+            <param name="filename">The filename of the document to load.</param>
+            <returns>The loaded document.</returns>
+        </member>
+        <member name="M:Punk.Library.GetTexture(System.String)">
+            <summary>
+            Load a texture.
+            </summary>
+            <param name="filename">The filename of the texture to load.</param>
+            <returns>The loaded texture.</returns>
+        </member>
+        <member name="M:Punk.Library.GetBuffer(System.String)">
+            <summary>
+            Load sound data.
+            </summary>
+            <param name="filename">The filename of the sound file to load.</param>
+            <returns>The loaded sound file.</returns>
+        </member>
+        <member name="M:Punk.Library.GetMusic(System.String)">
+            <summary>
+            Loads a "music" which, internally is a stream.
+            </summary>
+            <param name="filename">The filename of the music to load.</param>
+            <returns>The loaded music file.</returns>
+        </member>
+        <member name="M:Punk.Library.GetFont(System.String)">
+            <summary>
+            Load a font.
+            </summary>
+            <param name="filename">The filename of the font to load.</param>
+            <returns>The loaded font.</returns>
+        </member>
+        <member name="M:Punk.Library.GetText(System.String)">
+            <summary>
+            Load a text file and return its contents
+            </summary>
+            <param name="filename">The name of the file</param>
+            <returns>The loaded text.</returns>
+        </member>
+        <member name="T:Punk.Logic">
+            <summary>
+            Simple Logical component. Can be added to an Entity to compartmentalize update logic.
+            </summary>
+        </member>
+        <member name="F:Punk.Logic.Parent">
+            <summary>
+            The Entity that this Logic belongs to.
+            </summary>
+        </member>
+        <member name="F:Punk.Logic.Name">
+            <summary>
+            The name of this Logic; defaults to the name of the class.
+            </summary>
+        </member>
+        <member name="F:Punk.Logic.Timer">
+            <summary>
+            How many times this Logic has updated since being created.
+            </summary>
+        </member>
+        <member name="F:Punk.Logic.Active">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Punk.Logic.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Punk.Logic.OnMessage(System.String,System.Object[])">
+            <summary>
+            Called when this recieves a message broadcast from the World
+            </summary>
+            <param name="message">The name of the message.</param>
+            <param name="arguments">A set of arguments.</param>
+        </member>
+        <member name="M:Punk.Logic.AddResponse(System.String,Punk.Entity.MessageResponse)">
+            <summary>
+            Add a message response.
+            </summary>
+            <param name="message">The message type.</param>
+            <param name="response">The response callback to add.</param>
+        </member>
+        <member name="M:Punk.Logic.RemoveResponse(System.String,Punk.Entity.MessageResponse)">
+            <summary>
+            Remove a message response.
+            </summary>
+            <param name="message">The message type to remove the response from.</param>
+            <param name="response">The response callback to remove.</param>
+        </member>
+        <member name="M:Punk.Logic.Update">
+            <summary>
+            Updates the Logic.
+            </summary>
+        </member>
+        <member name="M:Punk.Logic.RenderDebug">
+            <summary>
+            Override this to render debug information in the debug console.
+            </summary>
+        </member>
+        <member name="M:Punk.Logic.Added">
+            <summary>
+            Override this; called when this Logic is added to an Entity.
+            </summary>
+        </member>
+        <member name="M:Punk.Logic.Removed">
+            <summary>
+            Override this; called when this Logic is removed from an Entity.
+            </summary>        
+        </member>
+        <member name="M:Punk.Logic.ToString">
+            <summary>
+            A textual representation of this Logic. Defaults to the name of the class.
+            </summary>
+            <returns>A textual representation of this Logic.</returns>
+        </member>
+        <member name="T:Punk.Masks.Grid">
+            <summary>
+            Description of Grid.
+            </summary>
+        </member>
+        <member name="T:Punk.Masks.Hitbox">
+            <summary>
+            Uses parent's hitbox to determine collision. This class is used
+            internally by FlashPunk, you don't need to use this class becaus
+            this is the default behaviour of Entities without a Mask object.
+            </summary>
+        </member>
+        <member name="T:Punk.Masks.Mask">
+            <summary>
+            Base class for Entity collision masks.
+            </summary>
+        </member>
+        <member name="M:Punk.Masks.Mask.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="F:Punk.Masks.Mask.Parent">
+            <summary>
+            The parent Entity of this mask.
+            </summary>
+        </member>
+        <member name="F:Punk.Masks.Mask.List">
+            <summary>
+            The parent Masklist of the mask.
+            </summary>
+        </member>
+        <member name="M:Punk.Masks.Mask.Collide(Punk.Masks.Mask)">
+            <summary>
+            Checks for collision with another Mask.
+            </summary>
+            <param name="mask">The other Mask to check against.</param>
+            <returns>If the Masks overlap.</returns>
+        </member>
+        <member name="M:Punk.Masks.Mask.CollideMask(Punk.Masks.Mask)">
+            <summary>
+            Collide against a Mask.
+            </summary>
+            <param name="other">The Mask to collide with.</param>
+            <returns>Whether this returns with the Mask.</returns>
+        </member>
+        <member name="M:Punk.Masks.Mask.CollideMasklist(Punk.Masks.Mask)">
+            <summary>
+            Collide against a Masklist.
+            C# is stupid, so you this method has to accept a Mask parameter and then check to see if it is a masklist.
+            </summary>
+            <param name="other">The Masklist to collide with.</param>
+            <returns>Whether this returns with the Masklist.</returns>
+        </member>
+        <member name="M:Punk.Masks.Mask.AssignTo(Punk.Entity)">
+            <summary>
+            Assigns the mask to the parent.
+            </summary>
+            <param name="parent"></param>
+        </member>
+        <member name="M:Punk.Masks.Mask.Update">
+            <summary>
+            Updates the parent's bounds for this mask.
+            </summary>
+        </member>
+        <member name="M:Punk.Masks.Mask.RenderDebug">
+            <summary>
+            Used to render debug information in console.
+            </summary>
+        </member>
+        <member name="F:Punk.Masks.Mask._check">
+            <summary>
+            Callback dictionary for setting up reactions between masks.
+            </summary>
+        </member>
+        <member name="T:Punk.Masks.Mask.CollideWithMask">
+            <summary>
+            Callback type for checking mask collision.
+            </summary>
+        </member>
+        <member name="M:Punk.Masks.Hitbox.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="width">Width of the hitbox.</param>
+            <param name="height">Width of the hitbox.</param>
+            <param name="x">X offset.</param>
+            <param name="y">Y offset.</param>
+        </member>
+        <member name="M:Punk.Masks.Hitbox.CollideMask(Punk.Masks.Mask)">
+            <summary>
+            Collides against an Entity.
+            </summary>
+            <param name="other">The Mask to collide agains.</param>
+            <returns>Whether this collides with the Mask.</returns>
+        </member>
+        <member name="M:Punk.Masks.Hitbox.CollideHitbox(Punk.Masks.Mask)">
+            <summary>
+            Collides against a Hitbox.
+            </summary>
+            <param name="other">The Hitbox to collide against.</param>
+            <returns>Whether this collides with the Hitbox.</returns>
+        </member>
+        <member name="M:Punk.Masks.Hitbox.Update">
+            <summary>
+            Updates the parent's bounds for this mask.
+            </summary>
+        </member>
+        <member name="P:Punk.Masks.Hitbox.X">
+            <summary>
+            X offset.
+            </summary>
+        </member>
+        <member name="P:Punk.Masks.Hitbox.Y">
+            <summary>
+            Y offset.
+            </summary>
+        </member>
+        <member name="P:Punk.Masks.Hitbox.Width">
+            <summary>
+            Width.
+            </summary>
+        </member>
+        <member name="P:Punk.Masks.Hitbox.Height">
+            <summary>
+            Height.
+            </summary>
+        </member>
+        <member name="M:Punk.Masks.Grid.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="width">The width of the grid.</param>
+            <param name="height">The width of the grid.</param>
+            <param name="tileWidth">The width of each tile in the grid.</param>
+            <param name="tileHeight">The height of each tile in the grid.</param>
+            <param name="x">X offset.</param>
+            <param name="y">Y offset.</param>
+        </member>
+        <member name="M:Punk.Masks.Grid.SetTile(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Sets the value of the tile.
+            </summary>
+            <param name="column">Tile column.</param>
+            <param name="row">Tile row.</param>
+            <param name="solid">If the tile should be solid.</param>
+        </member>
+        <member name="M:Punk.Masks.Grid.ClearTile(System.Int32,System.Int32)">
+            <summary>
+            Makes the tile non-solid.
+            </summary>
+            <param name="column">Tile column.</param>
+            <param name="row">Tile row.</param>
+        </member>
+        <member name="M:Punk.Masks.Grid.GetTile(System.Int32,System.Int32)">
+            <summary>
+            Gets the value of a tile.
+            </summary>
+            <param name="column">Tile column.</param>
+            <param name="row">Tile row.</param>
+            <returns>The tile value.</returns>
+        </member>
+        <member name="M:Punk.Masks.Grid.SetRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Sets the value of a rectangle region of tiles.
+            </summary>
+            <param name="column">First column.</param>
+            <param name="row">First row.</param>
+            <param name="width">Columns to fill.</param>
+            <param name="height">Rows to fill.</param>
+            <param name="solid">If the tiles should be solid.</param>
+        </member>
+        <member name="M:Punk.Masks.Grid.ClearRect(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Makes the rectangular region of tiles non-solid.
+            </summary>
+            <param name="column">First column.</param>
+            <param name="row">First row.</param>
+            <param name="Width">Columns to fill.</param>
+            <param name="Height">Rows to fill.</param>
+        </member>
+        <member name="M:Punk.Masks.Grid.LoadFromString(System.String,System.String,System.String)">
+            <summary>
+            Loads the grid data from a string.
+            </summary>
+            <param name="str">The string data, which is a set of tile values (0 or 1) separated by the columnSep and rowSep strings.</param>
+            <param name="columnSep">The string that separates each tile value on a row, default is ",".</param>
+            <param name="rowSep">The string that separates each row of tiles, default is "\n".</param>
+        </member>
+        <member name="M:Punk.Masks.Grid.SaveToString(System.String,System.String)">
+            Saves the grid data to a string.
+            @param columnSep		The string that separates each tile value on a row, default is ",".
+            @param rowSep			The string that separates each row of tiles, default is "\n".
+        </member>
+        <member name="F:Punk.Masks.Grid.UsePositions">
+            <summary>
+            If x/y positions should be used instead of columns/rows.
+            </summary>
+        </member>
+        <member name="M:Punk.Masks.Grid.CollideMask(Punk.Masks.Mask)">
+            <summary>
+            Collides against an Entity.
+            </summary>
+            <param name="other">The other Entity.</param>
+            <returns>Whether the two collide.</returns>
+        </member>
+        <member name="M:Punk.Masks.Grid.CollideHitbox(Punk.Masks.Mask)">
+            <summary>
+            Collides against a Hitbox.
+            </summary>
+            <param name="other">The hitbox to collide with.</param>
+            <returns>Whether the two collide.</returns>
+        </member>
+        <member name="M:Punk.Masks.Grid.CollideGrid(Punk.Masks.Mask)">
+            <summary>
+            Collides against a Mask.
+            </summary>
+            <param name="other">The mask to collide with.</param>
+            <returns>Whether the two collide.</returns>
+        </member>
+        <member name="M:Punk.Masks.Grid.RenderDebug">
+            <summary>
+            Render debug information in the console.
+            </summary>
+        </member>
+        <member name="P:Punk.Masks.Grid.TileWidth">
+            <summary>
+            The tile Width.
+            </summary>
+        </member>
+        <member name="P:Punk.Masks.Grid.TileHeight">
+            <summary>
+            The tile Height.
+            </summary>
+        </member>
+        <member name="P:Punk.Masks.Grid.Columns">
+            <summary>
+            How many columns the grid has.
+            </summary>
+        </member>
+        <member name="P:Punk.Masks.Grid.Rows">
+            <summary>
+            How many rows the grid has.
+            </summary>
+        </member>
+        <member name="T:Punk.Masks.Masklist">
+            <summary>
+            A Mask that can contain multiple Masks of one or various types.
+            </summary>
+        </member>
+        <member name="M:Punk.Masks.Masklist.#ctor(Punk.Masks.Mask[])">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="masks">Masks to add to the list.</param>
+        </member>
+        <member name="M:Punk.Masks.Masklist.Collide(Punk.Masks.Mask)">
+            <summary>
+            Collide against a mask.
+            </summary>
+            <param name="mask">The mask to collide against.</param>
+            <returns>Whether this returns with the Mask.</returns>
+        </member>
+        <member name="M:Punk.Masks.Masklist.CollideMasklist(Punk.Masks.Mask)">
+            <summary>
+            Collide against a Masklist.
+            </summary>
+            <param name="other">The Masklist to collide with.</param>
+            <returns>Whether this returns with the Masklist.</returns>
+        </member>
+        <member name="M:Punk.Masks.Masklist.Add(Punk.Masks.Mask)">
+            <summary>
+            Adds a Mask to the list.
+            </summary>
+            <param name="mask">The Mask to add.</param>
+            <returns>The added Mask.</returns>
+        </member>
+        <member name="M:Punk.Masks.Masklist.Remove(Punk.Masks.Mask)">
+            <summary>
+            Removes a Mask from the list.
+            </summary>
+            <param name="mask">The Mask to remove.</param>
+            <returns>The removed Mask.</returns>
+        </member>
+        <member name="M:Punk.Masks.Masklist.RemoveAt(System.Int32)">
+            <summary>
+            Removes the Mask at the index.
+            </summary>
+            <param name="index">The Mask index.</param>
+        </member>
+        <member name="M:Punk.Masks.Masklist.RemoveAll">
+            <summary>
+            Removes all Masks from the list.
+            </summary>
+        </member>
+        <member name="M:Punk.Masks.Masklist.GetMask(System.Int32)">
+            <summary>
+            Gets a Mask from the list.
+            </summary>
+            <param name="index">The Mask index.</param>
+            <returns>The Mask at the index.</returns>
+        </member>
+        <member name="M:Punk.Masks.Masklist.AssignTo(Punk.Entity)">
+            <summary>
+            Assigns the mask to the parent.
+            </summary>
+            <param name="parent"></param>
+        </member>
+        <member name="M:Punk.Masks.Masklist.Update">
+            <summary>
+            Updates the parent's bounds for this mask.
+            </summary>
+        </member>
+        <member name="M:Punk.Masks.Masklist.RenderDebug">
+            <summary>
+            Used to render debug information in console.
+            </summary>
+        </member>
+        <member name="F:Punk.Masks.Masklist._masks">
+            <summary>
+            All masks contained by this.
+            </summary>
+        </member>
+        <member name="P:Punk.Masks.Masklist.Count">
+            <summary>
+            Amount of Masks in the list.
+            </summary>
+        </member>
+        <member name="T:Punk.Music">
+            <summary>
+            A wrapper for SFML.Music, which provides OnComplete callback
+            functionality, and a few other helpful features.
+            </summary>
+        </member>
+        <member name="F:Punk.Music.Complete">
+            <summary>
+            Optional callback function for when the sound finishes playing.
+            </summary>
+        </member>
+        <member name="M:Punk.Music.Loop">
+            <summary>
+            Plays the music and loops it infinitely when it finshes.
+            </summary>
+        </member>
+        <member name="M:Punk.Music.Stop">
+            <summary>
+            Stops the playback of the music.
+            </summary>
+        </member>
+        <member name="P:Punk.Music.IsPaused">
+            <summary>
+            If the music is paused.
+            </summary>
+        </member>
+        <member name="P:Punk.Music.IsPlaying">
+            <summary>
+            If the music is playing.
+            </summary>
+        </member>
+        <member name="P:Punk.Music.IsStopped">
+            <summary>
+            If the music is stopped (not playing, not paused).
+            </summary>
+        </member>
+        <member name="T:Punk.Music.OnComplete">
+            <summary>
+            Delegate for optional callback function for when the sound finishes playing.
+            </summary>
+        </member>
+        <member name="T:Punk.Sfx">
+            <summary>
+            A wrapper for SFML.Sound, which provides OnComplete callback
+            functionality, and a few other helpful features.
+            </summary>
+        </member>
+        <member name="F:Punk.Sfx.Complete">
+            <summary>
+            Optional callback function for when the sound finishes playing.
+            </summary>
+        </member>
+        <member name="M:Punk.Sfx.#ctor(SFML.Audio.Sound,Punk.Sfx.OnComplete)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="source">The SFML Sound object.</param>
+            <param name="complete">Optional callback function for when the sound finishes playing.</param>
+        </member>
+        <member name="M:Punk.Sfx.#ctor(SFML.Audio.SoundBuffer,Punk.Sfx.OnComplete)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="source">The SFML SoundBuffer object. Can be retrieved with Library.GetBuffer().</param>
+            <param name="complete">Optional callback function for when the sound finishes playing.</param>
+        </member>
+        <member name="M:Punk.Sfx.Loop">
+            <summary>
+            Plays the sound and loops it infinitely when it finshes.
+            </summary>
+        </member>
+        <member name="M:Punk.Sfx.Stop">
+            <summary>
+            Stops the playback of the sound.
+            </summary>
+        </member>
+        <member name="P:Punk.Sfx.IsPaused">
+            <summary>
+            If the sound is paused.
+            </summary>
+        </member>
+        <member name="P:Punk.Sfx.IsPlaying">
+            <summary>
+            If the sound is playing.
+            </summary>
+        </member>
+        <member name="P:Punk.Sfx.IsStopped">
+            <summary>
+            If the sound is stopped (not playing and not paused).
+            </summary>
+        </member>
+        <member name="T:Punk.Sfx.OnComplete">
+            <summary>
+            Delegate for optional callback function for when the sound finishes playing.
+            </summary>
+        </member>
+        <member name="T:Punk.Tween">
+            <summary>
+            Base class for all Tween objects, can be added to any Core-extended classes.
+            </summary>
+        </member>
+        <member name="F:Punk.Tween.PERSIST">
+            <summary>
+            Persistent Tween type, will stop when it finishes.
+            </summary>
+        </member>
+        <member name="F:Punk.Tween.LOOPING">
+            <summary>
+            Looping Tween type, will restart immediately when it finishes.
+            </summary>
+        </member>
+        <member name="F:Punk.Tween.ONESHOT">
+            <summary>
+            Oneshot Tween type, will stop and remove itself from its core container when it finishes.
+            </summary>
+        </member>
+        <member name="F:Punk.Tween.Active">
+            <summary>
+            If the Tweener should update.
+            </summary>
+        </member>
+        <member name="F:Punk.Tween.Complete">
+            <summary>
+            Tween completion callback
+            </summary>
+        </member>
+        <member name="M:Punk.Tween.#ctor(System.Single,System.UInt32,Punk.Tween.OnComplete,Punk.Tween.Easer)">
+            <summary>
+            Constructor. Specify basic information about the Tween.
+            </summary>
+            <param name="duration">Duration of the tween (in seconds or frames).</param>
+            <param name="type">Tween type, one of Tween.PERSIST (default), Tween.LOOPING, or Tween.ONESHOT.</param>
+            <param name="complete">Optional callback for when the Tween completes.</param>
+            <param name="ease">Optional easer function to apply to the Tweened value.`</param>
+        </member>
+        <member name="M:Punk.Tween.Update">
+            <summary>
+            Updates the Tween, called by World.
+            </summary>
+        </member>
+        <member name="M:Punk.Tween.Start">
+            <summary>
+            Starts the Tween, or restarts it if it's currently running.
+            </summary>
+        </member>
+        <member name="M:Punk.Tween.Cancel">
+            <summary>
+            Immediately stops the Tween and removes it from its Tweener without calling the complete callback.
+            </summary>
+        </member>
+        <member name="M:Punk.Tween.Finish">
+            <summary>
+            Called when the Tween completes.
+            </summary>
+        </member>
+        <member name="F:Punk.Tween._type">
+            <summary>
+            The type of tween (Oneshot, Persist or Looping)
+            </summary>
+        </member>
+        <member name="F:Punk.Tween._ease">
+            <summary>
+            The easer function to apply, if any.
+            </summary>
+        </member>
+        <member name="F:Punk.Tween._t">
+            <summary>
+            The Tween's update percentage.
+            </summary>
+        </member>
+        <member name="F:Punk.Tween._time">
+            <summary>
+            How long the Tween has been running since it last restarted.
+            </summary>
+        </member>
+        <member name="F:Punk.Tween._target">
+            <summary>
+            The duration of the Tween.
+            </summary>
+        </member>
+        <member name="P:Punk.Tween.Percent">
+            <summary>
+            The completion percentage of the Tween.
+            </summary>
+        </member>
+        <member name="P:Punk.Tween.Scale">
+            <summary>
+            The current time scale of the Tween (after easer has been applied).
+            </summary>
+        </member>
+        <member name="T:Punk.Tween.OnComplete">
+            <summary>
+            Callback type for when the tween completes.
+            </summary>
+        </member>
+        <member name="T:Punk.Tween.Easer">
+            <summary>
+            Mathematical easer function type.
+            Can be used to add effects to the tween motion.
+            </summary>
+        </member>
+        <member name="T:Punk.Tweens.Misc.Alarm">
+            <summary>
+            A simple alarm, useful for timed events, etc.
+            </summary>
+        </member>
+        <member name="M:Punk.Tweens.Misc.Alarm.#ctor(System.Single,Punk.Tween.OnComplete,System.UInt32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="duration">Duration of the alarm.</param>
+            <param name="complete">Optional completion callback.</param>
+            <param name="type">Tween type.</param>
+        </member>
+        <member name="M:Punk.Tweens.Misc.Alarm.Reset(System.Single)">
+            <summary>
+            Sets the alarm.
+            </summary>
+            <param name="duration">Duration of the alarm.</param>
+        </member>
+        <member name="P:Punk.Tweens.Misc.Alarm.Elapsed">
+            <summary>
+            How much time has passed since reset.
+            </summary>
+        </member>
+        <member name="P:Punk.Tweens.Misc.Alarm.Duration">
+            <summary>
+            Current alarm duration.
+            </summary>
+        </member>
+        <member name="P:Punk.Tweens.Misc.Alarm.Remaining">
+            <summary>
+            Time remaining on the alarm.
+            </summary>
+        </member>
+        <member name="T:Punk.Tweens.Misc.AngleTween">
+            <summary>
+            Tweens from one angle to another.
+            </summary>
+        </member>
+        <member name="M:Punk.Tweens.Misc.AngleTween.#ctor(Punk.Tween.OnComplete,System.UInt32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="complete">Optional completion callback.</param>
+            <param name="type">Tween type.</param>
+        </member>
+        <member name="M:Punk.Tweens.Misc.AngleTween.Tween(System.Single,System.Single,System.Single,Punk.Tween.Easer)">
+            <summary>
+            Tweens the value from one angle to another.
+            </summary>
+            <param name="fromAngle">Start angle.</param>
+            <param name="toAngle">End angle.</param>
+            <param name="duration">Duration of the tween.</param>
+            <param name="ease">Optional easer function.</param>
+        </member>
+        <member name="M:Punk.Tweens.Misc.AngleTween.Update">
+            <summary>
+            Updates the Tween.
+            </summary>
+        </member>
+        <member name="F:Punk.Tweens.Misc.AngleTween.Angle">
+            <summary>
+            The tweened angle.
+            </summary>
+        </member>
+        <member name="T:Punk.Tweens.Misc.ColorTween">
+            <summary>
+            Tweens a color's red, green, and blue properties independently.
+            </summary>
+        </member>
+        <member name="M:Punk.Tweens.Misc.ColorTween.#ctor(Punk.Tween.OnComplete,System.UInt32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="complete">Optional completion callback.</param>
+            <param name="type">Tween type.</param>
+        </member>
+        <member name="M:Punk.Tweens.Misc.ColorTween.tween(System.Single,SFML.Graphics.Color,SFML.Graphics.Color,Punk.Tween.Easer)">
+            <summary>
+            Tweens the color to a new color.
+            </summary>
+            <param name="duration">Duration of the tween.</param>
+            <param name="fromColor"></param>
+            <param name="toColor">Start color.</param>
+            <param name="ease">Optional easer function.</param>
+        </member>
+        <member name="M:Punk.Tweens.Misc.ColorTween.Update">
+            <summary>
+            Updates the tween.
+            </summary>
+        </member>
+        <member name="F:Punk.Tweens.Misc.ColorTween.Color">
+            <summary>
+            The tweened color.
+            </summary>
+        </member>
+        <member name="T:Punk.Tweens.Misc.MultiVarTween">
+            <summary>
+            Tweens multiple numeric public properties of an Object simultaneously.
+            </summary>
+        </member>
+        <member name="M:Punk.Tweens.Misc.MultiVarTween.#ctor(Punk.Tween.OnComplete,System.UInt32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="complete">Optional completion callback.</param>
+            <param name="type">Tween type.</param>
+        </member>
+        <member name="M:Punk.Tweens.Misc.MultiVarTween.StopAll">
+            <summary>
+            The duration of the tween.
+            If this is set after calling Tween(), existing tweens will be canceled.
+            </summary>
+        </member>
+        <member name="M:Punk.Tweens.Misc.MultiVarTween.Tween(System.Object,System.Object,System.Single,Punk.Tween.Easer,System.Single)">
+            <summary>
+            Tweens multiple numeric properties
+            </summary>
+            <param name="obj">The object containing the properties. </param>
+            <param name="values">
+            An anonymous type object containing key/value pairs of properties and target values.
+            Example: new { X = 100, Y = 50 }
+            </param>
+            <param name="duration">Duration of the tween. </param>
+            <param name="ease">Optional Easer function.</param>
+            <param name="delay"></param>
+        </member>
+        <member name="M:Punk.Tweens.Misc.MultiVarTween.Update">
+            <summary>
+            Update the tween.
+            </summary>
+        </member>
+        <member name="T:Punk.Tweens.Misc.NumTween">
+            <summary>
+            Tweens a numeric value.
+            </summary>
+        </member>
+        <member name="F:Punk.Tweens.Misc.NumTween.Value">
+            <summary>
+            The current value.
+            </summary>
+        </member>
+        <member name="M:Punk.Tweens.Misc.NumTween.#ctor(Punk.Tween.OnComplete,System.UInt32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="complete">Optional completion callback.</param>
+            <param name="type">Tween type.</param>
+        </member>
+        <member name="M:Punk.Tweens.Misc.NumTween.Tween(System.Single,System.Single,System.Single,Punk.Tween.Easer)">
+            <summary>
+            Tweens the value from one value to another.
+            </summary>
+            <param name="fromValue">Start value.</param>
+            <param name="toValue">End value.</param>
+            <param name="duration">Duration of the tween.</param>
+            <param name="ease">Optional easer function.</param>
+        </member>
+        <member name="M:Punk.Tweens.Misc.NumTween.Update">
+            <summary>
+            Updates the Tween
+            </summary>
+        </member>
+        <member name="T:Punk.Tweens.Misc.VarTween">
+            <summary>
+            Tweens a numeric public property of an Object.
+            </summary>
+        </member>
+        <member name="M:Punk.Tweens.Misc.VarTween.#ctor(Punk.Tween.OnComplete,System.UInt32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="complete">Optional completion callback.</param>
+            <param name="type">Tween type.</param>
+        </member>
+        <member name="M:Punk.Tweens.Misc.VarTween.Tween(System.Object,System.String,System.Single,System.Single,Punk.Tween.Easer)">
+            <summary>
+            Tweens a numeric property. If this method has already been called, the values will be overwritten.
+            </summary>
+            <param name="obj">The object containing the property.</param>
+            <param name="property">The name of the property.</param>
+            <param name="to">Value to tween to.</param>
+            <param name="duration">Duration of the tween.</param>
+            <param name="ease">Optional easer function.</param>
+        </member>
+        <member name="M:Punk.Tweens.Misc.VarTween.Update">
+            <summary>
+            Updates the tween.
+            </summary>
+        </member>
+        <member name="T:Punk.Tweens.Misc.VarTweenInfo">
+            <summary>
+            Utility class that encapsulates getters and setters for VarTween properties.
+            </summary>
+        </member>
+        <member name="M:Punk.Tweens.Misc.VarTweenInfo.#ctor(System.Object,System.String,Punk.Tweens.Misc.VarTweenInfo.Options)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="obj">The object that the property belongs to</param>
+            <param name="property">The name of the property</param>
+            <param name="options">Optional options to determine whether the property must have a certain accessor. Use only if you know what you're doing. :X</param>
+        </member>
+        <member name="P:Punk.Tweens.Misc.VarTweenInfo.Value">
+            <summary>
+            Get the property's value.
+            </summary>
+        </member>
+        <member name="T:Punk.Tweens.Motion.Motion">
+            <summary>
+            Description of Motion.
+            </summary>
+        </member>
+        <member name="M:Punk.Tweens.Motion.Motion.#ctor(System.Single,Punk.Tween.OnComplete,System.UInt32,Punk.Tween.Easer)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="duration">Duration of the tween.</param>
+            <param name="complete">Optional completion callback.</param>
+            <param name="type">Tween type.</param>
+            <param name="ease">Optional easer function.</param>
+        </member>
+        <member name="P:Punk.Tweens.Motion.Motion.X">
+            <summary>
+            Current X position of the tween
+            </summary>
+        </member>
+        <member name="P:Punk.Tweens.Motion.Motion.Y">
+            <summary>
+            Current Y position of the tween
+            </summary>
+        </member>
+        <member name="P:Punk.Tweens.Motion.Motion.Object">
+            <summary>
+            Target object for the tween. Must have an X and a Y property.
+            </summary>
+        </member>
+        <member name="T:Punk.Tweens.Motion.QuadPath">
+            <summary>
+            Description of QuadPath.
+            </summary>
+        </member>
+        <member name="M:Punk.Tweens.Motion.QuadPath.#ctor(Punk.Tween.OnComplete,System.UInt32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="complete">Optional completion callback.</param>
+            <param name="type">Tween type.</param>
+        </member>
+        <member name="M:Punk.Tweens.Motion.QuadPath.SetMotion(System.Single,Punk.Tween.Easer)">
+            Starts moving along the path.
+            @param	duration	Duration of the movement.
+            @param	ease		Optional easer function.
+        </member>
+        <member name="M:Punk.Tweens.Motion.QuadPath.SetMotionSpeed(System.Single,Punk.Tween.Easer)">
+            Starts moving along the path at the speed.
+            @param	speed		Speed of the movement.
+            @param	ease		Optional easer function.
+        </member>
+        <member name="M:Punk.Tweens.Motion.QuadPath.AddPoint(System.Single,System.Single)">
+            Adds the point to the path.
+            @param	x		X position.
+            @param	y		Y position.
+        </member>
+        <member name="M:Punk.Tweens.Motion.QuadPath.GetPoint(System.UInt32)">
+            Gets the point on the path.
+            @param	index		Index of the point.
+            @return	The Point object.
+        </member>
+        <member name="M:Punk.Tweens.Motion.QuadPath.Start">
+            @private Starts the Tween. 
+        </member>
+        <member name="M:Punk.Tweens.Motion.QuadPath.Update">
+            @private Updates the Tween. 
+        </member>
+        <member name="M:Punk.Tweens.Motion.QuadPath.UpdatePath">
+            @private Updates the path, preparing the curve. 
+        </member>
+        <member name="M:Punk.Tweens.Motion.QuadPath.CurveLength(SFML.Window.Vector2f,SFML.Window.Vector2f,SFML.Window.Vector2f)">
+            @private Calculates the length of the curve. 
+        </member>
+        <member name="P:Punk.Tweens.Motion.QuadPath.PointCount">
+            Amount of points on the path.
+        </member>
+        <member name="T:Punk.Utils.Controller">
+            <summary>
+            Description of Controller.
+            </summary>
+        </member>
+        <member name="F:Punk.Utils.Controller.DeadZone">
+            <summary>
+            Value thumbstick must reach before registering it's position. Defaults to 10.0f.
+            </summary>
+        </member>
+        <member name="M:Punk.Utils.Controller.#ctor(System.UInt32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="Id">Controller ID (zero-based)</param>
+        </member>
+        <member name="M:Punk.Utils.Controller.Define(System.String,System.UInt32,Punk.Utils.Controller.Button[])">
+            <summary>
+            Defines a new input.
+            </summary>
+            <param name="name">String to map the input to.</param>
+            <param name="controllerID">Controller ID.</param>
+            <param name="inputs">The keys or buttons to use for the Input.</param>
+        </member>
+        <member name="M:Punk.Utils.Controller.Check(System.String)">
+            <summary>
+            If the input is held down.
+            </summary>
+            <param name="input">An input name, key or button to check for.</param>
+            <returns>If the input or key is held down.</returns>
+        </member>
+        <member name="M:Punk.Utils.Controller.Check(Punk.Utils.Controller.Button)">
+            <summary>
+            If the key is held down.
+            </summary>
+            <param name="input">The key to check.</param>
+            <returns>If the key is held down.</returns>
+        </member>
+        <member name="M:Punk.Utils.Controller.Down(System.String)">
+            <summary>
+            If the input is held down.
+            </summary>
+            <param name="input">An input name, key or button to check for.</param>
+            <returns>If the input or key is held down.</returns>
+        </member>
+        <member name="M:Punk.Utils.Controller.Down(Punk.Utils.Controller.Button)">
+            <summary>
+            If the key is held down.
+            </summary>
+            <param name="input">The key to check.</param>
+            <returns>If the key is held down.</returns>
+        </member>
+        <member name="M:Punk.Utils.Controller.Pressed(System.String)">
+            <summary>
+            If the input was pressed this frame
+            </summary>
+            <param name="input">An input name, key or button to check for.</param>
+            <returns>If the input, key or button was pressed this frame.</returns>
+        </member>
+        <member name="M:Punk.Utils.Controller.Pressed(Punk.Utils.Controller.Button)">
+            <summary>
+            If the key was pressed this frame.
+            </summary>
+            <param name="input">The key to check.</param>
+            <returns>If the key was pressed this frame.</returns>
+        </member>
+        <member name="M:Punk.Utils.Controller.Released(System.String)">
+            <summary>
+            If the input was released this frame.
+            </summary>
+            <param name="input">The input to check.</param>
+            <returns>If the input was released this frame.</returns>
+        </member>
+        <member name="M:Punk.Utils.Controller.Released(Punk.Utils.Controller.Button)">
+            <summary>
+            If the key was released this frame.
+            </summary>
+            <param name="input">The key to check.</param>
+            <returns>If the key was released this frame.</returns>
+        </member>
+        <member name="M:Punk.Utils.Controller.Inputs(System.String)">
+            <summary>
+            Returns the inputs mapped to the input name.
+            </summary>
+            <param name="name">The input name.</param>
+            <returns>A list of InputSources</returns>
+        </member>
+        <member name="T:Punk.Utils.Controller.Button">
+            <summary>
+            Controller buttons!
+            </summary>
+        </member>
+        <member name="T:Punk.Utils.Draw">
+            <summary>
+            Static class with access to miscellaneous drawing functions.
+            These functions are not meant to replace Graphic components
+            for Entities, but rather to help with testing and debugging.
+            </summary>
+        </member>
+        <member name="M:Punk.Utils.Draw.Line(System.Single,System.Single,System.Single,System.Single,SFML.Graphics.Color,System.Single)">
+            <summary>
+            Draws a pixelated, non-antialiased line.
+            </summary>
+            <param name="x1">Starting x position.</param>
+            <param name="y1">Starting y position.</param>
+            <param name="x2">Ending x position.</param>
+            <param name="y2">Ending y position.</param>
+            <param name="color">Color of the line.</param>
+            <param name="alpha">Alpha of the line. Defaults to 1</param>
+        </member>
+        <member name="M:Punk.Utils.Draw.Line(SFML.Window.Vector2f,SFML.Window.Vector2f,SFML.Graphics.Color,System.Single)">
+            <summary>
+            Draws a pixelated, non-antialiased line.
+            </summary>
+            <param name="start">Starting position.</param>
+            <param name="end">Ending position</param>
+            <param name="color">Color of the line.</param>
+            <param name="alpha">Alpha of the line. Defaults to 1</param>
+        </member>
+        <member name="T:Punk.Utils.Ease">
+            <summary>
+            Static class with useful easer functions that can be used by Tweens.
+            </summary>
+        </member>
+        <member name="M:Punk.Utils.Ease.ElasticIn(System.Single)">
+            <summary>
+            Elastic in.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.ElasticOut(System.Single)">
+            <summary>
+            Elastic out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.ElasticInOut(System.Single)">
+            <summary>
+            Elastic in and out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.QuadIn(System.Single)">
+            <summary>
+            Quadratic in.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.QuadOut(System.Single)">
+            <summary>
+            Quadratic out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.QuadInOut(System.Single)">
+            <summary>
+            Quadratic in and out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.CubeIn(System.Single)">
+            <summary>
+            Cubic in.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.CubeOut(System.Single)">
+            <summary>
+            Cubic out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.CubeInOut(System.Single)">
+            <summary>
+            Cubic in and out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.QuartIn(System.Single)">
+            <summary>
+            Quart in.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.QuartOut(System.Single)">
+            <summary>
+            Quart out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.QuartInOut(System.Single)">
+            <summary>
+            Quart in and out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.QuintIn(System.Single)">
+            <summary>
+            Quint in.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.QuintOut(System.Single)">
+            <summary>
+            Quint out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.QuintInOut(System.Single)">
+            <summary>
+            Quint in and out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.SineIn(System.Single)">
+            <summary>
+            Sine in.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.SineOut(System.Single)">
+            <summary>
+            Sine out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.SineInOut(System.Single)">
+            <summary>
+            Sine in and out
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.BounceIn(System.Single)">
+            <summary>
+            Bounce in.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.BounceOut(System.Single)">
+            <summary>
+            Bounce out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.BounceInOut(System.Single)">
+            <summary>
+            Bounce in and out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.CircIn(System.Single)">
+            <summary>
+            Circle in.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.CircOut(System.Single)">
+            <summary>
+            Circle out
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.CircInOut(System.Single)">
+            <summary>
+            Circle in and out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.ExpoIn(System.Single)">
+            <summary>
+            Exponential in.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.ExpoOut(System.Single)">
+            <summary>
+            Exponential out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.ExpoInOut(System.Single)">
+            <summary>
+            Exponential in and out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.BackIn(System.Single)">
+            <summary>
+            Back in.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.BackOut(System.Single)">
+            <summary>
+            Back out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="M:Punk.Utils.Ease.BackInOut(System.Single)">
+            <summary>
+            Back in and out.
+            </summary>
+            <param name="t">Time elapsed.</param>
+            <returns>Eased timescale.</returns>
+        </member>
+        <member name="T:Punk.Utils.GridSize">
+            <summary>
+            Description of GridType.
+            </summary>
+        </member>
+        <member name="T:Punk.Utils.Input">
+            <summary>
+            Static class updated by Engine. Use for defining and checking keyboard/mouse input.
+            </summary>
+        </member>
+        <member name="F:Punk.Utils.Input.KeyString">
+            <summary>
+            An updated string containing the last 100 characters pressed on the keyboard.
+            Useful for creating text input fields, such as highscore entries, etc.
+            </summary>
+        </member>
+        <member name="F:Punk.Utils.Input.LastKey">
+            <summary>
+            The last key pressed.
+            </summary>
+        </member>
+        <member name="M:Punk.Utils.Input.Init">
+            <summary>
+            Called by engine. Sets up event listeners
+            </summary>
+        </member>
+        <member name="M:Punk.Utils.Input.Define(System.String,System.Object[])">
+            <summary>
+            Defines a new input.
+            </summary>
+            <param name="name">String to map the input to.</param>
+            <param name="inputs">The keys or buttons to use for the Input.</param>
+        </member>
+        <member name="M:Punk.Utils.Input.Check(System.String)">
+            <summary>
+            If the input is held down.
+            </summary>
+            <param name="input">An input name, key or button to check for.</param>
+            <returns>If the input or key is held down.</returns>
+        </member>
+        <member name="M:Punk.Utils.Input.Check(SFML.Window.Keyboard.Key)">
+            <summary>
+            If the key is held down.
+            </summary>
+            <param name="input">The key to check.</param>
+            <returns>If the key is held down.</returns>
+        </member>
+        <member name="M:Punk.Utils.Input.Check(SFML.Window.Mouse.Button)">
+            <summary>
+            If the mouse button is held down.
+            </summary>
+            <param name="input">The button to check.</param>
+            <returns>If the key is held down.</returns>
+        </member>
+        <member name="M:Punk.Utils.Input.Down(System.String)">
+            <summary>
+            If the input is held down.
+            </summary>
+            <param name="input">An input name, key or button to check for.</param>
+            <returns>If the input or key is held down.</returns>
+        </member>
+        <member name="M:Punk.Utils.Input.Down(SFML.Window.Keyboard.Key)">
+            <summary>
+            If the key is held down.
+            </summary>
+            <param name="input">The key to check.</param>
+            <returns>If the key is held down.</returns>
+        </member>
+        <member name="M:Punk.Utils.Input.Down(SFML.Window.Mouse.Button)">
+            <summary>
+            If the mouse button is held down.
+            </summary>
+            <param name="input">The button to check.</param>
+            <returns>If the button is held down.</returns>
+        </member>
+        <member name="M:Punk.Utils.Input.Pressed(System.String)">
+            <summary>
+            If the input was pressed this frame
+            </summary>
+            <param name="input">An input name, key or button to check for.</param>
+            <returns>If the input, key or button was pressed this frame.</returns>
+        </member>
+        <member name="M:Punk.Utils.Input.Pressed(SFML.Window.Keyboard.Key)">
+            <summary>
+            If the key was pressed this frame.
+            </summary>
+            <param name="input">The key to check.</param>
+            <returns>If the key was pressed this frame.</returns>
+        </member>
+        <member name="M:Punk.Utils.Input.Pressed(SFML.Window.Mouse.Button)">
+            <summary>
+            If the button was pressed this frame.
+            </summary>
+            <param name="input">The button to check.</param>
+            <returns>If the button was pressed this frame.</returns>
+        </member>
+        <member name="M:Punk.Utils.Input.Released(System.String)">
+            <summary>
+            If the input was released this frame.
+            </summary>
+            <param name="input">The input to check.</param>
+            <returns>If the input was released this frame.</returns>
+        </member>
+        <member name="M:Punk.Utils.Input.Released(SFML.Window.Keyboard.Key)">
+            <summary>
+            If the key was released this frame.
+            </summary>
+            <param name="input">The key to check.</param>
+            <returns>If the key was released this frame.</returns>
+        </member>
+        <member name="M:Punk.Utils.Input.Released(SFML.Window.Mouse.Button)">
+            <summary>
+            If the button was released this frame.
+            </summary>
+            <param name="input">The button to check.</param>
+            <returns>If the button was released this frame.</returns>
+        </member>
+        <member name="M:Punk.Utils.Input.Inputs(System.String)">
+            <summary>
+            Returns the inputs mapped to the input name.
+            </summary>
+            <param name="name">The input name.</param>
+            <returns>A list of InputSources</returns>
+        </member>
+        <member name="M:Punk.Utils.Input.Update">
+            <summary>
+            Called by Engine to update the input.
+            </summary>
+        </member>
+        <member name="P:Punk.Utils.Input.MouseWheelDelta">
+            <summary>
+            If the mouse wheel was moved this frame, this was the delta.
+            </summary>
+        </member>
+        <member name="P:Punk.Utils.Input.MouseWheel">
+            <summary>
+            If the mouse wheel was moved this frame.
+            </summary>
+        </member>
+        <member name="P:Punk.Utils.Input.MouseX">
+            <summary>
+            X position of the mouse on the screen.
+            </summary>
+        </member>
+        <member name="P:Punk.Utils.Input.MouseY">
+            <summary>
+            Y position of the mouse on the screen.
+            </summary>
+        </member>
+        <member name="T:Punk.Utils.Axis">
+            <summary>
+            Description of Axis.
+            </summary>
+        </member>
+        <member name="T:Punk.Utils.InputList">
+            <summary>
+            Description of InputList.
+            </summary>
+        </member>
+        <member name="T:Punk.Utils.InputStates`1">
+            <summary>
+            Description of InputStates.
+            </summary>
+        </member>
+        <member name="T:Punk.Utils.VirtualAxis">
+            <summary>
+            An axis that responds to keyboard input.
+            Operates on values between -1 and 1, although modifier keys can be set to define multipliers.
+            </summary>
+        </member>
+        <member name="M:Punk.Utils.VirtualAxis.WSAD">
+            <summary>
+            Create a new axis for the W, S, A, and D keys.
+            </summary>
+            <returns>The new Axis.</returns>
+        </member>
+        <member name="M:Punk.Utils.VirtualAxis.ARROWS">
+            <summary>
+            Create a new axis for the arrow keys.
+            </summary>
+            <returns>The new Axis.</returns>
+        </member>
+        <member name="M:Punk.Utils.VirtualAxis.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="T:Punk.Utils.MessageResult">
+            <summary>
+            A small utility class to allow messages to "return" values. Functionally similar to out and ref parameters.
+            Pass a MessageResult instance to a message call and set the value from the message response.
+            </summary>
+        </member>
+        <member name="F:Punk.Utils.MessageResult.Value">
+            <summary>
+            The payload value.
+            </summary>
+        </member>
+        <member name="T:Punk.Utils.OgmoClass">
+            <summary>
+            Description of OgmoClass.
+            </summary>
+        </member>
+        <member name="T:Punk.Utils.Reflect.Reflect">
+            <summary>
+            A simple class for basic reflection.
+            </summary>
+        </member>
+        <member name="M:Punk.Utils.Reflect.Reflect.HasOwnProperty(System.Object,System.String)">
+            <summary>
+            Whether a property or field exists on an object.
+            </summary>
+            <param name="obj">The object that the property should exist on.</param>
+            <param name="name">The name of the property.</param>
+            <returns>Whether the property exists.</returns>
+        </member>
+        <member name="M:Punk.Utils.Reflect.Reflect.GetProp``1(System.Object,System.String)">
+            <summary>
+            Get the value of a property or field with reflection.
+            </summary>
+            <param name="obj">The object that the property is on.</param>
+            <param name="name">The name of the property.</param>
+            <returns>The value of the property.</returns>
+        </member>
+        <member name="T:Punk.Utils.VectorHelper">
+            <summary>
+            Helper class that adds some common math functions to SFML's Vector2f type.
+            </summary>
+        </member>
+        <member name="M:Punk.Utils.VectorHelper.Dot(SFML.Window.Vector2f,SFML.Window.Vector2f)">
+            <summary>
+            Computes the dot product of two vectors.
+            </summary>
+            <param name="vec">Self</param>
+            <param name="other">The other vector to compute with.</param>
+            <returns>The dot product of the two vectors.</returns>
+        </member>
+        <member name="M:Punk.Utils.VectorHelper.Length(SFML.Window.Vector2f)">
+            <summary>
+            Get the length of a vector
+            </summary>
+            <param name="vec">Self</param>
+            <returns>The length of the vector</returns>
+        </member>
+        <member name="M:Punk.Utils.VectorHelper.Normalized(SFML.Window.Vector2f,System.Single)">
+            <summary>
+            Scales the line segment between (0,0) and the current point to a set length. 
+            </summary>
+            <param name="vec">Self</param>
+            <param name="amount">The length to scale the vector to</param>
+            <returns>The normalized vector</returns>
+        </member>
+        <member name="M:Punk.Utils.VectorHelper.IsZero(SFML.Window.Vector2f)">
+            <summary>
+            If the vector is a zero vector.
+            </summary>
+            <param name="vec">Self</param>
+            <returns>Whether the vector is a zero vector.</returns>
+        </member>
+        <member name="T:Punk.World">
+            <summary>
+            Updated by Engine, main game container that holds all currently active Entities.
+            Useful for organization, eg. "Menu", "Level1", etc.
+            </summary>
+        </member>
+        <member name="M:Punk.World.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Punk.World.Begin">
+            <summary>
+            Override this; called when the World is switched to, and set to the currently active world.
+            </summary>
+        </member>
+        <member name="M:Punk.World.End">
+            <summary>
+            Override this; called when World is changed, and the active world is no longer this.
+            </summary>
+        </member>
+        <member name="M:Punk.World.Update">
+            <summary>
+            Performed by the game loop, updates all contained Entities.
+            If you override this to give your World update code, remember
+            to call base.update() or your Entities will not be updated.
+            </summary>
+        </member>
+        <member name="M:Punk.World.Render">
+            <summary>
+            Performed by the game loop, updates all contained Entities.
+            If you override this to give your World update code, remember
+            to call base.update() or your Entities will not be updated.
+            </summary>
+        </member>
+        <member name="F:Punk.World.Camera">
+            <summary>
+            The world camera.
+            </summary>
+        </member>
+        <member name="M:Punk.World.Add(Punk.Entity)">
+            <summary>
+            Adds the Entity to the World at the end of the frame
+            </summary>
+            <param name="e">Entity object you want to add.</param>
+            <returns>The added Entity object.</returns>
+        </member>
+        <member name="M:Punk.World.Remove(Punk.Entity)">
+            <summary>
+            Removes the Entity from the World at the end of the frame.
+            </summary>
+            <param name="e">Entity object you want to remove.</param>
+            <returns>The removed Entity object.</returns>
+        </member>
+        <member name="M:Punk.World.RemoveAll">
+            <summary>
+            Removes all Entities from the World at the end of the frame.
+            </summary>
+        </member>
+        <member name="M:Punk.World.AddList(Punk.Entity[])">
+            <summary>
+            Adds multiple Entities to the world.
+            </summary>
+            <param name="list">Several Entities as arguments</param>
+        </member>
+        <member name="M:Punk.World.AddList(System.Collections.Generic.List{Punk.Entity})">
+            <summary>
+            Adds multiple Entities to the world.
+            </summary>
+            <param name="list">A List of Entities to add.</param>
+        </member>
+        <member name="M:Punk.World.RemoveList(Punk.Entity[])">
+            <summary>
+            Removes multiple Entities from the world.
+            </summary>
+            <param name="list">Several Entities as arguments.</param>
+        </member>
+        <member name="M:Punk.World.RemoveList(System.Collections.Generic.List{Punk.Entity})">
+            <summary>
+            Removes multiple Entities to the world.
+            </summary>
+            <param name="list">A List of Entities to remove.</param>
+        </member>
+        <member name="M:Punk.World.AddGraphic(Punk.Graphics.Graphic,System.Int32,System.Single,System.Single)">
+            <summary>
+            Adds an Entity to the World with the Graphic object.
+            </summary>
+            <param name="graphic">Graphic to assign the Entity.</param>
+            <param name="layer">Layer of the Entity.</param>
+            <param name="x">X position of the Entity.</param>
+            <param name="y">Y position of the Entity.</param>
+            <returns>The Entity that was added.</returns>
+        </member>
+        <member name="M:Punk.World.AddMask(Punk.Masks.Mask,System.String,System.Int32,System.Int32)">
+            <summary>
+            Adds an Entity to the World with the Mask object.
+            </summary>
+            <param name="mask">Mask to assign the Entity.</param>
+            <param name="type">Collision type of the Entity.</param>
+            <param name="x">X position of the Entity.</param>
+            <param name="y">Y position of the Entity.</param>
+            <returns>The Entity that was added.</returns>
+        </member>
+        <member name="M:Punk.World.BuildWorld(System.String)">
+            <summary>
+            Load a world from an Ogmo level file.
+            </summary>
+            <param name="filename">The filename of the level.</param>
+        </member>
+        <member name="M:Punk.World.BuildWorldAsArray(System.String)">
+            <summary>
+            Load Entities from an Ogmo level file into an array.
+            </summary>
+            <param name="filename">The filename of the level.</param>
+            <returns>An array containing all Entities loaded.</returns>
+        </member>
+        <member name="M:Punk.World.BroadcastMessage(System.String,System.Object[])">
+            <summary>
+            Broadcasts a message to all entities in the world.
+            </summary>
+            <param name="message">The name of the message.</param>
+            <param name="arguments">A set of arguments to pass to the message reciever.</param>
+        </member>
+        <member name="M:Punk.World.BroadcastMessageIf(Punk.World.EntityCondition,System.String,System.Object[])">
+            <summary>
+            Broadcasts a message to all entities that meet a certain criteria.
+            </summary>
+            <param name="condition">A callback that returns true if the entity passed to it will recieve the message.</param>
+            <param name="message">The name of the message.</param>
+            <param name="arguments">A set of arguments to pass to the message reciever.</param>
+        </member>
+        <member name="M:Punk.World.BroadcastMessageToType(System.String,System.String,System.Object[])">
+            <summary>
+            Broadcasts a message to all entities with a certain type.
+            </summary>
+            <param name="type">The type of entity to recieve the message.</param>
+            <param name="message">The name of the message.</param>
+            <param name="arguments">A set of arguments to pass to the message reciever.</param>
+        </member>
+        <member name="M:Punk.World.BroadcastMessageInCircle(System.Single,System.Single,System.Single,System.String,System.Object[])">
+            <summary>
+            Broadcasts a message to all entities within a certain distance of a position.
+            </summary>
+            <param name="x">The X coordinate of the center of the circle.</param>
+            <param name="y">The Y coordinate of the center of the circle.</param>
+            <param name="radius">The radius of the circle.</param>
+            <param name="message">The name of the message.</param>
+            <param name="arguments">A set of arguments to pass to the message reciever.</param>
+        </member>
+        <member name="M:Punk.World.BroadcastMessageInRect(System.Single,System.Single,System.Single,System.Single,System.String,System.Object[])">
+            <summary>
+            Broadcasts a message to all entities within a rectangle.
+            </summary>
+            <param name="x">The left of the rectangle.</param>
+            <param name="y">The top of the rectangle.</param>
+            <param name="width">The width of the rectangle.</param>
+            /// <param name="height">The height of the rectangle.</param>
+            <param name="message">The name of the message.</param>
+            <param name="arguments">A set of arguments to pass to the message reciever.</param>
+        </member>
+        <member name="M:Punk.World.BroadcastMessageToClass``1(System.String,System.Object[])">
+            <summary>
+            Broadcasts a message to all entities of a certain class
+            </summary>
+            <param name="message">The name of the message.</param>
+            <param name="arguments">A set of arguments to pass to the message reciever.</param>
+        </member>
+        <member name="M:Punk.World.BringToFront(Punk.Entity)">
+            <summary>
+            Brings the Entity to the front of its contained layer.
+            </summary>
+            <param name="e">The Entity to shift.</param>
+            <returns>If the Entity changed position.</returns>
+        </member>
+        <member name="M:Punk.World.SendToBack(Punk.Entity)">
+            <summary>
+            Sends the Entity to the back of its contained layer.
+            </summary>
+            <param name="e">The Entity to shift.</param>
+            <returns>If the Entity changed position.</returns>
+        </member>
+        <member name="M:Punk.World.BringForward(Punk.Entity)">
+            <summary>
+            Shifts the Entity one place towards the front of its contained layer.
+            </summary>
+            <param name="e">The Entity to shift.</param>
+            <returns>If the Entity changed position.</returns>
+        </member>
+        <member name="M:Punk.World.SendBackward(Punk.Entity)">
+            <summary>
+            Shifts the Entity one place towards the back of its contained layer.
+            </summary>
+            <param name="e">The Entity to shift.</param>
+            <returns>If the Entity changed position.</returns>
+        </member>
+        <member name="M:Punk.World.IsAtFront(Punk.Entity)">
+            <summary>
+            If the Entity as at the front of its layer.
+            </summary>
+            <param name="e">The Entity to check.</param>
+            <returns>Whether the entity is at front</returns>
+        </member>
+        <member name="M:Punk.World.IsAtBack(Punk.Entity)">
+            <summary>
+            If the Entity as at the back of its layer.
+            </summary>
+            <param name="e">The Entity to check.</param>
+            <returns>Whether the entity is at back</returns>
+        </member>
+        <member name="M:Punk.World.CollideRect(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Returns the first Entity that collides with the rectangular area.
+            </summary>
+            <param name="type">The Entity type to check for.</param>
+            <param name="rX">X position of the rectangle.</param>
+            <param name="rY">Y position of the rectangle.</param>
+            <param name="rWidth">Width of the rectangle.</param>
+            <param name="rHeight">Height of the rectangle.</param>
+            <returns>The first Entity to collide, or null if none collide.</returns>
+        </member>
+        <member name="M:Punk.World.CollidePoint(System.String,System.Single,System.Single)">
+            <summary>
+            Returns the first Entity found that collides with the position.
+            </summary>
+            <param name="type">The Entity type to check for.</param>
+            <param name="pX">X position.</param>
+            <param name="pY">Y position.</param>
+            <returns>The collided Entity, or null if none collide.</returns>
+        </member>
+        <member name="M:Punk.World.CollideLine(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            Returns the first Entity found that collides with the line.
+            </summary>
+            <param name="type">The Entity type to check for.</param>
+            <param name="fromX">Start x of the line.</param>
+            <param name="fromY">Start y of the line.</param>
+            <param name="toX">End x of the line.</param>
+            <param name="toY">End y of the line.</param>
+            <param name="precision">No clue what this does</param>	//	TODO:	figure out what this does
+            <returns>The collided Entity, or null if none collide</returns>
+        </member>
+        <member name="M:Punk.World.CollideRectInto(System.String,System.Single,System.Single,System.Single,System.Single,System.Collections.Generic.List{Punk.Entity})">
+            <summary>
+            Populates an array with all Entities that collide with the rectangle. This
+            function does not empty the array, that responsibility is left to the user.
+            </summary>
+            <param name="type">The Entity type to check for.</param>
+            <param name="rX">X position of the rectangle.</param>
+            <param name="rY">Y position of the rectangle.</param>
+            <param name="rWidth">Width of the rectangle.</param>
+            <param name="rHeight">Height of the rectangle.</param>
+            <param name="into">The List to populate with collided Entities.</param>
+        </member>
+        <member name="M:Punk.World.CollidePointInto(System.String,System.Single,System.Single,System.Collections.Generic.List{Punk.Entity})">
+            <summary>
+            Populates an array with all Entities that collide with the rectangle. This
+            function does not empty the array, that responsibility is left to the user.
+            </summary>
+            <param name="type">The Entity type to check for.</param>
+            <param name="pX">X position to check nearby.</param>
+            <param name="pY">Y position to check nearby.</param>
+            <param name="into">The List to populate with collided Entities.</param>
+        </member>
+        <member name="M:Punk.World.NearestToRect(System.String,System.Single,System.Single,System.Single,System.Single,Punk.Entity)">
+            <summary>
+            Finds the Entity nearest to the rectangle.
+            </summary>
+            <param name="type">The Entity type to check for.</param>
+            <param name="x">X position of the rectangle.</param>
+            <param name="y">Y position of the rectangle.</param>
+            <param name="width">Width of the rectangle.</param>
+            <param name="height">Height of the rectangle.</param>
+            <param name="ignore">Ignore this entity.</param>
+            <returns>The nearest Entity to the rectangle.</returns>
+        </member>
+        <member name="M:Punk.World.NearestToEntity(System.String,Punk.Entity,System.Boolean)">
+            <summary>
+            Finds the Entity nearest to another.
+            </summary>
+            <param name="type">The Entity type to check for.</param>
+            <param name="e">The Entity to find the nearest to.</param>
+            <param name="useHitboxes">If the Entities' hitboxes should be used to determine the distance. If false, their x/y coordinates are used.</param>
+            <returns>The nearest Entity to e.</returns>
+        </member>
+        <member name="M:Punk.World.NearestToPoint(System.String,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Finds the Entity nearest to the position.
+            </summary>
+            <param name="type">The Entity type to check for.</param>
+            <param name="x">X position.</param>
+            <param name="y">Y position.</param>
+            <param name="useHitboxes">If the Entities' hitboxes should be used to determine the distance. If false, their x/y coordinates are used.</param>
+            <returns>The nearest Entity to the position.</returns>
+        </member>
+        <member name="M:Punk.World.TypeCount(System.String)">
+            <summary>
+            Returns the amount of Entities of the type are in the World.
+            </summary>
+            <param name="type">The type to count.</param>
+            <returns>How many Entities of type exist in the World.</returns>
+        </member>
+        <member name="M:Punk.World.LayerCount(System.Int32)">
+            <summary>
+            Returns the amount of Entities are on the layer in the World.
+            </summary>
+            <param name="layer">The layer to count Entities on.</param>
+            <returns>How many Entities are on the layer.</returns>
+        </member>
+        <member name="M:Punk.World.TypeFirst(System.String)">
+            <summary>
+            The first Entity of the type.
+            </summary>
+            <param name="type">The type to check.</param>
+            <returns>The Entity.</returns>
+        </member>
+        <member name="M:Punk.World.LayerFirst(System.Int32)">
+            <summary>
+            The first Entity on the layer.
+            </summary>
+            <param name="layer">The layer to check.</param>
+            <returns>The Entity.</returns>
+        </member>
+        <member name="M:Punk.World.LayerLast(System.Int32)">
+            <summary>
+            The last Entity on the layer.
+            </summary>
+            <param name="layer">The layer to check.</param>
+            <returns>The Entity.</returns>
+        </member>
+        <member name="M:Punk.World.GetType(System.String,System.Collections.Generic.List{Punk.Entity})">
+            <summary>
+            Pushes all Entities in the World of the type into the Array or Vector.
+            </summary>
+            <param name="type">The type to check.</param>
+            <param name="into">The List to populate</param>
+        </member>
+        <member name="M:Punk.World.GetLayer(System.Int32,System.Collections.Generic.List{Punk.Entity})">
+            <summary>
+            Pushes all Entities in the World on the layer into the Array or Vector.
+            </summary>
+            <param name="layer">The layer to check.</param>
+            <param name="into">The List to populate</param>
+        </member>
+        <member name="M:Punk.World.GetAll(System.Collections.Generic.List{Punk.Entity})">
+            <summary>
+            Pushes all Entities in the World into the Array or Vector.
+            </summary>
+            <param name="into">The List to populate</param>
+        </member>
+        <member name="M:Punk.World.GetInstance(System.String)">
+            <summary>
+            Returns the Entity with the instance name, or null if none exists.
+            </summary>
+            <param name="name">Instance name of the Entity.</param>
+            <returns>The named Entity, or null if it doesn't exist.</returns>
+        </member>
+        <member name="M:Punk.World.UpdateLists">
+            <summary>
+            Updates the add/remove lists at the end of the frame.
+            </summary>
+        </member>
+        <member name="M:Punk.World.AddUpdate(Punk.Entity)">
+            <summary>
+            Adds an Entity to the update list.
+            </summary>
+            <param name="e">The Entity to add.</param>
+        </member>
+        <member name="M:Punk.World.RemoveUpdate(Punk.Entity)">
+            <summary>
+            Removes an Entity from the update list.
+            </summary>
+            <param name="e">The Entity to remove.</param>
+        </member>
+        <member name="M:Punk.World.AddRender(Punk.Entity)">
+            <summary>
+            Adds Entity to the render
+            </summary>
+            <param name="e">The Entity to add</param>
+        </member>
+        <member name="M:Punk.World.RemoveRender(Punk.Entity)">
+            <summary>
+            Removes Entity from the render list.
+            </summary>
+            <param name="e">The Entity to remove</param>
+        </member>
+        <member name="M:Punk.World.AddType(Punk.Entity)">
+            <summary>
+            Adds Entity to the type list.
+            </summary>
+            <param name="e">The Entity to add</param>
+        </member>
+        <member name="M:Punk.World.RemoveType(Punk.Entity)">
+            <summary>
+            Removes Entity from the type list.
+            </summary>
+            <param name="e">The Entity to remove</param>
+        </member>
+        <member name="M:Punk.World.RegisterName(Punk.Entity)">
+            <summary>
+            Register's the Entity's instance name.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Punk.World.UnregisterName(Punk.Entity)">
+            <summary>
+            Unregister's the Entity's instance name.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Punk.World.SquareRects(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Calculates the squared distance between two rectangles.
+            </summary>
+            <param name="x1"></param>
+            <param name="y1"></param>
+            <param name="w1"></param>
+            <param name="h1"></param>
+            <param name="x2"></param>
+            <param name="y2"></param>
+            <param name="w2"></param>
+            <param name="h2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Punk.World.SquarePoints(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Calculates the squared distance between two points.
+            </summary>
+            <param name="x1"></param>
+            <param name="y1"></param>
+            <param name="x2"></param>
+            <param name="y2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Punk.World.SquarePointRect(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Calculates the squared distance between a rectangle and a point.
+            </summary>
+            <param name="px"></param>
+            <param name="py"></param>
+            <param name="rx"></param>
+            <param name="ry"></param>
+            <param name="rw"></param>
+            <param name="rh"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Punk.World.Visible">
+            <summary>
+            Whether to render the world.
+            </summary>
+        </member>
+        <member name="F:Punk.World.CanLoad">
+            <summary>
+            Whether Ogmo can load the world (to avoid loading entities twice).
+            </summary>
+        </member>
+        <member name="P:Punk.World.MouseX">
+            <summary>
+            X position of the mouse in the World.
+            </summary>
+        </member>
+        <member name="P:Punk.World.MouseY">
+            <summary>
+            Y position of the mouse in the World.
+            </summary>
+        </member>
+        <member name="P:Punk.World.Count">
+            <summary>
+            How many Entities are in the World.
+            </summary>
+        </member>
+        <member name="P:Punk.World.First">
+            <summary>
+            The first Entity in the World.
+            </summary>
+        </member>
+        <member name="P:Punk.World.Layers">
+            <summary>
+            How many Entity layers the World has.
+            </summary>
+        </member>
+        <member name="P:Punk.World.Farthest">
+            <summary>
+            The Entity that will be rendered first by the World.
+            </summary>
+        </member>
+        <member name="P:Punk.World.Nearest">
+            <summary>
+            The Entity that will be rendered last by the World.
+            </summary>
+        </member>
+        <member name="P:Punk.World.UniqueTypes">
+            <summary>
+            How many different types have been added to the World.
+            </summary>
+        </member>
+        <member name="T:Punk.World.EntityCondition">
+            <summary>
+            Callback type for the BroadcastMessageIf function.
+            </summary>
+        </member>
+    </members>
+</doc>
