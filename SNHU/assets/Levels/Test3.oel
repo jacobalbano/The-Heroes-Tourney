@@ -1,7 +1,7 @@
 <level width="640" height="640">
   <Platforms>
-    <platform id="0" x="0" y="576" width="640" />
-    <jumpPad id="1" x="320" y="576" width="32" />
+    <platform id="0" x="96" y="544" width="448" />
+    <jumpPad id="1" x="320" y="544" width="32" />
     <deadlyAnchor id="2" x="288" y="256" distance="4" speed="4" size="20" />
   </Platforms>
 </level>

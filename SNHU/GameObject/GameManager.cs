@@ -37,6 +37,8 @@ namespace SNHU.GameObject
 			
 			meteorTimer = new Alarm(METEOR_TIME * meteorTimeScale, OnMeteor, Tween.ONESHOT);
 			meteorMode = false;
+			
+			FP.Camera.Zoom = 0.75f;
 		}
 		
 		public override void Added()

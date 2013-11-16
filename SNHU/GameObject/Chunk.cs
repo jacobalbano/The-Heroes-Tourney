@@ -23,7 +23,7 @@ namespace SNHU.GameObject
 		
 		private Entity[] ents;
 		
-		public Chunk(float posX, float posY):base(posX,posY)
+		public Chunk(float posX, float posY, string chunkType = "random"):base(posX,posY)
 		{
 			var world = new World();
 			world.RegisterClass<Platform>("platform");
@@ -32,8 +32,21 @@ namespace SNHU.GameObject
 			world.RegisterClass<Teleporter>("teleporter");
 			world.RegisterClass<Razor>("deadlyAnchor");
 			
-			ents = world.BuildWorldAsArray("assets/Levels/Test4.oel");
-			FP.Log("load");
+			switch (chunkType)
+			{
+				case "start":
+					ents = world.BuildWorldAsArray("assets/Levels/Start.oel");
+					break;
+				case "end":
+					ents = world.BuildWorldAsArray("assets/Levels/End.oel");
+					break;
+				case "random":
+					ents = world.BuildWorldAsArray("assets/Levels/" + FP.Choose("Test.oel", "Test2.oel", "Test3.oel"));
+					break;
+				default:
+					ents = world.BuildWorldAsArray("assets/Levels/Test.oel");
+					break;
+			}
 		}
 		
 		
