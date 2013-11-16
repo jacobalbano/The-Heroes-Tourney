@@ -15,7 +15,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="razor.svg">
+   sodipodi:docname="razor.svg"
+   inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\razor.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <linearGradient
@@ -131,9 +134,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.6"
-     inkscape:cx="33.524232"
-     inkscape:cy="34.850174"
+     inkscape:zoom="7.9195959"
+     inkscape:cx="35.251156"
+     inkscape:cy="35.629711"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -310,5 +313,11 @@
        d="m 12.946429,995.5248 -5.768687,0 0,13.5917 z"
        style="fill:#909090;fill-opacity:1;stroke:none"
        sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:#1a1a1a;fill-opacity:1;stroke:#666666;stroke-width:1.23701549;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 30.475651,1015.6057 109.405849,0 0,8.763 -109.405849,0 0,-4.3815 z"
+       id="rect3914"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc" />
   </g>
 </svg>
