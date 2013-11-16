@@ -30,13 +30,14 @@ namespace SNHU.GameObject.Platforms
 		public void OnCrumble()
 		{
 			//Anim here
-			myImage.CenterOO();
-			X += myImage.OriginX;
-			Y += myImage.OriginY;
+			image.OriginX = image.ScaledWidth / 2f;
+			image.OriginY = image.ScaledHeight / 2f;
+			X += image.OriginX;
+			Y += image.OriginY;
 			CenterOrigin();
 			
 			var tween = new MultiVarTween(null, ONESHOT);
-			tween.Tween(myImage, new { Scale = 0, Alpha = 0, Y = myImage.Y + 200}, 1);
+			tween.Tween(image, new { Scale = 0, Alpha = 0, Y = image.Y + 200}, 1);
 			AddTween(tween, true);
 			
 			Collidable = false;
@@ -47,11 +48,19 @@ namespace SNHU.GameObject.Platforms
 		public override void Load(System.Xml.XmlNode node)
 		{
 			base.Load(node);
-			uint width = uint.Parse(node.Attributes["width"].Value);
 			crumbleTime = uint.Parse(node.Attributes["crumbleTime"].Value);
 			
-			Graphic = myImage = Image.CreateRect(width, 16, FP.Color(0xFF0000));
-			SetHitboxTo(Graphic);
+			float width = float.Parse(node.Attributes["width"].Value);
+			float height = float.Parse(node.Attributes["height"].Value);
+			
+			image = new Nineslice(Library.GetTexture("assets/crumble.png"), 3, 3);
+			image.Columns = (uint) (width / 5f);
+			image.Rows = (uint) (height / 5f);
+			image.ScaleX = width / image.Width;
+			image.ScaleY = height / image.Height;
+			
+			Graphic = image;
+			SetHitbox((int) width, (int) height);
 		}
 	}
 }

@@ -28,7 +28,7 @@ namespace SNHU.GameObject.Platforms
 				owner = value;
 			}
 		}
-		public Image myImage;
+		public Nineslice image;
 		
 		public Platform():base()
 		{
@@ -46,10 +46,17 @@ namespace SNHU.GameObject.Platforms
 		public override void Load(System.Xml.XmlNode node)
 		{
 			base.Load(node);
-			uint width = uint.Parse(node.Attributes["width"].Value);
+			float width = float.Parse(node.Attributes["width"].Value);
+			float height = float.Parse(node.Attributes["height"].Value);
 			
-			Graphic = myImage = Image.CreateRect(width, 16, FP.Color(0x00FF00));
-			SetHitboxTo(Graphic);
+			image = new Nineslice(Library.GetTexture("assets/platform.png"), 3, 3);
+			image.Columns = (uint) (width / 5f);
+			image.Rows = (uint) (height / 5f);
+			image.ScaleX = width / image.Width;
+			image.ScaleY = height / image.Height;
+			
+			Graphic = image;
+			SetHitbox((int) width, (int) height);
 		}
 		
 		private void OnNotifyCamera(params object[] args)

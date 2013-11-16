@@ -2,7 +2,7 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <OgmoVersion>2.1.0.6</OgmoVersion>
   <Name>New Project</Name>
-  <BackgroundColor A="255" R="192" G="192" B="192" />
+  <BackgroundColor A="255" R="0" G="128" B="255" />
   <GridColor A="255" R="0" G="0" B="0" />
   <LevelDefaultSize>
     <Width>640</Width>
@@ -16,7 +16,7 @@
     <Width>640</Width>
     <Height>640</Height>
   </LevelMaximumSize>
-  <Filename>C:\Documents and Settings\Quasar\Desktop\GameJam 2\SNHU\assets\SNHULevel.oep</Filename>
+  <Filename>C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\SNHULevel.oep</Filename>
   <AngleMode>Degrees</AngleMode>
   <CameraEnabled>false</CameraEnabled>
   <CameraSize>
@@ -40,7 +40,7 @@
   </LayerDefinitions>
   <Tilesets />
   <EntityDefinitions>
-    <EntityDefinition Name="platform" Limit="-1" ResizableX="true" ResizableY="false" Rotatable="false" RotateIncrement="15">
+    <EntityDefinition Name="platform" Limit="-1" ResizableX="true" ResizableY="true" Rotatable="false" RotateIncrement="15">
       <Size>
         <Width>16</Width>
         <Height>16</Height>
@@ -58,7 +58,7 @@
     <EntityDefinition Name="jumpPad" Limit="-1" ResizableX="true" ResizableY="false" Rotatable="false" RotateIncrement="15">
       <Size>
         <Width>16</Width>
-        <Height>3</Height>
+        <Height>16</Height>
       </Size>
       <Origin>
         <X>0</X>
@@ -70,7 +70,7 @@
       <ValueDefinitions />
       <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
     </EntityDefinition>
-    <EntityDefinition Name="crumble" Limit="-1" ResizableX="true" ResizableY="false" Rotatable="false" RotateIncrement="15">
+    <EntityDefinition Name="crumble" Limit="-1" ResizableX="true" ResizableY="true" Rotatable="false" RotateIncrement="15">
       <Size>
         <Width>16</Width>
         <Height>16</Height>
