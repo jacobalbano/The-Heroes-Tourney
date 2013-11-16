@@ -22,8 +22,6 @@ namespace SNHU
 			base.Init();
 			
 			FP.World = new GameWorld();
-			
-			FP.Log(Library.GetText("Program.cs"));
 		}
 		
 		public static void Main(string[] args)

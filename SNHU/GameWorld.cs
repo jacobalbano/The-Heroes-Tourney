@@ -21,7 +21,9 @@ namespace SNHU
 		public GameWorld() : base()
 		{
 			AddGraphic(new Text("HI GUISE"));
+			
 			Add(new Platform(550, 550, 64, 16));
+			Add(new Player(FP.HalfWidth, FP.HalfHeight));
 		}
 	}
 }
