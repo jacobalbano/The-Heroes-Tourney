@@ -48,9 +48,10 @@ namespace SNHU.GameObject.Platforms
 		{
 			base.Load(node);
 			uint width = uint.Parse(node.Attributes["width"].Value);
+			uint height = uint.Parse(node.Attributes["height"].Value);
 			crumbleTime = uint.Parse(node.Attributes["crumbleTime"].Value);
 			
-			Graphic = myImage = Image.CreateRect(width, 16, FP.Color(0xFF0000));
+			Graphic = myImage = Image.CreateRect(width, height, FP.Color(0xFF0000));
 			SetHitboxTo(Graphic);
 		}
 	}
