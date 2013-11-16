@@ -16,6 +16,7 @@ namespace SNHU.GameObject.Platforms
 	{
 		public const string Collision = "platform";
 		public const string NotifyCamera = "platform_cameraNotification";
+		public const string PlayerLand = "player_land";
 		
 		private Player owner;
 		public Player myOwner
@@ -32,9 +33,15 @@ namespace SNHU.GameObject.Platforms
 			Type = Collision;
 			
 			AddResponse(NotifyCamera, OnNotifyCamera);
+			AddResponse(PlayerLand, OnPlayerLandResponse);
 		}
 		
-		public override void Load(System.Xml.XmlNode node)
+		public void OnPlayerLandResponse(params object[]args)
+		{
+			OnLand(args[0] as Player);
+		}
+		
+		public abstract void Load(System.Xml.XmlNode node)
 		{
 			base.Load(node);
 			uint width = uint.Parse(node.Attributes["width"].Value);
