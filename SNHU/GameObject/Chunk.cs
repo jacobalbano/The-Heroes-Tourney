@@ -32,7 +32,7 @@ namespace SNHU.GameObject
 			world.RegisterClass<Teleporter>("teleporter");
 			world.RegisterClass<Razor>("deadlyAnchor");
 			
-			ents = world.BuildWorldAsArray("assets/Levels/Test2.oel");
+			ents = world.BuildWorldAsArray("assets/Levels/Test4.oel");
 			FP.Log("load");
 		}
 		

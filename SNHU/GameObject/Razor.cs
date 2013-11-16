@@ -31,23 +31,35 @@ namespace SNHU.GameObject
 		public override void Load(System.Xml.XmlNode node)
 		{
 			base.Load(node);
-			razorArm = Image.CreateRect(uint.Parse(node.Attributes["distance"].Value) * 32, 10, FP.Color(0x333333));
-			razorArm.OriginX = 5;
-			razorArm.OriginY = 5;
-			theRazor = Image.CreateCircle(uint.Parse(node.Attributes["size"].Value) * 20, FP.Color(0xFF0000));
-			speed = 0.5f;//uint.Parse(node.Attributes["speed"].Value);
-			rotation = FP.Rand(360);
-			Graphic = myImage = Image.CreateRect(16, 16, FP.Color(0x00FF00));
-			AddGraphic(theRazor);
+			myImage = Image.CreateRect(16, 16, FP.Color(0x00FF00));
+			razorArm = Image.CreateRect(uint.Parse(node.Attributes["distance"].Value) * 32, 8, FP.Color(0xFFFFFF));
+			theRazor = Image.CreateCircle(uint.Parse(node.Attributes["size"].Value), FP.Color(0xFF0000));
 			
-			SetHitboxTo(myImage);
+			theRazor.CenterOO();
+			myImage.CenterOO();
+			razorArm.OriginY = razorArm.Height /2;
+			
+			razorArm.X = myImage.X;
+			razorArm.Y = myImage.Y;
+			
+			theRazor.X += razorArm.Width;
+
+			speed = uint.Parse(node.Attributes["speed"].Value);
+			rotation = FP.Rand(360);
+			
+			AddGraphic(razorArm);
+			AddGraphic(theRazor);
+			AddGraphic(myImage);
+			SetHitbox((int)(myImage.Width), (int)(myImage.Height), (int)(myImage.X + myImage.Width/2), (int)(myImage.Y + myImage.Height/2));	
 		}
 		
 		public override void Update()
 		{
 			base.Update();
 			rotation += speed;
-			FP.RotateAround(ref theRazor.X, ref theRazor.Y, this.X, this.Y, rotation, false);
+			FP.RotateAround(ref theRazor.X, ref theRazor.Y, myImage.X, myImage.Y, rotation, false);
+			razorArm.Angle = rotation;
+			
 			
 		}
 	}
