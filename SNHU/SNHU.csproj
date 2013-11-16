@@ -86,8 +86,6 @@
     <Compile Include="GameObject\Platforms\JumpPad.cs" />
     <Compile Include="GameObject\Platforms\Platform.cs" />
     <Compile Include="GameObject\Platforms\Teleporter.cs" />
-    <Compile Include="GameObject\Platforms\TeleporterIN.cs" />
-    <Compile Include="GameObject\Platforms\TeleporterOUT.cs" />
     <Compile Include="GameObject\Player.cs" />
     <Compile Include="GameObject\Razor.cs" />
     <Compile Include="GameWorld.cs" />

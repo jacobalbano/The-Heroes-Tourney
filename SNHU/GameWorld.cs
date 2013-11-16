@@ -9,6 +9,7 @@
 using System;
 using Punk;
 using Punk.Graphics;
+using Punk.Tweens.Misc;
 using Punk.Utils;
 using SFML.Window;
 using SNHU.GameObject;
@@ -28,10 +29,12 @@ namespace SNHU
 			
 			Input.ControllerConnected += delegate(object sender, JoystickConnectEventArgs e)
 			{
+				FP.Log("del");
+				// player isn't created when plugged in after game starts
 				CheckControllers();
 			};
 			
-			CheckControllers();
+			AddTween(new Alarm(0.1f, CheckControllers, Tween.ONESHOT), true);
 			
 			AddGraphic(new Image(Library.GetTexture("assets/bg.png")));	
 			Add(new Chunk(0, 0));
@@ -59,6 +62,7 @@ namespace SNHU
 		
 		public void CheckControllers()
 		{
+			FP.Log("hey");
 			if (Joystick.IsConnected(0))
 			{
 				gameManager.AddPlayer(FP.HalfWidth - 100, -50, 0);

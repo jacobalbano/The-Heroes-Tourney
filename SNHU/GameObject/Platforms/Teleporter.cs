@@ -15,49 +15,63 @@ namespace SNHU.GameObject.Platforms
 {
 	public class Teleporter : Entity
 	{
-		private int ID;
-		public int teleporterID
-		{
-			get
-			{
-				return ID;
-			}
-		}
+		public uint ID;
 		
 		public const string Collision = "teleporter";
 		
-		private Player owner;
-		public Player myOwner
-		{
-			set
-			{
-				owner = value;
-			}
-		}
+		public Player owner { get; private set; }
+		
 		public Image myImage;
 		
 		
 		public Teleporter()
 		{
-			Graphic = myImage = Image.CreateRect(32, 32, FP.Color(0x00FF00));
-			SetHitboxTo(Graphic);
 		}
 		
-		public void onHit(Player targetPlayer)
+		public override void Load(System.Xml.XmlNode node)
+		{
+			base.Load(node);
+			
+			Graphic = myImage = Image.CreateRect(32, 32, FP.Color(0xFFAAFF));
+			SetHitboxTo(Graphic);
+			Type = Collision;
+		}
+		
+		public override void Update()
+		{
+			base.Update();
+			
+			Player p = (Collide(Player.Collision, X, Y) as Player);
+			if (p != null)
+			{
+				owner = p;
+				Teleporter t = GetPartner();
+				
+				if (t != null)
+				{
+					owner.X = t.X;
+					owner.Y = t.Y;
+					
+					World.Remove(t);
+					World.Remove(this);
+				}
+			}
+		}
+		
+		private Teleporter GetPartner()
 		{
 			List<Entity> teleList = new List<Entity>();
 			World.GetType(Teleporter.Collision, teleList);
+			
 			for(int x = 0; x < teleList.Count; x++)
 			{
-				if(teleList[x] is TeleporterOUT)
+				if(teleList[x] != this && (teleList[x] as Teleporter).ID == ID)
 				{
-					if((teleList[x] as Teleporter).ID == teleporterID)
-					{
-						targetPlayer.X = teleList[x].X;
-						targetPlayer.Y = teleList[x].Y;
-					}
+					return (teleList[x] as Teleporter);
 				}
 			}
+			
+			return null;
 		}
 	}
 }

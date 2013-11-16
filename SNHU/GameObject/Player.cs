@@ -24,6 +24,8 @@ namespace SNHU.GameObject
 	{
 		public const string OnLand = "player_onLand";
 		
+		public const string Collision = "player";
+		
 		public const float JumpForce = -20;
 		
 		private const float JUMP_JUICE_FORCE = 0.3f;
@@ -119,8 +121,6 @@ namespace SNHU.GameObject
 		public override void Update()
 		{
 			base.Update();
-			
-		 	Teleporter e;
 		 	
 		 	if (axis.X < 0)
 		 	{
@@ -138,11 +138,6 @@ namespace SNHU.GameObject
 			else
 			{
 				OnMessage(PhysicsBody.FRICTION, 0.75f);
-			}
-			e = (Teleporter)Collide(Teleporter.Collision, X, Y);
-			if ( e != null)
-			{
-				e.onHit(this);
 			}
 			
 			HandleInput();
@@ -249,10 +244,10 @@ namespace SNHU.GameObject
 			switch (id)
 			{
 				case 0:
-					player.Color = FP.Color(0xFF8888);
+					player.Color = FP.Color(0x88FF88);
 					break;
 				case 1:
-					player.Color = FP.Color(0x88FF88);
+					player.Color = FP.Color(0xFF8888);
 					break;
 				case 2:
 					player.Color = FP.Color(0x8888FF);
