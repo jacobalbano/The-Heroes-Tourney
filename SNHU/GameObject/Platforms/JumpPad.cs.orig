@@ -15,6 +15,8 @@ namespace SNHU.GameObject.Platforms
 {
 	public class JumpPad : Platform
 	{
+		public const int POINT_REWARD = 5;
+		
 		public JumpPad() : base()
 		{
 			Type = "";
@@ -28,11 +30,13 @@ namespace SNHU.GameObject.Platforms
 		public override void Update()
 		{
 			base.Update();
-			var e = Collide("Player", X, Y - 1);
+			var e = Collide(Player.Collision, X, Y - 1);
 			
 			if(e != null)
 			{
 				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 1.5);
+				(e as Player).Points += POINT_REWARD;
+				Mixer.Audio["jumpPad"].Play();
 			}
 		}
 		
@@ -41,8 +45,8 @@ namespace SNHU.GameObject.Platforms
 			base.Load(node);
 			uint width = uint.Parse(node.Attributes["width"].Value);
 			
-			Graphic = myImage = Image.CreateRect(width, 5, FP.Color(0x000000));
-			myImage.Y -= 5;
+			Graphic = myImage = Image.CreateRect(width, 3, FP.Color(0x000000));
+			myImage.Y -= 3;
 			SetHitboxTo(Graphic);
 		}
 	}

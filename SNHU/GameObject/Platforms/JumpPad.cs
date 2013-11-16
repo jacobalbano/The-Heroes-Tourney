@@ -44,8 +44,8 @@ namespace SNHU.GameObject.Platforms
 			base.Load(node);
 			uint width = uint.Parse(node.Attributes["width"].Value);
 			
-			Graphic = myImage = Image.CreateRect(width, 5, FP.Color(0x000000));
-			myImage.Y -= 5;
+			Graphic = myImage = Image.CreateRect(width, 3, FP.Color(0x000000));
+			myImage.Y -= 3;
 			SetHitboxTo(Graphic);
 		}
 	}

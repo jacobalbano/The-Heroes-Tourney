@@ -16,7 +16,7 @@
     <Width>640</Width>
     <Height>640</Height>
   </LevelMaximumSize>
-  <Filename>C:\Users\Chris\Desktop\Current Dev\snhuJam_fall2013\SNHU\assets\SNHULevel.oep</Filename>
+  <Filename>C:\Documents and Settings\Quasar\Desktop\GameJam 2\SNHU\assets\SNHULevel.oep</Filename>
   <AngleMode>Degrees</AngleMode>
   <CameraEnabled>false</CameraEnabled>
   <CameraSize>
@@ -29,8 +29,8 @@
     <LayerDefinition xsi:type="EntityLayerDefinition">
       <Name>Platforms</Name>
       <Grid>
-        <Width>32</Width>
-        <Height>32</Height>
+        <Width>16</Width>
+        <Height>16</Height>
       </Grid>
       <ScrollFactor>
         <X>1</X>
@@ -42,8 +42,8 @@
   <EntityDefinitions>
     <EntityDefinition Name="platform" Limit="-1" ResizableX="true" ResizableY="false" Rotatable="false" RotateIncrement="15">
       <Size>
-        <Width>32</Width>
-        <Height>32</Height>
+        <Width>16</Width>
+        <Height>16</Height>
       </Size>
       <Origin>
         <X>0</X>
@@ -57,12 +57,12 @@
     </EntityDefinition>
     <EntityDefinition Name="jumpPad" Limit="-1" ResizableX="true" ResizableY="false" Rotatable="false" RotateIncrement="15">
       <Size>
-        <Width>32</Width>
-        <Height>5</Height>
+        <Width>16</Width>
+        <Height>3</Height>
       </Size>
       <Origin>
         <X>0</X>
-        <Y>5</Y>
+        <Y>3</Y>
       </Origin>
       <ImageDefinition DrawMode="Rectangle" ImagePath="" Tiled="false">
         <RectColor A="255" R="0" G="0" B="0" />
@@ -72,8 +72,8 @@
     </EntityDefinition>
     <EntityDefinition Name="crumble" Limit="-1" ResizableX="true" ResizableY="false" Rotatable="false" RotateIncrement="15">
       <Size>
-        <Width>32</Width>
-        <Height>32</Height>
+        <Width>16</Width>
+        <Height>16</Height>
       </Size>
       <Origin>
         <X>0</X>
@@ -89,8 +89,8 @@
     </EntityDefinition>
     <EntityDefinition Name="teleporterIN" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
       <Size>
-        <Width>32</Width>
-        <Height>32</Height>
+        <Width>16</Width>
+        <Height>16</Height>
       </Size>
       <Origin>
         <X>0</X>
@@ -106,8 +106,8 @@
     </EntityDefinition>
     <EntityDefinition Name="teleporterOUT" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
       <Size>
-        <Width>32</Width>
-        <Height>32</Height>
+        <Width>16</Width>
+        <Height>16</Height>
       </Size>
       <Origin>
         <X>0</X>
@@ -121,10 +121,10 @@
       </ValueDefinitions>
       <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
     </EntityDefinition>
-    <EntityDefinition Name="deadlyAnchor" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+    <EntityDefinition Name="deadlyAnchor" Limit="-1" ResizableX="true" ResizableY="false" Rotatable="false" RotateIncrement="15">
       <Size>
-        <Width>32</Width>
-        <Height>32</Height>
+        <Width>16</Width>
+        <Height>16</Height>
       </Size>
       <Origin>
         <X>0</X>
@@ -142,8 +142,8 @@
     </EntityDefinition>
     <EntityDefinition Name="spawnPoint" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
       <Size>
-        <Width>32</Width>
-        <Height>32</Height>
+        <Width>16</Width>
+        <Height>16</Height>
       </Size>
       <Origin>
         <X>0</X>
