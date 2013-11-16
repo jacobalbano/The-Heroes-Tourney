@@ -27,9 +27,10 @@ namespace SNHU
 			gameManager = new GameManager();
 			
 			AddGraphic(new Image(Library.GetTexture("assets/bg.png")));	
-			Add(new Player(FP.HalfWidth, 0));
 			Add(new Chunk(0, 0));
 			Add(gameManager);
+			
+			gameManager.AddPlayer(FP.HalfWidth, 0);
 			
 			gameManager.StartGame();
 		}

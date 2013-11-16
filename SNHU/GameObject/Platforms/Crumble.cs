@@ -10,7 +10,6 @@ using System;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
-using Punk.Graphics;
 
 namespace SNHU.GameObject.Platforms
 {

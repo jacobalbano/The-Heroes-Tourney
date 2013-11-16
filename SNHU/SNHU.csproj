@@ -77,6 +77,7 @@
     <Compile Include="Components\PhysicsBody.cs" />
     <Compile Include="GameObject\Chunk.cs" />
     <Compile Include="GameObject\GameManager.cs" />
+    <Compile Include="GameObject\HUD.cs" />
     <Compile Include="GameObject\MatchTimer.cs" />
     <Compile Include="GameObject\Mixer.cs" />
     <Compile Include="GameObject\Ladder.cs" />
