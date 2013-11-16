@@ -24,7 +24,7 @@ namespace SNHU.GameObject
 	{
 		public const string OnLand = "player_onLand";
 		
-		public const float JumpForce = -13;
+		public const float JumpForce = -20;
 		
 		private const float JUMP_JUICE_FORCE = 0.3f;
 		private const float JUMP_JUICE_DURATION = 0.17f;
@@ -59,7 +59,7 @@ namespace SNHU.GameObject
 			
 			AddGraphic(image);
 			
-			image.Color = FP.Color(FP.Rand(uint.MaxValue));
+			SetTint(id);
 			
 			image.CenterOO();
 			SetHitboxTo(image);
@@ -167,6 +167,27 @@ namespace SNHU.GameObject
 			}
 			
 			return base.MoveCollideY(e);
+		}
+		
+		public void SetTint(uint id)
+		{
+			switch (id)
+			{
+				case 0:
+					image.Color = FP.Color(0xFF8888);
+					break;
+				case 1:
+					image.Color = FP.Color(0x88FF88);
+					break;
+				case 2:
+					image.Color = FP.Color(0x8888FF);
+					break;
+				case 3:
+					image.Color = FP.Color(0xFFFF88);
+					break;
+				default:
+					break;
+			}
 		}
 		
 		public int Points
