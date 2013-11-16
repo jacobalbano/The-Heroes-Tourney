@@ -22,7 +22,7 @@ namespace SNHU.GameObject
 		private MatchTimer matchTimer;
 		public List<Player> Players;
 		private HUD hud;
-		public const float SCROLL_SPEED = 0.0f;
+		public const float SCROLL_SPEED = 1.0f;
 		
 		public const float METEOR_TIME = 20.0f;
 		public float meteorTimeScale = 1.0f;
@@ -37,6 +37,8 @@ namespace SNHU.GameObject
 			
 			meteorTimer = new Alarm(METEOR_TIME * meteorTimeScale, OnMeteor, Tween.ONESHOT);
 			meteorMode = false;
+			
+			FP.Camera.Zoom = 0.75f;
 		}
 		
 		public override void Added()
