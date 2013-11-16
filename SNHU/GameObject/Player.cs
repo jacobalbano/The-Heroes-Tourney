@@ -38,15 +38,10 @@ namespace SNHU.GameObject
 		
 		public const float SPEED = 6;
 		
-		private int points;
-		private uint deaths;
-		private uint id;
-		
-		public Player(float x, float y, uint id) : base(x, y)
+		public Player(float x, float y) : base(x, y)
 		{
-			this.id = id;
-			controller = new Controller(id);
-			if (Joystick.IsConnected(id))
+			controller = new Controller(0);
+			if (Joystick.IsConnected(0))
 			{
 				axis = controller.LeftStick;
 			}
@@ -55,10 +50,7 @@ namespace SNHU.GameObject
 				axis = VirtualAxis.WSAD();
 			}
 			
-			image = new Image(Library.GetTexture("assets/player.png"));
-			
-			AddGraphic(image);
-			
+			Graphic = image = new Image(Library.GetTexture("assets/player.png"));
 			SetTint(id);
 			
 			image.CenterOO();
@@ -72,9 +64,7 @@ namespace SNHU.GameObject
 			physics = new PhysicsBody();
 			physics.Colliders.Add(Platform.Collision);
 			AddLogic(physics);
-			
-			points = 0;
-			deaths = 0;
+			Type = "Player";
 			
 			#if DEBUG
 			AddLogic(new CheckRestart(controller));
@@ -85,14 +75,7 @@ namespace SNHU.GameObject
 		{
 			base.Update();
 			
-			if (axis.X < 0)
-			{
-				image.FlippedX = true;
-			}
-			else if (axis.X > 0)
-			{
-				image.FlippedX = false;
-			}
+		 	Teleporter e;
 			
 			if (Collide(Platform.Collision, X, Y + 1) == null)
 			{
@@ -102,19 +85,16 @@ namespace SNHU.GameObject
 			{
 				OnMessage(PhysicsBody.FRICTION, 0.75f);
 			}
+			e = (Teleporter)Collide(Teleporter.Collision, X, Y);
+			if ( e != null)
+			{
+				e.onHit(this);
+			}
 			
 			if (OnGround && (controller.Pressed(Controller.Button.A) || Input.Pressed(Keyboard.Key.Space)))
 			{
 				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce);
 				Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
-				
-				ClearTweens();
-				image.ScaleX = 1 - JUMP_JUICE_FORCE;
-				image.ScaleY = 1 + JUMP_JUICE_FORCE;
-				
-				var tween = new MultiVarTween(null, ONESHOT);
-				tween.Tween(image, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
-				AddTween(tween, true);
 			}
 			
 			if (Math.Abs(physics.MoveDelta.X) < SPEED)
@@ -140,7 +120,6 @@ namespace SNHU.GameObject
 			{
 				if (!OnGround)
 				{
-					ClearTweens();
 					image.ScaleX = 1 + JUMP_JUICE_FORCE;
 					image.ScaleY = 1 - JUMP_JUICE_FORCE;
 					
@@ -188,16 +167,6 @@ namespace SNHU.GameObject
 				default:
 					break;
 			}
-		}
-		
-		public int Points
-		{
-			get { return points; }
-		}
-		
-		public uint Deaths
-		{
-			get { return deaths; }
 		}
 	}
 }

@@ -46,7 +46,6 @@ namespace SNHU.GameObject.Platforms
 		{
 			base.Load(node);
 			uint width = uint.Parse(node.Attributes["width"].Value);
-//			uint height = uint.Parse(node.Attributes["height"].Value);
 			
 			Graphic = myImage = Image.CreateRect(width, 32, FP.Color(0x00FF00));
 			SetHitboxTo(Graphic);
@@ -59,7 +58,7 @@ namespace SNHU.GameObject.Platforms
 
         public virtual void OnLand(Player playerTarget)
         {
-        	playerTarget.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 2);
+        	
         }
 
         public virtual void OnLeave(Player playerTarget)

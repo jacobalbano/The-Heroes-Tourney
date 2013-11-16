@@ -7,6 +7,8 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using Punk;
+using Punk.Graphics;
 using SNHU.Components;
 
 namespace SNHU.GameObject.Platforms
@@ -20,12 +22,28 @@ namespace SNHU.GameObject.Platforms
 		
 		public override void OnLand(Player playerTarget)
 		{
-			playerTarget.OnMessage(PhysicsBody.IMPULSE, Player.JumpForce * 2);
+			playerTarget.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 2);
+		}
+		
+		public override void Update()
+		{
+			base.Update();
+			var e = Collide("Player", X, Y - 1);
+			
+			if(e != null)
+			{
+				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 2);
+			}
 		}
 		
 		public override void Load(System.Xml.XmlNode node)
 		{
-			throw new NotImplementedException();
+			base.Load(node);
+			uint width = uint.Parse(node.Attributes["width"].Value);
+			
+			Graphic = myImage = Image.CreateRect(width, 5, FP.Color(0x000000));
+			myImage.Y -= 5;
+			SetHitboxTo(Graphic);
 		}
 	}
 }
