@@ -14,6 +14,7 @@ using Punk.Tweens.Misc;
 using Punk.Utils;
 using SFML.Window;
 using SNHU.GameObject;
+using SNHU.GameObject.Platforms;
 
 namespace SNHU
 {
@@ -23,6 +24,8 @@ namespace SNHU
 	public class GameWorld : World
 	{
 		public GameManager gameManager;
+		public List<Entity> activeSpawns;
+		public SpawnManager spawnManager;
 		private Image bg;
 		
 		private Queue<Chunk> ChunkQueue;
@@ -62,6 +65,8 @@ namespace SNHU
 			Add(topChunk);
 			Add(gameManager);
 			
+			spawnManager = new SpawnManager();
+			Add(spawnManager);
 			gameManager.StartGame();
 		}
 		
@@ -93,6 +98,8 @@ namespace SNHU
 					Add(topChunk);
 				}
 			}
+			
+			
 		}
 		
 		public void CheckControllers()
@@ -130,6 +137,15 @@ namespace SNHU
 			}
 			
 			ChunkQueue.Enqueue(new Chunk(0,0,"end"));
+		}
+		
+		public static bool OnCamera(float x, float y)
+		{
+			return
+				x > FP.Camera.X - FP.HalfWidth &&
+				x < FP.Camera.X + FP.HalfWidth &&
+				y > FP.Camera.Y - FP.HalfHeight &&
+				y < FP.Camera.Y + FP.HalfHeight;
 		}
 	}
 }

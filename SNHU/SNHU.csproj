@@ -90,6 +90,7 @@
     <Compile Include="GameObject\Platforms\Teleporter.cs" />
     <Compile Include="GameObject\Player.cs" />
     <Compile Include="GameObject\Razor.cs" />
+    <Compile Include="GameObject\SpawnManager.cs" />
     <Compile Include="GameWorld.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

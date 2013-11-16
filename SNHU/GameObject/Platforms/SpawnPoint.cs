@@ -16,9 +16,11 @@ namespace SNHU.GameObject.Platforms
 	/// </summary>
 	public class SpawnPoint : Entity
 	{
+		public const string stringID = "spawnPoint";
+		
 		public SpawnPoint() : base()
 		{
-			
+			Type = stringID;
 		}
 	}
 }

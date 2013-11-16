@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Collections.Generic;
 using Punk;
 using SNHU.GameObject.Platforms;
 
@@ -19,13 +20,13 @@ namespace SNHU.GameObject
 	{
 		public const uint CHUNK_WIDTH = 640;
 		public const uint CHUNK_HEIGHT = 640;
-		
-		
+		public List<SpawnPoint> spawnPointsList;
 		private Entity[] ents;
 		
 		public Chunk(float posX, float posY, string chunkType = "random"):base(posX,posY)
 		{
 			var world = new World();
+			spawnPointsList = new List<SpawnPoint>();
 			world.RegisterClass<Platform>("platform");
 			world.RegisterClass<JumpPad>("jumpPad");
 			world.RegisterClass<Crumble>("crumble");

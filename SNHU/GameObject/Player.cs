@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
@@ -155,8 +156,17 @@ namespace SNHU.GameObject
 				{
 					OnMessage(PhysicsBody.IMPULSE, axis.X * (SPEED / 3f), 0);
 				}
-				
 			}
+			
+			if(this.Y - this.Height > FP.Camera.Y + FP.HalfHeight)
+			{
+				dead();
+			}
+		}
+		
+		public void dead()
+		{
+			World.BroadcastMessage("player_die", this);
 		}
 		
 		private void HandleInput()
@@ -200,7 +210,6 @@ namespace SNHU.GameObject
 			
 			hand = !hand;
 		}
-		
 		
 		public override bool MoveCollideY(Entity e)
 		{
