@@ -41,7 +41,7 @@ namespace SNHU.GameObject
 		
 		public const float SPEED = 6;
 		
-		public int Points { get; private set; }
+		public int Points;
 		public uint Deaths { get; private set; }
 		public uint id { get; private set;}
 		
@@ -159,6 +159,11 @@ namespace SNHU.GameObject
 				var tween = new MultiVarTween(null, ONESHOT);
 				tween.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
 				AddTween(tween, true);
+			}
+			
+			if (controller.Pressed(Controller.Button.Y))
+			{
+				World.Add(new Meteor());
 			}
 			
 			if (controller.Pressed(Controller.Button.X))

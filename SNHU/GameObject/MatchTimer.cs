@@ -28,6 +28,7 @@ namespace SNHU.GameObject
 			
 			Graphic = new Text((Timer.Remaining).ToString("0.00"));
 			(Graphic as Text).Size = 36;
+			Graphic.ScrollX = Graphic.ScrollY = 0;
 			
 			X = (FP.Width / 2) - (Graphic as Text).Width;
 			Y = 20;
@@ -36,6 +37,8 @@ namespace SNHU.GameObject
 		public override void Added()
 		{
 			base.Added();
+			
+			Layer = -1000;
 			
 			World.AddTween(Timer, false);
 		}

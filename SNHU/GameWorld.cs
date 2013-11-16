@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
@@ -22,9 +23,17 @@ namespace SNHU
 	public class GameWorld : World
 	{
 		public GameManager gameManager;
+		private Image bg;
+		
+		private Queue<Chunk> ChunkQueue;
+		private Chunk bottomChunk;
+		private Chunk topChunk;
 		
 		public GameWorld() : base()
 		{
+			FP.Camera.X = FP.HalfWidth;
+			FP.Camera.Y = FP.HalfHeight;
+				
 			gameManager = new GameManager();
 			
 			Input.ControllerConnected += delegate(object sender, JoystickConnectEventArgs e)
@@ -36,8 +45,22 @@ namespace SNHU
 			
 			AddTween(new Alarm(0.1f, CheckControllers, Tween.ONESHOT), true);
 			
-			AddGraphic(new Image(Library.GetTexture("assets/bg.png")));	
-			Add(new Chunk(0, 0));
+			bg = new Image(Library.GetTexture("assets/bg.png"));
+			bg.ScrollX = bg.ScrollY = 0;
+			AddGraphic(bg);	
+			
+			LoadChunks();
+			
+			bottomChunk = ChunkQueue.Dequeue();
+			bottomChunk.X = 0;
+			bottomChunk.Y = 0;
+			
+			topChunk = ChunkQueue.Dequeue();
+			topChunk.X = 0;
+			topChunk.Y = (FP.Camera.Y - FP.Height / 2) - Chunk.CHUNK_HEIGHT;
+			
+			Add(bottomChunk);
+			Add(topChunk);
 			Add(gameManager);
 			
 			//gameManager.AddPlayer(FP.HalfWidth, 0, 0);
@@ -58,11 +81,25 @@ namespace SNHU
 			{
 				FP.World = new GameWorld();
 			}
+			
+			if (bottomChunk.IsBelowCamera && bottomChunk.World != null)
+			{
+				Remove(bottomChunk);
+				
+				bottomChunk = topChunk;
+				
+				if (ChunkQueue.Count > 0)
+				{
+					topChunk = ChunkQueue.Dequeue();
+					topChunk.X = 0;
+					topChunk.Y = (FP.Camera.Y - FP.Height / 2) - Chunk.CHUNK_HEIGHT;
+					Add(topChunk);
+				}
+			}
 		}
 		
 		public void CheckControllers()
 		{
-			FP.Log("hey");
 			if (Joystick.IsConnected(0))
 			{
 				gameManager.AddPlayer(FP.HalfWidth, -50, 0);
@@ -81,6 +118,15 @@ namespace SNHU
 			if (Joystick.IsConnected(3))
 			{
 				gameManager.AddPlayer(FP.HalfWidth, -50, 3);
+			}
+		}
+		
+		private void LoadChunks()
+		{
+			ChunkQueue = new Queue<Chunk>();
+			for (int i = 0; i < 3; i++)
+			{
+				ChunkQueue.Enqueue(new Chunk(0,0));
 			}
 		}
 	}

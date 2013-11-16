@@ -79,6 +79,7 @@
     <Compile Include="GameObject\GameManager.cs" />
     <Compile Include="GameObject\HUD.cs" />
     <Compile Include="GameObject\MatchTimer.cs" />
+    <Compile Include="GameObject\Meteor.cs" />
     <Compile Include="GameObject\Mixer.cs" />
     <Compile Include="GameObject\Ladder.cs" />
     <Compile Include="GameObject\Platforms\Crumble.cs" />

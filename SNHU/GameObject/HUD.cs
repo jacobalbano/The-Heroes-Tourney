@@ -55,6 +55,13 @@ namespace SNHU.GameObject
 		{
 			base.Added();
 			
+			p1Txt.ScrollX = p1Txt.ScrollY = 0;
+			p2Txt.ScrollX = p2Txt.ScrollY = 0;
+			p3Txt.ScrollX = p3Txt.ScrollY = 0;
+			p4Txt.ScrollX = p4Txt.ScrollY = 0;
+			
+			p1.Layer = p2.Layer = p3.Layer = p4.Layer = -1000;
+			
 			World.Add(p1);
 			World.Add(p2);
 			World.Add(p3);

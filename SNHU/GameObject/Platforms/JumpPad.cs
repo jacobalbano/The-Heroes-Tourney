@@ -15,6 +15,8 @@ namespace SNHU.GameObject.Platforms
 {
 	public class JumpPad : Platform
 	{
+		public const int POINT_REWARD = 5;
+		
 		public JumpPad() : base()
 		{
 			
@@ -28,11 +30,13 @@ namespace SNHU.GameObject.Platforms
 		public override void Update()
 		{
 			base.Update();
-			var e = Collide("Player", X, Y - 1);
+			var e = Collide(Player.Collision, X, Y - 1);
 			
 			if(e != null)
 			{
-				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 2);
+				(e as Player).Points += POINT_REWARD;
+				Mixer.Audio["jumpPad"].Play();
+				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 2, true);
 			}
 		}
 		
