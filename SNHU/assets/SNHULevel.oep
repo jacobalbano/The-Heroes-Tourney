@@ -6,17 +6,17 @@
   <GridColor A="255" R="0" G="0" B="0" />
   <LevelDefaultSize>
     <Width>640</Width>
-    <Height>640</Height>
+    <Height>600</Height>
   </LevelDefaultSize>
   <LevelMinimumSize>
     <Width>640</Width>
-    <Height>640</Height>
+    <Height>600</Height>
   </LevelMinimumSize>
   <LevelMaximumSize>
     <Width>640</Width>
-    <Height>640</Height>
+    <Height>600</Height>
   </LevelMaximumSize>
-  <Filename>C:\Documents and Settings\Quasar\Desktop\GameJam 2\SNHU\assets\SNHULevel.oep</Filename>
+  <Filename>C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\SNHULevel.oep</Filename>
   <AngleMode>Degrees</AngleMode>
   <CameraEnabled>false</CameraEnabled>
   <CameraSize>
