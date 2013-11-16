@@ -1,0 +1,12 @@
+<level width="640" height="640">
+  <Platforms>
+    <platform id="0" x="0" y="512" width="320" />
+    <platform id="1" x="352" y="192" width="224" />
+    <spawnPoint id="2" x="96" y="448" />
+    <spawnPoint id="3" x="192" y="448" />
+    <spawnPoint id="4" x="544" y="128" />
+    <spawnPoint id="5" x="352" y="128" />
+    <deadlyAnchor id="6" x="288" y="256" distance="4" speed="6" size="40" />
+    <jumpPad id="7" x="288" y="512" width="32" />
+  </Platforms>
+</level>
