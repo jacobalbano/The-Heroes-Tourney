@@ -31,10 +31,9 @@ namespace SNHU.GameObject
 			world.RegisterClass<JumpPad>("jumpPad");
 			world.RegisterClass<Crumble>("crumble");
 			world.RegisterClass<Teleporter>("teleporter");
-//			world.RegisterClass<TeleporterIN>("teleporterIN");
-//			world.RegisterClass<TeleporterOUT>("teleporterOUT");
+			world.RegisterClass<Razor>("deadlyAnchor");
 			
-			var ents = world.BuildWorldAsArray("assets/Levels/Test2.oel");
+			var ents = world.BuildWorldAsArray("assets/Levels/Test3.oel");
 			
 			foreach (var e in ents)
 			{

@@ -20,6 +20,7 @@ namespace SNHU.GameObject.Platforms
 		public const string PlayerLand = "player_land";
 		
 		private Player owner;
+		
 		public Player myOwner
 		{
 			set

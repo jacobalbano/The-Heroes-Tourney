@@ -37,7 +37,7 @@ namespace SNHU
 			AddTween(new Alarm(0.1f, CheckControllers, Tween.ONESHOT), true);
 			
 			AddGraphic(new Image(Library.GetTexture("assets/bg.png")));	
-			Add(new Chunk(0, 0));
+			Add(new Chunk(180, 0));
 			Add(gameManager);
 			
 			//gameManager.AddPlayer(FP.HalfWidth, 0, 0);
