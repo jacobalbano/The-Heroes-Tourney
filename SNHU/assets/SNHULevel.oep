@@ -105,7 +105,7 @@
     <EntityDefinition Name="teleporterIN" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
       <Size>
         <Width>32</Width>
-        <Height>3</Height>
+        <Height>5</Height>
       </Size>
       <Origin>
         <X>0</X>
@@ -122,7 +122,7 @@
     <EntityDefinition Name="teleporterOUT" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
       <Size>
         <Width>32</Width>
-        <Height>3</Height>
+        <Height>5</Height>
       </Size>
       <Origin>
         <X>0</X>

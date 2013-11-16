@@ -29,7 +29,7 @@ namespace SNHU.GameObject
 			var world = new World();
 			world.RegisterClass<Platform>("platform");
 			
-			var ents = world.BuildWorldAsArray("assets/Levels/Test.oel");
+			var ents = world.BuildWorldAsArray("assets/Levels/Test2.oel");
 			
 			foreach (var e in ents)
 			{

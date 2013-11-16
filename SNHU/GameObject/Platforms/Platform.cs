@@ -26,7 +26,7 @@ namespace SNHU.GameObject.Platforms
 				owner = value;
 			}
 		}
-		private Image myImage;
+		public Image myImage;
 		
 		public Platform():base()
 		{
@@ -41,13 +41,13 @@ namespace SNHU.GameObject.Platforms
 			OnLand(args[0] as Player);
 		}
 		
-		public abstract void Load(System.Xml.XmlNode node)
+		public override void Load(System.Xml.XmlNode node)
 		{
 			base.Load(node);
 			uint width = uint.Parse(node.Attributes["width"].Value);
-			uint height = uint.Parse(node.Attributes["height"].Value);
+//			uint height = uint.Parse(node.Attributes["height"].Value);
 			
-			Graphic = myImage = Image.CreateRect(width, height, FP.Color(0x00FF00));
+			Graphic = myImage = Image.CreateRect(width, 32, FP.Color(0x00FF00));
 			SetHitboxTo(Graphic);
 		}
 		

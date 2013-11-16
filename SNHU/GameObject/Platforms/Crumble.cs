@@ -7,6 +7,8 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using Punk;
+using Punk.Graphics;
 using Punk.Tweens.Misc;
 
 namespace SNHU.GameObject.Platforms
@@ -28,6 +30,14 @@ namespace SNHU.GameObject.Platforms
 		public void OnCrumble()
 		{
 			//Anim here
+			myImage.CenterOO();
+			X += myImage.OriginX;
+			Y += myImage.OriginY;
+			CenterOrigin();
+			
+			var tween = new MultiVarTween(null, ONESHOT);
+			tween.Tween(myImage, new { Scale = 0, Alpha = 0, Y = myImage.Y + 200}, 1);
+			AddTween(tween,true);
 		}
 		
 		public override void Load(System.Xml.XmlNode node)

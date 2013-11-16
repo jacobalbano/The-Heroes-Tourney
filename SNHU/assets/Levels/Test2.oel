@@ -1,12 +1,12 @@
 <level width="640" height="640">
   <Platforms>
-    <platform id="0" x="0" y="576" width="256" />
-    <jumpPad id="1" x="224" y="576" width="32" />
-    <platform id="2" x="352" y="416" width="256" />
-    <teleporterIN id="3" x="352" y="416" ID="1" />
-    <platform id="4" x="0" y="128" width="224" />
-    <teleporterOUT id="5" x="128" y="128" ID="1" />
-    <deadlyAnchor id="6" x="288" y="256" distance="6" />
-    <crumble id="7" x="128" y="512" width="192" crumbleTime="1" />
+    <platform id="0" x="0" y="480" width="320" />
+    <platform id="1" x="320" y="320" width="288" />
+    <platform id="2" x="0" y="96" width="224" />
+    <deadlyAnchor id="3" x="96" y="256" distance="5" />
+    <jumpPad id="4" x="256" y="480" width="32" />
+    <crumble id="5" x="160" y="416" width="160" crumbleTime="1" />
+    <teleporterIN id="6" x="320" y="320" ID="1" />
+    <teleporterOUT id="7" x="192" y="96" ID="1" />
   </Platforms>
 </level>
