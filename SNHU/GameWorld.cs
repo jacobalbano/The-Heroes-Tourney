@@ -109,22 +109,22 @@ namespace SNHU
 		{
 			if (Joystick.IsConnected(0))
 			{
-				gameManager.AddPlayer(FP.HalfWidth - 100, -50, 0);
+				gameManager.AddPlayer(32, 480, 0);
 			}
 			
 			if (Joystick.IsConnected(1))
 			{
-				gameManager.AddPlayer(FP.HalfWidth - 50, -50, 1);
+				gameManager.AddPlayer(176, 480, 1);
 			}
 			
 			if (Joystick.IsConnected(2))
 			{
-				gameManager.AddPlayer(FP.HalfWidth, -50, 2);
+				gameManager.AddPlayer(464, 480, 2);
 			}
 			
 			if (Joystick.IsConnected(3))
 			{
-				gameManager.AddPlayer(FP.HalfWidth - 75, -50, 3);
+				gameManager.AddPlayer(592, 480, 3);
 			}
 		}
 		
@@ -134,7 +134,7 @@ namespace SNHU
 			
 			ChunkQueue.Enqueue(new Chunk(0,0,"start"));
 			
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 20; i++)
 			{
 				ChunkQueue.Enqueue(new Chunk(0,0));
 			}
