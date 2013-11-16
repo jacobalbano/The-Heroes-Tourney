@@ -78,13 +78,15 @@ namespace SNHU.GameObject
 			{
 				OnGround = false;
 			}
+			else
+			{
+				OnMessage(PhysicsBody.FRICTION, 0.75f);
+			}
 			
-			if (controller.Pressed(Controller.Button.A) || Input.Pressed(Keyboard.Key.Space))
+			if (OnGround && (controller.Pressed(Controller.Button.A) || Input.Pressed(Keyboard.Key.Space)))
 			{
 				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce);
 			}
-			
-			FP.Log(FP.Sign(physics.MoveDelta.X), FP.Sign(axis.X));
 			
 			if (Math.Abs(physics.MoveDelta.X) < SPEED)
 			{
