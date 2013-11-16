@@ -10,9 +10,12 @@
     <platform id="7" x="0" y="576" width="224" height="16" />
     <platform id="8" x="416" y="576" width="224" height="16" />
     <deadlyAnchor id="9" x="313" y="271" width="16" height="16" distance="3" speed="5" size="0" />
-    <spawnPoint id="10" x="304" y="176" width="16" height="16" />
+    <spawnPoint id="10" x="192" y="32" width="16" height="16" />
     <platform id="12" x="272" y="512" width="96" height="16" />
     <crumble id="11" x="0" y="0" width="16" height="576" crumbleTime="1" />
     <crumble id="13" x="624" y="0" width="16" height="576" crumbleTime="1" />
+    <spawnPoint id="14" x="432" y="32" width="16" height="16" />
+    <spawnPoint id="15" x="48" y="448" width="16" height="16" />
+    <spawnPoint id="16" x="560" y="448" width="16" height="16" />
   </Platforms>
 </level>
