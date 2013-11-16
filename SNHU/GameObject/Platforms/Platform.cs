@@ -9,6 +9,7 @@
 using System;
 using Punk;
 using Punk.Graphics;
+using SNHU.Components;
 
 namespace SNHU.GameObject.Platforms
 {
@@ -58,12 +59,11 @@ namespace SNHU.GameObject.Platforms
 
         public virtual void OnLand(Player playerTarget)
         {
-        	FP.Log("Landed");
+        	playerTarget.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 2);
         }
 
         public virtual void OnLeave(Player playerTarget)
         {
-        	FP.Log("Left");
         }
 	}
 }

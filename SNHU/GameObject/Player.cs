@@ -121,7 +121,17 @@ namespace SNHU.GameObject
 					OnGround = true;
 				}
 				
+				
 				OnMessage(OnLand);
+				
+				if (e.Y >= Y)
+				{
+					e.OnMessage(Platform.PlayerLand, this);
+				}
+				else
+				{
+					OnMessage(PhysicsBody.IMPULSE, 0, 1, true);
+				}
 			}
 			
 			return base.MoveCollideY(e);
