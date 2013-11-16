@@ -130,7 +130,17 @@ namespace SNHU.GameObject
 					OnGround = true;
 					
 					Mixer.Audio["land1"].Play();
+					
+					if (e.Y >= Y)
+					{
+						e.OnMessage(Platform.PlayerLand, this);
+					}
+					else
+					{
+						OnMessage(PhysicsBody.IMPULSE, 0, 1, true);
+					}
 				}
+				
 				
 				OnMessage(OnLand);
 			}
