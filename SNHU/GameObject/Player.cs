@@ -25,10 +25,12 @@ namespace SNHU.GameObject
 		
 		public const float JumpForce = -13;
 		
-		private const float JUMP_JUICE = 0.3f;
+		private const float JUMP_JUICE_FORCE = 0.3f;
+		private const float JUMP_JUICE_DURATION = 0.17f;
 		
 		private Image image;
-		private VirtualAxis axis;
+		private Controller controller;
+		private Axis axis;
 		
 		private PhysicsBody physics;
 		private bool OnGround;
@@ -37,7 +39,19 @@ namespace SNHU.GameObject
 		
 		public Player(float x, float y) : base(x, y)
 		{
-			Graphic = image = Image.CreateRect(32, 64, FP.Color(0xff00ff));
+			controller = new Controller(0);
+			if (Joystick.IsConnected(0))
+			{
+				axis = controller.LeftStick;
+			}
+			else
+			{
+				axis = VirtualAxis.WSAD();
+			}
+			
+			Graphic = image = new Image(Library.GetTexture("assets/player.png"));
+			image.Color = FP.Color(FP.Rand(uint.MaxValue));
+			
 			image.CenterOO();
 			SetHitboxTo(image);
 			CenterOrigin();
@@ -45,11 +59,14 @@ namespace SNHU.GameObject
 			OriginY = Height;
 			image.OriginY = Height;
 			
-			axis = VirtualAxis.WSAD();
 			
 			physics = new PhysicsBody();
 			physics.Colliders.Add(Platform.Collision);
 			AddLogic(physics);
+			
+			#if DEBUG
+			AddLogic(new CheckRestart(controller));
+			#endif
 		}
 		
 		public override void Update()
@@ -61,12 +78,28 @@ namespace SNHU.GameObject
 				OnGround = false;
 			}
 			
-			if (Input.Pressed(Keyboard.Key.Space))
+			if (controller.Pressed(Controller.Button.A) || Input.Pressed(Keyboard.Key.Space))
 			{
 				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce);
 			}
 			
-			MoveBy(axis.X * SPEED, 0, Platform.Collision);
+			FP.Log(FP.Sign(physics.MoveDelta.X), FP.Sign(axis.X));
+			
+			if (Math.Abs(physics.MoveDelta.X) < SPEED)
+			{
+				var delta = FP.Sign(physics.MoveDelta.X);
+				var ax = FP.Sign(axis.X);
+				
+				if (delta == 0 || delta == ax)
+				{
+					OnMessage(PhysicsBody.IMPULSE, axis.X * SPEED, 0);
+				}
+				else
+				{
+					OnMessage(PhysicsBody.IMPULSE, axis.X * (SPEED / 3f), 0);
+				}
+				
+			}
 		}
 		
 		public override bool MoveCollideY(Entity e)
@@ -75,11 +108,11 @@ namespace SNHU.GameObject
 			{
 				if (!OnGround)
 				{
-					image.ScaleX = 1 + JUMP_JUICE;
-					image.ScaleY = 1 - JUMP_JUICE;
+					image.ScaleX = 1 + JUMP_JUICE_FORCE;
+					image.ScaleY = 1 - JUMP_JUICE_FORCE;
 					
 					var tween = new MultiVarTween(null, ONESHOT);
-					tween.Tween(image, new { ScaleX = 1, ScaleY = 1}, 0.2f);
+					tween.Tween(image, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
 					AddTween(tween, true);
 					
 					OnGround = true;

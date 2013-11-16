@@ -73,6 +73,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\CheckRestart.cs" />
     <Compile Include="Components\PhysicsBody.cs" />
     <Compile Include="GameObject\Player.cs" />
     <Compile Include="GameWorld.cs" />

@@ -11,11 +11,14 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="1000"
-   height="600"
+   height="640"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="New document 1">
+   sodipodi:docname="bg.svg"
+   inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\bg.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <linearGradient
@@ -35,7 +38,7 @@
        xlink:href="#linearGradient3805"
        id="linearGradient3801"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(186.36807,-916.47114)"
+       gradientTransform="matrix(0.99996989,0,0,1.0611554,186.37753,-905.78264)"
        x1="210.11174"
        y1="80.269691"
        x2="210.11174"
@@ -45,7 +48,7 @@
        xlink:href="#linearGradient3805"
        id="linearGradient3811"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(186.36807,-916.47114)"
+       gradientTransform="matrix(0.99996989,0,0,1.0611554,186.37753,-905.78264)"
        x1="197.98991"
        y1="-86.655174"
        x2="208.09143"
@@ -58,9 +61,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="428.15312"
-     inkscape:cy="282.25109"
+     inkscape:zoom="0.5"
+     inkscape:cx="305.73393"
+     inkscape:cy="232.21664"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -85,18 +88,18 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-452.36218)">
+     transform="translate(0,-412.36218)">
     <rect
-       style="fill:url(#linearGradient3801);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:url(#linearGradient3801);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.03010845px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="rect2985"
-       width="1000"
-       height="600"
-       x="0.5"
-       y="-1051.8622"
+       width="999.96991"
+       height="636.69324"
+       x="0.51505423"
+       y="-1049.4536"
        transform="scale(1,-1)" />
     <g
        id="g3859"
-       transform="translate(0,109.09647)">
+       transform="matrix(0.99996989,0,0,1.0611554,0.01506929,49.032647)">
       <rect
          y="610.66809"
          x="66.95002"
@@ -172,7 +175,7 @@
          style="fill:#328d0f;fill-opacity:0.18823529;stroke:none" />
     </g>
     <g
-       transform="matrix(-1.4537815,0,0,1.4537815,1069.4337,-222.56166)"
+       transform="matrix(-1.4537377,0,0,1.5426881,1069.4166,-302.90818)"
        id="g3871">
       <rect
          style="fill:#131313;fill-opacity:1;stroke:none"
@@ -250,19 +253,19 @@
     </g>
     <rect
        transform="scale(1,-1)"
-       y="-1051.8622"
-       x="0.5"
-       height="600"
-       width="1000"
+       y="-1049.4536"
+       x="0.51505423"
+       height="636.69324"
+       width="999.96991"
        id="rect3803"
-       style="fill:url(#linearGradient3811);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+       style="fill:url(#linearGradient3811);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.03010845px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     <rect
        style="fill:#131313;fill-opacity:1;stroke:none"
        id="rect3895"
-       width="730.72229"
-       height="654.57886"
-       x="-867.04718"
-       y="436.92184"
+       width="639.98071"
+       height="694.60992"
+       x="-818.7417"
+       y="396.90631"
        transform="scale(-1,1)" />
   </g>
 </svg>

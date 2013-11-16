@@ -9,6 +9,8 @@
 using System;
 using Punk;
 using Punk.Graphics;
+using Punk.Utils;
+using SFML.Window;
 using SNHU.GameObject;
 
 namespace SNHU
@@ -23,6 +25,21 @@ namespace SNHU
 			AddGraphic(new Image(Library.GetTexture("assets/bg.png")));	
 			Add(new Platform(FP.HalfWidth, FP.HalfHeight, 64, 16));
 			Add(new Player(FP.HalfWidth, 0));
+		}
+		
+		public override void Update()
+		{
+			base.Update();
+			
+			if (Input.Down(Keyboard.Key.LAlt) && Input.Pressed(Keyboard.Key.F4))
+			{
+				FP.Screen.Close();
+			}
+			
+			if (Input.Pressed(Keyboard.Key.F5))
+			{
+				FP.World = new GameWorld();
+			}
 		}
 	}
 }
