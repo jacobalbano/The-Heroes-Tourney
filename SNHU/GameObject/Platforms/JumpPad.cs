@@ -35,12 +35,12 @@ namespace SNHU.GameObject.Platforms
 			
 			if(e != null)
 			{
-				for (int i = 0; i < 10; ++i)
+				for (int i = 0; i < 5; ++i)
 				{
 					emitter.Emit("p", FP.Rand((uint) Width), -5);
 				}
 				
-				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 1.5);
+				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 1.4);
 				(e as Player).Points += POINT_REWARD;
 				Mixer.Audio["jumpPad"].Play();
 			}
