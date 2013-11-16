@@ -37,7 +37,7 @@ namespace SNHU
 			Add(new Chunk(0, 0));
 			Add(gameManager);
 			
-			gameManager.AddPlayer(FP.HalfWidth, 0, 0);
+			//gameManager.AddPlayer(FP.HalfWidth, 0, 0);
 			
 			gameManager.StartGame();
 		}

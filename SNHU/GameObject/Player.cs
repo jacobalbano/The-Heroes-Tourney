@@ -38,10 +38,16 @@ namespace SNHU.GameObject
 		
 		public const float SPEED = 6;
 		
-		public Player(float x, float y) : base(x, y)
+		private int points;
+		private uint deaths;
+		private uint id;
+		
+		public Player(float x, float y, uint id) : base(x, y)
 		{
-			controller = new Controller(0);
-			if (Joystick.IsConnected(0))
+			this.id = id;
+			
+			controller = new Controller(id);
+			if (Joystick.IsConnected(id))
 			{
 				axis = controller.LeftStick;
 			}
@@ -65,6 +71,9 @@ namespace SNHU.GameObject
 			physics.Colliders.Add(Platform.Collision);
 			AddLogic(physics);
 			Type = "Player";
+			
+			points = 0;
+			deaths = 0;
 			
 			#if DEBUG
 			AddLogic(new CheckRestart(controller));
@@ -167,6 +176,16 @@ namespace SNHU.GameObject
 				default:
 					break;
 			}
+		}
+		
+		public int Points
+		{
+			get { return points; }
+		}
+		
+		public uint Deaths
+		{
+			get { return deaths; }
 		}
 	}
 }
