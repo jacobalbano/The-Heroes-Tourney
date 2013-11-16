@@ -126,7 +126,7 @@ namespace SNHU
 			
 			ChunkQueue.Enqueue(new Chunk(0,0,"start"));
 			
-			for (int i = 0; i < 80; i++)
+			for (int i = 0; i < 4; i++)
 			{
 				ChunkQueue.Enqueue(new Chunk(0,0));
 			}

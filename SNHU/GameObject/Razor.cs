@@ -9,10 +9,11 @@
 using System;
 using Punk;
 using Punk.Graphics;
+using SNHU.GameObject.Platforms;
 
 namespace SNHU.GameObject
 {
-	public class Razor : Entity
+	public class Razor : Platform
 	{
 		public Image myImage;
 		
@@ -32,7 +33,7 @@ namespace SNHU.GameObject
 		{
 			base.Load(node);
 			myImage = Image.CreateRect(16, 16, FP.Color(0x00FF00));
-			razorArm = Image.CreateRect(uint.Parse(node.Attributes["distance"].Value) * 32, 8, FP.Color(0xFFFFFF));
+			razorArm = Image.CreateRect(uint.Parse(node.Attributes["distance"].Value) * 16, 8, FP.Color(0xFFFFFF));
 			theRazor = Image.CreateCircle(uint.Parse(node.Attributes["size"].Value), FP.Color(0xFF0000));
 			
 			theRazor.CenterOO();
