@@ -55,15 +55,8 @@ namespace SNHU.GameObject
 			hand = false;
 			
 			controller = new Controller(id);
-//			if (Joystick.IsConnected(id))
-//			{
-				axis = controller.LeftStick;
-//			}
-//			else
-//			{
-//				axis = VirtualAxis.WSAD();
-//			}
-//			
+			axis = controller.LeftStick;
+				
 			player = new Image(Library.GetTexture("assets/player.png"));
 			SetTint(id);
 			AddGraphic(player);
@@ -263,12 +256,13 @@ namespace SNHU.GameObject
 			switch (id)
 			{
 				case 0:
-					player.Color = FP.Color(0x88FF88);
-					break;
-				case 1:
 					player.Color = FP.Color(0xFF8888);
 					break;
+				case 1:
+					player.Color = FP.Color(0x88FF88);
+					break;
 				case 2:
+					FP.Log("here");
 					player.Color = FP.Color(0x8888FF);
 					break;
 				case 3:
