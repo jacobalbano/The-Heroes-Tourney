@@ -19,12 +19,12 @@ namespace SNHU.GameObject.Platforms
 		
 		public JumpPad() : base()
 		{
-			
+			Type = "";
 		}
 		
 		public override void OnLand(Player playerTarget)
 		{
-			playerTarget.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 2);
+//			playerTarget.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 2);
 		}
 		
 		public override void Update()
@@ -34,9 +34,9 @@ namespace SNHU.GameObject.Platforms
 			
 			if(e != null)
 			{
+				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 1.5);
 				(e as Player).Points += POINT_REWARD;
 				Mixer.Audio["jumpPad"].Play();
-				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 2, true);
 			}
 		}
 		
