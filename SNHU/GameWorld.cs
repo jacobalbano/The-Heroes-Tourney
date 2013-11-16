@@ -123,10 +123,15 @@ namespace SNHU
 		private void LoadChunks()
 		{
 			ChunkQueue = new Queue<Chunk>();
-			for (int i = 0; i < 3; i++)
+			
+			ChunkQueue.Enqueue(new Chunk(0,0,"start"));
+			
+			for (int i = 0; i < 80; i++)
 			{
 				ChunkQueue.Enqueue(new Chunk(0,0));
 			}
+			
+			ChunkQueue.Enqueue(new Chunk(0,0,"end"));
 		}
 	}
 }

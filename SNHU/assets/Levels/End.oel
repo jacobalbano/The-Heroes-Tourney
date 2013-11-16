@@ -1,0 +1,13 @@
+<level width="640" height="640">
+  <Platforms>
+    <jumpPad id="3" x="128" y="224" width="32" />
+    <platform id="2" x="128" y="224" width="32" />
+    <platform id="0" x="0" y="0" width="96" />
+    <platform id="4" x="192" y="320" width="256" />
+    <platform id="5" x="224" y="512" width="288" />
+    <jumpPad id="6" x="480" y="512" width="32" />
+    <platform id="7" x="32" y="512" width="32" />
+    <jumpPad id="8" x="32" y="512" width="32" />
+    <platform id="1" x="192" y="0" width="448" />
+  </Platforms>
+</level>
