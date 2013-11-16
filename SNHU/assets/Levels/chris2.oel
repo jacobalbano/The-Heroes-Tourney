@@ -13,7 +13,8 @@
     <jumpPad id="10" x="304" y="80" width="16" height="3" />
     <spawnPoint id="11" x="64" y="432" width="16" height="16" />
     <spawnPoint id="12" x="560" y="432" width="16" height="16" />
-    <spawnPoint id="13" x="304" y="176" width="16" height="16" />
+    <spawnPoint id="13" x="256" y="176" width="16" height="16" />
     <player id="14" x="-64" y="96" />
+    <spawnPoint id="15" x="352" y="176" width="16" height="16" />
   </Platforms>
 </level>
