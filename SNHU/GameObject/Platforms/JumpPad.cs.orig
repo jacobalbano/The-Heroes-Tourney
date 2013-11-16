@@ -24,6 +24,7 @@ namespace SNHU.GameObject.Platforms
 		
 		public override void OnLand(Player playerTarget)
 		{
+//			playerTarget.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 2);
 		}
 		
 		public override void Update()
