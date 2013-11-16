@@ -33,6 +33,7 @@ namespace SNHU.GameObject
 			Audio.Add("crumble", new Sound(Library.GetBuffer("assets/audio/crumble.wav")));
 			Audio.Add("teleport", new Sound(Library.GetBuffer("assets/audio/teleport.wav")));
 			Audio.Add("jumpPad", new Sound(Library.GetBuffer("assets/audio/jumpPad.wav")));
+			Audio.Add("music", new Sound(Library.GetBuffer("assets/audio/music.ogg")));
 		}
 	}
 }

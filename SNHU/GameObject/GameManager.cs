@@ -19,6 +19,11 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class GameManager : Entity
 	{
+		public bool GameStarted { get; private set; }
+		public bool GamePaused { get; private set; }
+		
+		private Sfx GameMusic;
+		
 		private MatchTimer matchTimer;
 		public List<Player> Players;
 		private HUD hud;
@@ -31,6 +36,11 @@ namespace SNHU.GameObject
 		
 		public GameManager()
 		{
+			GameStarted = false;
+			GamePaused = false;
+			
+			GameMusic = new Sfx(Mixer.Audio["music"]);
+			
 			matchTimer = new MatchTimer(240.0f);
 			Players = new List<Player>();
 			hud = new HUD(this);
@@ -69,7 +79,7 @@ namespace SNHU.GameObject
 		{
 			base.Update();
 			
-			if (matchTimer.Timer.Active)
+			if (GameStarted)
 			{
 				FP.Camera.Y -= SCROLL_SPEED;
 				
@@ -123,7 +133,50 @@ namespace SNHU.GameObject
 		
 		public void StartGame()
 		{
-			matchTimer.Timer.Start();
+			if (!GameStarted)
+			{
+				GameStarted = true;
+				matchTimer.Timer.Start();
+				GameMusic.Play();
+			}
+		}
+		
+		public void TogglePauseGame(bool affectEnts)
+		{
+			if (GameStarted)
+			{
+				List<Entity> entList = new List<Entity>();
+				World.GetAll(entList);
+				
+				if (!GamePaused)
+				{
+					GamePaused = true;
+					matchTimer.Timer.Active = false;
+					GameMusic.Pause();
+					
+					if (affectEnts)
+					{
+						foreach (Entity e in entList)
+						{
+							e.Active = false;
+						}
+					}
+				}
+				else
+				{
+					GamePaused = false;
+					matchTimer.Timer.Active = true;
+					GameMusic.Play();
+					
+					if (affectEnts)
+					{
+						foreach (Entity e in entList)
+						{
+							e.Active = true;
+						}
+					}
+				}
+			}
 		}
 		
 		public void OnMeteor()
