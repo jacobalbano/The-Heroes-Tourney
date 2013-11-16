@@ -27,7 +27,7 @@ namespace SNHU.GameObject
 		
 		public const string Collision = "player";
 		
-		public const float JumpForce = -20;
+		public const float JumpForce = -8;
 		
 		private const float JUMP_JUICE_FORCE = 0.3f;
 		private const float JUMP_JUICE_DURATION = 0.17f;
@@ -42,7 +42,7 @@ namespace SNHU.GameObject
 		private PhysicsBody physics;
 		private bool OnGround;
 		
-		public const float SPEED = 6;
+		public const float SPEED = 5.5f;
 		
 		public int Points;
 		public uint Deaths { get; private set; }
@@ -143,11 +143,11 @@ namespace SNHU.GameObject
 				
 				if (delta == 0 || delta == ax)
 				{
-					OnMessage(PhysicsBody.IMPULSE, axis.X * SPEED, 0);
+					OnMessage(PhysicsBody.IMPULSE, axis.X * SPEED, 0, true);
 				}
 				else
 				{
-					OnMessage(PhysicsBody.IMPULSE, axis.X * (SPEED / 3f), 0);
+					OnMessage(PhysicsBody.IMPULSE, axis.X * (SPEED / 3f), 0, true);
 				}
 			}
 			
@@ -186,11 +186,6 @@ namespace SNHU.GameObject
 			if (controller.Pressed(Controller.Button.X))
 			{
 				Punch();
-			}
-			
-			if (controller.Pressed(Controller.Button.B))
-			{
-				(World as GameWorld).AdvanceLevel();
 			}
 			
 			if (controller.Pressed(Controller.Button.Start))
