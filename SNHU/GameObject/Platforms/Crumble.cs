@@ -38,17 +38,18 @@ namespace SNHU.GameObject.Platforms
 			
 			var tween = new MultiVarTween(null, ONESHOT);
 			tween.Tween(myImage, new { Scale = 0, Alpha = 0, Y = myImage.Y + 200}, 1);
-			AddTween(tween,true);
+			AddTween(tween, true);
+			
+			Collidable = false;
 		}
 		
 		public override void Load(System.Xml.XmlNode node)
 		{
 			base.Load(node);
 			uint width = uint.Parse(node.Attributes["width"].Value);
-			uint height = uint.Parse(node.Attributes["height"].Value);
 			crumbleTime = uint.Parse(node.Attributes["crumbleTime"].Value);
 			
-			Graphic = myImage = Image.CreateRect(width, height, FP.Color(0x00FF00));
+			Graphic = myImage = Image.CreateRect(width, 32, FP.Color(0xFF0000));
 			SetHitboxTo(Graphic);
 		}
 	}

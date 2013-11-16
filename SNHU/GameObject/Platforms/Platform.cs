@@ -59,7 +59,7 @@ namespace SNHU.GameObject.Platforms
 
         public virtual void OnLand(Player playerTarget)
         {
-        	playerTarget.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 2);
+        	
         }
 
         public virtual void OnLeave(Player playerTarget)

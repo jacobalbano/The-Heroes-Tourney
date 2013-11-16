@@ -7,6 +7,8 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using Punk;
+using Punk.Graphics;
 using SNHU.Components;
 
 namespace SNHU.GameObject.Platforms
@@ -25,7 +27,13 @@ namespace SNHU.GameObject.Platforms
 		
 		public override void Load(System.Xml.XmlNode node)
 		{
-			throw new NotImplementedException();
+			base.Load(node);
+			uint width = uint.Parse(node.Attributes["width"].Value);
+			//uint height = uint.Parse(node.Attributes["height"].Value);
+			
+			Graphic = myImage = Image.CreateRect(width, 5, FP.Color(0x000000));
+			myImage.Y -= 5;
+			SetHitboxTo(Graphic);
 		}
 	}
 }

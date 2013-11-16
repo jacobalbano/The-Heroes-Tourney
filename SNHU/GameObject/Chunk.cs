@@ -28,6 +28,8 @@ namespace SNHU.GameObject
 			
 			var world = new World();
 			world.RegisterClass<Platform>("platform");
+			world.RegisterClass<JumpPad>("jumpPad");
+			world.RegisterClass<Crumble>("crumble");
 			
 			var ents = world.BuildWorldAsArray("assets/Levels/Test2.oel");
 			
