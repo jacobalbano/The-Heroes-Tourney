@@ -21,7 +21,7 @@ namespace SNHU.GameObject
 	public class Fist : Entity
 	{
 		private Image image;
-		private Entity parent;
+		private Player parent;
 		
 		private float offsetX, offsetY;
 		private bool left;
@@ -33,7 +33,7 @@ namespace SNHU.GameObject
 		/// Constructor
 		/// </summary>
 		/// <param name="hand">True for left hand image, false for right.</param>
-		public Fist(bool hand, Entity parent)
+		public Fist(bool hand, Player parent)
 		{
 			left = hand;
 			this.parent = parent;
@@ -134,6 +134,8 @@ namespace SNHU.GameObject
 				{
 					if (p != null && p != parent)
 				 	{
+						parent.Points += 2;
+						
 				 		Mixer.Audio[FP.Choose("hit1", "hit2")].Play();
 				 		var hsign = FP.Sign(p.X - parent.X);
 				 		FP.Log(hsign);

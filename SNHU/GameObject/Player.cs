@@ -249,8 +249,9 @@ namespace SNHU.GameObject
 			{
 				if (e.Y > Y)
 				{
+					Points += 10;
 					OnMessage(PhysicsBody.IMPULSE, (int) FP.Rand(10) - 5, JumpForce, true);
-					e.OnMessage(PhysicsBody.IMPULSE, (int) FP.Rand(10) - 5, -JumpForce / 2, true);
+					e.OnMessage(PhysicsBody.IMPULSE, (int) FP.Rand(10) - 5, -JumpForce, true);
 				}
 			}
 			

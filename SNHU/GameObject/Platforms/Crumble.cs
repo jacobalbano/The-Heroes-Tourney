@@ -22,6 +22,22 @@ namespace SNHU.GameObject.Platforms
 			
 		}
 		
+		public override void Update()
+		{
+			base.Update();
+			
+			var p = Collide(Player.Collision, X - 1, Y) as Player;
+			if (p == null)
+			{
+				p = Collide(Player.Collision, X + 1, Y) as Player;
+			}
+			
+			if (p != null)
+			{
+				OnLand(p);
+			}
+		}
+		
 		public override void OnLand(Player playerTarget)
         {
 			AddTween(new Alarm(crumbleTime, OnCrumble, ONESHOT), true);

@@ -12,5 +12,7 @@
     <deadlyAnchor id="9" x="313" y="271" width="16" height="16" distance="3" speed="5" size="0" />
     <spawnPoint id="10" x="304" y="176" width="16" height="16" />
     <platform id="12" x="272" y="512" width="96" height="16" />
+    <crumble id="11" x="0" y="0" width="16" height="576" crumbleTime="1" />
+    <crumble id="13" x="624" y="0" width="16" height="576" crumbleTime="1" />
   </Platforms>
 </level>
