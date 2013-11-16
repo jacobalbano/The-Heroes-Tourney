@@ -16,7 +16,7 @@
     <Width>640</Width>
     <Height>640</Height>
   </LevelMaximumSize>
-  <Filename>C:\Documents and Settings\Quasar\Desktop\GameJam 2\SNHU\assets\SNHULevel.oep</Filename>
+  <Filename>C:\Users\Chris\Desktop\Current Dev\snhuJam_fall2013\SNHU\assets\SNHULevel.oep</Filename>
   <AngleMode>Degrees</AngleMode>
   <CameraEnabled>false</CameraEnabled>
   <CameraSize>
@@ -102,7 +102,7 @@
       <ValueDefinitions />
       <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
     </EntityDefinition>
-    <EntityDefinition Name="teleporterIN" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+    <EntityDefinition Name="teleporter" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
       <Size>
         <Width>32</Width>
         <Height>32</Height>
@@ -113,23 +113,6 @@
       </Origin>
       <ImageDefinition DrawMode="Rectangle" ImagePath="" Tiled="false">
         <RectColor A="255" R="128" G="128" B="0" />
-      </ImageDefinition>
-      <ValueDefinitions>
-        <ValueDefinition xsi:type="IntValueDefinition" Name="ID" Default="0" Min="0" Max="100" ShowSlider="false" />
-      </ValueDefinitions>
-      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
-    </EntityDefinition>
-    <EntityDefinition Name="teleporterOUT" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
-      <Size>
-        <Width>32</Width>
-        <Height>32</Height>
-      </Size>
-      <Origin>
-        <X>0</X>
-        <Y>5</Y>
-      </Origin>
-      <ImageDefinition DrawMode="Rectangle" ImagePath="" Tiled="false">
-        <RectColor A="255" R="64" G="0" B="64" />
       </ImageDefinition>
       <ValueDefinitions>
         <ValueDefinition xsi:type="IntValueDefinition" Name="ID" Default="0" Min="0" Max="100" ShowSlider="false" />

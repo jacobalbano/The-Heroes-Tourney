@@ -30,8 +30,9 @@ namespace SNHU.GameObject
 			world.RegisterClass<Platform>("platform");
 			world.RegisterClass<JumpPad>("jumpPad");
 			world.RegisterClass<Crumble>("crumble");
-			world.RegisterClass<TeleporterIN>("teleporterIN");
-			world.RegisterClass<TeleporterOUT>("teleporterOUT");
+			world.RegisterClass<Teleporter>("teleporter");
+//			world.RegisterClass<TeleporterIN>("teleporterIN");
+//			world.RegisterClass<TeleporterOUT>("teleporterOUT");
 			
 			var ents = world.BuildWorldAsArray("assets/Levels/Test2.oel");
 			
