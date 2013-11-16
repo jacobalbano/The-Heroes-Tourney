@@ -18,6 +18,7 @@ namespace SNHU.GameObject.Platforms
 		public uint ID;
 		
 		public const string Collision = "teleporter";
+		public const int POINT_REWARD = 50;
 		
 		public Player owner { get; private set; }
 		
@@ -35,6 +36,8 @@ namespace SNHU.GameObject.Platforms
 			Graphic = myImage = Image.CreateRect(32, 32, FP.Color(0xFFAAFF));
 			SetHitboxTo(Graphic);
 			Type = Collision;
+			
+			ID += (uint)FP.Camera.Y;
 		}
 		
 		public override void Update()
@@ -51,6 +54,9 @@ namespace SNHU.GameObject.Platforms
 				{
 					owner.X = t.X;
 					owner.Y = t.Y;
+					
+					owner.Points += POINT_REWARD;
+					Mixer.Audio["teleport"].Play();
 					
 					World.Remove(t);
 					World.Remove(this);

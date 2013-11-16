@@ -21,6 +21,7 @@ namespace SNHU.GameObject
 		private MatchTimer matchTimer;
 		public List<Player> Players;
 		private HUD hud;
+		public const float SCROLL_SPEED = 1.0f;
 		
 		public GameManager()
 		{
@@ -53,11 +54,19 @@ namespace SNHU.GameObject
 			base.Removed();
 		}
 		
+		public override void Update()
+		{
+			base.Update();
+			
+			if (matchTimer.Timer.Active)
+			{
+				FP.Camera.Y -= SCROLL_SPEED;
+			}
+		}
+		
 		public void AddPlayer(float x, float y, uint id)
 		{
-			FP.Log("here");
 			if (Players.Find(p => p.id == id) != null)	return;
-			FP.Log("here2");
 			
 			if (Players.Count < 4 && id <= 4)
 			{
