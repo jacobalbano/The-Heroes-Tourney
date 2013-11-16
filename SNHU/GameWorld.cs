@@ -20,8 +20,7 @@ namespace SNHU
 	{
 		public GameWorld() : base()
 		{
-			AddGraphic(new Text("HI GUISE"));
-			
+			AddGraphic(new Image(Library.GetTexture("assets/bg.png")));	
 			Add(new Platform(FP.HalfWidth, FP.HalfHeight, 64, 16));
 			Add(new Player(FP.HalfWidth, 0));
 		}

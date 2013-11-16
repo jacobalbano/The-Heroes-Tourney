@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using Punk;
 using SFML.Window;
+using SNHU.GameObject;
 
 namespace SNHU.Components
 {
@@ -84,6 +85,7 @@ namespace SNHU.Components
 			AddResponse(FIX_POSITION, OnFixPosition);
 			AddResponse(USE_GRAVITY, OnUseGravity);
 			AddResponse(FRICTION, OnApplyFriction);
+			AddResponse(Player.OnLand, OnLand);
 		}
 		
 		public override void Update()

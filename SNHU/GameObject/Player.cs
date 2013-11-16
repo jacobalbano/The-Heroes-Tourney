@@ -9,6 +9,7 @@
 using System;
 using Punk;
 using Punk.Graphics;
+using Punk.Tweens.Misc;
 using Punk.Utils;
 using SFML.Window;
 using SNHU.Components;
@@ -20,10 +21,17 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class Player : Entity
 	{
+		public const string OnLand = "player_onLand";
+		
+		public const float JumpForce = -13;
+		
+		private const float JUMP_JUICE = 0.3f;
+		
 		private Image image;
 		private VirtualAxis axis;
 		
 		private PhysicsBody physics;
+		private bool OnGround;
 		
 		public const float SPEED = 6;
 		
@@ -33,6 +41,9 @@ namespace SNHU.GameObject
 			image.CenterOO();
 			SetHitboxTo(image);
 			CenterOrigin();
+			
+			OriginY = Height;
+			image.OriginY = Height;
 			
 			axis = VirtualAxis.WSAD();
 			
@@ -45,13 +56,39 @@ namespace SNHU.GameObject
 		{
 			base.Update();
 			
+			if (Collide(Platform.Collision, X, Y + 1) == null)
+			{
+				OnGround = false;
+			}
+			
 			if (Input.Pressed(Keyboard.Key.Space))
 			{
-				//	NO WORKY
-				OnMessage(PhysicsBody.IMPULSE, 0, -25);
+				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce);
 			}
 			
 			MoveBy(axis.X * SPEED, 0, Platform.Collision);
+		}
+		
+		public override bool MoveCollideY(Entity e)
+		{
+			if (e.Type == Platform.Collision)
+			{
+				if (!OnGround)
+				{
+					image.ScaleX = 1 + JUMP_JUICE;
+					image.ScaleY = 1 - JUMP_JUICE;
+					
+					var tween = new MultiVarTween(null, ONESHOT);
+					tween.Tween(image, new { ScaleX = 1, ScaleY = 1}, 0.2f);
+					AddTween(tween, true);
+					
+					OnGround = true;
+				}
+				
+				OnMessage(OnLand);
+			}
+			
+			return base.MoveCollideY(e);
 		}
 	}
 }
