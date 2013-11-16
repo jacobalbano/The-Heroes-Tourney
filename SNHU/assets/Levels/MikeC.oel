@@ -1,0 +1,36 @@
+<level width="640" height="600">
+  <Platforms>
+    <platform id="0" x="32" y="512" width="256" height="16" />
+    <deadlyAnchor id="1" x="64" y="448" width="16" height="16" distance="2" speed="3" size="5" />
+    <platform id="2" x="352" y="400" width="240" height="16" />
+    <jumpPad id="3" x="272" y="512" width="16" height="3" />
+    <jumpPad id="4" x="256" y="512" width="16" height="3" />
+    <jumpPad id="5" x="240" y="512" width="16" height="3" />
+    <jumpPad id="6" x="224" y="512" width="16" height="3" />
+    <jumpPad id="7" x="208" y="512" width="16" height="3" />
+    <platform id="8" x="48" y="256" width="240" height="16" />
+    <platform id="9" x="48" y="96" width="16" height="176" />
+    <teleporter id="10" x="576" y="352" width="16" height="16" ID="0" />
+    <teleporter id="11" x="80" y="208" width="16" height="16" ID="0" />
+    <deadlyAnchor id="12" x="208" y="176" width="16" height="16" distance="1" speed="4" size="0" />
+    <platform id="13" x="336" y="144" width="272" height="16" />
+    <jumpPad id="14" x="272" y="256" width="16" height="3" />
+    <jumpPad id="15" x="256" y="256" width="16" height="3" />
+    <jumpPad id="16" x="240" y="256" width="16" height="3" />
+    <jumpPad id="17" x="224" y="256" width="16" height="3" />
+    <jumpPad id="18" x="352" y="144" width="16" height="3" />
+    <jumpPad id="19" x="336" y="144" width="16" height="3" />
+    <jumpPad id="20" x="368" y="144" width="16" height="3" />
+    <jumpPad id="21" x="384" y="144" width="16" height="3" />
+    <jumpPad id="22" x="400" y="144" width="16" height="3" />
+    <jumpPad id="23" x="416" y="144" width="16" height="3" />
+    <jumpPad id="24" x="432" y="144" width="16" height="3" />
+    <jumpPad id="25" x="448" y="144" width="16" height="3" />
+    <jumpPad id="26" x="352" y="400" width="16" height="3" />
+    <jumpPad id="27" x="368" y="400" width="16" height="3" />
+    <jumpPad id="28" x="384" y="400" width="16" height="3" />
+    <jumpPad id="29" x="400" y="400" width="16" height="3" />
+    <spawnPoint id="30" x="480" y="336" width="16" height="16" />
+    <spawnPoint id="31" x="560" y="80" width="16" height="16" />
+  </Platforms>
+</level>
