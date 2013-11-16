@@ -22,7 +22,7 @@ namespace SNHU
 	/// </summary>
 	public class GameWorld : World
 	{
-		public GameManager gameManager;
+		public static GameManager gameManager;
 		private Image bg;
 		
 		private Queue<Chunk> ChunkQueue;
@@ -61,8 +61,6 @@ namespace SNHU
 			Add(bottomChunk);
 			Add(topChunk);
 			Add(gameManager);
-			
-			gameManager.StartGame();
 		}
 		
 		public override void Update()
@@ -74,9 +72,14 @@ namespace SNHU
 				FP.Screen.Close();
 			}
 			
-			if (Input.Pressed(Keyboard.Key.F5))
+			if (Input.Pressed(Keyboard.Key.F5) || Input.Pressed(Keyboard.Key.R))
 			{
 				FP.World = new GameWorld();
+			}
+			
+			if (Input.Pressed(Keyboard.Key.P))
+			{
+				gameManager.TogglePauseGame(true);
 			}
 			
 			if (bottomChunk.IsBelowCamera && bottomChunk.World != null)
