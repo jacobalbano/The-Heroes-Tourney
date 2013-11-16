@@ -14,8 +14,8 @@
     <crumble id="11" x="0" y="0" width="16" height="576" crumbleTime="1" />
     <crumble id="13" x="624" y="0" width="16" height="576" crumbleTime="1" />
     <spawnPoint id="14" x="48" y="512" width="16" height="16" />
-    <spawnPoint id="15" x="160" y="512" width="16" height="16" />
-    <spawnPoint id="16" x="464" y="512" width="16" height="16" />
+    <spawnPoint id="15" x="192" y="32" width="16" height="16" />
+    <spawnPoint id="16" x="432" y="32" width="16" height="16" />
     <spawnPoint id="17" x="576" y="512" width="16" height="16" />
     <jumpPad id="18" x="416" y="576" width="16" height="3" />
     <jumpPad id="19" x="208" y="576" width="16" height="3" />

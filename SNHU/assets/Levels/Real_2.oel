@@ -39,8 +39,8 @@
     <deadlyAnchor id="38" x="608" y="544" width="16" height="16" distance="1" speed="10" size="8" />
     <jumpPad id="32" x="304" y="336" width="32" height="3" />
     <spawnPoint id="34" x="80" y="448" width="16" height="16" />
-    <spawnPoint id="39" x="256" y="448" width="16" height="16" />
-    <spawnPoint id="40" x="368" y="448" width="16" height="16" />
+    <spawnPoint id="39" x="224" y="144" width="16" height="16" />
+    <spawnPoint id="40" x="400" y="144" width="16" height="16" />
     <spawnPoint id="41" x="544" y="448" width="16" height="16" />
   </Platforms>
 </level>

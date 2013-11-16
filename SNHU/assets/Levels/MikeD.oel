@@ -79,9 +79,9 @@
     <jumpPad id="76" x="592" y="128" width="16" height="3" />
     <platform id="77" x="432" y="16" width="80" height="16" />
     <platform id="78" x="64" y="16" width="80" height="16" />
-    <spawnPoint id="79" x="128" y="512" width="16" height="16" />
-    <spawnPoint id="80" x="496" y="512" width="16" height="16" />
-    <spawnPoint id="81" x="416" y="512" width="16" height="16" />
-    <spawnPoint id="82" x="32" y="512" width="16" height="16" />
+    <spawnPoint id="79" x="128" y="496" width="16" height="16" />
+    <spawnPoint id="80" x="496" y="480" width="16" height="16" />
+    <spawnPoint id="81" x="416" y="496" width="16" height="16" />
+    <spawnPoint id="82" x="32" y="464" width="16" height="16" />
   </Platforms>
 </level>
