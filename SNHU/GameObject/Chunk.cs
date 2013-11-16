@@ -35,22 +35,22 @@ namespace SNHU.GameObject
 			
 			var t = FP.GetTimer();
 			
-//			switch (chunkType)
-//			{
-//				case "start":
-//					ents = world.BuildWorldAsArray("assets/Levels/Start.oel");
-//					break;
-//				case "end":
-//					ents = world.BuildWorldAsArray("assets/Levels/End.oel");
-//					break;
-//				case "random":
-//					ents = world.BuildWorldAsArray("assets/Levels/" + FP.Choose("chris1.oel", "chris2.oel", "chris3.oel"));
-//					break;
-//				default:
+			switch (chunkType)
+			{
+				case "start":
+					ents = world.BuildWorldAsArray("assets/Levels/Start.oel");
+					break;
+				case "end":
+					ents = world.BuildWorldAsArray("assets/Levels/End.oel");
+					break;
+				case "random":
+					ents = world.BuildWorldAsArray("assets/Levels/" + FP.Choose("chris1.oel", "chris2.oel", "chris3.oel"));
+					break;
+				default:
 					ents = world.BuildWorldAsArray("assets/Levels/Test.oel");
-//					break;
-//			}
-//			
+					break;
+			}
+			
 			FP.Log(FP.GetTimer() - t);
 		}
 		
