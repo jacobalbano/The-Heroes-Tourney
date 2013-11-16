@@ -22,7 +22,7 @@ namespace SNHU.GameObject
 		public bool GameStarted { get; private set; }
 		public bool GamePaused { get; private set; }
 		
-		private Sfx GameMusic;
+		private Music GameMusic;
 		
 		public List<Player> Players;
 		private HUD hud;
@@ -38,7 +38,7 @@ namespace SNHU.GameObject
 			GameStarted = false;
 			GamePaused = false;
 			
-			GameMusic = new Sfx(Mixer.Audio["music"]);
+			GameMusic = Mixer.music;
 			
 			Players = new List<Player>();
 			hud = new HUD(this);

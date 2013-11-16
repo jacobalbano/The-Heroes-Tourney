@@ -33,10 +33,12 @@ namespace SNHU
 		
 		public GameWorld() : base()
 		{
+			bg = new Image(Library.GetTexture("assets/bg.png"));
+			bg.ScrollX = bg.ScrollY = 0;
+			AddGraphic(bg);	
+			
 			FP.Camera.X = FP.HalfWidth;
 			FP.Camera.Y = FP.HalfHeight;
-			
-			gameManager = new GameManager();
 			
 			Input.ControllerConnected += delegate(object sender, JoystickConnectEventArgs e)
 			{
@@ -46,22 +48,10 @@ namespace SNHU
 			
 			AddTween(new Alarm(0.1f, CheckControllers, Tween.ONESHOT), true);
 			
-			bg = new Image(Library.GetTexture("assets/bg.png"));
-			bg.ScrollX = bg.ScrollY = 0;
-			AddGraphic(bg);	
+			Add(new Chunk(180, 0, "start"));
+			Add(new Chunk(0, -FP.Width, "start"));
 			
-			bottomChunk = new Chunk(0,0, "start");
-			bottomChunk.X = 180;
-			bottomChunk.Y = 0;
-			
-			topChunk = new Chunk(0,0);
-			topChunk.X = 180;
-			topChunk.Y = (FP.Camera.Y - FP.Height / 2) - Chunk.CHUNK_HEIGHT;
-			
-			Add(bottomChunk);
-			Add(topChunk);
-			
-			Add(gameManager);
+			Add(gameManager = new GameManager());
 			spawnManager = new SpawnManager();
 			Add(spawnManager);
 		}
