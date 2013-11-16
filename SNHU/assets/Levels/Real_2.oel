@@ -1,0 +1,46 @@
+<level width="640" height="600">
+  <Platforms>
+    <platform id="0" x="0" y="544" width="640" height="48" />
+    <crumble id="1" x="0" y="0" width="16" height="64" crumbleTime="1" />
+    <crumble id="2" x="0" y="80" width="16" height="64" crumbleTime="1" />
+    <crumble id="3" x="0" y="160" width="16" height="64" crumbleTime="1" />
+    <crumble id="4" x="0" y="240" width="16" height="64" crumbleTime="1" />
+    <crumble id="5" x="0" y="320" width="16" height="64" crumbleTime="1" />
+    <crumble id="6" x="0" y="400" width="16" height="64" crumbleTime="1" />
+    <crumble id="7" x="0" y="480" width="16" height="64" crumbleTime="1" />
+    <crumble id="8" x="16" y="32" width="16" height="80" crumbleTime="1" />
+    <crumble id="9" x="16" y="112" width="16" height="80" crumbleTime="1" />
+    <crumble id="10" x="16" y="192" width="16" height="80" crumbleTime="1" />
+    <crumble id="11" x="16" y="272" width="16" height="80" crumbleTime="1" />
+    <crumble id="12" x="16" y="352" width="16" height="80" crumbleTime="1" />
+    <crumble id="13" x="16" y="432" width="16" height="80" crumbleTime="1" />
+    <crumble id="14" x="16" y="512" width="16" height="32" crumbleTime="1" />
+    <crumble id="15" x="16" y="0" width="16" height="32" crumbleTime="1" />
+    <crumble id="16" x="624" y="0" width="16" height="64" crumbleTime="1" />
+    <crumble id="17" x="624" y="80" width="16" height="64" crumbleTime="1" />
+    <crumble id="18" x="624" y="160" width="16" height="64" crumbleTime="1" />
+    <crumble id="19" x="624" y="240" width="16" height="64" crumbleTime="1" />
+    <crumble id="20" x="624" y="320" width="16" height="64" crumbleTime="1" />
+    <crumble id="21" x="624" y="400" width="16" height="64" crumbleTime="1" />
+    <crumble id="22" x="624" y="480" width="16" height="64" crumbleTime="1" />
+    <crumble id="23" x="608" y="32" width="16" height="80" crumbleTime="1" />
+    <crumble id="24" x="608" y="112" width="16" height="80" crumbleTime="1" />
+    <crumble id="25" x="608" y="192" width="16" height="80" crumbleTime="1" />
+    <crumble id="26" x="608" y="272" width="16" height="80" crumbleTime="1" />
+    <crumble id="27" x="608" y="352" width="16" height="80" crumbleTime="1" />
+    <crumble id="28" x="608" y="432" width="16" height="80" crumbleTime="1" />
+    <crumble id="29" x="608" y="512" width="16" height="32" crumbleTime="1" />
+    <crumble id="30" x="608" y="0" width="16" height="32" crumbleTime="1" />
+    <player id="31" x="304" y="464" />
+    <jumpPad id="33" x="112" y="544" width="96" height="3" />
+    <jumpPad id="35" x="432" y="544" width="96" height="3" />
+    <platform id="36" x="256" y="336" width="128" height="80" />
+    <deadlyAnchor id="37" x="16" y="544" width="16" height="16" distance="1" speed="10" size="0" />
+    <deadlyAnchor id="38" x="608" y="544" width="16" height="16" distance="1" speed="10" size="8" />
+    <jumpPad id="32" x="304" y="336" width="32" height="3" />
+    <spawnPoint id="34" x="80" y="448" width="16" height="16" />
+    <spawnPoint id="39" x="256" y="448" width="16" height="16" />
+    <spawnPoint id="40" x="368" y="448" width="16" height="16" />
+    <spawnPoint id="41" x="544" y="448" width="16" height="16" />
+  </Platforms>
+</level>
