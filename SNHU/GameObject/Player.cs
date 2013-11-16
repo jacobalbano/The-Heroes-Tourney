@@ -23,6 +23,8 @@ namespace SNHU.GameObject
 		private Image image;
 		private VirtualAxis axis;
 		
+		private PhysicsBody physics;
+		
 		public const float SPEED = 6;
 		
 		public Player(float x, float y) : base(x, y)
@@ -34,14 +36,22 @@ namespace SNHU.GameObject
 			
 			axis = VirtualAxis.WSAD();
 			
-			AddLogic(new PhysicsBody());
+			physics = new PhysicsBody();
+			physics.Colliders.Add(Platform.Collision);
+			AddLogic(physics);
 		}
 		
 		public override void Update()
 		{
 			base.Update();
 			
-			MoveBy(axis.X * SPEED, 0, "platform");
+			if (Input.Pressed(Keyboard.Key.Space))
+			{
+				//	NO WORKY
+				OnMessage(PhysicsBody.IMPULSE, 0, -25);
+			}
+			
+			MoveBy(axis.X * SPEED, 0, Platform.Collision);
 		}
 	}
 }

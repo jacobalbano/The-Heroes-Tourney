@@ -9,12 +9,13 @@
 using System;
 using Punk;
 using Punk.Graphics;
-using SNHU.Actor;
 
 namespace SNHU.GameObject
 {
 	public class Platform : Entity
 	{
+		public const string Collision = "platform";
+		
 		private Player owner;
 		public Player myOwner
 		{
@@ -32,6 +33,8 @@ namespace SNHU.GameObject
 			
 			myImage.CenterOO();
 			CenterOrigin();
+			
+			Type = Collision;
 		}
 
         public virtual void OnLand(Player playerTarget)

@@ -21,6 +21,7 @@ namespace SNHU
 		{
 			base.Init();
 			
+			FP.Console.Enable();
 			FP.World = new GameWorld();
 		}
 		
