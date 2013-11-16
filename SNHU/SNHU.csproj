@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Components\PhysicsBody.cs" />
     <Compile Include="GameObject\Chunk.cs" />
+    <Compile Include="GameObject\Mixer.cs" />
     <Compile Include="GameObject\Platforms\JumpPad.cs" />
     <Compile Include="GameObject\Platforms\Platform.cs" />
     <Compile Include="GameObject\Player.cs" />

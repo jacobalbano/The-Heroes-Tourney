@@ -87,6 +87,7 @@ namespace SNHU.GameObject
 				}
 				
 				OnMessage(OnLand);
+				Mixer.Audio["land1"].Play();
 			}
 			
 			return base.MoveCollideY(e);
