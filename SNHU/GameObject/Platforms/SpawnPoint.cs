@@ -18,6 +18,7 @@ namespace SNHU.GameObject.Platforms
 	{
 		public SpawnPoint()
 		{
+			
 		}
 	}
 }
