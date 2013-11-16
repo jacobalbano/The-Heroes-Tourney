@@ -50,11 +50,11 @@ namespace SNHU.GameObject
 			
 			if (left)
 			{
-				offsetY = -40;
+				offsetY = -30;
 			}
 			else
 			{
-				offsetY = -30;
+				offsetY = -20;
 			}
 			
 			FaceRight();
