@@ -29,7 +29,8 @@ namespace SNHU.GameObject
 		private const float JUMP_JUICE_FORCE = 0.3f;
 		private const float JUMP_JUICE_DURATION = 0.17f;
 		
-		private Image image;
+		private Image player;
+		private Image glove1, glove2;
 		private Controller controller;
 		private Axis axis;
 		
@@ -55,18 +56,28 @@ namespace SNHU.GameObject
 				axis = VirtualAxis.WSAD();
 			}
 			
-			image = new Image(Library.GetTexture("assets/player.png"));
+			player = new Image(Library.GetTexture("assets/player.png"));
+			glove1 = new Image(Library.GetTexture("assets/glove1.png"));
+			glove2 = new Image(Library.GetTexture("assets/glove2.png"));
 			
-			AddGraphic(image);
+			glove1.OriginX = 50;
+			glove1.OriginY = 50;
 			
-			image.Color = FP.Color(FP.Rand(uint.MaxValue));
+			glove2.OriginX = 50;
+			glove2.OriginY = 50;
 			
-			image.CenterOO();
-			SetHitboxTo(image);
+			AddGraphic(player);
+			AddGraphic(glove1);
+			AddGraphic(glove2);
+			
+			player.Color = FP.Color(FP.Rand(uint.MaxValue));
+			
+			player.CenterOO();
+			SetHitboxTo(player);
 			CenterOrigin();
 			
 			OriginY = Height;
-			image.OriginY = Height;
+			player.OriginY = Height;
 			
 			
 			physics = new PhysicsBody();
@@ -87,11 +98,15 @@ namespace SNHU.GameObject
 			
 			if (axis.X < 0)
 			{
-				image.FlippedX = true;
+				player.FlippedX = true;
+				glove1.FlippedX = true;
+				glove2.FlippedX = true;
 			}
 			else if (axis.X > 0)
 			{
-				image.FlippedX = false;
+				player.FlippedX = false;
+				glove1.FlippedX = false;
+				glove2.FlippedX = false;
 			}
 			
 			if (Collide(Platform.Collision, X, Y + 1) == null)
@@ -109,11 +124,11 @@ namespace SNHU.GameObject
 				Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
 				
 				ClearTweens();
-				image.ScaleX = 1 - JUMP_JUICE_FORCE;
-				image.ScaleY = 1 + JUMP_JUICE_FORCE;
+				player.ScaleX = 1 - JUMP_JUICE_FORCE;
+				player.ScaleY = 1 + JUMP_JUICE_FORCE;
 				
 				var tween = new MultiVarTween(null, ONESHOT);
-				tween.Tween(image, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
+				tween.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
 				AddTween(tween, true);
 			}
 			
@@ -141,11 +156,11 @@ namespace SNHU.GameObject
 				if (!OnGround)
 				{
 					ClearTweens();
-					image.ScaleX = 1 + JUMP_JUICE_FORCE;
-					image.ScaleY = 1 - JUMP_JUICE_FORCE;
+					player.ScaleX = 1 + JUMP_JUICE_FORCE;
+					player.ScaleY = 1 - JUMP_JUICE_FORCE;
 					
 					var tween = new MultiVarTween(null, ONESHOT);
-					tween.Tween(image, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
+					tween.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
 					AddTween(tween, true);
 					
 					OnGround = true;
