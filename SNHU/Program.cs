@@ -13,7 +13,18 @@ namespace SNHU
 {
 	class Program : Engine
 	{
-		public Program() : base(1000, 640, 60) {}
+		public Program() : base(1000, 600, 60)
+		{
+		}
+		
+		public override void Init()
+		{
+			base.Init();
+			
+			FP.World = new GameWorld();
+			
+			FP.Log(Library.GetText("Program.cs"));
+		}
 		
 		public static void Main(string[] args)
 		{
