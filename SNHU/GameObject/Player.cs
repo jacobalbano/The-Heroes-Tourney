@@ -55,7 +55,10 @@ namespace SNHU.GameObject
 				axis = VirtualAxis.WSAD();
 			}
 			
-			Graphic = image = new Image(Library.GetTexture("assets/player.png"));
+			image = new Image(Library.GetTexture("assets/player.png"));
+			
+			AddGraphic(image);
+			
 			image.Color = FP.Color(FP.Rand(uint.MaxValue));
 			
 			image.CenterOO();
@@ -82,6 +85,15 @@ namespace SNHU.GameObject
 		{
 			base.Update();
 			
+			if (axis.X < 0)
+			{
+				image.FlippedX = true;
+			}
+			else if (axis.X > 0)
+			{
+				image.FlippedX = false;
+			}
+			
 			if (Collide(Platform.Collision, X, Y + 1) == null)
 			{
 				OnGround = false;
@@ -95,6 +107,14 @@ namespace SNHU.GameObject
 			{
 				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce);
 				Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
+				
+				ClearTweens();
+				image.ScaleX = 1 - JUMP_JUICE_FORCE;
+				image.ScaleY = 1 + JUMP_JUICE_FORCE;
+				
+				var tween = new MultiVarTween(null, ONESHOT);
+				tween.Tween(image, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
+				AddTween(tween, true);
 			}
 			
 			if (Math.Abs(physics.MoveDelta.X) < SPEED)
@@ -120,6 +140,7 @@ namespace SNHU.GameObject
 			{
 				if (!OnGround)
 				{
+					ClearTweens();
 					image.ScaleX = 1 + JUMP_JUICE_FORCE;
 					image.ScaleY = 1 - JUMP_JUICE_FORCE;
 					
