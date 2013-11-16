@@ -22,5 +22,12 @@ namespace SNHU.GameObject.Platforms
 		{
 			Type = stringID;
 		}
+		
+		public override void Added()
+		{
+			base.Added();
+			
+			FP.Log(World.TypeCount(Type));
+		}
 	}
 }

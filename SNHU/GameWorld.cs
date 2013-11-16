@@ -24,7 +24,7 @@ namespace SNHU
 	public class GameWorld : World
 	{
 		public static GameManager gameManager;
-		public List<Entity> activeSpawns;
+		public List<Entity> spawnPoints;
 		public SpawnManager spawnManager;
 		private Image bg;
 		
@@ -36,13 +36,13 @@ namespace SNHU
 			FP.Camera.X = FP.HalfWidth;
 			FP.Camera.Y = FP.HalfHeight;
 			
-			gameManager = new GameManager();
 			
 			Input.ControllerConnected += delegate(object sender, JoystickConnectEventArgs e)
 			{
 				// player isn't created when plugged in after game starts
 				CheckControllers();
 			};
+			gameManager = new GameManager();
 			
 			AddTween(new Alarm(0.1f, CheckControllers, Tween.ONESHOT), true);
 			
@@ -62,8 +62,35 @@ namespace SNHU
 			Add(topChunk);
 			
 			Add(gameManager);
+			
+			AddTween(new Alarm(0.2f, DelayBegin, ONESHOT), true);
+		}
+		
+		public void DelayBegin()
+		{
+			base.Begin();
+			
 			spawnManager = new SpawnManager();
 			Add(spawnManager);
+			
+			spawnPoints = new List<Entity>();
+			GetType(SpawnPoint.stringID, spawnPoints);
+			
+			for(int x = 0; x < spawnPoints.Count; x++)
+			{
+				if(!OnCamera(spawnPoints[x].X, spawnPoints[x].Y))
+				{
+					spawnPoints.RemoveAt(x);
+				}
+			}
+			
+				FP.Log(gameManager.Players.Count, spawnPoints.Count, TypeCount(SpawnPoint.stringID));
+			foreach (var player in gameManager.Players)
+			{
+				player.X = spawnPoints[(int)player.id].X;
+				player.Y = spawnPoints[(int)player.id].Y;
+				Add(player);
+			}
 		}
 		
 		public override void Update()
@@ -106,6 +133,11 @@ namespace SNHU
 		
 		public void AdvanceLevel()
 		{
+			
+			foreach (var player in gameManager.Players) {
+				Remove(player);
+			}
+			
 			var tween = new VarTween(OnFinishAdvance, ONESHOT);
 			tween.Tween(FP.Camera, "Y", FP.Camera.Y - FP.Height, 1, Ease.ElasticOut);
 			AddTween(tween, true);
@@ -121,28 +153,48 @@ namespace SNHU
 			topChunk.X = 180;
 			topChunk.Y = (FP.Camera.Y - FP.Height / 2) - Chunk.CHUNK_HEIGHT;
 			
+			Add(topChunk);
+			
+			spawnPoints.Clear();
+			GetType(SpawnPoint.stringID, spawnPoints);
+			
+			for(int x = 0; x < spawnPoints.Count; x++)
+			{
+				if(!OnCamera(spawnPoints[x].X, spawnPoints[x].Y))
+				{
+					spawnPoints.RemoveAt(x);
+				}
+			}
+			
+			
+			foreach (var player in gameManager.Players)
+			{
+				player.X = spawnPoints[(int)player.id].X;
+				player.Y = spawnPoints[(int)player.id].Y;
+				Add(player);
+			}
 		}
 		
 		public void CheckControllers()
 		{
 			if (Joystick.IsConnected(0))
 			{
-				gameManager.AddPlayer(64, 480, 0);
+				gameManager.AddPlayer(0, 0, 0);
 			}
 			
 			if (Joystick.IsConnected(1))
 			{
-				gameManager.AddPlayer(144, 480, 1);
+				gameManager.AddPlayer(0, 0, 1);
 			}
 			
 			if (Joystick.IsConnected(2))
 			{
-				gameManager.AddPlayer(464, 480, 2);
+				gameManager.AddPlayer(0, 0, 2);
 			}
 			
 			if (Joystick.IsConnected(3))
 			{
-				gameManager.AddPlayer(560, 480, 3);
+				gameManager.AddPlayer(0, 0, 3);
 			}
 		}
 		
