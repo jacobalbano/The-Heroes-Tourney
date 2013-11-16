@@ -38,7 +38,6 @@ namespace SNHU.GameObject
 			
 			theRazor.CenterOO();
 			myImage.CenterOO();
-			razorArm.OriginY = razorArm.Height /2;
 			
 			razorArm.X = myImage.X;
 			razorArm.Y = myImage.Y;
@@ -50,7 +49,6 @@ namespace SNHU.GameObject
 			
 			AddGraphic(razorArm);
 			AddGraphic(theRazor);
-			AddGraphic(myImage);
 			SetHitbox((int)(myImage.Width), (int)(myImage.Height), (int)(myImage.X + myImage.Width/2), (int)(myImage.Y + myImage.Height/2));	
 		}
 		
