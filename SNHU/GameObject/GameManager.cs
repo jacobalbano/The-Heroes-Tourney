@@ -84,11 +84,6 @@ namespace SNHU.GameObject
 			{
 				Player p = new Player(x, y, id);
 				Players.Add(p);
-				
-				if (World != null)
-				{
-					World.Add(p);
-				}
 			}
 		}
 		
