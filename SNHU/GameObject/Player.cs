@@ -64,6 +64,7 @@ namespace SNHU.GameObject
 			physics = new PhysicsBody();
 			physics.Colliders.Add(Platform.Collision);
 			AddLogic(physics);
+			Type = "Player";
 			
 			#if DEBUG
 			AddLogic(new CheckRestart(controller));
@@ -74,6 +75,8 @@ namespace SNHU.GameObject
 		{
 			base.Update();
 			
+		 	Teleporter e;
+			
 			if (Collide(Platform.Collision, X, Y + 1) == null)
 			{
 				OnGround = false;
@@ -81,6 +84,11 @@ namespace SNHU.GameObject
 			else
 			{
 				OnMessage(PhysicsBody.FRICTION, 0.75f);
+			}
+			e = (Teleporter)Collide(Teleporter.Collision, X, Y);
+			if ( e != null)
+			{
+				e.onHit(this);
 			}
 			
 			if (OnGround && (controller.Pressed(Controller.Button.A) || Input.Pressed(Keyboard.Key.Space)))

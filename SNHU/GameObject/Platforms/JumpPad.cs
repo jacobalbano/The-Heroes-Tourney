@@ -22,14 +22,24 @@ namespace SNHU.GameObject.Platforms
 		
 		public override void OnLand(Player playerTarget)
 		{
-			playerTarget.OnMessage(PhysicsBody.IMPULSE, Player.JumpForce * 2);
+			playerTarget.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 2);
+		}
+		
+		public override void Update()
+		{
+			base.Update();
+			var e = Collide("Player", X, Y - 1);
+			
+			if(e != null)
+			{
+				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 2);
+			}
 		}
 		
 		public override void Load(System.Xml.XmlNode node)
 		{
 			base.Load(node);
 			uint width = uint.Parse(node.Attributes["width"].Value);
-			//uint height = uint.Parse(node.Attributes["height"].Value);
 			
 			Graphic = myImage = Image.CreateRect(width, 5, FP.Color(0x000000));
 			myImage.Y -= 5;
