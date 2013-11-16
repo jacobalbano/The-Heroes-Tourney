@@ -1,0 +1,19 @@
+<level width="640" height="600">
+  <Platforms>
+    <deadlyAnchor id="0" x="160" y="144" width="16" height="16" distance="4" speed="3" size="3" />
+    <deadlyAnchor id="1" x="448" y="144" width="16" height="16" distance="4" speed="3" size="3" />
+    <platform id="2" x="208" y="272" width="208" height="16" />
+    <platform id="3" x="48" y="512" width="144" height="16" />
+    <platform id="4" x="448" y="512" width="144" height="16" />
+    <platform id="5" x="256" y="80" width="112" height="16" />
+    <jumpPad id="6" x="144" y="512" width="16" height="3" />
+    <jumpPad id="7" x="480" y="512" width="16" height="3" />
+    <jumpPad id="8" x="400" y="272" width="16" height="3" />
+    <jumpPad id="9" x="208" y="272" width="16" height="3" />
+    <jumpPad id="10" x="304" y="80" width="16" height="3" />
+    <spawnPoint id="11" x="64" y="432" width="16" height="16" />
+    <spawnPoint id="12" x="560" y="432" width="16" height="16" />
+    <spawnPoint id="13" x="304" y="176" width="16" height="16" />
+    <player id="14" x="-64" y="96" />
+  </Platforms>
+</level>

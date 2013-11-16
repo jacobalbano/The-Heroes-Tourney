@@ -30,6 +30,7 @@ namespace SNHU
 		
 		private Queue<Chunk> ChunkQueue;
 		private Chunk bottomChunk;
+		private Chunk midChunk;
 		private Chunk topChunk;
 		
 		public GameWorld() : base()
@@ -57,11 +58,16 @@ namespace SNHU
 			bottomChunk.X = 180;
 			bottomChunk.Y = 0;
 			
+			midChunk = ChunkQueue.Dequeue();
+			midChunk.X = 180;
+			midChunk.Y = (FP.Camera.Y - FP.Height / 2) - Chunk.CHUNK_HEIGHT;
+			
 			topChunk = ChunkQueue.Dequeue();
 			topChunk.X = 180;
-			topChunk.Y = (FP.Camera.Y - FP.Height / 2) - Chunk.CHUNK_HEIGHT;
+			topChunk.Y = midChunk.Y - Chunk.CHUNK_HEIGHT;
 			
 			Add(bottomChunk);
+			Add(midChunk);
 			Add(topChunk);
 			Add(gameManager);
 			spawnManager = new SpawnManager();
@@ -91,13 +97,14 @@ namespace SNHU
 			{
 				Remove(bottomChunk);
 				
-				bottomChunk = topChunk;
+				bottomChunk = midChunk;
+				midChunk = topChunk;
 				
 				if (ChunkQueue.Count > 0)
 				{
 					topChunk = ChunkQueue.Dequeue();
 					topChunk.X = 180;
-					topChunk.Y = (FP.Camera.Y - FP.Height / 2) - Chunk.CHUNK_HEIGHT;
+					topChunk.Y = midChunk.Y - Chunk.CHUNK_HEIGHT;
 					Add(topChunk);
 				}
 			}
