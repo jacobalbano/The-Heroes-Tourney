@@ -9,6 +9,7 @@
 using System;
 using Punk;
 using Punk.Graphics;
+using SNHU.GameObject;
 
 namespace SNHU
 {
@@ -20,6 +21,8 @@ namespace SNHU
 		public GameWorld() : base()
 		{
 			AddGraphic(new Text("HI GUISE"));
+			
+			Add(new Player(FP.HalfWidth, FP.HalfHeight));
 		}
 	}
 }
