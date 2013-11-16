@@ -9,6 +9,7 @@
 using System;
 using Punk;
 using Punk.Graphics;
+using Punk.Tweens.Misc;
 
 namespace SNHU.GameObject
 {
@@ -70,6 +71,8 @@ namespace SNHU.GameObject
 
 			speed = uint.Parse(node.Attributes["speed"].Value);
 			rotation = FP.Rand(360);
+			
+			speed *= 0.5f;
 			
 			AddGraphic(razorArm);
 			AddGraphic(myImage);
