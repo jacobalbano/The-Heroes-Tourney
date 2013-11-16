@@ -40,7 +40,6 @@ namespace SNHU.GameObject
 		public override void Added()
 		{
 			base.Added();
-			FP.Log("add");
 			
 			foreach (var e in ents)
 			{
@@ -67,11 +66,6 @@ namespace SNHU.GameObject
 		public override void Update()
 		{
 			base.Update();
-			
-			if (IsBelowCamera && World != null)
-			{
-				//World.Remove(this);
-			}
 		}
 		
 		public bool IsBelowCamera

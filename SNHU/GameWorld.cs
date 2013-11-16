@@ -33,12 +33,11 @@ namespace SNHU
 		{
 			FP.Camera.X = FP.HalfWidth;
 			FP.Camera.Y = FP.HalfHeight;
-				
+			
 			gameManager = new GameManager();
 			
 			Input.ControllerConnected += delegate(object sender, JoystickConnectEventArgs e)
 			{
-				FP.Log("del");
 				// player isn't created when plugged in after game starts
 				CheckControllers();
 			};

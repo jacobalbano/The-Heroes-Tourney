@@ -128,7 +128,7 @@ namespace SNHU.GameObject
 			if (punchy)
 			{
 				var l = new List<Entity>();
-				CollideInto("Player", X, Y, l);
+				CollideInto(Player.Collision, X, Y, l);
 				
 				foreach (var p in l)
 				{

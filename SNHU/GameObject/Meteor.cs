@@ -13,6 +13,7 @@ using Punk.Graphics;
 using Punk.Tweens.Misc;
 using SFML.Window;
 using Punk.Utils;
+using SNHU.Components;
 
 namespace SNHU.GameObject
 {
@@ -28,6 +29,7 @@ namespace SNHU.GameObject
 		List<Vector2f> SpawnPoints;
 		
 		public const int SPEED = 9;
+		public const float STRENGTH = 15.0f;
 		
 		public Meteor()
 		{
@@ -79,6 +81,15 @@ namespace SNHU.GameObject
 			base.Update();
 			
 			MoveBy(direction.Normalized(SPEED).X, direction.Normalized(SPEED).Y);
+			
+			
+			var e = Collide(Player.Collision, X, Y);
+			
+			if(e != null)
+			{
+				e.OnMessage(PhysicsBody.IMPULSE,
+				            direction.Normalized(STRENGTH).X, direction.Normalized(STRENGTH).Y, true);
+			}
 		}
 		
 		public void OnComplete()

@@ -40,6 +40,8 @@ namespace SNHU.GameObject.Platforms
 			AddTween(tween, true);
 			
 			Collidable = false;
+			
+			Mixer.Audio["crumble"].Play();
 		}
 		
 		public override void Load(System.Xml.XmlNode node)

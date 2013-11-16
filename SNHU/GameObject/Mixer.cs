@@ -30,7 +30,7 @@ namespace SNHU.GameObject
 			Audio.Add("hit2", new Sound(Library.GetBuffer("assets/audio/hit2.wav")));
 			Audio.Add("land1", new Sound(Library.GetBuffer("assets/audio/land1.wav")));
 			Audio.Add("death1", new Sound(Library.GetBuffer("assets/audio/death1.wav")));
-			Audio.Add("crumble1", new Sound(Library.GetBuffer("assets/audio/crumble.wav")));
+			Audio.Add("crumble", new Sound(Library.GetBuffer("assets/audio/crumble.wav")));
 			Audio.Add("teleport", new Sound(Library.GetBuffer("assets/audio/teleport.wav")));
 			Audio.Add("jumpPad", new Sound(Library.GetBuffer("assets/audio/jumpPad.wav")));
 		}

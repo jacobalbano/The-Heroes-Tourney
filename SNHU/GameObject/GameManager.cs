@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using Punk;
+using Punk.Tweens.Misc;
 using SFML.Graphics;
 
 namespace SNHU.GameObject
@@ -21,13 +22,21 @@ namespace SNHU.GameObject
 		private MatchTimer matchTimer;
 		public List<Player> Players;
 		private HUD hud;
-		public const float SCROLL_SPEED = 1.0f;
+		public const float SCROLL_SPEED = 0.0f;
+		
+		public const float METEOR_TIME = 20.0f;
+		public float meteorTimeScale = 1.0f;
+		private Alarm meteorTimer;
+		private bool meteorMode;
 		
 		public GameManager()
 		{
 			matchTimer = new MatchTimer(240.0f);
 			Players = new List<Player>();
 			hud = new HUD(this);
+			
+			meteorTimer = new Alarm(METEOR_TIME * meteorTimeScale, OnMeteor, Tween.ONESHOT);
+			meteorMode = false;
 		}
 		
 		public override void Added()
@@ -61,6 +70,37 @@ namespace SNHU.GameObject
 			if (matchTimer.Timer.Active)
 			{
 				FP.Camera.Y -= SCROLL_SPEED;
+				FP.Log(matchTimer.Timer.Percent);
+				
+				if (matchTimer.Timer.Percent >= 0.5f)
+				{
+					if (World != null && ! meteorMode)
+					{
+						meteorMode = true;
+						World.Add(new Meteor());
+						World.AddTween(meteorTimer, true);
+					}
+					
+					if (matchTimer.Timer.Percent >= 0.66f)
+					{
+						meteorTimeScale = 0.75f;
+					}
+					
+					if (matchTimer.Timer.Percent >= 0.75f)
+					{
+						meteorTimeScale = 0.5f;
+					}
+					
+					if (matchTimer.Timer.Percent >= 0.9f)
+					{
+						meteorTimeScale = 0.1f;
+					}
+				}
+				
+				if (matchTimer.Timer.Percent == 1.0f)
+				{
+					World.RemoveTween(meteorTimer);
+				}
 			}
 		}
 		
@@ -83,6 +123,13 @@ namespace SNHU.GameObject
 		public void StartGame()
 		{
 			matchTimer.Timer.Start();
+		}
+		
+		public void OnMeteor()
+		{
+			World.Add(new Meteor());
+			meteorTimer.Reset(METEOR_TIME * meteorTimeScale);
+			World.AddTween(meteorTimer, true);
 		}
 	}
 }

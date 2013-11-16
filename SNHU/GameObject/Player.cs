@@ -77,7 +77,7 @@ namespace SNHU.GameObject
 			left = new Fist(true, this);
 			right = new Fist(false, this);
 			
-			Type = "Player";
+			Type = Collision;
 			physics = new PhysicsBody();
 			physics.Colliders.Add(Platform.Collision);
 			physics.Colliders.Add(Type);

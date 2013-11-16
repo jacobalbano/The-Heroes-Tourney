@@ -56,6 +56,7 @@ namespace SNHU.GameObject.Platforms
 					owner.Y = t.Y;
 					
 					owner.Points += POINT_REWARD;
+					Mixer.Audio["teleport"].Volume = 60.0f;
 					Mixer.Audio["teleport"].Play();
 					
 					World.Remove(t);
