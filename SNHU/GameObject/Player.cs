@@ -30,9 +30,11 @@ namespace SNHU.GameObject
 		private const float JUMP_JUICE_DURATION = 0.17f;
 		
 		private Image player;
-		private Image glove1, glove2;
+		private Fist left, right;
 		private Controller controller;
 		private Axis axis;
+		
+		private bool hand;
 		
 		private PhysicsBody physics;
 		private bool OnGround;
@@ -47,6 +49,8 @@ namespace SNHU.GameObject
 		{
 			this.id = id;
 			
+			hand = false;
+			
 			controller = new Controller(id);
 //			if (Joystick.IsConnected(id))
 //			{
@@ -58,18 +62,8 @@ namespace SNHU.GameObject
 //			}
 //			
 			player = new Image(Library.GetTexture("assets/player.png"));
-			glove1 = new Image(Library.GetTexture("assets/glove1.png"));
-			glove2 = new Image(Library.GetTexture("assets/glove2.png"));
 			SetTint(id);
-
-			glove1.OriginX = 20;
-			glove1.OriginY = 40;
-			glove2.OriginX = 40;
-			glove2.OriginY = 50;
-			
-			AddGraphic(glove2);
 			AddGraphic(player);
-			AddGraphic(glove1);
 			
 			player.CenterOO();
 			SetHitboxTo(player);
@@ -78,11 +72,14 @@ namespace SNHU.GameObject
 			OriginY = Height;
 			player.OriginY = Height;
 			
+			left = new Fist(true, this);
+			right = new Fist(false, this);
 			
+			Type = "Player";
 			physics = new PhysicsBody();
 			physics.Colliders.Add(Platform.Collision);
+			physics.Colliders.Add(Type);
 			AddLogic(physics);
-			Type = "Player";
 			
 			Points = 0;
 			Deaths = 0;
@@ -90,6 +87,33 @@ namespace SNHU.GameObject
 			#if DEBUG
 			AddLogic(new CheckRestart(controller));
 			#endif
+		}
+		
+		public override void Added()
+		{
+			base.Added();
+			World.AddList(left, right);
+		}
+		
+		public override void Removed()
+		{
+			base.Removed();
+			World.RemoveList(left, right);
+		}
+		
+		void FaceLeft()
+		{
+			player.FlippedX = true;
+			left.FaceLeft();
+			right.FaceLeft();
+		}
+		
+		void FaceRight()
+		{
+			player.FlippedX = false;
+			
+			left.FaceRight();
+			right.FaceRight();
 		}
 		
 		public override void Update()
@@ -100,21 +124,11 @@ namespace SNHU.GameObject
 		 	
 		 	if (axis.X < 0)
 		 	{
-				player.FlippedX = true;
-				glove1.FlippedX = true;
-				glove2.FlippedX = true;
-				
-				glove1.X = 0;
-				glove2.X = 0;
+		 		FaceLeft();
 		 	}
 		 	else if (axis.X > 0)
 		 	{
-				player.FlippedX = false;
-				glove1.FlippedX = false;
-				glove2.FlippedX = false;
-				
-				glove1.X = 5;
-				glove2.X = 50;
+		 		FaceRight();
 		 	}
 		 	
 			if (Collide(Platform.Collision, X, Y + 1) == null)
@@ -168,17 +182,25 @@ namespace SNHU.GameObject
 			
 			if (controller.Pressed(Controller.Button.X))
 			{
-				var tween = new VarTween(() =>
-                {
-					var back = new VarTween(null, ONESHOT);
-					back.Tween(glove1, "X", 0, 0.05f);
-					AddTween(back, true);
-                }, ONESHOT);
-				tween.Tween(glove1, "X", -50, 0.05f);
-				AddTween(tween, true);
+				Punch();
 			}
 			
 		}
+		
+		private void Punch()
+		{
+			if (hand)
+			{
+				left.Punch();
+			}
+			else
+			{
+				right.Punch();
+			}
+			
+			hand = !hand;
+		}
+		
 		
 		public override bool MoveCollideY(Entity e)
 		{
@@ -209,6 +231,14 @@ namespace SNHU.GameObject
 				
 				
 				OnMessage(OnLand);
+			}
+			else if (e.Type == Type)
+			{
+				if (e.Y > Y)
+				{
+					OnMessage(PhysicsBody.IMPULSE, (int) FP.Rand(10) - 5, JumpForce, true);
+					e.OnMessage(PhysicsBody.IMPULSE, (int) FP.Rand(10) - 5, -JumpForce / 2, true);
+				}
 			}
 			
 			return base.MoveCollideY(e);

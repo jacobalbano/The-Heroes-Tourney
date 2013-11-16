@@ -61,12 +61,12 @@ namespace SNHU
 		{
 			if (Joystick.IsConnected(0))
 			{
-				gameManager.AddPlayer(FP.HalfWidth, -50, 0);
+				gameManager.AddPlayer(FP.HalfWidth - 100, -50, 0);
 			}
 			
 			if (Joystick.IsConnected(1))
 			{
-				gameManager.AddPlayer(FP.HalfWidth, -50, 1);
+				gameManager.AddPlayer(FP.HalfWidth - 50, -50, 1);
 			}
 			
 			if (Joystick.IsConnected(2))
@@ -76,7 +76,7 @@ namespace SNHU
 			
 			if (Joystick.IsConnected(3))
 			{
-				gameManager.AddPlayer(FP.HalfWidth, -50, 3);
+				gameManager.AddPlayer(FP.HalfWidth - 75, -50, 3);
 			}
 		}
 	}

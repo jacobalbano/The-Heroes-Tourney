@@ -76,6 +76,7 @@
     <Compile Include="Components\CheckRestart.cs" />
     <Compile Include="Components\PhysicsBody.cs" />
     <Compile Include="GameObject\Chunk.cs" />
+    <Compile Include="GameObject\Fist.cs" />
     <Compile Include="GameObject\GameManager.cs" />
     <Compile Include="GameObject\HUD.cs" />
     <Compile Include="GameObject\MatchTimer.cs" />
