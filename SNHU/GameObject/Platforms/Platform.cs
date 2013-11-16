@@ -10,11 +10,12 @@ using System;
 using Punk;
 using Punk.Graphics;
 
-namespace SNHU.GameObject
+namespace SNHU.GameObject.Platforms
 {
 	public class Platform : Entity
 	{
 		public const string Collision = "platform";
+		public const string NotifyCamera = "platform_cameraNotification";
 		
 		private Player owner;
 		public Player myOwner
@@ -26,15 +27,26 @@ namespace SNHU.GameObject
 		}
 		private Image myImage;
 		
-		public Platform(float posX, float posY, uint width, uint height):base(posX, posY)
+		public Platform():base()
 		{
+			Type = Collision;
+			
+			AddResponse(NotifyCamera, OnNotifyCamera);
+		}
+		
+		public override void Load(System.Xml.XmlNode node)
+		{
+			base.Load(node);
+			uint width = uint.Parse(node.Attributes["width"].Value);
+			uint height = uint.Parse(node.Attributes["height"].Value);
+			
 			Graphic = myImage = Image.CreateRect(width, height, FP.Color(0x00FF00));
 			SetHitboxTo(Graphic);
-			
-			myImage.CenterOO();
-			CenterOrigin();
-			
-			Type = Collision;
+		}
+		
+		private void OnNotifyCamera(params object[] args)
+		{
+			World.Remove(this);
 		}
 
         public virtual void OnLand(Player playerTarget)
