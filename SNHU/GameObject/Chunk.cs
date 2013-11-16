@@ -31,6 +31,7 @@ namespace SNHU.GameObject
 			world.RegisterClass<Crumble>("crumble");
 			world.RegisterClass<Teleporter>("teleporter");
 			world.RegisterClass<Razor>("deadlyAnchor");
+			world.RegisterClass<SpawnPoint>("spawnPoint");
 			
 			switch (chunkType)
 			{
