@@ -7,7 +7,9 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using Punk;
 using Punk.Tweens.Misc;
+using Punk.Graphics;
 
 namespace SNHU.GameObject.Platforms
 {

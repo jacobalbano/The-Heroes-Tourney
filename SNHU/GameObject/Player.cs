@@ -65,6 +65,7 @@ namespace SNHU.GameObject
 			if (Input.Pressed(Keyboard.Key.Space))
 			{
 				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce);
+				Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
 			}
 			
 			MoveBy(axis.X * SPEED, 0, Platform.Collision);
@@ -84,10 +85,11 @@ namespace SNHU.GameObject
 					AddTween(tween, true);
 					
 					OnGround = true;
+					
+					Mixer.Audio["land1"].Play();
 				}
 				
 				OnMessage(OnLand);
-				Mixer.Audio["land1"].Play();
 			}
 			
 			return base.MoveCollideY(e);

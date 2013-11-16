@@ -26,7 +26,7 @@ namespace SNHU.GameObject.Platforms
 				owner = value;
 			}
 		}
-		private Image myImage;
+		protected Image myImage;
 		
 		public Platform():base()
 		{
@@ -41,7 +41,7 @@ namespace SNHU.GameObject.Platforms
 			OnLand(args[0] as Player);
 		}
 		
-		public abstract void Load(System.Xml.XmlNode node)
+		override public void Load(System.Xml.XmlNode node)
 		{
 			base.Load(node);
 			uint width = uint.Parse(node.Attributes["width"].Value);

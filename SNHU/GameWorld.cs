@@ -18,11 +18,18 @@ namespace SNHU
 	/// </summary>
 	public class GameWorld : World
 	{
+		public GameManager gameManager;
+		
 		public GameWorld() : base()
 		{
+			gameManager = new GameManager();
+			
 			AddGraphic(new Image(Library.GetTexture("assets/bg.png")));	
 			Add(new Player(FP.HalfWidth, 0));
 			Add(new Chunk(0, 0));
+			Add(gameManager);
+			
+			gameManager.StartGame();
 		}
 	}
 }
