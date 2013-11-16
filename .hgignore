@@ -1,3 +1,4 @@
 syntax: glob
 SNHU/obj
 SNHU/bin
+SNHU/assets/Thumbs.db

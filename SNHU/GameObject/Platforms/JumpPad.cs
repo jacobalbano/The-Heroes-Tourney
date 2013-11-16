@@ -11,9 +11,6 @@ using SNHU.Components;
 
 namespace SNHU.GameObject.Platforms
 {
-	/// <summary>
-	/// Description of JumpPad.
-	/// </summary>
 	public class JumpPad : Platform
 	{
 		public JumpPad() : base()
@@ -24,6 +21,11 @@ namespace SNHU.GameObject.Platforms
 		public override void OnLand(Player playerTarget)
 		{
 			playerTarget.OnMessage(PhysicsBody.IMPULSE, Player.JumpForce * 2);
+		}
+		
+		public override void Load(System.Xml.XmlNode node)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
