@@ -86,6 +86,7 @@ namespace SNHU.GameObject
 			if (OnGround && (controller.Pressed(Controller.Button.A) || Input.Pressed(Keyboard.Key.Space)))
 			{
 				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce);
+				Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
 			}
 			
 			if (Math.Abs(physics.MoveDelta.X) < SPEED)
@@ -119,6 +120,8 @@ namespace SNHU.GameObject
 					AddTween(tween, true);
 					
 					OnGround = true;
+					
+					Mixer.Audio["land1"].Play();
 				}
 				
 				
