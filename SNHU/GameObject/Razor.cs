@@ -51,10 +51,12 @@ namespace SNHU.GameObject
 			base.Update();
 			blade.Angle += 15;
 			
-			if (Collide(Player.Collision, X, Y) != null)
+			var p = Collide(Player.Collision, X, Y) as Player;
+			if (p != null)
 			{
 				for (int i = 0; i < 25; ++i)
 				{
+					World.Remove(p);
 					emitter.Emit(FP.Choose("0", "1", "2", "3"), X, Y);
 				}
 			}

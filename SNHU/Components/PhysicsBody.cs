@@ -69,13 +69,13 @@ namespace SNHU.Components
 		
 		private bool applyGroundFriction;
 		private float frictionFactor;
-		private const float airFriction = .9f;
+		private const float airFriction = 0.9f;
 		
 		public PhysicsBody()
 		{
 			Colliders = new List<string>();
 			MoveDelta = new Vector2f();
-			Gravity = 0.3f;
+			Gravity = 0.75f;
 			
 			movement = new Vector2f();
 			hasGravity = true;

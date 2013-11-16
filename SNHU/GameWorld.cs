@@ -45,6 +45,7 @@ namespace SNHU
 				// player isn't created when plugged in after game starts
 				CheckControllers();
 			};
+			
 			gameManager = new GameManager();
 			
 			AddTween(new Alarm(0.1f, CheckControllers, Tween.ONESHOT), true);

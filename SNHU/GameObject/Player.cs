@@ -27,7 +27,7 @@ namespace SNHU.GameObject
 		
 		public const string Collision = "player";
 		
-		public const float JumpForce = -8;
+		public const float JumpForce = -15;
 		
 		private const float JUMP_JUICE_FORCE = 0.3f;
 		private const float JUMP_JUICE_DURATION = 0.17f;
@@ -248,8 +248,8 @@ namespace SNHU.GameObject
 				if (e.Y > Y)
 				{
 					Points += 10;
-					OnMessage(PhysicsBody.IMPULSE, (int) FP.Rand(10) - 5, JumpForce, true);
-					e.OnMessage(PhysicsBody.IMPULSE, (int) FP.Rand(10) - 5, -JumpForce, true);
+					OnMessage(PhysicsBody.IMPULSE, (int) FP.Rand(10) - 5, JumpForce);
+					e.OnMessage(PhysicsBody.IMPULSE, (int) FP.Rand(10) - 5, -JumpForce);
 				}
 			}
 			
