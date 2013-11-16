@@ -72,7 +72,6 @@ namespace SNHU.GameObject
 			if (matchTimer.Timer.Active)
 			{
 				FP.Camera.Y -= SCROLL_SPEED;
-				FP.Log(matchTimer.Timer.Percent);
 				
 				if (matchTimer.Timer.Percent >= 0.5f)
 				{
