@@ -15,7 +15,7 @@ namespace SNHU.GameObject.Platforms
 {
 	public class Teleporter : Entity
 	{
-		public uint ID;
+		public int ID;
 		
 		public const string Collision = "teleporter";
 		public const int POINT_REWARD = 50;
@@ -37,7 +37,7 @@ namespace SNHU.GameObject.Platforms
 			SetHitboxTo(Graphic);
 			Type = Collision;
 			
-			ID += (uint)FP.Camera.Y;
+			ID += (int)FP.Camera.Y;
 		}
 		
 		public override void Update()

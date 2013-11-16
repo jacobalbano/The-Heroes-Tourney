@@ -24,7 +24,6 @@ namespace SNHU.GameObject
 		
 		private Sfx GameMusic;
 		
-		private MatchTimer matchTimer;
 		public List<Player> Players;
 		private HUD hud;
 		public const float SCROLL_SPEED = 1.0f;
@@ -41,7 +40,6 @@ namespace SNHU.GameObject
 			
 			GameMusic = new Sfx(Mixer.Audio["music"]);
 			
-			matchTimer = new MatchTimer(240.0f);
 			Players = new List<Player>();
 			hud = new HUD(this);
 			
@@ -63,13 +61,11 @@ namespace SNHU.GameObject
 				}
 			}
 			
-			World.Add(matchTimer);
 			World.Add(hud);
 		}
 		
 		public override void Removed()
 		{
-			World.Remove(matchTimer);
 			World.Remove(hud);
 			
 			base.Removed();
@@ -78,41 +74,6 @@ namespace SNHU.GameObject
 		public override void Update()
 		{
 			base.Update();
-			
-			if (GameStarted)
-			{
-				FP.Camera.Y -= SCROLL_SPEED;
-				
-				if (matchTimer.Timer.Percent >= 0.5f)
-				{
-					if (World != null && ! meteorMode)
-					{
-						meteorMode = true;
-						World.Add(new Meteor());
-						World.AddTween(meteorTimer, true);
-					}
-					
-					if (matchTimer.Timer.Percent >= 0.66f)
-					{
-						meteorTimeScale = 0.75f;
-					}
-					
-					if (matchTimer.Timer.Percent >= 0.75f)
-					{
-						meteorTimeScale = 0.5f;
-					}
-					
-					if (matchTimer.Timer.Percent >= 0.9f)
-					{
-						meteorTimeScale = 0.1f;
-					}
-				}
-				
-				if (matchTimer.Timer.Percent == 1.0f)
-				{
-					World.RemoveTween(meteorTimer);
-				}
-			}
 		}
 		
 		public void AddPlayer(float x, float y, uint id)
@@ -136,7 +97,6 @@ namespace SNHU.GameObject
 			if (!GameStarted)
 			{
 				GameStarted = true;
-				matchTimer.Timer.Start();
 				GameMusic.Play();
 			}
 		}
@@ -151,7 +111,6 @@ namespace SNHU.GameObject
 				if (!GamePaused)
 				{
 					GamePaused = true;
-					matchTimer.Timer.Active = false;
 					GameMusic.Pause();
 					
 					if (affectEnts)
@@ -165,7 +124,6 @@ namespace SNHU.GameObject
 				else
 				{
 					GamePaused = false;
-					matchTimer.Timer.Active = true;
 					GameMusic.Play();
 					
 					if (affectEnts)

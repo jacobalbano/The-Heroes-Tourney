@@ -28,9 +28,7 @@ namespace SNHU
 		public SpawnManager spawnManager;
 		private Image bg;
 		
-		private Queue<Chunk> ChunkQueue;
 		private Chunk bottomChunk;
-		private Chunk midChunk;
 		private Chunk topChunk;
 		
 		public GameWorld() : base()
@@ -52,23 +50,17 @@ namespace SNHU
 			bg.ScrollX = bg.ScrollY = 0;
 			AddGraphic(bg);	
 			
-			LoadChunks();
-			
-			bottomChunk = ChunkQueue.Dequeue();
+			bottomChunk = new Chunk(0,0, "start");
 			bottomChunk.X = 180;
 			bottomChunk.Y = 0;
 			
-			midChunk = ChunkQueue.Dequeue();
-			midChunk.X = 180;
-			midChunk.Y = (FP.Camera.Y - FP.Height / 2) - Chunk.CHUNK_HEIGHT;
-			
-			topChunk = ChunkQueue.Dequeue();
+			topChunk = new Chunk(0,0);
 			topChunk.X = 180;
-			topChunk.Y = midChunk.Y - Chunk.CHUNK_HEIGHT;
+			topChunk.Y = (FP.Camera.Y - FP.Height / 2) - Chunk.CHUNK_HEIGHT;
 			
 			Add(bottomChunk);
-			Add(midChunk);
 			Add(topChunk);
+			
 			Add(gameManager);
 			spawnManager = new SpawnManager();
 			Add(spawnManager);
@@ -93,22 +85,41 @@ namespace SNHU
 				gameManager.TogglePauseGame(true);
 			}
 			
-			if (bottomChunk.IsBelowCamera && bottomChunk.World != null)
-			{
-				Remove(bottomChunk);
-				
-				bottomChunk = midChunk;
-				midChunk = topChunk;
-				
-				if (ChunkQueue.Count > 0)
-				{
-					topChunk = ChunkQueue.Dequeue();
-					topChunk.X = 180;
-					topChunk.Y = midChunk.Y - Chunk.CHUNK_HEIGHT;
-					Add(topChunk);
-				}
-			}
+//			if (bottomChunk.IsBelowCamera && bottomChunk.World != null)
+//			{
+//				Remove(bottomChunk);
+//				
+//				bottomChunk = midChunk;
+//				midChunk = topChunk;
+//				
+//				if (ChunkQueue.Count > 0)
+//				{
+//					topChunk = ChunkQueue.Dequeue();
+//					topChunk.X = 180;
+//					topChunk.Y = midChunk.Y - Chunk.CHUNK_HEIGHT;
+//					Add(topChunk);
+//				}
+//			}
 			
+			
+		}
+		
+		public void AdvanceLevel()
+		{
+			var tween = new VarTween(OnFinishAdvance, ONESHOT);
+			tween.Tween(FP.Camera, "Y", FP.Camera.Y - FP.Height, 1, Ease.ElasticOut);
+			AddTween(tween, true);
+		}
+		
+		private void OnFinishAdvance()
+		{
+			Remove(bottomChunk);
+			
+			bottomChunk = topChunk;
+			
+			topChunk = new Chunk(0,0);
+			topChunk.X = 180;
+			topChunk.Y = (FP.Camera.Y - FP.Height / 2) - Chunk.CHUNK_HEIGHT;
 			
 		}
 		
@@ -116,12 +127,12 @@ namespace SNHU
 		{
 			if (Joystick.IsConnected(0))
 			{
-				gameManager.AddPlayer(32, 480, 0);
+				gameManager.AddPlayer(64, 480, 0);
 			}
 			
 			if (Joystick.IsConnected(1))
 			{
-				gameManager.AddPlayer(176, 480, 1);
+				gameManager.AddPlayer(144, 480, 1);
 			}
 			
 			if (Joystick.IsConnected(2))
@@ -131,22 +142,8 @@ namespace SNHU
 			
 			if (Joystick.IsConnected(3))
 			{
-				gameManager.AddPlayer(592, 480, 3);
+				gameManager.AddPlayer(560, 480, 3);
 			}
-		}
-		
-		private void LoadChunks()
-		{
-			ChunkQueue = new Queue<Chunk>();
-			
-			ChunkQueue.Enqueue(new Chunk(0,0,"start"));
-			
-			for (int i = 0; i < 20; i++)
-			{
-				ChunkQueue.Enqueue(new Chunk(0,0));
-			}
-			
-			ChunkQueue.Enqueue(new Chunk(0,0,"end"));
 		}
 		
 		public static bool OnCamera(float x, float y)

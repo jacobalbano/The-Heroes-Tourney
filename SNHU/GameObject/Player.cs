@@ -188,6 +188,11 @@ namespace SNHU.GameObject
 				Punch();
 			}
 			
+			if (controller.Pressed(Controller.Button.B))
+			{
+				(World as GameWorld).AdvanceLevel();
+			}
+			
 			if (controller.Pressed(Controller.Button.Start))
 			{
 				GameWorld.gameManager.StartGame();

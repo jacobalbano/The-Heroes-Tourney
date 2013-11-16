@@ -30,9 +30,11 @@ namespace SNHU.GameObject
 			world.RegisterClass<Platform>("platform");
 			world.RegisterClass<JumpPad>("jumpPad");
 			world.RegisterClass<Crumble>("crumble");
-			world.RegisterClass<Teleporter>("teleporter");
+			//world.RegisterClass<Teleporter>("teleporter");
 			world.RegisterClass<Razor>("deadlyAnchor");
 			world.RegisterClass<SpawnPoint>("spawnPoint");
+			
+			var t = FP.GetTimer();
 			
 			switch (chunkType)
 			{
@@ -49,6 +51,8 @@ namespace SNHU.GameObject
 					ents = world.BuildWorldAsArray("assets/Levels/Test.oel");
 					break;
 			}
+			
+			FP.Log(FP.GetTimer() - t);
 		}
 		
 		
@@ -64,7 +68,7 @@ namespace SNHU.GameObject
 				
 				if (e is Teleporter)
 				{
-					(e as Teleporter).ID += (uint)Math.Abs(Y);
+					(e as Teleporter).ID += (int)Math.Abs(Y);
 				}
 			}
 			
