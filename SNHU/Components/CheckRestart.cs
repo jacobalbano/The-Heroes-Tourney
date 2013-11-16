@@ -28,7 +28,7 @@ namespace SNHU.Components
 		{
 			base.Update();
 			
-			if (controller.Pressed(Controller.Button.Start))
+			if (controller.Pressed(Controller.Button.Back))
 			{
 				FP.World = new GameWorld();
 			}
