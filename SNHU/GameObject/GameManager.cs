@@ -55,6 +55,8 @@ namespace SNHU.GameObject
 		
 		public void AddPlayer(float x, float y, uint id)
 		{
+			if (Players.Find(p => p.id == id) != null)	return;
+			
 			if (Players.Count < 4 && id <= 4)
 			{
 				Player p = new Player(x, y, id);

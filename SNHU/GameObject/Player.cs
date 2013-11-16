@@ -39,24 +39,24 @@ namespace SNHU.GameObject
 		
 		public const float SPEED = 6;
 		
-		private int points;
-		private uint deaths;
-		private uint id;
+		public int Points { get; private set; }
+		public uint Deaths { get; private set; }
+		public uint id { get; private set;}
 		
 		public Player(float x, float y, uint id) : base(x, y)
 		{
 			this.id = id;
 			
 			controller = new Controller(id);
-			if (Joystick.IsConnected(id))
-			{
+//			if (Joystick.IsConnected(id))
+//			{
 				axis = controller.LeftStick;
-			}
-			else
-			{
-				axis = VirtualAxis.WSAD();
-			}
-			
+//			}
+//			else
+//			{
+//				axis = VirtualAxis.WSAD();
+//			}
+//			
 			player = new Image(Library.GetTexture("assets/player.png"));
 			glove1 = new Image(Library.GetTexture("assets/glove1.png"));
 			glove2 = new Image(Library.GetTexture("assets/glove2.png"));
@@ -71,8 +71,6 @@ namespace SNHU.GameObject
 			AddGraphic(player);
 			AddGraphic(glove1);
 			
-			player.Color = FP.Color(FP.Rand(uint.MaxValue));
-			
 			player.CenterOO();
 			SetHitboxTo(player);
 			CenterOrigin();
@@ -86,8 +84,8 @@ namespace SNHU.GameObject
 			AddLogic(physics);
 			Type = "Player";
 			
-			points = 0;
-			deaths = 0;
+			Points = 0;
+			Deaths = 0;
 			
 			#if DEBUG
 			AddLogic(new CheckRestart(controller));
@@ -99,19 +97,26 @@ namespace SNHU.GameObject
 			base.Update();
 			
 		 	Teleporter e;
+		 	
+		 	if (axis.X < 0)
+		 	{
 				player.FlippedX = true;
 				glove1.FlippedX = true;
 				glove2.FlippedX = true;
 				
 				glove1.X = 0;
 				glove2.X = 0;
+		 	}
+		 	else if (axis.X > 0)
+		 	{
 				player.FlippedX = false;
 				glove1.FlippedX = false;
 				glove2.FlippedX = false;
 				
 				glove1.X = 5;
 				glove2.X = 50;
-			
+		 	}
+		 	
 			if (Collide(Platform.Collision, X, Y + 1) == null)
 			{
 				OnGround = false;
@@ -214,30 +219,20 @@ namespace SNHU.GameObject
 			switch (id)
 			{
 				case 0:
-					image.Color = FP.Color(0xFF8888);
+					player.Color = FP.Color(0xFF8888);
 					break;
 				case 1:
-					image.Color = FP.Color(0x88FF88);
+					player.Color = FP.Color(0x88FF88);
 					break;
 				case 2:
-					image.Color = FP.Color(0x8888FF);
+					player.Color = FP.Color(0x8888FF);
 					break;
 				case 3:
-					image.Color = FP.Color(0xFFFF88);
+					player.Color = FP.Color(0xFFFF88);
 					break;
 				default:
 					break;
 			}
-		}
-		
-		public int Points
-		{
-			get { return points; }
-		}
-		
-		public uint Deaths
-		{
-			get { return deaths; }
 		}
 	}
 }
