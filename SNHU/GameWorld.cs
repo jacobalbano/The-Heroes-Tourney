@@ -26,10 +26,18 @@ namespace SNHU
 		{
 			gameManager = new GameManager();
 			
+			Input.ControllerConnected += delegate(object sender, JoystickConnectEventArgs e)
+			{
+				CheckControllers();
+			};
+			
+			CheckControllers();
+			
 			AddGraphic(new Image(Library.GetTexture("assets/bg.png")));	
-			Add(new Player(FP.HalfWidth, 0));
-			Add(new Chunk(180, 0));
+			Add(new Chunk(0, 0));
 			Add(gameManager);
+			
+			//gameManager.AddPlayer(FP.HalfWidth, 0);
 			
 			gameManager.StartGame();
 		}
@@ -46,6 +54,29 @@ namespace SNHU
 			if (Input.Pressed(Keyboard.Key.F5))
 			{
 				FP.World = new GameWorld();
+			}
+		}
+		
+		public void CheckControllers()
+		{
+			if (Joystick.IsConnected(0))
+			{
+				gameManager.AddPlayer(FP.HalfWidth, -50, 0);
+			}
+			
+			if (Joystick.IsConnected(1))
+			{
+				gameManager.AddPlayer(FP.HalfWidth, -50, 1);
+			}
+			
+			if (Joystick.IsConnected(2))
+			{
+				gameManager.AddPlayer(FP.HalfWidth, -50, 2);
+			}
+			
+			if (Joystick.IsConnected(3))
+			{
+				gameManager.AddPlayer(FP.HalfWidth, -50, 3);
 			}
 		}
 	}
