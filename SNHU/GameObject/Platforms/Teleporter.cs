@@ -33,7 +33,7 @@ namespace SNHU.GameObject.Platforms
 		{
 			base.Load(node);
 			
-			Graphic = myImage = Image.CreateRect(32, 32, FP.Color(0xFFAAFF));
+			Graphic = myImage = Image.CreateRect(16, 16, FP.Color(0xFFAAFF));
 			SetHitboxTo(Graphic);
 			Type = Collision;
 			

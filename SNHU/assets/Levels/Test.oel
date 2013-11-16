@@ -20,7 +20,7 @@
     <crumble id="17" x="224" y="528" width="16" crumbleTime="1" />
     <crumble id="18" x="112" y="528" width="16" crumbleTime="1" />
     <platform id="19" x="256" y="496" width="96" />
-    <deadlyAnchor id="20" x="160" y="448" width="16" distance="3" speed="4" size="0" />
+    <deadlyAnchor id="20" x="160" y="448" width="16" distance="3" speed="4" size="12" />
     <platform id="22" x="16" y="352" width="128" />
     <teleporterOUT id="23" x="80" y="320" ID="1" />
     <teleporterIN id="21" x="480" y="448" ID="1" />
@@ -40,7 +40,7 @@
     <crumble id="37" x="464" y="256" width="16" crumbleTime="1" />
     <jumpPad id="38" x="416" y="304" width="16" />
     <platform id="39" x="160" y="288" width="64" />
-    <deadlyAnchor id="40" x="336" y="208" width="16" distance="10" speed="3" size="0" />
+    <deadlyAnchor id="40" x="336" y="208" width="16" distance="10" speed="3" size="20" />
     <teleporterIN id="42" x="304" y="224" ID="2" />
     <platform id="43" x="48" y="160" width="112" />
     <teleporterOUT id="44" x="80" y="128" ID="2" />
@@ -49,7 +49,7 @@
     <crumble id="47" x="240" y="224" width="16" crumbleTime="1" />
     <crumble id="48" x="192" y="224" width="16" crumbleTime="1" />
     <crumble id="49" x="256" y="224" width="16" crumbleTime="1" />
-    <deadlyAnchor id="50" x="-80" y="240" width="16" distance="15" speed="6" size="0" />
+    <deadlyAnchor id="50" x="-80" y="240" width="16" distance="15" speed="6" size="30" />
     <jumpPad id="51" x="144" y="160" width="16" />
     <jumpPad id="52" x="336" y="208" width="16" />
     <jumpPad id="53" x="416" y="176" width="16" />
