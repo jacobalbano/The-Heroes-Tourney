@@ -53,11 +53,11 @@ namespace SNHU.GameObject
 			base.Removed();
 		}
 		
-		public void AddPlayer(float x, float y)
+		public void AddPlayer(float x, float y, uint id)
 		{
-			if (Players.Count < 4)
+			if (Players.Count < 4 && id <= 4)
 			{
-				Player p = new Player(x, y, (uint)Players.Count);
+				Player p = new Player(x, y, id);
 				Players.Add(p);
 				
 				if (World != null)

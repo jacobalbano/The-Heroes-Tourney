@@ -24,7 +24,7 @@ namespace SNHU.GameObject
 	{
 		public const string OnLand = "player_onLand";
 		
-		public const float JumpForce = -13;
+		public const float JumpForce = -20;
 		
 		private const float JUMP_JUICE_FORCE = 0.3f;
 		private const float JUMP_JUICE_DURATION = 0.17f;
@@ -46,6 +46,7 @@ namespace SNHU.GameObject
 		public Player(float x, float y, uint id) : base(x, y)
 		{
 			this.id = id;
+			
 			controller = new Controller(id);
 			if (Joystick.IsConnected(id))
 			{
@@ -59,10 +60,10 @@ namespace SNHU.GameObject
 			player = new Image(Library.GetTexture("assets/player.png"));
 			glove1 = new Image(Library.GetTexture("assets/glove1.png"));
 			glove2 = new Image(Library.GetTexture("assets/glove2.png"));
-			
+			SetTint(id);
+
 			glove1.OriginX = 20;
 			glove1.OriginY = 40;
-			
 			glove2.OriginX = 40;
 			glove2.OriginY = 50;
 			
@@ -83,6 +84,7 @@ namespace SNHU.GameObject
 			physics = new PhysicsBody();
 			physics.Colliders.Add(Platform.Collision);
 			AddLogic(physics);
+			Type = "Player";
 			
 			points = 0;
 			deaths = 0;
@@ -96,24 +98,19 @@ namespace SNHU.GameObject
 		{
 			base.Update();
 			
-			if (axis.X < 0)
-			{
+		 	Teleporter e;
 				player.FlippedX = true;
 				glove1.FlippedX = true;
 				glove2.FlippedX = true;
 				
 				glove1.X = 0;
 				glove2.X = 0;
-			}
-			else if (axis.X > 0)
-			{
 				player.FlippedX = false;
 				glove1.FlippedX = false;
 				glove2.FlippedX = false;
 				
 				glove1.X = 5;
 				glove2.X = 50;
-			}
 			
 			if (Collide(Platform.Collision, X, Y + 1) == null)
 			{
@@ -122,6 +119,11 @@ namespace SNHU.GameObject
 			else
 			{
 				OnMessage(PhysicsBody.FRICTION, 0.75f);
+			}
+			e = (Teleporter)Collide(Teleporter.Collision, X, Y);
+			if ( e != null)
+			{
+				e.onHit(this);
 			}
 			
 			HandleInput();
@@ -179,7 +181,6 @@ namespace SNHU.GameObject
 			{
 				if (!OnGround)
 				{
-					ClearTweens();
 					player.ScaleX = 1 + JUMP_JUICE_FORCE;
 					player.ScaleY = 1 - JUMP_JUICE_FORCE;
 					
@@ -206,6 +207,27 @@ namespace SNHU.GameObject
 			}
 			
 			return base.MoveCollideY(e);
+		}
+		
+		public void SetTint(uint id)
+		{
+			switch (id)
+			{
+				case 0:
+					image.Color = FP.Color(0xFF8888);
+					break;
+				case 1:
+					image.Color = FP.Color(0x88FF88);
+					break;
+				case 2:
+					image.Color = FP.Color(0x8888FF);
+					break;
+				case 3:
+					image.Color = FP.Color(0xFFFF88);
+					break;
+				default:
+					break;
+			}
 		}
 		
 		public int Points

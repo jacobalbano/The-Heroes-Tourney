@@ -12,31 +12,22 @@ using Punk.Graphics;
 
 namespace SNHU.GameObject.Platforms
 {
-	public class TeleporterIN : Platform
+	public class TeleporterIN : Teleporter
 	{
-		private int ID;
-			
-		public int teleporterID
-		{
-			get
-			{
-				return ID;
-			}
-		}
-		
-		public TeleporterIN()
+		public TeleporterIN() : base()
 		{
 		}
 		
+				
 		public override void Load(System.Xml.XmlNode node)
 		{
 			base.Load(node);
-			uint width = uint.Parse(node.Attributes["width"].Value);
-			uint height = uint.Parse(node.Attributes["height"].Value);
 			uint ID = uint.Parse(node.Attributes["ID"].Value);
 			
-			Graphic = myImage = Image.CreateRect(width, height, FP.Color(0x00FF00));
+			Graphic = myImage = Image.CreateRect(32, 32, FP.Color(0x00FFFF));
 			SetHitboxTo(Graphic);
+			
+			Type = Teleporter.Collision;
 		} 
 	}
 }
