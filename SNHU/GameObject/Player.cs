@@ -60,15 +60,15 @@ namespace SNHU.GameObject
 			glove1 = new Image(Library.GetTexture("assets/glove1.png"));
 			glove2 = new Image(Library.GetTexture("assets/glove2.png"));
 			
-			glove1.OriginX = 50;
-			glove1.OriginY = 50;
+			glove1.OriginX = 20;
+			glove1.OriginY = 40;
 			
-			glove2.OriginX = 50;
+			glove2.OriginX = 40;
 			glove2.OriginY = 50;
 			
+			AddGraphic(glove2);
 			AddGraphic(player);
 			AddGraphic(glove1);
-			AddGraphic(glove2);
 			
 			player.Color = FP.Color(FP.Rand(uint.MaxValue));
 			
@@ -101,12 +101,18 @@ namespace SNHU.GameObject
 				player.FlippedX = true;
 				glove1.FlippedX = true;
 				glove2.FlippedX = true;
+				
+				glove1.X = 0;
+				glove2.X = 0;
 			}
 			else if (axis.X > 0)
 			{
 				player.FlippedX = false;
 				glove1.FlippedX = false;
 				glove2.FlippedX = false;
+				
+				glove1.X = 5;
+				glove2.X = 50;
 			}
 			
 			if (Collide(Platform.Collision, X, Y + 1) == null)
@@ -118,19 +124,7 @@ namespace SNHU.GameObject
 				OnMessage(PhysicsBody.FRICTION, 0.75f);
 			}
 			
-			if (OnGround && (controller.Pressed(Controller.Button.A) || Input.Pressed(Keyboard.Key.Space)))
-			{
-				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce);
-				Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
-				
-				ClearTweens();
-				player.ScaleX = 1 - JUMP_JUICE_FORCE;
-				player.ScaleY = 1 + JUMP_JUICE_FORCE;
-				
-				var tween = new MultiVarTween(null, ONESHOT);
-				tween.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
-				AddTween(tween, true);
-			}
+			HandleInput();
 			
 			if (Math.Abs(physics.MoveDelta.X) < SPEED)
 			{
@@ -147,6 +141,36 @@ namespace SNHU.GameObject
 				}
 				
 			}
+		}
+		
+		private void HandleInput()
+		{
+			if (OnGround && (controller.Pressed(Controller.Button.A) || Input.Pressed(Keyboard.Key.Space)))
+			{
+				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce);
+				Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
+				
+				ClearTweens();
+				player.ScaleX = 1 - JUMP_JUICE_FORCE;
+				player.ScaleY = 1 + JUMP_JUICE_FORCE;
+				
+				var tween = new MultiVarTween(null, ONESHOT);
+				tween.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
+				AddTween(tween, true);
+			}
+			
+			if (controller.Pressed(Controller.Button.X))
+			{
+				var tween = new VarTween(() =>
+                {
+					var back = new VarTween(null, ONESHOT);
+					back.Tween(glove1, "X", 0, 0.05f);
+					AddTween(back, true);
+                }, ONESHOT);
+				tween.Tween(glove1, "X", -50, 0.05f);
+				AddTween(tween, true);
+			}
+			
 		}
 		
 		public override bool MoveCollideY(Entity e)
