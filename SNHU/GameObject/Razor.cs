@@ -10,12 +10,14 @@ using System;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
+using Punk.Utils;
 
 namespace SNHU.GameObject
 {
 	public class RazorBlade : Entity
 	{
 		public Image blade;
+		public Emitter emitter;
 		
 		public RazorBlade()
 		{
@@ -25,13 +27,37 @@ namespace SNHU.GameObject
 			SetHitboxTo(blade);
 			CenterOrigin();
 			
-			Graphic = blade;
+			emitter = new Emitter(Library.GetTexture("assets/blood.png"), 15, 15);
+			emitter.Relative = false;
+			
+			for (int i = 0; i < 4; ++i)
+			{
+				var name = i.ToString();
+				emitter.NewType(name, FP.Frames(i));
+				
+				emitter.SetGravity(name, 10, 10);
+				emitter.SetMotion(name, 0, 50, 0.5f, 360, 15, 1, Ease.QuintOut);
+				emitter.SetAlpha(name, 1, 0, Ease.QuintOut);
+			}
+			
+			AddGraphic(blade);
+			AddGraphic(emitter);
+			
+			Layer = -100;
 		}
 		
 		public override void Update()
 		{
 			base.Update();
 			blade.Angle += 15;
+			
+			if (Collide(Player.Collision, X, Y) != null)
+			{
+				for (int i = 0; i < 25; ++i)
+				{
+					emitter.Emit(FP.Choose("0", "1", "2", "3"), X, Y);
+				}
+			}
 		}
 	}
 	
@@ -50,6 +76,7 @@ namespace SNHU.GameObject
 		
 		public Razor()
 		{
+			Layer = -101;
 		}
 		
 		public override void Load(System.Xml.XmlNode node)
