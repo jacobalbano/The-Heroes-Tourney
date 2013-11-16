@@ -50,7 +50,7 @@ namespace SNHU.GameObject.Platforms
 			uint width = uint.Parse(node.Attributes["width"].Value);
 			crumbleTime = uint.Parse(node.Attributes["crumbleTime"].Value);
 			
-			Graphic = myImage = Image.CreateRect(width, 32, FP.Color(0xFF0000));
+			Graphic = myImage = Image.CreateRect(width, 16, FP.Color(0xFF0000));
 			SetHitboxTo(Graphic);
 		}
 	}

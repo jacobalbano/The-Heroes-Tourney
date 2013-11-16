@@ -42,7 +42,7 @@ namespace SNHU.GameObject
 					ents = world.BuildWorldAsArray("assets/Levels/End.oel");
 					break;
 				case "random":
-					ents = world.BuildWorldAsArray("assets/Levels/" + FP.Choose("Test.oel", "Test2.oel", "Test3.oel"));
+					ents = world.BuildWorldAsArray("assets/Levels/" + FP.Choose("Test.oel"));
 					break;
 				default:
 					ents = world.BuildWorldAsArray("assets/Levels/Test.oel");
