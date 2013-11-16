@@ -51,18 +51,16 @@ namespace SNHU
 			LoadChunks();
 			
 			bottomChunk = ChunkQueue.Dequeue();
-			bottomChunk.X = 0;
+			bottomChunk.X = 180;
 			bottomChunk.Y = 0;
 			
 			topChunk = ChunkQueue.Dequeue();
-			topChunk.X = 0;
+			topChunk.X = 180;
 			topChunk.Y = (FP.Camera.Y - FP.Height / 2) - Chunk.CHUNK_HEIGHT;
 			
 			Add(bottomChunk);
 			Add(topChunk);
 			Add(gameManager);
-			
-			//gameManager.AddPlayer(FP.HalfWidth, 0, 0);
 			
 			gameManager.StartGame();
 		}
@@ -90,7 +88,7 @@ namespace SNHU
 				if (ChunkQueue.Count > 0)
 				{
 					topChunk = ChunkQueue.Dequeue();
-					topChunk.X = 0;
+					topChunk.X = 180;
 					topChunk.Y = (FP.Camera.Y - FP.Height / 2) - Chunk.CHUNK_HEIGHT;
 					Add(topChunk);
 				}

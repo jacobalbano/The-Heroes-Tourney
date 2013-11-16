@@ -16,7 +16,7 @@ namespace SNHU.GameObject.Platforms
 	/// </summary>
 	public class SpawnPoint : Entity
 	{
-		public SpawnPoint()
+		public SpawnPoint(float x, float y) : base(x, y)
 		{
 			
 		}
