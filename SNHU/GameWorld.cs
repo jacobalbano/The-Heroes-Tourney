@@ -25,12 +25,16 @@ namespace SNHU
 		public GameWorld() : base()
 		{
 			gameManager = new GameManager();
+			Input.ControllerConnected += delegate(object sender, JoystickConnectEventArgs e)
+			{
+				gameManager.AddPlayer(FP.HalfWidth, -50);
+			};
 			
 			AddGraphic(new Image(Library.GetTexture("assets/bg.png")));	
 			Add(new Chunk(0, 0));
 			Add(gameManager);
 			
-			gameManager.AddPlayer(FP.HalfWidth, 0);
+			//gameManager.AddPlayer(FP.HalfWidth, 0);
 			
 			gameManager.StartGame();
 		}
