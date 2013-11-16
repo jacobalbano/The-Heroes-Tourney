@@ -10,8 +10,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="50"
-   height="100"
+   width="40"
+   height="80"
    id="svg3925"
    version="1.1"
    inkscape:version="0.48.4 r9939"
@@ -59,9 +59,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="-158.83377"
-     inkscape:cy="12.92528"
+     inkscape:zoom="2.1319269"
+     inkscape:cx="-78.902767"
+     inkscape:cy="-3.6197616"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -88,17 +88,17 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-952.36218)">
+     transform="translate(0,-972.36218)">
     <rect
        style="fill:#000000;fill-opacity:1;stroke:none"
        id="rect3939"
-       width="29.361612"
-       height="60.191082"
-       x="7.9294887"
-       y="991.99084" />
+       width="23.153927"
+       height="47.465374"
+       x="6.4661798"
+       y="1004.7166" />
     <path
-       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:1.734882;stroke-opacity:1"
-       d="M 9.8237849,960.98318 C 22.995246,948.30072 38.553965,957.33523 38.553965,957.33523 l 10.102918,20.82359 -7.577189,19.30368 -20.363699,7.6 -16.8908183,-7.6 c 0,0 -7.1728521,-23.79684 5.9986082,-36.47932 z"
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:1.36809003;stroke-opacity:1"
+       d="m 7.9599806,980.26459 c 10.3867264,-10.00112 22.6559934,-2.8767 22.6559934,-2.8767 l 7.96694,16.42103 -5.975206,15.22248 -16.058368,5.9932 -13.3197309,-5.9932 c 0,0 -5.6563546,-18.76569 4.7303715,-28.76681 z"
        id="rect3933"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="scccccs" />
@@ -111,9 +111,9 @@
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
        d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
-       transform="matrix(1.768011,0,0,1.702374,-7.8563247,950.52573)" />
+       transform="matrix(1.3942149,0,0,1.342455,-5.9821679,972.01807)" />
     <path
-       transform="matrix(1.2418143,0,0,1.1957124,12.222501,955.36836)"
+       transform="matrix(0.97926766,0,0,0.9429127,9.8515558,975.83686)"
        d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
@@ -123,7 +123,7 @@
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        sodipodi:type="arc" />
     <path
-       transform="matrix(1.5085228,0,0,1.4525192,-2.3517473,953.54984)"
+       transform="matrix(1.1895882,0,0,1.1454249,-1.6413783,974.40282)"
        d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
@@ -141,7 +141,7 @@
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
        d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
-       transform="matrix(1.0595552,0,0,1.0202194,14.780137,957.68171)" />
+       transform="matrix(0.83554211,0,0,0.80452275,11.868452,977.66112)" />
     <path
        sodipodi:type="arc"
        style="fill:#000000;fill-opacity:1;stroke:none"
@@ -151,9 +151,9 @@
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
        d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
-       transform="matrix(0.95496921,0,0,0.91951616,9.4320845,960.07698)" />
+       transform="matrix(0.75306788,0,0,0.72511038,7.6510943,979.54998)" />
     <path
-       transform="matrix(0.67075057,0,0,0.64584912,23.197787,962.00868)"
+       transform="matrix(0.52893926,0,0,0.50930252,18.506427,981.07327)"
        d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
@@ -165,10 +165,10 @@
     <rect
        style="fill:#000000;fill-opacity:1;stroke:none"
        id="rect4472"
-       width="24.625868"
-       height="11.399825"
-       x="14.55953"
-       y="981.95874" />
+       width="19.419422"
+       height="8.9896536"
+       x="11.694486"
+       y="996.80548" />
     <path
        sodipodi:type="arc"
        style="fill:#d40000;fill-opacity:1;stroke:none"
@@ -177,8 +177,11 @@
        sodipodi:cy="23.285715"
        sodipodi:rx="11.071428"
        sodipodi:ry="11.071428"
-       d="m -35.357141,23.285715 c 0,6.114581 -4.956848,11.071428 -11.071429,11.071428 -6.114581,0 -11.071428,-4.956847 -11.071428,-11.071428 0,-6.114581 4.956847,-11.071428 11.071428,-11.071428 6.114581,0 11.071429,4.956847 11.071429,11.071428 z"
-       transform="matrix(1.6737331,0,0,1.6737331,-26.098223,973.21136)" />
+       d="m -35.357141,23.285715 a 11.071428,11.071428 0 1 1 -22.142857,0 11.071428,11.071428 0 1 1 22.142857,0 z"
+       transform="matrix(1.301051,0,0,1.301051,30.435224,977.57189)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\glove2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
        sodipodi:type="arc"
        style="fill:#820000;fill-opacity:1;stroke:none"
@@ -187,28 +190,37 @@
        sodipodi:cy="23.285715"
        sodipodi:rx="11.071428"
        sodipodi:ry="11.071428"
-       d="m -35.357141,23.285715 c 0,6.114581 -4.956848,11.071428 -11.071429,11.071428 -6.114581,0 -11.071428,-4.956847 -11.071428,-11.071428 0,-6.114581 4.956847,-11.071428 11.071428,-11.071428 6.114581,0 11.071429,4.956847 11.071429,11.071428 z"
-       transform="matrix(0.53579995,0.38776423,-0.67265225,0.92944894,-109.74362,1006.3045)" />
+       d="m -35.357141,23.285715 a 11.071428,11.071428 0 1 1 -22.142857,0 11.071428,11.071428 0 1 1 22.142857,0 z"
+       transform="matrix(0.43223639,0.31281416,-0.54263682,0.74979785,-118.17204,1011.7529)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\glove1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
-       transform="matrix(1.1688371,-0.35692812,0.48882459,1.6007601,-55.565313,955.48179)"
-       d="m -35.357141,23.285715 c 0,6.114581 -4.956848,11.071428 -11.071429,11.071428 -6.114581,0 -11.071428,-4.956847 -11.071428,-11.071428 0,-6.114581 4.956847,-11.071428 11.071428,-11.071428 6.114581,0 11.071429,4.956847 11.071429,11.071428 z"
+       transform="matrix(0.90857775,-0.27745265,0.37998036,1.2443265,7.5294293,963.79007)"
+       d="m -35.357141,23.285715 a 11.071428,11.071428 0 1 1 -22.142857,0 11.071428,11.071428 0 1 1 22.142857,0 z"
        sodipodi:ry="11.071428"
        sodipodi:rx="11.071428"
        sodipodi:cy="23.285715"
        sodipodi:cx="-46.42857"
        id="path4483"
        style="fill:url(#linearGradient4492);fill-opacity:1;stroke:none"
-       sodipodi:type="arc" />
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\glove2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
-       transform="matrix(0.63147932,-0.19666357,0.34115111,1.0954233,-92.868003,974.10982)"
-       d="m -35.357141,23.285715 c 0,6.114581 -4.956848,11.071428 -11.071429,11.071428 -6.114581,0 -11.071428,-4.956847 -11.071428,-11.071428 0,-6.114581 4.956847,-11.071428 11.071428,-11.071428 6.114581,0 11.071429,4.956847 11.071429,11.071428 z"
+       transform="matrix(0.49087085,-0.15287344,0.26518863,0.85151065,-21.46725,978.27029)"
+       d="m -35.357141,23.285715 a 11.071428,11.071428 0 1 1 -22.142857,0 11.071428,11.071428 0 1 1 22.142857,0 z"
        sodipodi:ry="11.071428"
        sodipodi:rx="11.071428"
        sodipodi:cy="23.285715"
        sodipodi:cx="-46.42857"
        id="path4476"
        style="fill:#820000;fill-opacity:1;stroke:none"
-       sodipodi:type="arc" />
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\glove2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
        sodipodi:type="arc"
        style="fill:url(#linearGradient4496);fill-opacity:1;stroke:none"
@@ -218,6 +230,9 @@
        sodipodi:rx="13.771934"
        sodipodi:ry="11.071428"
        d="m -32.656636,23.285715 a 13.771934,11.071428 0 1 1 -27.543867,0 13.771934,11.071428 0 1 1 27.543867,0 z"
-       transform="matrix(1.1688371,-0.35692812,0.48882459,1.6007601,-100.01203,966.59348)" />
+       transform="matrix(0.94291522,-0.28793829,0.39434079,1.2913528,-110.32145,979.71749)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\glove1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
   </g>
 </svg>

@@ -134,9 +134,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.9195959"
-     inkscape:cx="35.251156"
-     inkscape:cy="35.629711"
+     inkscape:zoom="3.959798"
+     inkscape:cx="71.637504"
+     inkscape:cy="36.446111"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -314,10 +314,26 @@
        style="fill:#909090;fill-opacity:1;stroke:none"
        sodipodi:nodetypes="cccc" />
     <path
-       style="fill:#1a1a1a;fill-opacity:1;stroke:#666666;stroke-width:1.23701549;stroke-miterlimit:4;stroke-opacity:1"
-       d="m 30.475651,1015.6057 109.405849,0 0,8.763 -109.405849,0 0,-4.3815 z"
+       style="fill:#1a1a1a;fill-opacity:1;stroke:#666666;stroke-width:1.04785347;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 168.47665,1024.7158 -98.952151,0 0,-6.9521 98.952151,0 0,3.476 z"
        id="rect3914"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccccc" />
+       sodipodi:nodetypes="cccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\razorArm.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#1a1a1a;fill-opacity:1;stroke:#666666;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3917"
+       sodipodi:cx="106.69736"
+       sodipodi:cy="-2.5437989"
+       sodipodi:rx="7.1973367"
+       sodipodi:ry="7.1973367"
+       d="m 113.89469,-2.5437989 a 7.1973367,7.1973367 0 1 1 -14.394669,0 7.1973367,7.1973367 0 1 1 14.394669,0 z"
+       transform="translate(0,988.36218)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\pivot.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
   </g>
 </svg>
