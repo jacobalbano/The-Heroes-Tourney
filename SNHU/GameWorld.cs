@@ -25,11 +25,11 @@ namespace SNHU
 	{
 		public static GameManager gameManager;
 		public List<Entity> spawnPoints;
-		public SpawnManager spawnManager;
 		private Image bg;
 		
 		private Chunk currentChunk;
 		private Chunk nextChunk;
+		
 		
 		public GameWorld() : base()
 		{
@@ -112,7 +112,7 @@ namespace SNHU
 			{
 				foreach (var player in gameManager.Players)
 				{
-					if (player.World != null)
+					if (player.IsAlive)
 					{
 						FP.Log("BAD ", player.World == null);
 						Remove(player);
@@ -148,9 +148,12 @@ namespace SNHU
 			{
 				try
 				{
-					player.X = currentChunk.spawnPoints[player.id].X;
-					player.Y = currentChunk.spawnPoints[player.id].Y;
-					Add(player);
+					if (player.Lives > 0)
+					{
+						player.X = currentChunk.spawnPoints[player.id].X;
+						player.Y = currentChunk.spawnPoints[player.id].Y;
+						Add(player);
+					}
 				}
 				catch (ArgumentOutOfRangeException)
 				{
@@ -167,6 +170,5 @@ namespace SNHU
 				y > FP.Camera.Y - FP.HalfHeight &&
 				y < FP.Camera.Y + FP.HalfHeight;
 		}
-		
 	}
 }

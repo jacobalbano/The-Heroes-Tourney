@@ -28,7 +28,6 @@ namespace SNHU.GameObject
 		public const string Collision = "player";
 		
 		public const float JumpForce = -15;
-		
 		private const float JUMP_JUICE_FORCE = 0.3f;
 		private const float JUMP_JUICE_DURATION = 0.17f;
 		
@@ -44,8 +43,10 @@ namespace SNHU.GameObject
 		
 		public const float SPEED = 5.5f;
 		
-		public int Points;
-		public int Deaths { get; private set; }
+		public const int STARTING_LIVES = 50;
+		public bool IsAlive { get; private set; }
+		
+		public int Lives { get; private set; }
 		public int id { get; private set;}
 		
 		public Player(float x, float y, int id) : base(x, y)
@@ -77,8 +78,8 @@ namespace SNHU.GameObject
 			physics.Colliders.Add(Type);
 			AddLogic(physics);
 			
-			Points = 0;
-			Deaths = 0;
+			Lives = STARTING_LIVES;
+			IsAlive = false;
 			
 			#if DEBUG
 			AddLogic(new CheckRestart(controller));
@@ -91,6 +92,7 @@ namespace SNHU.GameObject
 			
 			FP.Log("ADDED");
 			World.AddList(left, right);
+			IsAlive = true;
 		}
 		
 		public override void Removed()
@@ -156,14 +158,8 @@ namespace SNHU.GameObject
 			
 			if(this.Y - this.Height > FP.Camera.Y + FP.HalfHeight)
 			{
-				dead();
+				Kill();
 			}
-		}
-		
-		public void dead()
-		{
-			FP.Log("I DIED");
-			World.BroadcastMessage("player_die", this);
 		}
 		
 		private void HandleInput()
@@ -251,7 +247,6 @@ namespace SNHU.GameObject
 			{
 				if (e.Y > Y)
 				{
-					Points += 10;
 					OnMessage(PhysicsBody.IMPULSE, (int) FP.Rand(10) - 5, JumpForce);
 					e.OnMessage(PhysicsBody.IMPULSE, (int) FP.Rand(10) - 5, -JumpForce);
 				}
@@ -271,7 +266,6 @@ namespace SNHU.GameObject
 					player.Color = FP.Color(0x88FF88);
 					break;
 				case 2:
-					FP.Log("here");
 					player.Color = FP.Color(0x8888FF);
 					break;
 				case 3:
@@ -279,6 +273,24 @@ namespace SNHU.GameObject
 					break;
 				default:
 					break;
+			}
+		}
+		
+		public void Kill()
+		{
+			if (IsAlive)
+			{
+				FP.Log("I DIED");
+				
+				IsAlive = false;
+				World.BroadcastMessage("player_die", this);
+				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 1.0f);
+				World.Remove(this);
+				
+				if (Lives > 0)
+				{
+					Lives -= 1;
+				}
 			}
 		}
 	}

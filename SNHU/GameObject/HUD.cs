@@ -84,19 +84,19 @@ namespace SNHU.GameObject
 			
 			if (gm.Players.Count >= 1)
 			{
-				p1Txt.String = "Player 1\n" + gm.Players[0].Points.ToString();
+				p1Txt.String = "Player 1\n" + gm.Players[0].Lives.ToString();
 			}
 			if (gm.Players.Count >= 2)
 			{
-				p2Txt.String = "Player 2\n" + gm.Players[1].Points.ToString();
+				p2Txt.String = "Player 2\n" + gm.Players[1].Lives.ToString();
 			}
 			if (gm.Players.Count >= 3)
 			{
-				p3Txt.String = "Player 3\n" + gm.Players[2].Points.ToString();
+				p3Txt.String = "Player 3\n" + gm.Players[2].Lives.ToString();
 			}
 			if (gm.Players.Count >= 4)
 			{
-				p4Txt.String = "Player 4\n" + gm.Players[3].Points.ToString();
+				p4Txt.String = "Player 4\n" + gm.Players[3].Lives.ToString();
 			}
 		}
 	}

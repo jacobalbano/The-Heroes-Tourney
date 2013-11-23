@@ -18,7 +18,6 @@ namespace SNHU.GameObject.Platforms
 		public int ID;
 		
 		public const string Collision = "teleporter";
-		public const int POINT_REWARD = 50;
 		
 		public Player owner { get; private set; }
 		
@@ -55,7 +54,6 @@ namespace SNHU.GameObject.Platforms
 					owner.X = t.X;
 					owner.Y = t.Y;
 					
-					owner.Points += POINT_REWARD;
 					Mixer.Audio["teleport"].Volume = 60.0f;
 					Mixer.Audio["teleport"].Play();
 					

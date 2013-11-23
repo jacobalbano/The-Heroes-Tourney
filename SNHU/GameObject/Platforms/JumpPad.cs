@@ -17,8 +17,6 @@ namespace SNHU.GameObject.Platforms
 {
 	public class JumpPad : Entity
 	{
-		public const int POINT_REWARD = 5;
-		
 		private Nineslice image;
 		private Emitter emitter;
 		
@@ -41,7 +39,6 @@ namespace SNHU.GameObject.Platforms
 				}
 				
 				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 1.4, true);
-				(e as Player).Points += POINT_REWARD;
 				Mixer.Audio["jumpPad"].Play();
 			}
 		}

@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using Punk;
 using Punk.Tweens.Misc;
+using Punk.Utils;
 using SFML.Graphics;
 
 namespace SNHU.GameObject
@@ -19,6 +20,15 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class GameManager : Entity
 	{
+		/// <summary>
+		/// Broadcast when the camera should shake
+		/// Arguments: (float strength = 10.0f, float duration = 1.0f)
+		/// </summary>
+		public const string SHAKE = "cameraShake";
+		
+		private float offsetX, offsetY;
+		private MultiVarTween prevShaker;
+		
 		public bool GameStarted { get; private set; }
 		public bool GamePaused { get; private set; }
 		
@@ -47,6 +57,9 @@ namespace SNHU.GameObject
 			meteorMode = false;
 			
 			FP.Camera.Zoom = 0.75f;
+			
+			AddResponse("player_die", OnPlayerDie);
+			AddResponse(SHAKE, OnCameraShake);
 		}
 		
 		public override void Added()
@@ -74,6 +87,9 @@ namespace SNHU.GameObject
 		public override void Update()
 		{
 			base.Update();
+			
+			FP.Camera.X += offsetX;
+			FP.Camera.Y += offsetY;
 		}
 		
 		public void AddPlayer(float x, float y, int id)
@@ -138,6 +154,54 @@ namespace SNHU.GameObject
 			World.Add(new Meteor());
 			meteorTimer.Reset(METEOR_TIME * meteorTimeScale);
 			World.AddTween(meteorTimer, true);
+		}
+		
+		public void OnPlayerDie(params object[] args)
+		{
+			foreach (Player p in Players)
+			{
+				if (p.IsAlive)
+				{
+					return;
+				}
+			}
+			
+			World.AddTween(new Alarm(1.0f, OnNextLevelTimer, ONESHOT), true);
+		}
+		
+		public void OnNextLevelTimer()
+		{
+			(World as GameWorld).AdvanceLevel();
+		}
+		private void OnCameraShake(params object[] args)
+		{
+			FP.Log("SHAAAAAAKE");
+			float str = args.Length > 0 ? (float)args[0] : 10.0f;
+			float dur = args.Length > 1 ? (float)args[1] : 1.0f;
+			
+			// Get a random number [-1..1]
+			float randX = ((float)FP.Rand(200) - 100.0f) / 100.0f;
+			float randY = ((float)FP.Rand(200) - 100.0f) / 100.0f;
+			
+			// Scale it by the strength
+			offsetX = str * (randX);
+			offsetY = str * (randY);
+			
+			if (prevShaker != null)
+			{
+				prevShaker.Cancel();
+			}
+			
+			var shaker = new MultiVarTween(OnShakeDone, Tween.ONESHOT);
+			AddTween(shaker);
+			shaker.Tween(this, new { offsetX = 0.0f, offsetY = 0.0f }, dur, Ease.ElasticOut);
+			shaker.Start();
+			
+			prevShaker = shaker;
+		}
+		
+		private void OnShakeDone()
+		{
 		}
 	}
 }

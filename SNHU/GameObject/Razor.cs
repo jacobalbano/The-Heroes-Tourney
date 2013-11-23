@@ -56,7 +56,7 @@ namespace SNHU.GameObject
 			{
 				for (int i = 0; i < 25; ++i)
 				{
-					World.Remove(p);
+					p.Kill();
 					emitter.Emit(FP.Choose("0", "1", "2", "3"), X, Y);
 				}
 			}
