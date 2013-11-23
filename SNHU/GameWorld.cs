@@ -28,8 +28,8 @@ namespace SNHU
 		public SpawnManager spawnManager;
 		private Image bg;
 		
-		private Chunk bottomChunk;
-		private Chunk topChunk;
+		private Chunk currentChunk;
+		private Chunk nextChunk;
 		
 		public GameWorld() : base()
 		{
@@ -40,56 +40,16 @@ namespace SNHU
 			FP.Camera.X = FP.HalfWidth;
 			FP.Camera.Y = FP.HalfHeight;
 			
+			gameManager = new GameManager();
+			
 			Input.ControllerConnected += delegate(object sender, JoystickConnectEventArgs e)
 			{
 				// player isn't created when plugged in after game starts
 				CheckControllers();
 			};
-			gameManager = new GameManager();
 			
 			AddTween(new Alarm(0.1f, CheckControllers, Tween.ONESHOT), true);
-			
-			bottomChunk = new Chunk(0,0, "start");
-			bottomChunk.X = 180;
-			bottomChunk.Y = 0;
-			
-			topChunk = new Chunk(0,0);
-			topChunk.X = 180;
-			topChunk.Y = (FP.Camera.Y - FP.Height / 2) - Chunk.CHUNK_HEIGHT;
-			
-			Add(bottomChunk);
-			Add(topChunk);
-			
-			Add(gameManager = new GameManager());
-			
 			AddTween(new Alarm(0.2f, DelayBegin, ONESHOT), true);
-		}
-		
-		public void DelayBegin()
-		{
-			base.Begin();
-			
-			spawnManager = new SpawnManager();
-			Add(spawnManager);
-			
-			spawnPoints = new List<Entity>();
-			GetType(SpawnPoint.stringID, spawnPoints);
-			
-			for(int x = 0; x < spawnPoints.Count; x++)
-			{
-				if(!OnCamera(spawnPoints[x].X, spawnPoints[x].Y))
-				{
-					spawnPoints.RemoveAt(x);
-				}
-			}
-			
-				FP.Log(gameManager.Players.Count, spawnPoints.Count, TypeCount(SpawnPoint.stringID));
-			foreach (var player in gameManager.Players)
-			{
-				player.X = spawnPoints[(int)player.id].X;
-				player.Y = spawnPoints[(int)player.id].Y;
-				Add(player);
-			}
 		}
 		
 		public override void Update()
@@ -109,68 +69,6 @@ namespace SNHU
 			if (Input.Pressed(Keyboard.Key.P))
 			{
 				gameManager.TogglePauseGame(true);
-			}
-			
-//			if (bottomChunk.IsBelowCamera && bottomChunk.World != null)
-//			{
-//				Remove(bottomChunk);
-//				
-//				bottomChunk = midChunk;
-//				midChunk = topChunk;
-//				
-//				if (ChunkQueue.Count > 0)
-//				{
-//					topChunk = ChunkQueue.Dequeue();
-//					topChunk.X = 180;
-//					topChunk.Y = midChunk.Y - Chunk.CHUNK_HEIGHT;
-//					Add(topChunk);
-//				}
-//			}
-			
-			
-		}
-		
-		public void AdvanceLevel()
-		{
-			
-			foreach (var player in gameManager.Players) {
-				Remove(player);
-			}
-			
-			var tween = new VarTween(OnFinishAdvance, ONESHOT);
-			tween.Tween(FP.Camera, "Y", FP.Camera.Y - FP.Height, 1, Ease.ElasticOut);
-			AddTween(tween, true);
-		}
-		
-		private void OnFinishAdvance()
-		{
-			Remove(bottomChunk);
-			
-			bottomChunk = topChunk;
-			
-			topChunk = new Chunk(0,0);
-			topChunk.X = 180;
-			topChunk.Y = (FP.Camera.Y - FP.Height / 2) - Chunk.CHUNK_HEIGHT;
-			
-			Add(topChunk);
-			
-			spawnPoints.Clear();
-			GetType(SpawnPoint.stringID, spawnPoints);
-			
-			for(int x = 0; x < spawnPoints.Count; x++)
-			{
-				if(!OnCamera(spawnPoints[x].X, spawnPoints[x].Y))
-				{
-					spawnPoints.RemoveAt(x);
-				}
-			}
-			
-			
-			foreach (var player in gameManager.Players)
-			{
-				player.X = spawnPoints[(int)player.id].X;
-				player.Y = spawnPoints[(int)player.id].Y;
-				Add(player);
 			}
 		}
 		
@@ -197,6 +95,72 @@ namespace SNHU
 			}
 		}
 		
+		public void DelayBegin()
+		{
+			base.Begin();
+			
+			Add(gameManager);
+			
+			AdvanceLevel();
+		}
+		
+		
+		public void AdvanceLevel()
+		{
+			if (gameManager != null)
+			{
+				foreach (var player in gameManager.Players)
+				{
+					if (player.World != null)
+					{
+						FP.Log("BAD ", player.World == null);
+						Remove(player);
+					}
+				}
+			}
+			
+			nextChunk = new Chunk(180, (FP.Camera.Y - FP.HalfHeight) - FP.Height);
+			Add(nextChunk);
+		}
+		
+		public void ChunkLoadComplete()
+		{
+			var tween = new VarTween(OnFinishAdvance, ONESHOT);
+			tween.Tween(FP.Camera, "Y", FP.Camera.Y - FP.Height, 1, Ease.ElasticOut);
+			AddTween(tween, true);
+		}
+		
+		private void OnFinishAdvance()
+		{
+			if (currentChunk != null && currentChunk.World != null)
+			{
+				Remove(currentChunk);
+			}
+			currentChunk = nextChunk;
+			
+			SpawnPlayers();
+		}
+		
+		public void SpawnPlayers()
+		{
+			FP.Log("spawning players ", gameManager.Players.Count, currentChunk.spawnPoints.Count);
+			
+			foreach (var player in gameManager.Players)
+			{
+				try
+				{
+					FP.Log("spawning player ", player.id, " at ", currentChunk.spawnPoints[player.id].X, currentChunk.spawnPoints[player.id].Y);
+					player.X = currentChunk.spawnPoints[player.id].X;
+					player.Y = currentChunk.spawnPoints[player.id].Y;
+					Add(player);
+				}
+				catch (ArgumentOutOfRangeException)
+				{
+					throw new Exception("spawnPoints[" + player.id + "] is out of range. Make sure you have 4 spawn points in the level");
+				}
+			}
+		}
+		
 		public static bool OnCamera(float x, float y)
 		{
 			return
@@ -205,5 +169,6 @@ namespace SNHU
 				y > FP.Camera.Y - FP.HalfHeight &&
 				y < FP.Camera.Y + FP.HalfHeight;
 		}
+		
 	}
 }

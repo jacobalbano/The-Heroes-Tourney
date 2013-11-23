@@ -53,13 +53,13 @@ namespace SNHU.GameObject
 		{
 			base.Added();
 			
-			foreach (Player p in Players)
-			{
-				if (p.World == null)
-				{
-					World.Add(p);
-				}
-			}
+			//foreach (Player p in Players)
+			//{
+			//	if (p.World == null)
+			//	{
+			//		World.Add(p);
+			//	}
+			//}
 			
 			World.Add(hud);
 		}
@@ -76,8 +76,9 @@ namespace SNHU.GameObject
 			base.Update();
 		}
 		
-		public void AddPlayer(float x, float y, uint id)
+		public void AddPlayer(float x, float y, int id)
 		{
+			FP.Log(id);
 			if (Players.Find(p => p.id == id) != null)	return;
 			
 			if (Players.Count < 4 && id <= 4)

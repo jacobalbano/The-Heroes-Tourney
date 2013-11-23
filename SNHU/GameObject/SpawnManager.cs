@@ -36,10 +36,10 @@ namespace SNHU.GameObject
 			if (spawning.Contains(player))	return;
 			
 			spawnList.Clear();
-			World.GetType(SpawnPoint.stringID,spawnList);
+			World.GetType(SpawnPoint.Collision,spawnList);
 			for(int x = 0; x < spawnList.Count; x++)
 			{
-				if(!GameWorld.OnCamera(spawnList[x].X, spawnList[x].Y) && spawnList[x].Y > FP.Camera.Y - 20)
+				if(!GameWorld.OnCamera(spawnList[x].X, spawnList[x].Y) && Math.Abs(spawnList[x].Y - FP.Camera.Y) < FP.HalfHeight)
 				{
 					spawnList.RemoveAt(x);
 				}

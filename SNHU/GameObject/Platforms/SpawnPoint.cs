@@ -16,18 +16,25 @@ namespace SNHU.GameObject.Platforms
 	/// </summary>
 	public class SpawnPoint : Entity
 	{
-		public const string stringID = "spawnPoint";
+		public const string Collision = "spawnPoint";
 		
 		public SpawnPoint() : base()
 		{
-			Type = stringID;
+			Type = Collision;
+		}
+		
+		public override void Load(System.Xml.XmlNode node)
+		{
+			base.Load(node);
+			
+			Type = Collision;
 		}
 		
 		public override void Added()
 		{
 			base.Added();
 			
-			FP.Log(World.TypeCount(Type));
+			FP.Log("HIIIII KAWAIIII", World.TypeCount(Type));
 		}
 	}
 }
