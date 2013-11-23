@@ -164,7 +164,7 @@ namespace SNHU.GameObject
 		
 		private void HandleInput()
 		{
-			if (OnGround && (controller.Pressed(Controller.Button.A) || Input.Pressed(Keyboard.Key.Space)))
+			if (OnGround && (controller.Pressed(Controller.Button.X) || Input.Pressed(Keyboard.Key.Space)))
 			{
 				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce);
 				Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
@@ -178,12 +178,12 @@ namespace SNHU.GameObject
 				AddTween(tween, true);
 			}
 			
-			if (controller.Pressed(Controller.Button.Y))
+			if (controller.Pressed(Controller.Button.A))
 			{
 				World.Add(new Meteor());
 			}
 			
-			if (controller.Pressed(Controller.Button.X))
+			if (controller.Pressed(Controller.Button.Y))
 			{
 				Punch();
 			}

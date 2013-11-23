@@ -22,7 +22,7 @@ namespace SNHU
 			base.Init();
 			
 			FP.Console.Enable();
-			FP.World = new GameWorld();
+			FP.World = new MenuWorld();
 		}
 		
 		public static void Main(string[] args)

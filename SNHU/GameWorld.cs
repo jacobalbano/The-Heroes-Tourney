@@ -107,6 +107,11 @@ namespace SNHU
 				FP.World = new GameWorld();
 			}
 			
+			if (Input.Pressed(Keyboard.Key.Escape))
+			{
+		    	AdvanceLevel();
+			}
+			
 			if (Input.Pressed(Keyboard.Key.P))
 			{
 				gameManager.TogglePauseGame(true);

@@ -92,7 +92,7 @@
             The screen refresh color. Defaults to black.
             </summary>
         </member>
-        <member name="M:Punk.Engine.#ctor(System.UInt32,System.UInt32,System.Single)">
+        <member name="M:Punk.Engine.#ctor(System.Int32,System.Int32,System.Single)">
             <summary>
             Engine constructor
             </summary>
@@ -617,7 +617,7 @@
             If the game currently has input focus or not.
             </summary>
         </member>
-        <member name="M:Punk.FP.Resize(System.UInt32,System.UInt32)">
+        <member name="M:Punk.FP.Resize(System.Int32,System.Int32)">
             <summary>
             Resize the window.
             </summary>
@@ -656,7 +656,7 @@
             <param name="t">Interpolation factor</param>
             <returns>When t=0, returns a. When t=1, returns b. When t=0.5, will return halfway between a and b. Etc.</returns>
         </member>
-        <member name="M:Punk.FP.ColorLerp(System.UInt32,System.UInt32,System.Single)">
+        <member name="M:Punk.FP.ColorLerp(System.Int32,System.Int32,System.Single)">
             <summary>
             Linear interpolation between two colors.
             </summary>
@@ -809,9 +809,9 @@
             Randomizes the random seed using C#'s Random class.
             </summary>
         </member>
-        <member name="M:Punk.FP.Rand(System.UInt32)">
+        <member name="M:Punk.FP.Rand(System.Int32)">
             <summary>
-            Returns a pseudo-random uint.
+            Returns a pseudo-random int.
             </summary>
             <param name="amount">The returned value will always be [0, result, amount].</param>
             <returns>The value.</returns>
@@ -843,7 +843,7 @@
             <param name="b">Item b</param>
             <returns>Returns a if current is b, and b if current is a.</returns>
         </member>
-        <member name="M:Punk.FP.GetColorRGB(System.UInt32,System.UInt32,System.UInt32)">
+        <member name="M:Punk.FP.GetColorRGB(System.Int32,System.Int32,System.Int32)">
             <summary>
             Creates a color value by combining the chosen RGB values.
             </summary>
@@ -852,7 +852,7 @@
             <param name="b">The blue value of the color, from 0 to 255.</param>
             <returns>The combined color.</returns>
         </member>
-        <member name="M:Punk.FP.GetColorHSV(System.UInt32,System.UInt32,System.UInt32)">
+        <member name="M:Punk.FP.GetColorHSV(System.Int32,System.Int32,System.Int32)">
             <summary>
             Creates a color value with the chosen HSV values.
             </summary>
@@ -861,30 +861,30 @@
             <param name="v">The value of the color (from 0 to 1).</param>
             <returns>The created color</returns>
         </member>
-        <member name="M:Punk.FP.GetRed(System.UInt32)">
+        <member name="M:Punk.FP.GetRed(System.Int32)">
             <summary>
             Finds the red factor of a color.
             </summary>
             <param name="color">The color to evaluate.</param>
-            <returns>A uint from 0 to 255.</returns>
+            <returns>A int from 0 to 255.</returns>
         </member>
-        <member name="M:Punk.FP.GetGreen(System.UInt32)">
+        <member name="M:Punk.FP.GetGreen(System.Int32)">
             <summary>
             Finds the green factor of a color.
             </summary>
             <param name="color">The color to evaluate.</param>
-            <returns>A uint from 0 to 255.</returns>
+            <returns>A int from 0 to 255.</returns>
         </member>
-        <member name="M:Punk.FP.GetBlue(System.UInt32)">
+        <member name="M:Punk.FP.GetBlue(System.Int32)">
             <summary>
             Finds the blue factor of a color.
             </summary>
             <param name="color">The color to evaluate.</param>
-            <returns>A uint from 0 to 255.</returns>
+            <returns>A int from 0 to 255.</returns>
         </member>
-        <member name="M:Punk.FP.Color(System.UInt32)">
+        <member name="M:Punk.FP.Color(System.Int32)">
             <summary>
-            Create an SFML color instance from a Flash-style uint (0xRRGGBB)
+            Create an SFML color instance from a Flash-style int (0xRRGGBB)
             </summary>
             <param name="color">A Flash-style color (0xRRGGBB)</param>
             <returns>The converted color</returns>
@@ -926,7 +926,7 @@
             <example>FP.Tween(object, new { x = 500, y = 350 }, 2.0f, new { ease = easeFunction, complete = onComplete } );</example>
             <returns>The added MultiVarTween object.</returns>
         </member>
-        <member name="M:Punk.FP.Alarm(System.Single,Punk.Tween.OnComplete,System.UInt32,Punk.Tweener)">
+        <member name="M:Punk.FP.Alarm(System.Single,Punk.Tween.OnComplete,System.Int32,Punk.Tweener)">
             <summary>
             Schedules a callback for the future.
             Shorthand for creating an Alarm tween, starting it and adding it to a Tweener.
@@ -1369,7 +1369,7 @@
             <param name="texture">Source image.</param>
             <param name="clipRect">Optional rectangle defining area of the source image to draw.</param>
         </member>
-        <member name="M:Punk.Graphics.Image.CreateRect(System.UInt32,System.UInt32,SFML.Graphics.Color)">
+        <member name="M:Punk.Graphics.Image.CreateRect(System.Int32,System.Int32,SFML.Graphics.Color)">
             <summary>
             Create a solid-color rectangle image.
             </summary>
@@ -1378,7 +1378,7 @@
             <param name="color">The color of the image.</param>
             <returns>The created image.</returns>
         </member>
-        <member name="M:Punk.Graphics.Image.CreateCircle(System.UInt32,SFML.Graphics.Color)">
+        <member name="M:Punk.Graphics.Image.CreateCircle(System.Int32,SFML.Graphics.Color)">
             <summary>
             Create a solid-color circle image.
             </summary>
@@ -1544,7 +1544,7 @@
             Y origin of the image, determines transformation point.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Nineslice.#ctor(SFML.Graphics.Texture,System.UInt32,System.UInt32)">
+        <member name="M:Punk.Graphics.Nineslice.#ctor(SFML.Graphics.Texture,System.Int32,System.Int32)">
             <summary>
             Constructor.
             </summary>
@@ -1845,7 +1845,6 @@
         <member name="M:Spine.AttachmentTimeline.setFrame(System.Int32,System.Single,System.String)">
             Sets the time and value of the specified keyframe. 
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Spine.AnimationState.AddAnimation(Spine.Animation,System.Boolean,System.Single)" -->
         <member name="M:Spine.AnimationState.IsComplete">
             Returns true if no animation is set or if the current time is greater than the animation duration, regardless of looping. 
         </member>
@@ -2163,7 +2162,7 @@
             The font size to assign to new Text objects.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Text.#ctor(System.String,System.Single,System.Single,System.UInt32,System.UInt32)">
+        <member name="M:Punk.Graphics.Text.#ctor(System.String,System.Single,System.Single,System.Int32,System.Int32)">
             <summary>
             Constructor
             </summary>
@@ -2582,7 +2581,7 @@
             <summary>
             Collides against a Mask.
             </summary>
-            <param name="other">The mask to collide with.</param>
+            <param name="mask">The mask to collide with.</param>
             <returns>Whether the two collide.</returns>
         </member>
         <member name="M:Punk.Masks.Grid.RenderDebug">
@@ -2819,7 +2818,7 @@
             Tween completion callback
             </summary>
         </member>
-        <member name="M:Punk.Tween.#ctor(System.Single,System.UInt32,Punk.Tween.OnComplete,Punk.Tween.Easer)">
+        <member name="M:Punk.Tween.#ctor(System.Single,System.Int32,Punk.Tween.OnComplete,Punk.Tween.Easer)">
             <summary>
             Constructor. Specify basic information about the Tween.
             </summary>
@@ -2899,7 +2898,7 @@
             A simple alarm, useful for timed events, etc.
             </summary>
         </member>
-        <member name="M:Punk.Tweens.Misc.Alarm.#ctor(System.Single,Punk.Tween.OnComplete,System.UInt32)">
+        <member name="M:Punk.Tweens.Misc.Alarm.#ctor(System.Single,Punk.Tween.OnComplete,System.Int32)">
             <summary>
             Constructor.
             </summary>
@@ -2933,7 +2932,7 @@
             Tweens from one angle to another.
             </summary>
         </member>
-        <member name="M:Punk.Tweens.Misc.AngleTween.#ctor(Punk.Tween.OnComplete,System.UInt32)">
+        <member name="M:Punk.Tweens.Misc.AngleTween.#ctor(Punk.Tween.OnComplete,System.Int32)">
             <summary>
             Constructor.
             </summary>
@@ -2964,14 +2963,14 @@
             Tweens a color's red, green, and blue properties independently.
             </summary>
         </member>
-        <member name="M:Punk.Tweens.Misc.ColorTween.#ctor(Punk.Tween.OnComplete,System.UInt32)">
+        <member name="M:Punk.Tweens.Misc.ColorTween.#ctor(Punk.Tween.OnComplete,System.Int32)">
             <summary>
             Constructor.
             </summary>
             <param name="complete">Optional completion callback.</param>
             <param name="type">Tween type.</param>
         </member>
-        <member name="M:Punk.Tweens.Misc.ColorTween.tween(System.Single,SFML.Graphics.Color,SFML.Graphics.Color,Punk.Tween.Easer)">
+        <member name="M:Punk.Tweens.Misc.ColorTween.Tween(System.Single,SFML.Graphics.Color,SFML.Graphics.Color,Punk.Tween.Easer)">
             <summary>
             Tweens the color to a new color.
             </summary>
@@ -2995,7 +2994,7 @@
             Tweens multiple numeric public properties of an Object simultaneously.
             </summary>
         </member>
-        <member name="M:Punk.Tweens.Misc.MultiVarTween.#ctor(Punk.Tween.OnComplete,System.UInt32)">
+        <member name="M:Punk.Tweens.Misc.MultiVarTween.#ctor(Punk.Tween.OnComplete,System.Int32)">
             <summary>
             Constructor
             </summary>
@@ -3036,7 +3035,7 @@
             The current value.
             </summary>
         </member>
-        <member name="M:Punk.Tweens.Misc.NumTween.#ctor(Punk.Tween.OnComplete,System.UInt32)">
+        <member name="M:Punk.Tweens.Misc.NumTween.#ctor(Punk.Tween.OnComplete,System.Int32)">
             <summary>
             Constructor.
             </summary>
@@ -3062,7 +3061,7 @@
             Tweens a numeric public property of an Object.
             </summary>
         </member>
-        <member name="M:Punk.Tweens.Misc.VarTween.#ctor(Punk.Tween.OnComplete,System.UInt32)">
+        <member name="M:Punk.Tweens.Misc.VarTween.#ctor(Punk.Tween.OnComplete,System.Int32)">
             <summary>
             Constructor
             </summary>
@@ -3107,7 +3106,7 @@
             Description of Motion.
             </summary>
         </member>
-        <member name="M:Punk.Tweens.Motion.Motion.#ctor(System.Single,Punk.Tween.OnComplete,System.UInt32,Punk.Tween.Easer)">
+        <member name="M:Punk.Tweens.Motion.Motion.#ctor(System.Single,Punk.Tween.OnComplete,System.Int32,Punk.Tween.Easer)">
             <summary>
             Constructor.
             </summary>
@@ -3136,7 +3135,7 @@
             Description of QuadPath.
             </summary>
         </member>
-        <member name="M:Punk.Tweens.Motion.QuadPath.#ctor(Punk.Tween.OnComplete,System.UInt32)">
+        <member name="M:Punk.Tweens.Motion.QuadPath.#ctor(Punk.Tween.OnComplete,System.Int32)">
             <summary>
             Constructor.
             </summary>
@@ -3158,7 +3157,7 @@
             @param	x		X position.
             @param	y		Y position.
         </member>
-        <member name="M:Punk.Tweens.Motion.QuadPath.GetPoint(System.UInt32)">
+        <member name="M:Punk.Tweens.Motion.QuadPath.GetPoint(System.Int32)">
             Gets the point on the path.
             @param	index		Index of the point.
             @return	The Point object.
@@ -3194,7 +3193,7 @@
             </summary>
             <param name="Id">Controller ID (zero-based)</param>
         </member>
-        <member name="M:Punk.Utils.Controller.Define(System.String,System.UInt32,Punk.Utils.Controller.Button[])">
+        <member name="M:Punk.Utils.Controller.Define(System.String,System.Int32,Punk.Utils.Controller.Button[])">
             <summary>
             Defines a new input.
             </summary>
@@ -3388,21 +3387,21 @@
         </member>
         <member name="M:Punk.Utils.Ease.QuintIn(System.Single)">
             <summary>
-            Quint in.
+            Qint in.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
         <member name="M:Punk.Utils.Ease.QuintOut(System.Single)">
             <summary>
-            Quint out.
+            Qint out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
         <member name="M:Punk.Utils.Ease.QuintInOut(System.Single)">
             <summary>
-            Quint in and out.
+            Qint in and out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
@@ -4000,7 +3999,7 @@
             <param name="pY">Y position.</param>
             <returns>The collided Entity, or null if none collide.</returns>
         </member>
-        <member name="M:Punk.World.CollideLine(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32)">
+        <member name="M:Punk.World.CollideLine(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Returns the first Entity found that collides with the line.
             </summary>

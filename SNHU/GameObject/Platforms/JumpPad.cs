@@ -25,7 +25,7 @@ namespace SNHU.GameObject.Platforms
 		public JumpPad() : base()
 		{
 			Type = "";
-			AddTween(new Alarm(0.5f, () => emitter.Emit("p", FP.Rand((uint) Width), -5), LOOPING), true);
+			AddTween(new Alarm(0.5f, () => emitter.Emit("p", FP.Rand((int) Width), -5), LOOPING), true);
 		}
 		
 		public override void Update()
@@ -37,7 +37,7 @@ namespace SNHU.GameObject.Platforms
 			{
 				for (int i = 0; i < 5; ++i)
 				{
-					emitter.Emit("p", FP.Rand((uint) Width), -5);
+					emitter.Emit("p", FP.Rand((int) Width), -5);
 				}
 				
 				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 1.4);
@@ -53,7 +53,7 @@ namespace SNHU.GameObject.Platforms
 			width = FP.Clamp(width, 15, 640);	//	lol game jam
 			
 			image = new Nineslice(Library.GetTexture("assets/bouncepad.png"), 3, 3);
-			image.Columns = (uint) (width / 5f);
+			image.Columns = (int) (width / 5f);
 			image.ScaleX = width / image.Width;
 			image.Y -= 3;
 			

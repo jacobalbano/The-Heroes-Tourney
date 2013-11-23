@@ -39,6 +39,7 @@ namespace SNHU.GameObject
 			GamePaused = false;
 			
 			GameMusic = Mixer.music;
+			GameMusic.Play();
 			
 			Players = new List<Player>();
 			hud = new HUD(this);
@@ -47,6 +48,8 @@ namespace SNHU.GameObject
 			meteorMode = false;
 			
 			FP.Camera.Zoom = 0.75f;
+			
+//			Players.Add(new Player(0, 0, 1));
 		}
 		
 		public override void Added()
@@ -92,7 +95,7 @@ namespace SNHU.GameObject
 			if (!GameStarted)
 			{
 				GameStarted = true;
-				GameMusic.Play();
+//				GameMusic.Play();
 			}
 		}
 		

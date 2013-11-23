@@ -35,7 +35,7 @@ namespace SNHU.GameObject
 				var name = i.ToString();
 				emitter.NewType(name, FP.Frames(i));
 				
-				emitter.SetGravity(name, 10, 10);
+				emitter.SetGravity(name, 5, 10);
 				emitter.SetMotion(name, 0, 50, 0.5f, 360, 15, 1, Ease.QuintOut);
 				emitter.SetAlpha(name, 1, 0, Ease.QuintOut);
 			}
@@ -54,9 +54,10 @@ namespace SNHU.GameObject
 			var p = Collide(Player.Collision, X, Y) as Player;
 			if (p != null)
 			{
-				for (int i = 0; i < 25; ++i)
+				p.dead();
+				
+				for (int i = 0; i < 250; ++i)
 				{
-					World.Remove(p);
 					emitter.Emit(FP.Choose("0", "1", "2", "3"), X, Y);
 				}
 			}
