@@ -25,5 +25,6 @@
     <platform id="1" x="0" y="560" width="224" height="16" />
     <platform id="2" x="400" y="560" width="240" height="16" />
     <jumpPad id="6" x="80" y="560" width="64" height="3" />
+    <player id="7" x="-80" y="448" />
   </Platforms>
 </level>

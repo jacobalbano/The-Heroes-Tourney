@@ -19,10 +19,10 @@ namespace SNHU.GameObject
 		public Image blade;
 		public Emitter emitter;
 		
-		public RazorBlade()
+		public RazorBlade(float size)
 		{
 			blade = new Image(Library.GetTexture("assets/razor.png"));
-			blade.Scale = FP.Random + 1f;
+			blade.Scale = size;//FP.Random + 1f;
 			blade.CenterOO();
 			SetHitboxTo(blade);
 			CenterOrigin();
@@ -92,7 +92,7 @@ namespace SNHU.GameObject
 			myImage.CenterOO();
 			razorArm.OriginY = razorArm.Height /2;
 			
-			theRazor = new RazorBlade();
+			theRazor = new RazorBlade(float.Parse(node.Attributes["size"].Value));
 			theRazor.X = X;
 			theRazor.Y = Y;
 			

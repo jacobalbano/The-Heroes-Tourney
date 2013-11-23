@@ -144,13 +144,10 @@ namespace SNHU
 		
 		public void SpawnPlayers()
 		{
-			FP.Log("spawning players ", gameManager.Players.Count, currentChunk.spawnPoints.Count);
-			
 			foreach (var player in gameManager.Players)
 			{
 				try
 				{
-					FP.Log("spawning player ", player.id, " at ", currentChunk.spawnPoints[player.id].X, currentChunk.spawnPoints[player.id].Y);
 					player.X = currentChunk.spawnPoints[player.id].X;
 					player.Y = currentChunk.spawnPoints[player.id].Y;
 					Add(player);

@@ -37,19 +37,19 @@
     <crumble id="35" x="544" y="16" width="64" height="16" crumbleTime="1" />
     <crumble id="36" x="288" y="0" width="64" height="16" crumbleTime="1" />
     <crumble id="37" x="32" y="16" width="64" height="16" crumbleTime="1" />
-    <deadlyAnchor id="38" x="256" y="576" width="16" height="16" distance="1" speed="2" size="1" />
-    <deadlyAnchor id="39" x="272" y="576" width="16" height="16" distance="1" speed="2" size="1" />
-    <deadlyAnchor id="40" x="288" y="576" width="16" height="16" distance="1" speed="2" size="1" />
-    <deadlyAnchor id="41" x="304" y="576" width="16" height="16" distance="1" speed="2" size="1" />
-    <deadlyAnchor id="42" x="320" y="576" width="16" height="16" distance="1" speed="2" size="1" />
-    <deadlyAnchor id="43" x="336" y="576" width="16" height="16" distance="1" speed="2" size="1" />
-    <deadlyAnchor id="44" x="352" y="576" width="16" height="16" distance="1" speed="2" size="1" />
-    <deadlyAnchor id="45" x="368" y="576" width="16" height="16" distance="1" speed="2" size="1" />
+    <deadlyAnchor id="38" x="256" y="576" width="16" height="16" distance="1" speed="2" size="0.75" />
     <jumpPad id="46" x="208" y="400" width="16" height="3" />
     <jumpPad id="47" x="416" y="400" width="16" height="3" />
     <jumpPad id="48" x="560" y="192" width="16" height="3" />
     <jumpPad id="49" x="64" y="192" width="16" height="3" />
     <jumpPad id="50" x="528" y="576" width="16" height="3" />
     <jumpPad id="51" x="96" y="576" width="16" height="3" />
+    <deadlyAnchor id="6" x="272" y="576" width="16" height="16" distance="1" speed="2" size="0.75" />
+    <deadlyAnchor id="39" x="288" y="576" width="16" height="16" distance="1" speed="2" size="0.75" />
+    <deadlyAnchor id="40" x="304" y="576" width="16" height="16" distance="1" speed="2" size="0.75" />
+    <deadlyAnchor id="41" x="320" y="576" width="16" height="16" distance="1" speed="2" size="0.75" />
+    <deadlyAnchor id="42" x="336" y="576" width="16" height="16" distance="1" speed="2" size="0.75" />
+    <deadlyAnchor id="43" x="352" y="576" width="16" height="16" distance="1" speed="2" size="0.75" />
+    <deadlyAnchor id="44" x="368" y="576" width="16" height="16" distance="1" speed="2" size="0.75" />
   </Platforms>
 </level>

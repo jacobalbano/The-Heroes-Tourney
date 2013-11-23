@@ -9,8 +9,8 @@
     <player id="2" x="672" y="224" />
     <spawnPoint id="12" x="512" y="448" width="16" height="16" />
     <spawnPoint id="13" x="112" y="448" width="16" height="16" />
-    <spawnPoint id="14" x="352" y="208" width="16" height="16" />
-    <spawnPoint id="15" x="272" y="208" width="16" height="16" />
+    <spawnPoint id="14" x="304" y="0" width="16" height="16" />
+    <spawnPoint id="15" x="304" y="208" width="16" height="16" />
     <platform id="0" x="64" y="512" width="160" height="16" />
     <platform id="1" x="416" y="512" width="160" height="16" />
     <platform id="16" x="272" y="96" width="96" height="16" />

@@ -6,8 +6,8 @@
     <platform id="6" x="480" y="288" width="96" height="16" />
     <platform id="7" x="256" y="128" width="128" height="16" />
     <spawnPoint id="10" x="64" y="480" width="16" height="16" />
-    <spawnPoint id="11" x="144" y="480" width="16" height="16" />
-    <spawnPoint id="13" x="480" y="480" width="16" height="16" />
+    <spawnPoint id="11" x="80" y="176" width="16" height="16" />
+    <spawnPoint id="13" x="528" y="176" width="16" height="16" />
     <spawnPoint id="14" x="560" y="480" width="16" height="16" />
     <platform id="12" x="0" y="288" width="16" height="288" />
     <platform id="15" x="624" y="288" width="16" height="288" />
@@ -20,7 +20,7 @@
     <platform id="17" x="416" y="416" width="80" height="16" />
     <jumpPad id="18" x="176" y="416" width="32" height="3" />
     <jumpPad id="19" x="416" y="416" width="32" height="3" />
-    <platform id="20" x="32" y="64" width="112" height="16" />
+    <platform id="20" x="32" y="80" width="112" height="16" />
     <platform id="21" x="496" y="80" width="112" height="16" />
   </Platforms>
 </level>

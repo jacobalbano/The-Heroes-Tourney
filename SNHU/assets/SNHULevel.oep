@@ -119,7 +119,7 @@
       <ValueDefinitions>
         <ValueDefinition xsi:type="IntValueDefinition" Name="distance" Default="0" Min="0" Max="100" ShowSlider="false" />
         <ValueDefinition xsi:type="FloatValueDefinition" Name="speed" Default="0" Min="0" Max="100" Round="0.1" />
-        <ValueDefinition xsi:type="IntValueDefinition" Name="size" Default="0" Min="0" Max="100" ShowSlider="false" />
+        <ValueDefinition xsi:type="FloatValueDefinition" Name="size" Default="1" Min="0" Max="100" Round="0.0001" />
       </ValueDefinitions>
       <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
     </EntityDefinition>
