@@ -9,22 +9,23 @@
 using System;
 using Punk;
 using Punk.Graphics;
+using Punk.Tweens.Misc;
+using Punk.Utils;
 using SNHU.Components;
 
 namespace SNHU.GameObject.Platforms
 {
-	public class JumpPad : Platform
+	public class JumpPad : Entity
 	{
 		public const int POINT_REWARD = 5;
+		
+		private Nineslice image;
+		private Emitter emitter;
 		
 		public JumpPad() : base()
 		{
 			Type = "";
-		}
-		
-		public override void OnLand(Player playerTarget)
-		{
-//			playerTarget.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 2);
+			AddTween(new Alarm(0.5f, () => emitter.Emit("p", FP.Rand((int) Width), -5), LOOPING), true);
 		}
 		
 		public override void Update()
@@ -34,7 +35,12 @@ namespace SNHU.GameObject.Platforms
 			
 			if(e != null)
 			{
-				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 1.5);
+				for (int i = 0; i < 5; ++i)
+				{
+					emitter.Emit("p", FP.Rand((int) Width), -5);
+				}
+				
+				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 1.4);
 				(e as Player).Points += POINT_REWARD;
 				Mixer.Audio["jumpPad"].Play();
 			}
@@ -43,11 +49,24 @@ namespace SNHU.GameObject.Platforms
 		public override void Load(System.Xml.XmlNode node)
 		{
 			base.Load(node);
-			uint width = uint.Parse(node.Attributes["width"].Value);
+			float width = float.Parse(node.Attributes["width"].Value);
+			width = FP.Clamp(width, 15, 640);	//	lol game jam
 			
-			Graphic = myImage = Image.CreateRect(width, 3, FP.Color(0x000000));
-			myImage.Y -= 3;
-			SetHitboxTo(Graphic);
+			image = new Nineslice(Library.GetTexture("assets/bouncepad.png"), 3, 3);
+			image.Columns = (int) (width / 5f);
+			image.ScaleX = width / image.Width;
+			image.Y -= 3;
+			
+			emitter = new Emitter(Library.GetTexture("assets/jumpparticle.png"));
+			emitter.NewType("p");
+			emitter.SetMotion("p", 90, 32, 1, 45, 0.5f, 0.25f);
+			emitter.SetAlpha("p", 1, 0);
+			
+			Width = (int) width;
+			Height = 3;
+			
+			AddGraphic(emitter);
+			AddGraphic(image);
 		}
 	}
 }

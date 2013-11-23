@@ -16,10 +16,11 @@ namespace SNHU.GameObject.Platforms
 	public class Crumble : Platform
 	{
 		private float crumbleTime;
+		private bool canMakeAHellaRacket;
 		
 		public Crumble()
 		{
-			
+			canMakeAHellaRacket = true;
 		}
 		
 		public override void Update()
@@ -40,7 +41,11 @@ namespace SNHU.GameObject.Platforms
 		
 		public override void OnLand(Player playerTarget)
         {
-			AddTween(new Alarm(crumbleTime, OnCrumble, ONESHOT), true);
+			if (canMakeAHellaRacket)
+			{
+				AddTween(new Alarm(crumbleTime, OnCrumble, ONESHOT), true);
+				canMakeAHellaRacket = false;
+			}
         }
 		
 		public void OnCrumble()
@@ -70,8 +75,8 @@ namespace SNHU.GameObject.Platforms
 			float height = float.Parse(node.Attributes["height"].Value);
 			
 			image = new Nineslice(Library.GetTexture("assets/crumble.png"), 3, 3);
-			image.Columns = (uint) (width / 5f);
-			image.Rows = (uint) (height / 5f);
+			image.Columns = (int) (width / 5f);
+			image.Rows = (int) (height / 5f);
 			image.ScaleX = width / image.Width;
 			image.ScaleY = height / image.Height;
 			

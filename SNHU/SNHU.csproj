@@ -92,6 +92,8 @@
     <Compile Include="GameObject\Razor.cs" />
     <Compile Include="GameObject\SpawnManager.cs" />
     <Compile Include="GameWorld.cs" />
+    <Compile Include="menuobject\ControllerSelect.cs" />
+    <Compile Include="MenuWorld.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -99,6 +101,7 @@
     <Folder Include="GameObject" />
     <Folder Include="Components" />
     <Folder Include="GameObject\Platforms" />
+    <Folder Include="menuobject" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
