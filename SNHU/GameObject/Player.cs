@@ -45,16 +45,16 @@ namespace SNHU.GameObject
 		public const float SPEED = 5.5f;
 		
 		public int Points;
-		public uint Deaths { get; private set; }
-		public uint id { get; private set;}
+		public int Deaths { get; private set; }
+		public int id { get; private set;}
 		
-		public Player(float x, float y, uint id) : base(x, y)
+		public Player(float x, float y, int id) : base(x, y)
 		{
 			this.id = id;
 			
 			hand = false;
 			
-			controller = new Controller(id);
+			controller = new Controller((uint)id);
 			axis = controller.LeftStick;
 				
 			player = new Image(Library.GetTexture("assets/player.png"));
@@ -88,12 +88,15 @@ namespace SNHU.GameObject
 		public override void Added()
 		{
 			base.Added();
+			
+			FP.Log("ADDED");
 			World.AddList(left, right);
 		}
 		
 		public override void Removed()
 		{
 			base.Removed();
+			FP.Log("REMOVED PLAYER");
 			World.RemoveList(left, right);
 		}
 		
@@ -159,6 +162,7 @@ namespace SNHU.GameObject
 		
 		public void dead()
 		{
+			FP.Log("I DIED");
 			World.BroadcastMessage("player_die", this);
 		}
 		
@@ -256,7 +260,7 @@ namespace SNHU.GameObject
 			return base.MoveCollideY(e);
 		}
 		
-		public void SetTint(uint id)
+		public void SetTint(int id)
 		{
 			switch (id)
 			{

@@ -18,15 +18,16 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class Chunk : Entity
 	{
+		public const string LOAD_COMPLETE = "loadComplete";
 		public const uint CHUNK_WIDTH = 640;
 		public const uint CHUNK_HEIGHT = 640;
-		public List<SpawnPoint> spawnPointsList;
+		public List<Entity> spawnPoints;
 		private Entity[] ents;
 		
-		public Chunk(float posX, float posY, string chunkType = "random"):base(posX,posY)
+		public Chunk(float posX, float posY) : base(posX, posY)
 		{
 			var world = new World();
-			spawnPointsList = new List<SpawnPoint>();
+			spawnPoints = new List<Entity>();
 			world.RegisterClass<Platform>("platform");
 			world.RegisterClass<JumpPad>("jumpPad");
 			world.RegisterClass<Crumble>("crumble");
@@ -35,24 +36,12 @@ namespace SNHU.GameObject
 			
 			var t = FP.GetTimer();
 			
-			switch (chunkType)
-			{
-				case "start":
-					ents = world.BuildWorldAsArray("assets/Levels/Start.oel");
-					break;
-				case "end":
-					ents = world.BuildWorldAsArray("assets/Levels/End.oel");
-					break;
-				case "random":
-					ents = world.BuildWorldAsArray("assets/Levels/" +
-                    FP.Choose("chris1.oel", "chris2.oel", "chris3.oel", "chris4.oel", "jake_1.oel", "Real_1.oel", "Real_2.oel", "Real_3.oel"));
-					break;
-				default:
-					ents = world.BuildWorldAsArray("assets/Levels/Test.oel");
-					break;
-			}
+			ents = world.BuildWorldAsArray("assets/Levels/" +
+            FP.Choose("chris1.oel", "chris2.oel", "chris3.oel", "chris4.oel",
+			          "jake_1.oel", "Real_1.oel", "Real_2.oel", "Real_3.oel"));
 			
 			FP.Log(FP.GetTimer() - t);
+			
 		}
 		
 		
@@ -62,17 +51,32 @@ namespace SNHU.GameObject
 			
 			foreach (var e in ents)
 			{
-				e.X += X;
-				e.Y += Y;
-				e.Layer = -100;
+				if (!(e is Player))
+				{
+					e.X += X;
+					e.Y += Y;
+					e.Layer = -100;
+				}
 				
 				if (e is Teleporter)
 				{
 					(e as Teleporter).ID += (int)Math.Abs(Y);
 				}
+				
+				if (e is SpawnPoint)
+				{
+					spawnPoints.Add(e);
+				}
 			}
 			
 			World.AddList(ents);
+			
+			FP.Log("new chunk added ", spawnPoints.Count);
+			
+			if (World is GameWorld)
+			{
+				(World as GameWorld).ChunkLoadComplete();
+			}
 		}
 		
 		public override void Removed()
@@ -80,11 +84,6 @@ namespace SNHU.GameObject
 			World.RemoveList(ents);
 			
 			base.Removed();
-		}
-		
-		public override void Update()
-		{
-			base.Update();
 		}
 		
 		public bool IsBelowCamera
