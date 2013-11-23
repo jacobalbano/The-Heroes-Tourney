@@ -29,6 +29,7 @@ namespace SNHU
 		
 		private Chunk currentChunk;
 		private Chunk nextChunk;
+		private bool changingLevels;
 		
 		
 		public GameWorld() : base()
@@ -48,6 +49,7 @@ namespace SNHU
 				CheckControllers();
 			};
 			
+			changingLevels = false;
 			
 			AddTween(new Alarm(0.1f, CheckControllers, Tween.ONESHOT), true);
 			AddTween(new Alarm(0.2f, DelayBegin, ONESHOT), true);
@@ -108,20 +110,24 @@ namespace SNHU
 		
 		public void AdvanceLevel()
 		{
-			if (gameManager != null)
+			if (!changingLevels && !gameManager.GameEnding)
 			{
-				foreach (var player in gameManager.Players)
+				changingLevels = true;
+				
+				if (gameManager != null)
 				{
-					if (player.IsAlive)
+					foreach (var player in gameManager.Players)
 					{
-						FP.Log("BAD ", player.World == null);
-						Remove(player);
+						if (player.IsAlive)
+						{
+							Remove(player);
+						}
 					}
 				}
+				
+				nextChunk = new Chunk(180, (FP.Camera.Y - FP.HalfHeight) - FP.Height);
+				Add(nextChunk);
 			}
-			
-			nextChunk = new Chunk(180, (FP.Camera.Y - FP.HalfHeight) - FP.Height);
-			Add(nextChunk);
 		}
 		
 		public void ChunkLoadComplete()
@@ -140,6 +146,8 @@ namespace SNHU
 			currentChunk = nextChunk;
 			
 			SpawnPlayers();
+			
+			changingLevels = false;
 		}
 		
 		public void SpawnPlayers()
@@ -160,6 +168,11 @@ namespace SNHU
 					throw new Exception("spawnPoints[" + player.id + "] is out of range. Make sure you have 4 spawn points in the level");
 				}
 			}
+		}
+		
+		public void UnloadCurrentChunk()
+		{
+			Remove(currentChunk);
 		}
 		
 		public static bool OnCamera(float x, float y)

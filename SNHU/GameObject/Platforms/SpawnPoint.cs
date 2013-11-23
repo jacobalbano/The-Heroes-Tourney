@@ -33,8 +33,6 @@ namespace SNHU.GameObject.Platforms
 		public override void Added()
 		{
 			base.Added();
-			
-			FP.Log("HIIIII KAWAIIII", World.TypeCount(Type));
 		}
 	}
 }

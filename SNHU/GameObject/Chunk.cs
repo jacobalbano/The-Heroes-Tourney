@@ -72,8 +72,6 @@ namespace SNHU.GameObject
 			
 			World.AddList(ents);
 			
-			FP.Log("new chunk added ", spawnPoints.Count);
-			
 			if (World is GameWorld)
 			{
 				(World as GameWorld).ChunkLoadComplete();

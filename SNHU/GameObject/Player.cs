@@ -43,7 +43,7 @@ namespace SNHU.GameObject
 		
 		public const float SPEED = 5.5f;
 		
-		public const int STARTING_LIVES = 50;
+		public const int STARTING_LIVES = 5;
 		public bool IsAlive { get; private set; }
 		
 		public int Lives { get; private set; }
@@ -90,7 +90,6 @@ namespace SNHU.GameObject
 		{
 			base.Added();
 			
-			FP.Log("ADDED");
 			World.AddList(left, right);
 			IsAlive = true;
 		}
@@ -98,7 +97,6 @@ namespace SNHU.GameObject
 		public override void Removed()
 		{
 			base.Removed();
-			FP.Log("REMOVED PLAYER");
 			World.RemoveList(left, right);
 		}
 		
@@ -121,44 +119,47 @@ namespace SNHU.GameObject
 		{
 			base.Update();
 		 	
-		 	if (axis.X < 0)
-		 	{
-		 		FaceLeft();
-		 	}
-		 	else if (axis.X > 0)
-		 	{
-		 		FaceRight();
-		 	}
-		 	
-			if (Collide(Platform.Collision, X, Y + 1) == null)
+			if (!GameWorld.gameManager.GameEnding)
 			{
-				OnGround = false;
-			}
-			else
-			{
-				OnMessage(PhysicsBody.FRICTION, 0.75f);
-			}
-			
-			HandleInput();
-			
-			if (Math.Abs(physics.MoveDelta.X) < SPEED)
-			{
-				var delta = FP.Sign(physics.MoveDelta.X);
-				var ax = FP.Sign(axis.X);
-				
-				if (delta == 0 || delta == ax)
+			 	if (axis.X < 0)
+			 	{
+			 		FaceLeft();
+			 	}
+			 	else if (axis.X > 0)
+			 	{
+			 		FaceRight();
+			 	}
+			 	
+				if (Collide(Platform.Collision, X, Y + 1) == null)
 				{
-					OnMessage(PhysicsBody.IMPULSE, axis.X * SPEED, 0, true);
+					OnGround = false;
 				}
 				else
 				{
-					OnMessage(PhysicsBody.IMPULSE, axis.X * (SPEED / 3f), 0, true);
+					OnMessage(PhysicsBody.FRICTION, 0.75f);
 				}
-			}
-			
-			if(this.Y - this.Height > FP.Camera.Y + FP.HalfHeight)
-			{
-				Kill();
+				
+				HandleInput();
+				
+				if (Math.Abs(physics.MoveDelta.X) < SPEED)
+				{
+					var delta = FP.Sign(physics.MoveDelta.X);
+					var ax = FP.Sign(axis.X);
+					
+					if (delta == 0 || delta == ax)
+					{
+						OnMessage(PhysicsBody.IMPULSE, axis.X * SPEED, 0, true);
+					}
+					else
+					{
+						OnMessage(PhysicsBody.IMPULSE, axis.X * (SPEED / 3f), 0, true);
+					}
+				}
+				
+				if(this.Y - this.Height > FP.Camera.Y + FP.HalfHeight)
+				{
+					Kill();
+				}
 			}
 		}
 		
@@ -278,10 +279,8 @@ namespace SNHU.GameObject
 		
 		public void Kill()
 		{
-			if (IsAlive)
+			if (IsAlive && !GameWorld.gameManager.GameEnding)
 			{
-				FP.Log("I DIED");
-				
 				IsAlive = false;
 				World.BroadcastMessage("player_die", this);
 				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 1.0f);
@@ -291,7 +290,23 @@ namespace SNHU.GameObject
 				{
 					Lives -= 1;
 				}
+				
+				if (Lives <= 0)
+				{
+					World.BroadcastMessage("player_lose", this);
+				}
 			}
+		}
+		
+		public void DisablePhysics()
+		{
+			RemoveLogic(physics);
+		}
+		
+		public void SetGlovesLayer(int layer)
+		{
+			left.Layer = layer;
+			right.Layer = layer;
 		}
 	}
 }
