@@ -40,7 +40,7 @@ namespace SNHU.GameObject.Platforms
 					emitter.Emit("p", FP.Rand((uint) Width), -5);
 				}
 				
-				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 1.4);
+				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 1.4, true);
 				(e as Player).Points += POINT_REWARD;
 				Mixer.Audio["jumpPad"].Play();
 			}
