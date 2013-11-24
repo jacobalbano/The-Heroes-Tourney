@@ -126,7 +126,7 @@ namespace SNHU.GameObject
 			AddLogic(new CheckRestart(controller));
 			#endif
 			
-			SetUpgrade(new Shield());
+			SetUpgrade(new Rebound());
 			Invincible = false;
 			Rebounding = false;
 			
@@ -406,10 +406,12 @@ namespace SNHU.GameObject
 		
 		public void SetUpgrade(Upgrade upgrade)
 		{
+			FP.Log("SET UPGRADE");
 			if (this.upgrade != null)
 			{
 				RemoveLogic(this.upgrade);
 			}
+			
 			this.upgrade = upgrade;
 			
 			if (player != null && left != null && right != null)

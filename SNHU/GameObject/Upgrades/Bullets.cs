@@ -122,9 +122,15 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.OnLifetimeComplete();
 			
-			Parent.World.RemoveList(bullets);
-			
-			(Parent as Player).SetUpgrade(null);
+			if (Parent != null)
+			{
+				if (Parent.World != null)
+				{
+					Parent.World.RemoveList(bullets);
+				}
+				
+				(Parent as Player).SetUpgrade(null);
+			}
 		}
 	}
 }
