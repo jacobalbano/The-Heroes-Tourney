@@ -53,7 +53,7 @@ namespace SNHU.GameObject
 		public const float SPEED = 5.5f;
 		public float Speed = 0.0f;
 		
-		public const int STARTING_LIVES = 5;
+		public const int STARTING_LIVES = 15;
 		public bool IsAlive { get; private set; }
 		
 		public int Lives { get; private set; }
@@ -126,7 +126,7 @@ namespace SNHU.GameObject
 			AddLogic(new CheckRestart(controller));
 			#endif
 			
-			SetUpgrade(new SuperSpeed());
+			SetUpgrade(new FUS());
 			Invincible = false;
 			Rebounding = false;
 			

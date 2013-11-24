@@ -9,6 +9,7 @@
 using System;
 using Punk;
 using Punk.Graphics;
+using Punk.Tweens.Misc;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -38,7 +39,28 @@ namespace SNHU.GameObject.Upgrades
 					Parent.World.BroadcastMessage(GameManager.SHAKE, 60.0f, 0.5f);
 					(Parent as Player).SetUpgrade(null);
 					Mixer.Audio["fus"].Play();
+					
+					Parent.World.Add(new FusBlast(Parent.X, Parent.Y));
 				}
+			}
+		}
+		
+		private class FusBlast : Entity
+		{
+			public FusBlast(float X, float Y)
+			{
+				this.X = X;
+				this.Y = Y;
+				
+				var i = new Image(Library.GetTexture("assets/fus_active.png"));
+				i.Scale = 0.1f;
+				i.CenterOO();
+				
+				Graphic = i;
+				
+				var tween = new VarTween(() => World.Remove(this), ONESHOT);
+				tween.Tween(i, "Scale", 50, 0.5f);
+				AddTween(tween, true);
 			}
 		}
 	}
