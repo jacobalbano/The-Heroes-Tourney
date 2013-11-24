@@ -32,6 +32,10 @@ namespace SNHU.GameObject.Platforms
 			{
 				p = Collide(Player.Collision, X + 1, Y) as Player;
 			}
+			if(p == null)
+			{
+				p = Collide(Player.Collision, X, Y + 1) as Player;
+			}
 			
 			if (p != null)
 			{

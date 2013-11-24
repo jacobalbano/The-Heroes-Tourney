@@ -22,25 +22,8 @@ namespace SNHU.GameObject.Platforms
 		
 		public JumpPad() : base()
 		{
-			Type = "";
+			Type = "JumpPad";
 			AddTween(new Alarm(0.5f, () => emitter.Emit("p", FP.Rand((int) Width), -5), LOOPING), true);
-		}
-		
-		public override void Update()
-		{
-			base.Update();
-			var e = Collide(Player.Collision, X, Y - 1);
-			
-			if(e != null)
-			{
-				for (int i = 0; i < 5; ++i)
-				{
-					emitter.Emit("p", FP.Rand((int) Width), -5);
-				}
-				
-				e.OnMessage(PhysicsBody.IMPULSE, 0, Player.JumpForce * 1.4, true);
-				Mixer.Audio["jumpPad"].Play();
-			}
 		}
 		
 		public override void Load(System.Xml.XmlNode node)

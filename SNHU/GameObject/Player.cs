@@ -187,7 +187,14 @@ namespace SNHU.GameObject
 		{
 			if (OnGround && (controller.Pressed("jump")))
 			{
-				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce);
+				float jumpMult = 1;
+				
+				if(Collide("JumpPad", X, Y + 1) != null)
+				{
+					jumpMult = 1.4f;
+				}
+				
+				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce * jumpMult);
 				Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
 				
 				ClearTweens();
