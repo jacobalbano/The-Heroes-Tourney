@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
+using Punk.Utils;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -75,20 +76,55 @@ namespace SNHU.GameObject.Upgrades
 			
 			Parent.World.Remove(countdown);
 			
+			var emitter = new Emitter(Library.GetTexture("assets/explosion.png"), 60, 60);
+			emitter.Relative = false;
+			
+			for (int i = 0; i < 4; i++)
+			{
+				var name = i.ToString();
+				emitter.NewType(name, FP.Frames(i));
+				emitter.SetAlpha(name, 1, 0);
+				emitter.SetMotion(name, 0, 150, 0.25f, 360, 100,  0.1f);
+			}
+			
+			float x = 0, y = 0;
+			
 			if(closestOpponent != null)
 			{
 				if (closestOpponent.Rebounding)
 				{
+					x = Parent.X;
+					y = Parent.Y;
+					
 					(Parent as Player).Kill();
 				}
 				else
 				{
+					x = closestOpponent.X;
+					y = closestOpponent.Y;
+					
 					closestOpponent.Kill();
 				}
 			}
 			else
 			{
 				(Parent as Player).Kill();
+				
+				x = Parent.X;
+				y = Parent.Y;
+			}
+			
+			var e = Parent.World.AddGraphic(emitter, -9010);
+			e.AddTween(new Alarm(3, () => FP.World.Remove(e), Tween.ONESHOT), true);
+			
+			var t = 4;
+			while (t --> 0)
+			{
+				var name = t.ToString();
+				for (int j = 0; j < 500; j++)
+				{
+					emitter.Emit(name, x, y);
+				}
 			}
 			
 			Mixer.Audio["explode"].Play();

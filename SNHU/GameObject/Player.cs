@@ -126,7 +126,7 @@ namespace SNHU.GameObject
 			AddLogic(new CheckRestart(controller));
 			#endif
 			
-			SetUpgrade(new FUS());
+			SetUpgrade(new HotPotato());
 			Invincible = false;
 			Rebounding = false;
 			
