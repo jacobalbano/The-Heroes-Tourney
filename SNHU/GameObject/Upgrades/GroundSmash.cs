@@ -64,7 +64,7 @@ namespace SNHU.GameObject.Upgrades
 				{
 					var name = i.ToString();
 					emitter.NewType(name, FP.Frames(i));
-					emitter.SetAlpha(name, 1, 0.5f);
+					emitter.SetAlpha(name, 0, 1f);
 					emitter.SetMotion(name, 90, 100, 0.5f, 10, 10, 0.1f, Ease.SineOut);
 					emitter.SetGravity(name, 5, 2);
 				}
