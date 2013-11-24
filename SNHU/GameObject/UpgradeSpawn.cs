@@ -39,7 +39,7 @@ namespace SNHU.GameObject
 			base.Added();
 			if (FP.Rand(6) == 1)
 			{
-				switch (FP.Rand(3))
+				switch (FP.Rand(8))
 				{
 					case 0:
 						upgrade = new Invisibility();
@@ -49,6 +49,21 @@ namespace SNHU.GameObject
 						break;
 					case 2:
 						upgrade = new GroundSmash();
+						break;
+					case 3:
+						upgrade = new SuperSpeed();
+						break;
+					case 4:
+						upgrade = new Rebound();
+						break;
+					case 5:
+						upgrade = new FUS();
+						break;
+					case 6:
+						upgrade = new Bullets();
+						break;
+					case 7:
+						upgrade = new HotPotato();
 						break;
 					default:
 						break;

@@ -2,7 +2,7 @@
  * Created by SharpDevelop.
  * User: Chris
  * Date: 11/24/2013
- * Time: 2:23 AM
+ * Time: 4:50 AM
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
@@ -14,13 +14,14 @@ using Punk.Tweens.Misc;
 namespace SNHU.GameObject.Upgrades
 {
 	/// <summary>
-	/// Description of Shield.
+	/// Description of Rebound.
 	/// </summary>
-	public class Shield : Upgrade
+	public class Rebound : Upgrade
 	{
 		private Entity shield;
 		private Image shieldImg;
-		public Shield()
+		
+		public Rebound()
 		{
 		}
 		
@@ -30,7 +31,7 @@ namespace SNHU.GameObject.Upgrades
 			{
 				base.Use();
 				
-				shieldImg = Image.CreateCircle(Parent.Height, FP.Color(0xFFFFFF));
+				shieldImg = Image.CreateCircle(Parent.Height, FP.Color(0x00FFFF));
 				shieldImg.CenterOO();
 				shieldImg.Alpha = 0.0f;
 			
@@ -40,7 +41,7 @@ namespace SNHU.GameObject.Upgrades
 				tween.Tween(shieldImg, "Alpha", 0.6f, 0.45f);
 				Parent.AddTween(tween, true);
 				
-				(Parent as Player).Invincible = true;
+				(Parent as Player).Rebounding = true;
 			}
 		}
 		
@@ -48,7 +49,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Removed();
 			
-			(Parent as Player).Invincible = false;
+			(Parent as Player).Rebounding = false;
 			Parent.World.Remove(shield);
 		}
 		
@@ -76,7 +77,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public void OnFadeOutComplete()
 		{
-			(Parent as Player).Invincible = false;
+			(Parent as Player).Rebounding = false;
 			
 			(Parent as Player).SetUpgrade(null);
 			Parent.RemoveLogic(this);

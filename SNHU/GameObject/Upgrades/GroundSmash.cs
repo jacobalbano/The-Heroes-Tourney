@@ -47,11 +47,6 @@ namespace SNHU.GameObject.Upgrades
 			}
 		}
 		
-		public override void OnLifetimeComplete()
-		{
-			base.OnLifetimeComplete();
-		}
-		
 		public void OnPlayerLand(params object[] args)
 		{
 			if (Activated)

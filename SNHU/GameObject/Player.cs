@@ -44,11 +44,13 @@ namespace SNHU.GameObject
 		
 		public Upgrade upgrade { get; private set; }
 		public bool Invincible;
+		public bool Rebounding;
 		
 		public PhysicsBody physics;
 		private bool OnGround;
 		
 		public const float SPEED = 5.5f;
+		public float Speed = 0.0f;
 		
 		public const int STARTING_LIVES = 5;
 		public bool IsAlive { get; private set; }
@@ -110,6 +112,7 @@ namespace SNHU.GameObject
 			physics.Colliders.Add(Platform.Collision);
 			physics.Colliders.Add(Type);
 			EnablePhysics();
+			Speed = SPEED;
 			
 			Lives = STARTING_LIVES;
 			IsAlive = false;
@@ -118,10 +121,12 @@ namespace SNHU.GameObject
 			AddLogic(new CheckRestart(controller));
 			#endif
 			
-			SetUpgrade(new GroundSmash());
+			SetUpgrade(new HotPotato());
 			Invincible = false;
+			Rebounding = false;
 			
 			AddResponse(GroundSmash.GROUND_SMASH, OnGroundSmash);
+			AddResponse(FUS.BE_FUS, OnFUS);
 		}
 		
 		public override void Added()
@@ -191,20 +196,26 @@ namespace SNHU.GameObject
 					OnMessage(PhysicsBody.FRICTION, 0.75f);
 				}
 				
+				var b = Collide(Bullet.Collision, X, Y) as Bullet;
+				if (b != null && b.ownerID != id)
+				{
+					Kill();
+				}
+				
 				HandleInput();
 				
-				if (Math.Abs(physics.MoveDelta.X) < SPEED)
+				if (Math.Abs(physics.MoveDelta.X) < Speed)
 				{
 					var delta = FP.Sign(physics.MoveDelta.X);
 					var ax = FP.Sign(axis.X);
 					
 					if (delta == 0 || delta == ax)
 					{
-						OnMessage(PhysicsBody.IMPULSE, axis.X * SPEED, 0, true);
+						OnMessage(PhysicsBody.IMPULSE, axis.X * Speed, 0, true);
 					}
 					else
 					{
-						OnMessage(PhysicsBody.IMPULSE, axis.X * (SPEED / 3f), 0, true);
+						OnMessage(PhysicsBody.IMPULSE, axis.X * (Speed / 3f), 0, true);
 					}
 				}
 				
@@ -402,6 +413,18 @@ namespace SNHU.GameObject
 					Kill();
 				}
 			}
+		}
+		
+		public void OnFUS(params object[] args)
+		{
+			float str = (float)args[0];
+			float fromX = (float)args[1];
+			float fromY = (float)args[2];
+			Vector2f dir = new Vector2f(fromX - X, fromY - Y);
+			dir = dir.Normalized(str);
+			
+			FP.Log(dir);
+			OnMessage(PhysicsBody.IMPULSE, -dir.X, -dir.Y);
 		}
 	}
 }

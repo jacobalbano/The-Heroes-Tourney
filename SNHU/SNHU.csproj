@@ -92,9 +92,14 @@
     <Compile Include="GameObject\Razor.cs" />
     <Compile Include="GameObject\SpawnManager.cs" />
     <Compile Include="GameObject\UpgradeSpawn.cs" />
+    <Compile Include="GameObject\Upgrades\Bullets.cs" />
+    <Compile Include="GameObject\Upgrades\FUS.cs" />
     <Compile Include="GameObject\Upgrades\GroundSmash.cs" />
+    <Compile Include="GameObject\Upgrades\HotPotato.cs" />
     <Compile Include="GameObject\Upgrades\Invisibility.cs" />
+    <Compile Include="GameObject\Upgrades\Rebound.cs" />
     <Compile Include="GameObject\Upgrades\Shield.cs" />
+    <Compile Include="GameObject\Upgrades\SuperSpeed.cs" />
     <Compile Include="GameObject\Upgrades\Upgrade.cs" />
     <Compile Include="GameWorld.cs" />
     <Compile Include="menuobject\ControllerSelect.cs" />

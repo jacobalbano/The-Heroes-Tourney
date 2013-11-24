@@ -136,8 +136,17 @@ namespace SNHU.GameObject
 				 	{	
 						World.BroadcastMessage(GameManager.SHAKE, 10.0f, 0.5f);
 				 		Mixer.Audio[FP.Choose("hit1", "hit2")].Play();
-				 		var hsign = FP.Sign(p.X - parent.X);
-				 		p.OnMessage(PhysicsBody.IMPULSE, 50 * hsign, -75);
+				 		
+			 			var hsign = FP.Sign(p.X - parent.X);
+			 			
+				 		if ((p as Player).Rebounding)
+				 		{
+					 		parent.OnMessage(PhysicsBody.IMPULSE, 50 * -hsign, -75);
+				 		}
+				 		else
+				 		{
+					 		p.OnMessage(PhysicsBody.IMPULSE, 50 * hsign, -75);
+				 		}
 				 	}
 				}
 			 	
