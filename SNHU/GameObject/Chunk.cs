@@ -42,7 +42,6 @@ namespace SNHU.GameObject
 			          "Start.oel"));
 			
 			FP.Log(FP.GetTimer() - t);
-			
 		}
 		
 		

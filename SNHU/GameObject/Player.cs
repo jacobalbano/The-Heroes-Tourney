@@ -214,10 +214,14 @@ namespace SNHU.GameObject
 				if(Collide("JumpPad", X, Y + 1) != null)
 				{
 					jumpMult = 1.4f;
+					Mixer.Audio["jumpPad"].Play();
+				}
+				else
+				{
+					Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
 				}
 				
 				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce * jumpMult);
-				Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
 				
 				ClearTweens();
 				player.ScaleX = 1 - JUMP_JUICE_FORCE;
