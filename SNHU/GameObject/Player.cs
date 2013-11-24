@@ -36,6 +36,9 @@ namespace SNHU.GameObject
 		private Controller controller;
 		private Axis axis;
 		
+		private OffscreenCursor cursor;
+		private bool isOffscreen;
+		
 		private bool hand;
 		
 		private PhysicsBody physics;
@@ -60,8 +63,10 @@ namespace SNHU.GameObject
 				
 			player = new Image(Library.GetTexture("assets/" + imageName));
 			player.Scale = 0.5f;
-//			SetTint(id);
 			AddGraphic(player);
+			
+			cursor = new OffscreenCursor(this);
+			isOffscreen = false;
 			
 			player.CenterOO();
 			SetHitbox(player.ScaledWidth, player.ScaledHeight, (int) player.OriginX, player.ScaledHeight);
@@ -99,6 +104,8 @@ namespace SNHU.GameObject
 		{
 			base.Removed();
 			World.RemoveList(left, right);
+			FP.Log("sDSDASD");
+			//World.Remove(cursor);
 		}
 		
 		void FaceLeft()
@@ -120,8 +127,23 @@ namespace SNHU.GameObject
 		{
 			base.Update();
 		 	
+			if (!isOffscreen && !GameWorld.OnCamera(X, Y))
+			{
+				FP.Log("OFF");
+				isOffscreen = true;
+				World.Add(cursor);
+			}
+			if (isOffscreen && GameWorld.OnCamera(X, Y))
+			{
+				FP.Log("ON");
+				
+				isOffscreen = false;
+				World.Remove(cursor);
+			}
+				
 			if (!GameWorld.gameManager.GameEnding)
 			{
+				
 			 	if (axis.X < 0)
 			 	{
 			 		FaceLeft();

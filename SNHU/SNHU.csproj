@@ -94,6 +94,7 @@
     <Compile Include="GameWorld.cs" />
     <Compile Include="menuobject\ControllerSelect.cs" />
     <Compile Include="MenuWorld.cs" />
+    <Compile Include="OffscreenCursor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
