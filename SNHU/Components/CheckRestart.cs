@@ -30,7 +30,7 @@ namespace SNHU.Components
 			
 			if (controller.Pressed(Controller.Button.Back))
 			{
-				FP.World = new GameWorld();
+//				FP.World = new GameWorld();
 			}
 		}
 	}

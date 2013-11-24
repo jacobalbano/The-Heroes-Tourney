@@ -31,9 +31,12 @@ namespace SNHU
 		private Chunk nextChunk;
 		private bool changingLevels;
 		
+		private Dictionary<uint, string> playerImageNames;
 		
-		public GameWorld() : base()
+		public GameWorld(Dictionary<uint, string> playerImageNames) : base()
 		{
+			this.playerImageNames = playerImageNames;
+			
 			bg = new Image(Library.GetTexture("assets/bg.png"));
 			bg.ScrollX = bg.ScrollY = 0;
 			AddGraphic(bg);
@@ -66,7 +69,7 @@ namespace SNHU
 			
 			if (Input.Pressed(Keyboard.Key.F5) || Input.Pressed(Keyboard.Key.R))
 			{
-				FP.World = new GameWorld();
+				FP.World = new GameWorld(playerImageNames);
 			}
 			
 			if (Input.Pressed(Keyboard.Key.P))
@@ -77,24 +80,24 @@ namespace SNHU
 		
 		public void CheckControllers()
 		{
-			if (Joystick.IsConnected(0))
+			if (Joystick.IsConnected(0) && playerImageNames.ContainsKey(0))
 			{
-				gameManager.AddPlayer(0, 0, 0);
+				gameManager.AddPlayer(0, 0, 0, playerImageNames[0]);
 			}
 			
-			if (Joystick.IsConnected(1))
+			if (Joystick.IsConnected(1) && playerImageNames.ContainsKey(1))
 			{
-				gameManager.AddPlayer(0, 0, 1);
+				gameManager.AddPlayer(0, 0, 1, playerImageNames[1]);
 			}
 			
-			if (Joystick.IsConnected(2))
+			if (Joystick.IsConnected(2) && playerImageNames.ContainsKey(2))
 			{
-				gameManager.AddPlayer(0, 0, 2);
+				gameManager.AddPlayer(0, 0, 2, playerImageNames[2]);
 			}
 			
-			if (Joystick.IsConnected(3))
+			if (Joystick.IsConnected(3) && playerImageNames.ContainsKey(3))
 			{
-				gameManager.AddPlayer(0, 0, 3);
+				gameManager.AddPlayer(0, 0, 3, playerImageNames[3]);
 			}
 		}
 		

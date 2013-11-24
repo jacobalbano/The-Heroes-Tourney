@@ -49,7 +49,7 @@ namespace SNHU.GameObject
 		public int Lives { get; private set; }
 		public int id { get; private set;}
 		
-		public Player(float x, float y, int id) : base(x, y)
+		public Player(float x, float y, int id, string imageName) : base(x, y)
 		{
 			this.id = id;
 			
@@ -58,16 +58,17 @@ namespace SNHU.GameObject
 			controller = new Controller((uint)id);
 			axis = controller.LeftStick;
 				
-			player = new Image(Library.GetTexture("assets/player.png"));
-			SetTint(id);
+			player = new Image(Library.GetTexture("assets/" + imageName));
+			player.Scale = 0.5f;
+//			SetTint(id);
 			AddGraphic(player);
 			
 			player.CenterOO();
-			SetHitboxTo(player);
+			SetHitbox(player.ScaledWidth, player.ScaledHeight, (int) player.OriginX, player.ScaledHeight);
 			CenterOrigin();
 			
-			OriginY = Height;
-			player.OriginY = Height;
+			OriginY = player.ScaledHeight;
+			player.OriginY = player.Height;
 			
 			left = new Fist(true, this);
 			right = new Fist(false, this);

@@ -90,13 +90,13 @@ namespace SNHU.GameObject
 			FP.Camera.Y += offsetY;
 		}
 		
-		public void AddPlayer(float x, float y, int id)
+		public void AddPlayer(float x, float y, int id, string imageName)
 		{
 			if (Players.Find(p => p.id == id) != null)	return;
 			
 			if (Players.Count < 4 && id <= 4)
 			{
-				Player p = new Player(x, y, id);
+				Player p = new Player(x, y, id, imageName);
 				Players.Add(p);
 			}
 		}

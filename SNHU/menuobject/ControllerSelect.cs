@@ -30,7 +30,7 @@ namespace SNHU.menuobject
 		private Image player;
 		private Image lArrow, rArrow;
 		private Image confirm;
-		private string playerImageName;
+		public string PlayerImageName { get; private set; }
 		private bool changing;
 		
 		private bool started;
@@ -114,7 +114,7 @@ namespace SNHU.menuobject
 					tween.Tween(this, "Y", 1, 0.75f, Ease.BounceOut);
 					AddTween(tween, true);
 					
-					playerImageName = parent.GetImageName();
+					PlayerImageName = parent.GetImageName();
 					MakePlayerImage();
 					
 					StartCursors();
@@ -132,7 +132,7 @@ namespace SNHU.menuobject
 						tween.Tween(lArrow, "Scale", 1, 0.3f);
 						AddTween(tween, true);
 						
-						playerImageName = parent.NextImage(playerImageName);
+						PlayerImageName = parent.NextImage(PlayerImageName);
 						MakePlayerImage();
 					}
 					else if (Controller.LeftStick.X > 0)
@@ -143,7 +143,7 @@ namespace SNHU.menuobject
 						tween.Tween(rArrow, "Scale", 1, 0.3f);
 						AddTween(tween, true);
 						
-						playerImageName = parent.PrevImage(playerImageName);
+						PlayerImageName = parent.PrevImage(PlayerImageName);
 						MakePlayerImage();
 					}
 					
@@ -231,7 +231,7 @@ namespace SNHU.menuobject
 				list.Remove(player);
 			}
 			
-			player = new Image(Library.GetTexture("assets/" + playerImageName));
+			player = new Image(Library.GetTexture("assets/" + PlayerImageName));
 			player.CenterOrigin();
 			
 			player.X = 0;

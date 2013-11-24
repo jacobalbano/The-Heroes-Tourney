@@ -105,7 +105,13 @@ namespace SNHU
 		
 		void StartTheGame()
 		{
-			FP.World = new GameWorld();
+			var playerGraphics = new Dictionary<uint, string>();
+			foreach (var menu in controllerMenus.Values)
+			{
+				playerGraphics[menu.JoyId] = menu.PlayerImageName;
+			}
+			
+			FP.World = new GameWorld(playerGraphics);
 		}
 		
 		private void OnControllerAdded(object sender, JoystickConnectEventArgs e)
