@@ -67,7 +67,15 @@ namespace SNHU.GameObject.Upgrades
 			base.Removed();
 			
 			Parent.World.Remove(countdown);
-			closestOpponent.Kill();
+			
+			if (closestOpponent.Rebounding)
+			{
+				(Parent as Player).Kill();
+			}
+			else
+			{
+				closestOpponent.Kill();
+			}
 		}
 		
 		public override void Update()

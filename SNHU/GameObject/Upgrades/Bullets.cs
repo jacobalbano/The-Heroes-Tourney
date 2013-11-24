@@ -49,6 +49,20 @@ namespace SNHU.GameObject.Upgrades
 				dir.Y = -dir.Y;
 				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
 			}
+			
+			var p = Collide(Player.Collision, X + (dir.X * BULLET_SPEED), Y);
+			if (p != null && (p as Player).Rebounding)
+			{
+				dir.X = -dir.X;
+				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
+			}
+			
+			p = Collide(Player.Collision, X, Y + (dir.Y * BULLET_SPEED));
+			if (p != null && (p as Player).Rebounding)
+			{
+				dir.Y = -dir.Y;
+				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
+			}
 		}
 	}
 	

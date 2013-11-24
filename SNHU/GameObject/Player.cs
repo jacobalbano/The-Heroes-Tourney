@@ -121,7 +121,7 @@ namespace SNHU.GameObject
 			AddLogic(new CheckRestart(controller));
 			#endif
 			
-			SetUpgrade(new Invisibility());
+			SetUpgrade(new Rebound());
 			Invincible = false;
 			Rebounding = false;
 			
@@ -197,7 +197,7 @@ namespace SNHU.GameObject
 				}
 				
 				var b = Collide(Bullet.Collision, X, Y) as Bullet;
-				if (b != null && b.ownerID != id)
+				if (b != null && b.ownerID != id && !Rebounding)
 				{
 					Kill();
 				}
@@ -356,7 +356,7 @@ namespace SNHU.GameObject
 		
 		public void Kill()
 		{
-			if (IsAlive && !GameWorld.gameManager.GameEnding)
+			if (IsAlive && !Invincible && !GameWorld.gameManager.GameEnding)
 			{
 				IsAlive = false;
 				World.BroadcastMessage("player_die", this);
@@ -399,6 +399,7 @@ namespace SNHU.GameObject
 			
 			if (this.upgrade != null)
 			{
+				FP.Log("GIVING ", this.upgrade.GetType());
 				AddLogic(this.upgrade);
 			}
 		}
@@ -410,7 +411,14 @@ namespace SNHU.GameObject
 			{
 				if (CollideRect(X,Y,p.X - GroundSmash.SMASH_RADIUS, p.Y - 10, GroundSmash.SMASH_RADIUS * 2, 10))
 				{
-					Kill();
+					if (Rebounding)
+					{
+						p.Kill();
+					}
+					else
+					{
+						Kill();
+					}
 				}
 			}
 		}
