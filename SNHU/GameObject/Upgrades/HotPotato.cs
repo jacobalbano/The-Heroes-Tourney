@@ -129,7 +129,6 @@ namespace SNHU.GameObject.Upgrades
 			base.OnLifetimeComplete();
 			
 			(Parent as Player).SetUpgrade(null);
-			Parent.RemoveLogic(this);
 		}
 		
 		public void OnPlayerDie(params object[] args)

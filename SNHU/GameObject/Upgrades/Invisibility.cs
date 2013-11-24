@@ -63,7 +63,6 @@ namespace SNHU.GameObject.Upgrades
 			Parent.AddTween(tweenFist2, true);
 			
 			(Parent as Player).SetUpgrade(null);
-			Parent.RemoveLogic(this);
 		}
 	}
 }
