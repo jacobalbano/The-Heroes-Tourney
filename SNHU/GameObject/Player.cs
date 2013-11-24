@@ -57,8 +57,8 @@ namespace SNHU.GameObject
 		public bool IsAlive { get; private set; }
 		
 		public int Lives { get; private set; }
-		public int id { get; private set;}
-		public uint jid { get; private set;}
+		public int id { get; private set; }
+		public uint jid { get; private set; }
 		
 		public string ImageName { get; private set; }
 		
@@ -126,7 +126,7 @@ namespace SNHU.GameObject
 			AddLogic(new CheckRestart(controller));
 			#endif
 			
-			SetUpgrade(new GroundSmash());
+			SetUpgrade(new Rebound());
 			Invincible = false;
 			Rebounding = false;
 			
@@ -146,6 +146,8 @@ namespace SNHU.GameObject
 		{
 			base.Removed();
 			World.RemoveList(left, right);
+			//World.Remove(cursor);
+//			cursor.Visible = false;
 		}
 		
 		void FaceLeft()
@@ -291,6 +293,8 @@ namespace SNHU.GameObject
 				right.Punch();
 			}
 			
+			Mixer.Audio[FP.Choose("swing1","swing2")].Play();
+			
 			hand = !hand;
 		}
 		
@@ -365,6 +369,8 @@ namespace SNHU.GameObject
 				World.BroadcastMessage("player_die", this);
 				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 1.0f);
 				World.Remove(this);
+				
+				Mixer.Audio["death1"].Play();
 				
 				if (Lives > 0)
 				{

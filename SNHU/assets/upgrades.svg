@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="upgrades.svg">
+  <defs
+     id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3968">
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1;"
+         offset="0"
+         id="stop3970" />
+      <stop
+         style="stop-color:#800000;stop-opacity:1"
+         offset="1"
+         id="stop3972" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3930">
+      <stop
+         style="stop-color:#333333;stop-opacity:1"
+         offset="0"
+         id="stop3932" />
+      <stop
+         style="stop-color:#999999;stop-opacity:0;"
+         offset="1"
+         id="stop3934" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3968"
+       id="linearGradient3974"
+       x1="258"
+       y1="671.36218"
+       x2="213.80287"
+       y2="747.91388"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.81784984,0,0,0.81784984,312.50259,49.103623)" />
+    <radialGradient
+       r="738"
+       fy="-1464.3125"
+       fx="1596.5"
+       cy="-1464.3125"
+       cx="1596.5"
+       gradientTransform="matrix(0.54200542,0,0,0.54200544,1553.6626,2048.5251)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4618"
+       xlink:href="#linearGradient4620"
+       inkscape:collect="always" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="738"
+       fy="-1464.3125"
+       fx="1596.5"
+       cy="-1464.3125"
+       cx="1596.5"
+       id="radialGradient4581"
+       xlink:href="#linearGradient4575"
+       inkscape:collect="always" />
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="1011.6777"
+       x2="20.381683"
+       y1="999.80267"
+       x1="21.240284"
+       id="linearGradient4080"
+       xlink:href="#linearGradient4074"
+       inkscape:collect="always" />
+    <linearGradient
+       id="linearGradient4074"
+       inkscape:collect="always">
+      <stop
+         id="stop4076"
+         offset="0"
+         style="stop-color:#ff0000;stop-opacity:1;" />
+      <stop
+         id="stop4078"
+         offset="1"
+         style="stop-color:#ff7a00;stop-opacity:0.60106385" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4575"
+       inkscape:collect="always">
+      <stop
+         id="stop4577"
+         offset="0"
+         style="stop-color:#590080;stop-opacity:1;" />
+      <stop
+         id="stop4579"
+         offset="1"
+         style="stop-color:#590080;stop-opacity:0;" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4620">
+      <stop
+         style="stop-color:#00ff00;stop-opacity:1"
+         offset="0"
+         id="stop4622" />
+      <stop
+         style="stop-color:#00ff00;stop-opacity:0"
+         offset="1"
+         id="stop4624" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient6040"
+       inkscape:collect="always">
+      <stop
+         id="stop6042"
+         offset="0"
+         style="stop-color:#550000;stop-opacity:1" />
+      <stop
+         id="stop6044"
+         offset="1"
+         style="stop-color:#670000;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6040"
+       id="linearGradient5512"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-18.039714,15.672612,-5.962202,-6.8626991,15786.561,-5736.1932)"
+       x1="662.0119"
+       y1="575.21649"
+       x2="658.88391"
+       y2="575.61237" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3930"
+       id="linearGradient5514"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.81784985,0,0,0.81784985,312.50259,49.103623)"
+       x1="173.73672"
+       y1="719.09668"
+       x2="327.26328"
+       y2="636.09668" />
+    <filter
+       inkscape:collect="always"
+       id="filter5646"
+       x="-0.187679"
+       width="1.375358"
+       y="-0.058572013"
+       height="1.117144">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.9374659"
+         id="feGaussianBlur5648" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter5650"
+       x="-0.15033252"
+       width="1.300665"
+       y="-0.098935419"
+       height="1.1978708">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.9374659"
+         id="feGaussianBlur5652" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter5654"
+       x="-0.45968538"
+       width="1.9193708"
+       y="-0.14346111"
+       height="1.2869222">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.9374659"
+         id="feGaussianBlur5656" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter5658"
+       x="-0.18767893"
+       width="1.3753579"
+       y="-0.058572015"
+       height="1.117144">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.9374659"
+         id="feGaussianBlur5660" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter5662"
+       x="-0.14377888"
+       width="1.2875578"
+       y="-0.1006121"
+       height="1.2012242">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.9374659"
+         id="feGaussianBlur5664" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter5666"
+       x="-0.45968567"
+       width="1.9193713"
+       y="-0.14346115"
+       height="1.2869223">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.9374659"
+         id="feGaussianBlur5668" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter5727">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.876411"
+         id="feGaussianBlur5729" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter5731">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.876411"
+         id="feGaussianBlur5733" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter5767">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.61257136"
+         id="feGaussianBlur5769" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter5771">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.61257136"
+         id="feGaussianBlur5773" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter5799"
+       x="-0.17683525"
+       width="1.3536705"
+       y="-0.055187859"
+       height="1.1103757">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.7099676"
+         id="feGaussianBlur5801" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter5803"
+       x="-0.17683531"
+       width="1.3536706"
+       y="-0.055187854"
+       height="1.1103757">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.7099676"
+         id="feGaussianBlur5805" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35355339"
+     inkscape:cx="-215.67681"
+     inkscape:cy="412.498"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="706"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       sodipodi:type="arc"
+       style="fill:#333333;fill-opacity:1;stroke:#999999;stroke-width:19.84032249;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path2985"
+       sodipodi:cx="432.85715"
+       sodipodi:cy="365.21933"
+       sodipodi:rx="112.85714"
+       sodipodi:ry="112.85714"
+       d="m 545.71429,365.21933 a 112.85714,112.85714 0 1 1 -225.71428,0 112.85714,112.85714 0 1 1 225.71428,0 z"
+       transform="matrix(0.50402405,0,0,0.50402405,-88.45612,-41.93143)" />
+    <path
+       style="fill:#333333;fill-opacity:1;stroke:#999999;stroke-width:10;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 168.92366,71.47921 c 11.70264,-1.68571 26.45363,13.46312 23.73859,23.73859 l -18.40984,20.40983 c -10.82133,0.8966 -24.78687,-12.99508 -23.73858,-23.73858 z"
+       id="rect3757"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0"
+       id="path3760"
+       d="m 168.92366,71.47921 c 11.70264,-1.68571 26.45363,13.46312 23.73859,23.73859 l -4.40984,4.40983 c -10.82133,0.8966 -24.78687,-12.99508 -23.73858,-23.73858 z"
+       style="fill:#333333;fill-opacity:1;stroke:#999999;stroke-width:10;stroke-miterlimit:4;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 180.14148,83.27372 c 7.52727,-9.69261 17.8623,-17.29755 31.52644,-16.21622 35.1028,2.77791 49.75001,-5.80838 50.50762,-19.69797"
+       id="path3762"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csc" />
+    <path
+       sodipodi:type="star"
+       style="opacity:0.59292034;fill:#ffff00;fill-opacity:1;stroke:#ff6600;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3764"
+       sodipodi:sides="4"
+       sodipodi:cx="574.77679"
+       sodipodi:cy="324.04221"
+       sodipodi:r1="34.981773"
+       sodipodi:r2="3.3070626"
+       sodipodi:arg1="1.2627435"
+       sodipodi:arg2="2.0481417"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 585.3834,357.37724 -12.12595,-30.39764 -31.81569,7.66921 30.39764,-12.12594 -7.66921,-31.8157 12.12594,30.39764 31.8157,-7.66921 -30.39764,12.12595 z"
+       inkscape:transform-center-x="-2.9351955"
+       inkscape:transform-center-y="0.066114072"
+       transform="matrix(0.89552709,0,0,1.0015877,-252.02192,-277.64484)" />
+    <path
+       transform="matrix(0.58315173,0.27940919,-0.33668281,0.48395091,37.38125,-270.8854)"
+       inkscape:transform-center-y="0.94774074"
+       inkscape:transform-center-x="-1.8891274"
+       d="m 585.3834,357.37724 -13.63261,-27.6836 -30.30903,4.95517 27.6836,-13.63261 -4.95517,-30.30903 13.63261,27.6836 30.30903,-4.95517 -27.6836,13.63261 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="2.0623924"
+       sodipodi:arg1="1.2627435"
+       sodipodi:r2="6.4105668"
+       sodipodi:r1="34.981773"
+       sodipodi:cy="324.04221"
+       sodipodi:cx="574.77679"
+       sodipodi:sides="4"
+       id="path3766"
+       style="opacity:0.59292034;fill:#d40000;fill-opacity:1;stroke:#ff6600;stroke-width:2.98124695;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="star" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.32968497;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 147.47349,157.01223 c -9.02902,9.02902 -21.79185,12.04856 -33.31824,9.05861 -5.79155,-1.50233 -11.0186,13.3163 -25.34646,-0.17953 -14.32786,-13.49583 1.94324,-18.96664 0.45102,-24.80001 -2.94094,-11.49665 0.0883,-24.20552 9.08776,-33.20497 13.56576,-13.56575 30.55933,-10.62408 44.12508,2.94167 13.56575,13.56574 18.56658,32.61849 5.00084,46.18423 z"
+       id="path3768"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sszssss" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.32968497;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 114.40614,129.35286 c -4.43199,2.55881 -10.09916,1.04031 -12.65797,-3.39168 -2.55881,-4.43198 -1.04029,-10.09914 3.3917,-12.65795 4.43197,-2.55881 8.0611,0.13637 10.6199,4.56836 2.55882,4.43198 3.07835,8.92246 -1.35363,11.48127 z"
+       id="path3771"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sssss" />
+    <path
+       sodipodi:nodetypes="sssss"
+       inkscape:connector-curvature="0"
+       id="path3778"
+       d="m 126.00694,140.95368 c -2.55879,4.43199 -1.0403,10.09915 3.39169,12.65796 4.43199,2.55882 10.09915,1.04029 12.65796,-3.3917 2.55879,-4.43198 -0.13637,-8.06109 -4.56836,-10.6199 -4.432,-2.55881 -8.92248,-3.07834 -11.48129,1.35364 z"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.32968497;stroke-miterlimit:4;stroke-opacity:1" />
+    <g
+       transform="matrix(0.70111742,0.71314731,-0.70111742,0.71314731,0,0)"
+       style="font-size:35.29504776px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       id="text3787" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#1a1a1a;stroke-width:1.13010895;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 103.24153,144.08964 11.86128,-4.52045 -4.52045,11.86128 z"
+       id="rect3800"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <rect
+       style="fill:#00ffff;fill-opacity:1;stroke:#008080;stroke-width:4.96016264;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3838"
+       width="101.99505"
+       height="54.866627"
+       x="-1434.9353"
+       y="-1542.9561"
+       transform="matrix(-0.99919021,0.04023597,0.78052666,-0.62512249,0,0)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\bullets.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       y="-1515.3552"
+       x="-1432.895"
+       height="24.311415"
+       width="97.914421"
+       id="rect3840"
+       style="opacity:0.55769228;fill:#ffffff;fill-opacity:1;stroke:none"
+       transform="matrix(-0.99919021,0.04023597,0.78052666,-0.62512249,0,0)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\bullets.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="cccccccc"
+       inkscape:connector-curvature="0"
+       id="path3865"
+       d="m 568.08128,56.509075 44.0972,55.856455 -44.0972,55.85645 -0.2685,-27.19327 -62.89425,0.73496 0,-58.79627 62.89425,0.73495 z"
+       style="fill:#ffff71;fill-opacity:1;stroke:#ff7171;stroke-width:7.34953356;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\speed.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ffff71;fill-opacity:1;stroke:#ff7171;stroke-width:2.64023781;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 514.1331,150.66352 15.84145,20.06583 -15.84145,20.06584 -0.0964,-9.76894 -22.59406,0.26404 0,-21.12187 22.59409,0.26408 z"
+       id="path3873"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\speed.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="cccccccc"
+       inkscape:connector-curvature="0"
+       id="path3877"
+       d="m 545.46603,39.163573 9.84276,12.467491 -9.84276,12.467486 -0.0599,-6.069728 -14.03834,0.164053 0,-13.123628 14.03835,0.164085 z"
+       style="fill:#ffff71;fill-opacity:1;stroke:#ff7171;stroke-width:1.64045644;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\speed.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="cccccccc"
+       inkscape:connector-curvature="0"
+       id="path3879"
+       d="m 476.34719,101.52643 9.84276,12.46749 -9.84276,12.46749 -0.0599,-6.06974 -14.03833,0.16407 0,-13.12364 14.03835,0.16409 z"
+       style="fill:#ffff71;fill-opacity:1;stroke:#ff7171;stroke-width:1.64045644;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\speed.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="cccccccc"
+       inkscape:connector-curvature="0"
+       id="path3881"
+       d="m 437.14519,81.857 12.24224,15.50682 -12.24224,15.50683 -0.0745,-7.54942 -17.46062,0.20405 0,-16.32292 17.46064,0.20408 z"
+       style="fill:#ffff71;fill-opacity:1;stroke:#ff7171;stroke-width:2.04036903;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\speed.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#008000;fill-opacity:1;stroke:#00c000;stroke-width:5.86860943;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 100.12906,481.84889 96.01335,-55.2375 0.0105,-42.39312 -96.953278,-55.75949 11.365808,-20.24866 -59.117378,13.64431 17.74238,58.0193 11.85294,-19.96741 78.540738,45.52595 -77.602568,44.9741 z"
+       id="path3885"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\rebound.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#999999;stroke-width:6.75912046;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 189.09604,497.72653 -13.07758,-59.24912 -23.54301,27.80894 11.71935,-47.71484 -44.85372,1.97861 46.05907,-31.16272 -25.35175,-92.80628 38.67846,76.32018 17.79834,-55.05079 2.32863,60.36768 8.17853,33.55231 -9.60728,18.20761 z"
+       id="path3899"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\rebound.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\groundsmask.png"
+       style="fill:#800000;fill-opacity:1;stroke:#ff0000;stroke-width:9.16331196;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 597.45235,391.66509 -69.64118,54.97987 -69.64117,-54.97987 33.90425,-0.33477 -0.91634,-78.41581 73.3065,0 -0.91633,78.41581 z"
+       id="path3902"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       sodipodi:nodetypes="ccccccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path3907"
+       d="m 450.573,455.95402 26.72221,-16.61312 -58.92164,-46.87753 85.8986,33.63966 -10.64332,-25.70165 25.27738,13.70285 45.61273,-24.36964 -14.79922,23.43164 78.66414,-18.28067 -65.71358,45.04241 33.13048,14.26281 -49.05397,-0.49979 -33.55231,8.17852 -18.20761,-9.60727 z"
+       style="fill:#ffffff;fill-opacity:1;stroke:#999999;stroke-width:6.75912046;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\groundsmask.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="opacity:0.82692309;fill:url(#linearGradient5514);fill-opacity:1;stroke:#1a1a1a;stroke-width:8.17849827;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 461.35126,549.92393 c 0,0 41.84235,9.71691 63.79229,9.41732 19.84494,-0.27088 57.24949,-9.41732 57.24949,-9.41732 0,0 28.08689,55.13233 0,114.06472 -11.17381,23.4451 -60.52089,65.42799 -60.52089,65.42799 0,0 -49.34708,-41.98289 -60.52089,-65.42799 -28.08689,-58.93239 0,-114.06472 0,-114.06472 z"
+       id="rect3909"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cscscsc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\shield.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="opacity:0.82692309;fill:url(#linearGradient3974);fill-opacity:1;stroke:none"
+       d="m 461.01902,550.59892 c -1.89863,4.00094 -11.44804,25.57989 -12.08885,54.59148 l 124.03204,73.12089 c 4.05549,-5.15127 7.3896,-10.02944 9.43083,-14.31238 5.77018,-12.1071 9.1541,-24.05632 10.91318,-35.39756 l -132.2872,-78.00243 z"
+       id="rect3912"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\shield.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path5316"
+       d="m 168.84424,618.88203 c 20.27618,-0.0299 36.89466,9.39224 57.73495,14.8917 -9.93628,5.28294 -20.16651,10.43651 -30.84343,14.10955 -7.82401,2.69168 -15.89222,4.58924 -24.25691,5.15603 -15.36852,1.10787 -30.82201,-1.04795 -45.88951,-3.98279 -12.13153,-2.59232 -23.95888,-6.56743 -35.21729,-11.77341 25.6594,-9.57141 49.81841,-18.23995 76.49624,-18.37024 0.66194,-0.0207 1.32188,-0.0299 1.97595,-0.0307 z"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       sodipodi:nodetypes="ccscccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\invisibility.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#298fc7;fill-opacity:1;stroke:#005584;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:4, 2;stroke-dashoffset:0"
+       d="m 67.9899,614.09107 c 15.53815,8.23956 55.03337,-14.1931 87.71457,-19.54294 36.7131,0.68211 74.00011,21.75423 94.76068,21.15959 3.47224,-0.0994 1.86962,3.31134 1.18099,4.48305 -31.25008,1.09053 -65.4723,-17.68505 -89.1397,-16.137 -39.74567,2.59977 -83.72891,25.37349 -94.51654,10.0373 z"
+       id="rect5288"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccscsc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\invisibility.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:3;stroke-miterlimit:4;stroke-opacity:0.4255319;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 193.73922,632.80213 c 0,8.13153 -2.9487,15.46271 -7.67122,20.6281 -4.36171,4.7707 -27.33021,5.55271 -31.42009,1.94459 -5.86282,-5.17214 -9.64892,-13.35861 -9.64892,-22.57269 0,-5.76364 0.26059,-12.09015 4.02582,-15.59822 4.36089,-4.06311 37.63842,-4.23521 41.76705,2.08539 2.42492,3.71232 2.94736,8.61952 2.94736,13.51283 z"
+       id="path5299"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sssssss"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\invisibility.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#42a3d8;fill-opacity:1;stroke:#005584;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:4, 2;stroke-dashoffset:0"
+       d="m 167.61956,612.40874 c -23.87948,0.82712 -46.99321,7.52937 -69.5701,14.84022 -9.74538,2.94243 -19.66946,5.40416 -29.7937,6.59682 0.35523,3.51613 -1.94972,15.38315 3.91075,11.2588 3.79174,-5.8821 10.93883,-4.32438 16.58979,-2.58312 12.35759,4.13809 23.8932,10.67544 36.82275,13.1216 12.30675,2.70465 24.9411,4.22118 37.52257,4.38407 8.7237,-0.83702 17.3452,-2.39835 25.80063,-4.61057 -17.39901,19.01383 -31.53111,33.10074 -42.95645,43.22404 -30.12927,21.17771 -49.43987,18.2553 -58.22894,10.61053 -4.40219,-3.8291 -6.31533,-8.96702 -5.90728,-13.43035 0.39874,-4.36174 2.76664,-8.10444 7.94498,-10.12676 6.44207,-0.68909 10.4481,0.2117 12.57614,1.43052 0.42881,0.2456 0.78876,0.50379 1.10118,0.76152 -0.97045,-0.31873 -2.01058,-0.49397 -3.09772,-0.49397 -5.16089,0 -9.34462,3.90728 -9.34462,8.72716 0,4.81981 4.18373,8.7271 9.34462,8.7271 7.56199,0.5809 12.32764,-6.76663 11.39262,-13.75959 -0.16893,-3.60007 -2.1938,-7.43362 -6.12341,-9.68427 -3.92961,-2.25066 -9.438,-3.09321 -17.01174,-2.21268 l -0.39107,0.0414 -0.3602,0.13373 c -7.57761,2.76949 -11.97939,9.10667 -12.59672,15.85909 -0.61733,6.75273 2.26551,13.8789 8.15082,18.99802 11.77061,10.23809 34.94057,11.9436 66.50325,-10.30169 l 0.14408,-0.10297 0.14408,-0.12346 c 13.19278,-11.67612 29.69325,-28.32221 50.44862,-51.40575 l -0.31904,-0.28812 c 1.62692,-0.54737 3.24665,-1.12475 4.85756,-1.7187 l 0,67.50155 3.32413,-0.51453 c 7.71929,-21.3317 15.97603,-32.45347 26.25345,-44.66484 l 3.54026,-5.36189 -7.50246,1.70842 c -7.79148,1.5255 -23.59621,-7.81112 -14.66529,-22.85728 0.0739,-0.1246 0.13389,-0.23632 0.18524,-0.33967 1.49719,-0.66738 2.98721,-1.35087 4.46648,-2.0583 9.4698,-4.38875 19.51393,-7.51356 29.86575,-8.88147 1.84338,-6.24226 -8.16532,-3.99291 -12.19535,-4.95016 -19.76978,-1.64696 -35.02192,-10.91936 -56.72639,-15.61218 -4.60978,-1.13412 -9.34215,-1.88045 -14.09927,-1.84208 z m 1.22468,6.47329 c 20.27618,-0.0299 36.89466,9.39224 57.73495,14.8917 -9.93628,5.28294 -20.16651,10.43651 -30.84343,14.10955 -7.82401,2.69168 -15.89222,4.58924 -24.25691,5.15603 -15.36852,1.10787 -30.82201,-1.04795 -45.88951,-3.98279 -12.13153,-2.59232 -23.95888,-6.56743 -35.21729,-11.77341 25.6594,-9.57141 49.81841,-18.23995 76.49624,-18.37024 0.66194,-0.0207 1.32188,-0.0299 1.97595,-0.0307 z"
+       id="rect5291"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\invisibility.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="color:#000000;fill:#670000;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="m 528.30451,610.66099 c -0.57768,-1.5997 -0.89753,-0.95364 -1.18343,-2.19171 -0.28557,-1.23688 -0.23697,-2.33953 0.12443,-2.39581 0.36034,-0.0572 1.45265,0.91296 1.74508,2.18021 0.29251,1.2668 -0.18615,3.79129 -0.6862,2.40742 z"
+       id="path5627-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sasss"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\shield.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="cscscsc"
+       inkscape:connector-curvature="0"
+       id="path3958"
+       d="m 461.35126,549.92393 c 0,0 41.84235,8.56029 63.79229,8.2607 19.84494,-0.27087 57.24949,-8.2607 57.24949,-8.2607 0,0 28.08689,55.13233 0,114.06472 -11.17381,23.4451 -60.52089,65.42799 -60.52089,65.42799 0,0 -49.34708,-41.98289 -60.52089,-65.42799 -28.08689,-58.93239 0,-114.06472 0,-114.06472 z"
+       style="opacity:0.82692309;fill:none;stroke:#333333;stroke-width:8.17849827;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\shield.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="color:#000000;fill:#670000;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="m 507.69116,618.87845 c -0.63406,-0.33976 -2.79577,1.07038 -2.58145,0.43628 0.21698,-0.63569 1.73289,-1.89742 3.37967,-2.78789 1.6457,-0.88952 5.27137,-2.38948 5.04929,-1.73862 -0.21668,0.64711 -5.302,4.38753 -5.85075,4.09305 z"
+       id="path6053"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sasss"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\shield.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="color:#000000;fill:#670000;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="m 517.09933,619.22049 c -0.36977,-0.19006 -1.59991,0.6132 -1.47639,0.24893 0.12263,-0.36194 0.99182,-1.08413 1.93485,-1.59565 0.93858,-0.50767 3.01805,-1.36915 2.8911,-0.99635 -0.12625,0.37245 -3.03448,2.51019 -3.3483,2.34166 z"
+       id="path5653-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sasss"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\shield.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="color:#000000;fill:#670000;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="m 502.96308,630.44326 c -0.36977,-0.19006 -1.59962,0.61331 -1.47616,0.2491 0.12016,-0.36399 0.98958,-1.08591 1.93483,-1.59564 0.93859,-0.50769 3.0182,-1.3693 2.89115,-0.9964 -0.1277,0.37049 -3.03449,2.5102 -3.34924,2.34134 z"
+       id="path6051"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sasss"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\shield.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="sasss"
+       inkscape:connector-curvature="0"
+       id="path6049"
+       d="m 510.76461,621.17266 c -2.2559,2.40854 0.0426,2.2589 -2.1024,3.8814 -2.14181,1.62347 -4.81518,2.6194 -5.84712,2.12996 -1.03226,-0.4851 -1.52563,-3.04755 0.66992,-4.70806 2.19601,-1.65943 9.22619,-3.38638 7.28014,-1.30413 z"
+       style="color:#000000;fill:#670000;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\shield.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="sasss"
+       inkscape:connector-curvature="0"
+       id="path5659-3"
+       d="m 511.95648,623.42007 c -0.2171,-0.12654 -1.00256,0.38418 -0.93321,0.163 0.0793,-0.22834 0.62297,-0.68213 1.20618,-0.99969 0.58782,-0.31788 1.8872,-0.85425 1.80986,-0.62391 -0.0876,0.23878 -1.89891,1.57185 -2.09743,1.46625 z"
+       style="color:#000000;fill:#670000;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\shield.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="color:#000000;fill:#670000;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="m 556.98418,637.21071 c -0.0401,-0.66814 -2.35163,-1.80862 -1.70422,-1.91464 0.65026,-0.10406 2.502,0.57417 4.10723,1.52467 1.60379,0.94961 4.74807,3.24533 4.08245,3.35272 -0.65979,0.10973 -6.45515,-2.38553 -6.48967,-2.96354 z"
+       id="path6169"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sasss"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\shield.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="color:#000000;fill:#670000;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="m 550.46176,629.79282 c -0.0304,-0.38625 -1.34629,-1.03428 -0.97368,-1.09512 0.36993,-0.0618 1.43043,0.32789 2.35088,0.87305 0.91459,0.54208 2.71963,1.85745 2.3383,1.91917 -0.37904,0.0624 -3.69386,-1.36479 -3.71365,-1.69722 z"
+       id="path6175"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sasss"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\shield.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="sasss"
+       inkscape:connector-curvature="0"
+       id="path6179"
+       d="m 549.36678,635.51494 c -3.20501,-0.77466 -1.88983,1.03601 -4.37223,0.004 -2.48126,-1.0308 -4.70696,-2.77085 -4.82626,-3.83071 -0.12326,-1.05791 1.79051,-2.59634 4.3312,-1.53968 2.54044,1.0565 7.63708,6.03311 4.86845,5.3669 z"
+       style="color:#000000;fill:#670000;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\shield.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="color:#000000;fill:url(#linearGradient5512);fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="m 468,635.09375 c -1.09719,0.12239 -3.40433,1.53191 -7.78125,5.125 -4.3941,3.60778 -7.98505,2.53729 -11.375,1.8125 2.05535,7.72545 4.92168,15.62667 8.71875,23.59375 2.27783,4.77938 6.05595,10.25813 10.65625,16.03125 L 471,681.03125 c 0.23956,-0.13356 0.44521,-0.19306 0.625,-0.21875 l -1.75,2.90625 c 1.92906,2.34904 3.96103,4.73449 6.09375,7.125 3.07835,-0.12578 6.98308,0.83268 12.71875,4.25 2.17412,-2.27516 4.72079,-4.43188 7.75,-6.28125 0.56958,-0.34764 1.06826,-0.70409 1.5,-1.0625 6.47712,-5.37471 -1.55192,-11.93783 6.03125,-18.90625 14.82463,-13.62467 -1.46859,-4.90357 -2.25,-8.21875 -0.7808,-3.31569 8.12074,-13.27951 0.53125,-9.53125 -7.77301,3.83874 -19.81589,13.1406 -25.84375,14.6875 -6.02796,1.54735 -1.032,-5.35266 -5.96875,-4.75 -2.10572,0.25695 -5.55662,1.70007 -9,3.375 4.06041,-5.94549 12.19413,-14.10342 16.21875,-20 4.77204,-6.99123 -6.38866,0.51755 -9.5625,-0.71875 -2.28092,-0.88909 2.71019,-8.90654 -0.0937,-8.59375 z"
+       id="path3868"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\shield.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="opacity:0.21153846;fill:none;stroke:#000000;stroke-width:8.17849827;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 461.35126,549.92393 c 0,0 41.84235,8.56029 63.79229,8.2607 19.84494,-0.27087 57.24949,-8.2607 57.24949,-8.2607 0,0 28.08689,55.13233 0,114.06472 -11.17381,23.4451 -60.52089,65.42799 -60.52089,65.42799 0,0 -49.34708,-41.98289 -60.52089,-65.42799 -28.08689,-58.93239 0,-114.06472 0,-114.06472 z"
+       id="path5510"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cscscsc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\shield.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       transform="matrix(-0.99747428,-0.07102854,0.78555263,-0.61879485,0,0)"
+       y="-1405.0905"
+       x="-1253.1863"
+       height="47.513119"
+       width="106.20703"
+       id="rect5516"
+       style="fill:#00ffff;fill-opacity:1;stroke:#008080;stroke-width:4.71016073;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\bullets.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       transform="matrix(-0.99747428,-0.07102854,0.78555263,-0.61879485,0,0)"
+       style="opacity:0.55769228;fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect5518"
+       width="101.95791"
+       height="21.053076"
+       x="-1251.062"
+       y="-1381.1888"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\bullets.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       transform="matrix(0.99924327,-0.03889587,-0.67160243,0.74091172,0,0)"
+       y="1189.327"
+       x="867.0155"
+       height="48.075081"
+       width="106.67831"
+       id="rect5520"
+       style="fill:#00ffff;fill-opacity:1;stroke:#008080;stroke-width:4.74843311;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\bullets.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       transform="matrix(0.99924327,-0.03889587,-0.67160243,0.74091172,0,0)"
+       style="opacity:0.55769228;fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect5522"
+       width="102.41032"
+       height="21.30208"
+       x="869.14929"
+       y="1213.5114"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\bullets.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g5670" />
+    <path
+       style="opacity:0.50000000000000000;fill:#9600c6;fill-opacity:1;stroke:none;filter:url(#filter5803)"
+       d="m 451.57373,832.04432 c -14.11347,13.8463 -30.04789,27.5141 -36.58652,46.8356 -5.61854,16.4286 -5.98406,34.4365 -2.65726,51.3818 2.83546,14.5158 11.93111,26.8611 22.79705,36.526 6.71961,5.7859 12.64592,12.4837 19.62216,17.9529 2.44848,1.8196 5.68286,3.7462 2.5251,-0.5229 -9.99394,-17.6913 -20.51333,-35.8063 -23.51256,-56.2309 -4.08855,-24.3253 0.35817,-49.5642 10.81948,-71.7651 4.76253,-10.5411 10.57895,-20.5514 15.97767,-30.7685 -3.30241,1.7307 -6.34986,3.9519 -8.98512,6.5911 z"
+       id="path5527"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\fus.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path5534"
+       d="m 461.65014,885.83852 c -3.589,12.9002 -8.30651,26.3122 -5.59879,39.8585 2.26782,11.5381 8.15128,22.2237 15.84052,31.0358 6.57838,7.5535 16.09347,11.7141 25.73918,13.7032 5.90032,1.1181 11.64417,3.0397 17.58777,3.8851 2.05224,0.238 4.60159,0.2728 1.30391,-1.1617 -11.85218,-6.992 -24.15596,-14.0545 -32.83136,-25.0181 -10.635,-12.8826 -16.57333,-29.1912 -17.95541,-45.7547 -0.77614,-7.7951 -0.75452,-15.6358 -1.04782,-23.4563 -1.35082,2.1333 -2.386,4.468 -3.038,6.9082 z"
+       style="opacity:0.75000000000000000;fill:#9600c6;fill-opacity:1;stroke:none;filter:url(#filter5727)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\fus.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="opacity:0.8;fill:#9600c6;fill-opacity:1;stroke:none;filter:url(#filter5771)"
+       d="m 504.01168,875.58708 c -5.76221,5.6532 -12.26786,11.2334 -14.93748,19.1219 -2.29389,6.7075 -2.44317,14.0597 -1.08484,20.9781 1.15767,5.9265 4.87119,10.9668 9.30753,14.9128 2.74344,2.3622 5.16302,5.0968 8.01126,7.3297 0.9997,0.7429 2.32019,1.5295 1.03094,-0.2135 -4.08028,-7.223 -8.37517,-14.6189 -9.59965,-22.9578 -1.66929,-9.9315 0.14621,-20.236 4.41731,-29.3002 1.94443,-4.3036 4.31919,-8.3906 6.52332,-12.562 -1.34823,0.7066 -2.59242,1.6134 -3.6684,2.691 z"
+       id="path5536"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\fus.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="matrix(0.96592583,0.25881905,-0.25881905,0.96592583,252.47514,-101.93491)" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path5538"
+       d="m 574.26409,836.27942 c 14.11351,13.8464 30.04798,27.5142 36.58655,46.8356 5.61856,16.4287 5.98402,34.4366 2.6573,51.3819 -2.83552,14.5158 -11.93117,26.8611 -22.79713,36.526 -6.71955,5.7859 -12.64592,12.4837 -19.62208,17.9529 -2.44855,1.8195 -5.68291,3.7462 -2.5251,-0.5228 9.9939,-17.6915 20.51324,-35.8064 23.51257,-56.2311 4.08855,-24.3253 -0.35819,-49.5641 -10.81954,-71.765 -4.76248,-10.5411 -10.57893,-20.5514 -15.97768,-30.7685 3.30247,1.7307 6.34989,3.9519 8.98511,6.591 z"
+       style="opacity:0.50000000000000000;fill:#9600c6;fill-opacity:1;stroke:none;filter:url(#filter5799)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\fus.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="opacity:0.75000000000000000;fill:#9600c6;fill-opacity:1;stroke:none;filter:url(#filter5731)"
+       d="m 515.4687,843.54652 c 12.96627,3.3419 26.9402,5.9624 37.31779,15.0805 8.85846,7.733 15.17069,18.171 18.95749,29.2362 3.25238,9.4737 2.09809,19.7943 -1.0022,29.1423 -1.98183,5.6689 -3.18971,11.604 -5.42931,17.174 -0.81992,1.8963 -2.06449,4.1215 -1.6581,0.5484 -0.12914,-13.7602 -0.0934,-27.947 -5.25056,-40.9418 -5.83917,-15.6515 -16.99364,-28.9486 -30.64693,-38.4272 -6.36274,-4.5697 -13.16378,-8.4713 -19.78991,-12.6356 2.52293,-0.1032 5.06237,0.1676 7.50173,0.8232 z"
+       id="path5540"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\fus.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path5542"
+       d="m 522.73597,879.72818 c 5.76221,5.6532 12.26787,11.2334 14.93752,19.1219 2.29389,6.7075 2.44313,14.0597 1.08486,20.9781 -1.15767,5.9265 -4.8712,10.9668 -9.30756,14.9128 -2.74342,2.3622 -5.16299,5.0968 -8.01125,7.3297 -0.99972,0.7429 -2.32022,1.5295 -1.03094,-0.2134 4.08025,-7.223 8.37516,-14.619 9.59965,-22.9579 1.66925,-9.9315 -0.14619,-20.236 -4.41733,-29.3001 -1.94443,-4.3037 -4.31913,-8.3907 -6.5233,-12.5621 1.34827,0.7066 2.59243,1.6135 3.66835,2.691 z"
+       style="opacity:0.8;fill:#9600c6;fill-opacity:1;stroke:none;filter:url(#filter5767)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\fus.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="matrix(0.96592583,0.25881905,-0.25881905,0.96592583,252.47514,-101.93491)" />
+  </g>
+</svg>

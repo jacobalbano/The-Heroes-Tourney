@@ -44,6 +44,8 @@ namespace SNHU.GameObject.Upgrades
 				Parent.AddTween(tween, true);
 				
 				(Parent as Player).Rebounding = true;
+				
+				Mixer.Audio["reboundUp"].Play();
 			}
 		}
 		
@@ -80,6 +82,7 @@ namespace SNHU.GameObject.Upgrades
 		public void OnFadeOutComplete()
 		{
 			(Parent as Player).Rebounding = false;
+				Mixer.Audio["reboundDown"].Play();
 			
 			(Parent as Player).SetUpgrade(null);
 			Parent.RemoveLogic(this);

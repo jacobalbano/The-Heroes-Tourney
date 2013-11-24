@@ -44,6 +44,8 @@ namespace SNHU.GameObject.Upgrades
 				Parent.AddTween(tween, true);
 				
 				(Parent as Player).Invincible = true;
+				
+				Mixer.Audio["shieldUp"].Play();
 			}
 		}
 		
@@ -80,6 +82,7 @@ namespace SNHU.GameObject.Upgrades
 		public void OnFadeOutComplete()
 		{
 			(Parent as Player).Invincible = false;
+			Mixer.Audio["shieldDown"].Play();
 			
 			(Parent as Player).SetUpgrade(null);
 			Parent.RemoveLogic(this);

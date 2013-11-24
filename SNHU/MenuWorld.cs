@@ -143,7 +143,7 @@ namespace SNHU
 			Add(menu);
 			
 			var tween = new VarTween(null, ONESHOT);
-			tween.Tween(menu, "X", (menu.Width / 2) + slot * menu.Width, 1.6f + FP.Random, Ease.ElasticOut);
+			tween.Tween(menu, "X", 10 + (menu.Width / 2) + slot * menu.Width, 1.6f + FP.Random, Ease.ElasticOut);
 			AddTween(tween, true);
 		}
 		
