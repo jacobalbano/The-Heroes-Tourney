@@ -43,7 +43,7 @@ namespace SNHU.GameObject.Upgrades
 				
 				var tween = new VarTween(null, Tween.ONESHOT);
 				tween.Tween(shieldImg, "Alpha", 0.6f, 0.45f);
-				Parent.AddTween(tween, true);
+				FP.Tweener.AddTween(tween, true);
 				
 				(Parent as Player).Invincible = true;
 				
@@ -76,7 +76,7 @@ namespace SNHU.GameObject.Upgrades
 			
 			var tween = new VarTween(OnFadeOutComplete, Tween.ONESHOT);
 			tween.Tween(shieldImg, "Alpha", 0.0f, 0.45f);
-			Parent.AddTween(tween, true);
+			Parent.World.AddTween(tween, true);
 			
 		}
 		
