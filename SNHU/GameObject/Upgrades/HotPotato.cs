@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;
+using Punk.Tweens.Misc;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -21,6 +22,8 @@ namespace SNHU.GameObject.Upgrades
 		Entity countdown;
 		List<Entity> opponents;
 		Player closestOpponent;
+		
+		private int prevTime;
 		
 		public const string GO_BOOM = "goBoom";
 		
@@ -36,6 +39,7 @@ namespace SNHU.GameObject.Upgrades
 			
 			opponents = new List<Entity>();
 			closestOpponent = (Player)Parent;
+			prevTime = 5;
 			
 			AddResponse("player_die", OnPlayerDie);
 		}
@@ -76,6 +80,8 @@ namespace SNHU.GameObject.Upgrades
 			{
 				closestOpponent.Kill();
 			}
+			
+			Mixer.Audio["explode"].Play();
 		}
 		
 		public override void Update()
@@ -83,6 +89,11 @@ namespace SNHU.GameObject.Upgrades
 			base.Update();
 			
 			(countdown.Graphic as Text).String = lifeTimer.Remaining.ToString("0");
+			if (prevTime != int.Parse((countdown.Graphic as Text).String))
+			{
+				prevTime = int.Parse((countdown.Graphic as Text).String);
+				Mixer.Audio["timeTick"].Play();
+			}
 			
 			float minDist = 9999.0f;
 			foreach (var p in opponents)

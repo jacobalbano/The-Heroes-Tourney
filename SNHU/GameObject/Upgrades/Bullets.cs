@@ -43,11 +43,13 @@ namespace SNHU.GameObject.Upgrades
 			{
 				dir.X = -dir.X;
 				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
+				Mixer.Audio["bulletBounce"].Play();
 			}
 			if (Collide(Platform.Collision, X, Y + (dir.Y * BULLET_SPEED)) != null)
 			{
 				dir.Y = -dir.Y;
 				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
+				Mixer.Audio["bulletBounce"].Play();
 			}
 			
 			var p = Collide(Player.Collision, X + (dir.X * BULLET_SPEED), Y);
@@ -55,6 +57,7 @@ namespace SNHU.GameObject.Upgrades
 			{
 				dir.X = -dir.X;
 				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
+				Mixer.Audio["bulletBounce"].Play();
 			}
 			
 			p = Collide(Player.Collision, X, Y + (dir.Y * BULLET_SPEED));
@@ -62,6 +65,7 @@ namespace SNHU.GameObject.Upgrades
 			{
 				dir.Y = -dir.Y;
 				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
+				Mixer.Audio["bulletBounce"].Play();
 			}
 		}
 	}

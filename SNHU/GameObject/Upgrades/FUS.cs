@@ -34,6 +34,7 @@ namespace SNHU.GameObject.Upgrades
 					Parent.World.BroadcastMessage(GameManager.SHAKE, 60.0f, 0.5f);
 					(Parent as Player).SetUpgrade(null);
 					Parent.RemoveLogic(this);
+					Mixer.Audio["fus"].Play();
 				}
 			}
 		}
