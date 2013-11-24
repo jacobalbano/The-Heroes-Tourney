@@ -19,9 +19,9 @@
     <spawnPoint id="17" x="576" y="448" width="16" height="16" />
     <jumpPad id="18" x="560" y="576" width="48" height="3" />
     <jumpPad id="19" x="32" y="576" width="48" height="3" />
-    <Upgrade id="10" x="32" y="512" />
+    <Upgrade id="10" x="208" y="512" />
     <Upgrade id="20" x="32" y="192" />
     <Upgrade id="21" x="592" y="192" />
-    <Upgrade id="22" x="592" y="512" />
+    <Upgrade id="22" x="416" y="512" />
   </Platforms>
 </level>

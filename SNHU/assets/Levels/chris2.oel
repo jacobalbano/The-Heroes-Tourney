@@ -18,8 +18,8 @@
     <spawnPoint id="15" x="384" y="368" width="16" height="16" />
     <platform id="16" x="208" y="432" width="80" height="16" />
     <platform id="17" x="352" y="432" width="80" height="16" />
-    <Upgrade id="18" x="48" y="448" />
-    <Upgrade id="19" x="576" y="448" />
-    <Upgrade id="20" x="304" y="192" />
+    <Upgrade id="18" x="112" y="336" />
+    <Upgrade id="19" x="512" y="352" />
+    <Upgrade id="20" x="304" y="128" />
   </Platforms>
 </level>

@@ -19,9 +19,9 @@
     <jumpPad id="11" x="416" y="512" width="16" height="3" />
     <jumpPad id="17" x="384" y="304" width="16" height="3" />
     <jumpPad id="18" x="240" y="304" width="16" height="3" />
-    <Upgrade id="19" x="80" y="256" />
-    <Upgrade id="20" x="544" y="256" />
-    <Upgrade id="21" x="64" y="464" />
-    <Upgrade id="22" x="560" y="464" />
+    <Upgrade id="19" x="192" y="112" />
+    <Upgrade id="20" x="432" y="112" />
+    <Upgrade id="21" x="208" y="400" />
+    <Upgrade id="22" x="416" y="400" />
   </Platforms>
 </level>
