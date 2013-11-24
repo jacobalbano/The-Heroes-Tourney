@@ -55,7 +55,7 @@ namespace SNHU.menuobject
 			
 			this.parent = parent;
 			Height = FP.Height;
-			Width = 200;
+			Width = 250;
 			
 			this.JoyId = joyId;
 			this.Slot = slot;

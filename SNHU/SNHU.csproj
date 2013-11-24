@@ -91,6 +91,7 @@
     <Compile Include="GameObject\Player.cs" />
     <Compile Include="GameObject\Razor.cs" />
     <Compile Include="GameObject\SpawnManager.cs" />
+    <Compile Include="GameObject\Victory.cs" />
     <Compile Include="GameObject\UpgradeSpawn.cs" />
     <Compile Include="GameObject\Upgrades\Bullets.cs" />
     <Compile Include="GameObject\Upgrades\FUS.cs" />

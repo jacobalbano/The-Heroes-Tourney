@@ -52,7 +52,7 @@ namespace SNHU.GameObject
 		public const float SPEED = 5.5f;
 		public float Speed = 0.0f;
 		
-		public const int STARTING_LIVES = 5;
+		public const int STARTING_LIVES = 1;
 		public bool IsAlive { get; private set; }
 		
 		public int Lives { get; private set; }
