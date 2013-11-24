@@ -52,12 +52,12 @@ namespace SNHU.GameObject
 		public const float SPEED = 5.5f;
 		public float Speed = 0.0f;
 		
-		public const int STARTING_LIVES = 1;
+		public const int STARTING_LIVES = 5;
 		public bool IsAlive { get; private set; }
 		
 		public int Lives { get; private set; }
-		public int id { get; private set;}
-		public uint jid { get; private set;}
+		public int id { get; private set; }
+		public uint jid { get; private set; }
 		
 		public string ImageName { get; private set; }
 		
