@@ -42,7 +42,7 @@ namespace SNHU.GameObject
 		
 		private bool hand;
 		
-		private Upgrade upgrade;
+		public Upgrade upgrade { get; private set; }
 		public bool Invincible;
 		
 		public PhysicsBody physics;
@@ -161,14 +161,11 @@ namespace SNHU.GameObject
 		 	
 			if (!isOffscreen && !GameWorld.OnCamera(X, Y))
 			{
-				FP.Log("OFF");
 				isOffscreen = true;
 				World.Add(cursor);
 			}
 			if (isOffscreen && GameWorld.OnCamera(X, Y))
-			{
-				FP.Log("ON");
-				
+			{	
 				isOffscreen = false;
 				World.Remove(cursor);
 			}
@@ -369,7 +366,6 @@ namespace SNHU.GameObject
 		
 		public void EnablePhysics()
 		{
-				FP.Log("PHS");
 			if (physics.Parent == null)
 			{
 				AddLogic(physics);
@@ -388,12 +384,12 @@ namespace SNHU.GameObject
 		
 		public void SetUpgrade(Upgrade upgrade)
 		{
-			if (this.upgrade == null)
+			this.upgrade = upgrade;
+			
+			if (this.upgrade != null)
 			{
-				this.upgrade = upgrade;
 				AddLogic(this.upgrade);
 			}
-			
 		}
 		
 		public void OnGroundSmash(params object[] args)

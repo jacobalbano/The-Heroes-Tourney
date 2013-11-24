@@ -33,6 +33,7 @@ namespace SNHU.GameObject
 			world.RegisterClass<Crumble>("crumble");
 			world.RegisterClass<Razor>("deadlyAnchor");
 			world.RegisterClass<SpawnPoint>("spawnPoint");
+			world.RegisterClass<UpgradeSpawn>("Upgrade");
 			
 			var t = FP.GetTimer();
 			

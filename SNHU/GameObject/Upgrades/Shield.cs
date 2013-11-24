@@ -76,6 +76,8 @@ namespace SNHU.GameObject.Upgrades
 		public void OnFadeOutComplete()
 		{
 			(Parent as Player).Invincible = false;
+			
+			(Parent as Player).SetUpgrade(null);
 			Parent.RemoveLogic(this);
 		}
 	}

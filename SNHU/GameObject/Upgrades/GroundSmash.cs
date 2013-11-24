@@ -61,6 +61,8 @@ namespace SNHU.GameObject.Upgrades
 				Parent.World.BroadcastMessage(GameManager.SHAKE, 100.0f, 0.5f);
 				Parent.World.BroadcastMessage(GROUND_SMASH, Parent, SMASH_RADIUS);
 				(Parent as Player).physics.OnMessage(PhysicsBody.USE_GRAVITY, true);
+				
+				(Parent as Player).SetUpgrade(null);
 				Parent.RemoveLogic(this);
 			}
 		}

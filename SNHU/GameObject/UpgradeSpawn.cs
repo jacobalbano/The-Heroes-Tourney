@@ -8,6 +8,8 @@
  */
 using System;
 using Punk;
+using Punk.Graphics;
+using SNHU.GameObject.Upgrades;
 
 namespace SNHU.GameObject
 {
@@ -16,6 +18,8 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class UpgradeSpawn : Entity
 	{
+		Upgrade upgrade;
+		
 		public UpgradeSpawn()
 		{
 		}
@@ -24,29 +28,53 @@ namespace SNHU.GameObject
 		{
 			base.Load(node);
 			
-			if (FP.Rand(10) == 0)
+			Graphic = Image.CreateCircle(10, FP.Color(0xFF66AA));
+			(Graphic as Image).CenterOO();
+			SetHitboxTo(Graphic);
+			CenterOrigin();
+		}
+		
+		public override void Added()
+		{
+			base.Added();
+			if (FP.Rand(6) == 1)
 			{
-				switch (FP.Rand(8))
+				switch (FP.Rand(3))
 				{
 					case 0:
-						
+						upgrade = new Invisibility();
 						break;
 					case 1:
+						upgrade = new Shield();
 						break;
 					case 2:
-						break;
-					case 3:
-						break;
-					case 4:
-						break;
-					case 5:
-						break;
-					case 6:
-						break;
-					case 7:
+						upgrade = new GroundSmash();
 						break;
 					default:
 						break;
+				}
+			}
+			else
+			{
+				World.Remove(this);
+			}
+		}
+		
+		public override void Update()
+		{
+			base.Update();
+			
+			if (upgrade != null)
+			{
+				var p = Collide(Player.Collision, X, Y) as Player;
+				if (p != null)
+				{
+					if (p.upgrade == null)
+					{
+						FP.Log("GIVING PLAYER ", p.id, " A ", upgrade.GetType());
+						p.SetUpgrade(upgrade);
+						World.Remove(this);
+					}
 				}
 			}
 		}

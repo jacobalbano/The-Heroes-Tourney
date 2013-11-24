@@ -60,6 +60,7 @@ namespace SNHU.GameObject.Upgrades
 			tweenFist2.Tween(((Parent as Player).right.Graphic as Image), "Alpha", 1.0f, 0.25f);
 			Parent.AddTween(tweenFist2, true);
 			
+			(Parent as Player).SetUpgrade(null);
 			Parent.RemoveLogic(this);
 		}
 	}
