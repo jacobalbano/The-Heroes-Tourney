@@ -55,7 +55,26 @@ namespace SNHU.GameObject
 			
 			hand = false;
 			
-			controller = new Controller((uint)id);
+			var jid = (uint) id;
+			controller = new Controller(jid);
+			
+			if (Joystick.HasAxis(jid, Joystick.Axis.PovX))	//	xbox
+			{
+				controller.Define("jump", id, Controller.Button.A);
+				controller.Define("punch", id, Controller.Button.X);
+				controller.Define("meteor", id, Controller.Button.Y);
+				controller.Define("advance", id, Controller.Button.B);
+				controller.Define("start", id, Controller.Button.Start);
+			}
+			else	//	snes
+			{
+				controller.Define("jump", id, Controller.Button.X);
+				controller.Define("punch", id, Controller.Button.Y);
+				controller.Define("meteor", id, Controller.Button.A);
+				controller.Define("advance", id, Controller.Button.B);
+				controller.Define("start", id, (Controller.Button) 9);
+			}
+			
 			axis = controller.LeftStick;
 				
 			player = new Image(Library.GetTexture("assets/" + imageName));
@@ -166,7 +185,7 @@ namespace SNHU.GameObject
 		
 		private void HandleInput()
 		{
-			if (OnGround && (controller.Pressed(Controller.Button.A) || Input.Pressed(Keyboard.Key.Space)))
+			if (OnGround && (controller.Pressed("jump")))
 			{
 				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce);
 				Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
@@ -180,22 +199,22 @@ namespace SNHU.GameObject
 				AddTween(tween, true);
 			}
 			
-			if (controller.Pressed(Controller.Button.Y))
+			if (controller.Pressed("meteor"))
 			{
 				World.Add(new Meteor());
 			}
 			
-			if (controller.Pressed(Controller.Button.X))
+			if (controller.Pressed("punch"))
 			{
 				Punch();
 			}
 			
-			if (controller.Pressed(Controller.Button.B))
+			if (controller.Pressed("advance"))
 			{
 				(World as GameWorld).AdvanceLevel();
 			}
 			
-			if (controller.Pressed(Controller.Button.Start))
+			if (controller.Pressed("start"))
 			{
 				GameWorld.gameManager.StartGame();
 			}
