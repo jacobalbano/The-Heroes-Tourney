@@ -91,6 +91,11 @@
     <Compile Include="GameObject\Player.cs" />
     <Compile Include="GameObject\Razor.cs" />
     <Compile Include="GameObject\SpawnManager.cs" />
+    <Compile Include="GameObject\UpgradeSpawn.cs" />
+    <Compile Include="GameObject\Upgrades\GroundSmash.cs" />
+    <Compile Include="GameObject\Upgrades\Invisibility.cs" />
+    <Compile Include="GameObject\Upgrades\Shield.cs" />
+    <Compile Include="GameObject\Upgrades\Upgrade.cs" />
     <Compile Include="GameWorld.cs" />
     <Compile Include="menuobject\ControllerSelect.cs" />
     <Compile Include="MenuWorld.cs" />
@@ -101,6 +106,7 @@
   <ItemGroup>
     <Folder Include="GameObject" />
     <Folder Include="Components" />
+    <Folder Include="GameObject\Upgrades" />
     <Folder Include="GameObject\Platforms" />
     <Folder Include="menuobject" />
   </ItemGroup>

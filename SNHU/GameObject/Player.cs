@@ -15,6 +15,7 @@ using Punk.Utils;
 using SFML.Window;
 using SNHU.Components;
 using SNHU.GameObject.Platforms;
+using SNHU.GameObject.Upgrades;
 
 namespace SNHU.GameObject
 {
@@ -31,8 +32,8 @@ namespace SNHU.GameObject
 		private const float JUMP_JUICE_FORCE = 0.3f;
 		private const float JUMP_JUICE_DURATION = 0.17f;
 		
-		private Image player;
-		private Fist left, right;
+		public Image player;
+		public Fist left, right;
 		private Controller controller;
 		private Axis axis;
 		
@@ -41,7 +42,10 @@ namespace SNHU.GameObject
 		
 		private bool hand;
 		
-		private PhysicsBody physics;
+		private Upgrade upgrade;
+		public bool Invincible;
+		
+		public PhysicsBody physics;
 		private bool OnGround;
 		
 		public const float SPEED = 5.5f;
@@ -69,7 +73,7 @@ namespace SNHU.GameObject
 			{
 				controller.Define("jump", id, Controller.Button.A);
 				controller.Define("punch", id, Controller.Button.X);
-				controller.Define("meteor", id, Controller.Button.Y);
+				controller.Define("upgrade", id, Controller.Button.Y);
 				controller.Define("advance", id, Controller.Button.B);
 				controller.Define("start", id, Controller.Button.Start);
 			}
@@ -77,7 +81,7 @@ namespace SNHU.GameObject
 			{
 				controller.Define("jump", id, Controller.Button.X);
 				controller.Define("punch", id, Controller.Button.Y);
-				controller.Define("meteor", id, Controller.Button.A);
+				controller.Define("upgrade", id, Controller.Button.A);
 				controller.Define("advance", id, Controller.Button.B);
 				controller.Define("start", id, (Controller.Button) 9);
 			}
@@ -105,7 +109,7 @@ namespace SNHU.GameObject
 			physics = new PhysicsBody();
 			physics.Colliders.Add(Platform.Collision);
 			physics.Colliders.Add(Type);
-			AddLogic(physics);
+			EnablePhysics();
 			
 			Lives = STARTING_LIVES;
 			IsAlive = false;
@@ -113,6 +117,11 @@ namespace SNHU.GameObject
 			#if DEBUG
 			AddLogic(new CheckRestart(controller));
 			#endif
+			
+			SetUpgrade(new GroundSmash());
+			Invincible = false;
+			
+			AddResponse(GroundSmash.GROUND_SMASH, OnGroundSmash);
 		}
 		
 		public override void Added()
@@ -127,7 +136,6 @@ namespace SNHU.GameObject
 		{
 			base.Removed();
 			World.RemoveList(left, right);
-			FP.Log("sDSDASD");
 			//World.Remove(cursor);
 //			cursor.Visible = false;
 		}
@@ -237,9 +245,12 @@ namespace SNHU.GameObject
 				AddTween(tween, true);
 			}
 			
-			if (controller.Pressed("meteor"))
+			if (controller.Pressed("upgrade"))
 			{
-				World.Add(new Meteor());
+				if (upgrade != null)
+				{
+					upgrade.Use();
+				}
 			}
 			
 			if (controller.Pressed("punch"))
@@ -356,6 +367,14 @@ namespace SNHU.GameObject
 			}
 		}
 		
+		public void EnablePhysics()
+		{
+				FP.Log("PHS");
+			if (physics.Parent == null)
+			{
+				AddLogic(physics);
+			}
+		}
 		public void DisablePhysics()
 		{
 			RemoveLogic(physics);
@@ -365,6 +384,28 @@ namespace SNHU.GameObject
 		{
 			left.Layer = layer;
 			right.Layer = layer;
+		}
+		
+		public void SetUpgrade(Upgrade upgrade)
+		{
+			if (this.upgrade == null)
+			{
+				this.upgrade = upgrade;
+				AddLogic(this.upgrade);
+			}
+			
+		}
+		
+		public void OnGroundSmash(params object[] args)
+		{
+			Player p = args[0] as Player;
+			if (p != this)
+			{
+				if (CollideRect(X,Y,p.X - GroundSmash.SMASH_RADIUS, p.Y - 10, GroundSmash.SMASH_RADIUS * 2, 10))
+				{
+					Kill();
+				}
+			}
 		}
 	}
 }
