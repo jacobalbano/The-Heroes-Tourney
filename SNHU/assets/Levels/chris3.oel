@@ -11,8 +11,8 @@
     <spawnPoint id="13" x="80" y="432" width="16" height="16" />
     <spawnPoint id="14" x="304" y="48" width="16" height="16" />
     <spawnPoint id="15" x="304" y="240" width="16" height="16" />
-    <platform id="0" x="64" y="512" width="160" height="16" />
-    <platform id="1" x="416" y="512" width="160" height="16" />
+    <platform id="0" x="0" y="512" width="224" height="16" />
+    <platform id="1" x="416" y="512" width="224" height="16" />
     <platform id="16" x="272" y="128" width="96" height="16" />
     <platform id="10" x="240" y="304" width="160" height="16" />
     <jumpPad id="5" x="208" y="512" width="16" height="3" />

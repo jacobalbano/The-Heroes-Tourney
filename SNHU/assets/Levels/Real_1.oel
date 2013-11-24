@@ -1,7 +1,7 @@
 <level width="640" height="600">
   <Platforms>
     <platform id="1" x="0" y="560" width="640" height="32" />
-    <platform id="2" x="0" y="0" width="640" height="32" />
+    <platform id="2" x="0" y="0" width="192" height="32" />
     <platform id="3" x="256" y="32" width="112" height="208" />
     <platform id="4" x="256" y="400" width="112" height="160" />
     <jumpPad id="5" x="224" y="560" width="32" height="3" />
@@ -14,5 +14,6 @@
     <spawnPoint id="11" x="608" y="448" width="16" height="16" />
     <Upgrade id="12" x="192" y="224" />
     <Upgrade id="13" x="416" y="224" />
+    <platform id="14" x="432" y="0" width="208" height="32" />
   </Platforms>
 </level>

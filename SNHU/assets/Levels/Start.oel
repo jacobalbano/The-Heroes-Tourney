@@ -9,16 +9,16 @@
     <spawnPoint id="11" x="80" y="0" width="16" height="16" />
     <spawnPoint id="13" x="544" y="0" width="16" height="16" />
     <spawnPoint id="14" x="560" y="480" width="16" height="16" />
-    <platform id="12" x="0" y="448" width="16" height="128" />
-    <platform id="15" x="624" y="448" width="16" height="128" />
+    <platform id="12" x="0" y="368" width="16" height="128" />
+    <platform id="15" x="624" y="368" width="16" height="128" />
     <jumpPad id="3" x="224" y="576" width="32" height="3" />
     <player id="1" x="656" y="512" />
     <jumpPad id="2" x="304" y="128" width="32" height="3" />
     <jumpPad id="8" x="128" y="288" width="32" height="3" />
     <jumpPad id="9" x="480" y="288" width="32" height="3" />
-    <platform id="16" x="144" y="416" width="64" height="16" />
+    <platform id="16" x="144" y="416" width="80" height="16" />
     <platform id="17" x="416" y="416" width="80" height="16" />
-    <jumpPad id="18" x="176" y="416" width="32" height="3" />
+    <jumpPad id="18" x="192" y="416" width="32" height="3" />
     <jumpPad id="19" x="416" y="416" width="32" height="3" />
     <platform id="20" x="32" y="80" width="112" height="16" />
     <platform id="21" x="496" y="80" width="112" height="16" />
