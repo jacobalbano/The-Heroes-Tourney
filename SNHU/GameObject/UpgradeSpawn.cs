@@ -24,6 +24,19 @@ namespace SNHU.GameObject
 		
 		public UpgradeSpawn()
 		{
+			AddResponse("Upgrade Used", OnPlayerUsed);
+		}
+		
+		private void OnPlayerUsed(params object[] args)
+		{
+			int id = (int)args[0];
+			if(owner != null)
+			{
+				if(owner.id == id)
+				{
+					World.Remove(this);
+				}
+			}
 		}
 		
 		public override void Load(System.Xml.XmlNode node)
@@ -41,35 +54,35 @@ namespace SNHU.GameObject
 				{
 					case 0:
 						upgrade = new Invisibility();
-						Graphic = Image.CreateCircle(10, FP.Color(0x0000FF));
+						Graphic = new Image(Library.GetTexture("assets/invisibility.png"));
 						break;
 					case 1:
 						upgrade = new Shield();
-						Graphic = Image.CreateCircle(10, FP.Color(0x00FF00));
+						Graphic = new Image(Library.GetTexture("assets/shield.png"));
 						break;
 					case 2:
 						upgrade = new GroundSmash();
-						Graphic = Image.CreateCircle(10, FP.Color(0xFF0000));
+						Graphic = new Image(Library.GetTexture("assets/groundsmash.png"));
 						break;
 					case 3:
 						upgrade = new SuperSpeed();
-						Graphic = Image.CreateCircle(10, FP.Color(0xFFFF00));
+						Graphic = new Image(Library.GetTexture("assets/speed.png"));
 						break;
 					case 4:
 						upgrade = new Rebound();
-						Graphic = Image.CreateCircle(10, FP.Color(0xFFFFFF));
+						Graphic = new Image(Library.GetTexture("assets/rebound.png"));
 						break;
 					case 5:
 						upgrade = new FUS();
-						Graphic = Image.CreateCircle(10, FP.Color(0x00FFFF));
+						Graphic = new Image(Library.GetTexture("assets/fus.png"));
 						break;
 					case 6:
 						upgrade = new Bullets();
-						Graphic = Image.CreateCircle(10, FP.Color(0xFF00FF));
+						Graphic = new Image(Library.GetTexture("assets/bullets.png"));
 						break;
 					case 7:
 						upgrade = new HotPotato();
-						Graphic = Image.CreateCircle(10, FP.Color(0xF0F0F0));
+						Graphic = new Image(Library.GetTexture("assets/hotpotato.png"));
 						break;
 					default:
 						break;
@@ -103,6 +116,7 @@ namespace SNHU.GameObject
 						AddTween(new Alarm(2.0f, () => World.Remove(this), ONESHOT), true);
 					}
 				}
+				
 				if(owner != null)
 				{
 					X = owner.X;

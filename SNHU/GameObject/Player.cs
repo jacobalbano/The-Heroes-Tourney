@@ -126,7 +126,7 @@ namespace SNHU.GameObject
 			AddLogic(new CheckRestart(controller));
 			#endif
 			
-			SetUpgrade(new GroundSmash());
+			SetUpgrade(new Shield());
 			Invincible = false;
 			Rebounding = false;
 			
@@ -264,6 +264,7 @@ namespace SNHU.GameObject
 				if (upgrade != null)
 				{
 					upgrade.Use();
+					World.BroadcastMessage("Upgrade Used", id);
 				}
 			}
 			

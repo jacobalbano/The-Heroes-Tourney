@@ -33,7 +33,7 @@ namespace SNHU.GameObject.Upgrades
 			{
 				base.Use();
 				
-				shieldImg = Image.CreateCircle(Parent.Height, FP.Color(0xFFFFFF));
+				shieldImg = new Image(Library.GetTexture("assets/shield_active.png"));
 				shieldImg.CenterOO();
 				shieldImg.Alpha = 0.0f;
 			
