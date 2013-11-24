@@ -48,7 +48,7 @@ namespace SNHU.GameObject
 		public override void Added()
 		{
 			base.Added();
-			if (FP.Rand(6) == 1)
+			if (FP.Rand(3) == 1)
 			{
 				switch (FP.Rand(8))
 				{

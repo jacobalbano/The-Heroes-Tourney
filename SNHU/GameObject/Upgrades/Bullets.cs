@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;
+using Punk.Tweens.Misc;
+using Punk.Utils;
 using SFML.Window;
 using SNHU.GameObject.Platforms;
 
@@ -18,12 +20,16 @@ namespace SNHU.GameObject.Upgrades
 	public class Bullet : Entity
 	{
 		public const string Collision = "bullet";
-		public const float BULLET_SPEED = 4.0f;
+		public const float BULLET_SPEED = 10.0f;
 		public int ownerID;
 		private Vector2f dir;
 		
-		public Bullet(Vector2f initialDir, int ownerID) : base(0,0,Image.CreateCircle(12, FP.Color(0xFFFF00)))
+		private Tween bounceTween;
+		
+		public Bullet(Vector2f initialDir, int ownerID)
 		{
+			Graphic = new Image(Library.GetTexture("assets/bullet.png"));
+			
 			(Graphic as Image).CenterOO();
 			SetHitboxTo(Graphic);
 			CenterOrigin();
@@ -37,6 +43,10 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Update();
 			
+			var bounce = false;
+			
+			(Graphic as Image).Angle = FP.Angle(0, 0, dir.X, dir.Y);
+			
 			MoveBy(dir.X * BULLET_SPEED, dir.Y * BULLET_SPEED, Platform.Collision, true);
 			
 			if (Collide(Platform.Collision, X + (dir.X * BULLET_SPEED), Y) != null)
@@ -44,12 +54,14 @@ namespace SNHU.GameObject.Upgrades
 				dir.X = -dir.X;
 				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
 				Mixer.Audio["bulletBounce"].Play();
+				bounce = true;
 			}
 			if (Collide(Platform.Collision, X, Y + (dir.Y * BULLET_SPEED)) != null)
 			{
 				dir.Y = -dir.Y;
 				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
 				Mixer.Audio["bulletBounce"].Play();
+				bounce = true;
 			}
 			
 			var p = Collide(Player.Collision, X + (dir.X * BULLET_SPEED), Y);
@@ -66,6 +78,17 @@ namespace SNHU.GameObject.Upgrades
 				dir.Y = -dir.Y;
 				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
 				Mixer.Audio["bulletBounce"].Play();
+			}
+			
+			if (bounce)
+			{
+				if (bounceTween != null)	bounceTween.Cancel();
+				(Graphic as Image).ScaleX = 0.5f;
+				(Graphic as Image).ScaleY = 1.5f;
+				
+				var tween = new MultiVarTween(null, ONESHOT);
+				tween.Tween(Graphic, new {ScaleX = 1, ScaleY = 1}, 0.75f, Ease.ElasticOut);
+				bounceTween = FP.Tweener.AddTween(tween, true);
 			}
 		}
 	}

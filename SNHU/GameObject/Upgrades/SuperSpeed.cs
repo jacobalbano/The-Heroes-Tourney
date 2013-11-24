@@ -27,17 +27,16 @@ namespace SNHU.GameObject.Upgrades
 			//image = new Image(Library.GetTexture("assets/" +  + ".png"));
 			image = Image.CreateCircle(3, FP.Color(0xFF0000));
 			
-			emitter = new Emitter(Library.GetTexture("assets/superSpeed.png"), 10, 3);
+			emitter = new Emitter(Library.GetTexture("assets/speed_particle.png"), 68, 30);
 			emitter.Relative = false;
 			
-			for (int i = 0; i < 4; ++i)
-			{
-				var name = i.ToString();
-				emitter.NewType(name, FP.Frames(i));
-				
-				emitter.SetMotion(name, 0, 50, 0.5f, 0, 15, 1, Ease.QuintOut);
-				emitter.SetAlpha(name, 1, 0, Ease.QuintOut);
-			}
+			emitter.NewType("l", FP.Frames(0));
+			emitter.SetMotion("l", 0, 50, 0.5f, 0, 15, 1, Ease.QuintOut);
+			emitter.SetAlpha("l", 0.5f, 0, Ease.QuintOut);
+			
+			emitter.NewType("r", FP.Frames(1));
+			emitter.SetMotion("r", 0, 50, 0.5f, 0, 15, 1, Ease.QuintOut);
+			emitter.SetAlpha("r", 0.5f, 0, Ease.QuintOut);
 		}
 		
 		public override void Use()
@@ -55,12 +54,19 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Update();
 			
+			if (!Activated)	return;
+			
 			if (lifeTimer.Percent < 1.0f)
 			{
-				//for (int i = 0; i < 4; ++i)
-				//{
-					emitter.Emit(FP.Choose("0", "1", "2", "3"), Parent.Left, Parent.Top + FP.Rand(Parent.Height));
-				//}
+				var delta = (Parent as Player).physics.MoveDelta.X;
+				if (delta < 0)
+				{
+					emitter.Emit("l", Parent.Left - 38, Parent.Top + FP.Rand(Parent.Height));
+				}
+				else if (delta > 0)
+				{
+					emitter.Emit("r", Parent.Left, Parent.Top + FP.Rand(Parent.Height));
+				}
 			}
 		}
 		
