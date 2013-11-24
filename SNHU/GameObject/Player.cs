@@ -126,7 +126,7 @@ namespace SNHU.GameObject
 			AddLogic(new CheckRestart(controller));
 			#endif
 			
-			SetUpgrade(new Rebound());
+			SetUpgrade(new GroundSmash());
 			Invincible = false;
 			Rebounding = false;
 			
@@ -146,6 +146,7 @@ namespace SNHU.GameObject
 		{
 			base.Removed();
 			World.RemoveList(left, right);
+			
 			//World.Remove(cursor);
 //			cursor.Visible = false;
 		}
@@ -404,7 +405,20 @@ namespace SNHU.GameObject
 		
 		public void SetUpgrade(Upgrade upgrade)
 		{
+			if (this.upgrade != null)
+			{
+				RemoveLogic(this.upgrade);
+			}
 			this.upgrade = upgrade;
+			
+			if (player != null && left != null && right != null)
+			{
+				player.Alpha = 1.0f;
+				(left.Graphic as Image).Alpha = 1.0f;
+				(right.Graphic as Image).Alpha = 1.0f;
+			}
+			Rebounding = false;
+			Invincible = false;
 			
 			if (this.upgrade != null)
 			{
