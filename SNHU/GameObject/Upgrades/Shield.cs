@@ -10,6 +10,7 @@ using System;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
+using SNHU.Components;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -18,7 +19,6 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class Shield : Upgrade
 	{
-		private Entity shield;
 		private Image shieldImg;
 		
 		public Shield()
@@ -36,8 +36,10 @@ namespace SNHU.GameObject.Upgrades
 				shieldImg = new Image(Library.GetTexture("assets/shield_active.png"));
 				shieldImg.CenterOO();
 				shieldImg.Alpha = 0.0f;
+				
+				shieldImg.Y = 10 - (shieldImg.Height / 2);
 			
-				shield = Parent.World.AddGraphic(shieldImg);
+				Parent.AddGraphic(shieldImg);
 				
 				var tween = new VarTween(null, Tween.ONESHOT);
 				tween.Tween(shieldImg, "Alpha", 0.6f, 0.45f);
@@ -54,7 +56,6 @@ namespace SNHU.GameObject.Upgrades
 			base.Removed();
 			FP.Log("SSQWE@#!@#!@#");
 			(Parent as Player).Invincible = false;
-			Parent.World.Remove(shield);
 		}
 		
 		public override void Update()
@@ -64,8 +65,8 @@ namespace SNHU.GameObject.Upgrades
 			if (shieldImg != null)
 			{
 				shieldImg.Alpha = 0.6f - (0.6f * lifeTimer.Percent);
-				shieldImg.X = Parent.X;
-				shieldImg.Y = Parent.Y - Parent.HalfHeight;
+//				shieldImg.X = Parent.X;
+//				shieldImg.Y = Parent.Y - Parent.HalfHeight;
 			}
 		}
 		

@@ -29,8 +29,8 @@ namespace SNHU.GameObject
 		public const string Collision = "player";
 		
 		public const float JumpForce = -15;
-		private const float JUMP_JUICE_FORCE = 0.3f;
-		private const float JUMP_JUICE_DURATION = 0.17f;
+		public const float JUMP_JUICE_FORCE = 0.3f;
+		public const float JUMP_JUICE_DURATION = 0.17f;
 		
 		public Image player;
 		public Fist left, right;
@@ -126,7 +126,7 @@ namespace SNHU.GameObject
 			AddLogic(new CheckRestart(controller));
 			#endif
 			
-			SetUpgrade(new Shield());
+			SetUpgrade(new Rebound());
 			Invincible = false;
 			Rebounding = false;
 			

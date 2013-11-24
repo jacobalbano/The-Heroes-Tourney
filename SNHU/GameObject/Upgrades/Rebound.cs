@@ -18,8 +18,7 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class Rebound : Upgrade
 	{
-		private Entity shield;
-		private Image shieldImg;
+		private Image shield_1, shield_2;
 		
 		public Rebound()
 		{
@@ -33,15 +32,28 @@ namespace SNHU.GameObject.Upgrades
 			{
 				base.Use();
 				
-				shieldImg = Image.CreateCircle(Parent.Height, FP.Color(0x00FFFF));
-				shieldImg.CenterOO();
-				shieldImg.Alpha = 0.0f;
-			
-				shield = Parent.World.AddGraphic(shieldImg);
+				shield_1 = new Image(Library.GetTexture("assets/rebound_active_1.png"));
+				shield_2 = new Image(Library.GetTexture("assets/rebound_active_2.png"));
 				
-				var tween = new VarTween(null, Tween.ONESHOT);
-				tween.Tween(shieldImg, "Alpha", 0.6f, 0.45f);
-				Parent.AddTween(tween, true);
+				shield_1.CenterOO();
+				shield_2.CenterOO();
+				
+				shield_1.Alpha = 0.0f;
+				shield_2.Alpha = 0.0f;
+			
+				Parent.AddGraphic(shield_1);
+				Parent.AddGraphic(shield_2);
+				
+				shield_1.Y = 10 - (shield_1.Height / 2);
+				shield_2.Y = 10 - (shield_2.Height / 2);
+				
+				var tween1 = new VarTween(null, Tween.ONESHOT);
+				tween1.Tween(shield_1, "Alpha", 0.6f, 0.45f);
+				Parent.AddTween(tween1, true);
+				
+				var tween2 = new VarTween(null, Tween.ONESHOT);
+				tween2.Tween(shield_2, "Alpha", 0.6f, 0.45f);
+				Parent.AddTween(tween2, true);
 				
 				(Parent as Player).Rebounding = true;
 				
@@ -54,18 +66,19 @@ namespace SNHU.GameObject.Upgrades
 			base.Removed();
 			
 			(Parent as Player).Rebounding = false;
-			Parent.World.Remove(shield);
 		}
 		
 		public override void Update()
 		{
 			base.Update();
 			
-			if (shieldImg != null)
+			if (shield_1 != null)
 			{
-				shieldImg.Alpha = 0.6f - (0.6f * lifeTimer.Percent);
-				shieldImg.X = Parent.X;
-				shieldImg.Y = Parent.Y - Parent.HalfHeight;
+				shield_1.Alpha = 0.6f - (0.6f * lifeTimer.Percent);
+				shield_2.Alpha = 0.6f - (0.6f * lifeTimer.Percent);
+				
+				shield_1.Angle++;
+				shield_2.Angle--;
 			}
 		}
 		
@@ -73,10 +86,13 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.OnLifetimeComplete();
 			
-			var tween = new VarTween(OnFadeOutComplete, Tween.ONESHOT);
-			tween.Tween(shieldImg, "Alpha", 0.0f, 0.45f);
-			Parent.AddTween(tween, true);
+			var tween1 = new VarTween(OnFadeOutComplete, Tween.ONESHOT);
+			tween1.Tween(shield_1, "Alpha", 0.0f, 0.45f);
+			Parent.AddTween(tween1, true);
 			
+			var tween2 = new VarTween(OnFadeOutComplete, Tween.ONESHOT);
+			tween2.Tween(shield_2, "Alpha", 0.0f, 0.45f);
+			Parent.AddTween(tween2, true);
 		}
 		
 		public void OnFadeOutComplete()
