@@ -128,6 +128,7 @@ namespace SNHU.GameObject
 			World.RemoveList(left, right);
 			FP.Log("sDSDASD");
 			//World.Remove(cursor);
+//			cursor.Visible = false;
 		}
 		
 		void FaceLeft()

@@ -26,6 +26,7 @@ namespace SNHU
 		{
 			allImages = new List<string>()
 			{
+				"player",
 				"batman",
 				"dragonborn",
 				"faith",
