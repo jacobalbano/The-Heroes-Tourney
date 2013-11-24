@@ -264,6 +264,7 @@ namespace SNHU.GameObject
 				if (upgrade != null)
 				{
 					upgrade.Use();
+					World.BroadcastMessage("Upgrade Used", id);
 				}
 			}
 			

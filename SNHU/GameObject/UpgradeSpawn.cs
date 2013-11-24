@@ -24,6 +24,19 @@ namespace SNHU.GameObject
 		
 		public UpgradeSpawn()
 		{
+			AddResponse("Upgrade Used", OnPlayerUsed);
+		}
+		
+		private void OnPlayerUsed(params object[] args)
+		{
+			int id = (int)args[0];
+			if(owner != null)
+			{
+				if(owner.id == id)
+				{
+					World.Remove(this);
+				}
+			}
 		}
 		
 		public override void Load(System.Xml.XmlNode node)
