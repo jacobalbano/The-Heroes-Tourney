@@ -88,14 +88,13 @@ namespace SNHU
 			
 			if (controllerMenus.Count > 0)
 			{
+				readying = true;
 				AddTween(new Alarm(0.5f, Ready, ONESHOT), true);
 			}
 		}
 		
 		void Ready()
 		{
-			readying = true;
-			
 			var i = Image.CreateRect(FP.Width, FP.Height, FP.Color(0));
 			i.Alpha = 0;
 			
@@ -104,6 +103,8 @@ namespace SNHU
 			var tween = new VarTween(StartTheGame, ONESHOT);
 			tween.Tween(i, "Alpha", 1, 0.25f, Ease.SineOut);
 			AddTween(tween, true);
+			
+			FP.Log("ready", controllerMenus.Count);
 		}
 		
 		void StartTheGame()
@@ -113,6 +114,8 @@ namespace SNHU
 			{
 				playerGraphics[menu.JoyId] = menu.PlayerImageName;
 			}
+			
+			FP.Log("start", playerGraphics.Count);
 			
 			FP.World = new GameWorld(playerGraphics);
 		}

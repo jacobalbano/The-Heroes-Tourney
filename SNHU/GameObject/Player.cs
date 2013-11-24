@@ -51,17 +51,18 @@ namespace SNHU.GameObject
 		
 		public int Lives { get; private set; }
 		public int id { get; private set;}
+		public uint jid { get; private set;}
 		
 		public string ImageName { get; private set; }
 		
-		public Player(float x, float y, int id, string imageName) : base(x, y)
+		public Player(float x, float y, uint jid, int id, string imageName) : base(x, y)
 		{
 			ImageName = imageName;
 			this.id = id;
+			this.jid = jid;
 			
 			hand = false;
 			
-			var jid = (uint) id;
 			controller = new Controller(jid);
 			
 			if (Joystick.HasAxis(jid, Joystick.Axis.PovX))	//	xbox

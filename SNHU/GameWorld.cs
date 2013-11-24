@@ -47,11 +47,11 @@ namespace SNHU
 			gameManager = new GameManager();
 			Add(gameManager);
 			
-			Input.ControllerConnected += delegate(object sender, JoystickConnectEventArgs e)
-			{
-				// player isn't created when plugged in after game starts
-				CheckControllers();
-			};
+//			Input.ControllerConnected += delegate(object sender, JoystickConnectEventArgs e)
+//			{
+//				// player isn't created when plugged in after game starts
+//				CheckControllers();
+//			};
 			
 			changingLevels = false;
 			
@@ -81,24 +81,12 @@ namespace SNHU
 		
 		public void CheckControllers()
 		{
-			if (Joystick.IsConnected(0) && playerImageNames.ContainsKey(0))
+			foreach (var i in playerImageNames.Keys)
 			{
-				gameManager.AddPlayer(0, 0, 0, playerImageNames[0]);
-			}
-			
-			if (Joystick.IsConnected(1) && playerImageNames.ContainsKey(1))
-			{
-				gameManager.AddPlayer(0, 0, 1, playerImageNames[1]);
-			}
-			
-			if (Joystick.IsConnected(2) && playerImageNames.ContainsKey(2))
-			{
-				gameManager.AddPlayer(0, 0, 2, playerImageNames[2]);
-			}
-			
-			if (Joystick.IsConnected(3) && playerImageNames.ContainsKey(3))
-			{
-				gameManager.AddPlayer(0, 0, 3, playerImageNames[3]);
+				if (Joystick.IsConnected(i))
+				{
+					gameManager.AddPlayer(0, 0, i, playerImageNames[i]);
+				}
 			}
 		}
 		
