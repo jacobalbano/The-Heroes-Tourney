@@ -108,6 +108,7 @@ namespace SNHU.GameObject
 				GameStarted = true;
 				GameMusic.Play();
 				PlayersInMatch = Players.Count;
+				(World as GameWorld).AdvanceLevel();
 			}
 		}
 		

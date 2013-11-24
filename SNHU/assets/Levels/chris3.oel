@@ -1,19 +1,19 @@
 <level width="640" height="600">
   <Platforms>
-    <crumble id="3" x="464" y="368" width="160" height="16" crumbleTime="1" />
-    <crumble id="4" x="16" y="368" width="160" height="16" crumbleTime="1" />
-    <crumble id="6" x="496" y="240" width="128" height="16" crumbleTime="1" />
-    <crumble id="7" x="16" y="240" width="128" height="16" crumbleTime="1" />
-    <crumble id="8" x="16" y="144" width="80" height="16" crumbleTime="1" />
-    <crumble id="9" x="544" y="144" width="80" height="16" crumbleTime="1" />
+    <crumble id="3" x="464" y="336" width="160" height="16" crumbleTime="1" />
+    <crumble id="4" x="16" y="336" width="160" height="16" crumbleTime="1" />
+    <crumble id="6" x="496" y="208" width="128" height="16" crumbleTime="1" />
+    <crumble id="7" x="16" y="208" width="128" height="16" crumbleTime="1" />
+    <crumble id="8" x="16" y="112" width="80" height="16" crumbleTime="1" />
+    <crumble id="9" x="544" y="112" width="80" height="16" crumbleTime="1" />
     <player id="2" x="672" y="224" />
-    <spawnPoint id="12" x="512" y="448" width="16" height="16" />
-    <spawnPoint id="13" x="112" y="448" width="16" height="16" />
-    <spawnPoint id="14" x="304" y="0" width="16" height="16" />
-    <spawnPoint id="15" x="304" y="208" width="16" height="16" />
+    <spawnPoint id="12" x="544" y="432" width="16" height="16" />
+    <spawnPoint id="13" x="80" y="432" width="16" height="16" />
+    <spawnPoint id="14" x="304" y="48" width="16" height="16" />
+    <spawnPoint id="15" x="304" y="240" width="16" height="16" />
     <platform id="0" x="64" y="512" width="160" height="16" />
     <platform id="1" x="416" y="512" width="160" height="16" />
-    <platform id="16" x="272" y="96" width="96" height="16" />
+    <platform id="16" x="272" y="128" width="96" height="16" />
     <platform id="10" x="240" y="304" width="160" height="16" />
     <jumpPad id="5" x="208" y="512" width="16" height="3" />
     <jumpPad id="11" x="416" y="512" width="16" height="3" />

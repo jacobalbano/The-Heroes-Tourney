@@ -8,11 +8,11 @@
     <platform id="5" x="128" y="400" width="96" height="16" />
     <platform id="7" x="512" y="192" width="112" height="16" />
     <platform id="8" x="16" y="192" width="112" height="16" />
-    <spawnPoint id="9" x="64" y="464" width="16" height="16" />
-    <spawnPoint id="10" x="464" y="288" width="16" height="16" />
+    <spawnPoint id="9" x="48" y="464" width="16" height="16" />
+    <spawnPoint id="10" x="480" y="288" width="16" height="16" />
     <player id="15" x="-128" y="48" />
-    <spawnPoint id="18" x="160" y="288" width="16" height="16" />
-    <spawnPoint id="19" x="560" y="464" width="16" height="16" />
+    <spawnPoint id="18" x="144" y="288" width="16" height="16" />
+    <spawnPoint id="19" x="576" y="464" width="16" height="16" />
     <crumble id="11" x="0" y="0" width="16" height="64" crumbleTime="1" />
     <crumble id="12" x="16" y="32" width="16" height="64" crumbleTime="1" />
     <crumble id="13" x="0" y="64" width="16" height="64" crumbleTime="1" />

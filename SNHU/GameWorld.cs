@@ -45,6 +45,7 @@ namespace SNHU
 			FP.Camera.Y = FP.HalfHeight;
 			
 			gameManager = new GameManager();
+			Add(gameManager);
 			
 			Input.ControllerConnected += delegate(object sender, JoystickConnectEventArgs e)
 			{
@@ -105,9 +106,7 @@ namespace SNHU
 		{
 			base.Begin();
 			
-			Add(gameManager);
-			
-			AdvanceLevel();
+			gameManager.StartGame();
 		}
 		
 		

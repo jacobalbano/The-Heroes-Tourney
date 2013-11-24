@@ -6,11 +6,11 @@
     <platform id="4" x="256" y="400" width="112" height="160" />
     <jumpPad id="5" x="224" y="560" width="32" height="3" />
     <jumpPad id="6" x="368" y="560" width="32" height="3" />
-    <deadlyAnchor id="7" x="112" y="288" width="16" height="16" distance="4" speed="3" size="1.75" />
-    <deadlyAnchor id="8" x="496" y="288" width="16" height="16" distance="4" speed="3" size="1.75" />
-    <spawnPoint id="0" x="48" y="448" width="16" height="16" />
+    <deadlyAnchor id="7" x="112" y="240" width="16" height="16" distance="4" speed="3" size="1.75" />
+    <deadlyAnchor id="8" x="496" y="240" width="16" height="16" distance="4" speed="3" size="1.75" />
+    <spawnPoint id="0" x="16" y="448" width="16" height="16" />
     <spawnPoint id="9" x="160" y="448" width="16" height="16" />
-    <spawnPoint id="10" x="432" y="448" width="16" height="16" />
-    <spawnPoint id="11" x="544" y="448" width="16" height="16" />
+    <spawnPoint id="10" x="448" y="448" width="16" height="16" />
+    <spawnPoint id="11" x="608" y="448" width="16" height="16" />
   </Platforms>
 </level>
