@@ -224,6 +224,9 @@ namespace SNHU.GameObject
 				playerTween.Tween(remainingPlayers[0], new { X = FP.Camera.X, Y = FP.Camera.Y },
 				                  1.5f, Ease.ElasticOut);
 				AddTween(playerTween, true);
+				
+				World.Add(new Victory(remainingPlayers[0].Layer + 1));
+				
 			}
 			else if (remainingPlayers.Count <= 0)
 			{
