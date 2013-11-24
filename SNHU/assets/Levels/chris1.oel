@@ -45,5 +45,8 @@
     <deadlyAnchor id="42" x="336" y="576" width="16" height="16" distance="1" speed="2" size="0.75" />
     <deadlyAnchor id="43" x="352" y="576" width="16" height="16" distance="1" speed="2" size="0.75" />
     <deadlyAnchor id="44" x="368" y="576" width="16" height="16" distance="1" speed="2" size="0.75" />
+    <Upgrade id="14" x="48" y="128" />
+    <Upgrade id="16" x="576" y="128" />
+    <Upgrade id="20" x="304" y="528" />
   </Platforms>
 </level>

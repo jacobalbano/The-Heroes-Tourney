@@ -47,5 +47,6 @@
     <platform id="62" x="432" y="320" width="32" height="16" />
     <crumble id="49" x="240" y="368" width="80" height="16" crumbleTime="1" />
     <crumble id="51" x="320" y="368" width="80" height="16" crumbleTime="1" />
+    <Upgrade id="14" x="320" y="256" />
   </Platforms>
 </level>
