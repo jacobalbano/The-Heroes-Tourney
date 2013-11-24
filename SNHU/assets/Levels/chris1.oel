@@ -13,30 +13,24 @@
     <player id="15" x="-128" y="48" />
     <spawnPoint id="18" x="144" y="288" width="16" height="16" />
     <spawnPoint id="19" x="576" y="464" width="16" height="16" />
-    <crumble id="11" x="0" y="0" width="16" height="64" crumbleTime="1" />
-    <crumble id="12" x="16" y="32" width="16" height="64" crumbleTime="1" />
-    <crumble id="13" x="0" y="64" width="16" height="64" crumbleTime="1" />
-    <crumble id="14" x="16" y="96" width="16" height="64" crumbleTime="1" />
-    <crumble id="16" x="0" y="128" width="16" height="64" crumbleTime="1" />
-    <crumble id="17" x="16" y="0" width="16" height="32" crumbleTime="1" />
-    <crumble id="20" x="16" y="160" width="16" height="32" crumbleTime="1" />
-    <crumble id="21" x="624" y="0" width="16" height="64" crumbleTime="1" />
-    <crumble id="22" x="608" y="32" width="16" height="64" crumbleTime="1" />
-    <crumble id="23" x="624" y="64" width="16" height="64" crumbleTime="1" />
-    <crumble id="24" x="608" y="96" width="16" height="64" crumbleTime="1" />
-    <crumble id="25" x="624" y="128" width="16" height="64" crumbleTime="1" />
-    <crumble id="26" x="608" y="0" width="16" height="32" crumbleTime="1" />
-    <crumble id="27" x="608" y="160" width="16" height="32" crumbleTime="1" />
-    <crumble id="28" x="32" y="0" width="128" height="16" crumbleTime="1" />
-    <crumble id="29" x="480" y="0" width="128" height="16" crumbleTime="1" />
-    <crumble id="30" x="416" y="16" width="128" height="16" crumbleTime="1" />
-    <crumble id="31" x="96" y="16" width="128" height="16" crumbleTime="1" />
-    <crumble id="32" x="160" y="0" width="128" height="16" crumbleTime="1" />
-    <crumble id="33" x="352" y="0" width="128" height="16" crumbleTime="1" />
-    <crumble id="34" x="224" y="16" width="192" height="16" crumbleTime="1" />
-    <crumble id="35" x="544" y="16" width="64" height="16" crumbleTime="1" />
-    <crumble id="36" x="288" y="0" width="64" height="16" crumbleTime="1" />
-    <crumble id="37" x="32" y="16" width="64" height="16" crumbleTime="1" />
+    <crumble id="11" x="0" y="64" width="16" height="64" crumbleTime="1" />
+    <crumble id="12" x="16" y="96" width="16" height="64" crumbleTime="1" />
+    <crumble id="13" x="0" y="128" width="16" height="64" crumbleTime="1" />
+    <crumble id="17" x="16" y="64" width="16" height="32" crumbleTime="1" />
+    <crumble id="21" x="624" y="64" width="16" height="64" crumbleTime="1" />
+    <crumble id="22" x="608" y="96" width="16" height="64" crumbleTime="1" />
+    <crumble id="23" x="624" y="128" width="16" height="64" crumbleTime="1" />
+    <crumble id="26" x="608" y="64" width="16" height="32" crumbleTime="1" />
+    <crumble id="28" x="32" y="64" width="128" height="16" crumbleTime="1" />
+    <crumble id="29" x="480" y="64" width="128" height="16" crumbleTime="1" />
+    <crumble id="30" x="416" y="80" width="128" height="16" crumbleTime="1" />
+    <crumble id="31" x="96" y="80" width="128" height="16" crumbleTime="1" />
+    <crumble id="32" x="160" y="64" width="128" height="16" crumbleTime="1" />
+    <crumble id="33" x="352" y="64" width="128" height="16" crumbleTime="1" />
+    <crumble id="34" x="224" y="80" width="192" height="16" crumbleTime="1" />
+    <crumble id="35" x="544" y="80" width="64" height="16" crumbleTime="1" />
+    <crumble id="36" x="288" y="64" width="64" height="16" crumbleTime="1" />
+    <crumble id="37" x="32" y="80" width="64" height="16" crumbleTime="1" />
     <deadlyAnchor id="38" x="256" y="576" width="16" height="16" distance="1" speed="2" size="0.75" />
     <jumpPad id="46" x="208" y="400" width="16" height="3" />
     <jumpPad id="47" x="416" y="400" width="16" height="3" />
