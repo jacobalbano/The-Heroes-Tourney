@@ -52,8 +52,11 @@ namespace SNHU.GameObject
 		public int Lives { get; private set; }
 		public int id { get; private set;}
 		
+		public string ImageName { get; private set; }
+		
 		public Player(float x, float y, int id, string imageName) : base(x, y)
 		{
+			ImageName = imageName;
 			this.id = id;
 			
 			hand = false;

@@ -9,6 +9,7 @@
 using System;
 using Punk;
 using Punk.Graphics;
+using SNHU.GameObject;
 
 namespace SNHU
 {
@@ -18,10 +19,20 @@ namespace SNHU
 	public class OffscreenCursor : Entity
 	{
 		Entity target;
-		public OffscreenCursor(Entity target) : base(0,0, Image.CreateCircle(30, FP.Color(0xFFFFFF)))
+		Image image;
+		
+		public OffscreenCursor(Player target)
 		{
 			this.target = target;
-			(Graphic as Image).CenterOrigin();
+			
+			image = new Image(Library.GetTexture("assets/cursor.png"));
+			image.CenterOrigin();
+			image.OriginX = image.Width * 0.35f;
+			AddGraphic(image);
+			
+			var face = new Image(Library.GetTexture("assets/" + target.ImageName + "_head.png"));
+			face.CenterOO();
+			AddGraphic(face);
 		}
 		
 		public override void Added()
@@ -42,7 +53,9 @@ namespace SNHU
 			
 			X = target.X - target.HalfWidth;
 			Y = target.Y - target.HalfHeight;
-			FP.ClampInRect(ref X, ref Y, FP.Camera.X - FP.HalfWidth, FP.Camera.Y - FP.HalfHeight, FP.Width, FP.Height, 16);
+			FP.ClampInRect(ref X, ref Y, FP.Camera.X - FP.HalfWidth, FP.Camera.Y - FP.HalfHeight, FP.Width, FP.Height, 25);
+			
+			image.Angle = FP.Angle(FP.Camera.X, FP.Camera.Y, X, Y);
 			
 			FP.Log(target.X, target.Y);
 		}
