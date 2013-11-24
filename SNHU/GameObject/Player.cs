@@ -264,6 +264,7 @@ namespace SNHU.GameObject
 				if (upgrade != null)
 				{
 					upgrade.Use();
+					World.BroadcastMessage("Upgrade Used", id);
 				}
 			}
 			
@@ -405,10 +406,12 @@ namespace SNHU.GameObject
 		
 		public void SetUpgrade(Upgrade upgrade)
 		{
+			FP.Log("SET UPGRADE");
 			if (this.upgrade != null)
 			{
 				RemoveLogic(this.upgrade);
 			}
+			
 			this.upgrade = upgrade;
 			
 			if (player != null && left != null && right != null)

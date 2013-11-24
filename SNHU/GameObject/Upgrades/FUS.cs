@@ -18,7 +18,7 @@ namespace SNHU.GameObject.Upgrades
 	public class FUS : Upgrade
 	{
 		public const string BE_FUS = "fusYou";
-		const float FUS_STRENGTH = 32.0f;
+		const float FUS_STRENGTH = 50.0f;
 			
 		public FUS()
 		{
