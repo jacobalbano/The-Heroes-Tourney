@@ -80,7 +80,7 @@ namespace SNHU.GameObject
 			
 			axis = controller.LeftStick;
 				
-			player = new Image(Library.GetTexture("assets/" + imageName));
+			player = new Image(Library.GetTexture("assets/" + imageName + ".png"));
 			player.Scale = 0.5f;
 			AddGraphic(player);
 			

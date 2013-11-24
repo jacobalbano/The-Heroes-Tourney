@@ -26,12 +26,14 @@ namespace SNHU
 		{
 			allImages = new List<string>()
 			{
-				"batman.png",
-				"dragonborn.png",
-				"faith.png",
-				"gomez.png",
-				"gordon.png",
-				"punk.png",
+				"batman",
+				"dragonborn",
+				"faith",
+				"gomez",
+				"gordon",
+				"punk",
+				"jade",
+				"maggy"
 			};
 			
 			takenImages = new List<string>();

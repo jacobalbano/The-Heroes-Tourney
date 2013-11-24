@@ -23,6 +23,54 @@
      id="defs3927">
     <linearGradient
        inkscape:collect="always"
+       id="linearGradient4118">
+      <stop
+         style="stop-color:#1a1a1a;stop-opacity:1;"
+         offset="0"
+         id="stop4120" />
+      <stop
+         style="stop-color:#1a1a1a;stop-opacity:0;"
+         offset="1"
+         id="stop4122" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4110">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop4112" />
+      <stop
+         style="stop-color:#b3b3b3;stop-opacity:1"
+         offset="1"
+         id="stop4114" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3904">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3906" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.42021278"
+         offset="1"
+         id="stop3908" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3896">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3898" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.19680852"
+         offset="1"
+         id="stop3900" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
        id="linearGradient4074">
       <stop
          style="stop-color:#ff0000;stop-opacity:1;"
@@ -81,7 +129,102 @@
        y1="999.80267"
        x2="20.381683"
        y2="1011.6777"
-       gradientTransform="matrix(0.99439344,-0.10574352,0.10574352,0.99439344,73.448626,8.2883038)" />
+       gradientTransform="matrix(1.9887869,-0.21148704,0.21148704,1.9887869,200.89628,-1001.8798)" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3896"
+       id="radialGradient3902"
+       cx="304.46152"
+       cy="991.34705"
+       fx="304.46152"
+       fy="991.34705"
+       r="10.626985"
+       gradientTransform="matrix(0.99804004,0.06257884,-0.06463764,1.0308752,369.45984,-57.80988)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3904"
+       id="radialGradient3910"
+       cx="323.20718"
+       cy="989.10901"
+       fx="323.20718"
+       fy="989.10901"
+       r="9.2605359"
+       gradientTransform="matrix(0.99804004,0.06257884,-0.06463744,1.030871,369.45416,-57.72028)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4074"
+       id="linearGradient4099"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.9887869,-0.21148704,0.21148704,1.9887869,200.89628,-1101.8798)"
+       x1="21.240284"
+       y1="999.80267"
+       x2="20.381683"
+       y2="1011.6777" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3896"
+       id="radialGradient4101"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.99804004,0.06257884,-0.06463764,1.0308752,369.45984,-157.80988)"
+       cx="304.46152"
+       cy="991.34705"
+       fx="304.46152"
+       fy="991.34705"
+       r="10.626985" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3904"
+       id="radialGradient4103"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.99804004,0.06257884,-0.06463744,1.030871,369.45416,-157.72028)"
+       cx="323.20718"
+       cy="989.10901"
+       fx="323.20718"
+       fy="989.10901"
+       r="9.2605359" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4110"
+       id="linearGradient4116"
+       x1="232.48528"
+       y1="-378.01569"
+       x2="232.48528"
+       y2="-307.83734"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4118"
+       id="linearGradient4124"
+       x1="244.87827"
+       y1="516.38116"
+       x2="286.14386"
+       y2="557.64679"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.2502823,0,0,1.2502823,-110.77176,23.757929)" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3896"
+       id="radialGradient4206"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.99804004,0.06257884,-0.06463764,1.0308752,449.45984,-157.80988)"
+       cx="304.46152"
+       cy="991.34705"
+       fx="304.46152"
+       fy="991.34705"
+       r="10.626985" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3904"
+       id="radialGradient4208"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.99804004,0.06257884,-0.06463744,1.030871,449.45416,-157.72028)"
+       cx="323.20718"
+       cy="989.10901"
+       fx="323.20718"
+       fy="989.10901"
+       r="9.2605359" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -90,9 +233,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="156.46635"
-     inkscape:cy="29.322132"
+     inkscape:zoom="2"
+     inkscape:cx="641.62042"
+     inkscape:cy="41.139268"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -124,25 +267,68 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-0.99407743,-992.19339)">
+    <path
+       sodipodi:nodetypes="cccccc"
+       inkscape:connector-curvature="0"
+       id="path4225"
+       d="m 693.82954,955.12635 12.9631,10.90887 -31.04542,7.65011 -10.51151,-12.70896 9.37658,-5.4764 z"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4221"
+       d="m 666.73235,968.6445 16.2527,8.60088 -19.06974,20.55713 -0.53577,19.18349 -13.56054,-3.6815 2.01146,-7.6481 -1.25496,-16.25028 3.46461,-8.7968 z"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccccccc"
+       inkscape:connector-curvature="0"
+       id="path4213"
+       d="m 684.05924,963.78936 16.97422,-5.113 10.9565,3.69878 5.34605,5.82906 -3.79275,18.09125 c 0.63372,-7.4825 2.65909,-14.38155 -5.12378,-15.69824 l 1.23262,17.40797 -14.98626,-11.84145 z"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:url(#linearGradient4116);fill-opacity:1;stroke:#4d4d4d;stroke-width:2.5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4105"
+       sodipodi:cx="238.29498"
+       sodipodi:cy="-345.18787"
+       sodipodi:rx="38.890873"
+       sodipodi:ry="38.890873"
+       d="m 277.18586,-345.18787 a 38.890873,38.890873 0 1 1 -77.78175,0 38.890873,38.890873 0 1 1 77.78175,0 z"
+       transform="matrix(1.2502823,0,0,1.2502823,-95.13223,1196.7646)" />
+    <path
+       style="fill:url(#linearGradient4124);fill-opacity:1;stroke:#4d4d4d;stroke-width:3.12570572;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 202.80378,674.82806 50.01129,50.0113 -50.0113,-20.71535 -50.01128,20.71536 z"
+       id="rect4107"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
     <rect
        style="fill:#000000;fill-opacity:1;stroke:none"
        id="rect3939"
-       width="18.161303"
-       height="36.532196"
-       x="5.2847381"
-       y="1015.6455"
-       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       width="36.322605"
+       height="73.064392"
+       x="104.56853"
+       y="1012.8347"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
-       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:1.06298053;stroke-opacity:1"
-       d="m 6.45644,996.8258 c 8.14706,-7.69746 17.77073,-2.21408 17.77073,-2.21408 l 6.24905,12.63868 -4.68679,11.7161 -12.59574,4.6127 -10.44763,-4.6127 c 0,0 -4.436688,-14.4432 3.71038,-22.1407 z"
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.12596107;stroke-opacity:1"
+       d="m 106.91192,975.19522 c 16.29412,-15.39492 35.54146,-4.42816 35.54146,-4.42816 l 12.4981,25.27736 -9.37358,23.43218 -25.19148,9.2254 -20.89526,-9.2254 c 0,0 -8.87337,-28.88638 7.42076,-44.28138 z"
        id="path4048"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="scccccs"
-       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
        sodipodi:type="arc"
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -151,14 +337,14 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(1.0935839,0,0,1.0332337,-4.4794033,990.47878)"
-       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(2.1871678,0,0,2.0664674,85.04024,962.50118)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
-       transform="matrix(0.76811062,0,0,0.72572212,7.9401341,993.41796)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(1.5362212,0,0,1.4514442,109.87931,968.37954)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -166,12 +352,12 @@
        id="path4462"
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        sodipodi:type="arc"
-       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
-       transform="matrix(0.93308023,0,0,0.8815876,-1.0746074,992.31423)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(1.8661605,0,0,1.7631752,91.84983,966.17208)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -179,9 +365,9 @@
        id="path4464"
        style="fill:#ffffff;fill-opacity:1;stroke:none"
        sodipodi:type="arc"
-       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
        sodipodi:type="arc"
        style="fill:#ffffff;fill-opacity:1;stroke:none"
@@ -190,11 +376,11 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.65537624,0,0,0.61920892,9.5221321,994.82202)"
-       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.3107525,0,0,1.2384178,113.04331,971.18766)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
        sodipodi:type="arc"
        style="fill:#000000;fill-opacity:1;stroke:none"
@@ -203,14 +389,14 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.59068574,0,0,0.5580884,6.2141526,996.27579)"
-       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.1813715,0,0,1.1161768,106.42735,974.0952)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
-       transform="matrix(0.41488541,0,0,0.39198974,14.728777,997.44822)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(0.82977082,0,0,0.78397948,123.4566,976.44006)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -218,9 +404,9 @@
        id="path4470"
        style="fill:#000000;fill-opacity:1;stroke:none"
        sodipodi:type="arc"
-       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
        sodipodi:type="arc"
        style="fill:#d40000;fill-opacity:1;stroke:none"
@@ -287,39 +473,39 @@
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
-       style="fill:#c3c3c3;fill-opacity:1;stroke:#a9a9a9;stroke-opacity:1"
-       d="m 74.34602,996.55413 5.75844,3.21522 8.03699,0.92425 c 6.75717,2.7366 6.81644,2.0783 7.04386,7.0848 3.93552,-4.0921 2.95804,-5.5108 0.2847,-8.36051 l -12.2303,-3.51245 c -6.2505,-0.60047 -8.89369,0.64869 -8.89369,0.64869 z"
+       style="fill:#c3c3c3;fill-opacity:1;stroke:#a9a9a9;stroke-width:2;stroke-opacity:1"
+       d="m 202.69108,974.65204 11.51688,6.4304 16.074,1.84838 c 13.51432,5.4732 13.63288,4.1564 14.08772,14.1696 7.87104,-8.1844 5.91608,-11.0216 0.5694,-16.72118 l -24.4606,-7.0248 c -12.501,-1.2008 -17.7874,1.2976 -17.7874,1.2976 z"
        id="path3811"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccc" />
     <rect
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
-       y="1015.6455"
-       x="65.284737"
-       height="36.532196"
-       width="18.161303"
+       y="1012.8349"
+       x="184.56851"
+       height="73.064392"
+       width="36.322605"
        id="rect3813"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
        sodipodi:nodetypes="scccccs"
        inkscape:connector-curvature="0"
        id="path3815"
-       d="m 66.45644,996.8258 c 8.14706,-7.69746 17.77073,-2.21408 17.77073,-2.21408 l 6.24905,12.63868 -4.68679,11.7161 -12.59574,4.6127 -10.44763,-4.6127 c 0,0 -4.436688,-14.4432 3.71038,-22.1407 z"
-       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:1.06298053;stroke-opacity:1" />
+       d="m 186.91192,975.19524 c 16.29412,-15.3948 35.54148,-4.4284 35.54148,-4.4284 l 12.49808,25.27758 -9.37356,23.43198 -25.19148,9.2256 -20.89528,-9.2256 c 0,0 -8.87336,-28.88638 7.42076,-44.28116 z"
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.12596107;stroke-opacity:1" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
-       transform="matrix(1.0935839,0,0,1.0332337,55.520597,990.47878)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(2.1871678,0,0,2.0664674,165.04024,962.50124)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -328,8 +514,8 @@
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        sodipodi:type="arc" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
        sodipodi:type="arc"
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -338,11 +524,11 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.76811062,0,0,0.72572212,67.94013,993.41796)" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.5362212,0,0,1.4514442,189.87932,968.37964)" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
        sodipodi:type="arc"
        style="fill:#ffffff;fill-opacity:1;stroke:none"
@@ -351,14 +537,14 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.93308023,0,0,0.8815876,58.925393,992.31423)" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.8661604,0,0,1.7631752,171.84984,966.17204)" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
-       transform="matrix(0.65537624,0,0,0.61920892,69.52213,994.82202)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(1.3107525,0,0,1.2384178,193.04332,971.18764)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -367,11 +553,11 @@
        style="fill:#ffffff;fill-opacity:1;stroke:none"
        sodipodi:type="arc" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
-       transform="matrix(0.59068574,0,0,0.5580884,66.21415,996.27579)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(1.1813715,0,0,1.1161768,186.42736,974.09524)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -380,8 +566,8 @@
        style="fill:#000000;fill-opacity:1;stroke:none"
        sodipodi:type="arc" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
        sodipodi:type="arc"
        style="fill:#000000;fill-opacity:1;stroke:none"
@@ -390,61 +576,61 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.41488541,0,0,0.39198974,74.72878,997.44822)" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(0.8297708,0,0,0.78397948,203.4566,976.44004)" />
     <rect
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
-       y="1009.5566"
-       x="69.385681"
-       height="6.9189763"
-       width="15.23206"
+       y="1000.6567"
+       x="192.77039"
+       height="13.837953"
+       width="30.464121"
        id="rect3829"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
        sodipodi:nodetypes="sscccccccccssccccccccccc"
        inkscape:connector-curvature="0"
        id="path3831"
-       d="m 77.48603,990.78714 c -3.30116,0.14968 -7.08417,1.3091 -10.59375,4.625 -9.167879,8.66206 -5.80445,24.90626 -5.80445,24.90626 l 8.4375,3.6875 -0.65625,-12.75 9.89758,3.7893 2.33088,-3.5887 3.4448,-0.7241 3.82828,2.9922 3.31838,-6.3592 -4.79672,-14.45326 c 0,0 -3.40135,-1.95832 -8.03125,-2.125 -0.45013,-0.0162 -0.9034,-0.0214 -1.375,0 z m 9.00805,7.3125 1.84375,2.93746 -1.40625,4.5938 -4.21906,-1.4063 -0.25,-4.0312 z m -16.87531,1.78125 11.5625,0.46871 -0.28125,4.7188 -3.71875,1.375 z"
-       style="fill:#3d3d3d;fill-opacity:1;stroke:#000000;stroke-width:1.19617093;stroke-opacity:1" />
+       d="m 208.97112,963.11804 c -6.60232,0.3 -14.16836,2.618 -21.18752,9.25 -18.33576,17.32398 -11.60888,49.81236 -11.60888,49.81236 l 16.875,7.3748 -1.31252,-25.5 19.79516,7.5788 4.66176,-7.1776 6.8896,-1.448 7.65656,5.9844 6.63676,-12.71838 -9.59344,-28.90638 c 0,0 -6.80268,-3.9168 -16.06248,-4.25 -0.90028,-0.04 -1.8068,-0.044 -2.75,0 z m 18.01608,14.6248 3.68752,5.87478 -2.81252,9.1876 -8.43812,-2.8124 -0.5,-8.0624 z m -33.7506,3.5624 23.125,0.93758 -0.56252,9.4376 -7.43748,2.75 z"
+       style="fill:#3d3d3d;fill-opacity:1;stroke:#000000;stroke-width:2.39234185;stroke-opacity:1" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
        sodipodi:nodetypes="ccccsc"
        inkscape:connector-curvature="0"
        id="path3833"
-       d="m 64.82591,999.60302 c 3.09243,0.19467 3.30664,1.82848 4.01493,3.21518 l -5.21369,1.3933 c 1.56134,2.7366 7.69945,5.1272 15.4161,7.0848 -13.08261,0.2466 -21.564927,-5.7752 -21.564927,-5.7752 -0.43625,-4.4444 7.347587,-5.91808 7.347587,-5.91808 z"
-       style="fill:#c3c3c3;fill-opacity:1;stroke:#9d9d9d;stroke-opacity:1" />
+       d="m 183.65088,980.74964 c 6.18484,0.388 6.61328,3.65678 8.02984,6.43038 l -10.42736,2.7864 c 3.12268,5.4732 15.39888,10.25438 30.8322,14.16958 -26.16524,0.4932 -43.12988,-11.55038 -43.12988,-11.55038 -0.87248,-8.8888 14.6952,-11.83598 14.6952,-11.83598 z"
+       style="fill:#c3c3c3;fill-opacity:1;stroke:#9d9d9d;stroke-width:2;stroke-opacity:1" />
     <rect
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman.png"
-       y="1015.6455"
-       x="105.28474"
-       height="36.532196"
-       width="18.161303"
+       y="1012.8349"
+       x="264.56851"
+       height="73.064392"
+       width="36.322605"
        id="rect3837"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman.png"
        sodipodi:nodetypes="scccccs"
        inkscape:connector-curvature="0"
        id="path3839"
-       d="m 106.45644,996.8258 c 8.14706,-7.69746 17.77073,-2.21408 17.77073,-2.21408 l 6.24905,12.63868 -4.68679,11.7161 -12.59574,4.6127 -10.44763,-4.6127 c 0,0 -4.436688,-14.4432 3.71038,-22.1407 z"
-       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:1.06298053;stroke-opacity:1" />
+       d="m 266.91192,975.19524 c 16.29412,-15.3948 35.54148,-4.4284 35.54148,-4.4284 l 12.49808,25.27758 -9.37356,23.43198 -25.19148,9.2256 -20.89528,-9.2256 c 0,0 -8.87336,-28.88638 7.42076,-44.28116 z"
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.12596107;stroke-opacity:1" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman.png"
-       transform="matrix(1.0935839,0,0,1.0332337,95.520597,990.47878)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(2.1871678,0,0,2.0664674,245.04024,962.50124)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -453,8 +639,8 @@
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        sodipodi:type="arc" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman.png"
        sodipodi:type="arc"
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -463,11 +649,11 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.76811062,0,0,0.72572212,107.94013,993.41796)" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.5362212,0,0,1.4514442,269.87932,968.37964)" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman.png"
        sodipodi:type="arc"
        style="fill:#ffffff;fill-opacity:1;stroke:none"
@@ -476,14 +662,14 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.93308023,0,0,0.8815876,98.925393,992.31423)" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.8661604,0,0,1.7631752,251.84984,966.17204)" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman.png"
-       transform="matrix(0.65537624,0,0,0.61920892,109.52213,994.82202)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(1.3107525,0,0,1.2384178,273.04332,971.18764)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -492,11 +678,11 @@
        style="fill:#ffffff;fill-opacity:1;stroke:none"
        sodipodi:type="arc" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman.png"
-       transform="matrix(0.59068574,0,0,0.5580884,106.21415,996.27579)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(1.1813715,0,0,1.1161768,266.42736,974.09524)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -505,8 +691,8 @@
        style="fill:#000000;fill-opacity:1;stroke:none"
        sodipodi:type="arc" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman.png"
        sodipodi:type="arc"
        style="fill:#000000;fill-opacity:1;stroke:none"
@@ -515,80 +701,80 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.41488541,0,0,0.39198974,114.72878,997.44822)" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(0.8297708,0,0,0.78397948,283.4566,976.44004)" />
     <rect
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman.png"
-       y="1009.5566"
-       x="109.38568"
-       height="6.9189763"
-       width="15.23206"
+       y="1000.6567"
+       x="272.77042"
+       height="13.837953"
+       width="30.464121"
        id="rect3853"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman.png"
        sodipodi:nodetypes="sssscccccccssss"
        inkscape:connector-curvature="0"
        id="path3855"
-       d="m 117.48603,990.78714 c -2.19229,0.0994 -4.5971,0.64413 -6.9932,1.97004 -0.59025,0.32662 -1.17998,-7.29935 -1.76587,-6.8729 -0.6171,0.44917 -1.22995,8.9565 -1.83468,9.52786 -9.167949,8.66196 -5.80445,24.90626 -5.80445,24.90626 l 8.4375,3.6875 -0.65625,-12.75 4.25911,3.1259 15.24243,-0.6572 3.31838,-6.3592 -4.79672,-11.79986 c 0,0 -4.50436,-2.82427 -4.29767,-10.25635 0.0169,-0.60956 -1.23306,5.73029 -1.91233,5.63675 -0.58052,-0.0799 -1.18945,-0.13605 -1.82125,-0.1588 -0.45013,-0.0162 -0.9034,-0.0214 -1.375,0 z"
-       style="fill:#000000;fill-opacity:1;stroke:#0c0c0c;stroke-width:1.19617093;stroke-opacity:1" />
+       d="m 288.97112,963.11804 c -4.3846,0.2 -9.1942,1.288 -13.9864,3.94 -1.18052,0.6532 -2.35996,-14.5988 -3.53176,-13.746 -1.2342,0.8984 -2.45988,17.9132 -3.66936,19.056 -18.33588,17.32358 -11.60888,49.81236 -11.60888,49.81236 l 16.875,7.3748 -1.31252,-25.5 8.51824,6.252 30.48484,-1.3144 6.63676,-12.71838 -9.59344,-23.59958 c 0,0 -9.00872,-5.6488 -8.59532,-20.5128 0.032,-1.2192 -2.46612,11.4604 -3.82468,11.2736 -1.16104,-0.16 -2.37888,-0.272 -3.64248,-0.316 -0.90028,-0.04 -1.8068,-0.044 -2.75,0 z"
+       style="fill:#000000;fill-opacity:1;stroke:#0c0c0c;stroke-width:2.39234185;stroke-opacity:1" />
     <path
        style="fill:#ffff00;fill-opacity:1;stroke:none"
-       d="m 128.64996,1001.5922 -5.93744,2.9741 -0.25,-2.3729 z m -17.71444,0.4545 8.24575,0.3029 -0.44709,2.8946 z"
+       d="m 311.29896,984.72802 -11.87488,5.948 -0.5,-4.7456 z m -35.42888,0.9088 16.49152,0.606 -0.8942,5.7892 z"
        id="path3857"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccc"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.251923"
+       inkscape:export-xdpi="90.251923"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
        style="fill:#000000;fill-opacity:1;stroke:none"
-       d="m 157.29242,990.16262 c -7.17439,4.14214 -13.31215,6.17675 -9.20459,13.29118 4.10766,7.1147 13.90515,12.883 21.07954,8.7409 1.15987,-0.6697 2.19912,-1.4698 3.10585,-2.3705 -3.93362,-0.7022 -4.18291,-4.3575 -6.93135,-9.1179 -1.97088,-3.41368 -4.49386,-6.0002 -4.05808,-8.69623 0.36773,-2.2751 -1.77093,-3.12943 -3.99137,-1.84745 z"
+       d="m 368.58388,961.86884 c -14.34876,8.2844 -26.62428,12.3536 -18.40916,26.58238 8.21532,14.22918 27.81028,25.76598 42.15908,17.48158 2.31972,-1.3392 4.39824,-2.9396 6.21168,-4.7408 -7.86724,-1.40438 -8.3658,-8.71518 -13.86268,-18.23598 -3.94176,-6.82718 -8.98772,-12.00038 -8.11616,-17.39238 0.73544,-4.55 -3.54188,-6.2588 -7.98276,-3.6948 z"
        id="path4022"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ssscsss" />
     <rect
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.251923"
+       inkscape:export-xdpi="90.251923"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
-       y="1015.6455"
-       x="145.28473"
-       height="36.532196"
-       width="18.161303"
+       y="1012.8349"
+       x="344.56854"
+       height="73.064392"
+       width="36.322605"
        id="rect4024"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <path
-       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:1.06298053;stroke-opacity:1"
-       d="m 146.45644,996.8258 c 8.14706,-7.69746 17.77073,-2.21408 17.77073,-2.21408 l 6.24905,12.63868 -4.68679,11.7161 -12.59574,4.6127 -10.44763,-4.6127 c 0,0 -4.43669,-14.4432 3.71038,-22.1407 z"
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.12596107;stroke-opacity:1"
+       d="m 346.91192,975.19524 c 16.29412,-15.3948 35.54148,-4.4284 35.54148,-4.4284 l 12.49808,25.27758 -9.37356,23.43198 -25.19148,9.2256 -20.89528,-9.2256 c 0,0 -8.87336,-28.88638 7.42076,-44.28116 z"
        id="path4119"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="scccccs"
-       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
+       inkscape:export-xdpi="90.251923"
+       inkscape:export-ydpi="90.251923" />
     <rect
        style="fill:#000000;fill-opacity:1;stroke:none"
        id="rect4121"
-       width="15.23206"
-       height="6.9189763"
-       x="149.38568"
-       y="1009.5566"
-       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
-    <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       width="30.464121"
+       height="13.837953"
+       x="352.77045"
+       y="1000.6567"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
-       transform="matrix(1.0935839,0,0,1.0332337,135.5206,990.47878)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       inkscape:export-xdpi="90.251923"
+       inkscape:export-ydpi="90.251923" />
+    <path
+       inkscape:export-ydpi="90.251923"
+       inkscape:export-xdpi="90.251923"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
+       transform="matrix(2.1871678,0,0,2.0664674,325.04024,962.50124)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -597,8 +783,8 @@
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        sodipodi:type="arc" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.251923"
+       inkscape:export-xdpi="90.251923"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
        sodipodi:type="arc"
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -607,20 +793,20 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.76811062,0,0,0.72572212,147.94013,993.41796)" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.5362212,0,0,1.4514442,349.87932,968.37964)" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.251923"
+       inkscape:export-xdpi="90.251923"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
        sodipodi:nodetypes="ccccccccccccc"
        inkscape:connector-curvature="0"
        id="path4032"
-       d="m 148.01457,998.8247 c 0.5355,0.261 1.00082,0.7267 1.57153,0.9637 1.84794,0.8716 5.34528,0.3884 8.38051,1.1949 2.30425,0.7503 4.60591,1.8812 6.19275,3.7589 0.0633,0.3266 -0.81309,0.074 -1.15076,0.1536 -1.41998,0 -2.83997,0 -4.25995,0 -0.95589,1.5551 -1.4554,3.3551 -2.11415,5.0519 -0.0825,0.5504 -0.57227,1.6803 -0.7621,0.5214 -0.61073,-1.7668 -1.41644,-3.4618 -1.96588,-5.2506 -1.40777,0.2271 -2.71045,0.844 -4.08911,1.1836 0.0699,-1.3586 1.58141,-3.1621 0.98936,-3.9351 -0.92019,-0.7789 -1.65121,-1.754 -2.3409,-2.7353 -0.16092,-0.2904 -0.37721,-0.5826 -0.4513,-0.907 z"
+       d="m 350.0282,979.19284 c 1.071,0.522 2.00164,1.4536 3.14304,1.9276 3.69588,1.74318 10.69056,0.77678 16.76104,2.38958 4.60848,1.5008 9.2118,3.7624 12.38548,7.518 0.1268,0.6532 -1.62616,0.148 -2.30152,0.308 -2.83996,0 -5.67992,0 -8.51988,0 -1.9118,3.11 -2.9108,6.71 -4.22832,10.10358 -0.1648,1.1008 -1.14452,3.3608 -1.5242,1.0428 -1.22144,-3.53358 -2.83288,-6.92358 -3.93176,-10.50118 -2.81552,0.4544 -5.42088,1.688 -8.1782,2.3672 0.14,-2.7172 3.1628,-6.324 1.97872,-7.87 -1.8404,-1.558 -3.30244,-3.508 -4.6818,-5.47078 -0.322,-0.5808 -0.75444,-1.1652 -0.9026,-1.814 z"
        style="fill:#000000;fill-rule:evenodd" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.251923"
+       inkscape:export-xdpi="90.251923"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
        sodipodi:type="arc"
        style="fill:#ffffff;fill-opacity:1;stroke:none"
@@ -629,14 +815,14 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.93308023,0,0,0.8815876,138.92539,992.31423)" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.8661604,0,0,1.7631752,331.84984,966.17204)" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.251923"
+       inkscape:export-xdpi="90.251923"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
-       transform="matrix(0.65537624,0,0,0.61920892,149.52213,994.82202)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(1.3107525,0,0,1.2384178,353.04332,971.18764)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -645,11 +831,11 @@
        style="fill:#ffffff;fill-opacity:1;stroke:none"
        sodipodi:type="arc" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.251923"
+       inkscape:export-xdpi="90.251923"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
-       transform="matrix(0.59068574,0,0,0.5580884,146.21415,996.27579)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(1.1813715,0,0,1.1161768,346.42736,974.09524)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -658,8 +844,8 @@
        style="fill:#000000;fill-opacity:1;stroke:none"
        sodipodi:type="arc" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.251923"
+       inkscape:export-xdpi="90.251923"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
        sodipodi:type="arc"
        style="fill:#000000;fill-opacity:1;stroke:none"
@@ -668,61 +854,61 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.41488541,0,0,0.39198974,154.72878,997.44822)" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(0.8297708,0,0,0.78397948,363.4566,976.44004)" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.251923"
+       inkscape:export-xdpi="90.251923"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
        sodipodi:nodetypes="ssscscs"
        inkscape:connector-curvature="0"
        id="path4042"
-       d="m 149.29953,989.77824 c -8.28427,0 -13,4.65976 -13,12.87486 0,8.2153 -1.40559,14.9305 6.87868,14.9305 1.33932,0 4.76075,1.7711 5.99632,1.4445 -3.05548,-2.575 -1.125,-9.3781 -1.125,-14.875 0,-7.2681 3.59535,-11.29523 8.34375,-12.59361 -2.11086,-1.12453 -4.5298,-1.78125 -7.09375,-1.78125 z"
+       d="m 352.59812,961.10004 c -16.56856,0 -26,9.3196 -26,25.74958 0,16.43078 -2.8112,29.86118 13.75736,29.86118 2.67864,0 9.52148,3.542 11.99264,2.8888 -6.11096,-5.15 -2.25,-18.756 -2.25,-29.74998 0,-14.53598 7.19068,-22.59038 16.68748,-25.18718 -4.22172,-2.2488 -9.0596,-3.5624 -14.18748,-3.5624 z"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.251923"
+       inkscape:export-xdpi="90.251923"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith.png"
        style="fill:#000000;fill-opacity:1;stroke:none"
-       d="m 145.24433,991.47185 c 2.95643,5.3353 8.20014,8.3397 14.51965,6.64645 2.60723,-0.69858 4.8646,-2.05397 6.6445,-3.84299 3.63744,-3.65606 -8.57186,-7.00707 -13.88141,-5.58437 -7.0205,1.8811 -8.03868,1.4167 -7.28274,2.78091 z"
+       d="m 344.48772,964.48724 c 5.91284,10.6708 16.40028,16.6796 29.03928,13.2928 5.21448,-1.3972 9.7292,-4.1076 13.289,-7.686 7.27488,-7.312 -17.14372,-14.014 -27.7628,-11.1684 -14.041,3.762 -16.07736,2.8332 -14.56548,5.5616 z"
        id="path4044"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="sssss" />
     <rect
        style="fill:#000000;fill-opacity:1;stroke:none"
        id="rect4050"
-       width="15.23206"
-       height="6.9189763"
-       x="9.3856812"
-       y="1009.5566"
-       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       width="30.464121"
+       height="13.837953"
+       x="112.77041"
+       y="1000.6568"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <rect
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="88.93325"
+       inkscape:export-xdpi="88.93325"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk.png"
-       y="1015.6455"
-       x="185.28473"
-       height="36.532196"
-       width="18.161303"
+       y="1012.8349"
+       x="424.56854"
+       height="73.064392"
+       width="36.322605"
        id="rect4084"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="88.93325"
+       inkscape:export-xdpi="88.93325"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk.png"
        sodipodi:nodetypes="scccccs"
        inkscape:connector-curvature="0"
        id="path4086"
-       d="m 186.45644,996.8258 c 8.14706,-7.69746 17.77073,-2.21408 17.77073,-2.21408 l 6.24905,12.63868 -4.68679,11.7161 -12.59574,4.6127 -10.44763,-4.6127 c 0,0 -4.43669,-14.4432 3.71038,-22.1407 z"
-       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:1.06298053;stroke-opacity:1" />
+       d="m 426.91192,975.19524 c 16.29412,-15.3948 35.54148,-4.4284 35.54148,-4.4284 l 12.49808,25.27758 -9.37356,23.43198 -25.19148,9.2256 -20.89528,-9.2256 c 0,0 -8.87336,-28.88638 7.42076,-44.28116 z"
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.12596107;stroke-opacity:1" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="88.93325"
+       inkscape:export-xdpi="88.93325"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk.png"
-       transform="matrix(1.0935839,0,0,1.0332337,175.5206,990.47878)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(2.1871678,0,0,2.0664674,405.04024,962.50124)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -731,8 +917,8 @@
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        sodipodi:type="arc" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="88.93325"
+       inkscape:export-xdpi="88.93325"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk.png"
        sodipodi:type="arc"
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -741,11 +927,11 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.76811062,0,0,0.72572212,187.94013,993.41796)" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.5362212,0,0,1.4514442,429.87932,968.37964)" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="88.93325"
+       inkscape:export-xdpi="88.93325"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk.png"
        sodipodi:type="arc"
        style="fill:#ffffff;fill-opacity:1;stroke:none"
@@ -754,14 +940,14 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.93308023,0,0,0.8815876,178.92539,992.31423)" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.8661604,0,0,1.7631752,411.84984,966.17204)" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="88.93325"
+       inkscape:export-xdpi="88.93325"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk.png"
-       transform="matrix(0.65537624,0,0,0.61920892,189.52213,994.82202)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(1.3107525,0,0,1.2384178,433.04332,971.18764)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -770,11 +956,11 @@
        style="fill:#ffffff;fill-opacity:1;stroke:none"
        sodipodi:type="arc" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="88.93325"
+       inkscape:export-xdpi="88.93325"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk.png"
-       transform="matrix(0.59068574,0,0,0.5580884,186.21415,996.27579)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(1.1813715,0,0,1.1161768,426.42736,974.09524)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -783,8 +969,8 @@
        style="fill:#000000;fill-opacity:1;stroke:none"
        sodipodi:type="arc" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="88.93325"
+       inkscape:export-xdpi="88.93325"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk.png"
        sodipodi:type="arc"
        style="fill:#000000;fill-opacity:1;stroke:none"
@@ -793,97 +979,96 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.41488541,0,0,0.39198974,194.72878,997.44822)" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(0.8297708,0,0,0.78397948,443.4566,976.44004)" />
     <rect
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="88.93325"
+       inkscape:export-xdpi="88.93325"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk.png"
-       y="1009.5566"
-       x="189.38568"
-       height="6.9189763"
-       width="15.23206"
+       y="1000.6567"
+       x="432.77045"
+       height="13.837953"
+       width="30.464121"
        id="rect4100"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <path
        sodipodi:nodetypes="cccccccc"
        inkscape:connector-curvature="0"
        id="path4102"
-       d="m 190.26846,985.19687 16.26535,3.81333 -6.25287,8.61617 -7.81768,-5.0351 c -2.41408,0.88748 -4.58923,1.6461 -6.63549,3.94166 l -0.94874,-3.11087 1.18552,-6.9824 z"
-       style="fill:#00ffff;fill-opacity:1;stroke:#00ffff;stroke-width:0.31299999;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 434.53596,951.93724 32.53072,7.6268 -12.50576,17.2324 -15.63536,-10.0704 c -4.82816,1.7752 -9.17844,3.2924 -13.27096,7.8836 l -1.89748,-6.222 2.37104,-13.9648 z"
+       style="fill:#00ffff;fill-opacity:1;stroke:#00ffff;stroke-width:0.62599999;stroke-miterlimit:4;stroke-opacity:1"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-ydpi="88.93325" />
     <path
        style="fill:#00cece;fill-opacity:1;stroke:none"
-       d="m 207.2289,988.94013 -5.34405,0.20625 -1.60391,8.47999 4.29153,-1.05762 c 0.32595,-1.67579 2.65643,-7.62862 2.65643,-7.62862 z"
+       d="m 468.45684,959.42404 -10.68808,0.4124 -3.20784,16.96 8.58308,-2.1152 c 0.65188,-3.3516 5.31284,-15.2572 5.31284,-15.2572 z"
        id="path4104"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-ydpi="88.93325" />
     <path
        style="fill:#00a3a3;fill-opacity:1;stroke:none"
-       d="m 190.84654,985.15012 16.38236,3.79001 -5.1802,0.37774 -12.16953,-4.04552 z"
+       d="m 435.69212,951.84364 32.76472,7.5804 -10.3604,0.7552 -24.33904,-8.0908 z"
        id="path4106"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-ydpi="88.93325" />
     <path
        inkscape:connector-curvature="0"
        id="path4108"
-       d="m 185.24408,1010.7871 c -1.09865,0 -2,0.9014 -2,2 0,1.0987 0.90135,2 2,2 1.09865,0 2,-0.9013 2,-2 0,-0.7259 -0.3847,-1.3682 -0.96875,-1.7187 l -0.5,0.875 c 0.28223,0.1754 0.46875,0.4822 0.46875,0.8437 0,0.5583 -0.4418,1 -1,1 -0.55821,0 -1,-0.4417 -1,-1 0,-0.5582 0.44179,-1 1,-1 0.0436,0 0.083,0.026 0.125,0.031 l 0,-1.0313 c -0.0414,0 -0.083,0 -0.125,0 z"
+       d="m 424.4872,1003.1176 c -2.19728,0 -4,1.8028 -4,4 0,2.1976 1.80272,4 4,4 2.19732,0 4,-1.8024 4,-4 0,-1.4516 -0.7694,-2.7364 -1.93748,-3.4372 l -1,1.75 c 0.56444,0.352 0.93748,0.9644 0.93748,1.6872 0,1.1168 -0.8836,2 -2,2 -1.1164,0 -2,-0.8832 -2,-2 0,-1.1164 0.8836,-2 2,-2 0.0872,0 0.166,0.052 0.25,0.06 l 0,-2.0624 c -0.0828,0 -0.166,0 -0.25,0 z"
        style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-ydpi="88.93325" />
     <path
        sodipodi:nodetypes="ccccccccc"
        inkscape:connector-curvature="0"
        id="path4110"
-       d="m 191.65886,999.39775 16.29107,-0.47534 c 2.17484,2.49229 1.92454,5.24259 1.85356,7.97369 l -5.52803,0.334 -1.99855,-2.5505 -1.98879,0.2115 -1.56124,2.6142 -6.75638,1.9157 c -1.48989,-3.3095 -2.7588,-6.624 -0.31164,-10.02325 z"
-       style="fill:url(#linearGradient4114);fill-opacity:1;stroke:#000000;stroke-width:0.31299999;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 437.31676,980.33924 32.58216,-0.9508 c 4.34968,4.98438 3.84908,10.48518 3.70712,15.94718 l -11.05608,0.668 -3.99708,-5.1008 -3.9776,0.4228 -3.12248,5.2284 -13.51276,3.83158 c -2.97976,-6.61918 -5.5176,-13.24798 -0.62328,-20.04636 z"
+       style="fill:url(#linearGradient4114);fill-opacity:1;stroke:#000000;stroke-width:0.62599999;stroke-miterlimit:4;stroke-opacity:1"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-ydpi="88.93325" />
     <path
-       transform="matrix(1,0,-0.43618789,0.89985561,0,0)"
-       style="fill:#ff7a00;fill-opacity:0.60106387;stroke:#000000;stroke-width:0.32995743;stroke-miterlimit:4;stroke-opacity:1"
-       d="m 666.96239,1113.1538 0.5988,-1.1113 8.41647,0 0.625,1.9447 -7.76905,0 -0.70853,2.9171 z"
+       style="fill:#ff7a00;fill-opacity:0.60106387;stroke:#000000;stroke-width:0.62599999;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 416.8354,984.89882 2.16708,-2 16.83296,0 -0.44652,3.5 -15.53812,0 -3.96184,5.25 z"
        id="rect4112"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccc"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-ydpi="88.93325" />
     <rect
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.156525"
+       inkscape:export-xdpi="90.156525"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez.png"
-       y="1015.6455"
-       x="225.28473"
-       height="36.532196"
-       width="18.161303"
+       y="1012.8349"
+       x="504.56854"
+       height="73.064392"
+       width="36.322605"
        id="rect3057"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.156525"
+       inkscape:export-xdpi="90.156525"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez.png"
        sodipodi:nodetypes="scccccs"
        inkscape:connector-curvature="0"
        id="path3059"
-       d="m 226.45644,996.8258 c 8.14706,-7.69746 17.77073,-2.21408 17.77073,-2.21408 l 6.24905,12.63868 -4.68679,11.7161 -12.59574,4.6127 -10.44763,-4.6127 c 0,0 -4.43669,-14.4432 3.71038,-22.1407 z"
-       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:1.06298053;stroke-opacity:1" />
+       d="m 506.91192,975.19524 c 16.29412,-15.3948 35.54148,-4.4284 35.54148,-4.4284 l 12.49808,25.27758 -9.37356,23.43198 -25.19148,9.2256 -20.89528,-9.2256 c 0,0 -8.87336,-28.88638 7.42076,-44.28116 z"
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.12596107;stroke-opacity:1" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.156525"
+       inkscape:export-xdpi="90.156525"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez.png"
-       transform="matrix(1.0935839,0,0,1.0332337,215.5206,990.47878)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(2.1871678,0,0,2.0664674,485.04024,962.50124)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -892,8 +1077,8 @@
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        sodipodi:type="arc" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.156525"
+       inkscape:export-xdpi="90.156525"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez.png"
        sodipodi:type="arc"
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -902,11 +1087,11 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.76811062,0,0,0.72572212,227.94013,993.41796)" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.5362212,0,0,1.4514442,509.87932,968.37964)" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.156525"
+       inkscape:export-xdpi="90.156525"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez.png"
        sodipodi:type="arc"
        style="fill:#ffffff;fill-opacity:1;stroke:none"
@@ -915,14 +1100,14 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.93308023,0,0,0.8815876,218.92539,992.31423)" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.8661604,0,0,1.7631752,491.84984,966.17204)" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.156525"
+       inkscape:export-xdpi="90.156525"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez.png"
-       transform="matrix(0.65537624,0,0,0.61920892,229.52213,994.82202)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(1.3107525,0,0,1.2384178,513.04332,971.18764)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -931,11 +1116,11 @@
        style="fill:#ffffff;fill-opacity:1;stroke:none"
        sodipodi:type="arc" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.156525"
+       inkscape:export-xdpi="90.156525"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez.png"
-       transform="matrix(0.59068574,0,0,0.5580884,226.21415,996.27579)"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
+       transform="matrix(1.1813715,0,0,1.1161768,506.42736,974.09524)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
        sodipodi:ry="4.1668792"
        sodipodi:rx="4.1668792"
        sodipodi:cy="12.103413"
@@ -944,8 +1129,8 @@
        style="fill:#000000;fill-opacity:1;stroke:none"
        sodipodi:type="arc" />
     <path
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.156525"
+       inkscape:export-xdpi="90.156525"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez.png"
        sodipodi:type="arc"
        style="fill:#000000;fill-opacity:1;stroke:none"
@@ -954,55 +1139,1538 @@
        sodipodi:cy="12.103413"
        sodipodi:rx="4.1668792"
        sodipodi:ry="4.1668792"
-       d="m 23.233509,12.103413 c 0,2.301303 -1.865576,4.166879 -4.16688,4.166879 -2.301303,0 -4.166879,-1.865576 -4.166879,-4.166879 0,-2.3013042 1.865576,-4.1668795 4.166879,-4.1668795 2.301304,0 4.16688,1.8655753 4.16688,4.1668795 z"
-       transform="matrix(0.41488541,0,0,0.39198974,234.72878,997.44822)" />
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(0.8297708,0,0,0.78397948,523.4566,976.44004)" />
     <rect
-       inkscape:export-ydpi="180"
-       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="90.156525"
+       inkscape:export-xdpi="90.156525"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez.png"
-       y="1009.5566"
-       x="229.38568"
-       height="6.9189763"
-       width="15.23206"
+       y="1000.6567"
+       x="512.77045"
+       height="13.837953"
+       width="30.464121"
        id="rect3073"
        style="fill:#000000;fill-opacity:1;stroke:none" />
     <path
-       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0.24941221999999999;stroke-miterlimit:4;stroke-opacity:1"
-       d="m 222.66687,989.89763 6.40156,-0.80698 2.66554,-3.67743 5.33735,8.29267 -5.66054,4.53926 -6.90655,1.19516 z"
+       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0.49882445;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 499.3328,961.33884 12.80312,-1.614 5.33108,-7.3548 10.67468,16.5852 -11.32108,9.0788 -13.81308,2.39 z"
        id="rect3075"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccc"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-ydpi="90.156525" />
     <path
        sodipodi:nodetypes="ccccc"
        inkscape:connector-curvature="0"
        id="path3078"
-       d="m 222.66687,989.89763 6.40156,-0.80698 2.66554,-3.67743 -5.46037,1.07966 z"
-       style="fill:#8a0000;fill-opacity:1;stroke:#000000;stroke-width:0.24941221999999999;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 499.3328,961.33884 12.80312,-1.614 5.33108,-7.3548 -10.92076,2.1592 z"
+       style="fill:#8a0000;fill-opacity:1;stroke:#000000;stroke-width:0.49882445;stroke-miterlimit:4;stroke-opacity:1"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-ydpi="90.156525" />
     <rect
-       style="fill:#ffff00;fill-opacity:1;stroke:#a58400;stroke-width:0.5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:#ffff00;fill-opacity:1;stroke:#a58400;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect3848"
-       width="3.875"
-       height="3.875"
-       x="219.24408"
-       y="990.30267"
+       width="7.75"
+       height="7.75"
+       x="492.48724"
+       y="962.14886"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-ydpi="90.156525" />
     <rect
-       y="994.05267"
-       x="215.36908"
-       height="3.875"
-       width="3.875"
+       y="969.64886"
+       x="484.73724"
+       height="7.75"
+       width="7.75"
        id="rect3850"
-       style="fill:#ffff00;fill-opacity:1;stroke:#a58400;stroke-width:0.5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:#ffff00;fill-opacity:1;stroke:#a58400;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez.png"
-       inkscape:export-xdpi="180"
-       inkscape:export-ydpi="180" />
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-ydpi="90.156525" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="rect3081"
+       width="36.78508"
+       height="73.994682"
+       x="583.8844"
+       y="1012.0349"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.1530304;stroke-opacity:1"
+       d="m 586.25768,973.91564 c 16.5016,-15.5908 35.99404,-4.4844 35.99404,-4.4844 l 12.6572,25.59918 -9.49292,23.73038 -25.5122,9.3432 -21.16132,-9.3432 c 0,0 -8.9864,-29.25398 7.5152,-44.84516 z"
+       id="path3083"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="scccccs"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3085"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(2.2150158,0,0,2.0927788,564.10752,961.06004)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(1.5557813,0,0,1.4699246,589.26288,967.01324)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path3087"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(1.8899215,0,0,1.7856247,571.00384,964.77764)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path3089"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path3091"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.3274417,0,0,1.2541861,592.46716,969.85724)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#008000;fill-opacity:1;stroke:none"
+       id="path3093"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.1964134,0,0,1.1303886,585.76696,972.80164)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(0.84033592,0,0,0.79396152,603.01304,975.17644)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path3095"
+       style="fill:#008000;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#552200;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 573.48692,984.17522 c 0,0 8.95252,-19.25998 36.59276,-23.86478 5.14356,-0.8568 19.81372,7.2252 23.10836,13.5816 0.95376,1.84 3.64968,5.8592 -3.83968,5.3336 -7.48932,-0.5256 -23.53068,-9.3536 -42.76056,3.22358 l 2.14052,22.80078 -6.6698,-10.70598 -6.27348,12.43558 c -3.19904,-11.65638 -1.76536,-15.59158 -2.29812,-22.80438 z"
+       id="rect3893"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csszccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="rect3097"
+       width="30.852001"
+       height="14.014143"
+       x="592.1908"
+       y="999.7016"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
+       d="m 596.2886,983.07642 -0.3748,3.7352 -21.99724,5.5812 0,5.3124 -3,0.8604 0,-8.3124 z"
+       id="rect3872"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0"
+       id="path3885"
+       d="m 618.46776,979.56164 -0.182,3.64958 -4.40356,0.168 -1.4796,-2.95838 z"
+       style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#552200;fill-opacity:1;stroke:#000000;stroke-width:3.01502156;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 606.52404,995.82322 -16.35648,7.31118 1.8844,19.8992 16.95948,4.8996 16.80876,-4.8616 2.7512,-19.9372 -4.86172,-5.99198 -17.18564,-1.3192 z m 9.8742,9.68558 0.264,6.1808 -8.85664,-1.5828 -6.70844,1.3192 -0.2636,-5.2012 15.56504,-0.716 z"
+       id="rect3887"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:url(#radialGradient3902);fill-opacity:1;stroke:#000000;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 596.40552,978.22204 16.77016,-0.8912 0.72256,13.60318 -3.23012,4.1768 -9.09116,0.4832 -4.44888,-3.7692 z"
+       id="rect3099"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0"
+       id="path3870"
+       d="m 617.26112,977.89444 14.61376,-0.7764 0.62968,11.85398 -2.8148,3.64 -7.9222,0.4208 -3.8768,-3.2844 z"
+       style="fill:url(#radialGradient3910);fill-opacity:1;stroke:#000000;stroke-width:2.61425185;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0"
+       id="path3953"
+       d="m 202.69108,874.65204 11.51688,6.4304 16.074,1.84838 c 13.51432,5.4732 13.63288,4.1564 14.08772,14.1696 7.87104,-8.1844 5.91608,-11.0216 0.5694,-16.72118 l -24.4606,-7.0248 c -12.501,-1.2008 -17.7874,1.2976 -17.7874,1.2976 z"
+       style="fill:#c3c3c3;fill-opacity:1;stroke:#a9a9a9;stroke-width:2;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.12596107;stroke-opacity:1"
+       d="m 186.91192,875.19524 c 16.29412,-15.3948 35.54148,-4.4284 35.54148,-4.4284 l 12.49808,25.27758 -9.37356,23.43198 -25.19148,9.2256 -20.89528,-9.2256 c 0,0 -8.87336,-28.88638 7.42076,-44.28116 z"
+       id="path3955"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="scccccs"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3957"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(2.1871678,0,0,2.0664674,165.04024,862.50124)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(1.5362212,0,0,1.4514442,189.87932,868.37964)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path3959"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(1.8661604,0,0,1.7631752,171.84984,866.17204)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path3961"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path3963"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.3107525,0,0,1.2384178,193.04332,871.18764)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="path3965"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.1813715,0,0,1.1161768,186.42736,874.09524)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(0.8297708,0,0,0.78397948,203.4566,876.44004)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path3967"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="rect3969"
+       width="30.464121"
+       height="13.837953"
+       x="192.77039"
+       y="900.65668"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#3d3d3d;fill-opacity:1;stroke:#000000;stroke-width:2.39234185;stroke-opacity:1"
+       d="m 208.97112,863.11804 c -6.60232,0.3 -14.16836,2.618 -21.18752,9.25 -18.33576,17.32398 -11.60888,49.81236 -11.60888,49.81236 l 16.875,7.3748 -1.31252,-25.5 19.79516,7.5788 4.66176,-7.1776 6.8896,-1.448 7.65656,5.9844 6.63676,-12.71838 -9.59344,-28.90638 c 0,0 -6.80268,-3.9168 -16.06248,-4.25 -0.90028,-0.04 -1.8068,-0.044 -2.75,0 z m 18.01608,14.6248 3.68752,5.87478 -2.81252,9.1876 -8.43812,-2.8124 -0.5,-8.0624 z m -33.7506,3.5624 23.125,0.93758 -0.56252,9.4376 -7.43748,2.75 z"
+       id="path3971"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sscccccccccssccccccccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#c3c3c3;fill-opacity:1;stroke:#9d9d9d;stroke-width:2;stroke-opacity:1"
+       d="m 183.65088,880.74964 c 6.18484,0.388 6.61328,3.65678 8.02984,6.43038 l -10.42736,2.7864 c 3.12268,5.4732 15.39888,10.25438 30.8322,14.16958 -26.16524,0.4932 -43.12988,-11.55038 -43.12988,-11.55038 -0.87248,-8.8888 14.6952,-11.83598 14.6952,-11.83598 z"
+       id="path3973"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccsc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\dragonborn_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.12596107;stroke-opacity:1"
+       d="m 266.91192,875.19524 c 16.29412,-15.3948 35.54148,-4.4284 35.54148,-4.4284 l 12.49808,25.27758 -9.37356,23.43198 -25.19148,9.2256 -20.89528,-9.2256 c 0,0 -8.87336,-28.88638 7.42076,-44.28116 z"
+       id="path3975"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="scccccs"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3977"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(2.1871678,0,0,2.0664674,245.04024,862.50124)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(1.5362212,0,0,1.4514442,269.87932,868.37964)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path3979"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(1.8661604,0,0,1.7631752,251.84984,866.17204)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path3981"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path3983"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.3107525,0,0,1.2384178,273.04332,871.18764)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="path3985"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.1813715,0,0,1.1161768,266.42736,874.09524)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(0.8297708,0,0,0.78397948,283.4566,876.44004)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path3987"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="rect3989"
+       width="30.464121"
+       height="13.837953"
+       x="272.77042"
+       y="900.65668"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#0c0c0c;stroke-width:2.39234185;stroke-opacity:1"
+       d="m 288.97112,863.11804 c -4.3846,0.2 -9.1942,1.288 -13.9864,3.94 -1.18052,0.6532 -2.35996,-14.5988 -3.53176,-13.746 -1.2342,0.8984 -2.45988,17.9132 -3.66936,19.056 -18.33588,17.32358 -11.60888,49.81236 -11.60888,49.81236 l 16.875,7.3748 -1.31252,-25.5 8.51824,6.252 30.48484,-1.3144 6.63676,-12.71838 -9.59344,-23.59958 c 0,0 -9.00872,-5.6488 -8.59532,-20.5128 0.032,-1.2192 -2.46612,11.4604 -3.82468,11.2736 -1.16104,-0.16 -2.37888,-0.272 -3.64248,-0.316 -0.90028,-0.04 -1.8068,-0.044 -2.75,0 z"
+       id="path3991"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sssscccccccssss"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\batman_head.png"
+       sodipodi:nodetypes="cccccccc"
+       inkscape:connector-curvature="0"
+       id="path3993"
+       d="m 311.29896,884.72802 -11.87488,5.948 -0.5,-4.7456 z m -35.42888,0.9088 16.49152,0.606 -0.8942,5.7892 z"
+       style="fill:#ffff00;fill-opacity:1;stroke:none" />
+    <path
+       sodipodi:nodetypes="ssscsss"
+       inkscape:connector-curvature="0"
+       id="path3995"
+       d="m 368.58388,861.86884 c -14.34876,8.2844 -26.62428,12.3536 -18.40916,26.58238 8.21532,14.22918 27.81028,25.76598 42.15908,17.48158 2.31972,-1.3392 4.39824,-2.9396 6.21168,-4.7408 -7.86724,-1.40438 -8.3658,-8.71518 -13.86268,-18.23598 -3.94176,-6.82718 -8.98772,-12.00038 -8.11616,-17.39238 0.73544,-4.55 -3.54188,-6.2588 -7.98276,-3.6948 z"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith_head.png"
+       inkscape:export-xdpi="90.251923"
+       inkscape:export-ydpi="90.251923" />
+    <path
+       inkscape:export-ydpi="90.251923"
+       inkscape:export-xdpi="90.251923"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith_head.png"
+       sodipodi:nodetypes="scccccs"
+       inkscape:connector-curvature="0"
+       id="path3997"
+       d="m 346.91192,875.19524 c 16.29412,-15.3948 35.54148,-4.4284 35.54148,-4.4284 l 12.49808,25.27758 -9.37356,23.43198 -25.19148,9.2256 -20.89528,-9.2256 c 0,0 -8.87336,-28.88638 7.42076,-44.28116 z"
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.12596107;stroke-opacity:1" />
+    <rect
+       inkscape:export-ydpi="90.251923"
+       inkscape:export-xdpi="90.251923"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith_head.png"
+       y="900.65668"
+       x="352.77045"
+       height="13.837953"
+       width="30.464121"
+       id="rect3999"
+       style="fill:#000000;fill-opacity:1;stroke:none" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4001"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(2.1871678,0,0,2.0664674,325.04024,862.50124)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith_head.png"
+       inkscape:export-xdpi="90.251923"
+       inkscape:export-ydpi="90.251923" />
+    <path
+       transform="matrix(1.5362212,0,0,1.4514442,349.87932,868.37964)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4003"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith_head.png"
+       inkscape:export-xdpi="90.251923"
+       inkscape:export-ydpi="90.251923" />
+    <path
+       style="fill:#000000;fill-rule:evenodd"
+       d="m 350.0282,879.19284 c 1.071,0.522 2.00164,1.4536 3.14304,1.9276 3.69588,1.74318 10.69056,0.77678 16.76104,2.38958 4.60848,1.5008 9.2118,3.7624 12.38548,7.518 0.1268,0.6532 -1.62616,0.148 -2.30152,0.308 -2.83996,0 -5.67992,0 -8.51988,0 -1.9118,3.11 -2.9108,6.71 -4.22832,10.10358 -0.1648,1.1008 -1.14452,3.3608 -1.5242,1.0428 -1.22144,-3.53358 -2.83288,-6.92358 -3.93176,-10.50118 -2.81552,0.4544 -5.42088,1.688 -8.1782,2.3672 0.14,-2.7172 3.1628,-6.324 1.97872,-7.87 -1.8404,-1.558 -3.30244,-3.508 -4.6818,-5.47078 -0.322,-0.5808 -0.75444,-1.1652 -0.9026,-1.814 z"
+       id="path4005"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith_head.png"
+       inkscape:export-xdpi="90.251923"
+       inkscape:export-ydpi="90.251923" />
+    <path
+       transform="matrix(1.8661604,0,0,1.7631752,331.84984,866.17204)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4007"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith_head.png"
+       inkscape:export-xdpi="90.251923"
+       inkscape:export-ydpi="90.251923" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path4009"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.3107525,0,0,1.2384178,353.04332,871.18764)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith_head.png"
+       inkscape:export-xdpi="90.251923"
+       inkscape:export-ydpi="90.251923" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="path4011"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.1813715,0,0,1.1161768,346.42736,874.09524)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith_head.png"
+       inkscape:export-xdpi="90.251923"
+       inkscape:export-ydpi="90.251923" />
+    <path
+       transform="matrix(0.8297708,0,0,0.78397948,363.4566,876.44004)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4013"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith_head.png"
+       inkscape:export-xdpi="90.251923"
+       inkscape:export-ydpi="90.251923" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       d="m 352.59812,861.10004 c -16.56856,0 -26,9.3196 -26,25.74958 0,16.43078 -2.8112,29.86118 13.75736,29.86118 2.67864,0 9.52148,3.542 11.99264,2.8888 -6.11096,-5.15 -2.25,-18.756 -2.25,-29.74998 0,-14.53598 7.19068,-22.59038 16.68748,-25.18718 -4.22172,-2.2488 -9.0596,-3.5624 -14.18748,-3.5624 z"
+       id="path4015"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ssscscs"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith_head.png"
+       inkscape:export-xdpi="90.251923"
+       inkscape:export-ydpi="90.251923" />
+    <path
+       sodipodi:nodetypes="sssss"
+       inkscape:connector-curvature="0"
+       id="path4017"
+       d="m 344.48772,864.48724 c 5.91284,10.6708 16.40028,16.6796 29.03928,13.2928 5.21448,-1.3972 9.7292,-4.1076 13.289,-7.686 7.27488,-7.312 -17.14372,-14.014 -27.7628,-11.1684 -14.041,3.762 -16.07736,2.8332 -14.56548,5.5616 z"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\faith_head.png"
+       inkscape:export-xdpi="90.251923"
+       inkscape:export-ydpi="90.251923" />
+    <path
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.12596107;stroke-opacity:1"
+       d="m 426.91192,875.19524 c 16.29412,-15.3948 35.54148,-4.4284 35.54148,-4.4284 l 12.49808,25.27758 -9.37356,23.43198 -25.19148,9.2256 -20.89528,-9.2256 c 0,0 -8.87336,-28.88638 7.42076,-44.28116 z"
+       id="path4019"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="scccccs"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk_jump.png"
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-ydpi="88.93325" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4021"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(2.1871678,0,0,2.0664674,405.04024,862.50124)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk_jump.png"
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-ydpi="88.93325" />
+    <path
+       transform="matrix(1.5362212,0,0,1.4514442,429.87932,868.37964)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4023"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk_jump.png"
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-ydpi="88.93325" />
+    <path
+       transform="matrix(1.8661604,0,0,1.7631752,411.84984,866.17204)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4025"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk_jump.png"
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-ydpi="88.93325" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path4027"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.3107525,0,0,1.2384178,433.04332,871.18764)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk_jump.png"
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-ydpi="88.93325" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="path4029"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.1813715,0,0,1.1161768,426.42736,874.09524)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk_jump.png"
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-ydpi="88.93325" />
+    <path
+       transform="matrix(0.8297708,0,0,0.78397948,443.4566,876.44004)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4031"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk_jump.png"
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-ydpi="88.93325" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="rect4033"
+       width="30.464121"
+       height="13.837953"
+       x="432.77045"
+       y="900.65668"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk_jump.png"
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-ydpi="88.93325" />
+    <path
+       inkscape:export-ydpi="88.93325"
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk_jump.png"
+       style="fill:#00ffff;fill-opacity:1;stroke:#00ffff;stroke-width:0.62599999;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 434.53596,851.93724 32.53072,7.6268 -12.50576,17.2324 -15.63536,-10.0704 c -4.82816,1.7752 -9.17844,3.2924 -13.27096,7.8836 l -1.89748,-6.222 2.37104,-13.9648 z"
+       id="path4035"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       inkscape:export-ydpi="88.93325"
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk_jump.png"
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0"
+       id="path4037"
+       d="m 468.45684,859.42404 -10.68808,0.4124 -3.20784,16.96 8.58308,-2.1152 c 0.65188,-3.3516 5.31284,-15.2572 5.31284,-15.2572 z"
+       style="fill:#00cece;fill-opacity:1;stroke:none" />
+    <path
+       inkscape:export-ydpi="88.93325"
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk_jump.png"
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0"
+       id="path4039"
+       d="m 435.69212,851.84364 32.76472,7.5804 -10.3604,0.7552 -24.33904,-8.0908 z"
+       style="fill:#00a3a3;fill-opacity:1;stroke:none" />
+    <path
+       inkscape:export-ydpi="88.93325"
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk_jump.png"
+       style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
+       d="m 424.4872,903.1176 c -2.19728,0 -4,1.8028 -4,4 0,2.1976 1.80272,4 4,4 2.19732,0 4,-1.8024 4,-4 0,-1.4516 -0.7694,-2.7364 -1.93748,-3.4372 l -1,1.75 c 0.56444,0.352 0.93748,0.9644 0.93748,1.6872 0,1.1168 -0.8836,2 -2,2 -1.1164,0 -2,-0.8832 -2,-2 0,-1.1164 0.8836,-2 2,-2 0.0872,0 0.166,0.052 0.25,0.06 l 0,-2.0624 c -0.0828,0 -0.166,0 -0.25,0 z"
+       id="path4041"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:export-ydpi="88.93325"
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk_jump.png"
+       style="fill:url(#linearGradient4099);fill-opacity:1;stroke:#000000;stroke-width:0.62599999;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 437.31676,880.33924 32.58216,-0.9508 c 4.34968,4.98438 3.84908,10.48518 3.70712,15.94718 l -11.05608,0.668 -3.99708,-5.1008 -3.9776,0.4228 -3.12248,5.2284 -13.51276,3.83158 c -2.97976,-6.61918 -5.5176,-13.24798 -0.62328,-20.04636 z"
+       id="path4043"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccc" />
+    <path
+       inkscape:export-ydpi="88.93325"
+       inkscape:export-xdpi="88.93325"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\punk_jump.png"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0"
+       id="path4045"
+       d="m 416.8354,884.89882 2.16708,-2 16.83296,0 -0.44652,3.5 -15.53812,0 -3.96184,5.25 z"
+       style="fill:#ff7a00;fill-opacity:0.60106387;stroke:#000000;stroke-width:0.62599999;stroke-miterlimit:4;stroke-opacity:1" />
+    <path
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.12596107;stroke-opacity:1"
+       d="m 506.91192,875.19524 c 16.29412,-15.3948 35.54148,-4.4284 35.54148,-4.4284 l 12.49808,25.27758 -9.37356,23.43198 -25.19148,9.2256 -20.89528,-9.2256 c 0,0 -8.87336,-28.88638 7.42076,-44.28116 z"
+       id="path4047"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="scccccs"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez_head.png"
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-ydpi="90.156525" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4049"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(2.1871678,0,0,2.0664674,485.04024,862.50124)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez_head.png"
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-ydpi="90.156525" />
+    <path
+       transform="matrix(1.5362212,0,0,1.4514442,509.87932,868.37964)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4051"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez_head.png"
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-ydpi="90.156525" />
+    <path
+       transform="matrix(1.8661604,0,0,1.7631752,491.84984,866.17204)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4053"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez_head.png"
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-ydpi="90.156525" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path4055"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.3107525,0,0,1.2384178,513.04332,871.18764)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez_head.png"
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-ydpi="90.156525" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="path4057"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.1813715,0,0,1.1161768,506.42736,874.09524)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez_head.png"
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-ydpi="90.156525" />
+    <path
+       transform="matrix(0.8297708,0,0,0.78397948,523.4566,876.44004)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4059"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez_head.png"
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-ydpi="90.156525" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="rect4061"
+       width="30.464121"
+       height="13.837953"
+       x="512.77045"
+       y="900.65668"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez_head.png"
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-ydpi="90.156525" />
+    <path
+       inkscape:export-ydpi="90.156525"
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez_head.png"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0"
+       id="path4063"
+       d="m 499.3328,861.33884 12.80312,-1.614 5.33108,-7.3548 10.67468,16.5852 -11.32108,9.0788 -13.81308,2.39 z"
+       style="fill:#bf0000;fill-opacity:1;stroke:#000000;stroke-width:0.49882445;stroke-miterlimit:4;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="90.156525"
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez_head.png"
+       style="fill:#8a0000;fill-opacity:1;stroke:#000000;stroke-width:0.49882445;stroke-miterlimit:4;stroke-opacity:1"
+       d="m 499.3328,861.33884 12.80312,-1.614 5.33108,-7.3548 -10.92076,2.1592 z"
+       id="path4065"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <rect
+       inkscape:export-ydpi="90.156525"
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez_head.png"
+       y="862.14886"
+       x="492.48724"
+       height="7.75"
+       width="7.75"
+       id="rect4067"
+       style="fill:#ffff00;fill-opacity:1;stroke:#a58400;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <rect
+       inkscape:export-ydpi="90.156525"
+       inkscape:export-xdpi="90.156525"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gomez_head.png"
+       style="fill:#ffff00;fill-opacity:1;stroke:#a58400;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect4069"
+       width="7.75"
+       height="7.75"
+       x="484.73724"
+       y="869.64886" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon_head.png"
+       sodipodi:nodetypes="scccccs"
+       inkscape:connector-curvature="0"
+       id="path4071"
+       d="m 586.25768,873.91564 c 16.5016,-15.5908 35.99404,-4.4844 35.99404,-4.4844 l 12.6572,25.59918 -9.49292,23.73038 -25.5122,9.3432 -21.16132,-9.3432 c 0,0 -8.9864,-29.25398 7.5152,-44.84516 z"
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.1530304;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon_head.png"
+       transform="matrix(2.2150158,0,0,2.0927788,564.10752,861.06004)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4073"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="arc" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon_head.png"
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4075"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.5557813,0,0,1.4699246,589.26288,867.01324)" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon_head.png"
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path4077"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.8899215,0,0,1.7856247,571.00384,864.77764)" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon_head.png"
+       transform="matrix(1.3274417,0,0,1.2541861,592.46716,869.85724)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4079"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       sodipodi:type="arc" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon_head.png"
+       transform="matrix(1.1964134,0,0,1.1303886,585.76696,872.80164)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4081"
+       style="fill:#008000;fill-opacity:1;stroke:none"
+       sodipodi:type="arc" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon_head.png"
+       sodipodi:type="arc"
+       style="fill:#008000;fill-opacity:1;stroke:none"
+       id="path4083"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(0.84033592,0,0,0.79396152,603.01304,875.17644)" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon.png"
+       sodipodi:nodetypes="csszccccc"
+       inkscape:connector-curvature="0"
+       id="path4085"
+       d="m 573.48692,884.17522 c 0,0 8.95252,-19.25998 36.59276,-23.86478 5.14356,-0.8568 19.81372,7.2252 23.10836,13.5816 0.95376,1.84 3.64968,5.8592 -3.83968,5.3336 -7.48932,-0.5256 -23.53068,-9.3536 -42.76056,3.22358 l 2.14052,22.80078 -6.6698,-10.70598 -6.27348,12.43558 c -3.19904,-11.65638 -1.76536,-15.59158 -2.29812,-22.80438 z"
+       style="fill:#552200;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon_head.png"
+       y="899.7016"
+       x="592.1908"
+       height="14.014143"
+       width="30.852001"
+       id="rect4087"
+       style="fill:#000000;fill-opacity:1;stroke:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon_head.png"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0"
+       id="path4089"
+       d="m 596.2886,883.07642 -0.3748,3.7352 -21.99724,5.5812 0,5.3124 -3,0.8604 0,-8.3124 z"
+       style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon_head.png"
+       style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
+       d="m 618.46776,879.56164 -0.182,3.64958 -4.40356,0.168 -1.4796,-2.95838 z"
+       id="path4091"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon_head.png"
+       inkscape:connector-curvature="0"
+       id="path4093"
+       d="m 606.52404,895.82322 -16.35648,7.31118 1.8844,19.8992 16.95948,4.8996 16.80876,-4.8616 2.7512,-19.9372 -4.86172,-5.99198 -17.18564,-1.3192 z m 9.8742,9.68558 0.264,6.1808 -8.85664,-1.5828 -6.70844,1.3192 -0.2636,-5.2012 15.56504,-0.716 z"
+       style="fill:#552200;fill-opacity:1;stroke:#000000;stroke-width:3.01502156;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon_head.png"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0"
+       id="path4095"
+       d="m 596.40552,878.22204 16.77016,-0.8912 0.72256,13.60318 -3.23012,4.1768 -9.09116,0.4832 -4.44888,-3.7692 z"
+       style="fill:url(#radialGradient4101);fill-opacity:1;stroke:#000000;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\gordon_head.png"
+       style="fill:url(#radialGradient4103);fill-opacity:1;stroke:#000000;stroke-width:2.61425185;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 617.26112,877.89444 14.61376,-0.7764 0.62968,11.85398 -2.8148,3.64 -7.9222,0.4208 -3.8768,-3.2844 z"
+       id="path4097"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player_head.png"
+       sodipodi:nodetypes="scccccs"
+       inkscape:connector-curvature="0"
+       id="path4128"
+       d="m 106.91192,875.19522 c 16.29412,-15.39492 35.54146,-4.42816 35.54146,-4.42816 l 12.4981,25.27736 -9.37358,23.43218 -25.19148,9.2254 -20.89526,-9.2254 c 0,0 -8.87337,-28.88638 7.42076,-44.28138 z"
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.12596107;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player_head.png"
+       transform="matrix(2.1871678,0,0,2.0664674,85.04024,862.50118)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4130"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="arc" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player_head.png"
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4132"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.5362212,0,0,1.4514442,109.87931,868.37954)" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player_head.png"
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path4134"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.8661605,0,0,1.7631752,91.84983,866.17208)" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player_head.png"
+       transform="matrix(1.3107525,0,0,1.2384178,113.04331,871.18766)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4136"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       sodipodi:type="arc" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player_head.png"
+       transform="matrix(1.1813715,0,0,1.1161768,106.42735,874.0952)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4138"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       sodipodi:type="arc" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player_head.png"
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="path4140"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(0.82977082,0,0,0.78397948,123.4566,876.44006)" />
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\player_head.png"
+       y="900.6568"
+       x="112.77041"
+       height="13.837953"
+       width="30.464121"
+       id="rect4142"
+       style="fill:#000000;fill-opacity:1;stroke:none" />
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       y="1012.0349"
+       x="663.8844"
+       height="73.994682"
+       width="36.78508"
+       id="rect4144"
+       style="fill:#000000;fill-opacity:1;stroke:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       sodipodi:nodetypes="scccccs"
+       inkscape:connector-curvature="0"
+       id="path4146"
+       d="m 666.25768,973.91564 c 16.5016,-15.5908 35.99404,-4.4844 35.99404,-4.4844 l 12.6572,25.59918 -9.49292,23.73038 -25.5122,9.3432 -21.16132,-9.3432 c 0,0 -8.9864,-29.25398 7.5152,-44.84516 z"
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.1530304;stroke-opacity:1" />
+    <path
+       style="fill:#005400;fill-opacity:1;stroke:none"
+       d="m 660.37118,977.93148 5.92625,-9.61263 21.29734,-4.17595 15.99149,2.77403 c 7.14507,4.94325 7.17861,7.58633 6.78668,12.59136 0,0 -0.49217,1.75934 -1.23453,1.46626 -3.28676,-1.29762 -12.70299,-4.84815 -18.09649,-5.16439 -9.88969,-0.57987 -28.46103,5.56847 -28.46103,5.56847 z"
+       id="rect4215"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccsscc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       transform="matrix(2.2150158,0,0,2.0927788,644.10752,961.06004)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4148"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="arc" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4150"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.5557813,0,0,1.4699246,669.26288,967.01324)" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path4152"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.8899215,0,0,1.7856247,651.00384,964.77764)" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       transform="matrix(1.3274417,0,0,1.2541861,672.46716,969.85724)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4154"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       sodipodi:type="arc" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       transform="matrix(1.1964134,0,0,1.1303886,665.76696,972.80164)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4156"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       sodipodi:type="arc" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="path4158"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(0.84033592,0,0,0.79396152,683.01304,975.17644)" />
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       y="999.7016"
+       x="672.1908"
+       height="14.014143"
+       width="30.852001"
+       id="rect4162"
+       style="fill:#009300;fill-opacity:1;stroke:none" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       d="m 663.19959,962.02159 18.38478,-0.35356 -6.71751,27.22361 -3.71693,-17.31956 c 0,0 -7.14547,-0.36028 -9.48605,2.96912 -2.01161,2.86145 -2.96689,13.50072 -2.96689,13.50072 l -4.51301,-6.57489 2.24007,-10.62513 z"
+       id="rect4210"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccscccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       d="m 693.82954,855.12635 12.9631,10.90887 -31.04542,7.65011 -10.51151,-12.70896 9.37658,-5.4764 z"
+       id="path4227"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       d="m 666.73235,868.6445 16.2527,8.60088 -19.06974,20.55713 -0.53577,19.18349 -13.56054,-3.6815 2.01146,-7.6481 -1.25496,-16.25028 3.46461,-8.7968 z"
+       id="path4229"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       d="m 684.05924,863.78936 16.97422,-5.113 10.9565,3.69878 5.34605,5.82906 -3.79275,18.09125 c 0.63372,-7.4825 2.65909,-14.38155 -5.12378,-15.69824 l 1.23262,17.40797 -14.98626,-11.84145 z"
+       id="path4231"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.1530304;stroke-opacity:1"
+       d="m 666.25768,873.91564 c 16.5016,-15.5908 35.99404,-4.4844 35.99404,-4.4844 l 12.6572,25.59918 -9.49292,23.73038 -25.5122,9.3432 -21.16132,-9.3432 c 0,0 -8.9864,-29.25398 7.5152,-44.84516 z"
+       id="path4233"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="scccccs"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="cccccsscc"
+       inkscape:connector-curvature="0"
+       id="path4235"
+       d="m 660.37118,877.93148 5.92625,-9.61263 21.29734,-4.17595 15.99149,2.77403 c 7.14507,4.94325 7.17861,7.58633 6.78668,12.59136 0,0 -0.49217,1.75934 -1.23453,1.46626 -3.28676,-1.29762 -12.70299,-4.84815 -18.09649,-5.16439 -9.88969,-0.57987 -28.46103,5.56847 -28.46103,5.56847 z"
+       style="fill:#005400;fill-opacity:1;stroke:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4237"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(2.2150158,0,0,2.0927788,644.10752,861.06004)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(1.5557813,0,0,1.4699246,669.26288,867.01324)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4239"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(1.8899215,0,0,1.7856247,651.00384,864.77764)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4241"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path4243"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.3274417,0,0,1.2541861,672.46716,869.85724)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="path4245"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.1964134,0,0,1.1303886,665.76696,872.80164)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(0.84033592,0,0,0.79396152,683.01304,875.17644)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4247"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#009300;fill-opacity:1;stroke:none"
+       id="rect4249"
+       width="30.852001"
+       height="14.014143"
+       x="672.1908"
+       y="899.7016"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccscccc"
+       inkscape:connector-curvature="0"
+       id="path4251"
+       d="m 663.19959,862.02159 18.38478,-0.35356 -6.71751,27.22361 -3.71693,-17.31956 c 0,0 -7.14547,-0.36028 -9.48605,2.96912 -2.01161,2.86145 -2.96689,13.50072 -2.96689,13.50072 l -4.51301,-6.57489 2.24007,-10.62513 z"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       d="m 773.82954,955.12635 12.9631,10.90887 -31.04542,7.65011 -10.51151,-12.70896 9.37658,-5.4764 z"
+       id="path4253"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       d="m 746.73235,968.6445 16.2527,8.60088 -19.06974,20.55713 -0.53577,19.18349 -13.56054,-3.6815 2.01146,-7.6481 -1.25496,-16.25028 3.46461,-8.7968 z"
+       id="path4255"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccc" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       d="m 764.05924,963.78936 16.97422,-5.113 10.9565,3.69878 5.34605,5.82906 -3.79275,18.09125 c 0.63372,-7.4825 2.65909,-14.38155 -5.12378,-15.69824 l 1.23262,17.40797 -14.98626,-11.84145 z"
+       id="path4257"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccc" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="rect4259"
+       width="36.78508"
+       height="73.994682"
+       x="743.8844"
+       y="1012.0349"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:2.1530304;stroke-opacity:1"
+       d="m 746.25768,973.91564 c 16.5016,-15.5908 35.99404,-4.4844 35.99404,-4.4844 l 12.6572,25.59918 -9.49292,23.73038 -25.5122,9.3432 -21.16132,-9.3432 c 0,0 -8.9864,-29.25398 7.5152,-44.84516 z"
+       id="path4261"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="scccccs"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       sodipodi:nodetypes="cccccsscc"
+       inkscape:connector-curvature="0"
+       id="path4263"
+       d="m 740.37118,977.93148 5.92625,-9.61263 21.29734,-4.17595 15.99149,2.77403 c 7.14507,4.94325 7.17861,7.58633 6.78668,12.59136 0,0 -0.49217,1.75934 -1.23453,1.46626 -3.28676,-1.29762 -12.70299,-4.84815 -18.09649,-5.16439 -9.88969,-0.57987 -28.46103,5.56847 -28.46103,5.56847 z"
+       style="fill:#005400;fill-opacity:1;stroke:none" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4265"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(2.2150158,0,0,2.0927788,724.10752,961.06004)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(1.5557813,0,0,1.4699246,749.26288,967.01324)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4267"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(1.8899215,0,0,1.7856247,731.00384,964.77764)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4269"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path4271"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.3274417,0,0,1.2541861,752.46716,969.85724)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="path4273"
+       sodipodi:cx="19.066629"
+       sodipodi:cy="12.103413"
+       sodipodi:rx="4.1668792"
+       sodipodi:ry="4.1668792"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       transform="matrix(1.1964134,0,0,1.1303886,745.76696,972.80164)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(0.84033592,0,0,0.79396152,763.01304,975.17644)"
+       d="m 23.233509,12.103413 a 4.1668792,4.1668792 0 1 1 -8.333759,0 4.1668792,4.1668792 0 1 1 8.333759,0 z"
+       sodipodi:ry="4.1668792"
+       sodipodi:rx="4.1668792"
+       sodipodi:cy="12.103413"
+       sodipodi:cx="19.066629"
+       id="path4275"
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#009300;fill-opacity:1;stroke:none"
+       id="rect4277"
+       width="30.852001"
+       height="14.014143"
+       x="752.1908"
+       y="999.7016"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\jade.png"
+       sodipodi:nodetypes="ccccscccc"
+       inkscape:connector-curvature="0"
+       id="path4279"
+       d="m 743.19959,962.02159 18.38478,-0.35356 -6.71751,27.22361 -3.71693,-17.31956 c 0,0 -7.14547,-0.36028 -9.48605,2.96912 -2.01161,2.86145 -2.96689,13.50072 -2.96689,13.50072 l -4.51301,-6.57489 2.24007,-10.62513 z"
+       style="fill:#000000;fill-opacity:1;stroke:none" />
   </g>
 </svg>
