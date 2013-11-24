@@ -141,11 +141,11 @@ namespace SNHU.GameObject
 			 			
 				 		if ((p as Player).Rebounding)
 				 		{
-					 		parent.OnMessage(PhysicsBody.IMPULSE, 50 * -hsign, -75);
+					 		parent.OnMessage(PhysicsBody.IMPULSE, 40 * -hsign, -35);
 				 		}
 				 		else
 				 		{
-					 		p.OnMessage(PhysicsBody.IMPULSE, 50 * hsign, -75);
+					 		p.OnMessage(PhysicsBody.IMPULSE, 25 * hsign, -25);
 				 		}
 				 	}
 				}
