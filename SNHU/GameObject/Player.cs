@@ -126,7 +126,7 @@ namespace SNHU.GameObject
 			AddLogic(new CheckRestart(controller));
 			#endif
 			
-			SetUpgrade(new Rebound());
+			SetUpgrade(new Shield());
 			Invincible = false;
 			Rebounding = false;
 			
