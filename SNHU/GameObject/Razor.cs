@@ -56,8 +56,12 @@ namespace SNHU.GameObject
 			{
 				for (int i = 0; i < 25; ++i)
 				{
-					p.Kill();
 					emitter.Emit(FP.Choose("0", "1", "2", "3"), X, Y);
+				}
+				
+				if(!p.Invincible)
+				{
+					p.Kill();
 				}
 			}
 		}
