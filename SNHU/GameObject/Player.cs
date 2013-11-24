@@ -121,7 +121,7 @@ namespace SNHU.GameObject
 			AddLogic(new CheckRestart(controller));
 			#endif
 			
-			SetUpgrade(new Rebound());
+			SetUpgrade(new FUS());
 			Invincible = false;
 			Rebounding = false;
 			
@@ -288,6 +288,8 @@ namespace SNHU.GameObject
 				right.Punch();
 			}
 			
+			Mixer.Audio[FP.Choose("swing1","swing2")].Play();
+			
 			hand = !hand;
 		}
 		
@@ -362,6 +364,8 @@ namespace SNHU.GameObject
 				World.BroadcastMessage("player_die", this);
 				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 1.0f);
 				World.Remove(this);
+				
+				Mixer.Audio["death1"].Play();
 				
 				if (Lives > 0)
 				{

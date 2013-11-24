@@ -135,7 +135,7 @@ namespace SNHU.GameObject
 					if (p != null && p != parent && !(p as Player).Invincible)
 				 	{	
 						World.BroadcastMessage(GameManager.SHAKE, 10.0f, 0.5f);
-				 		Mixer.Audio[FP.Choose("hit1", "hit2")].Play();
+				 		Mixer.Audio["hit1"].Play();
 				 		
 			 			var hsign = FP.Sign(p.X - parent.X);
 			 			
