@@ -29,7 +29,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public override void Use()
 		{
-			if (!Activated)
+			if (!Activated && !(Parent as Player).OnGround)
 			{
 				base.Use();
 				

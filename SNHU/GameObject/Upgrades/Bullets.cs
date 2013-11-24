@@ -42,10 +42,12 @@ namespace SNHU.GameObject.Upgrades
 			if (Collide(Platform.Collision, X + (dir.X * BULLET_SPEED), Y) != null)
 			{
 				dir.X = -dir.X;
+				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
 			}
 			if (Collide(Platform.Collision, X, Y + (dir.Y * BULLET_SPEED)) != null)
 			{
 				dir.Y = -dir.Y;
+				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
 			}
 		}
 	}

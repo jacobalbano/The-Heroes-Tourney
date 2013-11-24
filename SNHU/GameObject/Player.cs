@@ -47,7 +47,7 @@ namespace SNHU.GameObject
 		public bool Rebounding;
 		
 		public PhysicsBody physics;
-		private bool OnGround;
+		public bool OnGround {get; private set; }
 		
 		public const float SPEED = 5.5f;
 		public float Speed = 0.0f;
@@ -121,7 +121,7 @@ namespace SNHU.GameObject
 			AddLogic(new CheckRestart(controller));
 			#endif
 			
-			SetUpgrade(new HotPotato());
+			SetUpgrade(new Invisibility());
 			Invincible = false;
 			Rebounding = false;
 			

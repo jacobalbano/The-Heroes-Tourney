@@ -31,6 +31,7 @@ namespace SNHU.GameObject.Upgrades
 				if (Parent.World != null)
 				{
 					Parent.World.BroadcastMessage(BE_FUS, FUS_STRENGTH, Parent.X, Parent.Y);
+					Parent.World.BroadcastMessage(GameManager.SHAKE, 60.0f, 0.5f);
 					(Parent as Player).SetUpgrade(null);
 					Parent.RemoveLogic(this);
 				}

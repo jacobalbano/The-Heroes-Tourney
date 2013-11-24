@@ -18,7 +18,7 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class Invisibility : Upgrade
 	{
-		const float INVIS_ALPHA = 0.05f;
+		const float INVIS_ALPHA = 0.03f;
 		
 		public Invisibility()
 		{

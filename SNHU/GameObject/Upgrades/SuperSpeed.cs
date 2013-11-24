@@ -7,6 +7,10 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using Punk;
+using Punk.Graphics;
+using Punk.Utils;
+using SFML.Graphics;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -16,9 +20,22 @@ namespace SNHU.GameObject.Upgrades
 	public class SuperSpeed : Upgrade
 	{
 		public const float SUPER_SPEED = 12.0f;
+		public Emitter emitter;
 		
 		public SuperSpeed()
 		{
+			
+			emitter = new Emitter(Library.GetTexture("assets/superSpeed.png"), 10, 3);
+			emitter.Relative = false;
+			
+			for (int i = 0; i < 4; ++i)
+			{
+				var name = i.ToString();
+				emitter.NewType(name, FP.Frames(i));
+				
+				emitter.SetMotion(name, 0, 50, 0.5f, 0, 15, 1, Ease.QuintOut);
+				emitter.SetAlpha(name, 1, 0, Ease.QuintOut);
+			}
 		}
 		
 		public override void Use()
@@ -28,6 +45,20 @@ namespace SNHU.GameObject.Upgrades
 				base.Use();
 				
 				(Parent as Player).Speed = SUPER_SPEED;
+				Parent.AddGraphic(emitter);
+			}
+		}
+		
+		public override void Update()
+		{
+			base.Update();
+			
+			if (lifeTimer.Percent < 1.0f)
+			{
+				//for (int i = 0; i < 4; ++i)
+				//{
+					emitter.Emit(FP.Choose("0", "1", "2", "3"), Parent.Left, Parent.Top + FP.Rand(Parent.Height));
+				//}
 			}
 		}
 		
