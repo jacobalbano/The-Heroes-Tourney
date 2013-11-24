@@ -8,6 +8,7 @@
  */
 using System;
 using Punk;
+using Punk.Graphics;
 using Punk.Tweens.Misc;
 
 namespace SNHU.GameObject.Upgrades
@@ -19,6 +20,7 @@ namespace SNHU.GameObject.Upgrades
 	{
 		const float LIFETIME = 5.0f;
 		public bool Activated { get; protected set; }
+		public Image image {get; set;}
 		
 		protected Alarm lifeTimer;
 		public Upgrade()
@@ -35,6 +37,12 @@ namespace SNHU.GameObject.Upgrades
 			{
 				Parent.World.AddTween(lifeTimer, true);
 			}
+		}
+		
+		public override void Added()
+		{
+			base.Added();
+			//Parent.World.AddGraphic(image);
 		}
 		
 		public virtual void OnLifetimeComplete()

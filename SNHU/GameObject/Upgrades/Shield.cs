@@ -20,8 +20,11 @@ namespace SNHU.GameObject.Upgrades
 	{
 		private Entity shield;
 		private Image shieldImg;
+		
 		public Shield()
 		{
+			//image = new Image(Library.GetTexture("assets/" +  + ".png"));
+			image = Image.CreateCircle(3, FP.Color(0xFF0000));
 		}
 		
 		public override void Use()

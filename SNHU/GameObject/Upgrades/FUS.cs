@@ -7,6 +7,8 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using Punk;
+using Punk.Graphics;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -20,6 +22,8 @@ namespace SNHU.GameObject.Upgrades
 			
 		public FUS()
 		{
+			//image = new Image(Library.GetTexture("assets/" +  + ".png"));
+			image = Image.CreateCircle(3, FP.Color(0xFF0000));
 		}
 		
 		public override void Use()

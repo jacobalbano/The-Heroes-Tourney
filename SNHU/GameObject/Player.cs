@@ -36,6 +36,7 @@ namespace SNHU.GameObject
 		public Fist left, right;
 		private Controller controller;
 		private Axis axis;
+		private Image upgradeIcon;
 		
 		private OffscreenCursor cursor;
 		private bool isOffscreen;
@@ -94,6 +95,10 @@ namespace SNHU.GameObject
 			player.Scale = 0.5f;
 			AddGraphic(player);
 			
+			upgradeIcon = Image.CreateCircle(10, FP.Color(0xFF00FF));
+			upgradeIcon.Y = Y - 80;
+			upgradeIcon.CenterOrigin();
+			
 			cursor = new OffscreenCursor(this);
 			isOffscreen = false;
 			
@@ -121,7 +126,7 @@ namespace SNHU.GameObject
 			AddLogic(new CheckRestart(controller));
 			#endif
 			
-			SetUpgrade(new Rebound());
+			SetUpgrade(new GroundSmash());
 			Invincible = false;
 			Rebounding = false;
 			
@@ -141,8 +146,6 @@ namespace SNHU.GameObject
 		{
 			base.Removed();
 			World.RemoveList(left, right);
-			//World.Remove(cursor);
-//			cursor.Visible = false;
 		}
 		
 		void FaceLeft()
@@ -399,6 +402,7 @@ namespace SNHU.GameObject
 			
 			if (this.upgrade != null)
 			{
+				upgradeIcon = upgrade.image;
 				FP.Log("GIVING ", this.upgrade.GetType());
 				AddLogic(this.upgrade);
 			}

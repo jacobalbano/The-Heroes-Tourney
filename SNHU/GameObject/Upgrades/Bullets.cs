@@ -28,7 +28,7 @@ namespace SNHU.GameObject.Upgrades
 			SetHitboxTo(Graphic);
 			CenterOrigin();
 			Type = Collision;
-			
+						                           
 			dir = initialDir;
 			this.ownerID = ownerID;
 		}

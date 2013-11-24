@@ -10,7 +10,7 @@ using System;
 using Punk;
 using Punk.Graphics;
 using Punk.Utils;
-using SFML.Graphics;
+//using SFML.Graphics;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -24,6 +24,8 @@ namespace SNHU.GameObject.Upgrades
 		
 		public SuperSpeed()
 		{
+			//image = new Image(Library.GetTexture("assets/" +  + ".png"));
+			image = Image.CreateCircle(3, FP.Color(0xFF0000));
 			
 			emitter = new Emitter(Library.GetTexture("assets/superSpeed.png"), 10, 3);
 			emitter.Relative = false;

@@ -36,7 +36,10 @@ namespace SNHU.GameObject.Upgrades
 			
 			opponents = new List<Entity>();
 			closestOpponent = (Player)Parent;
-			
+		
+			//image = new Image(Library.GetTexture("assets/" +  + ".png"));
+			image = Image.CreateCircle(3, FP.Color(0xFF0000));
+						                           
 			AddResponse("player_die", OnPlayerDie);
 		}
 		
@@ -68,13 +71,20 @@ namespace SNHU.GameObject.Upgrades
 			
 			Parent.World.Remove(countdown);
 			
-			if (closestOpponent.Rebounding)
+			if(closestOpponent != null)
 			{
-				(Parent as Player).Kill();
+				if (closestOpponent.Rebounding)
+				{
+					(Parent as Player).Kill();
+				}
+				else
+				{
+					closestOpponent.Kill();
+				}
 			}
 			else
 			{
-				closestOpponent.Kill();
+				(Parent as Player).Kill();
 			}
 		}
 		
