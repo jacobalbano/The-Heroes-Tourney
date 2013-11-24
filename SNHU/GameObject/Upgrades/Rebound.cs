@@ -83,7 +83,6 @@ namespace SNHU.GameObject.Upgrades
 				Mixer.Audio["reboundDown"].Play();
 			
 			(Parent as Player).SetUpgrade(null);
-			Parent.RemoveLogic(this);
 		}
 	}
 }

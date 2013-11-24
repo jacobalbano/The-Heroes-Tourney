@@ -69,7 +69,6 @@ namespace SNHU.GameObject.Upgrades
 			(Parent as Player).Speed = Player.SPEED;
 			
 			(Parent as Player).SetUpgrade(null);
-			Parent.RemoveLogic(this);
 		}
 	}
 }

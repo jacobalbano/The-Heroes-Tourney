@@ -49,7 +49,7 @@ namespace SNHU.GameObject.Upgrades
 		public override void Removed()
 		{
 			base.Removed();
-			
+			FP.Log("SSQWE@#!@#!@#");
 			(Parent as Player).Invincible = false;
 			Parent.World.Remove(shield);
 		}
@@ -82,7 +82,6 @@ namespace SNHU.GameObject.Upgrades
 			Mixer.Audio["shieldDown"].Play();
 			
 			(Parent as Player).SetUpgrade(null);
-			Parent.RemoveLogic(this);
 		}
 	}
 }

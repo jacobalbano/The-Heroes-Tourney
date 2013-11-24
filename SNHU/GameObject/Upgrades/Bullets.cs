@@ -125,7 +125,6 @@ namespace SNHU.GameObject.Upgrades
 			Parent.World.RemoveList(bullets);
 			
 			(Parent as Player).SetUpgrade(null);
-			Parent.RemoveLogic(this);
 		}
 	}
 }

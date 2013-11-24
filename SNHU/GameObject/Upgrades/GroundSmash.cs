@@ -58,7 +58,6 @@ namespace SNHU.GameObject.Upgrades
 				(Parent as Player).physics.OnMessage(PhysicsBody.USE_GRAVITY, true);
 				
 				(Parent as Player).SetUpgrade(null);
-				Parent.RemoveLogic(this);
 			}
 		}
 	}
