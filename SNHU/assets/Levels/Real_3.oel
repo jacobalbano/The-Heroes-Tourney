@@ -1,7 +1,7 @@
 <level width="640" height="600">
   <Platforms>
-    <platform id="0" x="0" y="80" width="32" height="416" />
-    <platform id="1" x="608" y="80" width="32" height="416" />
+    <platform id="0" x="0" y="80" width="32" height="304" />
+    <platform id="1" x="608" y="80" width="32" height="304" />
     <platform id="2" x="0" y="576" width="640" height="16" />
     <jumpPad id="3" x="48" y="576" width="48" height="3" />
     <jumpPad id="4" x="544" y="576" width="48" height="3" />
