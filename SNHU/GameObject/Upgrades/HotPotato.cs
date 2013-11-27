@@ -120,10 +120,13 @@ namespace SNHU.GameObject.Upgrades
 			var t = 4;
 			while (t --> 0)
 			{
+				var r = t * 100;
 				var name = t.ToString();
 				for (int j = 0; j < 500; j++)
 				{
-					emitter.Emit(name, x, y);
+					var randX = FP.Rand(r) - r / 2;
+					var randY = FP.Rand(r) - r / 2;
+					emitter.Emit(name, x + randX, y + randY);
 				}
 			}
 			
