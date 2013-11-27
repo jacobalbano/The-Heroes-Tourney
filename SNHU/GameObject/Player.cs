@@ -53,7 +53,7 @@ namespace SNHU.GameObject
 		public const float SPEED = 5.5f;
 		public float Speed = 0.0f;
 		
-		public const int STARTING_LIVES = 15;
+		public const int STARTING_LIVES = 5;
 		public bool IsAlive { get; private set; }
 		
 		public int Lives { get; private set; }
@@ -61,6 +61,8 @@ namespace SNHU.GameObject
 		public uint jid { get; private set; }
 		
 		public string ImageName { get; private set; }
+		
+		public bool Dashing { get; private set; }
 		
 		public Player(float x, float y, uint jid, int id, string imageName) : base(x, y)
 		{
@@ -77,7 +79,7 @@ namespace SNHU.GameObject
 				controller.Define("jump", id, Controller.Button.A);
 				controller.Define("punch", id, Controller.Button.X);
 				controller.Define("upgrade", id, Controller.Button.Y);
-				controller.Define("advance", id, Controller.Button.B);
+				controller.Define("dash", id, Controller.Button.B);
 				controller.Define("start", id, Controller.Button.Start);
 			}
 			else	//	snes
@@ -85,7 +87,7 @@ namespace SNHU.GameObject
 				controller.Define("jump", id, Controller.Button.X);
 				controller.Define("punch", id, Controller.Button.Y);
 				controller.Define("upgrade", id, Controller.Button.A);
-				controller.Define("advance", id, Controller.Button.B);
+				controller.Define("dash", id, Controller.Button.B);
 				controller.Define("start", id, (Controller.Button) 9);
 			}
 			
@@ -122,11 +124,7 @@ namespace SNHU.GameObject
 			Lives = STARTING_LIVES;
 			IsAlive = false;
 			
-			#if DEBUG
-			AddLogic(new CheckRestart(controller));
-			#endif
-			
-//			SetUpgrade(new HotPotato());
+			SetUpgrade(new Bullets());
 			Invincible = false;
 			Rebounding = false;
 			
@@ -147,8 +145,7 @@ namespace SNHU.GameObject
 			base.Removed();
 			World.RemoveList(left, right);
 			
-			//World.Remove(cursor);
-//			cursor.Visible = false;
+			OnMessage(PhysicsBody.CANCEL);
 		}
 		
 		void FaceLeft()
@@ -251,6 +248,7 @@ namespace SNHU.GameObject
 				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce * jumpMult);
 				
 				ClearTweens();
+				Dashing = false;
 				player.ScaleX = 1 - JUMP_JUICE_FORCE;
 				player.ScaleY = 1 + JUMP_JUICE_FORCE;
 				
@@ -369,7 +367,7 @@ namespace SNHU.GameObject
 			{
 				IsAlive = false;
 				World.BroadcastMessage("player_die", this);
-				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 1.0f);
+				World.BroadcastMessage(CameraShake.SHAKE, 20.0f, 1.0f);
 				World.Remove(this);
 				
 				Mixer.Audio["death1"].Play();

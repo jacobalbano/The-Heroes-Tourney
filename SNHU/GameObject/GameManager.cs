@@ -21,31 +21,17 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class GameManager : Entity
 	{
-		/// <summary>
-		/// Broadcast when the camera should shake
-		/// Arguments: (float strength = 10.0f, float duration = 1.0f)
-		/// </summary>
-		public const string SHAKE = "cameraShake";
-		
-		private float offsetX, offsetY;
-		private MultiVarTween prevShaker;
-		
 		public bool GameStarted { get; private set; }
 		public bool GamePaused { get; private set; }
 		public bool GameEnding { get; private set; }
 		
 		private Music GameMusic;
+		private GameWorld gameWorld;
 		
 		public List<Player> Players;
 		public int PlayersInMatch { get; private set; }
 		
 		private HUD hud;
-		public const float SCROLL_SPEED = 1.0f;
-		
-		public const float METEOR_TIME = 20.0f;
-		public float meteorTimeScale = 1.0f;
-		private Alarm meteorTimer;
-		private bool meteorMode;
 		
 		public GameManager()
 		{
@@ -58,14 +44,10 @@ namespace SNHU.GameObject
 			Players = new List<Player>();
 			hud = new HUD(this);
 			
-			meteorTimer = new Alarm(METEOR_TIME * meteorTimeScale, OnMeteor, Tween.ONESHOT);
-			meteorMode = false;
-			
 			FP.Camera.Zoom = 0.75f;
 			
 			AddResponse("player_die", OnPlayerDie);
 			AddResponse("player_lose", OnPlayerLose);
-			AddResponse(SHAKE, OnCameraShake);
 		}
 		
 		public override void Added()
@@ -73,6 +55,7 @@ namespace SNHU.GameObject
 			base.Added();
 			
 			World.Add(hud);
+			gameWorld = World as GameWorld;
 		}
 		
 		public override void Removed()
@@ -80,14 +63,6 @@ namespace SNHU.GameObject
 			World.Remove(hud);
 			
 			base.Removed();
-		}
-		
-		public override void Update()
-		{
-			base.Update();
-			
-			FP.Camera.X += offsetX;
-			FP.Camera.Y += offsetY;
 		}
 		
 		public void AddPlayer(float x, float y, uint jid, string imageName)
@@ -106,9 +81,9 @@ namespace SNHU.GameObject
 			if (!GameStarted)
 			{
 				GameStarted = true;
-				GameMusic.Play();
+				GameMusic.Loop();
 				PlayersInMatch = Players.Count;
-				(World as GameWorld).AdvanceLevel();
+				gameWorld.AdvanceLevel();
 			}
 		}
 		
@@ -148,13 +123,6 @@ namespace SNHU.GameObject
 			}
 		}
 		
-		public void OnMeteor()
-		{
-			World.Add(new Meteor());
-			meteorTimer.Reset(METEOR_TIME * meteorTimeScale);
-			World.AddTween(meteorTimer, true);
-		}
-		
 		public void OnPlayerDie(params object[] args)
 		{
 			// If there is more than one player playing...
@@ -177,7 +145,7 @@ namespace SNHU.GameObject
 				}
 			}
 			
-			World.AddTween(new Alarm(1.0f, OnNextLevelTimer, ONESHOT), true);
+			World.AddTween(new Alarm(1.0f, gameWorld.AdvanceLevel, ONESHOT), true);
 		}
 		
 		public void OnPlayerLose(params object[] args)
@@ -194,7 +162,7 @@ namespace SNHU.GameObject
 			if (remainingPlayers.Count == 1)
 			{
 				GameEnding = true;
-				(World as GameWorld).UnloadCurrentChunk();
+				gameWorld.UnloadCurrentChunk();
 				remainingPlayers[0].Active = false;
 				remainingPlayers[0].Layer = -9002;
 				remainingPlayers[0].SetGlovesLayer(-9002);
@@ -231,7 +199,7 @@ namespace SNHU.GameObject
 			else if (remainingPlayers.Count <= 0)
 			{
 				GameEnding = true;
-				(World as GameWorld).UnloadCurrentChunk();
+				gameWorld.UnloadCurrentChunk();
 				
 				// DRAW!
 				FP.Log("IT'S A DRAW!");
@@ -258,41 +226,6 @@ namespace SNHU.GameObject
 			{
 				return;
 			}
-		}
-		
-		public void OnNextLevelTimer()
-		{
-			(World as GameWorld).AdvanceLevel();
-		}
-		
-		private void OnCameraShake(params object[] args)
-		{
-			float str = args.Length > 0 ? (float)args[0] : 10.0f;
-			float dur = args.Length > 1 ? (float)args[1] : 1.0f;
-			
-			// Get a random number [-1..1]
-			float randX = ((float)FP.Rand(200) - 100.0f) / 100.0f;
-			float randY = ((float)FP.Rand(200) - 100.0f) / 100.0f;
-			
-			// Scale it by the strength
-			offsetX = str * (randX);
-			offsetY = str * (randY);
-			
-			if (prevShaker != null)
-			{
-				prevShaker.Cancel();
-			}
-			
-			var shaker = new MultiVarTween(OnShakeDone, Tween.ONESHOT);
-			AddTween(shaker);
-			shaker.Tween(this, new { offsetX = 0.0f, offsetY = 0.0f }, dur, Ease.ElasticOut);
-			shaker.Start();
-			
-			prevShaker = shaker;
-		}
-		
-		private void OnShakeDone()
-		{
 		}
 	}
 }

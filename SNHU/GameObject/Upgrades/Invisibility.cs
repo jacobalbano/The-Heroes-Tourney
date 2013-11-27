@@ -33,15 +33,15 @@ namespace SNHU.GameObject.Upgrades
 				base.Use();
 			
 				var tweenPlayer = new VarTween(null, Tween.ONESHOT);
-				tweenPlayer.Tween((Parent as Player).player, "Alpha", INVIS_ALPHA, 0.25f);
+				tweenPlayer.Tween(owner.player, "Alpha", INVIS_ALPHA, 0.25f);
 				FP.Tweener.AddTween(tweenPlayer, true);
 				
 				var tweenFist1 = new VarTween(null, Tween.ONESHOT);
-				tweenFist1.Tween(((Parent as Player).left.Graphic as Image), "Alpha", INVIS_ALPHA, 0.25f);
+				tweenFist1.Tween(owner.left.Graphic, "Alpha", INVIS_ALPHA, 0.25f);
 				FP.Tweener.AddTween(tweenFist1, true);
 				
 				var tweenFist2 = new VarTween(null, Tween.ONESHOT);
-				tweenFist2.Tween(((Parent as Player).right.Graphic as Image), "Alpha", INVIS_ALPHA, 0.25f);
+				tweenFist2.Tween(owner.right.Graphic, "Alpha", INVIS_ALPHA, 0.25f);
 				FP.Tweener.AddTween(tweenFist2, true);
 			}
 		}
@@ -51,18 +51,18 @@ namespace SNHU.GameObject.Upgrades
 			base.OnLifetimeComplete();
 			
 			var tweenPlayer = new VarTween(null, Tween.ONESHOT);
-			tweenPlayer.Tween((Parent as Player).player, "Alpha", 1.0f, 0.25f);
+			tweenPlayer.Tween(owner.player, "Alpha", 1.0f, 0.25f);
 			FP.Tweener.AddTween(tweenPlayer, true);
 			
 			var tweenFist1 = new VarTween(null, Tween.ONESHOT);
-			tweenFist1.Tween(((Parent as Player).left.Graphic as Image), "Alpha", 1.0f, 0.25f);
+			tweenFist1.Tween(owner.left.Graphic, "Alpha", 1.0f, 0.25f);
 			FP.Tweener.AddTween(tweenFist1, true);
 			
 			var tweenFist2 = new VarTween(null, Tween.ONESHOT);
-			tweenFist2.Tween(((Parent as Player).right.Graphic as Image), "Alpha", 1.0f, 0.25f);
+			tweenFist2.Tween(owner.right.Graphic, "Alpha", 1.0f, 0.25f);
 			FP.Tweener.AddTween(tweenFist2, true);
 			
-			(Parent as Player).SetUpgrade(null);
+			owner.SetUpgrade(null);
 		}
 	}
 }

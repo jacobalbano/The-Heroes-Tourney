@@ -132,20 +132,24 @@ namespace SNHU.GameObject
 				
 				foreach (var p in l)
 				{
-					if (p != null && p != parent && !(p as Player).Invincible)
+					var player = p as Player;
+					if (player != null && player != parent && !player.Invincible)
 				 	{	
-						World.BroadcastMessage(GameManager.SHAKE, 10.0f, 0.5f);
+						World.BroadcastMessage(CameraShake.SHAKE, 10.0f, 0.5f);
 				 		Mixer.Audio["hit1"].Play();
 				 		
 			 			var hsign = FP.Sign(p.X - parent.X);
+			 			var dashing = player.Dashing;
+			 			var xMult = dashing ? 1.5f : 1f;
+			 			var yMult = dashing ? 0 : 1;
 			 			
-				 		if ((p as Player).Rebounding)
+				 		if (player.Rebounding)
 				 		{
-					 		parent.OnMessage(PhysicsBody.IMPULSE, 40 * -hsign, -25);
+				 			parent.OnMessage(PhysicsBody.IMPULSE, (40 * xMult) * -hsign, -25 * yMult);
 				 		}
 				 		else
 				 		{
-					 		p.OnMessage(PhysicsBody.IMPULSE, 25 * hsign, -15);
+				 			p.OnMessage(PhysicsBody.IMPULSE, (25 * xMult) * hsign, -15 * yMult);
 				 		}
 				 	}
 				}

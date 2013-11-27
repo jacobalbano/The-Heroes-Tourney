@@ -4,7 +4,6 @@
     <ProjectGuid>{0CEBBB9B-6825-4C17-B0C0-4027260837A0}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <OutputType>Exe</OutputType>
     <RootNamespace>SNHU</RootNamespace>
     <AssemblyName>SNHU</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -16,6 +15,7 @@
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
     <WarningLevel>4</WarningLevel>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -34,6 +34,7 @@
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
     <StartAction>Project</StartAction>
     <StartWorkingDirectory>./</StartWorkingDirectory>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -42,6 +43,10 @@
     <Optimize>True</Optimize>
     <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
     <DefineConstants>TRACE</DefineConstants>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+    <StartAction>Project</StartAction>
+    <StartWorkingDirectory>./</StartWorkingDirectory>
+    <OutputType>WinExe</OutputType>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fasterflect">
@@ -73,13 +78,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\CheckRestart.cs" />
     <Compile Include="Components\PhysicsBody.cs" />
+    <Compile Include="GameObject\CameraShake.cs" />
     <Compile Include="GameObject\Chunk.cs" />
     <Compile Include="GameObject\Fist.cs" />
     <Compile Include="GameObject\GameManager.cs" />
     <Compile Include="GameObject\HUD.cs" />
-    <Compile Include="GameObject\MatchTimer.cs" />
     <Compile Include="GameObject\Meteor.cs" />
     <Compile Include="GameObject\Mixer.cs" />
     <Compile Include="GameObject\Ladder.cs" />
@@ -87,9 +91,9 @@
     <Compile Include="GameObject\Platforms\JumpPad.cs" />
     <Compile Include="GameObject\Platforms\Platform.cs" />
     <Compile Include="GameObject\Platforms\SpawnPoint.cs" />
-    <Compile Include="GameObject\Platforms\Teleporter.cs" />
     <Compile Include="GameObject\Player.cs" />
     <Compile Include="GameObject\Razor.cs" />
+    <Compile Include="GameObject\Upgrades\PotatoThinker.cs" />
     <Compile Include="GameObject\Victory.cs" />
     <Compile Include="GameObject\UpgradeSpawn.cs" />
     <Compile Include="GameObject\Upgrades\Bullets.cs" />

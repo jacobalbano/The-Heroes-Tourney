@@ -45,7 +45,7 @@ namespace SNHU.GameObject.Upgrades
 				tween.Tween(shieldImg, "Alpha", 0.6f, 0.45f);
 				FP.Tweener.AddTween(tween, true);
 				
-				(Parent as Player).Invincible = true;
+				owner.Invincible = true;
 				
 				Mixer.Audio["shieldUp"].Play();
 			}
@@ -55,7 +55,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Removed();
 			FP.Log("SSQWE@#!@#!@#");
-			(Parent as Player).Invincible = false;
+			owner.Invincible = false;
 		}
 		
 		public override void Update()
@@ -82,10 +82,10 @@ namespace SNHU.GameObject.Upgrades
 		
 		public void OnFadeOutComplete()
 		{
-			(Parent as Player).Invincible = false;
+			owner.Invincible = false;
 			Mixer.Audio["shieldDown"].Play();
 			
-			(Parent as Player).SetUpgrade(null);
+			owner.SetUpgrade(null);
 		}
 	}
 }

@@ -18,15 +18,23 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class Upgrade : Logic
 	{
-		const float LIFETIME = 5.0f;
+		protected const float LIFETIME = 5.0f;
 		public bool Activated { get; protected set; }
 		public Image image {get; set;}
+		
+		protected Player owner;
 		
 		protected Alarm lifeTimer;
 		public Upgrade()
 		{
 			Activated = false;
 			lifeTimer = new Alarm(LIFETIME, OnLifetimeComplete, Tween.ONESHOT);
+		}
+		
+		public override void Added()
+		{
+			base.Added();
+			owner = Parent as Player;
 		}
 		
 		public virtual void Use()
@@ -37,12 +45,6 @@ namespace SNHU.GameObject.Upgrades
 			{
 				Parent.World.AddTween(lifeTimer, true);
 			}
-		}
-		
-		public override void Added()
-		{
-			base.Added();
-			//Parent.World.AddGraphic(image);
 		}
 		
 		public virtual void OnLifetimeComplete()

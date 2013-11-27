@@ -41,17 +41,8 @@ namespace SNHU
 			bg.ScrollX = bg.ScrollY = 0;
 			AddGraphic(bg);
 			
-			FP.Camera.X = FP.HalfWidth;
-			FP.Camera.Y = FP.HalfHeight;
-			
 			gameManager = new GameManager();
 			Add(gameManager);
-			
-//			Input.ControllerConnected += delegate(object sender, JoystickConnectEventArgs e)
-//			{
-//				// player isn't created when plugged in after game starts
-//				CheckControllers();
-//			};
 			
 			changingLevels = false;
 			
@@ -77,6 +68,16 @@ namespace SNHU
 			{
 				gameManager.TogglePauseGame(true);
 			}
+			
+			if (Input.Pressed(Keyboard.Key.Return))
+			{
+				AdvanceLevel();
+			}
+			
+			if (Input.Pressed(Keyboard.Key.Escape))
+			{
+				FP.World = new MenuWorld();
+			}
 		}
 		
 		public void CheckControllers()
@@ -92,9 +93,14 @@ namespace SNHU
 		
 		public void DelayBegin()
 		{
-			base.Begin();
-			
 			gameManager.StartGame();
+		}
+		
+		public override void End()
+		{
+			base.End();
+			
+			Mixer.music.Stop();
 		}
 		
 		
@@ -115,24 +121,22 @@ namespace SNHU
 					}
 				}
 				
+				var all = new List<Entity>();
+				GetType("camerashake", all);
+				RemoveList(all);
+				
 				nextChunk = new Chunk(180, (FP.Camera.Y - FP.HalfHeight) - FP.Height);
 				Add(nextChunk);
 			}
 		}
 		
-		public void ChunkLoadComplete()
-		{
-			var tween = new VarTween(OnFinishAdvance, ONESHOT);
-			tween.Tween(FP.Camera, "Y", FP.Camera.Y - FP.Height, 1, Ease.ElasticOut);
-			AddTween(tween, true);
-		}
-		
-		private void OnFinishAdvance()
+		public void OnFinishAdvance()
 		{
 			if (currentChunk != null && currentChunk.World != null)
 			{
 				Remove(currentChunk);
 			}
+			
 			currentChunk = nextChunk;
 			
 			SpawnPlayers();
@@ -144,18 +148,11 @@ namespace SNHU
 		{
 			foreach (var player in gameManager.Players)
 			{
-				try
+				if (player.Lives > 0)
 				{
-					if (player.Lives > 0)
-					{
-						player.X = currentChunk.spawnPoints[player.id].X;
-						player.Y = currentChunk.spawnPoints[player.id].Y;
-						Add(player);
-					}
-				}
-				catch (ArgumentOutOfRangeException)
-				{
-					throw new Exception("spawnPoints[" + player.id + "] is out of range. Make sure you have 4 spawn points in the level");
+					player.X = currentChunk.spawnPoints[player.id].X;
+					player.Y = currentChunk.spawnPoints[player.id].Y;
+					Add(player);
 				}
 			}
 		}

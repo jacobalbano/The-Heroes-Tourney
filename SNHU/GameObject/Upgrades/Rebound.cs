@@ -55,7 +55,7 @@ namespace SNHU.GameObject.Upgrades
 				tween2.Tween(shield_2, "Alpha", 0.6f, 0.45f);
 				FP.Tweener.AddTween(tween2, true);
 				
-				(Parent as Player).Rebounding = true;
+				owner.Rebounding = true;
 				
 				Mixer.Audio["reboundUp"].Play();
 			}
@@ -65,7 +65,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Removed();
 			
-			(Parent as Player).Rebounding = false;
+			owner.Rebounding = false;
 		}
 		
 		public override void Update()
@@ -97,10 +97,10 @@ namespace SNHU.GameObject.Upgrades
 		
 		public void OnFadeOutComplete()
 		{
-			(Parent as Player).Rebounding = false;
+			owner.Rebounding = false;
 				Mixer.Audio["reboundDown"].Play();
 			
-			(Parent as Player).SetUpgrade(null);
+			owner.SetUpgrade(null);
 		}
 	}
 }

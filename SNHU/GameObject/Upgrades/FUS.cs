@@ -36,8 +36,8 @@ namespace SNHU.GameObject.Upgrades
 				if (Parent.World != null)
 				{
 					Parent.World.BroadcastMessage(BE_FUS, FUS_STRENGTH, Parent.X, Parent.Y);
-					Parent.World.BroadcastMessage(GameManager.SHAKE, 60.0f, 0.5f);
-					(Parent as Player).SetUpgrade(null);
+					Parent.World.BroadcastMessage(CameraShake.SHAKE, 60.0f, 0.5f);
+					owner.SetUpgrade(null);
 					Mixer.Audio["fus"].Play();
 					
 					Parent.World.Add(new FusBlast(Parent.X, Parent.Y));

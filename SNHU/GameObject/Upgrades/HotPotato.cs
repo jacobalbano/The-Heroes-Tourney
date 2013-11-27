@@ -96,7 +96,7 @@ namespace SNHU.GameObject.Upgrades
 					x = Parent.X;
 					y = Parent.Y;
 					
-					(Parent as Player).Kill();
+					owner.Kill();
 				}
 				else
 				{
@@ -108,7 +108,7 @@ namespace SNHU.GameObject.Upgrades
 			}
 			else
 			{
-				(Parent as Player).Kill();
+				owner.Kill();
 				
 				x = Parent.X;
 				y = Parent.Y;
@@ -134,10 +134,11 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Update();
 			
-			(countdown.Graphic as Text).String = lifeTimer.Remaining.ToString("0");
-			if (prevTime != int.Parse((countdown.Graphic as Text).String))
+			var text = countdown.Graphic as Text;
+			text.String = lifeTimer.Remaining.ToString("0");
+			if (prevTime != int.Parse(text.String))
 			{
-				prevTime = int.Parse((countdown.Graphic as Text).String);
+				prevTime = int.Parse(text.String);
 				Mixer.Audio["timeTick"].Play();
 			}
 			
@@ -149,7 +150,7 @@ namespace SNHU.GameObject.Upgrades
 				if (currentDist < minDist)
 				{
 					minDist = currentDist;
-					closestOpponent = (Player)p;
+					closestOpponent = (Player) p;
 				}
 			}
 				
@@ -164,7 +165,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.OnLifetimeComplete();
 			
-			(Parent as Player).SetUpgrade(null);
+			owner.SetUpgrade(null);
 		}
 		
 		public void OnPlayerDie(params object[] args)

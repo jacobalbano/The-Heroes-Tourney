@@ -45,7 +45,7 @@ namespace SNHU.GameObject.Upgrades
 			{
 				base.Use();
 				
-				(Parent as Player).Speed = SUPER_SPEED;
+				owner.Speed = SUPER_SPEED;
 				Parent.AddGraphic(emitter);
 			}
 		}
@@ -58,7 +58,7 @@ namespace SNHU.GameObject.Upgrades
 			
 			if (lifeTimer.Percent < 1.0f)
 			{
-				var delta = (Parent as Player).physics.MoveDelta.X;
+				var delta = owner.physics.MoveDelta.X;
 				if (delta < 0)
 				{
 					emitter.Emit("l", Parent.Left - 38, Parent.Top + FP.Rand(Parent.Height));
@@ -74,9 +74,9 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.OnLifetimeComplete();
 			
-			(Parent as Player).Speed = Player.SPEED;
+			owner.Speed = Player.SPEED;
 			
-			(Parent as Player).SetUpgrade(null);
+			owner.SetUpgrade(null);
 		}
 	}
 }

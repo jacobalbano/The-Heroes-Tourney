@@ -46,6 +46,12 @@ namespace SNHU.Components
 		/// </summary>
 		public const string FRICTION = "friction";
 		
+		/// <summary>
+		/// Cancel all movement.
+		/// Arguments: None.
+		/// </summary>
+		public const string CANCEL = "cancel";
+		
 		// Movement/Physics
 		/// <summary>
 		/// The types to collide against.
@@ -86,6 +92,7 @@ namespace SNHU.Components
 			AddResponse(USE_GRAVITY, OnUseGravity);
 			AddResponse(FRICTION, OnApplyFriction);
 			AddResponse(Player.OnLand, OnLand);
+			AddResponse(CANCEL, OnCancel);
 		}
 		
 		public override void Update()
@@ -173,6 +180,11 @@ namespace SNHU.Components
 		{
 			frictionFactor = Convert.ToSingle(args[0]);
 			applyGroundFriction = true;
+		}
+		
+		private void OnCancel(params object[] args)
+		{
+			movement.X = movement.Y = 0;
 		}
 	}
 }

@@ -42,11 +42,6 @@ namespace SNHU
 			Layer = -1000;
 		}
 		
-		public override void Removed()
-		{
-			base.Removed();
-		}
-		
 		public override void Update()
 		{
 			base.Update();
@@ -56,8 +51,6 @@ namespace SNHU
 			FP.ClampInRect(ref X, ref Y, FP.Camera.X - FP.HalfWidth, FP.Camera.Y - FP.HalfHeight, FP.Width, FP.Height, 25);
 			
 			image.Angle = FP.Angle(FP.Camera.X, FP.Camera.Y, X, Y);
-			
-			FP.Log(target.X, target.Y);
 		}
 	}
 }

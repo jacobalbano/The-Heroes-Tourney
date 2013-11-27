@@ -5,9 +5,7 @@ namespace SNHU
 {
 	class Program : Engine
 	{
-		public Program() : base(1000, 600, 60)
-		{
-		}
+		public Program() : base(1000, 600, 60) {}
 		
 		public override void Init()
 		{
@@ -15,6 +13,8 @@ namespace SNHU
 			
 			FP.Console.Enable();
 			FP.World = new MenuWorld();
+			
+			FP.Screen.SetTitle("The Heroes' Tourney");
 			
 			FP.Screen.GainedFocus += delegate { Library.Reload(); };
 		}

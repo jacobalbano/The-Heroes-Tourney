@@ -33,11 +33,11 @@ namespace SNHU.GameObject.Upgrades
 		
 		public override void Use()
 		{
-			if (!Activated && !(Parent as Player).OnGround)
+			if (!Activated && !owner.OnGround)
 			{
 				base.Use();
 				
-				(Parent as Player).physics.OnMessage(PhysicsBody.USE_GRAVITY, false);
+				owner.physics.OnMessage(PhysicsBody.USE_GRAVITY, false);
 			}
 		}
 		
@@ -77,11 +77,11 @@ namespace SNHU.GameObject.Upgrades
 					emitter.Emit(FP.Choose("0", "1", "2", "3"), Parent.X + i + FP.Random - FP.Random, Parent.Y + FP.Rand(10) - 5);
 				}
 				
-				Parent.World.BroadcastMessage(GameManager.SHAKE, 100.0f, 0.5f);
+				Parent.World.BroadcastMessage(CameraShake.SHAKE, 100.0f, 0.5f);
 				Parent.World.BroadcastMessage(GROUND_SMASH, Parent, SMASH_RADIUS);
-				(Parent as Player).physics.OnMessage(PhysicsBody.USE_GRAVITY, true);
+				owner.physics.OnMessage(PhysicsBody.USE_GRAVITY, true);
 				
-				(Parent as Player).SetUpgrade(null);
+				owner.SetUpgrade(null);
 			}
 		}
 	}

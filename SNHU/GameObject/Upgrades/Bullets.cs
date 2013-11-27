@@ -28,10 +28,12 @@ namespace SNHU.GameObject.Upgrades
 		
 		public Bullet(Vector2f initialDir, int ownerID)
 		{
-			Graphic = new Image(Library.GetTexture("assets/bullet.png"));
+			var i = new Image(Library.GetTexture("assets/bullet.png"));
+			Graphic = i;
+			i.CenterOO();
 			
-			(Graphic as Image).CenterOO();
-			SetHitboxTo(Graphic);
+			var size = Math.Min(i.Width, i.Height);
+			SetHitbox(size, size);
 			CenterOrigin();
 			Type = Collision;
 						                           
@@ -52,14 +54,14 @@ namespace SNHU.GameObject.Upgrades
 			if (Collide(Platform.Collision, X + (dir.X * BULLET_SPEED), Y) != null)
 			{
 				dir.X = -dir.X;
-				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
+				World.BroadcastMessage(CameraShake.SHAKE, 20.0f, 0.25f);
 				Mixer.Audio["bulletBounce"].Play();
 				bounce = true;
 			}
 			if (Collide(Platform.Collision, X, Y + (dir.Y * BULLET_SPEED)) != null)
 			{
 				dir.Y = -dir.Y;
-				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
+				World.BroadcastMessage(CameraShake.SHAKE, 20.0f, 0.25f);
 				Mixer.Audio["bulletBounce"].Play();
 				bounce = true;
 			}
@@ -68,7 +70,7 @@ namespace SNHU.GameObject.Upgrades
 			if (p != null && (p as Player).Rebounding)
 			{
 				dir.X = -dir.X;
-				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
+				World.BroadcastMessage(CameraShake.SHAKE, 20.0f, 0.25f);
 				Mixer.Audio["bulletBounce"].Play();
 			}
 			
@@ -76,7 +78,7 @@ namespace SNHU.GameObject.Upgrades
 			if (p != null && (p as Player).Rebounding)
 			{
 				dir.Y = -dir.Y;
-				World.BroadcastMessage(GameManager.SHAKE, 20.0f, 0.25f);
+				World.BroadcastMessage(CameraShake.SHAKE, 20.0f, 0.25f);
 				Mixer.Audio["bulletBounce"].Play();
 			}
 			
