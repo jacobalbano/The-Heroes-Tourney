@@ -26,16 +26,17 @@ namespace SNHU.GameObject.Upgrades
 		
 		private Tween bounceTween;
 		
+		private Image image;
 		private Entity emitterEnt;
 		private Emitter emitter;
 		
 		public Bullet(Vector2f initialDir, int ownerID)
 		{
-			var i = new Image(Library.GetTexture("assets/bullet.png"));
-			Graphic = i;
-			i.CenterOO();
+			image = new Image(Library.GetTexture("assets/bullet.png"));
+			Graphic = image;
+			image.CenterOO();
 			
-			var size = Math.Min(i.Width, i.Height);
+			var size = Math.Min(image.Width, image.Height);
 			SetHitbox(size, size);
 			CenterOrigin();
 			Type = Collision;
@@ -67,66 +68,56 @@ namespace SNHU.GameObject.Upgrades
 			var randY = FP.Rand(50) - 25;
 			emitter.Emit("spark", X + randX, Y + randY);
 			
-			var bounce = false;
-			
-			(Graphic as Image).Angle = FP.Angle(0, 0, dir.X, dir.Y);
+			image.Angle = FP.Angle(0, 0, dir.X, dir.Y);
 			
 			MoveBy(dir.X * BULLET_SPEED, dir.Y * BULLET_SPEED, Platform.Collision, true);
-			
-			if (Collide(Platform.Collision, X + (dir.X * BULLET_SPEED), Y) != null)
-			{
-				dir.X = -dir.X;
-				World.BroadcastMessage(CameraShake.SHAKE, 20.0f, 0.25f);
-				Mixer.Audio["bulletBounce"].Play();
-				bounce = true;
-			}
-			if (Collide(Platform.Collision, X, Y + (dir.Y * BULLET_SPEED)) != null)
-			{
-				dir.Y = -dir.Y;
-				World.BroadcastMessage(CameraShake.SHAKE, 20.0f, 0.25f);
-				Mixer.Audio["bulletBounce"].Play();
-				bounce = true;
-			}
-			
-			var p = Collide(Player.Collision, X + (dir.X * BULLET_SPEED), Y);
-			if (p != null && (p as Player).Rebounding)
-			{
-				dir.X = -dir.X;
-				World.BroadcastMessage(CameraShake.SHAKE, 20.0f, 0.25f);
-				Mixer.Audio["bulletBounce"].Play();
-			}
-			
-			p = Collide(Player.Collision, X, Y + (dir.Y * BULLET_SPEED));
-			if (p != null && (p as Player).Rebounding)
-			{
-				dir.Y = -dir.Y;
-				World.BroadcastMessage(CameraShake.SHAKE, 20.0f, 0.25f);
-				Mixer.Audio["bulletBounce"].Play();
-			}
-			
-			if (bounce)
-			{
-				if (bounceTween != null)	bounceTween.Cancel();
-				(Graphic as Image).ScaleX = 0.5f;
-				(Graphic as Image).ScaleY = 1.5f;
-				
-				var tween = new MultiVarTween(null, ONESHOT);
-				tween.Tween(Graphic, new {ScaleX = 1, ScaleY = 1}, 0.75f, Ease.ElasticOut);
-				bounceTween = FP.Tweener.AddTween(tween, true);
-			}
 		}
 		
 		public override void Removed()
 		{
 			base.Removed();
 			
-			emitterEnt.AddTween(new Alarm(3, () => FP.World.Remove(emitterEnt), Tween.ONESHOT), true);
+			World.AddTween(new Alarm(3, () => FP.World.Remove(emitterEnt), Tween.ONESHOT), true);
+			
 			for (int i = 0; i < 10; i++)
 			{
-				var randX = FP.Rand(50) - 25;
-				var randY = FP.Rand(50) - 25;
+				var randX = FP.Rand(100) - 50;
+				var randY = FP.Rand(100) - 50;
 				emitter.Emit("spark", X + randX, Y + randY);		
 			}
+		}
+		
+		public override bool MoveCollideX(Entity e)
+		{
+			var p = e as Player;
+			if (p != null && p.Rebounding)	return false;
+			
+			dir.X = -dir.X;
+			Mixer.Audio["bulletBounce"].Play();
+			Bounce();
+			return base.MoveCollideX(e);
+		}
+		
+		public override bool MoveCollideY(Entity e)
+		{
+			var p = e as Player;
+			if (p != null && p.Rebounding)	return false;
+		
+			dir.Y = -dir.Y;
+			Mixer.Audio["bulletBounce"].Play();
+			Bounce();
+			return base.MoveCollideY(e);
+		}
+		
+		private void Bounce()
+		{
+			if (bounceTween != null)	bounceTween.Cancel();
+			image.ScaleX = 0.5f;
+			image.ScaleY = 1.5f;
+			
+			var tween = new MultiVarTween(null, ONESHOT);
+			tween.Tween(Graphic, new { ScaleX = 1, ScaleY = 1 }, 0.75f, Ease.ElasticOut);
+			bounceTween = FP.Tweener.AddTween(tween, true);
 		}
 	}
 	
@@ -146,14 +137,10 @@ namespace SNHU.GameObject.Upgrades
 		
 		public override void Added()
 		{
-			base.Added();
-			
-			//for (int i = 0; i < BULLET_COUNT; i++)
-			//{
+			base.Added();			
 			bullets.Add(new Bullet(new Vector2f(-1, -1), (Parent as Player).id));
-			bullets.Add(new Bullet(new Vector2f(FP.Choose(FP.Random / 4f, -1 * (FP.Random / 4f)), -1), (Parent as Player).id));
+			bullets.Add(new Bullet(new Vector2f(FP.Choose(-0.1f, 0.1f), -1), (Parent as Player).id));
 			bullets.Add(new Bullet(new Vector2f(1, -1), (Parent as Player).id));
-			//}
 		}
 		
 		public override void Use()
@@ -167,6 +154,7 @@ namespace SNHU.GameObject.Upgrades
 					b.X = Parent.X;
 					b.Y = Parent.Top;
 				}
+				
 				Parent.World.AddList(bullets);
 			}
 		}

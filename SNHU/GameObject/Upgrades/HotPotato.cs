@@ -84,7 +84,7 @@ namespace SNHU.GameObject.Upgrades
 				var name = i.ToString();
 				emitter.NewType(name, FP.Frames(i));
 				emitter.SetAlpha(name, 1, 0);
-				emitter.SetMotion(name, 0, 150, 0.25f, 360, 100,  0.1f, Ease.CubeOut);
+				emitter.SetMotion(name, 0, 50, 0.4f, 360, 15,  0.1f, Ease.CubeOut);
 			}
 			
 			float x = 0, y = 0;
@@ -120,7 +120,7 @@ namespace SNHU.GameObject.Upgrades
 			var t = 4;
 			while (t --> 0)
 			{
-				var r = t * 100;
+				var r = 200;
 				var name = t.ToString();
 				for (int j = 0; j < r; j++)
 				{
