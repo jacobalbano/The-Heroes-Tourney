@@ -47,8 +47,8 @@ namespace SNHU.GameObject
 		
 		private void OnCameraShake(params object[] args)
 		{
-			float str = args.Length > 0 ? (float) args[0] : 10.0f;
-			float dur = args.Length > 1 ? (float) args[1] : 1.0f;
+			float str = args.Length > 0 ? Convert.ToSingle(args[0]) : 10.0f;
+			float dur = args.Length > 1 ? Convert.ToSingle(args[1]) : 1.0f;
 			
 			// Get a random number [-1..1]
 			float randX = ((float) FP.Rand(200) - 100.0f) / 100.0f;

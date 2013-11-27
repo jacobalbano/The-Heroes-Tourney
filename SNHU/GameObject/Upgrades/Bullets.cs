@@ -26,6 +26,9 @@ namespace SNHU.GameObject.Upgrades
 		
 		private Tween bounceTween;
 		
+		private Entity emitterEnt;
+		private Emitter emitter;
+		
 		public Bullet(Vector2f initialDir, int ownerID)
 		{
 			var i = new Image(Library.GetTexture("assets/bullet.png"));
@@ -39,11 +42,30 @@ namespace SNHU.GameObject.Upgrades
 						                           
 			dir = initialDir;
 			this.ownerID = ownerID;
+			
+			emitter = new Emitter(Library.GetTexture("assets/bullet_sparkle.png"), 20, 20);
+			emitter.Relative = false;
+			
+			var name = "spark";
+			emitter.NewType(name, FP.Frames(0, 1, 2, 3, 4));
+			emitter.SetAlpha(name, 1, 0);
+			emitter.SetMotion(name, 0, 0, 0.5f, 0, 0, 0.1f, Ease.CircOut);
+		}
+		
+		public override void Added()
+		{
+			base.Added();
+			
+			emitterEnt = World.AddGraphic(emitter, -9010);
 		}
 		
 		public override void Update()
 		{
 			base.Update();
+			
+			var randX = FP.Rand(50) - 25;
+			var randY = FP.Rand(50) - 25;
+			emitter.Emit("spark", X + randX, Y + randY);
 			
 			var bounce = false;
 			
@@ -93,6 +115,19 @@ namespace SNHU.GameObject.Upgrades
 				bounceTween = FP.Tweener.AddTween(tween, true);
 			}
 		}
+		
+		public override void Removed()
+		{
+			base.Removed();
+			
+			emitterEnt.AddTween(new Alarm(3, () => FP.World.Remove(emitterEnt), Tween.ONESHOT), true);
+			for (int i = 0; i < 10; i++)
+			{
+				var randX = FP.Rand(50) - 25;
+				var randY = FP.Rand(50) - 25;
+				emitter.Emit("spark", X + randX, Y + randY);		
+			}
+		}
 	}
 	
 	/// <summary>
@@ -116,7 +151,7 @@ namespace SNHU.GameObject.Upgrades
 			//for (int i = 0; i < BULLET_COUNT; i++)
 			//{
 			bullets.Add(new Bullet(new Vector2f(-1, -1), (Parent as Player).id));
-			bullets.Add(new Bullet(new Vector2f(0, -1), (Parent as Player).id));
+			bullets.Add(new Bullet(new Vector2f(FP.Choose(FP.Random / 4f, -1 * (FP.Random / 4f)), -1), (Parent as Player).id));
 			bullets.Add(new Bullet(new Vector2f(1, -1), (Parent as Player).id));
 			//}
 		}

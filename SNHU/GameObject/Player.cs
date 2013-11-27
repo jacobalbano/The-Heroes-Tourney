@@ -124,7 +124,7 @@ namespace SNHU.GameObject
 			Lives = STARTING_LIVES;
 			IsAlive = false;
 			
-			SetUpgrade(new HotPotato());
+			SetUpgrade(new Bullets());
 			Invincible = false;
 			Rebounding = false;
 			

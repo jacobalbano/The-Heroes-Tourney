@@ -84,7 +84,7 @@ namespace SNHU.GameObject.Upgrades
 				var name = i.ToString();
 				emitter.NewType(name, FP.Frames(i));
 				emitter.SetAlpha(name, 1, 0);
-				emitter.SetMotion(name, 0, 150, 0.25f, 360, 100,  0.1f);
+				emitter.SetMotion(name, 0, 150, 0.25f, 360, 100,  0.1f, Ease.CubeOut);
 			}
 			
 			float x = 0, y = 0;
@@ -122,7 +122,7 @@ namespace SNHU.GameObject.Upgrades
 			{
 				var r = t * 100;
 				var name = t.ToString();
-				for (int j = 0; j < 500; j++)
+				for (int j = 0; j < r; j++)
 				{
 					var randX = FP.Rand(r) - r / 2;
 					var randY = FP.Rand(r) - r / 2;
@@ -130,6 +130,7 @@ namespace SNHU.GameObject.Upgrades
 				}
 			}
 			
+			Parent.World.BroadcastMessage(CameraShake.SHAKE, 20, 0.5f);
 			Mixer.Audio["explode"].Play();
 		}
 		
