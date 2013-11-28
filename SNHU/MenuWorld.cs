@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using SNHU.menuobject;
 using Punk;
 using Punk.Graphics;
@@ -21,6 +22,9 @@ namespace SNHU
 		private List<string> allImages, takenImages;
 		
 		private bool readying;
+		
+		private Thread loadingThread;
+		private GameWorld gameWorld;
 		
 		public MenuWorld()
 		{
@@ -58,6 +62,9 @@ namespace SNHU
 			base.Begin();
 			Input.ControllerConnected += OnControllerAdded;
 			Input.ControllerDisconnected += OnControllerRemoved;
+			
+			loadingThread = new Thread(() => gameWorld = new GameWorld());
+			loadingThread.Start();
 		}
 		
 		public override void End()
@@ -122,7 +129,10 @@ namespace SNHU
 			
 			FP.Log("start", playerGraphics.Count);
 			
-			FP.World = new GameWorld(playerGraphics);
+			loadingThread.Join();
+			
+			FP.World = gameWorld;
+			gameWorld.Init(playerGraphics);
 		}
 		
 		private void OnControllerAdded(object sender, JoystickConnectEventArgs e)

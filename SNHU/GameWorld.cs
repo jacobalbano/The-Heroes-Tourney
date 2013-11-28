@@ -33,10 +33,8 @@ namespace SNHU
 		
 		private Dictionary<uint, string> playerImageNames;
 		
-		public GameWorld(Dictionary<uint, string> playerImageNames) : base()
+		public GameWorld()
 		{
-			this.playerImageNames = playerImageNames;
-			
 			bg = new Image(Library.GetTexture("assets/bg.png"));
 			bg.ScrollX = bg.ScrollY = 0;
 			AddGraphic(bg);
@@ -50,6 +48,11 @@ namespace SNHU
 			AddTween(new Alarm(0.2f, DelayBegin, ONESHOT), true);
 		}
 		
+		public void Init(Dictionary<uint, string> playerImageNames)
+		{
+			this.playerImageNames = playerImageNames;
+		}
+		
 		public override void Update()
 		{
 			base.Update();
@@ -61,7 +64,9 @@ namespace SNHU
 			
 			if (Input.Pressed(Keyboard.Key.F5) || Input.Pressed(Keyboard.Key.R))
 			{
-				FP.World = new GameWorld(playerImageNames);
+				var gameWorld = new GameWorld();
+				gameWorld.Init(playerImageNames);
+				FP.World = gameWorld;
 			}
 			
 			if (Input.Pressed(Keyboard.Key.P))

@@ -155,7 +155,7 @@ namespace SNHU.GameObject.Upgrades
 				if (currentDist < minDist)
 				{
 					minDist = currentDist;
-					closestOpponent = (Player) p;
+					closestOpponent = p as Player;
 				}
 			}
 				

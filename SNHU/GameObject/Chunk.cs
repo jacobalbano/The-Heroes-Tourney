@@ -119,6 +119,8 @@ namespace SNHU.GameObject
 			world.OnFinishAdvance();
 			
 			world.Add(new CameraShake(FP.HalfWidth, FP.Camera.Y));
+			
+			World.BroadcastMessage(GameManager.PreloadNext);
 		}
 	}
 }

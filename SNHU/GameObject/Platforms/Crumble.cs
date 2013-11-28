@@ -15,7 +15,7 @@ namespace SNHU.GameObject.Platforms
 {
 	public class Crumble : Platform
 	{
-		private float crumbleTime;
+		private float crumbleTime = 0;
 		private bool canMakeAHellaRacket;
 		
 		public Crumble()
@@ -32,6 +32,7 @@ namespace SNHU.GameObject.Platforms
 			{
 				p = Collide(Player.Collision, X + 1, Y) as Player;
 			}
+			
 			if(p == null)
 			{
 				p = Collide(Player.Collision, X, Y + 1) as Player;

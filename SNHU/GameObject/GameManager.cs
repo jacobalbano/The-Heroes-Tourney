@@ -22,6 +22,7 @@ namespace SNHU.GameObject
 	public class GameManager : Entity
 	{
 		public const string Restart = "gamemanager_restart";
+		public const string PreloadNext = "gamemanager_restart";
 		
 		public bool GameStarted { get; private set; }
 		public bool GamePaused { get; private set; }
@@ -47,8 +48,6 @@ namespace SNHU.GameObject
 			Players = new List<Player>();
 			hud = new HUD(this);
 			
-			FP.Camera.Zoom = 0.75f;
-			
 			AddResponse(Player.Die, OnPlayerDie);
 			AddResponse(Player.Lose, OnPlayerLose);
 		}
@@ -56,7 +55,7 @@ namespace SNHU.GameObject
 		public override void Added()
 		{
 			base.Added();
-			
+
 			World.Add(hud);
 			gameWorld = World as GameWorld;
 		}
