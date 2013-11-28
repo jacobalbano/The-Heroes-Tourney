@@ -29,12 +29,11 @@ namespace SNHU.GameObject.Platforms
 		public override void Load(System.Xml.XmlNode node)
 		{
 			base.Load(node);
-			float width = float.Parse(node.Attributes["width"].Value);
-			width = FP.Clamp(width, 15, 640);	//	lol game jam
+			Width = FP.Clamp(Width, 15, 640);	//	lol game jam
 			
 			image = new Nineslice(Library.GetTexture("assets/bouncepad.png"), 3, 3);
-			image.Columns = (int) (width / 5f);
-			image.ScaleX = width / image.Width;
+			image.Columns = (int) (Width / 5f);
+			image.ScaleX = Width / image.Width;
 			image.Y -= 3;
 			
 			emitter = new Emitter(Library.GetTexture("assets/jumpparticle.png"));
@@ -42,7 +41,6 @@ namespace SNHU.GameObject.Platforms
 			emitter.SetMotion("p", 90, 32, 1, 45, 0.5f, 0.25f);
 			emitter.SetAlpha("p", 1, 0);
 			
-			Width = (int) width;
 			Height = 3;
 			
 			AddGraphic(emitter);

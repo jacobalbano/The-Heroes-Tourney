@@ -105,7 +105,6 @@ namespace SNHU.GameObject
 			
 			theRazor.X += razorArm.ScaledWidth;
 
-			speed = uint.Parse(node.Attributes["speed"].Value);
 			rotation = FP.Rand(360);
 			
 			speed *= 0.5f;

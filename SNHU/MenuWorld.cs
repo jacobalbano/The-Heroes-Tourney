@@ -73,6 +73,11 @@ namespace SNHU
 			
 			if (readying)	return;
 			
+			if (Input.Down(Keyboard.Key.LAlt) && Input.Pressed(Keyboard.Key.F4))
+			{
+				FP.Screen.Close();
+			}
+			
 			if (Input.Pressed(Keyboard.Key.F5))
 			{
 				FP.World = new MenuWorld();

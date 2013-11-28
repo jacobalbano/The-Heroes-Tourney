@@ -46,17 +46,14 @@ namespace SNHU.GameObject.Platforms
 		public override void Load(System.Xml.XmlNode node)
 		{
 			base.Load(node);
-			float width = float.Parse(node.Attributes["width"].Value);
-			float height = float.Parse(node.Attributes["height"].Value);
 			
 			image = new Nineslice(Library.GetTexture("assets/platform.png"), 3, 3);
-			image.Columns = (int) (width / 5f);
-			image.Rows = (int) (height / 5f);
-			image.ScaleX = width / image.Width;
-			image.ScaleY = height / image.Height;
+			image.Columns = (int) (Width / 5f);
+			image.Rows = (int) (Height / 5f);
+			image.ScaleX = Width / image.Width;
+			image.ScaleY = Height / image.Height;
 			
 			Graphic = image;
-			SetHitbox((int) width, (int) height);
 		}
 		
 		private void OnNotifyCamera(params object[] args)
