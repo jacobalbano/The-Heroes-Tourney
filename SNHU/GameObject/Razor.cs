@@ -61,7 +61,7 @@ namespace SNHU.GameObject
 				
 				if(!p.Invincible)
 				{
-					p.Kill();
+					p.Die();
 					Mixer.Audio["sawHit"].Play();
 				}
 			}

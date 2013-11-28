@@ -25,6 +25,7 @@ namespace SNHU.GameObject
 	public class Player : Entity
 	{
 		public const string OnLand = "player_onLand";
+		public const string Damage = "player_damage";
 		
 		public const string Collision = "player";
 		
@@ -124,12 +125,13 @@ namespace SNHU.GameObject
 			Lives = STARTING_LIVES;
 			IsAlive = false;
 			
-			SetUpgrade(new HotPotato());
+			SetUpgrade(new Bullets());
 			Invincible = false;
 			Rebounding = false;
 			
 			AddResponse(GroundSmash.GROUND_SMASH, OnGroundSmash);
 			AddResponse(FUS.BE_FUS, OnFUS);
+			AddResponse(Damage, OnDamage);
 		}
 		
 		public override void Added()
@@ -199,12 +201,6 @@ namespace SNHU.GameObject
 					OnMessage(PhysicsBody.FRICTION, 0.75f);
 				}
 				
-				var b = Collide(Bullet.Collision, X, Y) as Bullet;
-				if (b != null && b.ownerID != id && !Rebounding)
-				{
-					Kill();
-				}
-				
 				HandleInput();
 				
 				if (Math.Abs(physics.MoveDelta.X) < Speed)
@@ -224,7 +220,7 @@ namespace SNHU.GameObject
 				
 				if(this.Y - this.Height > FP.Camera.Y + FP.HalfHeight)
 				{
-					Kill();
+					Die();
 				}
 			}
 		}
@@ -361,8 +357,9 @@ namespace SNHU.GameObject
 			}
 		}
 		
-		public void Kill()
+		public void Die()
 		{
+			FP.Log("die lol");
 			if (IsAlive && !Invincible && !GameWorld.gameManager.GameEnding)
 			{
 				IsAlive = false;
@@ -429,7 +426,15 @@ namespace SNHU.GameObject
 			}
 		}
 		
-		public void OnGroundSmash(params object[] args)
+		private void OnDamage(params object[] args)
+		{
+			if (!Invincible)
+			{
+				Die();
+			}
+		}
+		
+		private void OnGroundSmash(params object[] args)
 		{
 			Player p = args[0] as Player;
 			if (p != this)
@@ -438,17 +443,17 @@ namespace SNHU.GameObject
 				{
 					if (Rebounding)
 					{
-						p.Kill();
+						p.Die();
 					}
 					else
 					{
-						Kill();
+						Die();
 					}
 				}
 			}
 		}
 		
-		public void OnFUS(params object[] args)
+		private void OnFUS(params object[] args)
 		{
 			float str = (float)args[0];
 			float fromX = (float)args[1];

@@ -96,19 +96,19 @@ namespace SNHU.GameObject.Upgrades
 					x = Parent.X;
 					y = Parent.Y;
 					
-					owner.Kill();
+					owner.Die();
 				}
 				else
 				{
 					x = closestOpponent.X;
 					y = closestOpponent.Y;
 					
-					closestOpponent.Kill();
+					closestOpponent.Die();
 				}
 			}
 			else
 			{
-				owner.Kill();
+				owner.Die();
 				
 				x = Parent.X;
 				y = Parent.Y;
@@ -130,6 +130,7 @@ namespace SNHU.GameObject.Upgrades
 				}
 			}
 			
+			Parent.World.BroadcastMessageInCircle(x, y, 200, Player.Damage);
 			Parent.World.BroadcastMessage(CameraShake.SHAKE, 20, 0.5f);
 			Mixer.Audio["explode"].Play();
 		}

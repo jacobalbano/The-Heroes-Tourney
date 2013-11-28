@@ -30,6 +30,16 @@ namespace SNHU.GameObject.Upgrades
 		private Entity emitterEnt;
 		private Emitter emitter;
 		
+		private static string[] colliders;
+		static Bullet()
+		{
+			colliders = new string[]
+			{
+				Platform.Collision,
+				Player.Collision
+			};
+		}
+		
 		public Bullet(Vector2f initialDir, int ownerID)
 		{
 			image = new Image(Library.GetTexture("assets/bullet.png"));
@@ -50,7 +60,7 @@ namespace SNHU.GameObject.Upgrades
 			var name = "spark";
 			emitter.NewType(name, FP.Frames(0, 1, 2, 3, 4));
 			emitter.SetAlpha(name, 1, 0);
-			emitter.SetMotion(name, 0, 0, 0.5f, 0, 0, 0.1f, Ease.CircOut);
+			emitter.SetMotion(name, 0, 0, 0.5f, 0, 0, 0.25f, Ease.CircOut);
 		}
 		
 		public override void Added()
@@ -70,7 +80,7 @@ namespace SNHU.GameObject.Upgrades
 			
 			image.Angle = FP.Angle(0, 0, dir.X, dir.Y);
 			
-			MoveBy(dir.X * BULLET_SPEED, dir.Y * BULLET_SPEED, Platform.Collision, true);
+			MoveBy(dir.X * BULLET_SPEED, dir.Y * BULLET_SPEED, colliders, true);
 		}
 		
 		public override void Removed()
@@ -89,24 +99,52 @@ namespace SNHU.GameObject.Upgrades
 		
 		public override bool MoveCollideX(Entity e)
 		{
-			var p = e as Player;
-			if (p != null && p.Rebounding)	return false;
-			
-			dir.X = -dir.X;
-			Mixer.Audio["bulletBounce"].Play();
-			Bounce();
-			return base.MoveCollideX(e);
+			if (ShouldBounce(e))
+			{
+				dir.X = -dir.X;
+				Mixer.Audio["bulletBounce"].Play();
+				Bounce();
+				
+				return true;
+			}
+				
+			return false;
 		}
 		
 		public override bool MoveCollideY(Entity e)
 		{
-			var p = e as Player;
-			if (p != null && p.Rebounding)	return false;
+			if (ShouldBounce(e))
+			{
+				dir.Y = -dir.Y;
+				Mixer.Audio["bulletBounce"].Play();
+				Bounce();
+				
+				return true;
+			}
+				
+			return false;
+		}
 		
-			dir.Y = -dir.Y;
-			Mixer.Audio["bulletBounce"].Play();
-			Bounce();
-			return base.MoveCollideY(e);
+		bool ShouldBounce(Entity e)
+		{
+			var p = e as Player;
+			if (p != null)
+			{
+				if (p.id == ownerID)
+				{
+					return false;
+				}
+				
+				if (p.Rebounding)
+				{
+					return true;
+				}
+				
+				p.OnMessage(Player.Damage);
+				return false;
+			}
+			
+			return true;
 		}
 		
 		private void Bounce()
@@ -137,7 +175,8 @@ namespace SNHU.GameObject.Upgrades
 		
 		public override void Added()
 		{
-			base.Added();			
+			base.Added();
+			
 			bullets.Add(new Bullet(new Vector2f(-1, -1), (Parent as Player).id));
 			bullets.Add(new Bullet(new Vector2f(FP.Choose(-0.1f, 0.1f), -1), (Parent as Player).id));
 			bullets.Add(new Bullet(new Vector2f(1, -1), (Parent as Player).id));
