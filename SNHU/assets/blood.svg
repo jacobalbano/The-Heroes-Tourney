@@ -7,6 +7,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="59.92205"
@@ -19,7 +20,29 @@
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
-     id="defs4" />
+     id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3768">
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1"
+         offset="0"
+         id="stop3770" />
+      <stop
+         style="stop-color:#fa0000;stop-opacity:0"
+         offset="1"
+         id="stop3772" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3768"
+       id="linearGradient3774"
+       x1="50.945774"
+       y1="1039.7321"
+       x2="55.663288"
+       y2="1041.2946"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -27,9 +50,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.6568542"
-     inkscape:cx="57.164205"
-     inkscape:cy="-1.6582519"
+     inkscape:zoom="7.9999999"
+     inkscape:cx="6.9721381"
+     inkscape:cy="1.5292481"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -50,7 +73,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -59,45 +82,29 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-18.517359,-1032.8986)">
-    <rect
+    <path
        style="fill:#800000;fill-opacity:1;stroke:none"
+       d="m 21.984025,1035.9976 4.03333,0 c 0,0 4.203635,-1.2964 5.499997,0 1.296362,1.2964 0,5.5 0,5.5 0,0 -3.619171,3.1324 -5.499997,4.0332 -1.880825,0.9008 -4.03333,0 -4.03333,0 l -1.466666,-5.5 z"
        id="rect3000"
-       width="14.999993"
-       height="14.999993"
-       x="18.517359"
-       y="1032.8986"
-       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\blood.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90" />
-    <rect
-       y="1032.8986"
-       x="33.491375"
-       height="14.999993"
-       width="14.999993"
-       id="rect3002"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccsczccc" />
+    <path
        style="fill:#ff0000;fill-opacity:1;stroke:none"
-       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\blood.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90" />
-    <rect
-       y="1032.8986"
-       x="48.465393"
-       height="14.999993"
-       width="14.999993"
+       d="m 33.491375,1034.8986 7.499996,-2 c 0,0 4.535461,4.5537 5.499997,7.5 0.570392,1.7423 0,5.5 0,5.5 0,0 -3.549215,2 -5.499997,2 -1.950782,0 -5.499996,-2 -5.499996,-2 l -2,-5.5 z"
+       id="rect3002"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccscsccc" />
+    <path
+       style="fill:#c90000;fill-opacity:1;stroke:none"
+       d="m 57.388894,1036.086 c 1.008659,0.2703 1.213372,5.3942 0.664339,7.4432 -0.549033,2.049 -0.551627,3.975 -3.511349,3.182 -2.959721,-0.7931 -3.731009,-3.4623 -3.181976,-5.5114 0.549032,-2.049 5.020326,-5.3841 6.028986,-5.1138 z"
        id="rect3004"
-       style="fill:#550000;fill-opacity:1;stroke:none"
-       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\blood.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90" />
-    <rect
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="zsssz" />
+    <path
        style="fill:#aa0000;fill-opacity:1;stroke:none"
+       d="m 65.978573,1038.3798 2.816475,-1.3697 2.144364,-3.1694 c 0,0 2.878553,-1.1187 4.018841,-0.4029 2.09183,1.3131 2.539044,6.9608 2.539044,6.9608 l -1.597047,4.0188 -4.960838,2.5391 -4.018842,0.4029 c 0,0 -1.988378,-4.5532 -2.539044,-6.9608 -0.300177,-1.3124 1.597047,-2.0188 1.597047,-2.0188 z"
        id="rect3006"
-       width="14.999993"
-       height="14.999993"
-       x="63.439415"
-       y="1032.8986"
-       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\blood.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90" />
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccsccccsc" />
   </g>
 </svg>

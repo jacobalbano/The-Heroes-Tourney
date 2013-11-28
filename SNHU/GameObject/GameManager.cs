@@ -21,9 +21,12 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class GameManager : Entity
 	{
+		public const string Restart = "gamemanager_restart";
+		
 		public bool GameStarted { get; private set; }
 		public bool GamePaused { get; private set; }
 		public bool GameEnding { get; private set; }
+		public bool NobodyWon { get; private set; }
 		
 		private Music GameMusic;
 		private GameWorld gameWorld;
@@ -46,8 +49,8 @@ namespace SNHU.GameObject
 			
 			FP.Camera.Zoom = 0.75f;
 			
-			AddResponse("player_die", OnPlayerDie);
-			AddResponse("player_lose", OnPlayerLose);
+			AddResponse(Player.Die, OnPlayerDie);
+			AddResponse(Player.Lose, OnPlayerLose);
 		}
 		
 		public override void Added()
@@ -65,9 +68,25 @@ namespace SNHU.GameObject
 			base.Removed();
 		}
 		
+		public override void Update()
+		{
+			base.Update();
+			
+			if (GameEnding && NobodyWon)
+			{
+				foreach (var p in Players)
+				{
+					if (p.Controller.Pressed("start"))
+					{
+						FP.World = new MenuWorld();
+					}
+				}
+			}
+		}
+		
 		public void AddPlayer(float x, float y, uint jid, string imageName)
 		{
-			if (Players.Find(p => p.jid == jid) != null)	return;
+			if (Players.Find(p => p.ControllerId == jid) != null)	return;
 			
 			if (Players.Count < 4)
 			{
@@ -81,7 +100,7 @@ namespace SNHU.GameObject
 			if (!GameStarted)
 			{
 				GameStarted = true;
-				GameMusic.Loop();
+//				GameMusic.Loop();
 				PlayersInMatch = Players.Count;
 				gameWorld.AdvanceLevel();
 			}
@@ -168,7 +187,7 @@ namespace SNHU.GameObject
 				remainingPlayers[0].SetGlovesLayer(-9002);
 				
 				// YOU WIN!
-				FP.Log("PLAYER ", remainingPlayers[0].id, " WINS!");
+				FP.Log("PLAYER ", remainingPlayers[0].PlayerId, " WINS!");
 				
 				Image black = Image.CreateRect(FP.Width, FP.Height, FP.Color(0x00000000));
 				black.Alpha = 0.0f;
@@ -179,7 +198,7 @@ namespace SNHU.GameObject
 				blackTween.Tween(black, "Alpha", 1.0f, 0.5f);
 				World.AddTween(blackTween, true);
 				
-				Text txt = new Text("     PLAYER " + (remainingPlayers[0].id + 1) + "\nIS THE TRUE HERO!!!");
+				Text txt = new Text("     PLAYER " + (remainingPlayers[0].PlayerId + 1) + "\nIS THE TRUE HERO!!!");
 				txt.Size = 64;
 				txt.ScrollX = txt.ScrollY = 0;
 				World.AddGraphic(txt, -9001, 0, 50);
@@ -221,6 +240,8 @@ namespace SNHU.GameObject
 				var txtTween = new VarTween(null, ONESHOT);
 				txtTween.Tween(txt, "X", FP.HalfWidth - txt.Width * 2, 0.25f, Ease.BounceOut);
 				AddTween(txtTween, true);
+				
+				NobodyWon = true;
 			}
 			else if (remainingPlayers.Count > 1)
 			{

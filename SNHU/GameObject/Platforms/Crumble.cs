@@ -39,11 +39,11 @@ namespace SNHU.GameObject.Platforms
 			
 			if (p != null)
 			{
-				OnLand(p);
+				OnLand();
 			}
 		}
 		
-		public override void OnLand(Player playerTarget)
+		public override void OnLand()
         {
 			if (canMakeAHellaRacket)
 			{

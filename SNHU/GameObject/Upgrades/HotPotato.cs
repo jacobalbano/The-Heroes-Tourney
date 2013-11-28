@@ -45,7 +45,7 @@ namespace SNHU.GameObject.Upgrades
 			//image = new Image(Library.GetTexture("assets/" +  + ".png"));
 			image = Image.CreateCircle(3, FP.Color(0xFF0000));
 						                           
-			AddResponse("player_die", OnPlayerDie);
+			AddResponse(Player.Die, OnPlayerDie);
 		}
 		
 		public override void Use()
@@ -96,19 +96,19 @@ namespace SNHU.GameObject.Upgrades
 					x = Parent.X;
 					y = Parent.Y;
 					
-					owner.Die();
+					owner.OnMessage(Player.Damage);
 				}
 				else
 				{
 					x = closestOpponent.X;
 					y = closestOpponent.Y;
 					
-					closestOpponent.Die();
+					closestOpponent.OnMessage(Player.Damage);
 				}
 			}
 			else
 			{
-				owner.Die();
+				owner.OnMessage(Player.Damage);
 				
 				x = Parent.X;
 				y = Parent.Y;

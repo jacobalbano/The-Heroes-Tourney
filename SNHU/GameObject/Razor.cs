@@ -54,14 +54,16 @@ namespace SNHU.GameObject
 			var p = Collide(Player.Collision, X, Y) as Player;
 			if (p != null)
 			{
-				for (int i = 0; i < 25; ++i)
+				for (int i = 0; i < 150; ++i)
 				{
-					emitter.Emit(FP.Choose("0", "1", "2", "3"), X, Y);
+					var randX = FP.Rand(Width) - HalfWidth;
+					var randY = FP.Rand(Height) - HalfHeight;
+					emitter.Emit(FP.Choose("0", "1", "2", "3"), X + randX, Y - 50 + randY);
 				}
 				
 				if(!p.Invincible)
 				{
-					p.Die();
+					p.OnMessage(Player.Damage);
 					Mixer.Audio["sawHit"].Play();
 				}
 			}

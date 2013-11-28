@@ -40,7 +40,7 @@ namespace SNHU.GameObject.Platforms
 		
 		public void OnPlayerLandResponse(params object[]args)
 		{
-			OnLand(args[0] as Player);
+			OnLand();
 		}
 		
 		public override void Load(System.Xml.XmlNode node)
@@ -64,13 +64,9 @@ namespace SNHU.GameObject.Platforms
 			World.Remove(this);
 		}
 
-        public virtual void OnLand(Player playerTarget)
+        public virtual void OnLand()
         {
         	
-        }
-
-        public virtual void OnLeave(Player playerTarget)
-        {
         }
 	}
 }

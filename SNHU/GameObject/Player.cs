@@ -24,6 +24,8 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class Player : Entity
 	{
+		public const string Die = "player_lose";
+		public const string Lose = "player_die";
 		public const string OnLand = "player_onLand";
 		public const string Damage = "player_damage";
 		
@@ -35,9 +37,10 @@ namespace SNHU.GameObject
 		
 		public Image player;
 		public Fist left, right;
-		private Controller controller;
-		private Axis axis;
 		private Image upgradeIcon;
+		
+		public Controller Controller { get; private set; }
+		private Axis axis;
 		
 		private OffscreenCursor cursor;
 		private bool isOffscreen;
@@ -55,44 +58,42 @@ namespace SNHU.GameObject
 		public float Speed = 0.0f;
 		
 		public const int STARTING_LIVES = 5;
-		public bool IsAlive { get; private set; }
 		
 		public int Lives { get; private set; }
-		public int id { get; private set; }
-		public uint jid { get; private set; }
-		
-		public string ImageName { get; private set; }
-		
+		public int PlayerId { get; private set; }
+		public uint ControllerId { get; private set; }
+		public bool IsAlive { get; private set; }
 		public bool Dashing { get; private set; }
+		public string ImageName { get; private set; }
 		
 		public Player(float x, float y, uint jid, int id, string imageName) : base(x, y)
 		{
 			ImageName = imageName;
-			this.id = id;
-			this.jid = jid;
+			this.PlayerId = id;
+			this.ControllerId = jid;
 			
 			hand = false;
 			
-			controller = new Controller(jid);
+			Controller = new Controller(jid);
 			
 			if (Joystick.HasAxis(jid, Joystick.Axis.PovX))	//	xbox
 			{
-				controller.Define("jump", id, Controller.Button.A);
-				controller.Define("punch", id, Controller.Button.X);
-				controller.Define("upgrade", id, Controller.Button.Y);
-				controller.Define("dash", id, Controller.Button.B);
-				controller.Define("start", id, Controller.Button.Start);
+				Controller.Define("jump", id, Controller.Button.A);
+				Controller.Define("punch", id, Controller.Button.X);
+				Controller.Define("upgrade", id, Controller.Button.Y);
+				Controller.Define("dash", id, Controller.Button.B);
+				Controller.Define("start", id, Controller.Button.Start);
 			}
 			else	//	snes
 			{
-				controller.Define("jump", id, Controller.Button.X);
-				controller.Define("punch", id, Controller.Button.Y);
-				controller.Define("upgrade", id, Controller.Button.A);
-				controller.Define("dash", id, Controller.Button.B);
-				controller.Define("start", id, (Controller.Button) 9);
+				Controller.Define("jump", id, Controller.Button.X);
+				Controller.Define("punch", id, Controller.Button.Y);
+				Controller.Define("upgrade", id, Controller.Button.A);
+				Controller.Define("dash", id, Controller.Button.B);
+				Controller.Define("start", id, (Controller.Button) 9);
 			}
 			
-			axis = controller.LeftStick;
+			axis = Controller.LeftStick;
 				
 			player = new Image(Library.GetTexture("assets/" + imageName + ".png"));
 			player.Scale = 0.5f;
@@ -220,14 +221,19 @@ namespace SNHU.GameObject
 				
 				if(this.Y - this.Height > FP.Camera.Y + FP.HalfHeight)
 				{
-					Die();
+					Kill();
 				}
 			}
 		}
 		
 		private void HandleInput()
 		{
-			if (OnGround && (controller.Pressed("jump")))
+			if (Controller.Pressed("start"))
+			{
+				World.BroadcastMessage(GameManager.Restart);
+			}
+			
+			if (OnGround && (Controller.Pressed("jump")))
 			{
 				float jumpMult = 1;
 				
@@ -253,26 +259,26 @@ namespace SNHU.GameObject
 				AddTween(tween, true);
 			}
 			
-			if (controller.Pressed("upgrade"))
+			if (Controller.Pressed("upgrade"))
 			{
 				if (upgrade != null)
 				{
 					upgrade.Use();
-					World.BroadcastMessage("Upgrade Used", id);
+					World.BroadcastMessage(Upgrade.Used, PlayerId);
 				}
 			}
 			
-			if (controller.Pressed("punch"))
+			if (Controller.Pressed("punch"))
 			{
 				Punch();
 			}
 			
-			if (controller.Pressed("advance"))
+			if (Controller.Pressed("advance"))
 			{
 				(World as GameWorld).AdvanceLevel();
 			}
 			
-			if (controller.Pressed("start"))
+			if (Controller.Pressed("start"))
 			{
 				GameWorld.gameManager.StartGame();
 			}
@@ -328,42 +334,24 @@ namespace SNHU.GameObject
 			{
 				if (e.Y > Y)
 				{
-					OnMessage(PhysicsBody.IMPULSE, (int) FP.Rand(10) - 5, JumpForce);
-					e.OnMessage(PhysicsBody.IMPULSE, (int) FP.Rand(10) - 5, -JumpForce);
+					OnMessage(PhysicsBody.IMPULSE, FP.Rand(10) - 5, JumpForce);
+					e.OnMessage(PhysicsBody.IMPULSE, FP.Rand(10) - 5, -JumpForce);
+				}
+				else if (e.Y < Y && Math.Abs(X - e.X) < HalfWidth)
+				{
+					e.OnMessage(PhysicsBody.IMPULSE, FP.Rand(10) - 5, JumpForce * 1.1);
 				}
 			}
 			
 			return base.MoveCollideY(e);
 		}
 		
-		public void SetTint(int id)
+		private void Kill()
 		{
-			switch (id)
-			{
-				case 0:
-					player.Color = FP.Color(0xFF8888);
-					break;
-				case 1:
-					player.Color = FP.Color(0x88FF88);
-					break;
-				case 2:
-					player.Color = FP.Color(0x8888FF);
-					break;
-				case 3:
-					player.Color = FP.Color(0xFFFF88);
-					break;
-				default:
-					break;
-			}
-		}
-		
-		public void Die()
-		{
-			FP.Log("die lol");
 			if (IsAlive && !Invincible && !GameWorld.gameManager.GameEnding)
 			{
 				IsAlive = false;
-				World.BroadcastMessage("player_die", this);
+				World.BroadcastMessage(Player.Die, this);
 				World.BroadcastMessage(CameraShake.SHAKE, 20.0f, 1.0f);
 				World.Remove(this);
 				
@@ -376,7 +364,7 @@ namespace SNHU.GameObject
 				
 				if (Lives <= 0)
 				{
-					World.BroadcastMessage("player_lose", this);
+					World.BroadcastMessage(Player.Lose, this);
 				}
 			}
 		}
@@ -428,10 +416,7 @@ namespace SNHU.GameObject
 		
 		private void OnDamage(params object[] args)
 		{
-			if (!Invincible)
-			{
-				Die();
-			}
+			Kill();
 		}
 		
 		private void OnGroundSmash(params object[] args)
@@ -443,11 +428,11 @@ namespace SNHU.GameObject
 				{
 					if (Rebounding)
 					{
-						p.Die();
+						p.Kill();
 					}
 					else
 					{
-						Die();
+						Kill();
 					}
 				}
 			}

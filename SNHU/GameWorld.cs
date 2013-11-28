@@ -146,12 +146,14 @@ namespace SNHU
 		
 		public void SpawnPlayers()
 		{
+			FP.Shuffle(currentChunk.spawnPoints);
+			
 			foreach (var player in gameManager.Players)
 			{
 				if (player.Lives > 0)
 				{
-					player.X = currentChunk.spawnPoints[player.id].X;
-					player.Y = currentChunk.spawnPoints[player.id].Y;
+					player.X = currentChunk.spawnPoints[player.PlayerId].X;
+					player.Y = currentChunk.spawnPoints[player.PlayerId].Y;
 					Add(player);
 				}
 			}

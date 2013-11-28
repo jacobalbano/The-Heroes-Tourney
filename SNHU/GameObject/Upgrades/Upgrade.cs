@@ -18,6 +18,8 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class Upgrade : Logic
 	{
+		public const string Used = "Upgrade Used";
+		
 		protected const float LIFETIME = 5.0f;
 		public bool Activated { get; protected set; }
 		public Image image {get; set;}

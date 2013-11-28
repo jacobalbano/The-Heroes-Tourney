@@ -32,7 +32,7 @@ namespace SNHU.GameObject
 			int id = (int)args[0];
 			if(owner != null)
 			{
-				if(owner.id == id)
+				if(owner.PlayerId == id)
 				{
 					World.Remove(this);
 				}
@@ -110,7 +110,7 @@ namespace SNHU.GameObject
 					if(owner == null)
 					{
 						owner = p;
-						FP.Log("GIVING PLAYER ", p.id, " A ", upgrade.GetType());
+						FP.Log("GIVING PLAYER ", p.PlayerId, " A ", upgrade.GetType());
 						p.SetUpgrade(upgrade);
 						
 						AddTween(new Alarm(2.0f, () => World.Remove(this), ONESHOT), true);

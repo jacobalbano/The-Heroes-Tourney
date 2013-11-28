@@ -130,7 +130,7 @@ namespace SNHU.GameObject.Upgrades
 			var p = e as Player;
 			if (p != null)
 			{
-				if (p.id == ownerID)
+				if (p.PlayerId == ownerID)
 				{
 					return false;
 				}
@@ -143,6 +143,8 @@ namespace SNHU.GameObject.Upgrades
 				p.OnMessage(Player.Damage);
 				return false;
 			}
+			
+			e.OnMessage(Platform.PlayerLand);
 			
 			return true;
 		}
@@ -177,9 +179,9 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Added();
 			
-			bullets.Add(new Bullet(new Vector2f(-1, -1), (Parent as Player).id));
-			bullets.Add(new Bullet(new Vector2f(FP.Choose(-0.1f, 0.1f), -1), (Parent as Player).id));
-			bullets.Add(new Bullet(new Vector2f(1, -1), (Parent as Player).id));
+			bullets.Add(new Bullet(new Vector2f(-1, -1), (Parent as Player).PlayerId));
+			bullets.Add(new Bullet(new Vector2f(FP.Choose(-0.1f, 0.1f), -1), (Parent as Player).PlayerId));
+			bullets.Add(new Bullet(new Vector2f(1, -1), (Parent as Player).PlayerId));
 		}
 		
 		public override void Use()
