@@ -110,7 +110,6 @@ namespace SNHU.GameObject
 					if(owner == null)
 					{
 						owner = p;
-						FP.Log("GIVING PLAYER ", p.PlayerId, " A ", upgrade.GetType());
 						p.SetUpgrade(upgrade);
 						
 						AddTween(new Alarm(2.0f, () => World.Remove(this), ONESHOT), true);

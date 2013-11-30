@@ -24,7 +24,7 @@ namespace SNHU.GameObject
 		public const string LOAD_COMPLETE = "loadComplete";
 		public const uint CHUNK_WIDTH = 640;
 		public const uint CHUNK_HEIGHT = 640;
-		public List<Entity> spawnPoints;
+		public List<Entity> SpawnPoints;
 		private Entity[]  ents;
 		private string level;
 		
@@ -48,10 +48,8 @@ namespace SNHU.GameObject
 		
 		public Chunk(float posX, float posY) : base(posX, posY)
 		{
-			var t = FP.GetTimer();
-			
 			var world = new World();
-			spawnPoints = new List<Entity>();
+			SpawnPoints = new List<Entity>();
 			world.RegisterClass<Platform>("platform");
 			world.RegisterClass<JumpPad>("jumpPad");
 			world.RegisterClass<Crumble>("crumble");
@@ -59,19 +57,11 @@ namespace SNHU.GameObject
 			world.RegisterClass<SpawnPoint>("spawnPoint");
 			world.RegisterClass<UpgradeSpawn>("Upgrade");
 			
-			FP.Log("register", FP.GetTimer() - t);
-			t = FP.GetTimer();;
-			
 			level = FP.Choose(levels);
-			ents = world.BuildWorldAsArray("assets/Levels/" + level);
 			
-			FP.Log("build", FP.GetTimer() - t);
-		}
-		
-		
-		public override void Added()
-		{
-			base.Added();
+			var t = FP.GetTimer();
+			ents = world.BuildWorldAsArray("assets/Levels/" + level);
+			FP.Log("building", level, "took", FP.GetTimer() - t, "ms");
 			
 			int spawns = 0;
 			foreach (var e in ents)
@@ -86,7 +76,7 @@ namespace SNHU.GameObject
 				if (e is SpawnPoint)
 				{
 					++spawns;
-					spawnPoints.Add(e);
+					SpawnPoints.Add(e);
 				}
 			}
 			
@@ -94,6 +84,12 @@ namespace SNHU.GameObject
 			{
 				throw new Exception("too few spawn points in" + level + ";" + spawns + "found, 4 required.");
 			}
+		}
+		
+		
+		public override void Added()
+		{
+			base.Added();
 			
 			World.AddList(ents);
 			
@@ -115,12 +111,8 @@ namespace SNHU.GameObject
 		
 		private void OnFinishAdvance()
 		{
-			var world = World as GameWorld;
-			world.OnFinishAdvance();
-			
-			world.Add(new CameraShake(FP.HalfWidth, FP.Camera.Y));
-			
-			World.BroadcastMessage(GameManager.PreloadNext);
+			World.Add(new CameraShake(FP.HalfWidth, FP.Camera.Y));
+			World.BroadcastMessage(ChunkManager.SpawnPlayers);
 		}
 	}
 }

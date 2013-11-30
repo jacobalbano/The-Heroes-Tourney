@@ -126,7 +126,6 @@ namespace SNHU.GameObject
 			Lives = STARTING_LIVES;
 			IsAlive = false;
 			
-			SetUpgrade(new Bullets());
 			Invincible = false;
 			Rebounding = false;
 			
@@ -273,11 +272,6 @@ namespace SNHU.GameObject
 				Punch();
 			}
 			
-			if (Controller.Pressed("advance"))
-			{
-				(World as GameWorld).AdvanceLevel();
-			}
-			
 			if (Controller.Pressed("start"))
 			{
 				GameWorld.gameManager.StartGame();
@@ -389,7 +383,6 @@ namespace SNHU.GameObject
 		
 		public void SetUpgrade(Upgrade upgrade)
 		{
-			FP.Log("SET UPGRADE");
 			if (this.upgrade != null)
 			{
 				RemoveLogic(this.upgrade);
@@ -408,8 +401,6 @@ namespace SNHU.GameObject
 			
 			if (this.upgrade != null)
 			{
-				upgradeIcon = upgrade.image;
-				FP.Log("GIVING ", this.upgrade.GetType());
 				AddLogic(this.upgrade);
 			}
 		}
@@ -446,7 +437,6 @@ namespace SNHU.GameObject
 			Vector2f dir = new Vector2f(fromX - X, fromY - Y);
 			dir = dir.Normalized(str);
 			
-			FP.Log(dir);
 			OnMessage(PhysicsBody.IMPULSE, -dir.X, -dir.Y);
 		}
 	}

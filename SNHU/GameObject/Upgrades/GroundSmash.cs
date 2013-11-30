@@ -27,8 +27,6 @@ namespace SNHU.GameObject.Upgrades
 		public GroundSmash()
 		{
 			AddResponse(Player.OnLand, OnPlayerLand);
-			//image = new Image(Library.GetTexture("assets/" +  + ".png"));
-			image = Image.CreateCircle(3, FP.Color(0xFF0000));
 		}
 		
 		public override void Use()

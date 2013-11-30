@@ -24,8 +24,6 @@ namespace SNHU.GameObject.Upgrades
 		
 		public SuperSpeed()
 		{
-			//image = new Image(Library.GetTexture("assets/" +  + ".png"));
-			image = Image.CreateCircle(3, FP.Color(0xFF0000));
 			
 			emitter = new Emitter(Library.GetTexture("assets/speed_particle.png"), 68, 30);
 			emitter.Relative = false;

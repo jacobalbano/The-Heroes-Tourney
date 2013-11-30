@@ -23,8 +23,6 @@ namespace SNHU.GameObject.Upgrades
 		
 		public Shield()
 		{
-			//image = new Image(Library.GetTexture("assets/" +  + ".png"));
-			image = Image.CreateCircle(3, FP.Color(0xFF0000));
 		}
 		
 		public override void Use()
@@ -54,7 +52,6 @@ namespace SNHU.GameObject.Upgrades
 		public override void Removed()
 		{
 			base.Removed();
-			FP.Log("SSQWE@#!@#!@#");
 			owner.Invincible = false;
 		}
 		
@@ -65,8 +62,6 @@ namespace SNHU.GameObject.Upgrades
 			if (shieldImg != null)
 			{
 				shieldImg.Alpha = 0.6f - (0.6f * lifeTimer.Percent);
-//				shieldImg.X = Parent.X;
-//				shieldImg.Y = Parent.Y - Parent.HalfHeight;
 			}
 		}
 		
@@ -77,7 +72,6 @@ namespace SNHU.GameObject.Upgrades
 			var tween = new VarTween(OnFadeOutComplete, Tween.ONESHOT);
 			tween.Tween(shieldImg, "Alpha", 0.0f, 0.45f);
 			Parent.World.AddTween(tween, true);
-			
 		}
 		
 		public void OnFadeOutComplete()

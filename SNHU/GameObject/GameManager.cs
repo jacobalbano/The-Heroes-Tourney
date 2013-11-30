@@ -22,7 +22,6 @@ namespace SNHU.GameObject
 	public class GameManager : Entity
 	{
 		public const string Restart = "gamemanager_restart";
-		public const string PreloadNext = "gamemanager_restart";
 		
 		public bool GameStarted { get; private set; }
 		public bool GamePaused { get; private set; }
@@ -50,7 +49,6 @@ namespace SNHU.GameObject
 			
 			AddResponse(Player.Die, OnPlayerDie);
 			AddResponse(Player.Lose, OnPlayerLose);
-			AddResponse(PreloadNext, OnPreload);
 		}
 		
 		public override void Added()
@@ -102,7 +100,6 @@ namespace SNHU.GameObject
 				GameStarted = true;
 				GameMusic.Loop();
 				PlayersInMatch = Players.Count;
-				gameWorld.AdvanceLevel();
 			}
 		}
 		
@@ -164,7 +161,7 @@ namespace SNHU.GameObject
 				}
 			}
 			
-			World.AddTween(new Alarm(1.0f, gameWorld.AdvanceLevel, ONESHOT), true);
+			World.AddTween(new Alarm(1.0f, () => World.BroadcastMessage(ChunkManager.Advance), ONESHOT), true);
 		}
 		
 		public void OnPlayerLose(params object[] args)
@@ -181,13 +178,10 @@ namespace SNHU.GameObject
 			if (remainingPlayers.Count == 1)
 			{
 				GameEnding = true;
-				gameWorld.UnloadCurrentChunk();
+				World.BroadcastMessage(ChunkManager.UnloadCurrent);
 				remainingPlayers[0].Active = false;
 				remainingPlayers[0].Layer = -9002;
 				remainingPlayers[0].SetGlovesLayer(-9002);
-				
-				// YOU WIN!
-				FP.Log("PLAYER ", remainingPlayers[0].PlayerId, " WINS!");
 				
 				Image black = Image.CreateRect(FP.Width, FP.Height, FP.Color(0x00000000));
 				black.Alpha = 0.0f;
@@ -198,6 +192,7 @@ namespace SNHU.GameObject
 				blackTween.Tween(black, "Alpha", 1.0f, 0.5f);
 				World.AddTween(blackTween, true);
 				
+				// YOU WIN!
 				Text txt = new Text("     PLAYER " + (remainingPlayers[0].PlayerId + 1) + "\nIS THE TRUE HERO!!!");
 				txt.Size = 64;
 				txt.ScrollX = txt.ScrollY = 0;
@@ -218,10 +213,7 @@ namespace SNHU.GameObject
 			else if (remainingPlayers.Count <= 0)
 			{
 				GameEnding = true;
-				gameWorld.UnloadCurrentChunk();
-				
-				// DRAW!
-				FP.Log("IT'S A DRAW!");
+				World.BroadcastMessage(ChunkManager.UnloadCurrent);
 				
 				Image black = Image.CreateRect(FP.Width, FP.Height, FP.Color(0x00000000));
 				black.Alpha = 0.0f;
@@ -232,6 +224,7 @@ namespace SNHU.GameObject
 				blackTween.Tween(black, "Alpha", 1.0f, 0.5f);
 				World.AddTween(blackTween, true);
 				
+				// DRAW!
 				Text txt = new Text("IT'S A DRAW!");
 				txt.Size = 64;
 				txt.ScrollX = txt.ScrollY = 0;
@@ -247,11 +240,6 @@ namespace SNHU.GameObject
 			{
 				return;
 			}
-		}
-		
-		private void OnPreload(params object[] args)
-		{
-			
 		}
 	}
 }

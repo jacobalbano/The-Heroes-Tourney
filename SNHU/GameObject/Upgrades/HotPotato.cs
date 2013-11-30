@@ -41,9 +41,6 @@ namespace SNHU.GameObject.Upgrades
 			opponents = new List<Entity>();
 			closestOpponent = (Player)Parent;
 			prevTime = 5;
-		
-			//image = new Image(Library.GetTexture("assets/" +  + ".png"));
-			image = Image.CreateCircle(3, FP.Color(0xFF0000));
 						                           
 			AddResponse(Player.Die, OnPlayerDie);
 		}

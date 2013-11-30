@@ -22,7 +22,6 @@ namespace SNHU.GameObject.Upgrades
 		
 		protected const float LIFETIME = 5.0f;
 		public bool Activated { get; protected set; }
-		public Image image {get; set;}
 		
 		protected Player owner;
 		

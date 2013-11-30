@@ -81,6 +81,7 @@
     <Compile Include="Components\PhysicsBody.cs" />
     <Compile Include="GameObject\CameraShake.cs" />
     <Compile Include="GameObject\Chunk.cs" />
+    <Compile Include="GameObject\ChunkManager.cs" />
     <Compile Include="GameObject\Fist.cs" />
     <Compile Include="GameObject\GameManager.cs" />
     <Compile Include="GameObject\HUD.cs" />

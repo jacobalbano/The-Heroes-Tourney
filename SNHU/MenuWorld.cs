@@ -115,8 +115,6 @@ namespace SNHU
 			var tween = new VarTween(StartTheGame, ONESHOT);
 			tween.Tween(i, "Alpha", 1, 0.25f, Ease.SineOut);
 			AddTween(tween, true);
-			
-			FP.Log("ready", controllerMenus.Count);
 		}
 		
 		void StartTheGame()
@@ -126,8 +124,6 @@ namespace SNHU
 			{
 				playerGraphics[menu.JoyId] = menu.PlayerImageName;
 			}
-			
-			FP.Log("start", playerGraphics.Count);
 			
 			loadingThread.Join();
 			

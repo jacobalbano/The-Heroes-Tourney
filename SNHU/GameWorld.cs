@@ -24,12 +24,9 @@ namespace SNHU
 	public class GameWorld : World
 	{
 		public static GameManager gameManager;
-		public List<Entity> spawnPoints;
-		private Image bg;
+		public ChunkManager chunkManager;
 		
-		private Chunk currentChunk;
-		private Chunk nextChunk;
-		private bool changingLevels;
+		private Image bg;
 		
 		private Dictionary<uint, string> playerImageNames;
 		
@@ -42,15 +39,10 @@ namespace SNHU
 			bg.ScrollX = bg.ScrollY = 0;
 			AddGraphic(bg);
 			
-			gameManager = new GameManager();
-			Add(gameManager);
+			Add(gameManager = new GameManager());
+			Add(chunkManager = new ChunkManager());
 			
-			changingLevels = false;
-			
-			AddTween(new Alarm(0.1f, CheckControllers, Tween.ONESHOT), true);
-			AddTween(new Alarm(0.2f, DelayBegin, ONESHOT), true);
-			
-			AdvanceLevel();
+			chunkManager.OnMessage(ChunkManager.PreloadNext);
 		}
 		
 		public void Init(Dictionary<uint, string> playerImageNames)
@@ -81,7 +73,7 @@ namespace SNHU
 			
 			if (Input.Pressed(Keyboard.Key.Return))
 			{
-				AdvanceLevel();
+				chunkManager.OnMessage(ChunkManager.Advance);
 			}
 			
 			if (Input.Pressed(Keyboard.Key.Escape))
@@ -90,8 +82,10 @@ namespace SNHU
 			}
 		}
 		
-		public void CheckControllers()
+		public override void Begin()
 		{
+			base.Begin();
+			
 			foreach (var i in playerImageNames.Keys)
 			{
 				if (Joystick.IsConnected(i))
@@ -99,11 +93,20 @@ namespace SNHU
 					gameManager.AddPlayer(0, 0, i, playerImageNames[i]);
 				}
 			}
+			
+			var black = Image.CreateRect(FP.Width, FP.Height, FP.Color(0));
+			
+			AddGraphic(black, -100);
+			
+			var tween = new VarTween(StartGame, ONESHOT);
+			tween.Tween(black, "Alpha", 0, 0.25f, Ease.SineOut);
+			AddTween(tween, true);
 		}
 		
-		public void DelayBegin()
+		private void StartGame()
 		{
 			gameManager.StartGame();
+			chunkManager.OnMessage(ChunkManager.Advance);
 		}
 		
 		public override void End()
@@ -111,67 +114,6 @@ namespace SNHU
 			base.End();
 			
 			Mixer.music.Stop();
-		}
-		
-		
-		public void AdvanceLevel()
-		{
-			if (!changingLevels && !gameManager.GameEnding)
-			{
-				changingLevels = true;
-				
-				if (gameManager != null)
-				{
-					foreach (var player in gameManager.Players)
-					{
-						if (player.IsAlive)
-						{
-							Remove(player);
-						}
-					}
-				}
-				
-				var all = new List<Entity>();
-				GetType("camerashake", all);
-				RemoveList(all);
-				
-				nextChunk = new Chunk(180, (FP.Camera.Y - FP.HalfHeight) - FP.Height);
-				Add(nextChunk);
-			}
-		}
-		
-		public void OnFinishAdvance()
-		{
-			if (currentChunk != null && currentChunk.World != null)
-			{
-				Remove(currentChunk);
-			}
-			
-			currentChunk = nextChunk;
-			
-			SpawnPlayers();
-			
-			changingLevels = false;
-		}
-		
-		public void SpawnPlayers()
-		{
-			FP.Shuffle(currentChunk.spawnPoints);
-			
-			foreach (var player in gameManager.Players)
-			{
-				if (player.Lives > 0)
-				{
-					player.X = currentChunk.spawnPoints[player.PlayerId].X;
-					player.Y = currentChunk.spawnPoints[player.PlayerId].Y;
-					Add(player);
-				}
-			}
-		}
-		
-		public void UnloadCurrentChunk()
-		{
-			Remove(currentChunk);
 		}
 		
 		public static bool OnCamera(float x, float y)
