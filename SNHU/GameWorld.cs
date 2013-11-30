@@ -35,6 +35,9 @@ namespace SNHU
 		
 		public GameWorld()
 		{
+			FP.Camera.X = FP.HalfWidth;
+			FP.Camera.Y = FP.HalfHeight;
+			
 			bg = new Image(Library.GetTexture("assets/bg.png"));
 			bg.ScrollX = bg.ScrollY = 0;
 			AddGraphic(bg);
@@ -46,6 +49,8 @@ namespace SNHU
 			
 			AddTween(new Alarm(0.1f, CheckControllers, Tween.ONESHOT), true);
 			AddTween(new Alarm(0.2f, DelayBegin, ONESHOT), true);
+			
+			AdvanceLevel();
 		}
 		
 		public void Init(Dictionary<uint, string> playerImageNames)

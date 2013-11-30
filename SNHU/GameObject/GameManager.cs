@@ -50,6 +50,7 @@ namespace SNHU.GameObject
 			
 			AddResponse(Player.Die, OnPlayerDie);
 			AddResponse(Player.Lose, OnPlayerLose);
+			AddResponse(PreloadNext, OnPreload);
 		}
 		
 		public override void Added()
@@ -83,13 +84,13 @@ namespace SNHU.GameObject
 			}
 		}
 		
-		public void AddPlayer(float x, float y, uint jid, string imageName)
+		public void AddPlayer(float x, float y, uint controllerId, string imageName)
 		{
-			if (Players.Find(p => p.ControllerId == jid) != null)	return;
+			if (Players.Find(p => p.ControllerId == controllerId) != null)	return;
 			
 			if (Players.Count < 4)
 			{
-				Player p = new Player(x, y, jid, Players.Count, imageName);
+				Player p = new Player(x, y, controllerId, Players.Count, imageName);
 				Players.Add(p);
 			}
 		}
@@ -99,7 +100,7 @@ namespace SNHU.GameObject
 			if (!GameStarted)
 			{
 				GameStarted = true;
-//				GameMusic.Loop();
+				GameMusic.Loop();
 				PlayersInMatch = Players.Count;
 				gameWorld.AdvanceLevel();
 			}
@@ -246,6 +247,11 @@ namespace SNHU.GameObject
 			{
 				return;
 			}
+		}
+		
+		private void OnPreload(params object[] args)
+		{
+			
 		}
 	}
 }
