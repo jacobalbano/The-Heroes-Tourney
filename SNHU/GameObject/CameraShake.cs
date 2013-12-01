@@ -27,6 +27,7 @@ namespace SNHU.GameObject
 			Type = "camerashake";
 			
 			AddResponse(SHAKE, OnCameraShake);
+			AddResponse(ChunkManager.Advance, OnAdvance);
 		}
 		
 		public override void Update()
@@ -67,6 +68,11 @@ namespace SNHU.GameObject
 			AddTween(shaker);
 			shaker.Tween(this, new { OffsetX = 0.0f, OffsetY = 0.0f }, dur, Ease .ElasticOut);
 			shaker.Start();
+		}
+		
+		private void OnAdvance(params object[] args)
+		{
+			World.Remove(this);
 		}
 	}
 }

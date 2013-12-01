@@ -21,8 +21,13 @@ namespace SNHU.GameObject
 		private Chunk nextChunk;
 		private Thread chunkLoader;
 		
+		private float x, y;
+		
 		public ChunkManager()
 		{
+			x = 180;
+			y = (FP.Camera.Y - FP.HalfHeight) - FP.Height;
+			
 			AddResponse(Advance, OnAdvance);
 			AddResponse(PreloadNext, OnPreloadNext);
 			AddResponse(UnloadCurrent, OnUnloadCurrent);
@@ -31,16 +36,6 @@ namespace SNHU.GameObject
 		
 		private void Loader()
 		{
-			float x = 180, y = 0;
-			if (currentChunk == null)
-			{
-				y = (FP.Camera.Y - FP.HalfHeight) - FP.Height;
-			}
-			else
-			{
-				y = currentChunk.Y - FP.Height;	
-			}
-			
 			nextChunk = new Chunk(x, y);
 		}
 		
@@ -58,10 +53,6 @@ namespace SNHU.GameObject
 					}
 				}
 				
-				var all = new List<Entity>();
-				World.GetType("camerashake", all);
-				World.RemoveList(all);
-				
 				chunkLoader.Join();
 				OnPreloadNext();
 				
@@ -72,6 +63,7 @@ namespace SNHU.GameObject
 					World.Remove(currentChunk);
 				}
 				
+				y -= FP.Height;
 				currentChunk = nextChunk;
 			}
 		}

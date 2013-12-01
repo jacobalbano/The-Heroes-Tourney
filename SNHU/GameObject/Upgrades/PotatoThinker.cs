@@ -18,7 +18,7 @@ namespace SNHU.GameObject.Upgrades
 		Player parent;
 		
 		Image image;
-		float lastTickDuration;
+		float tickDuration;
 		
 		public PotatoThinker(Player parent)
 		{
@@ -42,7 +42,7 @@ namespace SNHU.GameObject.Upgrades
 			AddResponse(ChunkManager.Advance, OnAdvance);
 			AddResponse(ChunkManager.AdvanceComplete, OnAdvanceComplete);
 			
-			lastTickDuration = 1;
+			tickDuration = 1;
 			Tick();
 		}
 		
@@ -51,7 +51,7 @@ namespace SNHU.GameObject.Upgrades
 			image.Scale = 1.25f;
 			
 			var tween = new VarTween(Tick, ONESHOT);
-			tween.Tween(image, "Scale", 1, lastTickDuration *= 0.84f, Ease.BounceOut);
+			tween.Tween(image, "Scale", 1, tickDuration *= 0.84f, Ease.BounceOut);
 			AddTween(tween, true);
 			
 			Mixer.Audio["timeTick"].Play();

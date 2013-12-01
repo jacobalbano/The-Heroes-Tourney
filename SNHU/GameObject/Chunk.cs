@@ -94,7 +94,7 @@ namespace SNHU.GameObject
 			World.AddList(ents);
 			
 			var tween = new VarTween(OnFinishAdvance, ONESHOT);
-			tween.Tween(FP.Camera, "Y", FP.Camera.Y - FP.Height, 1, Ease.ElasticOut);
+			tween.Tween(FP.Camera, "Y", Y + FP.HalfHeight, 1, Ease.ElasticOut);
 			AddTween(tween, true);
 		}
 		
