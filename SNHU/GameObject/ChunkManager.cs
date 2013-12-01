@@ -12,6 +12,7 @@ namespace SNHU.GameObject
 	public class ChunkManager : Entity
 	{
 		public const string Advance = "chunkManager_advance";
+		public const string AdvanceComplete = "chunkManager_advanceComplete";
 		public const string PreloadNext = "chunkManager_preloadNext";
 		public const string UnloadCurrent = "chunkManager_unloadCurrentChunk";
 		public const string SpawnPlayers = "chunkManager_spawnPlayers";
@@ -90,6 +91,7 @@ namespace SNHU.GameObject
 			}
 			
 			AddResponse(Advance, OnAdvance);
+			World.BroadcastMessage(AdvanceComplete);
 		}
 		
 		private void OnUnloadCurrent(params object[] args)

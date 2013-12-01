@@ -72,6 +72,8 @@ namespace SNHU.GameObject
 			this.PlayerId = id;
 			this.ControllerId = jid;
 			
+			SetUpgrade(new HotPotato());
+			
 			hand = false;
 			
 			Controller = new Controller(jid);
