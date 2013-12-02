@@ -1,12 +1,4 @@
-﻿/*
- * Created by SharpDevelop.
- * User: Chris
- * Date: 11/16/2013
- * Time: 12:43 AM
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Punk;
 using Punk.Tweens.Misc;
@@ -70,13 +62,16 @@ namespace SNHU.GameObject
 		{
 			base.Update();
 			
-			if (GameEnding && NobodyWon)
+			if (GameEnding)
 			{
 				foreach (var p in Players)
 				{
 					if (p.Controller.Pressed("start"))
 					{
-						FP.World = new MenuWorld();
+						if (NobodyWon || p.Lives > 0)
+						{
+							FP.World = new MenuWorld();
+						}
 					}
 				}
 			}
@@ -90,6 +85,7 @@ namespace SNHU.GameObject
 			{
 				Player p = new Player(x, y, controllerId, Players.Count, imageName);
 				Players.Add(p);
+				hud.AddPlayer(p);
 			}
 		}
 		
@@ -177,11 +173,17 @@ namespace SNHU.GameObject
 			
 			if (remainingPlayers.Count == 1)
 			{
+				var winner = remainingPlayers[0];
+				if (winner.World == null)
+				{
+					World.Add(winner);
+				}
+				
 				GameEnding = true;
 				World.BroadcastMessage(ChunkManager.UnloadCurrent);
-				remainingPlayers[0].Active = false;
-				remainingPlayers[0].Layer = -9002;
-				remainingPlayers[0].SetGlovesLayer(-9002);
+				winner.Active = false;
+				winner.Layer = -9002;
+				winner.SetGlovesLayer(-9002);
 				
 				Image black = Image.CreateRect(FP.Width, FP.Height, FP.Color(0x00000000));
 				black.Alpha = 0.0f;
@@ -193,7 +195,7 @@ namespace SNHU.GameObject
 				World.AddTween(blackTween, true);
 				
 				// YOU WIN!
-				Text txt = new Text("     PLAYER " + (remainingPlayers[0].PlayerId + 1) + "\nIS THE TRUE HERO!!!");
+				Text txt = new Text("     PLAYER " + (winner.PlayerId + 1) + "\nIS THE TRUE HERO!!!");
 				txt.Size = 64;
 				txt.ScrollX = txt.ScrollY = 0;
 				World.AddGraphic(txt, -9001, 0, 50);
@@ -203,11 +205,11 @@ namespace SNHU.GameObject
 				AddTween(txtTween, true);
 				
 				var playerTween = new MultiVarTween(null, ONESHOT);
-				playerTween.Tween(remainingPlayers[0], new { X = FP.Camera.X, Y = FP.Camera.Y },
+				playerTween.Tween(winner, new { X = FP.Camera.X, Y = FP.Camera.Y },
 				                  1.5f, Ease.ElasticOut);
 				AddTween(playerTween, true);
 				
-				World.Add(new Victory(remainingPlayers[0].Layer + 1));
+				World.Add(new Victory(winner.Layer + 1));
 				
 			}
 			else if (remainingPlayers.Count <= 0)

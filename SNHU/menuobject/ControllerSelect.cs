@@ -231,7 +231,7 @@ namespace SNHU.menuobject
 				list.Remove(player);
 			}
 			
-			player = new Image(Library.GetTexture("assets/" + PlayerImageName + ".png"));
+			player = new Image(Library.GetTexture("assets/players/" + PlayerImageName + ".png"));
 			player.CenterOrigin();
 			
 			player.X = 0;

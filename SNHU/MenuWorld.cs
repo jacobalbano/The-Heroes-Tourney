@@ -1,6 +1,8 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading;
 using SNHU.menuobject;
 using Punk;
@@ -28,19 +30,7 @@ namespace SNHU
 		
 		public MenuWorld()
 		{
-			allImages = new List<string>()
-			{
-				"player",
-				"batman",
-				"dragonborn",
-				"faith",
-				"gomez",
-				"gordon",
-				"punk",
-				"jade",
-				"maggy"
-			};
-			
+			allImages = LoadAllPlayers();
 			takenImages = new List<string>();
 			
 			controllerMenus = new Dictionary<uint, ControllerSelect>();
@@ -55,6 +45,37 @@ namespace SNHU
 			}
 			
 			AddTween(new Alarm(0.1f, () => BroadcastMessage(ControllerSelect.ControllerAdded, GetSlot()), ONESHOT), true);
+		}
+		
+		List<string> LoadAllPlayers()
+		{
+			List<string> result = new List<string>();
+			
+			try
+			{
+				result.AddRange(Directory.GetFiles("assets/players", "*.ini"));
+			}
+			catch
+			{
+				FP.Log("error");
+				// Could not open the directory for some inexplicable reason
+			}
+			
+			var regex = new Regex(@"assets/players/(?<Name>.+).ini");
+			
+			for (int i = 0; i < result.Count; i++)
+			{
+				var file = result[i];
+				
+				file = file.Replace('\\', '/');
+				
+				var match = regex.Match(file);
+				
+				file = match.Groups["Name"].Value;
+				result[i] = file;
+			}
+			
+			return result;
 		}
 		
 		public override void Begin()

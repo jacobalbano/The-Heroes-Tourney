@@ -1,12 +1,4 @@
-﻿/*
- * Created by SharpDevelop.
- * User: Chris
- * Date: 11/24/2013
- * Time: 5:21 AM
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;
@@ -61,6 +53,8 @@ namespace SNHU.GameObject.Upgrades
 			emitter.NewType(name, FP.Frames(0, 1, 2, 3, 4));
 			emitter.SetAlpha(name, 1, 0);
 			emitter.SetMotion(name, 0, 0, 0.5f, 0, 0, 0.25f, Ease.CircOut);
+			
+			AddResponse(ChunkManager.Advance, OnAdvance);
 		}
 		
 		public override void Added()
@@ -158,6 +152,11 @@ namespace SNHU.GameObject.Upgrades
 			var tween = new MultiVarTween(null, ONESHOT);
 			tween.Tween(Graphic, new { ScaleX = 1, ScaleY = 1 }, 0.75f, Ease.ElasticOut);
 			bounceTween = FP.Tweener.AddTween(tween, true);
+		}
+		
+		private void OnAdvance(params object[] args)
+		{
+			World.Remove(this);
 		}
 	}
 	

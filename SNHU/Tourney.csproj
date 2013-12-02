@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <RootNamespace>SNHU</RootNamespace>
-    <AssemblyName>SNHU</AssemblyName>
+    <AssemblyName>Tourney</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -85,9 +85,7 @@
     <Compile Include="GameObject\Fist.cs" />
     <Compile Include="GameObject\GameManager.cs" />
     <Compile Include="GameObject\HUD.cs" />
-    <Compile Include="GameObject\Meteor.cs" />
     <Compile Include="GameObject\Mixer.cs" />
-    <Compile Include="GameObject\Ladder.cs" />
     <Compile Include="GameObject\Platforms\Crumble.cs" />
     <Compile Include="GameObject\Platforms\JumpPad.cs" />
     <Compile Include="GameObject\Platforms\Platform.cs" />
@@ -107,6 +105,7 @@
     <Compile Include="GameObject\Upgrades\SuperSpeed.cs" />
     <Compile Include="GameObject\Upgrades\Upgrade.cs" />
     <Compile Include="GameWorld.cs" />
+    <Compile Include="Ini.cs" />
     <Compile Include="menuobject\ControllerSelect.cs" />
     <Compile Include="MenuWorld.cs" />
     <Compile Include="OffscreenCursor.cs" />

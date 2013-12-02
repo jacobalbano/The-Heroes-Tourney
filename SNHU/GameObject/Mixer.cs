@@ -1,12 +1,4 @@
-﻿/*
- * Created by SharpDevelop.
- * User: Chris
- * Date: 11/16/2013
- * Time: 12:06 AM
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Punk;
 using SFML.Audio;
@@ -45,6 +37,8 @@ namespace SNHU.GameObject
 			Audio.Add("swing2", new Sound(Library.GetBuffer("assets/audio/swing2.wav")));
 			
 			music = Library.GetMusic("assets/audio/music.ogg");
+			
+//			music.Volume = 0;
 		}
 	}
 }

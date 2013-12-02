@@ -1,12 +1,4 @@
-﻿/*
- * Created by SharpDevelop.
- * User: Jake
- * Date: 11/15/2013
- * Time: 8:08 PM
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;
@@ -95,7 +87,7 @@ namespace SNHU.GameObject
 			
 			axis = Controller.LeftStick;
 				
-			player = new Image(Library.GetTexture("assets/" + imageName + ".png"));
+			player = new Image(Library.GetTexture("assets/players/" + imageName + ".png"));
 			player.Scale = 0.5f;
 			AddGraphic(player);
 			
@@ -227,11 +219,6 @@ namespace SNHU.GameObject
 		
 		private void HandleInput()
 		{
-			if (Controller.Pressed("start"))
-			{
-				World.BroadcastMessage(GameManager.Restart);
-			}
-			
 			if (OnGround && (Controller.Pressed("jump")))
 			{
 				float jumpMult = 1;
@@ -344,13 +331,6 @@ namespace SNHU.GameObject
 		{
 			if (IsAlive && !Invincible && !GameWorld.gameManager.GameEnding)
 			{
-				IsAlive = false;
-				World.BroadcastMessage(Player.Die, this);
-				World.BroadcastMessage(CameraShake.SHAKE, 20.0f, 1.0f);
-				World.Remove(this);
-				
-				Mixer.Audio["death1"].Play();
-				
 				if (Lives > 0)
 				{
 					Lives -= 1;
@@ -360,6 +340,14 @@ namespace SNHU.GameObject
 				{
 					World.BroadcastMessage(Player.Lose, this);
 				}
+				
+				IsAlive = false;
+				World.BroadcastMessage(Player.Die, this);
+				World.BroadcastMessage(CameraShake.SHAKE, 20.0f, 1.0f);
+				World.Remove(this);
+				
+				Mixer.Audio["death1"].Play();
+				
 			}
 		}
 		

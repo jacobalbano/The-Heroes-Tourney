@@ -1,12 +1,4 @@
-﻿/*
- * Created by SharpDevelop.
- * User: Jake
- * Date: 11/15/2013
- * Time: 7:51 PM
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;

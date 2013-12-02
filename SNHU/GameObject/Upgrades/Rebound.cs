@@ -1,12 +1,4 @@
-﻿/*
- * Created by SharpDevelop.
- * User: Chris
- * Date: 11/24/2013
- * Time: 4:50 AM
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-using System;
+﻿using System;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;

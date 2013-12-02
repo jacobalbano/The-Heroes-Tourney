@@ -1,12 +1,4 @@
-﻿/*
- * Created by SharpDevelop.
- * User: Chris
- * Date: 11/23/2013
- * Time: 9:16 PM
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-using System;
+﻿using System;
 using Punk;
 using Punk.Graphics;
 using SNHU.GameObject;
@@ -30,7 +22,7 @@ namespace SNHU
 			image.OriginX = image.Width * 0.35f;
 			AddGraphic(image);
 			
-			var face = new Image(Library.GetTexture("assets/" + target.ImageName + "_head.png"));
+			var face = new Image(Library.GetTexture("assets/players/" + target.ImageName + "_head.png"));
 			face.CenterOO();
 			AddGraphic(face);
 		}

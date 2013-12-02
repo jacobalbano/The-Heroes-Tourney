@@ -1,12 +1,4 @@
-﻿/*
- * Created by SharpDevelop.
- * User: Jake
- * Date: 7/26/2013
- * Time: 10:01 AM
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Punk;
 using SFML.Window;
