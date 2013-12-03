@@ -1,15 +1,16 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
-using SNHU.menuobject;
+using SNHU.MenuObject;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
 using Punk.Utils;
 using SFML.Window;
+using Tourney.MenuObject;
 
 namespace SNHU
 {
@@ -43,8 +44,6 @@ namespace SNHU
 					AddController(i);
 				}
 			}
-			
-			AddTween(new Alarm(0.1f, () => BroadcastMessage(ControllerSelect.ControllerAdded, GetSlot()), ONESHOT), true);
 		}
 		
 		List<string> LoadAllPlayers()
@@ -99,8 +98,6 @@ namespace SNHU
 		{
 			base.Update();
 			
-			if (readying)	return;
-			
 			if (Input.Down(Keyboard.Key.LAlt) && Input.Pressed(Keyboard.Key.F4))
 			{
 				FP.Screen.Close();
@@ -110,6 +107,8 @@ namespace SNHU
 			{
 				FP.World = new MenuWorld();
 			}
+			
+			if (readying)	return;
 			
 			foreach (var menu in controllerMenus.Values)
 			{
@@ -122,7 +121,21 @@ namespace SNHU
 			if (controllerMenus.Count > 0)
 			{
 				readying = true;
-				AddTween(new Alarm(0.5f, Ready, ONESHOT), true);
+				var menus = new List<ControllerSelect>(controllerMenus.Values);
+				
+				for (int i = 0; i < menus.Count; i++)
+				{
+					var tween = new VarTween(null, ONESHOT);
+					tween.Tween(menus[i], "Y", -FP.Height, 0.5f, Ease.QuadOut);
+					AddTween(tween, true);
+					
+					if (i == 0)
+					{
+						Add(new MatchSettings(menus[i].Controller, menus[i].Color));
+					}
+				}
+				
+//				AddTween(new Alarm(0.5f, Ready, ONESHOT), true);
 			}
 		}
 		
@@ -133,12 +146,12 @@ namespace SNHU
 			
 			AddGraphic(i, -100);
 			
-			var tween = new VarTween(StartTheGame, ONESHOT);
+			var tween = new VarTween(AllReady, ONESHOT);
 			tween.Tween(i, "Alpha", 1, 0.25f, Ease.SineOut);
 			AddTween(tween, true);
 		}
 		
-		void StartTheGame()
+		void AllReady()
 		{
 			var playerGraphics = new Dictionary<uint, string>();
 			foreach (var menu in controllerMenus.Values)
@@ -201,8 +214,6 @@ namespace SNHU
 			var tween = new VarTween(() => Remove(menu), ONESHOT);
 			tween.Tween(menu, "Y", -menu.Height, 0.75f + FP.Random / 2, Ease.ElasticOut);
 			AddTween(tween, true);
-			
-			BroadcastMessage(ControllerSelect.ControllerRemoved, menu.Slot);
 		}
 		
 		public string GetImageName()

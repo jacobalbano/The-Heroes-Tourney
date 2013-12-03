@@ -107,6 +107,7 @@
     <Compile Include="GameWorld.cs" />
     <Compile Include="Ini.cs" />
     <Compile Include="menuobject\ControllerSelect.cs" />
+    <Compile Include="menuobject\MatchSettings.cs" />
     <Compile Include="MenuWorld.cs" />
     <Compile Include="OffscreenCursor.cs" />
     <Compile Include="Program.cs" />

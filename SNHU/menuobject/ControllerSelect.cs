@@ -8,16 +8,13 @@ using Punk.Utils;
 using SFML.Window;
 using SNHU;
 
-namespace SNHU.menuobject
+namespace SNHU.MenuObject
 {
 	/// <summary>
 	/// Description of ControllerSelect.
 	/// </summary>
 	public class ControllerSelect : Entity
 	{
-		public const string ControllerAdded = "controllerselect_added";
-		public const string ControllerRemoved = "controllerselect_removed";
-		
 		public int Slot { get; private set; }
 		public uint JoyId { get; private set; }
 		
@@ -25,7 +22,8 @@ namespace SNHU.menuobject
 		
 		public bool Ready {get; private set; }
 		
-		private Image image;
+		public int Color { get; private set; }
+		public Image Image {get; private set; }
 		private Text text;
 		private Image player;
 		private Image lArrow, rArrow;
@@ -54,14 +52,14 @@ namespace SNHU.menuobject
 			changing = false;
 			
 			this.parent = parent;
-			Height = FP.Height;
+			Height = FP.Height - 20;
 			Width = 250;
 			
 			this.JoyId = joyId;
 			this.Slot = slot;
 			
-			image = new Image(Library.GetTexture("assets/menu.png"));
-			image.Color = FP.Color(colors[slot]);
+			Image = new Image(Library.GetTexture("assets/menu.png"));
+			Image.Color = FP.Color(Color = colors[slot]);
 			text = new Text("PRESS START");
 			text.X -= 70;
 			text.Y = Height - 100;
@@ -69,13 +67,13 @@ namespace SNHU.menuobject
 			text.Color = FP.Color(0);
 			
 			OriginX = Width / 2;
-			image.OriginX = image.Width / 2;
+			Image.OriginX = Image.Width / 2;
 			
 			Controller = MakeController(JoyId);
 			
 			Controller.Define("Start", (int) JoyId, (Controller.Button) 9, Controller.Button.Start);
 			
-			AddGraphic(image);
+			AddGraphic(Image);
 			AddGraphic(text);
 		}
 		
