@@ -10,7 +10,6 @@ using Punk.Graphics;
 using Punk.Tweens.Misc;
 using Punk.Utils;
 using SFML.Window;
-using Tourney.MenuObject;
 
 namespace SNHU
 {
@@ -126,16 +125,11 @@ namespace SNHU
 				for (int i = 0; i < menus.Count; i++)
 				{
 					var tween = new VarTween(null, ONESHOT);
-					tween.Tween(menus[i], "Y", -FP.Height, 0.5f, Ease.QuadOut);
+					tween.Tween(menus[i], "Y", -FP.Height, 0.25f, Ease.QuadOut);
 					AddTween(tween, true);
-					
-					if (i == 0)
-					{
-						Add(new MatchSettings(menus[i].Controller, menus[i].Color));
-					}
 				}
 				
-//				AddTween(new Alarm(0.5f, Ready, ONESHOT), true);
+				AddTween(new Alarm(0.25f, Ready, ONESHOT), true);
 			}
 		}
 		
