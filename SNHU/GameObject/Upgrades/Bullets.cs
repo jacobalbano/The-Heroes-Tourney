@@ -151,7 +151,7 @@ namespace SNHU.GameObject.Upgrades
 			
 			var tween = new MultiVarTween(null, ONESHOT);
 			tween.Tween(Graphic, new { ScaleX = 1, ScaleY = 1 }, 0.75f, Ease.ElasticOut);
-			bounceTween = FP.Tweener.AddTween(tween, true);
+			bounceTween = AddTween(tween, true);
 		}
 		
 		private void OnAdvance(params object[] args)

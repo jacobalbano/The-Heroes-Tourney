@@ -39,11 +39,11 @@ namespace SNHU.GameObject.Upgrades
 				
 				var tween1 = new VarTween(null, Tween.ONESHOT);
 				tween1.Tween(shield_1, "Alpha", 0.6f, 0.45f);
-				FP.Tweener.AddTween(tween1, true);
+				AddTween(tween1, true);
 				
 				var tween2 = new VarTween(null, Tween.ONESHOT);
 				tween2.Tween(shield_2, "Alpha", 0.6f, 0.45f);
-				FP.Tweener.AddTween(tween2, true);
+				AddTween(tween2, true);
 				
 				owner.Rebounding = true;
 				
@@ -78,11 +78,11 @@ namespace SNHU.GameObject.Upgrades
 			
 			var tween1 = new VarTween(OnFadeOutComplete, Tween.ONESHOT);
 			tween1.Tween(shield_1, "Alpha", 0.0f, 0.45f);
-			FP.Tweener.AddTween(tween1, true);
+			AddTween(tween1, true);
 			
 			var tween2 = new VarTween(OnFadeOutComplete, Tween.ONESHOT);
 			tween2.Tween(shield_2, "Alpha", 0.0f, 0.45f);
-			FP.Tweener.AddTween(tween2, true);
+			AddTween(tween2, true);
 		}
 		
 		public void OnFadeOutComplete()

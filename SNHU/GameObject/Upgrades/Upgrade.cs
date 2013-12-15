@@ -33,16 +33,11 @@ namespace SNHU.GameObject.Upgrades
 		public virtual void Use()
 		{
 			Activated = true;
-			
-			if (Parent.World != null)
-			{
-				Parent.World.AddTween(lifeTimer, true);
-			}
+			AddTween(lifeTimer, true);
 		}
 		
 		public virtual void OnLifetimeComplete()
 		{
-			
 		}
 	}
 }

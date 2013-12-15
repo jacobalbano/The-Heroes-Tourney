@@ -25,15 +25,15 @@ namespace SNHU.GameObject.Upgrades
 			
 				var tweenPlayer = new VarTween(null, Tween.ONESHOT);
 				tweenPlayer.Tween(owner.player, "Alpha", INVIS_ALPHA, 0.25f);
-				FP.Tweener.AddTween(tweenPlayer, true);
+				AddTween(tweenPlayer, true);
 				
 				var tweenFist1 = new VarTween(null, Tween.ONESHOT);
 				tweenFist1.Tween(owner.left.Graphic, "Alpha", INVIS_ALPHA, 0.25f);
-				FP.Tweener.AddTween(tweenFist1, true);
+				AddTween(tweenFist1, true);
 				
 				var tweenFist2 = new VarTween(null, Tween.ONESHOT);
 				tweenFist2.Tween(owner.right.Graphic, "Alpha", INVIS_ALPHA, 0.25f);
-				FP.Tweener.AddTween(tweenFist2, true);
+				AddTween(tweenFist2, true);
 				
 				owner.right.Multiplier = owner.left.Multiplier = PUNCH_MULT;
 			}
@@ -45,20 +45,17 @@ namespace SNHU.GameObject.Upgrades
 			
 			owner.right.Multiplier = owner.left.Multiplier = Fist.DEFAULT_PUNCH_MULT;
 		
-			
-			var tweenPlayer = new VarTween(null, Tween.ONESHOT);
+			var tweenPlayer = new VarTween(() => owner.SetUpgrade(null), Tween.ONESHOT);
 			tweenPlayer.Tween(owner.player, "Alpha", 1.0f, 0.25f);
-			FP.Tweener.AddTween(tweenPlayer, true);
+			AddTween(tweenPlayer, true);
 			
 			var tweenFist1 = new VarTween(null, Tween.ONESHOT);
 			tweenFist1.Tween(owner.left.Graphic, "Alpha", 1.0f, 0.25f);
-			FP.Tweener.AddTween(tweenFist1, true);
+			AddTween(tweenFist1, true);
 			
 			var tweenFist2 = new VarTween(null, Tween.ONESHOT);
 			tweenFist2.Tween(owner.right.Graphic, "Alpha", 1.0f, 0.25f);
-			FP.Tweener.AddTween(tweenFist2, true);
-			
-			owner.SetUpgrade(null);
+			AddTween(tweenFist2, true);
 		}
 	}
 }
