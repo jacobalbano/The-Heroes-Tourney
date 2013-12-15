@@ -14,6 +14,25 @@ namespace SNHU.GameObject
 	{
 		Image image;
 		float ticks;
+		private ColorTween colorTween;
+		
+		static int[] colors;
+		static Victory()
+		{
+			colors = new int[]
+			{
+				0xff0000,
+				0x00ff00,
+				0x0000ff,
+				0xff00ff,
+				0x00ffff,
+				0xffaa00,
+				0x00ffaa,
+				0xff00aa,
+				0xaaff00,
+				0x00aaff
+			};
+		}
 		
 		public Victory(int layer)
 		{
@@ -30,6 +49,15 @@ namespace SNHU.GameObject
 			AddTween(angle, true);
 			
 			ticks = 0;
+			
+			colorTween = new ColorTween(NewColorPls, LOOPING);
+			NewColorPls();
+			AddTween(colorTween, true);
+		}
+		
+		void NewColorPls()
+		{
+			colorTween.Tween(1, colorTween.Color, FP.Color(FP.Choose(colors)));
 		}
 		
 		public override void Update()
@@ -37,6 +65,7 @@ namespace SNHU.GameObject
 			base.Update();
 			
 			image.Scale = 0.7f + (float) (Math.Sin(ticks += 0.1f) + 1) / 2f;
+			image.Color = colorTween.Color;
 		}
 	}
 }

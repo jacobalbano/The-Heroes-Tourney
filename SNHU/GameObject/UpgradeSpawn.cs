@@ -31,19 +31,13 @@ namespace SNHU.GameObject
 			}
 		}
 		
-		public override void Load(System.Xml.XmlNode node)
-		{
-			base.Load(node);
-			
-		}
-		
 		public override void Added()
 		{
 			base.Added();
-			if (FP.Rand(3) == 1)
+			if (FP.Rand(100) < 75)
 			{
-				switch (FP.Rand(8))
-				{
+				switch (FP.Rand(9))
+				{		
 					case 0:
 						upgrade = new Invisibility();
 						Graphic = new Image(Library.GetTexture("assets/invisibility.png"));
@@ -75,6 +69,10 @@ namespace SNHU.GameObject
 					case 7:
 						upgrade = new HotPotato();
 						Graphic = new Image(Library.GetTexture("assets/hotpotato.png"));
+						break;
+					case 8:
+						upgrade = new Magnet();
+						Graphic = new Image(Library.GetTexture("assets/magnet.png"));
 						break;
 					default:
 						break;
