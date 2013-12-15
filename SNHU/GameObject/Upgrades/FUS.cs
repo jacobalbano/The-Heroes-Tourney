@@ -11,7 +11,7 @@ namespace SNHU.GameObject.Upgrades
 	public class FUS : Upgrade
 	{
 		public const string BE_FUS = "fusYou";
-		const float FUS_STRENGTH = 50.0f;
+		const float FUS_STRENGTH = 65.0f;
 			
 		public FUS()
 		{
@@ -25,7 +25,7 @@ namespace SNHU.GameObject.Upgrades
 				
 				if (Parent.World != null)
 				{
-					Parent.World.BroadcastMessage(BE_FUS, FUS_STRENGTH, Parent.X, Parent.Y);
+					Parent.World.BroadcastMessage(BE_FUS, FUS_STRENGTH, Parent);
 					Parent.World.BroadcastMessage(CameraShake.SHAKE, 60.0f, 0.5f);
 					owner.SetUpgrade(null);
 					Mixer.Audio["fus"].Play();

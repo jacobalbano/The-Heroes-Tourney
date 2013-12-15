@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="800"
+   height="800"
+   id="svg5118"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="happy.svg">
+  <defs
+     id="defs5120">
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4575"
+       id="radialGradient4608"
+       gradientUnits="userSpaceOnUse"
+       cx="1596.5"
+       cy="-1464.3125"
+       fx="1596.5"
+       fy="-1464.3125"
+       r="738"
+       gradientTransform="matrix(0.54200542,0,0,0.54200544,733.66265,2048.5251)" />
+    <linearGradient
+       id="linearGradient4575">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop4577" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop4579" />
+    </linearGradient>
+    <radialGradient
+       r="738"
+       fy="-1464.3125"
+       fx="1596.5"
+       cy="-1464.3125"
+       cx="1596.5"
+       gradientTransform="matrix(0.54200542,0,0,0.54200544,-490.31165,1326.0275)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient5116"
+       xlink:href="#linearGradient4575"
+       inkscape:collect="always" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="400"
+     inkscape:cy="400"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata5123">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(25,-132.36218)">
+    <path
+       style="fill:url(#radialGradient5116);fill-opacity:1;stroke:none"
+       d="m 308.3334,132.36218 66.6666,400 66.6666,-400 -133.3332,0 z M 375,532.36218 632.7236,219.2863 517.2595,152.61963 375,532.36218 z m 0,0 L 754.7425,390.10268 688.0759,274.62164 375,532.36218 z m 0,0 400,66.6666 0,-133.3333 -400,66.6667 z m 0,0 313.0759,257.7405 66.6666,-115.481 L 375,532.36218 z m 0,0 142.2595,379.7425 115.4641,-66.6666 L 375,532.36218 z m 0,0 -66.6666,400 133.3332,0 -66.6666,-400 z m 0,0 -257.7405,313.0759 115.4641,66.6666 L 375,532.36218 z m 0,0 -379.7425,142.2595 66.6666,115.481 L 375,532.36218 z m 0,0 -400,-66.6667 0,133.3333 400,-66.6666 z m 0,0 L 61.9241,274.62164 -4.7425,390.10268 375,532.36218 z m 0,0 L 232.7236,152.61963 117.2595,219.2863 375,532.36218 z"
+       id="rect4537"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\happy.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+  </g>
+</svg>

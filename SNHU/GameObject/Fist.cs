@@ -12,6 +12,8 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class Fist : Entity
 	{
+		public float Multiplier;
+		
 		private Image image;
 		private Player parent;
 		
@@ -21,12 +23,22 @@ namespace SNHU.GameObject
 		
 		public const string Collision = "fist";
 		
+		private const float BASE_PUNCH_FORCE_X = 25;
+		private const float REBOUND_PUNCH_FORCE_X = 40;
+		
+		private const float BASE_PUNCH_FORCE_Y = -15;
+		private const float REBOUND_PUNCH_FORCE_Y = -25;
+		
+		public const float DEFAULT_PUNCH_MULT = 1;
+		
 		/// <summary>
 		/// Constructor
 		/// </summary>
 		/// <param name="hand">True for left hand image, false for right.</param>
 		public Fist(bool hand, Player parent)
 		{
+			Multiplier = DEFAULT_PUNCH_MULT;
+			
 			left = hand;
 			this.parent = parent;
 			punchy = false;
@@ -131,17 +143,13 @@ namespace SNHU.GameObject
 				 		Mixer.Audio["hit1"].Play();
 				 		
 			 			var hsign = FP.Sign(p.X - parent.X);
-			 			var dashing = player.Dashing;
-			 			var xMult = dashing ? 1.5f : 1f;
-			 			var yMult = dashing ? 0 : 1;
-			 			
 				 		if (player.Rebounding)
 				 		{
-				 			parent.OnMessage(PhysicsBody.IMPULSE, (40 * xMult) * -hsign, -25 * yMult);
+				 			parent.OnMessage(PhysicsBody.IMPULSE, (REBOUND_PUNCH_FORCE_X * Multiplier) * -hsign, REBOUND_PUNCH_FORCE_Y * Multiplier);
 				 		}
 				 		else
 				 		{
-				 			p.OnMessage(PhysicsBody.IMPULSE, (25 * xMult) * hsign, -15 * yMult);
+				 			p.OnMessage(PhysicsBody.IMPULSE, (BASE_PUNCH_FORCE_X * Multiplier) * hsign, BASE_PUNCH_FORCE_Y * Multiplier);
 				 		}
 				 	}
 				}

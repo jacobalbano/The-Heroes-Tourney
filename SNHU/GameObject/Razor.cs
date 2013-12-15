@@ -69,6 +69,8 @@ namespace SNHU.GameObject
 		//How long the razor will be
 		private float rotation;
 		private float speed;
+		private float size;
+		private float distance;
 		
 		public Image razorArm;
 		
@@ -86,12 +88,12 @@ namespace SNHU.GameObject
 			myImage = new Image(Library.GetTexture("assets/pivot.png"));
 			razorArm = new Image(Library.GetTexture("assets/razorArm.png"));
 			
-			razorArm.ScaleX = float.Parse(node.Attributes["distance"].Value) * 32 / razorArm.Width;
+			razorArm.ScaleX = distance * 32 / razorArm.Width;
 			
 			myImage.CenterOO();
 			razorArm.OriginY = razorArm.Height /2;
 			
-			theRazor = new RazorBlade(float.Parse(node.Attributes["size"].Value));
+			theRazor = new RazorBlade(size);
 			theRazor.X = X;
 			theRazor.Y = Y;
 			

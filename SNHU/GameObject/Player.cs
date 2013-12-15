@@ -37,8 +37,6 @@ namespace SNHU.GameObject
 		private OffscreenCursor cursor;
 		private bool isOffscreen;
 		
-		private bool hand;
-		
 		public Upgrade upgrade { get; private set; }
 		public bool Invincible;
 		public bool Rebounding;
@@ -64,24 +62,22 @@ namespace SNHU.GameObject
 			this.PlayerId = id;
 			this.ControllerId = jid;
 			
-			hand = false;
-			
 			Controller = new Controller(jid);
 			
 			if (Joystick.HasAxis(jid, Joystick.Axis.PovX))	//	xbox
 			{
 				Controller.Define("jump", id, Controller.Button.A);
-				Controller.Define("punch", id, Controller.Button.X);
+				Controller.Define("punch_r", id, (Controller.Button) 5);
+				Controller.Define("punch_l", id, (Controller.Button) 4);
 				Controller.Define("upgrade", id, Controller.Button.Y);
-				Controller.Define("dash", id, Controller.Button.B);
 				Controller.Define("start", id, Controller.Button.Start);
 			}
 			else	//	snes
 			{
 				Controller.Define("jump", id, Controller.Button.X);
-				Controller.Define("punch", id, Controller.Button.Y);
+				Controller.Define("punch_r", id, (Controller.Button) 5);
+				Controller.Define("punch_l", id, (Controller.Button) 4);
 				Controller.Define("upgrade", id, Controller.Button.A);
-				Controller.Define("dash", id, Controller.Button.B);
 				Controller.Define("start", id, (Controller.Button) 9);
 			}
 			
@@ -123,6 +119,7 @@ namespace SNHU.GameObject
 			
 			AddResponse(GroundSmash.GROUND_SMASH, OnGroundSmash);
 			AddResponse(FUS.BE_FUS, OnFUS);
+			AddResponse(Magnet.BE_MAGNET, OnMagnet);
 			AddResponse(Damage, OnDamage);
 		}
 		
@@ -254,9 +251,14 @@ namespace SNHU.GameObject
 				}
 			}
 			
-			if (Controller.Pressed("punch"))
+			if (Controller.Pressed("punch_r"))
 			{
-				Punch();
+				Punch(false);
+			}
+			
+			if (Controller.Pressed("punch_l"))
+			{
+				Punch(true);
 			}
 			
 			if (Controller.Pressed("start"))
@@ -265,7 +267,7 @@ namespace SNHU.GameObject
 			}
 		}
 		
-		private void Punch()
+		private void Punch(bool hand)
 		{
 			if (hand)
 			{
@@ -278,7 +280,7 @@ namespace SNHU.GameObject
 			
 			Mixer.Audio[FP.Choose("swing1","swing2")].Play();
 			
-			hand = !hand;
+//			hand = !hand;
 		}
 		
 		public override bool MoveCollideY(Entity e)
@@ -419,13 +421,44 @@ namespace SNHU.GameObject
 		
 		private void OnFUS(params object[] args)
 		{
-			float str = (float)args[0];
-			float fromX = (float)args[1];
-			float fromY = (float)args[2];
-			Vector2f dir = new Vector2f(fromX - X, fromY - Y);
-			dir = dir.Normalized(str);
+			var str = (float) args[0];
+			var sender = (Player) args[1];
 			
-			OnMessage(PhysicsBody.IMPULSE, -dir.X, -dir.Y);
+			float fromX = sender.X;
+			float fromY = sender.Y;
+			Vector2f dir = new Vector2f(fromX - X, fromY - Y);
+			
+			dir = dir.Normalized(str);
+	
+			if (Rebounding)
+			{
+				sender.OnMessage(PhysicsBody.IMPULSE, dir.X, dir.Y);
+			}
+			else if (!Invincible)
+			{
+				OnMessage(PhysicsBody.IMPULSE, -dir.X, -dir.Y);
+			}
+		}
+		
+		private void OnMagnet(params object[] args)
+		{
+			var str = (float) args[0];
+			var sender = (Player) args[1];
+			
+			float fromX = sender.X;
+			float fromY = sender.Y;
+			Vector2f dir = new Vector2f(fromX - X, fromY - Y);
+			
+			dir = dir.Normalized(str);
+	
+			if (Rebounding)
+			{
+				sender.OnMessage(PhysicsBody.IMPULSE, -dir.X, -dir.Y);
+			}
+			else if (!Invincible)
+			{
+				OnMessage(PhysicsBody.IMPULSE, dir.X, dir.Y);
+			}
 		}
 	}
 }

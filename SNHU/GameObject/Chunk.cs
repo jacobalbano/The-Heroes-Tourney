@@ -51,9 +51,7 @@ namespace SNHU.GameObject
 			
 			level = FP.Choose(levels);
 			
-			var t = FP.GetTimer();
 			ents = world.BuildWorldAsArray("assets/Levels/" + level);
-			FP.Log("building", level, "took", FP.GetTimer() - t, "ms");
 			
 			int spawns = 0;
 			foreach (var e in ents)
