@@ -10,12 +10,12 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
-   id="svg2"
-   version="1.1"
+   sodipodi:docname="upgrades.svg"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="upgrades.svg">
+   version="1.1"
+   id="svg2"
+   height="1052.3622047"
+   width="744.09448819">
   <defs
      id="defs4">
     <linearGradient
@@ -294,11 +294,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="395.91221"
-     inkscape:cy="220.31019"
+     inkscape:zoom="1"
+     inkscape:cx="378.79132"
+     inkscape:cy="363.80508"
      inkscape:document-units="px"
-     inkscape:current-layer="g6179"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1366"
      inkscape:window-height="706"
@@ -910,58 +910,68 @@
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\fus_active.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
-    <g
-       id="g6179"
-       transform="matrix(0.9999919,0,0,0.9999919,4.1804262,76.952477)">
-      <path
-         transform="matrix(-0.63291887,0,0,0.63198227,858.41763,384.59177)"
-         style="opacity:0.83185838;fill:#ff7612;fill-opacity:1;stroke:#f66000;stroke-width:7.90582228;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0"
-         d="m 640.97032,575.77222 c 0,4.34154 6.04914,10.39948 4.09726,15.01426 -1.95189,4.61478 -10.46193,4.37505 -13.30707,7.22019 -2.84514,2.84514 -17.89291,9.20981 -22.23445,9.20981 -4.34154,0 -10.39948,6.04914 -15.01426,4.09726 -4.61478,-1.95189 -4.37505,-10.46193 -7.22019,-13.30707 -2.84514,-2.84514 10.76474,-8.93475 8.81285,-13.54953 -1.95188,-4.61478 -18.02266,-4.34338 -18.02266,-8.68492 0,-4.34154 -6.04914,-10.39948 -4.09726,-15.01426 1.95189,-4.61478 10.46193,-4.37505 13.30707,-7.22019 2.84514,-2.84514 2.60541,-11.35518 7.22019,-13.30707 4.61478,-1.95188 25.41374,-1.95188 30.02852,0 4.61478,1.95189 4.37505,10.46193 7.22019,13.30707 2.84514,2.84514 11.35518,2.60541 13.30707,7.22019 1.95188,4.61478 -4.09726,10.67272 -4.09726,15.01426 z"
-         id="path6162"
-         inkscape:connector-curvature="0"
-         sodipodi:nodetypes="sssssssssssssss"
-         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\explosion.png"
-         inkscape:export-xdpi="90"
-         inkscape:export-ydpi="90" />
-      <path
-         transform="matrix(-0.97372134,0,0,0.97228042,1006.1949,188.65755)"
-         style="fill:#ff0000;fill-opacity:1;stroke:#d40000;stroke-width:5.13878441;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0"
-         d="m 619.64301,581.6219 c -3.22112,5.58744 5.50402,22.43459 -10.11695,22.43459 -7.81048,0 -0.25973,-6.4347 -5.48787,-7.8335 -2.61407,-0.6994 -19.14242,-10.17144 -20.57368,-13.55533 -1.43126,-3.38388 15.13932,-11.34826 15.9446,-12.74512 3.22113,-5.58744 -5.50402,-22.43459 10.11695,-22.43459 7.81049,0 0.25973,6.4347 5.48787,7.8335 1.19968,0.32098 5.32996,7.79424 9.58662,9.43647 5.01849,1.93615 10.21265,-1.82613 10.98706,0.005 0.74107,1.7521 0.76396,14.0633 -3.46001,17.78765 -3.93392,3.46861 -12.09627,-1.60206 -12.48459,-0.92846 z"
-         id="path6164"
-         inkscape:connector-curvature="0"
-         sodipodi:nodetypes="sssssssssss"
-         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\explosion.png"
-         inkscape:export-xdpi="90"
-         inkscape:export-ydpi="90" />
-      <path
-         transform="matrix(0.75463403,0,0,0.75351733,72.618539,314.61526)"
-         style="opacity:0.31415932;fill:#ffff00;fill-opacity:1;stroke:#d49600;stroke-width:6.6306901;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0"
-         d="m 643.11096,575.55543 c 0,4.66703 -11.67191,6.35489 -12.82397,9.07868 -1.15207,2.72378 1.79829,8.57889 -0.76093,11.13811 -2.55922,2.55922 -5.6066,4.63029 -8.99049,6.06155 -3.38388,1.43126 -6.55927,7.52335 -11.2263,7.52335 -4.66704,0 -6.1381,-11.45512 -8.86189,-12.60718 -2.72379,-1.15207 -8.3621,1.5815 -10.92132,-0.97772 -2.55922,-2.55922 -2.98364,-16.85655 -2.98364,-20 0,-3.14345 -4.50917,-7.62563 -3.07791,-11.00951 1.43126,-3.38389 -1.1151,-10.05024 1.94335,-13.10869 3.05845,-3.05845 20.21296,-4.16607 24.1182,-4.16607 3.90524,0 8.89637,-4.78836 12.94034,-3.07791 4.04399,1.71046 0.88147,13.20359 2.94146,15.26359 2.06,2.05999 8.74849,1.70519 10.17975,5.08908 1.43126,3.38388 7.52335,6.12568 7.52335,10.79272 z"
-         id="path6166"
-         inkscape:connector-curvature="0"
-         sodipodi:nodetypes="sssssssssssssss"
-         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\explosion.png"
-         inkscape:export-xdpi="90"
-         inkscape:export-ydpi="90" />
-      <path
-         style="fill:#ffffff;fill-opacity:1;stroke:#dbfdff;stroke-width:1.00000799000000010;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0;opacity:1"
-         d="m 596.56778,749.54931 -3.26132,0.24861 -1.84633,2.69526 -0.25134,-3.25733 -2.70009,-1.84596 3.26132,-0.24861 1.84633,-2.69526 0.25134,3.25733 z"
-         id="path6168"
-         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\explosion.png"
-         inkscape:export-xdpi="90"
-         inkscape:export-ydpi="90"
-         inkscape:connector-curvature="0"
-         sodipodi:nodetypes="ccccccccc" />
-      <path
-         sodipodi:nodetypes="ssss"
-         inkscape:connector-curvature="0"
-         id="path6174"
-         d="m 666.25935,748.4696 c -4.36087,2.87669 -9.56917,10.06801 -13.7705,13.75012 -5.71582,5.00946 -13.77049,-6.15613 -13.77049,-13.75012 0,-7.59398 33.88654,-4.1859 27.54099,0 z"
-         style="fill:#000000;fill-opacity:1;stroke:none"
-         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\explosion.png"
-         inkscape:export-xdpi="90"
-         inkscape:export-ydpi="90" />
-    </g>
+    <path
+       sodipodi:nodetypes="sccsccs"
+       inkscape:connector-curvature="0"
+       style="fill:#ff0000;fill-opacity:1;stroke:#800000;stroke-width:0.99999183"
+       d="m 272.94209,647.4424 c -25.07481,6.7188 -8.40141,36.10495 -8.40141,36.10495 l 6.95024,-1.86233 c -0.45602,-0.89352 -10.77608,-21.48871 4.33975,-25.53899 15.11586,-4.05024 16.45925,18.9502 16.51109,19.95203 l 5.92862,-1.58857 c 0,0 -0.25342,-33.78588 -25.32829,-27.06709 z"
+       id="path3892"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\magnet.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\explosion.png"
+       sodipodi:nodetypes="sssssssssssssss"
+       inkscape:connector-curvature="0"
+       id="path6162"
+       d="m 456.91218,825.41602 c 0,2.74375 -3.82859,6.57223 -2.59321,9.48867 1.23537,2.91643 6.62149,2.76493 8.42222,4.56299 1.80073,1.79806 11.32467,5.82039 14.07249,5.82039 2.74782,0 6.58198,3.82292 9.50273,2.58938 2.92076,-1.23355 2.76903,-6.61171 4.56976,-8.40977 1.80073,-1.79806 -6.81315,-5.64656 -5.57777,-8.56299 1.23537,-2.91644 11.40679,-2.74492 11.40679,-5.48867 0,-2.74376 3.82858,-6.57224 2.59321,-9.48867 -1.23538,-2.91644 -6.6215,-2.76493 -8.42223,-4.563 -1.80073,-1.79806 -1.649,-7.17621 -4.56976,-8.40976 -2.92075,-1.23355 -16.0847,-1.23355 -19.00546,0 -2.92076,1.23355 -2.76903,6.6117 -4.56976,8.40976 -1.80073,1.79807 -7.18685,1.64656 -8.42222,4.563 -1.23538,2.91643 2.59321,6.74491 2.59321,9.48867 z"
+       style="opacity:0.83185838;fill:#ff7612;fill-opacity:1;stroke:#800000;stroke-width:5;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\explosion.png"
+       sodipodi:nodetypes="sssssssssss"
+       inkscape:connector-curvature="0"
+       id="path6164"
+       d="m 407.01247,831.1035 c 3.13644,5.43252 -5.35934,21.81254 9.85101,21.81254 7.60517,0 0.2529,-6.25628 5.34361,-7.6163 2.54536,-0.68001 18.63923,-9.88941 20.03287,-13.17947 1.39364,-3.29006 -14.74136,-11.03361 -15.52547,-12.39173 -3.13646,-5.43252 5.35934,-21.81254 -9.85101,-21.81254 -7.60518,0 -0.25291,6.25628 -5.34362,7.6163 -1.16814,0.31208 -5.18985,7.57812 -9.33462,9.17482 -4.88657,1.88246 -9.94419,-1.7755 -10.69824,0.005 -0.72159,1.70352 -0.74388,13.67336 3.36905,17.29444 3.83051,3.37244 11.7783,-1.55764 12.15642,-0.90271 z"
+       style="fill:#ff0000;fill-opacity:1;stroke:#800000;stroke-width:5;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\explosion.png"
+       sodipodi:nodetypes="sssssssssssssss"
+       inkscape:connector-curvature="0"
+       id="path6166"
+       d="m 562.10786,825.25267 c 0,3.51666 -8.80795,4.78848 -9.67732,6.84089 -0.86939,2.0524 1.35704,6.46429 -0.57422,8.39269 -1.93126,1.9284 -4.2309,3.48897 -6.78448,4.56744 -2.55357,1.07847 -4.9498,5.66893 -8.47168,5.66893 -3.52187,0 -4.63198,-8.63156 -6.68743,-9.49965 -2.05544,-0.8681 -6.31027,1.19168 -8.24153,-0.73672 -1.93126,-1.9284 -2.25154,-12.7016 -2.25154,-15.07023 0,-2.36862 -3.40274,-5.74599 -2.32267,-8.29579 1.08007,-2.54979 -0.84149,-7.57296 1.4665,-9.87754 2.30799,-2.30458 15.25327,-3.13918 18.20027,-3.13918 2.947,0 6.71345,-3.60808 9.76514,-2.31924 3.05171,1.28885 0.66518,9.94905 2.21971,11.50129 1.55453,1.55222 6.60185,1.28488 7.68192,3.83467 1.08007,2.5498 5.67733,4.61577 5.67733,8.13244 z"
+       style="opacity:0.31415932;fill:#ffff00;fill-opacity:1;stroke:#800000;stroke-width:5.00000048;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0" />
+    <path
+       sodipodi:nodetypes="ccccccccc"
+       inkscape:connector-curvature="0"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\explosion.png"
+       id="path6168"
+       d="m 600.74337,826.49572 -3.26129,0.2486 -1.84631,2.69524 -0.25134,-3.2573 -2.70007,-1.84595 3.26129,-0.2486 1.84632,-2.69524 0.25134,3.2573 z"
+       style="fill:#ffffff;fill-opacity:1;stroke:#800000;stroke-width:0.99999988;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\explosion.png"
+       style="fill:#000000;fill-opacity:1;stroke:#800000;stroke-width:0.99999189"
+       d="m 670.43438,825.41601 c -4.36084,2.87667 -9.56909,10.06793 -13.77039,13.75001 -5.71577,5.00942 -13.77038,-6.15608 -13.77038,-13.75001 0,-7.59391 33.88627,-4.18586 27.54077,0 z"
+       id="path6174"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ssss" />
+    <path
+       inkscape:connector-curvature="0"
+       id="rect3110"
+       d="m 261.56165,676.7168 c 1.47687,4.06108 2.97903,6.83055 2.97903,6.83055 l 6.95024,-1.86233 c -0.16356,-0.32051 -1.58808,-3.19843 -2.6608,-6.91582 l -7.26847,1.9476 z m 29.62656,-7.93841 c 0.92689,3.75645 1.13495,6.96031 1.15355,7.31967 l 5.92862,-1.58857 c 0,0 -0.0838,-3.1495 -0.83533,-7.40493 l -6.24684,1.67383 z"
+       style="fill:#b3b3b3;fill-opacity:1;stroke:#800000;stroke-width:0.99999183"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\magnet.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <rect
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"

@@ -28,6 +28,7 @@ namespace SNHU.GameObject
 		public const float JUMP_JUICE_DURATION = 0.17f;
 		
 		public Image player;
+		private bool hand;
 		public Fist left, right;
 		private Image upgradeIcon;
 		
@@ -62,11 +63,15 @@ namespace SNHU.GameObject
 			this.PlayerId = id;
 			this.ControllerId = jid;
 			
+			hand = false;
+			
 			Controller = new Controller(jid);
 			
 			if (Joystick.HasAxis(jid, Joystick.Axis.PovX))	//	xbox
 			{
+				Controller.Define("dodge", id, Controller.Button.B);
 				Controller.Define("jump", id, Controller.Button.A);
+				Controller.Define("punch", id, Controller.Button.X);
 				Controller.Define("punch_r", id, (Controller.Button) 5);
 				Controller.Define("punch_l", id, (Controller.Button) 4);
 				Controller.Define("upgrade", id, Controller.Button.Y);
@@ -75,6 +80,7 @@ namespace SNHU.GameObject
 			else	//	snes
 			{
 				Controller.Define("jump", id, Controller.Button.X);
+				Controller.Define("punch", id, Controller.Button.Y);
 				Controller.Define("punch_r", id, (Controller.Button) 5);
 				Controller.Define("punch_l", id, (Controller.Button) 4);
 				Controller.Define("upgrade", id, Controller.Button.A);
@@ -249,6 +255,11 @@ namespace SNHU.GameObject
 					upgrade.Use();
 					World.BroadcastMessage(Upgrade.Used, PlayerId);
 				}
+			}
+			
+			if (Controller.Pressed("punch"))
+			{
+				Punch(hand = !hand);
 			}
 			
 			if (Controller.Pressed("punch_r"))
