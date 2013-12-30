@@ -2,6 +2,8 @@
 using Punk;
 using Punk.Graphics;
 using Punk.Utils;
+using SNHU.Components;
+
 //using SFML.Graphics;
 
 namespace SNHU.GameObject.Upgrades
@@ -35,7 +37,7 @@ namespace SNHU.GameObject.Upgrades
 			{
 				base.Use();
 				
-				owner.Speed = SUPER_SPEED;
+				Parent.OnMessage(Movement.SPEED, SUPER_SPEED);
 				Parent.AddGraphic(emitter);
 			}
 		}
@@ -64,7 +66,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.OnLifetimeComplete();
 			
-			owner.Speed = Player.SPEED;
+			owner.OnMessage(Movement.SPEED, Player.SPEED);
 			
 			owner.SetUpgrade(null);
 		}

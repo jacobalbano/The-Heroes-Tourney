@@ -46,7 +46,6 @@ namespace SNHU.GameObject
 		public bool OnGround {get; private set; }
 		
 		public const float SPEED = 5.5f;
-		public float Speed = 0.0f;
 		
 		public const int STARTING_LIVES = 5;
 		
@@ -54,7 +53,7 @@ namespace SNHU.GameObject
 		public int PlayerId { get; private set; }
 		public uint ControllerId { get; private set; }
 		public bool IsAlive { get; private set; }
-		public bool Dashing { get; private set; }
+		
 		public string ImageName { get; private set; }
 		
 		public Player(float x, float y, uint jid, int id, string imageName) : base(x, y)
@@ -64,30 +63,7 @@ namespace SNHU.GameObject
 			this.ControllerId = jid;
 			
 			hand = false;
-			
-			Controller = new Controller(jid);
-			
-			if (Joystick.HasAxis(jid, Joystick.Axis.PovX))	//	xbox
-			{
-				Controller.Define("dodge", id, Controller.Button.B);
-				Controller.Define("jump", id, Controller.Button.A);
-				Controller.Define("punch", id, Controller.Button.X);
-				Controller.Define("punch_r", id, (Controller.Button) 5);
-				Controller.Define("punch_l", id, (Controller.Button) 4);
-				Controller.Define("upgrade", id, Controller.Button.Y);
-				Controller.Define("start", id, Controller.Button.Start);
-			}
-			else	//	snes
-			{
-				Controller.Define("jump", id, Controller.Button.X);
-				Controller.Define("punch", id, Controller.Button.Y);
-				Controller.Define("punch_r", id, (Controller.Button) 5);
-				Controller.Define("punch_l", id, (Controller.Button) 4);
-				Controller.Define("upgrade", id, Controller.Button.A);
-				Controller.Define("start", id, (Controller.Button) 9);
-			}
-			
-			axis = Controller.LeftStick;
+			InitController();
 				
 			player = new Image(Library.GetTexture("assets/players/" + imageName + ".png"));
 			player.Scale = 0.5f;
@@ -114,8 +90,6 @@ namespace SNHU.GameObject
 			physics = new PhysicsBody();
 			physics.Colliders.Add(Platform.Collision);
 			physics.Colliders.Add(Type);
-			EnablePhysics();
-			Speed = SPEED;
 			
 			Lives = STARTING_LIVES;
 			IsAlive = false;
@@ -123,10 +97,47 @@ namespace SNHU.GameObject
 			Invincible = false;
 			Rebounding = false;
 			
+			
+			AddLogic(physics);
+			AddLogic(new Movement(physics, axis));
+			AddLogic(new DodgeController(Controller));
+			
 			AddResponse(GroundSmash.GROUND_SMASH, OnGroundSmash);
 			AddResponse(FUS.BE_FUS, OnFUS);
 			AddResponse(Magnet.BE_MAGNET, OnMagnet);
 			AddResponse(Damage, OnDamage);
+		}
+		
+		void InitController()
+		{
+			Controller = new Controller(ControllerId);
+			
+			if (Joystick.HasAxis(ControllerId, Joystick.Axis.PovX))	//	xbox
+			{
+				Controller.Define("dodge", PlayerId, Controller.Button.B);
+				Controller.Define("jump", PlayerId, Controller.Button.A);
+				
+				Controller.Define("punch", PlayerId, Controller.Button.X);
+				Controller.Define("punch_r", PlayerId, (Controller.Button) 5);
+				Controller.Define("punch_l", PlayerId, (Controller.Button) 4);
+				
+				Controller.Define("upgrade", PlayerId, Controller.Button.Y);
+				Controller.Define("start", PlayerId, Controller.Button.Start);
+			}
+			else	//	snes
+			{
+				//	todo: dodge
+				Controller.Define("jump", PlayerId, Controller.Button.X);
+				
+				Controller.Define("punch", PlayerId, Controller.Button.Y);
+				Controller.Define("punch_r", PlayerId, (Controller.Button) 5);
+				Controller.Define("punch_l", PlayerId, (Controller.Button) 4);
+				
+				Controller.Define("upgrade", PlayerId, Controller.Button.A);
+				Controller.Define("start", PlayerId, (Controller.Button) 9);
+			}
+			
+			axis = Controller.LeftStick;
 		}
 		
 		public override void Added()
@@ -198,21 +209,6 @@ namespace SNHU.GameObject
 				
 				HandleInput();
 				
-				if (Math.Abs(physics.MoveDelta.X) < Speed)
-				{
-					var delta = FP.Sign(physics.MoveDelta.X);
-					var ax = FP.Sign(axis.X);
-					
-					if (delta == 0 || delta == ax)
-					{
-						OnMessage(PhysicsBody.IMPULSE, axis.X * Speed, 0, true);
-					}
-					else
-					{
-						OnMessage(PhysicsBody.IMPULSE, axis.X * (Speed / 3f), 0, true);
-					}
-				}
-				
 				if(this.Y - this.Height > FP.Camera.Y + FP.HalfHeight)
 				{
 					Kill();
@@ -239,7 +235,7 @@ namespace SNHU.GameObject
 				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce * jumpMult);
 				
 				ClearTweens();
-				Dashing = false;
+				
 				player.ScaleX = 1 - JUMP_JUICE_FORCE;
 				player.ScaleY = 1 + JUMP_JUICE_FORCE;
 				
@@ -362,18 +358,6 @@ namespace SNHU.GameObject
 				Mixer.Audio["death1"].Play();
 				
 			}
-		}
-		
-		public void EnablePhysics()
-		{
-			if (physics.Parent == null)
-			{
-				AddLogic(physics);
-			}
-		}
-		public void DisablePhysics()
-		{
-			RemoveLogic(physics);
 		}
 		
 		public void SetGlovesLayer(int layer)
