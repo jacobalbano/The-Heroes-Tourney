@@ -75,7 +75,6 @@ namespace SNHU.GameObject
 			base.Added();
 			
 			var interval = FP.Width / (players.Count + 1);
-			FP.Log("offset", interval);
 			for (int i = 0; i < players.Count; ++i)
 			{
 				var e = players[i];

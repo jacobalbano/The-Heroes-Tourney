@@ -18,7 +18,8 @@ namespace SNHU.GameObject.Upgrades
 		Player parent;
 		
 		Image image;
-		float tickDuration;
+		float totalTime;
+		Alarm alarm;
 		
 		public PotatoThinker(Player parent)
 		{
@@ -37,12 +38,12 @@ namespace SNHU.GameObject.Upgrades
 			Y = parent.Top - 40;
 			
 			AddResponse(Player.Die, OnPlayerDie);
-			AddResponse(HotPotato.GO_BOOM, OnGoBoom);
 			
 			AddResponse(ChunkManager.Advance, OnAdvance);
 			AddResponse(ChunkManager.AdvanceComplete, OnAdvanceComplete);
 			
-			tickDuration = 1;
+			totalTime = 5;
+			AddTween(alarm = new Alarm(totalTime, OnGoBoom, ONESHOT), true);
 			Tick();
 		}
 		
@@ -51,7 +52,7 @@ namespace SNHU.GameObject.Upgrades
 			image.Scale = 1.25f;
 			
 			var tween = new VarTween(Tick, ONESHOT);
-			tween.Tween(image, "Scale", 1, tickDuration *= 0.84f, Ease.BounceOut);
+			tween.Tween(image, "Scale", 1, alarm.Remaining / 5f);
 			AddTween(tween, true);
 			
 			Mixer.Audio["timeTick"].Play();
@@ -124,8 +125,8 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Update();
 			
-			FP.Log(opponents.Count);
-			GetNearestTarget();
+			UpdateOpponents();
+			GetFurthestTarget();
 				
 			if (target != null)
 			{
@@ -137,7 +138,7 @@ namespace SNHU.GameObject.Upgrades
 		private void UpdateOpponents()
 		{
 			opponents.Clear();
-			opponents = GameWorld.gameManager.Players.FindAll(p => p.Lives > 0);
+			opponents = GameWorld.gameManager.Players.FindAll(p => p.World != null);
 			
 			for (int i = 0; i < opponents.Count; i++)
 			{
@@ -158,6 +159,21 @@ namespace SNHU.GameObject.Upgrades
 				if (currentDist < minDist)
 				{
 					minDist = currentDist;
+					target = p;
+				}
+			}
+		}
+		
+		private void GetFurthestTarget()
+		{
+			float maxDist = 0f;
+			foreach (var p in opponents)
+			{
+				var currentDist = FP.Distance(parent.X, parent.Y - parent.HalfHeight, p.X, p.Y - p.HalfHeight);
+				
+				if (currentDist > maxDist)
+				{
+					maxDist = currentDist;
 					target = p;
 				}
 			}
@@ -186,12 +202,10 @@ namespace SNHU.GameObject.Upgrades
 			}
 		}
 		
-		private void OnGoBoom(params object[] args)
+		private void OnGoBoom()
 		{
-			if ((args[0] as Player) == parent)
-			{
-				World.Remove(this);
-			}
+			parent.SetUpgrade(null);
+			World.Remove(this);
 		}
 		
 		private void OnAdvance(params object[] args)
@@ -203,7 +217,6 @@ namespace SNHU.GameObject.Upgrades
 		private void OnAdvanceComplete(params object[] args)
 		{
 			Active = true;
-			UpdateOpponents();
 			FP.Log("advance unpause");
 		}
 	}

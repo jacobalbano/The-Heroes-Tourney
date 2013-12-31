@@ -12,8 +12,6 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class HotPotato : Upgrade
 	{
-		public const string GO_BOOM = "goBoom";
-		
 		public HotPotato()
 		{
 		}
@@ -26,14 +24,6 @@ namespace SNHU.GameObject.Upgrades
 				
 				Parent.World.Add(new PotatoThinker(Parent as Player));
 			}
-		}
-		
-		public override void OnLifetimeComplete()
-		{
-			base.OnLifetimeComplete();
-			
-			FP.World.BroadcastMessage(GO_BOOM, owner);
-			owner.SetUpgrade(null);
 		}
 	}
 }
