@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
+using Punk.Utils;
+using SFML.Window;
 using SNHU.Components;
 
 namespace SNHU.GameObject
@@ -19,15 +21,16 @@ namespace SNHU.GameObject
 		
 		private float offsetX, offsetY;
 		private bool left;
-		private bool punchy;
+		private bool punchy, punching, canPunch;
+		
+		private Vector2f forceVector;
 		
 		public const string Collision = "fist";
 		
-		private const float BASE_PUNCH_FORCE_X = 25;
-		private const float REBOUND_PUNCH_FORCE_X = 40;
+		private const float BASE_PUNCH_FORCE = 30;
+		private const float REBOUND_PUNCH_FORCE = 40;
 		
-		private const float BASE_PUNCH_FORCE_Y = -15;
-		private const float REBOUND_PUNCH_FORCE_Y = -25;
+		private const float PUNCH_BOOST_Y = -10;
 		
 		public const float DEFAULT_PUNCH_MULT = 1;
 		
@@ -39,9 +42,13 @@ namespace SNHU.GameObject
 		{
 			Multiplier = DEFAULT_PUNCH_MULT;
 			
+			forceVector = new Vector2f();
+			
 			left = hand;
 			this.parent = parent;
 			punchy = false;
+			punching = false;
+			canPunch = true;
 			
 			image = new Image(Library.GetTexture("assets/glove" + (left ? "2" : "1") + ".png"));
 			image.CenterOO();
@@ -54,17 +61,17 @@ namespace SNHU.GameObject
 			
 			if (left)
 			{
-				offsetY = -30;
+				offsetY = 5;
 			}
 			else
 			{
-				offsetY = -20;
+				offsetY = 15;
 			}
 			
 			FaceRight();
 		}
 		
-		private void ResetFace(bool facing)
+		private void FinishPunch(bool facing)
 		{
 			if (facing)
 			{
@@ -74,6 +81,10 @@ namespace SNHU.GameObject
 			{
 				FaceRight();
 			}
+			
+			punching = false;
+			canPunch = true;
+			image.Angle = 0;
 		}
 		
 		public void FaceLeft()
@@ -104,24 +115,43 @@ namespace SNHU.GameObject
 			}
 		}
 		
-		public void Punch()
+		public bool Punch(Axis axis)
 		{
-			var to = offsetX + (left ? 40 : 50) * (image.FlippedX ? -1 : 1);
-			punchy = true;
+			if (punching) return false;
 			
-			var tween = new VarTween(() => UnPunch(image.FlippedX), ONESHOT);
-			tween.Tween(this, "offsetX", to, 0.05f);
+			forceVector.X = (float) Math.Round(axis.X);
+			if (forceVector.X == 0) forceVector.X = image.FlippedX ? -0.8f : 0.8f;
+			
+			forceVector.Y = (float) Math.Round(axis.Y);
+			
+			image.Angle = (image.FlippedX ? -1 : 1) * FP.Angle(0, 0, forceVector.X, forceVector.Y);
+			
+			var to = new {
+				offsetX = (offsetX + (left ? 40 : 50)) * forceVector.X,
+				offsetY = (offsetY + (left ? 30 : 20)) * forceVector.Y
+			};
+			
+			punchy = true;
+			punching = true;
+			
+			var tween = new MultiVarTween(() => UnPunch(image.FlippedX), ONESHOT);
+			tween.Tween(this, to, 0.05f);
 			AddTween(tween, true);
+			
+			return true;
 		}
 		
 		private void UnPunch(bool facing)
 		{
-			var to = offsetX - (left ? 40 : 50) * (facing ? -1 : 1);
+			var to = new {
+				offsetX = (left ? 40 : 50) * (facing ? -1 : 1),
+				offsetY = (left ? 5 : 15)
+			};
 			
 			punchy = false;
 			
-			var tween = new VarTween(() => ResetFace(facing), ONESHOT);
-			tween.Tween(this, "offsetX", to, 0.07f);
+			var tween = new MultiVarTween(() => FinishPunch(facing), ONESHOT);
+			tween.Tween(this, to, 0.07f);
 			AddTween(tween, true);
 		}
 		
@@ -129,6 +159,7 @@ namespace SNHU.GameObject
 		{
 			base.Update();
 			
+			if (!canPunch) return;
 			if (punchy)
 			{
 				var l = new List<Entity>();
@@ -138,28 +169,31 @@ namespace SNHU.GameObject
 				{
 					var player = p as Player;
 					if (player != null && player != parent && !player.Invincible)
-				 	{	
+				 	{
+						canPunch = false;
 						World.BroadcastMessage(CameraShake.SHAKE, 10.0f, 0.5f);
 				 		Mixer.Audio["hit1"].Play();
 				 		
 			 			var hsign = FP.Sign(p.X - parent.X);
 				 		if (player.Rebounding)
 				 		{
-				 			parent.OnMessage(PhysicsBody.IMPULSE, (REBOUND_PUNCH_FORCE_X * Multiplier) * -hsign, REBOUND_PUNCH_FORCE_Y * Multiplier);
+				 			parent.OnMessage(PhysicsBody.IMPULSE, (REBOUND_PUNCH_FORCE * Multiplier) * -hsign, REBOUND_PUNCH_FORCE * Multiplier);
 				 		}
 				 		else
 				 		{
-				 			p.OnMessage(PhysicsBody.IMPULSE, (BASE_PUNCH_FORCE_X * Multiplier) * hsign, BASE_PUNCH_FORCE_Y * Multiplier);
+				 			p.OnMessage(PhysicsBody.IMPULSE, BASE_PUNCH_FORCE * forceVector.X, PUNCH_BOOST_Y + BASE_PUNCH_FORCE * forceVector.Y);
+				 		
+//				 			parent.OnMessage(PhysicsBody.IMPULSE, (BASE_PUNCH_FORCE_X * Multiplier) * hsign, BASE_PUNCH_FORCE_Y * Multiplier);
 				 		}
 				 	}
 				}
 			 	
 			}
 			
-			MoveTowards(parent.X, parent.Y, 20);
+			MoveTowards(parent.CenterX, parent.CenterY, 20);
 			
-			X = parent.X + offsetX;
-			Y = parent.Y + offsetY;
+			X = parent.CenterX + offsetX;
+			Y = parent.CenterY + offsetY;
 		}
 	}
 }

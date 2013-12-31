@@ -43,7 +43,8 @@ namespace SNHU.GameObject
 		public bool Rebounding;
 		
 		public PhysicsBody physics;
-		public bool OnGround {get; private set; }
+		public DodgeController dodge;
+		public bool OnGround { get; private set; }
 		
 		public const float SPEED = 5.5f;
 		
@@ -100,7 +101,7 @@ namespace SNHU.GameObject
 			
 			AddLogic(physics);
 			AddLogic(new Movement(physics, axis));
-			AddLogic(new DodgeController(Controller));
+			AddLogic(dodge = new DodgeController(Controller, axis));
 			
 			AddResponse(GroundSmash.GROUND_SMASH, OnGroundSmash);
 			AddResponse(FUS.BE_FUS, OnFUS);
@@ -114,26 +115,26 @@ namespace SNHU.GameObject
 			
 			if (Joystick.HasAxis(ControllerId, Joystick.Axis.PovX))	//	xbox
 			{
-				Controller.Define("dodge", PlayerId, Controller.Button.B);
+				Controller.Define("upgrade", PlayerId, Controller.Button.B);
 				Controller.Define("jump", PlayerId, Controller.Button.A);
 				
 				Controller.Define("punch", PlayerId, Controller.Button.X);
 				Controller.Define("punch_r", PlayerId, (Controller.Button) 5);
 				Controller.Define("punch_l", PlayerId, (Controller.Button) 4);
 				
-				Controller.Define("upgrade", PlayerId, Controller.Button.Y);
+				Controller.Define("dodge", PlayerId, Controller.Button.Y);
 				Controller.Define("start", PlayerId, Controller.Button.Start);
 			}
 			else	//	snes
 			{
-				//	todo: dodge
+				Controller.Define("upgrade", PlayerId, Controller.Button.B);
 				Controller.Define("jump", PlayerId, Controller.Button.X);
 				
 				Controller.Define("punch", PlayerId, Controller.Button.Y);
 				Controller.Define("punch_r", PlayerId, (Controller.Button) 5);
 				Controller.Define("punch_l", PlayerId, (Controller.Button) 4);
 				
-				Controller.Define("upgrade", PlayerId, Controller.Button.A);
+				Controller.Define("dodge", PlayerId, Controller.Button.A);
 				Controller.Define("start", PlayerId, (Controller.Button) 9);
 			}
 			
@@ -144,6 +145,7 @@ namespace SNHU.GameObject
 		{
 			base.Added();
 			
+			OnMessage(DodgeController.CANCEL_DODGE);
 			World.AddList(left, right);
 			IsAlive = true;
 		}
@@ -174,7 +176,7 @@ namespace SNHU.GameObject
 		public override void Update()
 		{
 			base.Update();
-		 	
+			
 			if (!isOffscreen && !GameWorld.OnCamera(X, Y))
 			{
 				isOffscreen = true;
@@ -185,10 +187,9 @@ namespace SNHU.GameObject
 				isOffscreen = false;
 				World.Remove(cursor);
 			}
-				
+			
 			if (!GameWorld.gameManager.GameEnding)
 			{
-				
 			 	if (axis.X < 0)
 			 	{
 			 		FaceLeft();
@@ -204,8 +205,23 @@ namespace SNHU.GameObject
 				}
 				else
 				{
+					dodge.CanDodge = true;
 					OnMessage(PhysicsBody.FRICTION, 0.75f);
 				}
+				
+				
+				if (!OnGround && dodge.IsDodging)
+				{
+					Entity result = 
+						Collide(Platform.Collision, X + 1, Y) ??
+						Collide(Platform.Collision, X - 1, Y) ??
+						null;
+					if (result != null)
+					{
+						dodge.CanDodge = true;
+					}
+				}
+					
 				
 				HandleInput();
 				
@@ -218,30 +234,35 @@ namespace SNHU.GameObject
 		
 		private void HandleInput()
 		{
-			if (OnGround && (Controller.Pressed("jump")))
+			if (Controller.Pressed("jump"))
 			{
-				float jumpMult = 1;
+				OnMessage(DodgeController.CANCEL_DODGE);
 				
-				if(Collide("JumpPad", X, Y + 1) != null)
+				if (OnGround)
 				{
-					jumpMult = 1.4f;
-					Mixer.Audio["jumpPad"].Play();
+					float jumpMult = 1;
+					
+					if(Collide("JumpPad", X, Y + 1) != null)
+					{
+						jumpMult = 1.4f;
+						Mixer.Audio["jumpPad"].Play();
+					}
+					else
+					{
+						Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
+					}
+					
+					OnMessage(PhysicsBody.IMPULSE, 0, JumpForce * jumpMult, true);
+					
+					ClearTweens();
+					
+					player.ScaleX = 1 - JUMP_JUICE_FORCE;
+					player.ScaleY = 1 + JUMP_JUICE_FORCE;
+					
+					var tween = new MultiVarTween(null, ONESHOT);
+					tween.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
+					AddTween(tween, true);	
 				}
-				else
-				{
-					Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
-				}
-				
-				OnMessage(PhysicsBody.IMPULSE, 0, JumpForce * jumpMult);
-				
-				ClearTweens();
-				
-				player.ScaleX = 1 - JUMP_JUICE_FORCE;
-				player.ScaleY = 1 + JUMP_JUICE_FORCE;
-				
-				var tween = new MultiVarTween(null, ONESHOT);
-				tween.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
-				AddTween(tween, true);
 			}
 			
 			if (Controller.Pressed("upgrade"))
@@ -258,16 +279,6 @@ namespace SNHU.GameObject
 				Punch(hand = !hand);
 			}
 			
-			if (Controller.Pressed("punch_r"))
-			{
-				Punch(false);
-			}
-			
-			if (Controller.Pressed("punch_l"))
-			{
-				Punch(true);
-			}
-			
 			if (Controller.Pressed("start"))
 			{
 				GameWorld.gameManager.StartGame();
@@ -276,16 +287,20 @@ namespace SNHU.GameObject
 		
 		private void Punch(bool hand)
 		{
+			bool success = false;
 			if (hand)
 			{
-				left.Punch();
+				success = left.Punch(axis);
 			}
 			else
 			{
-				right.Punch();
+				success = right.Punch(axis);
 			}
 			
-			Mixer.Audio[FP.Choose("swing1","swing2")].Play();
+			if (success)
+			{
+				Mixer.Audio[FP.Choose("swing1","swing2")].Play();
+			}
 			
 //			hand = !hand;
 		}
@@ -322,6 +337,8 @@ namespace SNHU.GameObject
 			}
 			else if (e.Type == Type)
 			{
+//				if (dodge.IsDodging) return false;
+				
 				if (e.Y > Y)
 				{
 					OnMessage(PhysicsBody.IMPULSE, FP.Rand(10) - 5, JumpForce);
@@ -334,6 +351,14 @@ namespace SNHU.GameObject
 			}
 			
 			return base.MoveCollideY(e);
+		}
+		
+		public override bool MoveCollideX(Entity e)
+		{
+//			if (e.Type == Type)
+//				if (dodge.IsDodging) return false;
+			
+			return base.MoveCollideX(e);
 		}
 		
 		private void Kill()

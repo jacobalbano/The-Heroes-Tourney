@@ -28,6 +28,7 @@ namespace SNHU.MenuObject
 		private Image player;
 		private Image lArrow, rArrow;
 		private Image confirm;
+		private Image check;
 		public string PlayerImageName { get; private set; }
 		private bool changing;
 		
@@ -66,10 +67,15 @@ namespace SNHU.MenuObject
 			text.Size = 20;
 			text.Color = FP.Color(0);
 			
+			check = new Image(Library.GetTexture("assets/ready.png"));
+			check.CenterOO();
+			check.Y = Height * 0.75f;
+			check.ScaleY = 0;
+			
 			OriginX = Width / 2;
 			Image.OriginX = Image.Width / 2;
 			
-			Controller = MakeController(JoyId);
+			Controller = new Controller(joyId);
 			
 			Controller.Define("Start", (int) JoyId, (Controller.Button) 9, Controller.Button.Start);
 			
@@ -94,11 +100,13 @@ namespace SNHU.MenuObject
 					{
 						confirm = new Image(Library.GetTexture("assets/Xbox_1.png"));
 						Controller.Define("A", (int) JoyId, Controller.Button.A);
+						Controller.Define("B", (int) JoyId, Controller.Button.B);
 					}
 					else
 					{
 						confirm = new Image(Library.GetTexture("assets/Snes_1.png"));
 						Controller.Define("A", (int) JoyId, Controller.Button.X);
+						Controller.Define("B", (int) JoyId, Controller.Button.B);
 					}
 					
 					confirm.CenterOO();
@@ -120,47 +128,83 @@ namespace SNHU.MenuObject
 			}
 			else
 			{
-				if (!changing)
+				if (Ready)
 				{
-					if (Controller.LeftStick.X < 0)
+					if (Controller.Pressed("B"))
 					{
-						lArrow.Scale = 0.8f;
+						ClearTweens();
 						
-						var tween = new VarTween(null, ONESHOT);
-						tween.Tween(lArrow, "Scale", 1, 0.3f);
-						AddTween(tween, true);
-						
-						PlayerImageName = parent.NextImage(PlayerImageName);
-						MakePlayerImage();
-					}
-					else if (Controller.LeftStick.X > 0)
-					{
-						rArrow.Scale = 0.8f;
-						
-						var tween = new VarTween(null, ONESHOT);
-						tween.Tween(rArrow, "Scale", 1, 0.3f);
-						AddTween(tween, true);
-						
-						PlayerImageName = parent.PrevImage(PlayerImageName);
-						MakePlayerImage();
-					}
-					
-					if (Controller.Pressed("A"))
-					{
-						confirm.Scale = 0.8f;
-						confirm.Y += 20;
-					}
-					else if (Controller.Released("A"))
-					{
 						confirm.Scale = 1f;
-						confirm.Y -= 20;
-						
-						var tween = new VarTween(MakeCheckmark, ONESHOT);
-						tween.Tween(confirm, "ScaleY", 0, 0.1f, Ease.SineOut);
+						confirm.Y = Height * 0.75f;
+					
+						var tween = new VarTween(Reselect, ONESHOT);
+						tween.Tween(check, "ScaleY", 0, 0.1f, Ease.SineOut);
 						AddTween(tween, true);
 					}
 				}
+				else
+				{
+					if (!changing)
+					{
+						if (Controller.LeftStick.X < 0)
+						{
+							lArrow.Scale = 0.8f;
+							
+							var tween = new VarTween(null, ONESHOT);
+							tween.Tween(lArrow, "Scale", 1, 0.3f);
+							AddTween(tween, true);
+							
+							PlayerImageName = parent.NextImage(PlayerImageName);
+							MakePlayerImage();
+						}
+						else if (Controller.LeftStick.X > 0)
+						{
+							rArrow.Scale = 0.8f;
+							
+							var tween = new VarTween(null, ONESHOT);
+							tween.Tween(rArrow, "Scale", 1, 0.3f);
+							AddTween(tween, true);
+							
+							PlayerImageName = parent.PrevImage(PlayerImageName);
+							MakePlayerImage();
+						}
+						
+						if (Controller.Pressed("A"))
+						{
+							confirm.Scale = 0.8f;
+							confirm.Y = Height * 0.75f + 20;
+						}
+						
+						if (Controller.Released("A"))
+						{
+							confirm.Scale = 1f;
+							confirm.Y = Height * 0.75f;
+							
+							ClearTweens();
+							var tween = new VarTween(MakeCheckmark, ONESHOT);
+							tween.Tween(confirm, "ScaleY", 0, 0.1f, Ease.SineOut);
+							AddTween(tween, true);
+						}
+					}
+				}
 			}
+		}
+		
+		void Reselect()
+		{
+			Ready = false;
+			changing = false;
+			
+			var list = Graphic as Graphiclist;
+			list.Add(confirm);
+			list.Remove(check);
+			list.Add(lArrow);
+			list.Add(rArrow);
+			
+			var tween = new VarTween(null, ONESHOT);
+			tween.Tween(confirm, "ScaleY", 1, 0.1f, Ease.SineOut);
+			AddTween(tween, true);
+			
 		}
 		
 		void MakeCheckmark()
@@ -170,11 +214,6 @@ namespace SNHU.MenuObject
 			list.Remove(rArrow);
 			
 			changing = true;
-			
-			var check = new Image(Library.GetTexture("assets/ready.png"));
-			check.CenterOO();
-			check.Y = Height * 0.75f;
-			check.ScaleY = 0;
 			list.Add(check);
 			
 			var tween = new VarTween(null, ONESHOT);
@@ -242,11 +281,6 @@ namespace SNHU.MenuObject
 			AddTween(tween, true);
 			
 			AddGraphic(player);
-		}
-		
-		Controller MakeController(uint joyId)
-		{
-			return new Controller(joyId);
 		}
 	}
 }

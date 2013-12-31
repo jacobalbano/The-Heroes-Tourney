@@ -11,6 +11,9 @@ namespace SNHU.Components
 	/// </summary>
 	public class PhysicsBody : Logic
 	{
+		public const string REMOVE_COLLIDER = "removeCollider";
+		public const string ADD_COLLIDER = "addCollider";
+		
 		/// <summary>
 		/// <para>Used to send a physics impulse.</para>
 		/// <para>Arguments: (float X = 0, float Y = 0, bool absolute = false).</para>
@@ -85,6 +88,9 @@ namespace SNHU.Components
 			AddResponse(FRICTION, OnApplyFriction);
 			AddResponse(Player.OnLand, OnLand);
 			AddResponse(CANCEL, OnCancel);
+			
+			AddResponse(ADD_COLLIDER, OnAddCollider);
+			AddResponse(REMOVE_COLLIDER, OnRemoveCollider);
 		}
 		
 		public override void Update()
@@ -177,6 +183,16 @@ namespace SNHU.Components
 		private void OnCancel(params object[] args)
 		{
 			movement.X = movement.Y = 0;
+		}
+		
+		private void OnRemoveCollider(params object[] args)
+		{
+			Colliders.Remove((string) args[0]);
+		}
+		
+		private void OnAddCollider(params object[] args)
+		{
+			Colliders.Add((string) args[0]);
 		}
 	}
 }

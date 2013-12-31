@@ -69,8 +69,8 @@ namespace SNHU.GameObject
 		//How long the razor will be
 		private float rotation;
 		private float speed;
-		private float size;
-		private float distance;
+		private float size = 0;
+		private float distance = 0;
 		
 		public Image razorArm;
 		
