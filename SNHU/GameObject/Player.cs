@@ -205,7 +205,6 @@ namespace SNHU.GameObject
 				}
 				else
 				{
-					dodge.CanDodge = true;
 					OnMessage(PhysicsBody.FRICTION, 0.75f);
 				}
 				

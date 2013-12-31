@@ -14,6 +14,8 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class Fist : Entity
 	{
+		public const string PUNCH_CONNECTED = "fist_punchConnected";
+		
 		public float Multiplier;
 		
 		private Image image;
@@ -132,8 +134,6 @@ namespace SNHU.GameObject
 			if (Math.Abs(forceVector.Y) < float.Epsilon)
 				forceVector.Y = -0.2f;
 			
-			FP.Log(forceVector);
-			
 			punchy = true;
 			punching = true;
 			
@@ -147,7 +147,7 @@ namespace SNHU.GameObject
 		private void UnPunch(bool facing)
 		{
 			var to = new {
-				offsetX = (backHand ? 40 : 50) * (facing ? -1 : 1),
+				offsetX = (backHand ? 30 : 0) * (facing ? -1 : 1),
 				offsetY = (backHand ? 5 : 15)
 			};
 			
@@ -180,7 +180,8 @@ namespace SNHU.GameObject
 				 		var target = player.Rebounding ? parent : player;
 				 		var force = player.Rebounding ? REBOUND_PUNCH_FORCE : BASE_PUNCH_FORCE;
 				 		
-			 			target.OnMessage(PhysicsBody.IMPULSE, force * forceVector.X, force* forceVector.Y);
+				 		target.OnMessage(PUNCH_CONNECTED);
+			 			target.OnMessage(PhysicsBody.IMPULSE, force * forceVector.X, force * forceVector.Y);
 				 	}
 				}
 			 	

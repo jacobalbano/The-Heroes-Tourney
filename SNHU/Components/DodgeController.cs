@@ -17,7 +17,10 @@ namespace SNHU.Components
 		
 		public const string CANCEL_DODGE = "dodge_cancelDodge";
 		
-		int dodgeDuration;
+		private const int DODGE_DURATION = 5;
+		
+		int duration;
+		int cooldown;
 		Vector2f dodgeDirection;
 		Controller controller;
 		Axis axis;
@@ -29,14 +32,16 @@ namespace SNHU.Components
 			this.controller = controller;
 			this.axis = axis;
 			
+			AddResponse(Player.OnLand, OnPlayerLand);
 			AddResponse(CANCEL_DODGE, OnCancelDodge);
+			AddResponse(Fist.PUNCH_CONNECTED, SetCooldown);
 		}
 		
 		public override void Update()
 		{
 			base.Update();
 			
-			if (CanDodge && controller.Pressed("dodge"))
+			if (cooldown <= 0 && CanDodge && controller.Pressed("dodge"))
 			{
 				if (axis.X != 0)
 				{
@@ -45,31 +50,45 @@ namespace SNHU.Components
 					CanDodge = false;
 					IsDodging = true;
 					
-					dodgeDuration = 5;
+					duration = DODGE_DURATION;
+					SetCooldown();
 					dodgeDirection.X = (int) Math.Round(axis.X) * 0.7f;
 					dodgeDirection.Y = (int) Math.Round(axis.Y) * 0.3f;
 					dodgeDirection = dodgeDirection.Normalized(30);
 				}
-				
-//				if (axis.Y != 0) dodgeDirection.X *= 0.7f;
 			}
 			
-			if (dodgeDuration --> 0)
+			if (duration --> 0)
 			{
 				Parent.OnMessage(PhysicsBody.IMPULSE, dodgeDirection.X, dodgeDirection.Y, true);
 				
-				if (dodgeDuration == 0)
+				if (duration == 0)
 				{
 					OnCancelDodge();
 				}
+			}
+			
+			if (cooldown > 0)
+			{
+				cooldown--;
 			}
 		}
 		
 		void OnCancelDodge(params object[] args)
 		{
 			IsDodging = false;
-			dodgeDuration = 0;
+			duration = 0;
 			Parent.OnMessage(PhysicsBody.USE_GRAVITY, true);
+		}
+		
+		void SetCooldown(params object[] args)
+		{
+			cooldown = DODGE_DURATION + 30;
+		}
+		
+		void OnPlayerLand(params object[] args)
+		{
+			CanDodge = true;
 		}
 	}
 }
