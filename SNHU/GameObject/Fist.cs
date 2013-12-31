@@ -20,7 +20,7 @@ namespace SNHU.GameObject
 		private Player parent;
 		
 		private float offsetX, offsetY;
-		private bool left;
+		private bool backHand;
 		private bool punchy, punching, canPunch;
 		
 		private Vector2f forceVector;
@@ -29,8 +29,6 @@ namespace SNHU.GameObject
 		
 		private const float BASE_PUNCH_FORCE = 30;
 		private const float REBOUND_PUNCH_FORCE = 40;
-		
-		private const float PUNCH_BOOST_Y = -10;
 		
 		public const float DEFAULT_PUNCH_MULT = 1;
 		
@@ -44,13 +42,13 @@ namespace SNHU.GameObject
 			
 			forceVector = new Vector2f();
 			
-			left = hand;
+			backHand = hand;
 			this.parent = parent;
 			punchy = false;
 			punching = false;
 			canPunch = true;
 			
-			image = new Image(Library.GetTexture("assets/glove" + (left ? "2" : "1") + ".png"));
+			image = new Image(Library.GetTexture("assets/glove" + (backHand ? "2" : "1") + ".png"));
 			image.CenterOO();
 			Graphic = image;
 			
@@ -59,7 +57,7 @@ namespace SNHU.GameObject
 			
 			Type = Collision;
 			
-			if (left)
+			if (backHand)
 			{
 				offsetY = 5;
 			}
@@ -91,7 +89,7 @@ namespace SNHU.GameObject
 		{
 			image.FlippedX = true;
 			
-			if (left)
+			if (backHand)
 			{
 				offsetX = -30;
 			}
@@ -105,7 +103,7 @@ namespace SNHU.GameObject
 		{
 			image.FlippedX = false;
 			
-			if (left)
+			if (backHand)
 			{
 				offsetX = 30;
 			}
@@ -120,16 +118,21 @@ namespace SNHU.GameObject
 			if (punching) return false;
 			
 			forceVector.X = (float) Math.Round(axis.X);
-			if (forceVector.X == 0) forceVector.X = image.FlippedX ? -0.8f : 0.8f;
+			forceVector.Y = axis.Y;
 			
-			forceVector.Y = (float) Math.Round(axis.Y);
-			
-			image.Angle = (image.FlippedX ? -1 : 1) * FP.Angle(0, 0, forceVector.X, forceVector.Y);
-			
+			if (Math.Abs(forceVector.X) < float.Epsilon)
+				forceVector.X = image.FlippedX ? -1f : 1f;
+						
 			var to = new {
-				offsetX = (offsetX + (left ? 40 : 50)) * forceVector.X,
-				offsetY = (offsetY + (left ? 30 : 20)) * forceVector.Y
+				offsetX = offsetX + (backHand ? 40 : 50) * forceVector.X,
+				offsetY = offsetY + (backHand ? 30 : 20) * forceVector.Y
 			};
+			
+			forceVector.Y *= 0.6f;
+			if (Math.Abs(forceVector.Y) < float.Epsilon)
+				forceVector.Y = -0.2f;
+			
+			FP.Log(forceVector);
 			
 			punchy = true;
 			punching = true;
@@ -144,8 +147,8 @@ namespace SNHU.GameObject
 		private void UnPunch(bool facing)
 		{
 			var to = new {
-				offsetX = (left ? 40 : 50) * (facing ? -1 : 1),
-				offsetY = (left ? 5 : 15)
+				offsetX = (backHand ? 40 : 50) * (facing ? -1 : 1),
+				offsetY = (backHand ? 5 : 15)
 			};
 			
 			punchy = false;
@@ -174,23 +177,14 @@ namespace SNHU.GameObject
 						World.BroadcastMessage(CameraShake.SHAKE, 10.0f, 0.5f);
 				 		Mixer.Audio["hit1"].Play();
 				 		
-			 			var hsign = FP.Sign(p.X - parent.X);
-				 		if (player.Rebounding)
-				 		{
-				 			parent.OnMessage(PhysicsBody.IMPULSE, (REBOUND_PUNCH_FORCE * Multiplier) * -hsign, REBOUND_PUNCH_FORCE * Multiplier);
-				 		}
-				 		else
-				 		{
-				 			p.OnMessage(PhysicsBody.IMPULSE, BASE_PUNCH_FORCE * forceVector.X, PUNCH_BOOST_Y + BASE_PUNCH_FORCE * forceVector.Y);
+				 		var target = player.Rebounding ? parent : player;
+				 		var force = player.Rebounding ? REBOUND_PUNCH_FORCE : BASE_PUNCH_FORCE;
 				 		
-//				 			parent.OnMessage(PhysicsBody.IMPULSE, (BASE_PUNCH_FORCE_X * Multiplier) * hsign, BASE_PUNCH_FORCE_Y * Multiplier);
-				 		}
+			 			target.OnMessage(PhysicsBody.IMPULSE, force * forceVector.X, force* forceVector.Y);
 				 	}
 				}
 			 	
 			}
-			
-			MoveTowards(parent.CenterX, parent.CenterY, 20);
 			
 			X = parent.CenterX + offsetX;
 			Y = parent.CenterY + offsetY;
