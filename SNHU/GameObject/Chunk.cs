@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Punk;
 using Punk.Tweens.Misc;
@@ -22,11 +23,13 @@ namespace SNHU.GameObject
 		
 		static Chunk()
 		{
-			levels = new string[]
+			levels = Directory.GetFiles("assets/Levels/");
+			for (int i = 0; i < levels.Length; i++)
 			{
-				"bawks.oel",
-//				"rotor.oel",
-			};
+				var level = levels[i];
+				level = level.Substring(level.LastIndexOf("/"));
+				levels[i] = level;
+			}
 		}
 		
 		public Chunk(float posX, float posY) : base(posX, posY)
