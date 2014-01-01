@@ -102,6 +102,7 @@ namespace SNHU.GameObject
 			AddLogic(physics);
 			AddLogic(new Movement(physics, axis));
 			AddLogic(dodge = new DodgeController(Controller, axis));
+			AddLogic(new GrabLock(dodge));
 			
 			AddResponse(GroundSmash.GROUND_SMASH, OnGroundSmash);
 			AddResponse(FUS.BE_FUS, OnFUS);
@@ -127,12 +128,12 @@ namespace SNHU.GameObject
 			}
 			else	//	snes
 			{
-				Controller.Define("upgrade", PlayerId, Controller.Button.B);
+//				Controller.Define("upgrade", PlayerId, Controller.Button.B);
 				Controller.Define("jump", PlayerId, Controller.Button.X);
 				
 				Controller.Define("punch", PlayerId, Controller.Button.Y);
-				Controller.Define("punch_r", PlayerId, (Controller.Button) 5);
-				Controller.Define("punch_l", PlayerId, (Controller.Button) 4);
+				Controller.Define("dodge", PlayerId, (Controller.Button) 5);
+				Controller.Define("upgrade", PlayerId, (Controller.Button) 4);
 				
 				Controller.Define("dodge", PlayerId, Controller.Button.A);
 				Controller.Define("start", PlayerId, (Controller.Button) 9);

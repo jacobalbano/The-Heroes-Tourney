@@ -15,6 +15,7 @@ namespace SNHU.GameObject
 	public class Fist : Entity
 	{
 		public const string PUNCH_CONNECTED = "fist_punchConnected";
+		public const string PUNCH_SUCCESS = "fist_punchSuccess";
 		
 		public float Multiplier;
 		
@@ -174,6 +175,8 @@ namespace SNHU.GameObject
 					if (player != null && player != parent && !player.Invincible)
 				 	{
 						canPunch = false;
+						
+						parent.OnMessage(Fist.PUNCH_SUCCESS, player);
 						World.BroadcastMessage(CameraShake.SHAKE, 10.0f, 0.5f);
 				 		Mixer.Audio["hit1"].Play();
 				 		

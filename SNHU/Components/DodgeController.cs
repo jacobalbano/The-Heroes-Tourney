@@ -14,8 +14,12 @@ namespace SNHU.Components
 	{
 		public bool CanDodge;
 		public bool IsDodging { get; private set;}
+		public bool RecentlyDodged { get; private set;}
 		
+		public const string START_DODGE = "dodge_dodged";
+		public const string DODGE_COMPLETE = "dodge_complete";
 		public const string CANCEL_DODGE = "dodge_cancelDodge";
+		public const string CANCEL_COOLDOWN = "dodge_cancelCooldown";
 		
 		private const int DODGE_DURATION = 5;
 		
@@ -32,9 +36,11 @@ namespace SNHU.Components
 			this.controller = controller;
 			this.axis = axis;
 			
-			AddResponse(Player.OnLand, OnPlayerLand);
-			AddResponse(CANCEL_DODGE, OnCancelDodge);
 			AddResponse(Fist.PUNCH_CONNECTED, SetCooldown);
+			AddResponse(Player.OnLand, OnPlayerLand);
+			
+			AddResponse(CANCEL_DODGE, OnCancelDodge);
+			AddResponse(CANCEL_COOLDOWN, OnCancelCooldown);
 		}
 		
 		public override void Update()
@@ -46,6 +52,7 @@ namespace SNHU.Components
 				if (axis.X != 0)
 				{
 					Parent.OnMessage(PhysicsBody.USE_GRAVITY, false);
+					Parent.OnMessage(START_DODGE);
 					
 					CanDodge = false;
 					IsDodging = true;
@@ -64,7 +71,9 @@ namespace SNHU.Components
 				
 				if (duration == 0)
 				{
+					RecentlyDodged = true;
 					OnCancelDodge();
+					Parent.OnMessage(DODGE_COMPLETE);
 				}
 			}
 			
@@ -86,8 +95,14 @@ namespace SNHU.Components
 			cooldown = DODGE_DURATION + 30;
 		}
 		
+		void OnCancelCooldown(params object[] args)
+		{
+			cooldown = 0;
+		}
+		
 		void OnPlayerLand(params object[] args)
 		{
+			RecentlyDodged = false;
 			CanDodge = true;
 		}
 	}

@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\DodgeController.cs" />
+    <Compile Include="Components\GrabLock.cs" />
     <Compile Include="Components\Movement.cs" />
     <Compile Include="Components\PhysicsBody.cs" />
     <Compile Include="GameObject\CameraShake.cs" />

@@ -1,0 +1,12 @@
+<level width="1000" height="600">
+  <Platforms>
+    <platform id="0" x="128" y="528" width="720" height="32" />
+    <deadlyAnchor id="1" x="448" y="304" width="16" height="16" distance="2" speed="1" size="1" />
+    <deadlyAnchor id="2" x="448" y="304" width="16" height="16" distance="4" speed="1" size="1" />
+    <deadlyAnchor id="3" x="448" y="304" width="16" height="16" distance="6" speed="1" size="1" />
+    <spawnPoint id="4" x="192" y="464" width="16" height="16" />
+    <spawnPoint id="5" x="768" y="464" width="16" height="16" />
+    <spawnPoint id="6" x="608" y="464" width="16" height="16" />
+    <spawnPoint id="7" x="320" y="464" width="16" height="16" />
+  </Platforms>
+</level>

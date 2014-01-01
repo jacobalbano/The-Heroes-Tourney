@@ -99,7 +99,7 @@ namespace SNHU.GameObject
 			
 			theRazor.X += razorArm.ScaledWidth;
 
-			rotation = FP.Rand(360);
+//			rotation = FP.Rand(360);
 			
 			speed *= 0.5f;
 			

@@ -11,8 +11,15 @@ namespace SNHU.Components
 	/// </summary>
 	public class PhysicsBody : Logic
 	{
-		public const string REMOVE_COLLIDER = "removeCollider";
-		public const string ADD_COLLIDER = "addCollider";
+		/// <summary>
+		/// Activate the body;
+		/// </summary>
+		public const string ACTIVATE = "physics_activate";
+		
+		/// <summary>
+		/// Deactivate the body;
+		/// </summary>
+		public const string DEACTIVATE = "physics_deactivate";
 		
 		/// <summary>
 		/// <para>Used to send a physics impulse.</para>
@@ -89,8 +96,8 @@ namespace SNHU.Components
 			AddResponse(Player.OnLand, OnLand);
 			AddResponse(CANCEL, OnCancel);
 			
-			AddResponse(ADD_COLLIDER, OnAddCollider);
-			AddResponse(REMOVE_COLLIDER, OnRemoveCollider);
+			AddResponse(ACTIVATE, a => Active = true);
+			AddResponse(DEACTIVATE, a => Active = false);
 		}
 		
 		public override void Update()

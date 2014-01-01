@@ -25,7 +25,6 @@ namespace SNHU.GameObject
 		
 		public ChunkManager()
 		{
-			x = 180;
 			y = (FP.Camera.Y - FP.HalfHeight) - FP.Height;
 			
 			AddResponse(Advance, OnAdvance);

@@ -21,7 +21,6 @@ namespace SNHU.GameObject.Platforms
 		public override void Load(System.Xml.XmlNode node)
 		{
 			base.Load(node);
-			Width = FP.Clamp(Width, 15, 640);	//	lol game jam
 			
 			image = new Nineslice(Library.GetTexture("assets/bouncepad.png"), 3, 3);
 			image.Columns = (int) (Width / 5f);

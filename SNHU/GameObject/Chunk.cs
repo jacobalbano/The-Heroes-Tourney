@@ -14,10 +14,8 @@ namespace SNHU.GameObject
 	public class Chunk : Entity
 	{
 		public const string LOAD_COMPLETE = "loadComplete";
-		public const uint CHUNK_WIDTH = 640;
-		public const uint CHUNK_HEIGHT = 640;
 		public List<Entity> SpawnPoints;
-		private Entity[]  ents;
+		private Entity[] ents;
 		private string level;
 		
 		private static string[] levels;
@@ -26,15 +24,8 @@ namespace SNHU.GameObject
 		{
 			levels = new string[]
 			{
-				"chris1.oel",
-				"chris2.oel",
-				"chris3.oel",
-				"chris4.oel",
-				"jake_1.oel",
-				"Real_1.oel",
-				"Real_2.oel",
-				"Real_3.oel",
-				"Start.oel"
+				"bawks.oel",
+				"rotor.oel",
 			};
 		}
 		
