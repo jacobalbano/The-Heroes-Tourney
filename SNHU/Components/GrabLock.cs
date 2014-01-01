@@ -10,7 +10,7 @@ namespace SNHU.Components
 	/// </summary>
 	public class GrabLock : Logic
 	{
-		const int MAX_COUNTDOWN = 20;
+		const int MAX_COUNTDOWN = 12;
 		const int WINDOW = MAX_COUNTDOWN / 2;
 		
 		private DodgeController dodge;
