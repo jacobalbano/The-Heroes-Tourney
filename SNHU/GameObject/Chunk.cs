@@ -25,7 +25,7 @@ namespace SNHU.GameObject
 			levels = new string[]
 			{
 				"bawks.oel",
-				"rotor.oel",
+//				"rotor.oel",
 			};
 		}
 		
