@@ -9,14 +9,14 @@
     <Height>600</Height>
   </LevelDefaultSize>
   <LevelMinimumSize>
-    <Width>640</Width>
+    <Width>1000</Width>
     <Height>600</Height>
   </LevelMinimumSize>
   <LevelMaximumSize>
-    <Width>640</Width>
+    <Width>1000</Width>
     <Height>600</Height>
   </LevelMaximumSize>
-  <Filename>C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\SNHULevel.oep</Filename>
+  <Filename>C:\Users\Chris\Desktop\Current Dev\the-heroes-tourney\SNHU\assets\SNHULevel.oep</Filename>
   <AngleMode>Degrees</AngleMode>
   <CameraEnabled>false</CameraEnabled>
   <CameraSize>
@@ -29,8 +29,8 @@
     <LayerDefinition xsi:type="EntityLayerDefinition">
       <Name>Platforms</Name>
       <Grid>
-        <Width>16</Width>
-        <Height>16</Height>
+        <Width>32</Width>
+        <Height>32</Height>
       </Grid>
       <ScrollFactor>
         <X>1</X>
@@ -42,8 +42,8 @@
   <EntityDefinitions>
     <EntityDefinition Name="platform" Limit="-1" ResizableX="true" ResizableY="true" Rotatable="false" RotateIncrement="15">
       <Size>
-        <Width>16</Width>
-        <Height>16</Height>
+        <Width>32</Width>
+        <Height>32</Height>
       </Size>
       <Origin>
         <X>0</X>
@@ -57,7 +57,7 @@
     </EntityDefinition>
     <EntityDefinition Name="jumpPad" Limit="-1" ResizableX="true" ResizableY="true" Rotatable="false" RotateIncrement="15">
       <Size>
-        <Width>16</Width>
+        <Width>32</Width>
         <Height>3</Height>
       </Size>
       <Origin>
@@ -72,8 +72,8 @@
     </EntityDefinition>
     <EntityDefinition Name="crumble" Limit="-1" ResizableX="true" ResizableY="true" Rotatable="false" RotateIncrement="15">
       <Size>
-        <Width>16</Width>
-        <Height>16</Height>
+        <Width>32</Width>
+        <Height>32</Height>
       </Size>
       <Origin>
         <X>0</X>
@@ -106,8 +106,8 @@
     </EntityDefinition>
     <EntityDefinition Name="deadlyAnchor" Limit="-1" ResizableX="true" ResizableY="true" Rotatable="false" RotateIncrement="15">
       <Size>
-        <Width>16</Width>
-        <Height>16</Height>
+        <Width>32</Width>
+        <Height>32</Height>
       </Size>
       <Origin>
         <X>0</X>
@@ -125,8 +125,8 @@
     </EntityDefinition>
     <EntityDefinition Name="spawnPoint" Limit="-1" ResizableX="true" ResizableY="true" Rotatable="false" RotateIncrement="15">
       <Size>
-        <Width>16</Width>
-        <Height>16</Height>
+        <Width>32</Width>
+        <Height>32</Height>
       </Size>
       <Origin>
         <X>0</X>
@@ -155,8 +155,8 @@
     </EntityDefinition>
     <EntityDefinition Name="Upgrade" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
       <Size>
-        <Width>16</Width>
-        <Height>16</Height>
+        <Width>32</Width>
+        <Height>32</Height>
       </Size>
       <Origin>
         <X>0</X>

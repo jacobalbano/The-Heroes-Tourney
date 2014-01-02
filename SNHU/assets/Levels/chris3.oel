@@ -1,27 +1,26 @@
-<level width="640" height="600">
+<level width="1000" height="600">
   <Platforms>
-    <crumble id="3" x="464" y="336" width="160" height="16" crumbleTime="1" />
-    <crumble id="4" x="16" y="336" width="160" height="16" crumbleTime="1" />
-    <crumble id="6" x="496" y="208" width="128" height="16" crumbleTime="1" />
-    <crumble id="7" x="16" y="208" width="128" height="16" crumbleTime="1" />
-    <crumble id="8" x="16" y="112" width="80" height="16" crumbleTime="1" />
-    <crumble id="9" x="544" y="112" width="80" height="16" crumbleTime="1" />
-    <player id="2" x="672" y="224" />
-    <spawnPoint id="12" x="544" y="432" width="16" height="16" />
-    <spawnPoint id="13" x="80" y="432" width="16" height="16" />
-    <spawnPoint id="14" x="304" y="48" width="16" height="16" />
-    <spawnPoint id="15" x="304" y="240" width="16" height="16" />
-    <platform id="0" x="0" y="512" width="224" height="16" />
-    <platform id="1" x="416" y="512" width="224" height="16" />
-    <platform id="16" x="272" y="128" width="96" height="16" />
-    <platform id="10" x="240" y="304" width="160" height="16" />
-    <jumpPad id="5" x="208" y="512" width="16" height="3" />
-    <jumpPad id="11" x="416" y="512" width="16" height="3" />
-    <jumpPad id="17" x="384" y="304" width="16" height="3" />
-    <jumpPad id="18" x="240" y="304" width="16" height="3" />
-    <Upgrade id="19" x="192" y="112" />
-    <Upgrade id="20" x="432" y="112" />
-    <Upgrade id="21" x="208" y="400" />
-    <Upgrade id="22" x="416" y="400" />
+    <platform id="0" x="0" y="544" width="384" height="32" />
+    <platform id="5" x="608" y="544" width="384" height="32" />
+    <jumpPad id="1" x="352" y="544" width="32" height="3" />
+    <jumpPad id="11" x="608" y="544" width="32" height="3" />
+    <spawnPoint id="13" x="128" y="512" width="32" height="32" />
+    <spawnPoint id="23" x="864" y="512" width="32" height="32" />
+    <Upgrade id="12" x="384" y="384" />
+    <Upgrade id="21" x="608" y="384" />
+    <crumble id="22" x="704" y="384" width="256" height="32" crumbleTime="1" />
+    <crumble id="2" x="32" y="384" width="256" height="32" crumbleTime="1" />
+    <crumble id="3" x="32" y="256" width="160" height="32" crumbleTime="1" />
+    <crumble id="4" x="768" y="256" width="192" height="32" crumbleTime="1" />
+    <crumble id="6" x="32" y="128" width="96" height="32" crumbleTime="1" />
+    <crumble id="7" x="864" y="128" width="96" height="32" crumbleTime="1" />
+    <platform id="8" x="384" y="288" width="224" height="32" />
+    <jumpPad id="9" x="384" y="288" width="32" height="3" />
+    <jumpPad id="10" x="576" y="288" width="32" height="3" />
+    <spawnPoint id="17" x="512" y="256" width="32" height="32" />
+    <platform id="18" x="416" y="128" width="160" height="32" />
+    <spawnPoint id="20" x="512" y="64" width="32" height="32" />
+    <Upgrade id="14" x="256" y="128" />
+    <Upgrade id="15" x="736" y="128" />
   </Platforms>
 </level>

@@ -1,30 +1,29 @@
-<level width="640" height="600">
+<level width="1000" height="600">
   <Platforms>
-    <platform id="0" x="0" y="576" width="640" height="16" />
-    <jumpPad id="4" x="384" y="576" width="32" height="3" />
-    <platform id="5" x="64" y="288" width="96" height="16" />
-    <platform id="6" x="480" y="288" width="96" height="16" />
-    <platform id="7" x="256" y="128" width="128" height="16" />
-    <spawnPoint id="10" x="64" y="480" width="16" height="16" />
-    <spawnPoint id="11" x="80" y="0" width="16" height="16" />
-    <spawnPoint id="13" x="544" y="0" width="16" height="16" />
-    <spawnPoint id="14" x="560" y="480" width="16" height="16" />
-    <platform id="12" x="0" y="224" width="16" height="128" />
-    <platform id="15" x="624" y="224" width="16" height="128" />
-    <jumpPad id="3" x="224" y="576" width="32" height="3" />
-    <player id="1" x="656" y="512" />
-    <jumpPad id="2" x="304" y="128" width="32" height="3" />
-    <jumpPad id="8" x="128" y="288" width="32" height="3" />
-    <jumpPad id="9" x="480" y="288" width="32" height="3" />
-    <platform id="16" x="144" y="416" width="80" height="16" />
-    <platform id="17" x="416" y="416" width="80" height="16" />
-    <jumpPad id="18" x="192" y="416" width="32" height="3" />
-    <jumpPad id="19" x="416" y="416" width="32" height="3" />
-    <platform id="20" x="32" y="80" width="112" height="16" />
-    <platform id="21" x="496" y="80" width="112" height="16" />
-    <Upgrade id="22" x="176" y="176" />
-    <Upgrade id="23" x="256" y="352" />
-    <Upgrade id="24" x="448" y="176" />
-    <Upgrade id="25" x="368" y="352" />
+    <platform id="0" x="0" y="576" width="992" height="32" />
+    <platform id="1" x="0" y="256" width="32" height="160" />
+    <platform id="12" x="960" y="256" width="32" height="160" />
+    <jumpPad id="3" x="320" y="576" width="64" height="3" />
+    <jumpPad id="4" x="640" y="576" width="64" height="3" />
+    <platform id="16" x="224" y="416" width="96" height="32" />
+    <platform id="17" x="704" y="416" width="96" height="32" />
+    <jumpPad id="15" x="288" y="416" width="32" height="3" />
+    <jumpPad id="18" x="704" y="416" width="32" height="3" />
+    <platform id="5" x="96" y="288" width="96" height="32" />
+    <platform id="8" x="800" y="288" width="96" height="32" />
+    <jumpPad id="6" x="160" y="288" width="32" height="3" />
+    <jumpPad id="9" x="800" y="288" width="32" height="3" />
+    <platform id="2" x="416" y="160" width="192" height="32" />
+    <jumpPad id="7" x="480" y="160" width="64" height="3" />
+    <platform id="10" x="832" y="96" width="128" height="32" />
+    <platform id="14" x="32" y="96" width="128" height="32" />
+    <spawnPoint id="11" x="96" y="544" width="32" height="32" />
+    <spawnPoint id="13" x="928" y="544" width="32" height="32" />
+    <spawnPoint id="19" x="96" y="64" width="32" height="32" />
+    <spawnPoint id="20" x="896" y="64" width="32" height="32" />
+    <Upgrade id="21" x="320" y="256" />
+    <Upgrade id="22" x="672" y="256" />
+    <Upgrade id="23" x="448" y="416" />
+    <Upgrade id="24" x="576" y="416" />
   </Platforms>
 </level>
