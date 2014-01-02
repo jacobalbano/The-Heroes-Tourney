@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading;
 using SNHU.MenuObject;
 using Punk;
 using Punk.Graphics;
@@ -25,7 +24,6 @@ namespace SNHU
 		
 		private bool readying;
 		
-		private Thread loadingThread;
 		private GameWorld gameWorld;
 		
 		public MenuWorld()
@@ -81,9 +79,6 @@ namespace SNHU
 			base.Begin();
 			Input.ControllerConnected += OnControllerAdded;
 			Input.ControllerDisconnected += OnControllerRemoved;
-			
-			loadingThread = new Thread(() => gameWorld = new GameWorld());
-			loadingThread.Start();
 		}
 		
 		public override void End()
@@ -153,9 +148,7 @@ namespace SNHU
 				playerGraphics[menu.JoyId] = menu.PlayerImageName;
 			}
 			
-			loadingThread.Join();
-			
-			FP.World = gameWorld;
+			FP.World = gameWorld = new GameWorld();
 			gameWorld.Init(playerGraphics);
 		}
 		

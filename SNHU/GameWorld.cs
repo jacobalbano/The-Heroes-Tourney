@@ -33,8 +33,6 @@ namespace SNHU
 			
 			Add(gameManager = new GameManager());
 			Add(chunkManager = new ChunkManager());
-			
-			chunkManager.OnMessage(ChunkManager.PreloadNext);
 		}
 		
 		public void Init(Dictionary<uint, string> playerImageNames)

@@ -102,7 +102,7 @@ namespace SNHU.GameObject
 			AddLogic(physics);
 			AddLogic(new Movement(physics, axis));
 			AddLogic(dodge = new DodgeController(Controller, axis));
-			AddLogic(new GrabLock(dodge));
+//			AddLogic(new GrabLock(dodge));
 			
 			AddResponse(GroundSmash.GROUND_SMASH, OnGroundSmash);
 			AddResponse(FUS.BE_FUS, OnFUS);

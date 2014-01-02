@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 using Punk;
 using Punk.Tweens.Misc;
 using Punk.Utils;
@@ -29,7 +30,12 @@ namespace SNHU.GameObject
 				var level = levels[i];
 				level = level.Substring(level.LastIndexOf("/"));
 				levels[i] = level;
+				FP.Log(level);
 			}
+			
+			var l = levels.ToList();
+			l.Remove("/bawks.oel");
+			levels = l.ToArray();
 		}
 		
 		public Chunk(float posX, float posY) : base(posX, posY)

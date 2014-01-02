@@ -1,7 +1,6 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using Punk;
 
 namespace SNHU.GameObject
@@ -13,13 +12,11 @@ namespace SNHU.GameObject
 	{
 		public const string Advance = "chunkManager_advance";
 		public const string AdvanceComplete = "chunkManager_advanceComplete";
-		public const string PreloadNext = "chunkManager_preloadNext";
 		public const string UnloadCurrent = "chunkManager_unloadCurrentChunk";
 		public const string SpawnPlayers = "chunkManager_spawnPlayers";
 		
 		private Chunk currentChunk;
 		private Chunk nextChunk;
-		private Thread chunkLoader;
 		
 		private float x, y;
 		
@@ -28,14 +25,8 @@ namespace SNHU.GameObject
 			y = (FP.Camera.Y - FP.HalfHeight) - FP.Height;
 			
 			AddResponse(Advance, OnAdvance);
-			AddResponse(PreloadNext, OnPreloadNext);
 			AddResponse(UnloadCurrent, OnUnloadCurrent);
 			AddResponse(SpawnPlayers, OnSpawnPlayers);
-		}
-		
-		private void Loader()
-		{
-			nextChunk = new Chunk(x, y);
 		}
 		
 		private void OnAdvance(params object[] args)
@@ -52,9 +43,9 @@ namespace SNHU.GameObject
 					}
 				}
 				
-				chunkLoader.Join();
-				OnPreloadNext();
+				y -= FP.Height;
 				
+				nextChunk = new Chunk(x, y);
 				World.Add(nextChunk);
 				
 				if (currentChunk != null && currentChunk.World != null)
@@ -62,7 +53,6 @@ namespace SNHU.GameObject
 					World.Remove(currentChunk);
 				}
 				
-				y -= FP.Height;
 				currentChunk = nextChunk;
 			}
 		}
@@ -88,12 +78,6 @@ namespace SNHU.GameObject
 		private void OnUnloadCurrent(params object[] args)
 		{
 			World.Remove(currentChunk);
-		}
-		
-		private void OnPreloadNext(params object[] args)
-		{
-			chunkLoader = new Thread(Loader);
-			chunkLoader.Start();
 		}
 	}
 }
