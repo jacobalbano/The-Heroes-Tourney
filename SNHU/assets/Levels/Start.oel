@@ -17,13 +17,15 @@
     <jumpPad id="7" x="480" y="160" width="64" height="3" />
     <platform id="10" x="832" y="96" width="128" height="32" />
     <platform id="14" x="32" y="96" width="128" height="32" />
-    <spawnPoint id="11" x="96" y="544" width="32" height="32" />
-    <spawnPoint id="13" x="928" y="544" width="32" height="32" />
+    <spawnPoint id="11" x="160" y="544" width="32" height="32" />
+    <spawnPoint id="13" x="832" y="544" width="32" height="32" />
     <spawnPoint id="19" x="96" y="64" width="32" height="32" />
     <spawnPoint id="20" x="896" y="64" width="32" height="32" />
     <Upgrade id="21" x="320" y="256" />
     <Upgrade id="22" x="672" y="256" />
     <Upgrade id="23" x="448" y="416" />
     <Upgrade id="24" x="576" y="416" />
+    <deadlyAnchor id="25" x="15" y="400" width="32" height="32" distance="0" speed="0" size="0.75" />
+    <deadlyAnchor id="26" x="974" y="398" width="32" height="32" distance="0" speed="0" size="0.75" />
   </Platforms>
 </level>

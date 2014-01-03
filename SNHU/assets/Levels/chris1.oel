@@ -10,8 +10,7 @@
     <platform id="1" x="32" y="576" width="384" height="32" />
     <platform id="3" x="576" y="576" width="384" height="32" />
     <jumpPad id="6" x="800" y="576" width="32" height="3" />
-    <deadlyAnchor id="12" x="416" y="576" width="32" height="32" distance="1" speed="2" size="1" />
-    <Upgrade id="20" x="480" y="512" />
+    <Upgrade id="20" x="480" y="497" />
     <platform id="4" x="608" y="352" width="128" height="32" />
     <jumpPad id="21" x="608" y="352" width="32" height="3" />
     <platform id="5" x="256" y="352" width="128" height="32" />
@@ -27,5 +26,6 @@
     <deadlyAnchor id="23" x="512" y="576" width="32" height="32" distance="1" speed="2" size="1" />
     <deadlyAnchor id="24" x="544" y="576" width="32" height="32" distance="1" speed="2" size="1" />
     <deadlyAnchor id="25" x="544" y="576" width="32" height="32" distance="1" speed="2" size="1" />
+    <deadlyAnchor id="12" x="416" y="576" width="32" height="32" distance="1" speed="2" size="1" />
   </Platforms>
 </level>

@@ -36,6 +36,8 @@ namespace SNHU.GameObject.Platforms
 			
 			AddGraphic(emitter);
 			AddGraphic(image);
+			
+			Layer = -1000;
 		}
 	}
 }

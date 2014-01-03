@@ -1,30 +1,30 @@
 <level width="1000" height="600">
   <Platforms>
-    <platform id="0" x="0" y="576" width="992" height="32" />
-    <deadlyAnchor id="23" x="0" y="576" width="32" height="32" distance="1" speed="10" size="1.8" />
-    <deadlyAnchor id="30" x="960" y="576" width="32" height="32" distance="1" speed="10" size="1.8" />
-    <crumble id="2" x="0" y="96" width="32" height="96" crumbleTime="1" />
-    <crumble id="3" x="0" y="192" width="32" height="96" crumbleTime="1" />
-    <crumble id="4" x="0" y="288" width="32" height="96" crumbleTime="1" />
-    <crumble id="5" x="0" y="384" width="32" height="96" crumbleTime="1" />
-    <crumble id="6" x="0" y="480" width="32" height="96" crumbleTime="1" />
-    <crumble id="7" x="960" y="96" width="32" height="96" crumbleTime="1" />
-    <crumble id="9" x="960" y="192" width="32" height="96" crumbleTime="1" />
-    <crumble id="10" x="960" y="288" width="32" height="96" crumbleTime="1" />
-    <crumble id="11" x="960" y="384" width="32" height="96" crumbleTime="1" />
-    <crumble id="12" x="960" y="480" width="32" height="96" crumbleTime="1" />
+    <platform id="0" x="64" y="576" width="864" height="32" />
+    <deadlyAnchor id="23" x="64" y="576" width="32" height="32" distance="1" speed="10" size="1.8" />
+    <deadlyAnchor id="30" x="896" y="576" width="32" height="32" distance="1" speed="10" size="1.8" />
+    <crumble id="2" x="64" y="96" width="32" height="96" crumbleTime="1" />
+    <crumble id="3" x="64" y="192" width="32" height="96" crumbleTime="1" />
+    <crumble id="4" x="64" y="288" width="32" height="96" crumbleTime="1" />
+    <crumble id="5" x="64" y="384" width="32" height="96" crumbleTime="1" />
+    <crumble id="6" x="64" y="480" width="32" height="96" crumbleTime="1" />
+    <crumble id="7" x="896" y="96" width="32" height="96" crumbleTime="1" />
+    <crumble id="9" x="896" y="192" width="32" height="96" crumbleTime="1" />
+    <crumble id="10" x="896" y="288" width="32" height="96" crumbleTime="1" />
+    <crumble id="11" x="896" y="384" width="32" height="96" crumbleTime="1" />
+    <crumble id="12" x="896" y="480" width="32" height="96" crumbleTime="1" />
     <jumpPad id="13" x="320" y="576" width="64" height="3" />
     <jumpPad id="14" x="608" y="576" width="64" height="3" />
     <platform id="1" x="384" y="320" width="224" height="128" />
-    <platform id="8" x="128" y="192" width="160" height="32" />
-    <platform id="15" x="704" y="192" width="160" height="32" />
+    <platform id="8" x="192" y="192" width="96" height="32" />
+    <platform id="15" x="704" y="192" width="96" height="32" />
     <Upgrade id="16" x="192" y="320" />
-    <Upgrade id="17" x="800" y="320" />
+    <Upgrade id="17" x="768" y="320" />
     <Upgrade id="18" x="384" y="64" />
-    <Upgrade id="19" x="608" y="64" />
-    <spawnPoint id="20" x="224" y="544" width="32" height="32" />
-    <spawnPoint id="21" x="768" y="544" width="32" height="32" />
-    <spawnPoint id="22" x="224" y="160" width="32" height="32" />
-    <spawnPoint id="24" x="800" y="160" width="32" height="32" />
+    <Upgrade id="19" x="576" y="64" />
+    <spawnPoint id="20" x="288" y="544" width="32" height="32" />
+    <spawnPoint id="21" x="704" y="544" width="32" height="32" />
+    <spawnPoint id="22" x="256" y="160" width="32" height="32" />
+    <spawnPoint id="24" x="768" y="160" width="32" height="32" />
   </Platforms>
 </level>

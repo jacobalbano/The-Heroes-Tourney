@@ -90,8 +90,8 @@ namespace SNHU.GameObject.Upgrades
 				}
 				else
 				{
-					x = target.X;
-					y = target.Y;
+					x = X;
+					y = Y;
 				}
 			}
 			else
@@ -116,7 +116,7 @@ namespace SNHU.GameObject.Upgrades
 				}
 			}
 			
-			FP.World.BroadcastMessageInCircle(x, y, radius, Player.Damage);
+			FP.World.BroadcastMessageIf(ent => ent.DistanceToPoint(x, y, true) <= radius, Player.Damage);
 			FP.World.BroadcastMessage(CameraShake.SHAKE, 20, 0.5f);
 			Mixer.Audio["explode"].Play();
 		}

@@ -13,5 +13,10 @@
     <spawnPoint id="10" x="672" y="288" width="32" height="32" />
     <spawnPoint id="11" x="224" y="480" width="32" height="32" />
     <spawnPoint id="12" x="768" y="480" width="32" height="32" />
+    <platform id="13" x="128" y="192" width="96" height="32" />
+    <platform id="14" x="768" y="192" width="96" height="32" />
+    <Upgrade id="15" x="192" y="128" />
+    <Upgrade id="16" x="832" y="128" />
+    <Upgrade id="17" x="480" y="480" />
   </Platforms>
 </level>

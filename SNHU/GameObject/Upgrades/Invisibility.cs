@@ -11,7 +11,7 @@ namespace SNHU.GameObject.Upgrades
 	public class Invisibility : Upgrade
 	{
 		const float INVIS_ALPHA = 0.03f;
-		const float PUNCH_MULT = 3.5f;
+		const float PUNCH_MULT = 2f;
 		
 		public Invisibility()
 		{
@@ -35,7 +35,7 @@ namespace SNHU.GameObject.Upgrades
 				tweenFist2.Tween(owner.right.Graphic, "Alpha", INVIS_ALPHA, 0.25f);
 				AddTween(tweenFist2, true);
 				
-				owner.right.Multiplier = owner.left.Multiplier = PUNCH_MULT;
+				owner.right.ForceMultiplier = owner.left.ForceMultiplier = PUNCH_MULT;
 			}
 		}
 		
@@ -43,7 +43,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.OnLifetimeComplete();
 			
-			owner.right.Multiplier = owner.left.Multiplier = Fist.DEFAULT_PUNCH_MULT;
+			owner.right.ForceMultiplier = owner.left.ForceMultiplier = Fist.DEFAULT_PUNCH_MULT;
 		
 			var tweenPlayer = new VarTween(() => owner.SetUpgrade(null), Tween.ONESHOT);
 			tweenPlayer.Tween(owner.player, "Alpha", 1.0f, 0.25f);

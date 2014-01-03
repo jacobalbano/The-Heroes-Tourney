@@ -8,5 +8,7 @@
     <spawnPoint id="5" x="768" y="464" width="16" height="16" />
     <spawnPoint id="6" x="608" y="464" width="16" height="16" />
     <spawnPoint id="7" x="320" y="464" width="16" height="16" />
+    <Upgrade id="8" x="480" y="256" />
+    <Upgrade id="9" x="448" y="448" />
   </Platforms>
 </level>

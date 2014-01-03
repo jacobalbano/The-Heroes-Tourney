@@ -17,7 +17,9 @@ namespace SNHU.GameObject
 		public const string PUNCH_CONNECTED = "fist_punchConnected";
 		public const string PUNCH_SUCCESS = "fist_punchSuccess";
 		
-		public float Multiplier;
+		public const float DEFAULT_PUNCH_MULT = 1;
+		
+		public float ForceMultiplier;
 		
 		private Image image;
 		private Player parent;
@@ -33,16 +35,13 @@ namespace SNHU.GameObject
 		private const float BASE_PUNCH_FORCE = 30;
 		private const float REBOUND_PUNCH_FORCE = 40;
 		
-		public const float DEFAULT_PUNCH_MULT = 1;
-		
 		/// <summary>
 		/// Constructor
 		/// </summary>
 		/// <param name="hand">True for left hand image, false for right.</param>
 		public Fist(bool hand, Player parent)
 		{
-			Multiplier = DEFAULT_PUNCH_MULT;
-			
+			ForceMultiplier = DEFAULT_PUNCH_MULT;
 			forceVector = new Vector2f();
 			
 			backHand = hand;
@@ -181,7 +180,13 @@ namespace SNHU.GameObject
 				 		Mixer.Audio["hit1"].Play();
 				 		
 				 		var target = player.Rebounding ? parent : player;
-				 		var force = player.Rebounding ? REBOUND_PUNCH_FORCE : BASE_PUNCH_FORCE;
+				 		var force = ForceMultiplier * (player.Rebounding ? REBOUND_PUNCH_FORCE : BASE_PUNCH_FORCE);
+				 		
+				 		if (player.Rebounding)
+				 		{
+				 			forceVector.X *= -1;
+				 			forceVector.Y *= -1;
+				 		}
 				 		
 				 		target.OnMessage(PUNCH_CONNECTED);
 			 			target.OnMessage(PhysicsBody.IMPULSE, force * forceVector.X, force * forceVector.Y);
