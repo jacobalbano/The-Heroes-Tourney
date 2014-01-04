@@ -24,7 +24,7 @@ namespace SNHU.GameObject
 		public void AddPlayer(Player p)
 		{
 			var e = new Entity();	
-			var text = new Text(Player.STARTING_LIVES.ToString("x 0"));
+			var text = new Text(GameWorld.gameManager.StartingLives.ToString("x 0"));
 			text.Italicized = true;
 			text.Size = 18;
 			text.X = 10;

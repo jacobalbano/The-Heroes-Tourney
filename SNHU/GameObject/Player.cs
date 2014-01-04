@@ -48,8 +48,6 @@ namespace SNHU.GameObject
 		
 		public const float SPEED = 5.5f;
 		
-		public const int STARTING_LIVES = 5;
-		
 		public int Lives { get; private set; }
 		public int PlayerId { get; private set; }
 		public uint ControllerId { get; private set; }
@@ -92,7 +90,7 @@ namespace SNHU.GameObject
 			physics.Colliders.Add(Platform.Collision);
 			physics.Colliders.Add(Type);
 			
-			Lives = STARTING_LIVES;
+			Lives = GameWorld.gameManager.StartingLives;
 			IsAlive = false;
 			
 			Invincible = false;

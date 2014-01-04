@@ -20,6 +20,8 @@ namespace SNHU.GameObject
 		public bool GameEnding { get; private set; }
 		public bool NobodyWon { get; private set; }
 		
+		public int StartingLives { get; private set; }
+		
 		private Music GameMusic;
 		private GameWorld gameWorld;
 		
@@ -29,10 +31,13 @@ namespace SNHU.GameObject
 		private HUD hud;
 		
 		public GameManager()
-		{
+		{	
 			GameStarted = false;
 			GamePaused = false;
 			GameEnding = false;
+			
+			var ini = new Ini(Library.GetText("assets/cfg.ini"));
+			StartingLives = Math.Max(1, int.Parse(ini["Game", "Lives"]));
 			
 			GameMusic = Mixer.music;
 			

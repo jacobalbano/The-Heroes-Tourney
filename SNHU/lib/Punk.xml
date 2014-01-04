@@ -10,24 +10,24 @@
             Also supports viewports for split-screen, minimaps, etc.
             </summary>
         </member>
-        <member name="F:Punk.Camera.X">
+        <member name="P:Punk.Camera.X">
             <summary>
-            Position of the camera.
+            X position of the camera.
             </summary>
         </member>
-        <member name="F:Punk.Camera.Y">
+        <member name="P:Punk.Camera.Y">
             <summary>
-            Position of the camera.
+            Y position of the camera.
             </summary>
         </member>
-        <member name="F:Punk.Camera.Angle">
+        <member name="P:Punk.Camera.Angle">
             <summary>
             Rotation of the camera.
             </summary>
         </member>
-        <member name="P:Punk.Camera.Zoom">
+        <member name="P:Punk.Camera.Scale">
             <summary>
-            Zoom of the camera.
+            Scale of the camera.
             </summary>
         </member>
         <member name="T:Punk.Debugging.Console">
@@ -471,7 +471,7 @@
         </member>
         <member name="P:Punk.Entity.OnCamera">
             <summary>
-            If the Entity collides with the camera rectangle.
+            If the Entity's position is contained within the camera rectangle.
             </summary>
         </member>
         <member name="P:Punk.Entity.World">
@@ -675,7 +675,7 @@
             <param name="toY">Y position to step towards.</param>
             <param name="distance">The distance to step (will not overshoot target).</param>
         </member>
-        <member name="M:Punk.FP.AnchorTo(System.Single@,System.Single@,System.Single,System.Single,System.Single)">
+        <member name="M:Punk.FP.AnchorTo(System.Single@,System.Single@,System.Single,System.Single,System.Single,System.Nullable{System.Single})">
             <summary>
             Anchors the object to a position
             </summary>
@@ -683,7 +683,8 @@
             <param name="objY">Y of the object to anchor</param>
             <param name="anchorX">X of the anchor</param>
             <param name="anchorY">Y of the anchor</param>
-            <param name="distance">The max distance that the object can be from the anchor</param>
+            <param name="maxDistance">The max distance that the object can be from the anchor</param>
+            <param name="minDistance">The minimum distance that the object can be from the anchor</param>
         </member>
         <member name="M:Punk.FP.RotateAround(System.Single@,System.Single@,System.Single,System.Single,System.Single,System.Boolean)">
             <summary>
@@ -1894,7 +1895,7 @@
             <summary>
             Converts a IDictionary / IList object or a simple type (string, int, etc.) into a JSON string
             </summary>
-            <param name="json">A Dictionary&lt;string, object&gt; / List&lt;object&gt;</param>
+            <param name="obj">A Dictionary&lt;string, object&gt; / List&lt;object&gt;</param>
             <returns>A JSON encoded string, or null if object 'json' is not serializable</returns>
         </member>
         <member name="T:Punk.Graphics.Spine.PunkTextureLoader">
@@ -2240,6 +2241,147 @@
             Text style types.
             </summary>
         </member>
+        <member name="T:Punk.Graphics.Tilemap">
+            <summary>
+            Description of Tilemap.
+            </summary>
+        </member>
+        <member name="F:Punk.Graphics.Tilemap.UsePositions">
+            <summary>
+            If x/y positions should be used instead of columns/rows.
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Tilemap.#ctor(SFML.Graphics.Texture,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="tileset">The source tileset texture.</param>
+            <param name="width">Width of the tilemap graphic, in pixels.</param>
+            <param name="height">Height of the tilemap graphic, in pixels.</param>
+            <param name="tileWidth">Tile width.</param>
+            <param name="tileHeight">Tile height.</param>
+        </member>
+        <member name="M:Punk.Graphics.Tilemap.SetTile(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Set the tile at the position.
+            </summary>
+            <param name="column">Column of the tile.</param>
+            <param name="row">Column of the tile.</param>
+            <param name="index">The tile index.</param>
+        </member>
+        <member name="M:Punk.Graphics.Tilemap.ClearTile(System.Int32,System.Int32)">
+            <summary>
+            Clears the tile at the position.
+            </summary>
+            <param name="column">Column of the tile.</param>
+            <param name="row">Column of the tile.</param>
+        </member>
+        <member name="M:Punk.Graphics.Tilemap.GetTile(System.Int32,System.Int32)">
+            <summary>
+            Get the index of a tile at the position.
+            </summary>
+            <param name="column">Column of the tile.</param>
+            <param name="row">Column of the tile.</param>
+        </member>
+        <member name="M:Punk.Graphics.Tilemap.SetRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Fills the rectangular region with tiles.
+            </summary>
+            <param name="column">First tile column.</param>
+            <param name="row">First tile row.</param>
+            <param name="width">Width in tiles.</param>
+            <param name="height">Height in tiles.</param>
+            <param name="index">Index of the tile.</param>
+        </member>
+        <member name="M:Punk.Graphics.Tilemap.ClearRect(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Clears the rectangular region of tiles.
+            </summary>
+            <param name="column">First tile column.</param>
+            <param name="row">First tile row.</param>
+            <param name="width">Width in tiles.</param>
+            <param name="height">Height in tiles.</param>
+        </member>
+        <member name="M:Punk.Graphics.Tilemap.LoadFromString(System.String,System.String,System.String)">
+            <summary>
+            Loads the Tilemap tile index data from a string.
+            The implicit array should not be bigger than the Tilemap.
+            </summary>
+            <param name="str">The string data, which is a set of tile values separated by the columnSep and rowSep strings.</param>
+            <param name="columnSep">The string that separates each tile value on a row, default is ",".</param>
+            <param name="rowSep">The string that separates each row of tiles, default is "\n".</param>
+        </member>
+        <member name="M:Punk.Graphics.Tilemap.SaveToString(System.String,System.String)">
+            <summary>
+            Saves the Tilemap tile index data to a string.
+            </summary>
+            <param name="columnSep">The string that separates each tile value on a row, default is ",".</param>
+            <param name="rowSep">The string that separates each row of tiles, default is "\n".</param>
+            <returns>The string version of the array.</returns>
+        </member>
+        <member name="M:Punk.Graphics.Tilemap.CreateGrid(System.Int32[])">
+            <summary>
+            Create a grid based on this tilemap.
+            </summary>
+            <param name="solidTiles">The tile indeces to be treated as solid.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Punk.Graphics.Tilemap.GetIndex(System.Int32,System.Int32)">
+            <summary>
+            Gets the index of a tile, based on its column and row in the tileset.
+            </summary>
+            <param name="tilesColumn">Tileset column.</param>
+            <param name="tilesRow">Tileset row.</param>
+            <returns>Index of the tile.</returns>
+        </member>
+        <member name="M:Punk.Graphics.Tilemap.SetVertexPositions(System.Int32,System.Int32)">
+            <summary>
+            Calculate vertex positions for a given position.
+            </summary>
+            <param name="x">Position x.</param>
+            <param name="y">Position y.</param>
+        </member>
+        <member name="M:Punk.Graphics.Tilemap.SetTexCoords(System.Int32)">
+            <summary>
+            Calulate texture coordinates for a given index
+            </summary>
+            <param name="index">The tile index.</param>
+        </member>
+        <member name="P:Punk.Graphics.Tilemap.Width">
+            <summary>
+            Width of the graphic.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Tilemap.Height">
+            <summary>
+            Height of the graphic.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Tilemap.TileWidth">
+            <summary>
+            The tile width.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Tilemap.TileHeight">
+            <summary>
+            The tile height.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Tilemap.TileCount">
+            <summary>
+            How many tiles the tilemap has.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Tilemap.Columns">
+            <summary>
+            How many columns the tilemap has.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Tilemap.Rows">
+            <summary>
+            How many rows the tilemap has.
+            </summary>
+        </member>
         <member name="T:Punk.Library">
             <summary>
             Content management and caching.
@@ -2307,11 +2449,6 @@
             How many times this Logic has updated since being created.
             </summary>
         </member>
-        <member name="F:Punk.Logic.Active">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="M:Punk.Logic.#ctor">
             <summary>
             Constructor.
@@ -2371,7 +2508,7 @@
         </member>
         <member name="T:Punk.Masks.Hitbox">
             <summary>
-            Uses parent's hitbox to determine collision. This class is used
+            Uses Parent's hitbox to determine collision. This class is used
             internally by FlashPunk, you don't need to use this class becaus
             this is the default behaviour of Entities without a Mask object.
             </summary>
@@ -2381,95 +2518,51 @@
             Base class for Entity collision masks.
             </summary>
         </member>
+        <member name="F:Punk.Masks.Mask.Parent">
+            <summary>
+            The Parent entity of this mask.
+            </summary>
+        </member>
+        <member name="F:Punk.Masks.Mask.List">
+            <summary>
+            The Parent Masklist of this mask.
+            </summary>
+        </member>
         <member name="M:Punk.Masks.Mask.#ctor">
             <summary>
             Constructor.
             </summary>
         </member>
-        <member name="F:Punk.Masks.Mask.Parent">
-            <summary>
-            The parent Entity of this mask.
-            </summary>
-        </member>
-        <member name="F:Punk.Masks.Mask.List">
-            <summary>
-            The parent Masklist of the mask.
-            </summary>
-        </member>
         <member name="M:Punk.Masks.Mask.Collide(Punk.Masks.Mask)">
             <summary>
-            Checks for collision with another Mask.
+            Check for collision with another Mask.
             </summary>
-            <param name="mask">The other Mask to check against.</param>
+            <param name="other">The other Mask to check against.</param>
             <returns>If the Masks overlap.</returns>
         </member>
         <member name="M:Punk.Masks.Mask.CollideMask(Punk.Masks.Mask)">
             <summary>
-            Collide against a Mask.
+            Collide against an Entity.
             </summary>
-            <param name="other">The Mask to collide with.</param>
-            <returns>Whether this returns with the Mask.</returns>
         </member>
         <member name="M:Punk.Masks.Mask.CollideMasklist(Punk.Masks.Mask)">
             <summary>
             Collide against a Masklist.
-            C# is stupid, so you this method has to accept a Mask parameter and then check to see if it is a masklist.
             </summary>
-            <param name="other">The Masklist to collide with.</param>
-            <returns>Whether this returns with the Masklist.</returns>
         </member>
         <member name="M:Punk.Masks.Mask.AssignTo(Punk.Entity)">
             <summary>
-            Assigns the mask to the parent.
-            </summary>
-            <param name="parent"></param>
-        </member>
-        <member name="M:Punk.Masks.Mask.Update">
-            <summary>
-            Updates the parent's bounds for this mask.
+            Assign this mask to an Entity.
             </summary>
         </member>
         <member name="M:Punk.Masks.Mask.RenderDebug">
             <summary>
-            Used to render debug information in console.
+            Override this; called to render mask in the debugger.
             </summary>
         </member>
-        <member name="F:Punk.Masks.Mask._check">
+        <member name="M:Punk.Masks.Mask.Update">
             <summary>
-            Callback dictionary for setting up reactions between masks.
-            </summary>
-        </member>
-        <member name="T:Punk.Masks.Mask.CollideWithMask">
-            <summary>
-            Callback type for checking mask collision.
-            </summary>
-        </member>
-        <member name="M:Punk.Masks.Hitbox.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="width">Width of the hitbox.</param>
-            <param name="height">Width of the hitbox.</param>
-            <param name="x">X offset.</param>
-            <param name="y">Y offset.</param>
-        </member>
-        <member name="M:Punk.Masks.Hitbox.CollideMask(Punk.Masks.Mask)">
-            <summary>
-            Collides against an Entity.
-            </summary>
-            <param name="other">The Mask to collide agains.</param>
-            <returns>Whether this collides with the Mask.</returns>
-        </member>
-        <member name="M:Punk.Masks.Hitbox.CollideHitbox(Punk.Masks.Mask)">
-            <summary>
-            Collides against a Hitbox.
-            </summary>
-            <param name="other">The Hitbox to collide against.</param>
-            <returns>Whether this collides with the Hitbox.</returns>
-        </member>
-        <member name="M:Punk.Masks.Hitbox.Update">
-            <summary>
-            Updates the parent's bounds for this mask.
+            Update the parent's bounds for this Mask.
             </summary>
         </member>
         <member name="P:Punk.Masks.Hitbox.X">
@@ -2484,24 +2577,29 @@
         </member>
         <member name="P:Punk.Masks.Hitbox.Width">
             <summary>
-            Width.
+            Width of the hitbox.
             </summary>
         </member>
         <member name="P:Punk.Masks.Hitbox.Height">
             <summary>
-            Height.
+            Height of the hitbox.
+            </summary>
+        </member>
+        <member name="F:Punk.Masks.Grid.UsePositions">
+            <summary>
+            If x/y positions should be used instead of columns/rows.
             </summary>
         </member>
         <member name="M:Punk.Masks.Grid.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Constructor.
             </summary>
-            <param name="width">The width of the grid.</param>
-            <param name="height">The width of the grid.</param>
-            <param name="tileWidth">The width of each tile in the grid.</param>
-            <param name="tileHeight">The height of each tile in the grid.</param>
-            <param name="x">X offset.</param>
-            <param name="y">Y offset.</param>
+            <param name="width">Width of the grid, in pixels.</param>
+            <param name="height">Height of the grid, in pixels.</param>
+            <param name="tileWidth">Width of a grid tile, in pixels.</param>
+            <param name="tileHeight">Height of a grid tile, in pixels.</param>
+            <param name="x">X offset of the grid.</param>
+            <param name="y">Y offset of the grid.</param>
         </member>
         <member name="M:Punk.Masks.Grid.SetTile(System.Int32,System.Int32,System.Boolean)">
             <summary>
@@ -2524,7 +2622,7 @@
             </summary>
             <param name="column">Tile column.</param>
             <param name="row">Tile row.</param>
-            <returns>The tile value.</returns>
+            <returns>Tile value.</returns>
         </member>
         <member name="M:Punk.Masks.Grid.SetRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
             <summary>
@@ -2534,69 +2632,53 @@
             <param name="row">First row.</param>
             <param name="width">Columns to fill.</param>
             <param name="height">Rows to fill.</param>
-            <param name="solid">If the tiles should be solid.</param>
+            <param name="solid">Value to fill with.</param>
         </member>
         <member name="M:Punk.Masks.Grid.ClearRect(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
-            Makes the rectangular region of tiles non-solid.
+            Clear a rectangle region of tiles.
             </summary>
             <param name="column">First column.</param>
             <param name="row">First row.</param>
-            <param name="Width">Columns to fill.</param>
-            <param name="Height">Rows to fill.</param>
+            <param name="width">Columns to clear.</param>
+            <param name="height">Rows to clear.</param>
         </member>
         <member name="M:Punk.Masks.Grid.LoadFromString(System.String,System.String,System.String)">
             <summary>
-            Loads the grid data from a string.
+            Loads the Grid tile index data from a string.
+            The implicit array should not be bigger than the Grid.
             </summary>
-            <param name="str">The string data, which is a set of tile values (0 or 1) separated by the columnSep and rowSep strings.</param>
+            <param name="str">The string data, which is a set of tile values separated by the columnSep and rowSep strings.</param>
             <param name="columnSep">The string that separates each tile value on a row, default is ",".</param>
             <param name="rowSep">The string that separates each row of tiles, default is "\n".</param>
         </member>
         <member name="M:Punk.Masks.Grid.SaveToString(System.String,System.String)">
-            Saves the grid data to a string.
-            @param columnSep		The string that separates each tile value on a row, default is ",".
-            @param rowSep			The string that separates each row of tiles, default is "\n".
-        </member>
-        <member name="F:Punk.Masks.Grid.UsePositions">
             <summary>
-            If x/y positions should be used instead of columns/rows.
+            Saves the Grid tile index data to a string.
             </summary>
+            <param name="columnSep">The string that separates each tile value on a row, default is ",".</param>
+            <param name="rowSep">The string that separates each row of tiles, default is "\n".</param>
+            <returns>The string version of the array.</returns>
         </member>
-        <member name="M:Punk.Masks.Grid.CollideMask(Punk.Masks.Mask)">
+        <member name="M:Punk.Masks.Grid.Clone">
             <summary>
-            Collides against an Entity.
+            Create a clone of this grid.
             </summary>
-            <param name="other">The other Entity.</param>
-            <returns>Whether the two collide.</returns>
+            <returns>The cloned grid.</returns>
         </member>
-        <member name="M:Punk.Masks.Grid.CollideHitbox(Punk.Masks.Mask)">
+        <member name="F:Punk.Masks.Grid.data">
             <summary>
-            Collides against a Hitbox.
-            </summary>
-            <param name="other">The hitbox to collide with.</param>
-            <returns>Whether the two collide.</returns>
-        </member>
-        <member name="M:Punk.Masks.Grid.CollideGrid(Punk.Masks.Mask)">
-            <summary>
-            Collides against a Mask.
-            </summary>
-            <param name="mask">The mask to collide with.</param>
-            <returns>Whether the two collide.</returns>
-        </member>
-        <member name="M:Punk.Masks.Grid.RenderDebug">
-            <summary>
-            Render debug information in the console.
+            The grid data.
             </summary>
         </member>
         <member name="P:Punk.Masks.Grid.TileWidth">
             <summary>
-            The tile Width.
+            The tile width.
             </summary>
         </member>
         <member name="P:Punk.Masks.Grid.TileHeight">
             <summary>
-            The tile Height.
+            The tile height.
             </summary>
         </member>
         <member name="P:Punk.Masks.Grid.Columns">
@@ -3278,7 +3360,7 @@
         </member>
         <member name="M:Punk.Utils.Draw.Line(System.Single,System.Single,System.Single,System.Single,SFML.Graphics.Color,System.Single)">
             <summary>
-            Draws a pixelated, non-antialiased line.
+            Draws a line.
             </summary>
             <param name="x1">Starting x position.</param>
             <param name="y1">Starting y position.</param>
@@ -3289,7 +3371,7 @@
         </member>
         <member name="M:Punk.Utils.Draw.Line(SFML.Window.Vector2f,SFML.Window.Vector2f,SFML.Graphics.Color,System.Single)">
             <summary>
-            Draws a pixelated, non-antialiased line.
+            Draws a line.
             </summary>
             <param name="start">Starting position.</param>
             <param name="end">Ending position</param>
@@ -3515,6 +3597,56 @@
             <summary>
             Description of GridType.
             </summary>
+        </member>
+        <member name="M:Punk.Utils.Ini.#ctor">
+            <summary>
+            Constructor.
+            Initializes the Ini with no data.
+            </summary>
+        </member>
+        <member name="M:Punk.Utils.Ini.#ctor(System.String)">
+            <summary>
+            Constructor.
+            Content is parsed into Ini data.
+            </summary>
+            <param name="content">The text containing the Ini data.</param>
+        </member>
+        <member name="M:Punk.Utils.Ini.GetValue(System.String,System.String)">
+            <summary>
+            Get a specific value from the .ini file
+            </summary>
+            <param name="sectionName"></param>
+            <param name="key"></param>
+            <returns>The value of the given key in the given section, or null if not found</returns>
+        </member>
+        <member name="M:Punk.Utils.Ini.SetValue(System.String,System.String,System.String)">
+            <summary>
+            Set a specific value in a section
+            </summary>
+            <param name="sectionName"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Punk.Utils.Ini.GetSection(System.String)">
+            <summary>
+            Get all the Values for a section
+            </summary>
+            <param name="sectionName"></param>
+            <returns>A Dictionary with all the Key/Values for that section (maybe empty but never null)</returns>
+        </member>
+        <member name="M:Punk.Utils.Ini.SetSection(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Set an entire sections values
+            </summary>
+            <param name="sectionName"></param>
+            <param name="sectionValues"></param>
+        </member>
+        <member name="M:Punk.Utils.Ini.Parse(System.String)">
+            <summary>
+            Parse an .INI File
+            </summary>
+            <param name="content">The Ini source data.</param>
+            <returns></returns>
         </member>
         <member name="T:Punk.Utils.Input">
             <summary>
