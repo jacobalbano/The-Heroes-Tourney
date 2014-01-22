@@ -14,7 +14,7 @@ namespace SNHU.Components
 		PhysicsBody physics;
 		Axis axis;
 		
-		float Speed;
+		public float Speed { get; private set; }
 		
 		public const string SPEED = "movement_speed";
 		
@@ -35,14 +35,20 @@ namespace SNHU.Components
 			{
 				var delta = FP.Sign(physics.MoveDelta.X);
 				var ax = FP.Sign(axis.X);
+				float speed = Speed;
+				
+				if (Parent.Collide(Parent.Type, Parent.X, Parent.Y) != null)
+				{
+					speed *= 0.5f;
+				}
 				
 				if (delta == 0 || delta == ax)
 				{
-					Parent.OnMessage(PhysicsBody.IMPULSE, axis.X * Speed, 0, true);
+					Parent.OnMessage(PhysicsBody.IMPULSE, axis.X * speed, 0, true);
 				}
 				else
 				{
-					Parent.OnMessage(PhysicsBody.IMPULSE, axis.X * (Speed / 3f), 0, true);
+					Parent.OnMessage(PhysicsBody.IMPULSE, axis.X * (speed / 3f), 0, true);
 				}
 			}
 		}

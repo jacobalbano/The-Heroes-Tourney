@@ -32,8 +32,8 @@ namespace SNHU.GameObject
 		
 		public const string Collision = "fist";
 		
-		private const float BASE_PUNCH_FORCE = 30;
-		private const float REBOUND_PUNCH_FORCE = 40;
+		public const float BASE_PUNCH_FORCE = 30;
+		public const float REBOUND_PUNCH_FORCE = 40;
 		
 		/// <summary>
 		/// Constructor
@@ -171,6 +171,15 @@ namespace SNHU.GameObject
 				foreach (var p in l)
 				{
 					var player = p as Player;
+					if (image.FlippedX)
+					{
+						if (player.Left > parent.Left) continue;
+					}
+					else
+					{
+						if (player.Right < parent.Right) continue;
+					}
+					
 					if (player != null && player != parent && !player.Invincible)
 				 	{
 						canPunch = false;

@@ -79,9 +79,9 @@ namespace SNHU.Components
 		private float frictionFactor;
 		private const float airFriction = 0.9f;
 		
-		public PhysicsBody()
+		public PhysicsBody(params string[] colliders)
 		{
-			Colliders = new List<string>();
+			Colliders = new List<string>(colliders);
 			MoveDelta = new Vector2f();
 			Gravity = 0.75f;
 			

@@ -30,14 +30,16 @@ namespace SNHU.GameObject
 		
 		private HUD hud;
 		
+		public Ini Config { get; private set; }
+		
 		public GameManager()
 		{	
 			GameStarted = false;
 			GamePaused = false;
 			GameEnding = false;
 			
-			var ini = new Ini(Library.GetText("assets/cfg.ini"));
-			StartingLives = Math.Max(1, int.Parse(ini["Game", "Lives"]));
+			Config = new Ini(Library.GetText("assets/cfg.ini"));
+			StartingLives = Math.Max(1, int.Parse(Config["Game", "Lives"]));
 			
 			GameMusic = Mixer.music;
 			

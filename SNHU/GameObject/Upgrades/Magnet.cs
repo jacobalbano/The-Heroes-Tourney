@@ -12,6 +12,7 @@ namespace SNHU.GameObject.Upgrades
 			
 		public Magnet()
 		{
+			Icon = new Image(Library.GetTexture("assets/magnet.png"));
 		}
 		
 		public override void Use()

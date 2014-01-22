@@ -49,9 +49,6 @@
     <OutputType>WinExe</OutputType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fasterflect">
-      <HintPath>lib\Fasterflect.dll</HintPath>
-    </Reference>
     <Reference Include="Punk">
       <HintPath>lib\Punk.dll</HintPath>
     </Reference>

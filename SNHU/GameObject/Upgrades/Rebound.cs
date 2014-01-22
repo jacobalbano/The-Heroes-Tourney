@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
+using SNHU.Components;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -14,6 +16,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public Rebound()
 		{
+			Icon = new Image(Library.GetTexture("assets/rebound.png"));
 		}
 		
 		public override void Use()
@@ -48,6 +51,13 @@ namespace SNHU.GameObject.Upgrades
 				owner.Rebounding = true;
 				
 				Mixer.Audio["reboundUp"].Play();
+				
+				var existingCollisions = new List<Entity>();
+				Parent.CollideInto(Parent.Type, Parent.X, Parent.Y, existingCollisions);
+				foreach (var player in existingCollisions)
+				{
+					player.OnMessage(PhysicsBody.IMPULSE, 0, -Fist.BASE_PUNCH_FORCE);
+				}
 			}
 		}
 		

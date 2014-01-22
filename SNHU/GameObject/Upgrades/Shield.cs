@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
@@ -15,6 +16,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public Shield()
 		{
+			Icon = new Image(Library.GetTexture("assets/shield.png"));
 		}
 		
 		public override void Use()

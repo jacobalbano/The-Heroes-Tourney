@@ -21,6 +21,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public SuperSpeed()
 		{
+			Icon  = new Image(Library.GetTexture("assets/speed.png"));
 			emitters = new Dictionary<Player, Emitter>();
 		}
 		

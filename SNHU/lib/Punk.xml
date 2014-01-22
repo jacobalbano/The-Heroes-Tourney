@@ -2815,6 +2815,16 @@
             Delegate for optional callback function for when the sound finishes playing.
             </summary>
         </member>
+        <member name="T:Punk.Renderer">
+            <summary>
+            Description of Renderer.
+            </summary>
+        </member>
+        <member name="T:Punk.Screen">
+            <summary>
+            Description of Screen.
+            </summary>
+        </member>
         <member name="T:Punk.Sfx">
             <summary>
             A wrapper for SFML.Sound, which provides OnComplete callback

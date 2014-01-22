@@ -11,12 +11,13 @@ namespace SNHU
 		{
 			base.Init();
 			
+			#if DEBUG
 			FP.Console.Enable();
-			FP.World = new MenuWorld();
-			
-			FP.Screen.SetTitle("The Heroes' Tourney");
-			
 			FP.Screen.GainedFocus += delegate { Library.Reload(); };
+			#endif
+			
+			FP.World = new MenuWorld();
+			FP.Screen.SetTitle("The Heroes' Tourney");
 		}
 		
 		public static void Main(string[] args)

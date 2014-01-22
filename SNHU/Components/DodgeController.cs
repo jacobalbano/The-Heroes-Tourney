@@ -25,12 +25,14 @@ namespace SNHU.Components
 		
 		int duration;
 		int cooldown;
+		float facing;
 		Vector2f dodgeDirection;
 		Controller controller;
 		Axis axis;
 		
 		public DodgeController(Controller controller, Axis axis)
 		{
+			facing = 0;
 			CanDodge = true;
 			dodgeDirection = new Vector2f();
 			this.controller = controller;
@@ -47,9 +49,14 @@ namespace SNHU.Components
 		{
 			base.Update();
 			
+			if (axis.X != 0)
+			{
+				facing = FP.Sign(axis.X);
+			}
+			
 			if (cooldown <= 0 && CanDodge && controller.Pressed("dodge"))
 			{
-				if (axis.X != 0)
+				if (axis.X != 0 && facing != 0)
 				{
 					Parent.OnMessage(PhysicsBody.USE_GRAVITY, false);
 					Parent.OnMessage(START_DODGE);
@@ -59,8 +66,8 @@ namespace SNHU.Components
 					
 					duration = DODGE_DURATION;
 					SetCooldown();
-					dodgeDirection.X = (int) Math.Round(axis.X) * 0.7f;
-					dodgeDirection.Y = (int) Math.Round(axis.Y) * 0.3f;
+					dodgeDirection.X = (int) Math.Round(1f * FP.Sign(facing)) * 0.7f;
+					dodgeDirection.Y = (int) Math.Round(1f * FP.Sign(axis.Y)) * 0.3f;
 					dodgeDirection = dodgeDirection.Normalized(30);
 				}
 			}
@@ -71,16 +78,23 @@ namespace SNHU.Components
 				
 				if (duration == 0)
 				{
-					RecentlyDodged = true;
-					OnCancelDodge();
-					Parent.OnMessage(DODGE_COMPLETE);
+					Stop();
 				}
 			}
+			
 			
 			if (cooldown > 0)
 			{
 				cooldown--;
 			}
+		}
+		
+		void Stop()
+		{
+			duration = 0;
+			RecentlyDodged = true;
+			OnCancelDodge();
+			Parent.OnMessage(DODGE_COMPLETE);
 		}
 		
 		void OnCancelDodge(params object[] args)

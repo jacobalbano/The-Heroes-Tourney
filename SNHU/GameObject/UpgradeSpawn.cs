@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
@@ -34,49 +35,20 @@ namespace SNHU.GameObject
 		public override void Added()
 		{
 			base.Added();
-			if (FP.Rand(100) < 75)
+			
+			var spawnChance = int.Parse(GameWorld.gameManager.Config["Upgrades", "SpawnChance"]);
+			if (FP.Rand(100) < spawnChance)
 			{
-				switch (FP.Rand(9))
-				{		
-					case 0:
-						upgrade = new Invisibility();
-						Graphic = new Image(Library.GetTexture("assets/invisibility.png"));
-						break;
-					case 1:
-						upgrade = new Shield();
-						Graphic = new Image(Library.GetTexture("assets/shield.png"));
-						break;
-					case 2:
-						upgrade = new GroundSmash();
-						Graphic = new Image(Library.GetTexture("assets/groundsmash.png"));
-						break;
-					case 3:
-						upgrade = new SuperSpeed();
-						Graphic = new Image(Library.GetTexture("assets/speed.png"));
-						break;
-					case 4:
-						upgrade = new Rebound();
-						Graphic = new Image(Library.GetTexture("assets/rebound.png"));
-						break;
-					case 5:
-						upgrade = new FUS();
-						Graphic = new Image(Library.GetTexture("assets/fus.png"));
-						break;
-					case 6:
-						upgrade = new Bullets();
-						Graphic = new Image(Library.GetTexture("assets/bullets.png"));
-						break;
-					case 7:
-						upgrade = new HotPotato();
-						Graphic = new Image(Library.GetTexture("assets/hotpotato.png"));
-						break;
-					case 8:
-						upgrade = new Magnet();
-						Graphic = new Image(Library.GetTexture("assets/magnet.png"));
-						break;
-					default:
-						break;
-				}
+				var upgrades = Regex.Split(GameWorld.gameManager.Config["Upgrades", "Enabled"], ", ");
+				
+				var name = FP.Choose(upgrades);
+				name = Regex.Replace(name, @"\s", "");
+				var type = GetTypeFromAllAssemblies(name);
+				if (type == null)
+					throw new Exception(string.Format("Invalid upgrade type: '{0}'", name));
+				
+				upgrade = (Upgrade) type.GetConstructor(System.Type.EmptyTypes).Invoke(null);
+				Graphic = upgrade.Icon;
 				
 				(Graphic as Image).CenterOO();
 				SetHitboxTo(Graphic);
@@ -95,7 +67,7 @@ namespace SNHU.GameObject
 			if (upgrade != null)
 			{
 				var p = Collide(Player.Collision, X, Y) as Player;
-				if (p != null && p.upgrade == null)
+				if (p != null && p.Upgrade == null)
 				{
 					if(owner == null)
 					{
@@ -113,5 +85,26 @@ namespace SNHU.GameObject
 				}
 			}
 		}
+		
+		/// <summary>
+        /// Searches all known assemblies for a type and returns that type.
+        /// </summary>
+        /// <param name="type">The type to search for.</param>
+        /// <returns>The type found.  Null if no match.</returns>
+        public static Type GetTypeFromAllAssemblies(string type)
+        {
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            foreach (var assembly in assemblies)
+            {
+                var types = assembly.GetTypes();
+                foreach (var t in types)
+                {
+                    if (t.Name == type)
+                        return t;
+                }
+            }
+            
+            return null;
+        }
 	}
 }

@@ -15,6 +15,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public Invisibility()
 		{
+			Icon = new Image(Library.GetTexture("assets/invisibility.png"));
 		}
 		
 		public override void Use()

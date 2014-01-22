@@ -15,6 +15,7 @@ namespace SNHU.GameObject.Upgrades
 			
 		public FUS()
 		{
+			Icon = new Image(Library.GetTexture("assets/fus.png"));
 		}
 		
 		public override void Use()

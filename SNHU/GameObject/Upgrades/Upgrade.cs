@@ -16,6 +16,7 @@ namespace SNHU.GameObject.Upgrades
 		public bool Activated { get; protected set; }
 		
 		protected Player owner;
+		public Image Icon;
 		
 		protected Alarm lifeTimer;
 		public Upgrade()

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
@@ -33,7 +35,7 @@ namespace SNHU.GameObject.Upgrades
 		}
 		
 		public Bullet(Vector2f initialDir, int ownerID)
-		{
+		{	
 			image = new Image(Library.GetTexture("assets/bullet.png"));
 			Graphic = image;
 			image.CenterOO();
@@ -144,7 +146,7 @@ namespace SNHU.GameObject.Upgrades
 		}
 		
 		private void Bounce()
-		{
+		{	
 			if (bounceTween != null)	bounceTween.Cancel();
 			image.ScaleX = 0.5f;
 			image.ScaleY = 1.5f;
@@ -167,20 +169,81 @@ namespace SNHU.GameObject.Upgrades
 	{
 		List<Entity> bullets;
 		
-		public const int BULLET_COUNT = 3;
+		public int BulletCount { get; private set; }
+		
+		private enum Mode { Cone, Radial, Random };
 		
 		public Bullets()
 		{
+			Icon = new Image(Library.GetTexture("assets/bullets.png"));
 			bullets = new List<Entity>();
+			
+			AddResponse(ChunkManager.Advance, OnAdvance);
 		}
 		
 		public override void Added()
 		{
 			base.Added();
 			
-			bullets.Add(new Bullet(new Vector2f(-1, -1), (Parent as Player).PlayerId));
-			bullets.Add(new Bullet(new Vector2f(FP.Choose(-0.1f, 0.1f), -1), (Parent as Player).PlayerId));
-			bullets.Add(new Bullet(new Vector2f(1, -1), (Parent as Player).PlayerId));
+			BulletCount = int.Parse(GameWorld.gameManager.Config["Bullets", "Count"]);
+			
+			Mode mode = Mode.Cone;
+			var modeString = GameWorld.gameManager.Config["Bullets", "Mode"];
+			modeString = Regex.Replace(modeString, @"\s", "");
+			
+			var modeNames = Enum.GetNames(typeof(Mode)).ToList();
+			var modeValues = (int[]) Enum.GetValues(typeof(Mode));
+			
+			for (int i = 0; i < modeNames.Count; i++)
+			{
+				if (modeNames[i] == modeString)
+				{
+					mode = (Mode) modeValues[i];
+					if (mode == Mode.Random)
+						mode = FP.Choose(Mode.Radial, Mode.Cone);
+					
+					break;
+				}
+			}
+			
+			var pid = (Parent as Player).PlayerId;
+			for (int i = 0; i < BulletCount; i++)
+			{
+				var vec = new Vector2f();
+				if (mode == Mode.Radial)
+				{
+					var angle = FP.Scale(i, 0, BulletCount, 0, 360);
+					angle += 45;
+					if ((angle %= 360) < 0)	angle += 360;
+				
+					FP.AngleXY(ref vec.X, ref vec.Y, angle, 1);
+				}
+				else
+				{
+					vec.X = FP.Scale(i, 0, BulletCount - 1, -1, 1);
+					vec.Y = -1;
+				}
+				
+				bullets.Add(new Bullet(vec, pid));
+			}
+		}
+		
+		public override void Update()
+		{
+			base.Update();
+			
+			if (bullets.Count == 0) return;
+ 			
+			int count = 0;
+			foreach (var bullet in bullets)
+			{
+				if (bullet.World != null && !bullet.OnCamera)	count++;
+			}
+			
+			if (count == bullets.Count)
+			{
+				OnLifetimeComplete();
+			}
 		}
 		
 		public override void Use()
@@ -219,6 +282,12 @@ namespace SNHU.GameObject.Upgrades
 				
 				(Parent as Player).SetUpgrade(null);
 			}
+		}
+		
+		private void OnAdvance(params object[] args)
+		{
+			if (Activated)
+				OnLifetimeComplete();
 		}
 	}
 }

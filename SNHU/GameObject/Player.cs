@@ -22,6 +22,7 @@ namespace SNHU.GameObject
 		public const string Damage = "player_damage";
 		
 		public const string Collision = "player";
+//		private HashSet<Entity> excludeCollision;
 		
 		public const float JumpForce = -15;
 		public const float JUMP_JUICE_FORCE = 0.3f;
@@ -30,7 +31,6 @@ namespace SNHU.GameObject
 		public Image player;
 		private bool hand;
 		public Fist left, right;
-		private Image upgradeIcon;
 		
 		public Controller Controller { get; private set; }
 		private Axis axis;
@@ -38,12 +38,13 @@ namespace SNHU.GameObject
 		private OffscreenCursor cursor;
 		private bool isOffscreen;
 		
-		public Upgrade upgrade { get; private set; }
+		public Upgrade Upgrade { get; private set; }
 		public bool Invincible;
 		public bool Rebounding;
 		
 		public PhysicsBody physics;
 		public DodgeController dodge;
+		public Movement movement;
 		public bool OnGround { get; private set; }
 		
 		public const float SPEED = 5.5f;
@@ -57,6 +58,7 @@ namespace SNHU.GameObject
 		
 		public Player(float x, float y, uint jid, int id, string imageName) : base(x, y)
 		{
+//			excludeCollision = new HashSet<Entity>();
 			ImageName = imageName;
 			this.PlayerId = id;
 			this.ControllerId = jid;
@@ -67,10 +69,6 @@ namespace SNHU.GameObject
 			player = new Image(Library.GetTexture("assets/players/" + imageName + ".png"));
 			player.Scale = 0.5f;
 			AddGraphic(player);
-			
-			upgradeIcon = Image.CreateCircle(10, FP.Color(0xFF00FF));
-			upgradeIcon.Y = Y - 80;
-			upgradeIcon.CenterOrigin();
 			
 			cursor = new OffscreenCursor(this);
 			isOffscreen = false;
@@ -86,9 +84,6 @@ namespace SNHU.GameObject
 			right = new Fist(false, this);
 			
 			Type = Collision;
-			physics = new PhysicsBody();
-			physics.Colliders.Add(Platform.Collision);
-			physics.Colliders.Add(Type);
 			
 			Lives = GameWorld.gameManager.StartingLives;
 			IsAlive = false;
@@ -97,15 +92,15 @@ namespace SNHU.GameObject
 			Rebounding = false;
 			
 			
-			AddLogic(physics);
-			AddLogic(new Movement(physics, axis));
+			AddLogic(physics = new PhysicsBody(Platform.Collision, Type));
+			AddLogic(movement = new Movement(physics, axis));
 			AddLogic(dodge = new DodgeController(Controller, axis));
-//			AddLogic(new GrabLock(dodge));
 			
 			AddResponse(GroundSmash.GROUND_SMASH, OnGroundSmash);
 			AddResponse(FUS.BE_FUS, OnFUS);
 			AddResponse(Magnet.BE_MAGNET, OnMagnet);
 			AddResponse(Damage, OnDamage);
+			AddResponse(DodgeController.DODGE_COMPLETE, OnDodgeComplete);
 		}
 		
 		void InitController()
@@ -114,26 +109,22 @@ namespace SNHU.GameObject
 			
 			if (Joystick.HasAxis(ControllerId, Joystick.Axis.PovX))	//	xbox
 			{
-				Controller.Define("upgrade", PlayerId, Controller.Button.B);
 				Controller.Define("jump", PlayerId, Controller.Button.A);
 				
 				Controller.Define("punch", PlayerId, Controller.Button.X);
-				Controller.Define("punch_r", PlayerId, (Controller.Button) 5);
-				Controller.Define("punch_l", PlayerId, (Controller.Button) 4);
+				Controller.Define("dodge", PlayerId, Controller.Button.RB);
+				Controller.Define("upgrade", PlayerId, Controller.Button.LB);
 				
-				Controller.Define("dodge", PlayerId, Controller.Button.Y);
 				Controller.Define("start", PlayerId, Controller.Button.Start);
 			}
 			else	//	snes
 			{
-//				Controller.Define("upgrade", PlayerId, Controller.Button.B);
 				Controller.Define("jump", PlayerId, Controller.Button.X);
 				
 				Controller.Define("punch", PlayerId, Controller.Button.Y);
 				Controller.Define("dodge", PlayerId, (Controller.Button) 5);
 				Controller.Define("upgrade", PlayerId, (Controller.Button) 4);
 				
-				Controller.Define("dodge", PlayerId, Controller.Button.A);
 				Controller.Define("start", PlayerId, (Controller.Button) 9);
 			}
 			
@@ -176,11 +167,28 @@ namespace SNHU.GameObject
 		{
 			base.Update();
 			
+//			if (excludeCollision.Count > 0)
+//			{
+//				var toRemove = new List<Entity>();
+//				
+//				foreach (var player in excludeCollision)
+//				{
+//					if (CollideWith(player, X, Y) == null)
+//						toRemove.Add(player);
+//				}
+//				
+//				foreach (var player in toRemove)
+//				{
+//					excludeCollision.Remove(player);
+//				}
+//			}
+			
 			if (!isOffscreen && !GameWorld.OnCamera(X, Y))
 			{
 				isOffscreen = true;
 				World.Add(cursor);
 			}
+			
 			if (isOffscreen && GameWorld.OnCamera(X, Y))
 			{	
 				isOffscreen = false;
@@ -265,9 +273,9 @@ namespace SNHU.GameObject
 			
 			if (Controller.Pressed("upgrade"))
 			{
-				if (upgrade != null)
+				if (Upgrade != null)
 				{
-					upgrade.Use();
+					Upgrade.Use();
 					World.BroadcastMessage(Upgrade.Used, PlayerId);
 				}
 			}
@@ -335,17 +343,16 @@ namespace SNHU.GameObject
 			}
 			else if (e.Type == Type)
 			{
-//				if (dodge.IsDodging) return false;
-				
-				if (e.Y > Y)
+				if (e.Top >= Bottom)
 				{
 					OnMessage(PhysicsBody.IMPULSE, FP.Rand(10) - 5, JumpForce);
 					e.OnMessage(PhysicsBody.IMPULSE, FP.Rand(10) - 5, -JumpForce);
 				}
-				else if (e.Y < Y && Math.Abs(X - e.X) < HalfWidth)
+				else if (e.Bottom <= Top && Math.Abs(X - e.X) < HalfWidth)
 				{
 					e.OnMessage(PhysicsBody.IMPULSE, FP.Rand(10) - 5, JumpForce * 1.1);
 				}
+				else return false;
 			}
 			
 			return base.MoveCollideY(e);
@@ -353,8 +360,27 @@ namespace SNHU.GameObject
 		
 		public override bool MoveCollideX(Entity e)
 		{
-//			if (e.Type == Type)
-//				if (dodge.IsDodging) return false;
+			if (e.Type == Type)
+			{
+				var p = e as Player;
+				
+				if (p.Invincible)
+					return true;
+				
+				if (dodge.IsDodging)
+					return false;
+				
+//				if (excludeCollision.Contains(e) || p.excludeCollision.Contains(this))
+//					return false;
+				
+				if (Invincible)
+				{
+					p.MoveBy(axis.X * movement.Speed, 0, p.physics.Colliders);
+					return true;
+				}
+				
+				return false;
+			}
 			
 			return base.MoveCollideX(e);
 		}
@@ -379,7 +405,6 @@ namespace SNHU.GameObject
 				World.Remove(this);
 				
 				Mixer.Audio["death1"].Play();
-				
 			}
 		}
 		
@@ -391,12 +416,12 @@ namespace SNHU.GameObject
 		
 		public void SetUpgrade(Upgrade upgrade)
 		{
-			if (this.upgrade != null)
+			if (this.Upgrade != null)
 			{
-				RemoveLogic(this.upgrade);
+				RemoveLogic(this.Upgrade);
 			}
 			
-			this.upgrade = upgrade;
+			this.Upgrade = upgrade;
 			
 			if (player != null && left != null && right != null)
 			{
@@ -407,9 +432,9 @@ namespace SNHU.GameObject
 			Rebounding = false;
 			Invincible = false;
 			
-			if (this.upgrade != null)
+			if (this.Upgrade != null)
 			{
-				AddLogic(this.upgrade);
+				AddLogic(this.Upgrade);
 			}
 		}
 		
@@ -477,6 +502,19 @@ namespace SNHU.GameObject
 			{
 				OnMessage(PhysicsBody.IMPULSE, dir.X, dir.Y);
 			}
+		}
+		
+		private void OnDodgeComplete(params object[] args)
+		{
+//			var list = new List<Entity>();
+//			CollideInto(Type, X, Y, list);
+//			
+//			foreach (var e in list)
+//			{
+//				var player = e as Player;
+//				excludeCollision.Add(player);
+//				player.excludeCollision.Add(this);
+//			}
 		}
 	}
 }

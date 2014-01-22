@@ -18,6 +18,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public GroundSmash()
 		{
+			Icon = new Image(Library.GetTexture("assets/groundsmash.png"));
 			AddResponse(Player.OnLand, OnPlayerLand);
 		}
 		
