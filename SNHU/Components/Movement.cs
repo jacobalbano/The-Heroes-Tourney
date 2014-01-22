@@ -44,11 +44,11 @@ namespace SNHU.Components
 				
 				if (delta == 0 || delta == ax)
 				{
-					Parent.OnMessage(PhysicsBody.IMPULSE, axis.X * speed, 0, true);
+					Parent.OnMessage(PhysicsBody.IMPULSE, ax * speed, 0, true);
 				}
 				else
 				{
-					Parent.OnMessage(PhysicsBody.IMPULSE, axis.X * (speed / 3f), 0, true);
+					Parent.OnMessage(PhysicsBody.IMPULSE, ax * (speed / 3f), 0, true);
 				}
 			}
 		}

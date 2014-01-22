@@ -21,6 +21,8 @@ namespace SNHU.GameObject
 		public bool NobodyWon { get; private set; }
 		
 		public int StartingLives { get; private set; }
+		public int StartingHealth { get; private set; }
+		public int PunchDamage { get; private set; }
 		
 		private Music GameMusic;
 		private GameWorld gameWorld;
@@ -40,6 +42,8 @@ namespace SNHU.GameObject
 			
 			Config = new Ini(Library.GetText("assets/cfg.ini"));
 			StartingLives = Math.Max(1, int.Parse(Config["Game", "Lives"]));
+			StartingHealth = int.Parse(Config["Game", "Health"]);
+			PunchDamage = int.Parse(Config["Damage", "Punch"]);
 			
 			GameMusic = Mixer.music;
 			

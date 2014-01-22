@@ -11,6 +11,8 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class HUD : Entity
 	{
+		public const string UpdateDamage = "player_takeDamage";
+		
 		private GameManager gm;
 		
 		private List<Entity> players;
@@ -24,28 +26,61 @@ namespace SNHU.GameObject
 		public void AddPlayer(Player p)
 		{
 			var e = new Entity();	
-			var text = new Text(GameWorld.gameManager.StartingLives.ToString("x 0"));
-			text.Italicized = true;
-			text.Size = 18;
-			text.X = 10;
-			text.Y = 15;
-			text.ScrollX = text.ScrollY = 0;
-			
+			var lives = new Text(GameWorld.gameManager.StartingLives.ToString("x 0"));
+			lives.Italicized = true;
+			lives.Size = 18;
+			lives.X = 10;
+			lives.Y = 15;
+			lives.ScrollX = lives.ScrollY = 0;
+					
 			var head = new Image(Library.GetTexture("assets/players/" + p.ImageName + "_head.png"));
 			head.CenterOO();
 			head.X = -10;
 			head.Y = 25;
 			head.ScrollX = head.ScrollY = 0;
 			
-			e.Graphic = new Graphiclist(text, head);
+			var graphics = new Graphiclist(lives, head);
+			e.Graphic = graphics;
 			e.Graphic.ScrollX = e.Graphic.ScrollY = 0;
 			
-			e.AddResponse(Player.Die, OnDeathClosure(p, text, head));
+			if (GameWorld.gameManager.StartingHealth != 0)
+			{
+				var total = GameWorld.gameManager.StartingHealth.ToString();
+				var health = new Text(string.Format("{0}/{0}", total));
+				health.Bolded = true;
+				health.Size = 18;
+				health.X = head.X - head.Width / 2;
+				health.Y = lives.Y + 25;
+				health.ScrollX = health.ScrollY = 0;
+				graphics.Add(health);
+				
+				e.AddResponse(HUD.UpdateDamage, OnDamage(p, health));
+			}
+			
+			e.AddResponse(Player.Die, OnDeath(p, lives, head));
 			
 			players.Add(e);
 		}
 		
-		Entity.MessageResponse OnDeathClosure(Player p, Text text, Image image)
+		Entity.MessageResponse OnDamage(Player p, Text health)
+		{
+			return args => {
+				var player = args[0] as Player;
+				if (player != p)	return;
+				
+				health.String = string.Format("{0}/{1}", player.Health, GameWorld.gameManager.StartingHealth);
+				
+				health.ScaleY = 1.3f;
+				
+				var textTween = new VarTween(null, ONESHOT);
+				textTween.Tween(health, "ScaleY", 1, 0.15f);
+				AddTween(textTween, true);
+				
+//				if (player.Health < GameWorld.gameManager.StartingHealth / 25)
+			};
+		}
+		
+		Entity.MessageResponse OnDeath(Player p, Text text, Image image)
 		{
 			return args => {
 				var player = args[0] as Player;

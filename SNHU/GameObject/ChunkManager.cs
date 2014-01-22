@@ -65,9 +65,11 @@ namespace SNHU.GameObject
 			{
 				if (player.Lives > 0)
 				{
+					if (player.Health <= 0) player.Health = GameWorld.gameManager.StartingHealth;
 					player.X = currentChunk.SpawnPoints[player.PlayerId].X;
 					player.Y = currentChunk.SpawnPoints[player.PlayerId].Y;
 					World.Add(player);
+					World.BroadcastMessage(HUD.UpdateDamage, player);
 				}
 			}
 			

@@ -16,7 +16,7 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class Player : Entity
 	{
-		public const string Die = "player_lose";
+		public const string Die = "player_lose";	//	wot
 		public const string Lose = "player_die";
 		public const string OnLand = "player_onLand";
 		public const string Damage = "player_damage";
@@ -49,6 +49,7 @@ namespace SNHU.GameObject
 		
 		public const float SPEED = 5.5f;
 		
+		public int Health;
 		public int Lives { get; private set; }
 		public int PlayerId { get; private set; }
 		public uint ControllerId { get; private set; }
@@ -86,6 +87,7 @@ namespace SNHU.GameObject
 			Type = Collision;
 			
 			Lives = GameWorld.gameManager.StartingLives;
+			Health = GameWorld.gameManager.StartingHealth;
 			IsAlive = false;
 			
 			Invincible = false;
@@ -101,6 +103,7 @@ namespace SNHU.GameObject
 			AddResponse(Magnet.BE_MAGNET, OnMagnet);
 			AddResponse(Damage, OnDamage);
 			AddResponse(DodgeController.DODGE_COMPLETE, OnDodgeComplete);
+			AddResponse(Fist.PUNCH_CONNECTED, OnPunchConnected);
 		}
 		
 		void InitController()
@@ -394,6 +397,8 @@ namespace SNHU.GameObject
 					Lives -= 1;
 				}
 				
+				Health = GameWorld.gameManager.StartingHealth;
+				
 				if (Lives <= 0)
 				{
 					World.BroadcastMessage(Player.Lose, this);
@@ -502,6 +507,17 @@ namespace SNHU.GameObject
 			{
 				OnMessage(PhysicsBody.IMPULSE, dir.X, dir.Y);
 			}
+		}
+		
+		private void OnPunchConnected(params object[] args)
+		{
+			if (GameWorld.gameManager.StartingHealth == 0)
+				return;
+			
+			Health -= GameWorld.gameManager.PunchDamage;
+			World.BroadcastMessage(HUD.UpdateDamage, this);
+			if (Health <= 0)
+				Kill();
 		}
 		
 		private void OnDodgeComplete(params object[] args)
