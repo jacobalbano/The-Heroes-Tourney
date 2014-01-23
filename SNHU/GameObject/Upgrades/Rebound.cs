@@ -12,11 +12,18 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class Rebound : Upgrade
 	{
+		public const string SET = "rebound_set";
+		
 		private Image shield_1, shield_2;
 		
 		public Rebound()
 		{
 			Icon = new Image(Library.GetTexture("assets/rebound.png"));
+		}
+		
+		public override EffectMessage MakeEffect()
+		{
+			throw new NotImplementedException();
 		}
 		
 		public override void Use()
@@ -48,7 +55,7 @@ namespace SNHU.GameObject.Upgrades
 				tween2.Tween(shield_2, "Alpha", 0.6f, 0.45f);
 				AddTween(tween2, true);
 				
-				owner.Rebounding = true;
+				owner.OnMessage(Rebound.SET, true);
 				
 				Mixer.Audio["reboundUp"].Play();
 				
@@ -64,8 +71,7 @@ namespace SNHU.GameObject.Upgrades
 		public override void Removed()
 		{
 			base.Removed();
-			
-			owner.Rebounding = false;
+			owner.OnMessage(Rebound.SET, false);
 		}
 		
 		public override void Update()
@@ -97,9 +103,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public void OnFadeOutComplete()
 		{
-			owner.Rebounding = false;
-				Mixer.Audio["reboundDown"].Play();
-			
+			Mixer.Audio["reboundDown"].Play();	
 			owner.SetUpgrade(null);
 		}
 	}

@@ -17,13 +17,18 @@ namespace SNHU.GameObject.Upgrades
 			Icon = new Image(Library.GetTexture("assets/hotpotato.png"));
 		}
 		
+		public override EffectMessage MakeEffect()
+		{
+			throw new NotSupportedException("Pls to not use!");
+		}
+		
 		public override void Use()
 		{
 			if (!Activated)
 			{
 				base.Use();
 				
-				Parent.World.Add(new PotatoThinker(Parent as Player));
+				Parent.World.Add(new PotatoThinker(owner));
 			}
 		}
 	}

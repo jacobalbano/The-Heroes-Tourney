@@ -5,6 +5,7 @@ using Punk.Tweens.Misc;
 using Punk.Tweens.Motion;
 using Punk.Utils;
 using Punk.Graphics;
+using SNHU.MenuObject;
 
 namespace SNHU.GameObject
 {
@@ -217,12 +218,12 @@ namespace SNHU.GameObject
 					AddTween(txtTween, true);
 					
 					var playerTween = new MultiVarTween(null, ONESHOT);
-					playerTween.Tween(winner, new { X = FP.Camera.X, Y = FP.Camera.Y },
-					                  1.5f, Ease.ElasticOut);
+					playerTween.Tween(winner, new { X = FP.Camera.X, Y = FP.Camera.Y }, 1.5f, Ease.ElasticOut);
 					AddTween(playerTween, true);
 					
 					World.Add(new Victory(winner.Layer + 1));
 					
+					ControllerSelect.IncreaseWin(winner.ControllerId);
 				}
 				else if (remainingPlayers.Count <= 0)
 				{

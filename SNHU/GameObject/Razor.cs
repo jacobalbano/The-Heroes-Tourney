@@ -3,6 +3,7 @@ using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
 using Punk.Utils;
+using SNHU.GameObject.Upgrades;
 
 namespace SNHU.GameObject
 {
@@ -53,12 +54,19 @@ namespace SNHU.GameObject
 					emitter.Emit(FP.Choose("0", "1", "2", "3"), X + randX, Y - 50 + randY);
 				}
 				
-				if(!p.Invincible)
-				{
-					p.OnMessage(Player.Damage);
-					Mixer.Audio["sawHit"].Play();
-				}
+				p.OnMessage(EffectMessage.ON_EFFECT, MakeEffect(p));
 			}
+		}
+		
+		EffectMessage MakeEffect(Entity p)
+		{
+			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
+			{
+				p.OnMessage(Player.Damage);
+				Mixer.Audio["sawHit"].Play();
+			};
+			
+			return new EffectMessage(this, callback);
 		}
 	}
 	

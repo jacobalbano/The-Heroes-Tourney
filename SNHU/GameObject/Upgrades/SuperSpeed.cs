@@ -17,12 +17,34 @@ namespace SNHU.GameObject.Upgrades
 	{
 		public const float SUPER_SPEED = 12.0f;
 		public Dictionary<Player, Emitter> emitters;
-		public List<Player> players;
 		
 		public SuperSpeed()
 		{
 			Icon  = new Image(Library.GetTexture("assets/speed.png"));
 			emitters = new Dictionary<Player, Emitter>();
+		}
+		
+		public override EffectMessage MakeEffect()
+		{
+			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
+			{
+				var emitter = new Emitter(Library.GetTexture("assets/speed_particle.png"), 68, 30);
+				emitter.Relative = false;
+				
+				emitter.NewType("l", FP.Frames(0));
+				emitter.SetMotion("l", 0, 50, 0.5f, 0, 15, 1, Ease.QuintOut);
+				emitter.SetAlpha("l", 0.5f, 0, Ease.QuintOut);
+				
+				emitter.NewType("r", FP.Frames(1));
+				emitter.SetMotion("r", 0, 50, 0.5f, 0, 15, 1, Ease.QuintOut);
+				emitter.SetAlpha("r", 0.5f, 0, Ease.QuintOut);
+				emitters[to as Player] = emitter;
+				
+				to.AddGraphic(emitter);
+				to.OnMessage(Movement.SPEED, SUPER_SPEED);
+			};
+			
+			return new EffectMessage(owner, callback);
 		}
 		
 		public override void Use()
@@ -31,46 +53,7 @@ namespace SNHU.GameObject.Upgrades
 			{
 				base.Use();
 				
-				players = new List<Player>(GameWorld.gameManager.Players);
-				var toRemove = new List<Player>();
-				players.RemoveAll(p => !p.IsAlive);
-				
-				bool anyRebounding = players.Exists(p => p.Rebounding);
-				
-				foreach (var player in players)
-				{
-					if (player == owner && !anyRebounding)
-					{
-						toRemove.Add(player);
-						continue;
-					}
-					
-					if (player.Invincible || player.Rebounding)
-					{
-						toRemove.Add(player);
-						continue;
-					}
-					
-					var emitter = new Emitter(Library.GetTexture("assets/speed_particle.png"), 68, 30);
-					emitter.Relative = false;
-					
-					emitter.NewType("l", FP.Frames(0));
-					emitter.SetMotion("l", 0, 50, 0.5f, 0, 15, 1, Ease.QuintOut);
-					emitter.SetAlpha("l", 0.5f, 0, Ease.QuintOut);
-					
-					emitter.NewType("r", FP.Frames(1));
-					emitter.SetMotion("r", 0, 50, 0.5f, 0, 15, 1, Ease.QuintOut);
-					emitter.SetAlpha("r", 0.5f, 0, Ease.QuintOut);
-					emitters[player] = emitter;
-					
-					player.AddGraphic(emitter);
-					player.OnMessage(Movement.SPEED, SUPER_SPEED);
-				}
-				
-				foreach (var p in toRemove)
-				{
-					players.Remove(p);
-				}
+				Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.ON_EFFECT, MakeEffect());	
 			}
 		}
 		
@@ -80,11 +63,10 @@ namespace SNHU.GameObject.Upgrades
 			
 			if (!Activated)	return;
 			
-			foreach (var player in players)
+			foreach (var pair in emitters)
 			{
-				if (!emitters.ContainsKey(player))
-					continue;
-				var emitter = emitters[player];
+				var player = pair.Key;
+				var emitter = pair.Value;
 				
 				if (lifeTimer.Percent < 1.0f)
 				{
@@ -105,15 +87,15 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.OnLifetimeComplete();
 			
-			for (int i = 0; i < players.Count; i++)
+			foreach (var pair in emitters)
 			{
-				var player = players[i];
+				var player = pair.Key;
+				var emitter = pair.Value;
 				
 				player.OnMessage(Movement.SPEED, Player.SPEED);
 				
 				if (emitters.ContainsKey(player))
 				{
-					var emitter = emitters[player];
 					FP.Tweener.AddTween(new Alarm(1, () => {
 						(player.Graphic as Graphiclist).Remove(emitter);
 	              	}, ONESHOT));

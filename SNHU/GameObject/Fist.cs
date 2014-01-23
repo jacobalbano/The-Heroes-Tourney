@@ -6,6 +6,7 @@ using Punk.Tweens.Misc;
 using Punk.Utils;
 using SFML.Window;
 using SNHU.Components;
+using SNHU.GameObject.Upgrades;
 
 namespace SNHU.GameObject
 {
@@ -180,25 +181,9 @@ namespace SNHU.GameObject
 						if (player.Right < parent.Right) continue;
 					}
 					
-					if (player != null && player != parent && !player.Invincible)
+					if (player != parent)
 				 	{
-						canPunch = false;
-						
-						parent.OnMessage(Fist.PUNCH_SUCCESS, player);
-						World.BroadcastMessage(CameraShake.SHAKE, 10.0f, 0.5f);
-				 		Mixer.Audio["hit1"].Play();
-				 		
-				 		var target = player.Rebounding ? parent : player;
-				 		var force = ForceMultiplier * (player.Rebounding ? REBOUND_PUNCH_FORCE : BASE_PUNCH_FORCE);
-				 		
-				 		if (player.Rebounding)
-				 		{
-				 			forceVector.X *= -1;
-				 			forceVector.Y *= -1;
-				 		}
-				 		
-				 		target.OnMessage(PUNCH_CONNECTED);
-			 			target.OnMessage(PhysicsBody.IMPULSE, force * forceVector.X, force * forceVector.Y);
+						player.OnMessage(EffectMessage.ON_EFFECT, MakeEffect(player));
 				 	}
 				}
 			 	
@@ -206,6 +191,28 @@ namespace SNHU.GameObject
 			
 			X = parent.CenterX + offsetX;
 			Y = parent.CenterY + offsetY;
+		}
+		
+		EffectMessage MakeEffect(Player player)
+		{
+			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
+			{
+				canPunch = false;
+				
+				parent.OnMessage(Fist.PUNCH_SUCCESS, player);
+				World.BroadcastMessage(CameraShake.SHAKE, 10.0f, 0.5f);
+		 		Mixer.Audio["hit1"].Play();
+		 		
+		 		if (FP.Sign(from.X - to.X) == FP.Sign(forceVector.X))
+		 			forceVector *= -1;
+		 		
+		 		var force = ForceMultiplier * BASE_PUNCH_FORCE * scalar;
+		 		
+		 		to.OnMessage(PUNCH_CONNECTED);
+	 			to.OnMessage(PhysicsBody.IMPULSE, force * forceVector.X, force * forceVector.Y);
+			};
+			
+			return new EffectMessage(parent, callback);
 		}
 	}
 }

@@ -12,11 +12,18 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class Shield : Upgrade
 	{
+		public const string SET = "shield_set";
+		
 		private Image shieldImg;
 		
 		public Shield()
 		{
 			Icon = new Image(Library.GetTexture("assets/shield.png"));
+		}
+		
+		public override EffectMessage MakeEffect()
+		{
+			throw new NotImplementedException();
 		}
 		
 		public override void Use()
@@ -37,7 +44,7 @@ namespace SNHU.GameObject.Upgrades
 				tween.Tween(shieldImg, "Alpha", 0.6f, 0.45f);
 				AddTween(tween, true);
 				
-				owner.Invincible = true;
+				owner.OnMessage(Shield.SET, true);
 				
 				Mixer.Audio["shieldUp"].Play();
 			}
@@ -46,7 +53,7 @@ namespace SNHU.GameObject.Upgrades
 		public override void Removed()
 		{
 			base.Removed();
-			owner.Invincible = false;
+			owner.OnMessage(Shield.SET, false);
 		}
 		
 		public override void Update()
@@ -70,7 +77,6 @@ namespace SNHU.GameObject.Upgrades
 		
 		public void OnFadeOutComplete()
 		{
-			owner.Invincible = false;
 			Mixer.Audio["shieldDown"].Play();
 			
 			owner.SetUpgrade(null);

@@ -22,7 +22,7 @@ namespace SNHU.GameObject
 		public const string Damage = "player_damage";
 		
 		public const string Collision = "player";
-//		private HashSet<Entity> excludeCollision;
+		private HashSet<Entity> excludeCollision;
 		
 		public const float JumpForce = -15;
 		public const float JUMP_JUICE_FORCE = 0.3f;
@@ -39,8 +39,8 @@ namespace SNHU.GameObject
 		private bool isOffscreen;
 		
 		public Upgrade Upgrade { get; private set; }
-		public bool Invincible;
-		public bool Rebounding;
+		private bool Invincible;
+		public bool Rebounding { get; private set; }
 		
 		public PhysicsBody physics;
 		public DodgeController dodge;
@@ -59,7 +59,7 @@ namespace SNHU.GameObject
 		
 		public Player(float x, float y, uint jid, int id, string imageName) : base(x, y)
 		{
-//			excludeCollision = new HashSet<Entity>();
+			excludeCollision = new HashSet<Entity>();
 			ImageName = imageName;
 			this.PlayerId = id;
 			this.ControllerId = jid;
@@ -98,12 +98,11 @@ namespace SNHU.GameObject
 			AddLogic(movement = new Movement(physics, axis));
 			AddLogic(dodge = new DodgeController(Controller, axis));
 			
-			AddResponse(GroundSmash.GROUND_SMASH, OnGroundSmash);
-			AddResponse(FUS.BE_FUS, OnFUS);
-			AddResponse(Magnet.BE_MAGNET, OnMagnet);
 			AddResponse(Damage, OnDamage);
-			AddResponse(DodgeController.DODGE_COMPLETE, OnDodgeComplete);
 			AddResponse(Fist.PUNCH_CONNECTED, OnPunchConnected);
+			AddResponse(EffectMessage.ON_EFFECT, OnEffect);
+			AddResponse(Shield.SET, SetShield);
+			AddResponse(Rebound.SET, SetRebound);
 		}
 		
 		void InitController()
@@ -170,21 +169,21 @@ namespace SNHU.GameObject
 		{
 			base.Update();
 			
-//			if (excludeCollision.Count > 0)
-//			{
-//				var toRemove = new List<Entity>();
-//				
-//				foreach (var player in excludeCollision)
-//				{
-//					if (CollideWith(player, X, Y) == null)
-//						toRemove.Add(player);
-//				}
-//				
-//				foreach (var player in toRemove)
-//				{
-//					excludeCollision.Remove(player);
-//				}
-//			}
+			if (excludeCollision.Count > 0)
+			{
+				var toRemove = new List<Entity>();
+				
+				foreach (var player in excludeCollision)
+				{
+					if (CollideWith(player, X, Y) == null)
+						toRemove.Add(player);
+				}
+				
+				foreach (var player in toRemove)
+				{
+					excludeCollision.Remove(player);
+				}
+			}
 			
 			if (!isOffscreen && !GameWorld.OnCamera(X, Y))
 			{
@@ -310,8 +309,6 @@ namespace SNHU.GameObject
 			{
 				Mixer.Audio[FP.Choose("swing1","swing2")].Play();
 			}
-			
-//			hand = !hand;
 		}
 		
 		public override bool MoveCollideY(Entity e)
@@ -333,7 +330,7 @@ namespace SNHU.GameObject
 					
 					if (e.Y >= Y)
 					{
-						e.OnMessage(Platform.PlayerLand, this);
+						e.OnMessage(Platform.ObjectCollide, this);
 					}
 					else
 					{
@@ -373,8 +370,8 @@ namespace SNHU.GameObject
 				if (dodge.IsDodging)
 					return false;
 				
-//				if (excludeCollision.Contains(e) || p.excludeCollision.Contains(this))
-//					return false;
+				if (excludeCollision.Contains(e) || p.excludeCollision.Contains(this))
+					return false;
 				
 				if (Invincible)
 				{
@@ -390,7 +387,7 @@ namespace SNHU.GameObject
 		
 		private void Kill()
 		{
-			if (IsAlive && !Invincible && !GameWorld.gameManager.GameEnding)
+			if (IsAlive && !GameWorld.gameManager.GameEnding)
 			{
 				if (Lives > 0)
 				{
@@ -520,17 +517,38 @@ namespace SNHU.GameObject
 				Kill();
 		}
 		
-		private void OnDodgeComplete(params object[] args)
+		private void OnEffect(params object[] args)
 		{
-//			var list = new List<Entity>();
-//			CollideInto(Type, X, Y, list);
-//			
-//			foreach (var e in list)
-//			{
-//				var player = e as Player;
-//				excludeCollision.Add(player);
-//				player.excludeCollision.Add(this);
-//			}
+			if (Invincible) return;
+			
+			var effect = (EffectMessage) args[0];
+			
+			var from = Rebounding ? this : effect.Sender;
+			var to = Rebounding ? effect.Sender : this;
+			var scalar = Rebounding ? 1.3f : 1;
+			effect.Apply(from, to, scalar);
+		}
+		
+		private void SetRebound(params object[] args)
+		{
+			Rebounding = (bool) args[0];
+		}
+		
+		private void SetShield(params object[] args)
+		{
+			Invincible = (bool) args[0];
+			if (Invincible)
+			{
+				var list = new List<Entity>();
+				CollideInto(Type, X, Y, list);
+				
+				foreach (var e in list)
+				{
+					var player = e as Player;
+					excludeCollision.Add(player);
+					player.excludeCollision.Add(this);
+				}
+			}
 		}
 	}
 }

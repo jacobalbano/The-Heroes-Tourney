@@ -15,6 +15,8 @@ namespace SNHU.MenuObject
 	/// </summary>
 	public class ControllerSelect : Entity
 	{
+		private static Dictionary<uint, int> wins;
+		
 		public int Slot { get; private set; }
 		public uint JoyId { get; private set; }
 		
@@ -24,7 +26,7 @@ namespace SNHU.MenuObject
 		
 		public int Color { get; private set; }
 		public Image Image {get; private set; }
-		private Text text;
+		private Text pressStart;
 		private Image player;
 		private Image lArrow, rArrow;
 		private Image confirm;
@@ -39,6 +41,8 @@ namespace SNHU.MenuObject
 		private static int[] colors;
 		static ControllerSelect()
 		{
+			wins = new Dictionary<uint, int>();
+			
 			colors = new int[]
 			{
 				0xFF1919,
@@ -50,6 +54,8 @@ namespace SNHU.MenuObject
 		
 		public ControllerSelect(MenuWorld parent, int slot, uint joyId)
 		{
+			var font = Library.GetFont("assets/Laffayette_Comic_Pro.ttf");
+			
 			changing = false;
 			
 			this.parent = parent;
@@ -61,11 +67,12 @@ namespace SNHU.MenuObject
 			
 			Image = new Image(Library.GetTexture("assets/menu.png"));
 			Image.Color = FP.Color(Color = colors[slot]);
-			text = new Text("PRESS START");
-			text.X -= 70;
-			text.Y = Height - 100;
-			text.Size = 20;
-			text.Color = FP.Color(0);
+			pressStart = new Text("PRESS START");
+			pressStart.Font = font;
+			pressStart.X -= 80;
+			pressStart.Y = Height - 100;
+			pressStart.Size = 20;
+			pressStart.Color = FP.Color(0);
 			
 			check = new Image(Library.GetTexture("assets/ready.png"));
 			check.CenterOO();
@@ -80,7 +87,18 @@ namespace SNHU.MenuObject
 			Controller.Define("Start", (int) JoyId, (Controller.Button) 9, Controller.Button.Start);
 			
 			AddGraphic(Image);
-			AddGraphic(text);
+			AddGraphic(pressStart);
+			if (wins.ContainsKey(JoyId))
+			{
+				var score = new Text(wins[joyId].ToString("Wins: 0"));
+				score.Font = font;
+				score.Color = FP.Color(0);
+				score.Size = 20;
+				score.X = pressStart.X + 32;
+				score.Y = pressStart.Y + score.Size;
+				AddGraphic(score);
+			}
+			
 		}
 		
 		public override void Update()
@@ -94,7 +112,7 @@ namespace SNHU.MenuObject
 					started = true;
 					
 					var list = Graphic as Graphiclist;
-					list.Remove(text);
+					list.Remove(pressStart);
 					
 					if (Joystick.HasAxis(JoyId, Joystick.Axis.PovX) && Joystick.HasAxis(JoyId, Joystick.Axis.PovY))
 					{
@@ -181,9 +199,14 @@ namespace SNHU.MenuObject
 							confirm.Y = Height * 0.75f;
 							
 							ClearTweens();
+							
 							var tween = new VarTween(MakeCheckmark, ONESHOT);
 							tween.Tween(confirm, "ScaleY", 0, 0.1f, Ease.SineOut);
 							AddTween(tween, true);
+							
+							var yTween = new VarTween(null, ONESHOT);
+							yTween.Tween(this, "Y", 0, 0.2f);
+							AddTween(yTween, true);
 						}
 					}
 				}
@@ -281,6 +304,18 @@ namespace SNHU.MenuObject
 			AddTween(tween, true);
 			
 			AddGraphic(player);
+		}
+		
+		public static void IncreaseWin(uint controllerId)
+		{
+			
+			if (!wins.ContainsKey(controllerId))
+				wins[controllerId] = 0;
+			
+			wins[controllerId] = wins[controllerId] + 1;
+			
+			FP.Log("yolo", controllerId, wins[controllerId]);
+			
 		}
 	}
 }

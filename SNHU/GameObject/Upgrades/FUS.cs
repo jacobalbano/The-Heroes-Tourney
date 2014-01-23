@@ -2,6 +2,9 @@
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
+using Punk.Utils;
+using SFML.Window;
+using SNHU.Components;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -10,7 +13,6 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class FUS : Upgrade
 	{
-		public const string BE_FUS = "fusYou";
 		const float FUS_STRENGTH = 65.0f;
 			
 		public FUS()
@@ -26,7 +28,8 @@ namespace SNHU.GameObject.Upgrades
 				
 				if (Parent.World != null)
 				{
-					Parent.World.BroadcastMessage(BE_FUS, FUS_STRENGTH, Parent);
+					Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.ON_EFFECT, MakeEffect());
+					
 					Parent.World.BroadcastMessage(CameraShake.SHAKE, 60.0f, 0.5f);
 					owner.SetUpgrade(null);
 					Mixer.Audio["fus"].Play();
@@ -34,6 +37,19 @@ namespace SNHU.GameObject.Upgrades
 					Parent.World.Add(new FusBlast(Parent.X, Parent.Y));
 				}
 			}
+		}
+		
+		public override EffectMessage MakeEffect()
+		{
+			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
+			{
+				Vector2f dir = new Vector2f(to.X - from.X, to.Y - from.Y)
+					.Normalized(FUS_STRENGTH);
+				
+				to.OnMessage(PhysicsBody.IMPULSE, dir.X, dir.Y);
+			};
+			
+			return new EffectMessage(owner, callback);
 		}
 		
 		private class FusBlast : Entity

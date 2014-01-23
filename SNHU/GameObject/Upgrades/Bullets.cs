@@ -15,8 +15,10 @@ namespace SNHU.GameObject.Upgrades
 	{
 		public const string Collision = "bullet";
 		public const float BULLET_SPEED = 10.0f;
-		public int ownerID;
+		public Player owner;
+		private Entity lastBounce;
 		private Vector2f dir;
+		private MessageResult result;
 		
 		private Tween bounceTween;
 		
@@ -34,7 +36,7 @@ namespace SNHU.GameObject.Upgrades
 			};
 		}
 		
-		public Bullet(Vector2f initialDir, int ownerID)
+		public Bullet(Vector2f initialDir, Player owner)
 		{	
 			image = new Image(Library.GetTexture("assets/bullet.png"));
 			Graphic = image;
@@ -46,7 +48,7 @@ namespace SNHU.GameObject.Upgrades
 			Type = Collision;
 						                           
 			dir = initialDir;
-			this.ownerID = ownerID;
+			this.owner = owner;
 			
 			emitter = new Emitter(Library.GetTexture("assets/bullet_sparkle.png"), 20, 20);
 			emitter.Relative = false;
@@ -57,6 +59,8 @@ namespace SNHU.GameObject.Upgrades
 			emitter.SetMotion(name, 0, 0, 0.5f, 0, 0, 0.25f, Ease.CircOut);
 			
 			AddResponse(ChunkManager.Advance, OnAdvance);
+			
+			result = new MessageResult();
 		}
 		
 		public override void Added()
@@ -95,6 +99,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public override bool MoveCollideX(Entity e)
 		{
+			if (e == owner)	return false;
 			if (ShouldBounce(e))
 			{
 				dir.X = -dir.X;
@@ -109,6 +114,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public override bool MoveCollideY(Entity e)
 		{
+			if (e == owner)	return false;
 			if (ShouldBounce(e))
 			{
 				dir.Y = -dir.Y;
@@ -123,26 +129,31 @@ namespace SNHU.GameObject.Upgrades
 		
 		bool ShouldBounce(Entity e)
 		{
-			var p = e as Player;
-			if (p != null)
+			result.Value = false;
+			e.OnMessage(EffectMessage.ON_EFFECT, MakeEffect(result));
+			e.OnMessage(Platform.ObjectCollide);
+			
+			var bounce = e != lastBounce && (bool) result.Value;
+			lastBounce = e;
+			
+			return bounce || e.Type == Platform.Collision;
+		}
+		
+		private EffectMessage MakeEffect(MessageResult result)
+		{
+			EffectMessage.Callback callback = delegate(Entity to, Entity from, float scalar)
 			{
-				if (p.PlayerId == ownerID)
+				if (from != null)	//	hit
 				{
-					return false;
+					from.OnMessage(Player.Damage);
 				}
-				
-				if (p.Rebounding)
+				else //	rebound
 				{
-					return true;
+					result.Value = true;
 				}
-				
-				p.OnMessage(Player.Damage);
-				return false;
-			}
+			};
 			
-			e.OnMessage(Platform.PlayerLand);
-			
-			return true;
+			return new EffectMessage(null, callback);
 		}
 		
 		private void Bounce()
@@ -205,7 +216,6 @@ namespace SNHU.GameObject.Upgrades
 				}
 			}
 			
-			var pid = (Parent as Player).PlayerId;
 			for (int i = 0; i < BulletCount; i++)
 			{
 				var vec = new Vector2f();
@@ -223,8 +233,14 @@ namespace SNHU.GameObject.Upgrades
 					vec.Y = -1;
 				}
 				
-				bullets.Add(new Bullet(vec, pid));
+				bullets.Add(new Bullet(vec, owner));
 			}
+		}
+		
+		
+		public override EffectMessage MakeEffect()
+		{
+			throw new NotSupportedException("Don't be using this pls");
 		}
 		
 		public override void Update()
@@ -279,7 +295,7 @@ namespace SNHU.GameObject.Upgrades
 					Parent.World.RemoveList(bullets);
 				}
 				
-				(Parent as Player).SetUpgrade(null);
+				owner.SetUpgrade(null);
 			}
 		}
 		

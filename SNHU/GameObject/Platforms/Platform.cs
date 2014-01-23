@@ -9,7 +9,7 @@ namespace SNHU.GameObject.Platforms
 	{
 		public const string Collision = "platform";
 		public const string NotifyCamera = "platform_cameraNotification";
-		public const string PlayerLand = "player_land";
+		public const string ObjectCollide = "player_land";
 		
 		private Player owner;
 		
@@ -27,7 +27,7 @@ namespace SNHU.GameObject.Platforms
 			Type = Collision;
 			
 			AddResponse(NotifyCamera, OnNotifyCamera);
-			AddResponse(PlayerLand, OnPlayerLandResponse);
+			AddResponse(ObjectCollide, OnPlayerLandResponse);
 		}
 		
 		public void OnPlayerLandResponse(params object[]args)

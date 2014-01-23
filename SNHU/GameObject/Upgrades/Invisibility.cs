@@ -18,6 +18,11 @@ namespace SNHU.GameObject.Upgrades
 			Icon = new Image(Library.GetTexture("assets/invisibility.png"));
 		}
 		
+		public override EffectMessage MakeEffect()
+		{
+			throw new NotImplementedException();
+		}
+		
 		public override void Use()
 		{
 			if (!Activated)

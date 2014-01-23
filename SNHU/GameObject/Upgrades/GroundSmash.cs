@@ -12,7 +12,6 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class GroundSmash : Upgrade
 	{
-		public const string GROUND_SMASH = "groundSmash";
 		public const float SMASH_RADIUS = 300.0f;
 		const float FALL_SPEED = 50.0f;
 		
@@ -20,6 +19,20 @@ namespace SNHU.GameObject.Upgrades
 		{
 			Icon = new Image(Library.GetTexture("assets/groundsmash.png"));
 			AddResponse(Player.OnLand, OnPlayerLand);
+		}
+		
+		public override EffectMessage MakeEffect()
+		{
+			FP.Log("create");
+			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
+			{
+				if (to.CollideRect(to.X, to.Y, from.X - SMASH_RADIUS, from.Y - 10, SMASH_RADIUS * 2, 10))
+				{
+					to.OnMessage(Player.Damage);
+				}
+			};
+			
+			return new EffectMessage(owner, callback);
 		}
 		
 		public override void Use()
@@ -46,8 +59,6 @@ namespace SNHU.GameObject.Upgrades
 		{
 			if (Activated)
 			{
-				//Parent.World.AddGraphic(Image.CreateRect((int)SMASH_RADIUS * 2, 10, FP.Color(0xFFFFFF)), -9009, Parent.X - SMASH_RADIUS, Parent.Y);
-				
 				var emitter = new Emitter(Library.GetTexture("assets/groundsmash_particle.png"), 3, 3);
 				emitter.Relative = false;
 				
@@ -60,8 +71,8 @@ namespace SNHU.GameObject.Upgrades
 					emitter.SetGravity(name, 5, 2);
 				}
 				
-				var e = Parent.World.AddGraphic(emitter, -9010);
-				e.AddTween(new Alarm(3, () => FP.World.Remove(e), Tween.ONESHOT), true);
+				var emitterEnt = Parent.World.AddGraphic(emitter, -9010);
+				emitterEnt.AddTween(new Alarm(3, () => FP.World.Remove(emitterEnt), Tween.ONESHOT), true);
 				
 				for (float i = -SMASH_RADIUS; i < SMASH_RADIUS; i++)
 				{
@@ -69,7 +80,8 @@ namespace SNHU.GameObject.Upgrades
 				}
 				
 				Parent.World.BroadcastMessage(CameraShake.SHAKE, 100.0f, 0.5f);
-				Parent.World.BroadcastMessage(GROUND_SMASH, Parent, SMASH_RADIUS);
+				Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.ON_EFFECT, MakeEffect());
+				
 				owner.physics.OnMessage(PhysicsBody.USE_GRAVITY, true);
 				
 				owner.SetUpgrade(null);

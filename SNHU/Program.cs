@@ -18,6 +18,7 @@ namespace SNHU
 			
 			FP.World = new MenuWorld();
 			FP.Screen.SetTitle("The Heroes' Tourney");
+			FP.Screen.SetMouseCursorVisible(false);
 		}
 		
 		public static void Main(string[] args)
