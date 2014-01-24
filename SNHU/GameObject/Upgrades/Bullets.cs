@@ -198,23 +198,11 @@ namespace SNHU.GameObject.Upgrades
 			
 			BulletCount = int.Parse(GameWorld.gameManager.Config["Bullets", "Count"]);
 			
-			Mode mode = Mode.Cone;
 			var modeString = Regex.Replace(GameWorld.gameManager.Config["Bullets", "Mode"], @"\s", "");
 			
-			var modeNames = Enum.GetNames(typeof(Mode)).ToList();
-			var modeValues = (int[]) Enum.GetValues(typeof(Mode));
-			
-			for (int i = 0; i < modeNames.Count; i++)
-			{
-				if (modeNames[i] == modeString)
-				{
-					mode = (Mode) modeValues[i];
-					if (mode == Mode.Random)
-						mode = FP.Choose(Mode.Radial, Mode.Cone);
-					
-					break;
-				}
-			}
+			Mode mode = (Mode) Util.GetEnumFromName(typeof(Mode), modeString);
+			if (mode == Mode.Random)
+				mode = FP.Choose(Mode.Radial, Mode.Cone);
 			
 			for (int i = 0; i < BulletCount; i++)
 			{

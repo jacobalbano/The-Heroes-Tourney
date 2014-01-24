@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
@@ -21,9 +22,17 @@ namespace SNHU.GameObject.Upgrades
 		float totalTime;
 		Alarm alarm;
 		
+		enum Mode { Furthest, Nearest, Random }
+		Mode mode;
+		
 		public PotatoThinker(Player parent)
 		{
 			this.parent = parent;
+			var modeString = Regex.Replace(GameWorld.gameManager.Config["HotPotato", "Mode"], @"\s", "");
+			
+			mode = (Mode) Util.GetEnumFromName(typeof(Mode), modeString);
+			if (mode == Mode.Random)
+				mode = FP.Choose(Mode.Furthest, Mode.Nearest);
 			
 			opponents = new List<Player>();
 			target = parent;
@@ -116,9 +125,25 @@ namespace SNHU.GameObject.Upgrades
 				}
 			}
 			
-			FP.World.BroadcastMessageIf(ent => ent.DistanceToPoint(x, y, true) <= radius, Player.Damage);
+			FP.World.BroadcastMessageIf(ent => ent.DistanceToPoint(x, y, true) <= radius, EffectMessage.ON_EFFECT, MakeEffect());
 			FP.World.BroadcastMessage(CameraShake.SHAKE, 20, 0.5f);
 			Mixer.Audio["explode"].Play();
+		}
+		
+		EffectMessage MakeEffect()
+		{
+			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
+			{
+				if (to == parent)
+				{
+					if (from.DistanceToPoint(to.X, to.Y, true) <= 200)
+						from.OnMessage(Player.Damage);
+				}
+				
+				to.OnMessage(Player.Damage);
+			};
+			
+			return new EffectMessage(parent, callback);
 		}
 		
 		public override void Update()
@@ -126,7 +151,11 @@ namespace SNHU.GameObject.Upgrades
 			base.Update();
 			
 			UpdateOpponents();
-			GetFurthestTarget();
+			
+			if (mode == Mode.Furthest)
+				GetFurthestTarget();
+			else
+				GetNearestTarget();
 				
 			if (target != null)
 			{
@@ -211,13 +240,11 @@ namespace SNHU.GameObject.Upgrades
 		private void OnAdvance(params object[] args)
 		{
 			Active = false;
-			FP.Log("advance pause");
 		}
 		
 		private void OnAdvanceComplete(params object[] args)
 		{
 			Active = true;
-			FP.Log("advance unpause");
 		}
 	}
 }

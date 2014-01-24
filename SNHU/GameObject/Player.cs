@@ -431,6 +431,7 @@ namespace SNHU.GameObject
 				(left.Graphic as Image).Alpha = 1.0f;
 				(right.Graphic as Image).Alpha = 1.0f;
 			}
+			
 			Rebounding = false;
 			Invincible = false;
 			
@@ -443,67 +444,6 @@ namespace SNHU.GameObject
 		private void OnDamage(params object[] args)
 		{
 			Kill();
-		}
-		
-		private void OnGroundSmash(params object[] args)
-		{
-			Player p = args[0] as Player;
-			if (p != this)
-			{
-				if (CollideRect(X,Y,p.X - GroundSmash.SMASH_RADIUS, p.Y - 10, GroundSmash.SMASH_RADIUS * 2, 10))
-				{
-					if (Rebounding)
-					{
-						p.Kill();
-					}
-					else
-					{
-						Kill();
-					}
-				}
-			}
-		}
-		
-		private void OnFUS(params object[] args)
-		{
-			var str = (float) args[0];
-			var sender = (Player) args[1];
-			
-			float fromX = sender.X;
-			float fromY = sender.Y;
-			Vector2f dir = new Vector2f(fromX - X, fromY - Y);
-			
-			dir = dir.Normalized(str);
-	
-			if (Rebounding)
-			{
-				sender.OnMessage(PhysicsBody.IMPULSE, dir.X, dir.Y);
-			}
-			else if (!Invincible)
-			{
-				OnMessage(PhysicsBody.IMPULSE, -dir.X, -dir.Y);
-			}
-		}
-		
-		private void OnMagnet(params object[] args)
-		{
-			var str = (float) args[0];
-			var sender = (Player) args[1];
-			
-			float fromX = sender.X;
-			float fromY = sender.Y;
-			Vector2f dir = new Vector2f(fromX - X, fromY - Y);
-			
-			dir = dir.Normalized(str);
-	
-			if (Rebounding)
-			{
-				sender.OnMessage(PhysicsBody.IMPULSE, -dir.X, -dir.Y);
-			}
-			else if (!Invincible)
-			{
-				OnMessage(PhysicsBody.IMPULSE, dir.X, dir.Y);
-			}
 		}
 		
 		private void OnPunchConnected(params object[] args)

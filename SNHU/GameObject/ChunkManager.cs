@@ -18,7 +18,7 @@ namespace SNHU.GameObject
 		private Chunk currentChunk;
 		private Chunk nextChunk;
 		
-		private float x, y;
+		private float y;
 		
 		public ChunkManager()
 		{
@@ -45,7 +45,7 @@ namespace SNHU.GameObject
 				
 				y -= FP.Height;
 				
-				nextChunk = new Chunk(x, y);
+				nextChunk = new Chunk(0, y);
 				World.Add(nextChunk);
 				
 				if (currentChunk != null && currentChunk.World != null)
