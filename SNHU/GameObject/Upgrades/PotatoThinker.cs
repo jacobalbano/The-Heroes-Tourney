@@ -29,6 +29,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			this.parent = parent;
 			var modeString = Regex.Replace(GameWorld.gameManager.Config["HotPotato", "Mode"], @"\s", "");
+			totalTime = Math.Max(0.01f, float.Parse(GameWorld.gameManager.Config["HotPotato", "Duration"]));
 			
 			mode = (Mode) Util.GetEnumFromName(typeof(Mode), modeString);
 			if (mode == Mode.Random)
@@ -51,7 +52,6 @@ namespace SNHU.GameObject.Upgrades
 			AddResponse(ChunkManager.Advance, OnAdvance);
 			AddResponse(ChunkManager.AdvanceComplete, OnAdvanceComplete);
 			
-			totalTime = 5;
 			AddTween(alarm = new Alarm(totalTime, OnGoBoom, ONESHOT), true);
 			Tick();
 		}

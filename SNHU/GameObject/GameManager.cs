@@ -214,7 +214,7 @@ namespace SNHU.GameObject
 					World.AddGraphic(txt, -9001, 0, 50);
 					
 					var txtTween = new VarTween(null, ONESHOT);
-					txtTween.Tween(txt, "X", FP.HalfWidth - txt.Width * 2, 0.25f, Ease.BounceOut);
+					txtTween.Tween(txt, "X", FP.HalfWidth, 0.25f, Ease.BounceOut);
 					AddTween(txtTween, true);
 					
 					var playerTween = new MultiVarTween(null, ONESHOT);
@@ -246,7 +246,7 @@ namespace SNHU.GameObject
 					World.AddGraphic(txt, -9001, 0, 50);
 					
 					var txtTween = new VarTween(null, ONESHOT);
-					txtTween.Tween(txt, "X", FP.HalfWidth - txt.Width * 2, 0.25f, Ease.BounceOut);
+					txtTween.Tween(txt, "X", FP.HalfWidth, 0.25f, Ease.BounceOut);
 					AddTween(txtTween, true);
 					
 					NobodyWon = true;
