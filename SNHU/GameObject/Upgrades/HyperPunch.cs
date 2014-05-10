@@ -158,6 +158,8 @@ namespace SNHU.GameObject.Upgrades
 			Icon = new Image(Library.GetTexture("assets/hyperPunch.png"));
 			Icon.Scale = 0.1f * PICKUP_IMAGE_SCALE;
 			
+			
+			
 			AddResponse(ChunkManager.Advance, OnAdvance);
 		}
 		

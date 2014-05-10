@@ -39,6 +39,7 @@ namespace SNHU.GameObject
 		private bool isOffscreen;
 		
 		public Upgrade Upgrade { get; private set; }
+		private bool Invincible;
 		public bool Rebounding { get; private set; }
 		public int Facing { get { return player.FlippedX ? -1 : 1; } }
 		public bool Guarding { get; private set; }

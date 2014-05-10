@@ -50,8 +50,8 @@ namespace SNHU.GameObject
 				upgrade = (Upgrade) type.GetConstructor(System.Type.EmptyTypes).Invoke(null);
 				Graphic = upgrade.Icon;
 				
+				SetHitbox((Graphic as Image).ScaledWidth, (Graphic as Image).ScaledHeight);
 				(Graphic as Image).CenterOO();
-				SetHitboxTo(Graphic);
 				CenterOrigin();
 			}
 			else
