@@ -39,8 +39,9 @@ namespace SNHU.GameObject
 		private bool isOffscreen;
 		
 		public Upgrade Upgrade { get; private set; }
-		private bool Invincible;
 		public bool Rebounding { get; private set; }
+		private bool Invincible;
+		public bool Guarding { get; private set; }
 		
 		public PhysicsBody physics;
 		public DodgeController dodge;
@@ -48,6 +49,7 @@ namespace SNHU.GameObject
 		public bool OnGround { get; private set; }
 		
 		public const float SPEED = 5.5f;
+		private const float GUARD_SPEED_MULT = 0.6f;
 		
 		public int Health;
 		public int Lives { get; private set; }
@@ -115,7 +117,8 @@ namespace SNHU.GameObject
 				
 				Controller.Define("punch", PlayerId, Controller.Button.X);
 				Controller.Define("dodge", PlayerId, Controller.Button.RB);
-				Controller.Define("upgrade", PlayerId, Controller.Button.LB);
+				Controller.Define("upgrade", PlayerId, Controller.Button.Y);
+				Controller.Define("guard", PlayerId, Controller.Button.LB);
 				
 				Controller.Define("start", PlayerId, Controller.Button.Start);
 			}
@@ -125,7 +128,8 @@ namespace SNHU.GameObject
 				
 				Controller.Define("punch", PlayerId, Controller.Button.Y);
 				Controller.Define("dodge", PlayerId, (Controller.Button) 5);
-				Controller.Define("upgrade", PlayerId, (Controller.Button) 4);
+				Controller.Define("upgrade", PlayerId, Controller.Button.A);
+				Controller.Define("guard", PlayerId, (Controller.Button) 4);
 				
 				Controller.Define("start", PlayerId, (Controller.Button) 9);
 			}
@@ -153,6 +157,7 @@ namespace SNHU.GameObject
 		void FaceLeft()
 		{
 			player.FlippedX = true;
+			
 			left.FaceLeft();
 			right.FaceLeft();
 		}
@@ -199,15 +204,18 @@ namespace SNHU.GameObject
 			
 			if (!GameWorld.gameManager.GameEnding)
 			{
-			 	if (axis.X < 0)
-			 	{
-			 		FaceLeft();
-			 	}
-			 	else if (axis.X > 0)
-			 	{
-			 		FaceRight();
-			 	}
-			 	
+				if (!Guarding)
+				{
+				 	if (axis.X < 0)
+				 	{
+				 		FaceLeft();
+				 	}
+				 	else if (axis.X > 0)
+				 	{
+				 		FaceRight();
+				 	}
+				}
+				
 				if (Collide(Platform.Collision, X, Y + 1) == null)
 				{
 					OnGround = false;
@@ -242,6 +250,17 @@ namespace SNHU.GameObject
 		
 		private void HandleInput()
 		{
+			var newGuard = Controller.Check("guard");
+			if (newGuard != Guarding)
+			{
+				if (newGuard)
+					physics.OnMessage(PhysicsBody.IMPULSE_MULT, 0.3);
+				else
+					physics.OnMessage(PhysicsBody.IMPULSE_MULT, 1);
+			}
+			
+			Guarding = newGuard;
+			
 			if (Controller.Pressed("jump"))
 			{
 				OnMessage(DodgeController.CANCEL_DODGE);
@@ -282,9 +301,12 @@ namespace SNHU.GameObject
 				}
 			}
 			
-			if (Controller.Pressed("punch"))
+			if (!Guarding)
 			{
-				Punch(hand = !hand);
+				if (Controller.Pressed("punch"))
+				{
+					Punch(hand = !hand);
+				}
 			}
 			
 			if (Controller.Pressed("start"))

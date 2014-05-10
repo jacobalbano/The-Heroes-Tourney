@@ -1,5 +1,6 @@
 ﻿using System;
 using Punk;
+using SFML.Window;
 
 namespace SNHU
 {

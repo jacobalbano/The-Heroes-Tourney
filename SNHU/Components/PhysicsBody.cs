@@ -30,6 +30,11 @@ namespace SNHU.Components
 		public const string IMPULSE = "impulse";
 		
 		/// <summary>
+		/// <para>Used to set the value by which physics impulses will be scaled.</para>
+		/// </summary>
+		public const string IMPULSE_MULT = "physics_impulsemult";
+		
+		/// <summary>
 		/// <para>Used to set whether the body will move when impulses are applied.</para>
 		/// <para>Arguments: (bool fixPosition)</para>
 		/// </summary>
@@ -75,6 +80,7 @@ namespace SNHU.Components
 		private bool hasGravity;
 		private bool canMove;
 		
+		private float impulseMult;
 		private bool applyGroundFriction;
 		private float frictionFactor;
 		private const float airFriction = 0.9f;
@@ -84,12 +90,14 @@ namespace SNHU.Components
 			Colliders = new List<string>(colliders);
 			MoveDelta = new Vector2f();
 			Gravity = 0.75f;
+			impulseMult = 1;
 			
 			movement = new Vector2f();
 			hasGravity = true;
 			canMove = true;
 			
 			AddResponse(IMPULSE, OnImpulse);
+			AddResponse(IMPULSE_MULT, OnImpulseMult);
 			AddResponse(FIX_POSITION, OnFixPosition);
 			AddResponse(USE_GRAVITY, OnUseGravity);
 			AddResponse(FRICTION, OnApplyFriction);
@@ -140,10 +148,15 @@ namespace SNHU.Components
 			}
 		}
 		
+		private void OnImpulseMult(params object[] args)
+		{
+			impulseMult = Convert.ToSingle(args[0]);
+		}
+		
 		private void OnImpulse(params object[] args)
 		{
-			float x = args.Length > 0 ? Convert.ToSingle(args[0]) : 0;
-			float y = args.Length > 1 ? Convert.ToSingle(args[1]) : 0;
+			float x = impulseMult * (args.Length > 0 ? Convert.ToSingle(args[0]) : 0);
+			float y = impulseMult * (args.Length > 1 ? Convert.ToSingle(args[1]) : 0);
 			
 			if (args.Length > 2 && (bool) args[2])
 			{

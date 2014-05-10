@@ -163,6 +163,11 @@ namespace SNHU.GameObject
 		{
 			base.Update();
 			
+			if (parent.Guarding)
+			{				
+				return;
+			}
+			
 			if (!canPunch) return;
 			if (punchy)
 			{
