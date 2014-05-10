@@ -41,6 +41,7 @@ namespace SNHU.GameObject
 		public Upgrade Upgrade { get; private set; }
 		private bool Invincible;
 		public bool Rebounding { get; private set; }
+		public int Facing { get { return player.FlippedX ? -1 : 1; } }
 		
 		public PhysicsBody physics;
 		public DodgeController dodge;
@@ -298,11 +299,11 @@ namespace SNHU.GameObject
 			bool success = false;
 			if (hand)
 			{
-				success = left.Punch(axis);
+				success = left.Punch(axis.X, axis.Y);
 			}
 			else
 			{
-				success = right.Punch(axis);
+				success = right.Punch(axis.X, axis.Y);
 			}
 			
 			if (success)

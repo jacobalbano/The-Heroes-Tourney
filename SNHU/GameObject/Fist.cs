@@ -22,10 +22,10 @@ namespace SNHU.GameObject
 		
 		public float ForceMultiplier;
 		
-		private Image image;
-		private Player parent;
+		protected Image image;
+		protected Player parent;
 		
-		private float offsetX, offsetY;
+		protected float offsetX, offsetY;
 		private bool backHand;
 		private bool punchy, punching, canPunch;
 		
@@ -116,12 +116,12 @@ namespace SNHU.GameObject
 			}
 		}
 		
-		public bool Punch(Axis axis)
+		public bool Punch(float directionX, float directionY)
 		{
 			if (punching) return false;
 			
-			forceVector.X = (float) Math.Round(axis.X);
-			forceVector.Y = axis.Y;
+			forceVector.X = (float) Math.Round(directionX);
+			forceVector.Y = directionY;
 			
 			if (Math.Abs(forceVector.X) < float.Epsilon)
 				forceVector.X = image.FlippedX ? -1f : 1f;
@@ -193,7 +193,7 @@ namespace SNHU.GameObject
 			Y = parent.CenterY + offsetY;
 		}
 		
-		EffectMessage MakeEffect(Player player)
+		protected EffectMessage MakeEffect(Player player)
 		{
 			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
 			{
