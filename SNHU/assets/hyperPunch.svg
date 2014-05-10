@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="309.99994"
+   height="322.90701"
+   id="svg3734"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="New document 3">
+  <defs
+     id="defs3736">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4486"
+       id="linearGradient4492"
+       x1="-44.579285"
+       y1="19.346298"
+       x2="-57.768837"
+       y2="20.198212"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4486">
+      <stop
+         style="stop-color:#f2f2f2;stop-opacity:1"
+         offset="0"
+         id="stop4488" />
+      <stop
+         style="stop-color:#666666;stop-opacity:1"
+         offset="1"
+         id="stop4490" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="67.571529"
+     inkscape:cy="189.68507"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="5"
+     fit-margin-left="5"
+     fit-margin-right="5"
+     fit-margin-bottom="5" />
+  <metadata
+     id="metadata3739">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-280.97676,-67.826818)">
+    <path
+       sodipodi:type="arc"
+       style="fill:#f9f9f9;fill-opacity:1;stroke:none"
+       id="path4474"
+       sodipodi:cx="-46.42857"
+       sodipodi:cy="23.285715"
+       sodipodi:rx="11.071428"
+       sodipodi:ry="11.071428"
+       d="m -35.357141,23.285715 c 0,6.114581 -4.956848,11.071428 -11.071429,11.071428 -6.114581,0 -11.071428,-4.956847 -11.071428,-11.071428 0,-6.114581 4.956847,-11.071428 11.071428,-11.071428 6.114581,0 11.071429,4.956847 11.071429,11.071428 z"
+       transform="matrix(13.242182,0,0,13.242182,1047.4022,-69.22973)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\glove2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(9.2475637,-2.8239312,3.8674649,12.664836,814.26553,-209.50198)"
+       d="m -35.357141,23.285715 c 0,6.114581 -4.956848,11.071428 -11.071429,11.071428 -6.114581,0 -11.071428,-4.956847 -11.071428,-11.071428 0,-6.114581 4.956847,-11.071428 11.071428,-11.071428 6.114581,0 11.071429,4.956847 11.071429,11.071428 z"
+       sodipodi:ry="11.071428"
+       sodipodi:rx="11.071428"
+       sodipodi:cy="23.285715"
+       sodipodi:cx="-46.42857"
+       id="path4483"
+       style="fill:url(#linearGradient4492);fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\glove2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(4.9961156,-1.5559559,2.6991072,8.666731,519.13542,-62.12137)"
+       d="m -35.357141,23.285715 c 0,6.114581 -4.956848,11.071428 -11.071429,11.071428 -6.114581,0 -11.071428,-4.956847 -11.071428,-11.071428 0,-6.114581 4.956847,-11.071428 11.071428,-11.071428 6.114581,0 11.071429,4.956847 11.071429,11.071428 z"
+       sodipodi:ry="11.071428"
+       sodipodi:rx="11.071428"
+       sodipodi:cy="23.285715"
+       sodipodi:cx="-46.42857"
+       id="path4476"
+       style="fill:#e6e6e6;fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\glove2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+  </g>
+</svg>
