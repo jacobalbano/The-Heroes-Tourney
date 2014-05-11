@@ -39,10 +39,10 @@ namespace SNHU.GameObject
 		private bool isOffscreen;
 		
 		public Upgrade Upgrade { get; private set; }
-		private bool Invincible;
+		public bool Invincible { get; private set; }
 		public bool Rebounding { get; private set; }
-		public int Facing { get { return player.FlippedX ? -1 : 1; } }
 		public bool Guarding { get; private set; }
+		public int Facing { get { return player.FlippedX ? -1 : 1; } }
 		
 		public PhysicsBody physics;
 		public DodgeController dodge;
@@ -254,13 +254,19 @@ namespace SNHU.GameObject
 			var newGuard = Controller.Check("guard");
 			if (newGuard != Guarding)
 			{
-				if (newGuard)
-					physics.OnMessage(PhysicsBody.IMPULSE_MULT, 0.3);
-				else
-					physics.OnMessage(PhysicsBody.IMPULSE_MULT, 1);
+				if (!IsPunching())
+			    {
+					if (newGuard)
+						physics.OnMessage(PhysicsBody.IMPULSE_MULT, 0.3);
+					else
+						physics.OnMessage(PhysicsBody.IMPULSE_MULT, 1);
+					
+					left.SetGuarding(newGuard);
+					right.SetGuarding(newGuard);
+					
+					Guarding = newGuard;
+				}
 			}
-			
-			Guarding = newGuard;
 			
 			if (Controller.Pressed("jump"))
 			{
@@ -314,6 +320,11 @@ namespace SNHU.GameObject
 			{
 				GameWorld.gameManager.StartGame();
 			}
+		}
+		
+		bool IsPunching()
+		{
+			return left.Punching || right.Punching;
 		}
 		
 		private void Punch(bool hand)

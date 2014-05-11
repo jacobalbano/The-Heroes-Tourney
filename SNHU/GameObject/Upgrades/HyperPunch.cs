@@ -8,6 +8,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
@@ -18,22 +19,29 @@ using SNHU.Components;
 namespace SNHU.GameObject.Upgrades
 {	
 	public class HyperFist : Entity
-	{	
-		public const float FIST_SPEED = 20.0f;
+	{
+		public float FIST_SPEED { get; private set; }
+		
 		public Vector2f direction;
 		public float ForceMultiplier { get; private set; }
 		public float FistScale { get; private set; }
 		
 		private Player owner;
 		private Image image;
+		private HypeTween hypeTween;
 		private Entity emitterEnt;
 		private Emitter emitter;
 		
-		public HyperFist(float ForceMultiplier, float FistScale, Player owner)
+		public HyperFist(Player owner)
 		{
-			this.ForceMultiplier = ForceMultiplier;
-			this.FistScale = FistScale;
+			FistScale = float.Parse(GameWorld.gameManager.Config["HyperPunch", "FistScale"]);
+			ForceMultiplier = float.Parse(GameWorld.gameManager.Config["HyperPunch", "PunchMultiplier"]);
+			FIST_SPEED = float.Parse(GameWorld.gameManager.Config["HyperPunch", "FistSpeed"]);
+			
 			this.owner = owner;
+			
+			hypeTween = new HypeTween(0.1f);
+			AddTween(hypeTween, true);
 			
 			image = new Image(Library.GetTexture("assets/hyperPunch.png"));
 			image.Scale = 0.1f * this.FistScale;
@@ -65,6 +73,8 @@ namespace SNHU.GameObject.Upgrades
 		
 		public override void Update()
 		{
+			image.Color = hypeTween.Color;
+			
 			var l = new List<Entity>();
 			CollideInto(Player.Collision, X, Y, l);
 			
@@ -73,8 +83,29 @@ namespace SNHU.GameObject.Upgrades
 				var player = p as Player;
 				
 				if (player != owner)
+				{
+					if (player.Rebounding)
+					{
+						World.BroadcastMessage(CameraShake.SHAKE, 10.0f, 0.5f);
+		 				Mixer.Audio["hit1"].Play();
+						
+						var angle = FP.Angle(player.X, player.Y, owner.X, owner.Y);
+						FP.AngleXY(ref direction.X, ref direction.Y, angle, 1);
+						
+						owner = player;
+					}
+				}
+					
+				if (player != owner)
 			 	{
-					player.OnMessage(EffectMessage.ON_EFFECT, MakeEffect(player));
+					if (!player.Invincible)
+					{
+						World.BroadcastMessage(CameraShake.SHAKE, 10.0f, 0.5f);
+		 				Mixer.Audio["hit1"].Play();
+		 				
+		 				var force = ForceMultiplier * Fist.BASE_PUNCH_FORCE;
+		 				player.OnMessage(PhysicsBody.IMPULSE, force * direction.X, force * direction.Y);
+					}
 			 	}
 			}
 			
@@ -117,26 +148,6 @@ namespace SNHU.GameObject.Upgrades
 			return false;
 		}
 		
-		
-		private EffectMessage MakeEffect(Player player)
-		{
-			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
-			{
-				World.BroadcastMessage(CameraShake.SHAKE, 10.0f, 0.5f);
-		 		Mixer.Audio["hit1"].Play();
-		 		
-		 		direction = VectorHelper.Normalized(direction, 1.0f);
-		 		if (FP.Sign(from.X - to.X) == FP.Sign(direction.X))
-		 			direction *= -1;
-		 		
-		 		var force = ForceMultiplier * Fist.BASE_PUNCH_FORCE * scalar;
-		 		
-	 			to.OnMessage(PhysicsBody.IMPULSE, force * direction.X, force * direction.Y);
-			};
-			
-			return new EffectMessage(owner, callback);
-		}
-		
 		private void OnAdvance(params object[] args)
 		{
 			World.Remove(this);
@@ -167,9 +178,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Added();
 			
-			PunchMult = float.Parse(GameWorld.gameManager.Config["HyperPunch", "PunchMultiplier"]);
-			FistScale = float.Parse(GameWorld.gameManager.Config["HyperPunch", "FistScale"]);
-			fist = new HyperFist(PunchMult, FistScale, (Parent as Player));
+			fist = new HyperFist(Parent as Player);
 		}
 		
 		

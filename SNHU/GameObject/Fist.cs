@@ -25,9 +25,14 @@ namespace SNHU.GameObject
 		protected Image image;
 		protected Player parent;
 		
+		
+		private const float BackOffsetY = 5;
+		private const float FrontOffsetY = 15;
+		
 		protected float offsetX, offsetY;
 		private bool backHand;
-		private bool punchy, punching, canPunch;
+		private bool punchy, canPunch;
+		public bool Punching { get; private set; }
 		
 		private Vector2f forceVector;
 		
@@ -48,7 +53,7 @@ namespace SNHU.GameObject
 			backHand = hand;
 			this.parent = parent;
 			punchy = false;
-			punching = false;
+			Punching = false;
 			canPunch = true;
 			
 			image = new Image(Library.GetTexture("assets/glove" + (backHand ? "2" : "1") + ".png"));
@@ -62,11 +67,11 @@ namespace SNHU.GameObject
 			
 			if (backHand)
 			{
-				offsetY = 5;
+				offsetY = BackOffsetY;
 			}
 			else
 			{
-				offsetY = 15;
+				offsetY = FrontOffsetY;
 			}
 			
 			FaceRight();
@@ -83,7 +88,7 @@ namespace SNHU.GameObject
 				FaceRight();
 			}
 			
-			punching = false;
+			Punching = false;
 			canPunch = true;
 			image.Angle = 0;
 		}
@@ -118,7 +123,7 @@ namespace SNHU.GameObject
 		
 		public bool Punch(float directionX, float directionY)
 		{
-			if (punching) return false;
+			if (Punching) return false;
 			
 			forceVector.X = (float) Math.Round(directionX);
 			forceVector.Y = directionY;
@@ -136,7 +141,7 @@ namespace SNHU.GameObject
 				forceVector.Y = -0.2f;
 			
 			punchy = true;
-			punching = true;
+			Punching = true;
 			
 			var tween = new MultiVarTween(() => UnPunch(image.FlippedX), ONESHOT);
 			tween.Tween(this, to, 0.05f);
@@ -162,11 +167,6 @@ namespace SNHU.GameObject
 		public override void Update()
 		{
 			base.Update();
-			
-			if (parent.Guarding)
-			{				
-				return;
-			}
 			
 			if (!canPunch) return;
 			if (punchy)
@@ -218,6 +218,20 @@ namespace SNHU.GameObject
 			};
 			
 			return new EffectMessage(parent, callback);
+		}
+		
+		public void SetGuarding(bool guarding)
+		{
+			if (guarding)
+			{
+				if (backHand) offsetY = BackOffsetY - 15;
+				else offsetY = FrontOffsetY - 15;
+			}
+			else
+			{
+				if (backHand) offsetY = BackOffsetY;
+				else offsetY = FrontOffsetY;
+			}
 		}
 	}
 }

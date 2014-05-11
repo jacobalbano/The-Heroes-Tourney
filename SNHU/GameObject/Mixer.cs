@@ -36,7 +36,7 @@ namespace SNHU.GameObject
 			Audio.Add("swing1", new Sound(Library.GetBuffer("assets/audio/swing1.wav")));
 			Audio.Add("swing2", new Sound(Library.GetBuffer("assets/audio/swing2.wav")));
 			
-			music = Library.GetMusic("assets/audio/music.ogg");
+			music = Library.GetMusic("assets/audio/music" + FP.Choose(2, 1) + ".ogg");
 			
 //			music.Volume = 0;
 		}
