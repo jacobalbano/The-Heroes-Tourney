@@ -87,7 +87,7 @@ namespace SNHU.GameObject.Upgrades
 					if (player.Rebounding)
 					{
 						World.BroadcastMessage(CameraShake.SHAKE, 10.0f, 0.5f);
-		 				Mixer.Audio["hit1"].Play();
+		 				Mixer.Hit1.Play();
 						
 						var angle = FP.Angle(player.X, player.Y, owner.X, owner.Y);
 						FP.AngleXY(ref direction.X, ref direction.Y, angle, 1);
@@ -101,7 +101,7 @@ namespace SNHU.GameObject.Upgrades
 					if (!player.Invincible)
 					{
 						World.BroadcastMessage(CameraShake.SHAKE, 10.0f, 0.5f);
-		 				Mixer.Audio["hit1"].Play();
+		 				Mixer.Hit1.Play();
 		 				
 		 				var force = ForceMultiplier * Fist.BASE_PUNCH_FORCE;
 		 				player.OnMessage(PhysicsBody.IMPULSE, force * direction.X, force * direction.Y);

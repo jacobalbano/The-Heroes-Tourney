@@ -103,7 +103,7 @@ namespace SNHU.GameObject.Upgrades
 			if (ShouldBounce(e))
 			{
 				dir.X = -dir.X;
-				Mixer.Audio["bulletBounce"].Play();
+				Mixer.BulletBounce.Play();
 				Bounce();
 				
 				return true;
@@ -118,7 +118,7 @@ namespace SNHU.GameObject.Upgrades
 			if (ShouldBounce(e))
 			{
 				dir.Y = -dir.Y;
-				Mixer.Audio["bulletBounce"].Play();
+				Mixer.BulletBounce.Play();
 				Bounce();
 				
 				return true;

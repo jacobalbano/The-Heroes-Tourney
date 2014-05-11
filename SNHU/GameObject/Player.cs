@@ -279,11 +279,11 @@ namespace SNHU.GameObject
 					if(Collide("JumpPad", X, Y + 1) != null)
 					{
 						jumpMult = 1.4f;
-						Mixer.Audio["jumpPad"].Play();
+						Mixer.JumpPad.Play();
 					}
 					else
 					{
-						Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
+						FP.Choose(Mixer.Jump1, Mixer.Jump2, Mixer.Jump3).Play();
 					}
 					
 					OnMessage(PhysicsBody.IMPULSE, 0, JumpForce * jumpMult, true);
@@ -341,7 +341,7 @@ namespace SNHU.GameObject
 			
 			if (success)
 			{
-				Mixer.Audio[FP.Choose("swing1","swing2")].Play();
+				FP.Choose(Mixer.Swing1, Mixer.Swing2).Play();
 			}
 		}
 		
@@ -360,7 +360,7 @@ namespace SNHU.GameObject
 					
 					OnGround = true;
 					
-					Mixer.Audio["land1"].Play();
+					Mixer.Land1.Play();
 					
 					if (e.Y >= Y)
 					{
@@ -440,7 +440,7 @@ namespace SNHU.GameObject
 				World.BroadcastMessage(CameraShake.SHAKE, 20.0f, 1.0f);
 				World.Remove(this);
 				
-				Mixer.Audio["death1"].Play();
+				Mixer.Death1.Play();
 			}
 		}
 		

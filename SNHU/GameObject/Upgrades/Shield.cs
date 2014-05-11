@@ -46,7 +46,7 @@ namespace SNHU.GameObject.Upgrades
 				
 				owner.OnMessage(Shield.SET, true);
 				
-				Mixer.Audio["shieldUp"].Play();
+				Mixer.ShieldUp.Play();
 			}
 		}
 		
@@ -77,7 +77,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public void OnFadeOutComplete()
 		{
-			Mixer.Audio["shieldDown"].Play();
+			Mixer.ShieldDown.Play();
 			
 			owner.SetUpgrade(null);
 		}

@@ -41,7 +41,7 @@ namespace SNHU.GameObject.Upgrades
 					Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.ON_EFFECT, MakeEffect());
 					Parent.World.BroadcastMessage(CameraShake.SHAKE, 60.0f, 0.5f);
 					owner.SetUpgrade(null);
-					Mixer.Audio["fus"].Play();
+					Mixer.Fus.Play();
 				}
 			}
 		}

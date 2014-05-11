@@ -206,7 +206,7 @@ namespace SNHU.GameObject
 				
 				parent.OnMessage(Fist.PUNCH_SUCCESS, player);
 				World.BroadcastMessage(CameraShake.SHAKE, 10.0f, 0.5f);
-		 		Mixer.Audio["hit1"].Play();
+		 		Mixer.Hit1.Play();
 		 		
 		 		if (FP.Sign(from.X - to.X) == FP.Sign(forceVector.X))
 		 			forceVector *= -1;
