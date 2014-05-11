@@ -26,11 +26,9 @@ namespace SNHU.GameObject.Upgrades
 		public float ForceMultiplier { get; private set; }
 		public float FistScale { get; private set; }
 		
-		private Player owner;
+		private Player owner, originalOwner;
 		private Image image;
 		private HypeTween hypeTween;
-		private Entity emitterEnt;
-		private Emitter emitter;
 		
 		public HyperFist(Player owner)
 		{
@@ -38,7 +36,7 @@ namespace SNHU.GameObject.Upgrades
 			ForceMultiplier = float.Parse(GameWorld.gameManager.Config["HyperPunch", "PunchMultiplier"]);
 			FIST_SPEED = float.Parse(GameWorld.gameManager.Config["HyperPunch", "FistSpeed"]);
 			
-			this.owner = owner;
+			this.owner = originalOwner = owner;
 			
 			hypeTween = new HypeTween(0.1f);
 			AddTween(hypeTween, true);
@@ -53,14 +51,6 @@ namespace SNHU.GameObject.Upgrades
 			
 			direction = new Vector2f();
 			
-			emitter = new Emitter(Library.GetTexture("assets/bullet_sparkle.png"), 20, 20);
-			emitter.Relative = false;
-			
-			var name = "spark";
-			emitter.NewType(name, FP.Frames(0, 1, 2, 3, 4));
-			emitter.SetAlpha(name, 1, 0);
-			emitter.SetMotion(name, 0, 0, 0.5f, 0, 0, 0.25f, Ease.CircOut);
-			
 			AddResponse(ChunkManager.Advance, OnAdvance);
 		}
 		
@@ -68,11 +58,27 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Added();
 			
-			emitterEnt = World.AddGraphic(emitter, -9010);
+			Layer = -9001;
+		}
+		
+		public override void Removed()
+		{
+			base.Removed();
+			
+			originalOwner.SetUpgrade(null);
 		}
 		
 		public override void Update()
 		{
+			if (!OnCamera)
+			{
+				var offX = Left > FP.Width || Right < 0;
+				var offY = Top > FP.Height || Bottom < 0;
+				
+				if (offX && offY)
+					World.Remove(this);
+			}
+			
 			image.Color = hypeTween.Color;
 			
 			var l = new List<Entity>();
@@ -109,43 +115,15 @@ namespace SNHU.GameObject.Upgrades
 			 	}
 			}
 			
-			var randX = FP.Rand(50) - 25;
-			var randY = FP.Rand(50) - 25;
-			emitter.Emit("spark", X + randX, Y + randY);
-			
 			image.Angle = FP.Angle(0, 0, direction.X, direction.Y);
 			
 			var moveBy = VectorHelper.Normalized(direction, FIST_SPEED);
+			
+			var rainbow = World.Add(new RainbowTrail(X, Y, moveBy, image.Scale, FIST_SPEED, Layer));
+			
 			X += moveBy.X;
 			Y += moveBy.Y;
-		}
-		
-		public override void Removed()
-		{
-			base.Removed();
 			
-			World.AddTween(new Alarm(3, () => FP.World.Remove(emitterEnt), Tween.ONESHOT), true);
-			
-			for (int i = 0; i < 10; i++)
-			{
-				var randX = FP.Rand(100) - 50;
-				var randY = FP.Rand(100) - 50;
-				emitter.Emit("spark", X + randX, Y + randY);		
-			}
-		}
-		
-		public override bool MoveCollideX(Entity e)
-		{
-			if (e == owner)	return false;
-				
-			return false;
-		}
-		
-		public override bool MoveCollideY(Entity e)
-		{
-			if (e == owner)	return false;
-			
-			return false;
 		}
 		
 		private void OnAdvance(params object[] args)
@@ -169,8 +147,6 @@ namespace SNHU.GameObject.Upgrades
 			Icon = new Image(Library.GetTexture("assets/hyperPunch.png"));
 			Icon.Scale = 0.1f * PICKUP_IMAGE_SCALE;
 			
-			
-			
 			AddResponse(ChunkManager.Advance, OnAdvance);
 		}
 		
@@ -179,12 +155,6 @@ namespace SNHU.GameObject.Upgrades
 			base.Added();
 			
 			fist = new HyperFist(Parent as Player);
-		}
-		
-		
-		public override EffectMessage MakeEffect()
-		{
-			throw new NotSupportedException("Don't be using this pls");
 		}
 		
 		public override void Use()
@@ -228,6 +198,46 @@ namespace SNHU.GameObject.Upgrades
 		{
 			if (Activated)
 				OnLifetimeComplete();
+		}
+	}
+	
+	class RainbowTrail : Entity
+	{
+		private float sineticks;
+		private Image rainbow;
+		
+		public RainbowTrail(float x, float y, Vector2f direction, float scale, float FIST_SPEED, int layer)
+		{
+			X = x;
+			Y = y;
+			Layer = layer + 1;
+			sineticks = 0;
+			
+			rainbow = new Image(Library.GetTexture("assets/rainbow.png"));
+			Graphic = rainbow;
+			rainbow.CenterOO();
+			rainbow.Alpha = 0.5f;
+			rainbow.Scale = scale;
+			rainbow.Angle = FP.Angle(0, 0, direction.X, direction.Y);
+			rainbow.ScaleX = rainbow.ScaledWidth / (FIST_SPEED / 2);
+			rainbow.ScaleY = 0.75f;
+			
+			var duration = 0.75f;
+			
+			Tween.OnComplete complete = () => World.Remove(this);
+			var fader = new MultiVarTween(complete, ONESHOT);
+			fader.Tween(rainbow, new {Alpha = 0, ScaleY = 0}, duration);
+			AddTween(fader, true);
+			
+//			var mover = new MultiVar5
+			
+		}
+		
+		public override void Update()
+		{
+			base.Update();
+			var upndown = 25;
+			rainbow.Y = FP.Scale((float) Math.Sin(sineticks += 0.1f), -1, 1, -upndown, upndown);
 		}
 	}
 }

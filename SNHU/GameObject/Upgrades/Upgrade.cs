@@ -8,7 +8,7 @@ namespace SNHU.GameObject.Upgrades
 	/// <summary>
 	/// Description of Upgrade.
 	/// </summary>
-	public abstract class Upgrade : Logic
+	public class Upgrade : Logic
 	{
 		public const string Used = "Upgrade Used";
 		
@@ -37,7 +37,10 @@ namespace SNHU.GameObject.Upgrades
 			AddTween(lifeTimer, true);
 		}
 		
-		public abstract EffectMessage MakeEffect();
+		public virtual EffectMessage MakeEffect()
+		{
+			return new EffectMessage();
+		}
 		
 		public virtual void OnLifetimeComplete()
 		{
