@@ -86,8 +86,6 @@ namespace SNHU.GameObject.Upgrades
 				shield_1.Angle++;
 				shield_2.Angle--;
 			}
-			
-			FP.Log("updating");
 		}
 		
 		public override void OnLifetimeComplete()
@@ -107,8 +105,6 @@ namespace SNHU.GameObject.Upgrades
 		{
 			Mixer.ReboundDown.Play();	
 			owner.SetUpgrade(null);
-			
-			FP.Log("done");
 		}
 	}
 }
