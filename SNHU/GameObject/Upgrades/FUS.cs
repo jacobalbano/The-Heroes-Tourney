@@ -32,7 +32,7 @@ namespace SNHU.GameObject.Upgrades
 					
 					Parent.World.BroadcastMessage(CameraShake.SHAKE, 60.0f, 0.5f);
 					owner.SetUpgrade(null);
-					Mixer.Audio["fus"].Play();
+					Mixer.Fus.Play();
 					
 					Parent.World.Add(new FusBlast(Parent.X, Parent.Y));
 				}

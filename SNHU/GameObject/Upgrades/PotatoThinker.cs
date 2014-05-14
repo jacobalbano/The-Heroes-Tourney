@@ -64,7 +64,7 @@ namespace SNHU.GameObject.Upgrades
 			tween.Tween(image, "Scale", 1, alarm.Remaining / 5f);
 			AddTween(tween, true);
 			
-			Mixer.Audio["timeTick"].Play();
+			Mixer.TimeTick.Play();
 		}
 		
 		public override void Added()
@@ -127,7 +127,7 @@ namespace SNHU.GameObject.Upgrades
 			
 			FP.World.BroadcastMessageIf(ent => ent.DistanceToPoint(x, y, true) <= radius, EffectMessage.ON_EFFECT, MakeEffect());
 			FP.World.BroadcastMessage(CameraShake.SHAKE, 20, 0.5f);
-			Mixer.Audio["explode"].Play();
+			Mixer.Explode.Play();
 		}
 		
 		EffectMessage MakeEffect()

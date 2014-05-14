@@ -42,10 +42,10 @@ namespace SNHU.GameObject
 		public Upgrade CurrentUpgrade { get; private set; }
 		public int UpgradeCapacity { get; private set; }
 		
-		private bool Invincible;
+                public bool Invincible { get; private set; }
 		public bool Rebounding { get; private set; }
-		public int Facing { get { return player.FlippedX ? -1 : 1; } }
 		public bool Guarding { get; private set; }
+		public int Facing { get { return player.FlippedX ? -1 : 1; } }
 		
 		public PhysicsBody physics;
 		public DodgeController dodge;
@@ -261,13 +261,19 @@ namespace SNHU.GameObject
 			var newGuard = Controller.Check("guard");
 			if (newGuard != Guarding)
 			{
-				if (newGuard)
-					physics.OnMessage(PhysicsBody.IMPULSE_MULT, 0.3);
-				else
-					physics.OnMessage(PhysicsBody.IMPULSE_MULT, 1);
+				if (!IsPunching())
+			    {
+					if (newGuard)
+						physics.OnMessage(PhysicsBody.IMPULSE_MULT, 0.3);
+					else
+						physics.OnMessage(PhysicsBody.IMPULSE_MULT, 1);
+					
+					left.SetGuarding(newGuard);
+					right.SetGuarding(newGuard);
+					
+					Guarding = newGuard;
+				}
 			}
-			
-			Guarding = newGuard;
 			
 			if (Controller.Pressed("jump"))
 			{
@@ -280,11 +286,11 @@ namespace SNHU.GameObject
 					if(Collide("JumpPad", X, Y + 1) != null)
 					{
 						jumpMult = 1.4f;
-						Mixer.Audio["jumpPad"].Play();
+						Mixer.JumpPad.Play();
 					}
 					else
 					{
-						Mixer.Audio[FP.Choose("jump1", "jump2", "jump3")].Play();
+						FP.Choose(Mixer.Jump1, Mixer.Jump2, Mixer.Jump3).Play();
 					}
 					
 					OnMessage(PhysicsBody.IMPULSE, 0, JumpForce * jumpMult, true);
@@ -323,6 +329,11 @@ namespace SNHU.GameObject
 			}
 		}
 		
+		bool IsPunching()
+		{
+			return left.Punching || right.Punching;
+		}
+		
 		private void Punch(bool hand)
 		{
 			bool success = false;
@@ -337,7 +348,7 @@ namespace SNHU.GameObject
 			
 			if (success)
 			{
-				Mixer.Audio[FP.Choose("swing1","swing2")].Play();
+				FP.Choose(Mixer.Swing1, Mixer.Swing2).Play();
 			}
 		}
 		
@@ -356,7 +367,7 @@ namespace SNHU.GameObject
 					
 					OnGround = true;
 					
-					Mixer.Audio["land1"].Play();
+					Mixer.Land1.Play();
 					
 					if (e.Y >= Y)
 					{
@@ -436,7 +447,7 @@ namespace SNHU.GameObject
 				World.BroadcastMessage(CameraShake.SHAKE, 20.0f, 1.0f);
 				World.Remove(this);
 				
-				Mixer.Audio["death1"].Play();
+				Mixer.Death1.Play();
 			}
 		}
 		

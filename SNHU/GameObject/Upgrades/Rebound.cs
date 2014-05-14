@@ -57,7 +57,7 @@ namespace SNHU.GameObject.Upgrades
 				
 				owner.OnMessage(Rebound.SET, true);
 				
-				Mixer.Audio["reboundUp"].Play();
+				Mixer.ReboundUp.Play();
 				
 				var existingCollisions = new List<Entity>();
 				Parent.CollideInto(Parent.Type, Parent.X, Parent.Y, existingCollisions);
@@ -86,6 +86,8 @@ namespace SNHU.GameObject.Upgrades
 				shield_1.Angle++;
 				shield_2.Angle--;
 			}
+			
+			FP.Log("updating");
 		}
 		
 		public override void OnLifetimeComplete()
@@ -103,8 +105,10 @@ namespace SNHU.GameObject.Upgrades
 		
 		public void OnFadeOutComplete()
 		{
-			Mixer.Audio["reboundDown"].Play();	
+			Mixer.ReboundDown.Play();	
 			owner.SetUpgrade(null);
+			
+			FP.Log("done");
 		}
 	}
 }

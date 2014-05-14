@@ -63,7 +63,7 @@ namespace SNHU.GameObject
 			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
 			{
 				p.OnMessage(Player.Damage);
-				Mixer.Audio["sawHit"].Play();
+				Mixer.SawHit.Play();
 			};
 			
 			return new EffectMessage(this, callback);
