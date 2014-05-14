@@ -38,7 +38,10 @@ namespace SNHU.GameObject
 		private OffscreenCursor cursor;
 		private bool isOffscreen;
 		
-		public Upgrade Upgrade { get; private set; }
+		public Queue<Upgrade> UpgradeQueue;
+		public Upgrade CurrentUpgrade { get; private set; }
+		public int UpgradeCapacity { get; private set; }
+		
 		private bool Invincible;
 		public bool Rebounding { get; private set; }
 		public int Facing { get { return player.FlippedX ? -1 : 1; } }
@@ -96,6 +99,8 @@ namespace SNHU.GameObject
 			Invincible = false;
 			Rebounding = false;
 			
+			UpgradeQueue = new Queue<Upgrade>();
+			UpgradeCapacity = 1;
 			
 			AddLogic(physics = new PhysicsBody(Platform.Collision, Type));
 			AddLogic(movement = new Movement(physics, axis));
@@ -145,6 +150,8 @@ namespace SNHU.GameObject
 			OnMessage(DodgeController.CANCEL_DODGE);
 			World.AddList(left, right);
 			IsAlive = true;
+			
+			UpgradeCapacity = int.Parse(GameWorld.gameManager.Config["Player", "UpgradeCapacity"]);
 		}
 		
 		public override void Removed()
@@ -295,9 +302,9 @@ namespace SNHU.GameObject
 			
 			if (Controller.Pressed("upgrade"))
 			{
-				if (Upgrade != null)
+				if (CurrentUpgrade != null)
 				{
-					Upgrade.Use();
+					CurrentUpgrade.Use();
 					World.BroadcastMessage(Upgrade.Used, PlayerId);
 				}
 			}
@@ -441,12 +448,12 @@ namespace SNHU.GameObject
 		
 		public void SetUpgrade(Upgrade upgrade)
 		{
-			if (this.Upgrade != null)
+			if (this.CurrentUpgrade != null)
 			{
-				RemoveLogic(this.Upgrade);
+				RemoveLogic(this.CurrentUpgrade);
 			}
 			
-			this.Upgrade = upgrade;
+			this.CurrentUpgrade = upgrade;
 			
 			if (player != null && left != null && right != null)
 			{
@@ -458,9 +465,9 @@ namespace SNHU.GameObject
 			Rebounding = false;
 			Invincible = false;
 			
-			if (this.Upgrade != null)
+			if (this.CurrentUpgrade != null)
 			{
-				AddLogic(this.Upgrade);
+				AddLogic(this.CurrentUpgrade);
 			}
 		}
 		

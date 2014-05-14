@@ -13,51 +13,58 @@ namespace SNHU.GameObject
 	public class UpgradeSpawn : Entity
 	{
 		Upgrade upgrade;
-		Player owner;
+		public float RespawnTime { get; private set; }
+		public int MaxRespawns { get; private set; }
+		public string[] Upgrades { get; private set; }
+		private int numRespawns;
 		
 		public UpgradeSpawn()
 		{
+			numRespawns = -1;
 			AddResponse("Upgrade Used", OnPlayerUsed);
 		}
 		
 		private void OnPlayerUsed(params object[] args)
 		{
-			int id = (int)args[0];
-			if(owner != null)
-			{
-				if(owner.PlayerId == id)
-				{
-					World.Remove(this);
-				}
-			}
 		}
 		
 		public override void Added()
 		{
 			base.Added();
 			
+			// Determine if this upgrade spawner will be spawning upgrades for this chunk
 			var spawnChance = int.Parse(GameWorld.gameManager.Config["Upgrades", "SpawnChance"]);
 			if (FP.Rand(100) < spawnChance)
 			{
-				var upgrades = Regex.Split(GameWorld.gameManager.Config["Upgrades", "Enabled"], ", ");
+				Upgrades = Regex.Split(GameWorld.gameManager.Config["Upgrades", "Enabled"], ", ");
+				RespawnTime = float.Parse(GameWorld.gameManager.Config["Upgrades", "RespawnTime"]);
+				MaxRespawns = int.Parse(GameWorld.gameManager.Config["Upgrades", "MaxRespawns"]);
 				
-				var name = FP.Choose(upgrades);
-				name = Regex.Replace(name, @"\s", "");
-				var type = GetTypeFromAllAssemblies(name);
-				if (type == null)
-					throw new Exception(string.Format("Invalid upgrade type: '{0}'", name));
-				
-				upgrade = (Upgrade) type.GetConstructor(System.Type.EmptyTypes).Invoke(null);
-				Graphic = upgrade.Icon;
-				
-				SetHitbox((Graphic as Image).ScaledWidth, (Graphic as Image).ScaledHeight);
-				(Graphic as Image).CenterOO();
-				CenterOrigin();
+				SpawnUpgrade();
 			}
 			else
 			{
+				// If it won't be, remove it from the world
 				World.Remove(this);
 			}
+		}
+		
+		private void SpawnUpgrade()
+		{
+			var name = FP.Choose(Upgrades);
+			name = Regex.Replace(name, @"\s", "");
+			var type = GetTypeFromAllAssemblies(name);
+			if (type == null)
+				throw new Exception(string.Format("Invalid upgrade type: '{0}'", name));
+			
+			upgrade = (Upgrade) type.GetConstructor(System.Type.EmptyTypes).Invoke(null);
+			Graphic = upgrade.Icon;
+			
+			SetHitbox((Graphic as Image).ScaledWidth, (Graphic as Image).ScaledHeight);
+			(Graphic as Image).CenterOO();
+			CenterOrigin();
+			
+			numRespawns++;
 		}
 		
 		public override void Update()
@@ -66,22 +73,34 @@ namespace SNHU.GameObject
 			
 			if (upgrade != null)
 			{
+				// If player collides with this spawner
 				var p = Collide(Player.Collision, X, Y) as Player;
-				if (p != null && p.Upgrade == null)
+				if (p != null && p.CurrentUpgrade == null)
 				{
-					if(owner == null)
+					// Give the player the upgrade and remove the spawner's
+					p.SetUpgrade(upgrade);
+					upgrade = null;
+					
+					// If the max respawns is 0, remove it from the world now
+					if (MaxRespawns == 0)
 					{
-						owner = p;
-						p.SetUpgrade(upgrade);
-						
-						AddTween(new Alarm(2.0f, () => World.Remove(this), ONESHOT), true);
+						World.Remove(this);
 					}
-				}
-				
-				if(owner != null)
-				{
-					X = owner.X;
-					Y = owner.Top - 20;
+					else
+					{
+						// If the max respawns is infinite (< 0) or if we have not yet reached max respawns
+						if (MaxRespawns < 0 || numRespawns < MaxRespawns)
+						{
+							Graphic = null;
+							// Start the respawn timer
+							AddTween(new Alarm(RespawnTime, SpawnUpgrade, ONESHOT), true);
+						}
+						else if (numRespawns >= MaxRespawns)
+						{
+							// If the respawn limit has been reached, remove the spawner
+							World.Remove(this);
+						}
+					}
 				}
 			}
 		}
