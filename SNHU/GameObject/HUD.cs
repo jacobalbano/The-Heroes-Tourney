@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;
 using Punk.Tweens.Misc;
+using Punk.Utils;
+using SNHU.GameObject.Upgrades;
 
 namespace SNHU.GameObject
 {
@@ -16,11 +18,13 @@ namespace SNHU.GameObject
 		private GameManager gm;
 		
 		private List<Entity> players;
+		private List<Stack<Entity>> upgradeIcons;
 		
 		public HUD(GameManager gameManager)
 		{
 			gm = gameManager;
 			players = new List<Entity>();
+			upgradeIcons = new List<Stack<Entity>>();
 		}
 		
 		public void AddPlayer(Player p)
@@ -50,7 +54,7 @@ namespace SNHU.GameObject
 				health.Bolded = true;
 				health.Size = 18;
 				health.X = head.X - head.Width / 2;
-				health.Y = lives.Y + 25;
+				health.Y = lives.Y + 30;
 				health.ScrollX = health.ScrollY = 0;
 				graphics.Add(health);
 				
@@ -58,8 +62,11 @@ namespace SNHU.GameObject
 			}
 			
 			e.AddResponse(Player.Die, OnDeath(p, lives, head));
+			e.AddResponse(Player.UpgradeAcquired, OnUpgradeAcquired(p, lives, head));
+			e.AddResponse(Upgrade.Used, OnUpgradeUsed());
 			
 			players.Add(e);
+			upgradeIcons.Add(new Stack<Entity>());
 		}
 		
 		Entity.MessageResponse OnDamage(Player p, Text health)
@@ -105,6 +112,49 @@ namespace SNHU.GameObject
 			};
 		}
 		
+		Entity.MessageResponse OnUpgradeAcquired(Player p, Text text, Image image)
+		{
+			return args => {
+				var player = args[0] as Player;
+				if (player != p)	return;
+				
+				var upgrade = args[1] as Upgrade;
+				if (upgrade == null)	return;
+				
+				var hudEnt = players[player.PlayerId];
+				
+				var upgradeImg = upgrade.Icon;
+				upgradeImg.ScrollX = upgradeImg.ScrollY = 0;
+				var upgradeEnt = World.AddGraphic(upgradeImg, Layer, player.X,  player.Top - (FP.Camera.Y - FP.HalfHeight));
+				
+				upgradeIcons[player.PlayerId].Push(upgradeEnt);
+				
+				// Tweens
+				var scaleTween = new VarTween(null, ONESHOT);
+				scaleTween.Tween(upgradeImg, "Scale", upgradeImg.Scale * 0.5f, 0.5f);
+				AddTween(scaleTween, true);
+				
+				var offsetX = 10;//-20;
+				var offsetY = GameWorld.gameManager.StartingHealth != 0 ? 80 : 60;
+				
+				var posTween = new MultiVarTween(null, ONESHOT);
+				posTween.Tween(upgradeEnt, new { X = hudEnt.X + offsetX, Y = hudEnt.Y + offsetY }, 0.5f);
+				AddTween(posTween, true);
+			};
+		}
+		
+		Entity.MessageResponse OnUpgradeUsed()
+		{
+			return args => {
+				var pId = (int)args[0];
+				
+				if (pId >= 0 && pId < upgradeIcons.Count && upgradeIcons[pId] != null)
+				{
+					World.Remove(upgradeIcons[pId].Pop());
+				}
+			};
+		}
+		
 		public override void Added()
 		{
 			base.Added();
@@ -120,38 +170,6 @@ namespace SNHU.GameObject
 				
 				World.Add(e);
 			}
-		}
-		
-		public override void Removed()
-		{
-//			World.Remove(p1);
-//			World.Remove(p2);
-//			World.Remove(p3);
-//			World.Remove(p4);
-			
-			base.Removed();
-		}
-		
-		public override void Update()
-		{
-			base.Update();
-			
-//			if (gm.Players.Count >= 1)
-//			{
-//				p1Txt.String = "Player 1\n" + gm.Players[0].Lives.ToString();
-//			}
-//			if (gm.Players.Count >= 2)
-//			{
-//				p2Txt.String = "Player 2\n" + gm.Players[1].Lives.ToString();
-//			}
-//			if (gm.Players.Count >= 3)
-//			{
-//				p3Txt.String = "Player 3\n" + gm.Players[2].Lives.ToString();
-//			}
-//			if (gm.Players.Count >= 4)
-//			{
-//				p4Txt.String = "Player 4\n" + gm.Players[3].Lives.ToString();
-//			}
 		}
 	}
 }

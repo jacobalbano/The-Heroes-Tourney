@@ -20,6 +20,7 @@ namespace SNHU.GameObject
 		public const string Lose = "player_die";
 		public const string OnLand = "player_onLand";
 		public const string Damage = "player_damage";
+		public const string UpgradeAcquired = "player_upgradeAcquired";
 		
 		public const string Collision = "player";
 		private HashSet<Entity> excludeCollision;
@@ -479,6 +480,7 @@ namespace SNHU.GameObject
 			if (this.CurrentUpgrade != null)
 			{
 				AddLogic(this.CurrentUpgrade);
+				World.BroadcastMessage(Player.UpgradeAcquired, this, this.CurrentUpgrade);
 			}
 		}
 		
