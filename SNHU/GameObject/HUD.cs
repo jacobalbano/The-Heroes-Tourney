@@ -148,7 +148,7 @@ namespace SNHU.GameObject
 			return args => {
 				var pId = (int)args[0];
 				
-				if (pId >= 0 && pId < upgradeIcons.Count && upgradeIcons[pId] != null)
+				if (pId >= 0 && pId < upgradeIcons.Count && upgradeIcons[pId] != null && upgradeIcons[pId].Count > 0)
 				{
 					World.Remove(upgradeIcons[pId].Pop());
 				}

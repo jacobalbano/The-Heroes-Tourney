@@ -312,7 +312,6 @@ namespace SNHU.GameObject
 				if (CurrentUpgrade != null)
 				{
 					CurrentUpgrade.Use();
-					World.BroadcastMessage(Upgrade.Used, PlayerId);
 				}
 			}
 			
@@ -462,6 +461,7 @@ namespace SNHU.GameObject
 		{
 			if (this.CurrentUpgrade != null)
 			{
+				World.BroadcastMessage(Upgrade.Used, PlayerId);
 				RemoveLogic(this.CurrentUpgrade);
 			}
 			
