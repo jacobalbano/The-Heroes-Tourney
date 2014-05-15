@@ -13,11 +13,18 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class FUS : Upgrade
 	{
-		const float FUS_STRENGTH = 65.0f;
+		public float FusStrength { get; private set; }
 			
 		public FUS()
 		{
 			Icon = new Image(Library.GetTexture("assets/fus.png"));
+		}
+		
+		public override void Added()
+		{
+			base.Added();
+			
+			FusStrength = float.Parse(GameWorld.gameManager.Config["Fus", "Strength"]);
 		}
 		
 		public override void Use()
@@ -44,7 +51,7 @@ namespace SNHU.GameObject.Upgrades
 			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
 			{
 				Vector2f dir = new Vector2f(to.X - from.X, to.Y - from.Y)
-					.Normalized(FUS_STRENGTH);
+					.Normalized(FusStrength);
 				
 				to.OnMessage(PhysicsBody.IMPULSE, dir.X, dir.Y);
 			};

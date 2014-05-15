@@ -12,8 +12,21 @@ namespace SNHU.GameObject.Upgrades
 	{
 		public const string Used = "Upgrade Used";
 		
-		protected const float LIFETIME = 5.0f;
 		public bool Activated { get; protected set; }
+		private float _lifetime;
+		public float Lifetime
+		{
+			get
+			{
+				return _lifetime;
+			}
+			
+			protected set
+			{
+				_lifetime = value;
+				lifeTimer = new Alarm(_lifetime, OnLifetimeComplete, Tween.ONESHOT);
+			}
+		}
 		
 		protected Player owner;
 		public Image Icon;
@@ -21,8 +34,8 @@ namespace SNHU.GameObject.Upgrades
 		protected Alarm lifeTimer;
 		public Upgrade()
 		{
+			Lifetime = 5.0f;
 			Activated = false;
-			lifeTimer = new Alarm(LIFETIME, OnLifetimeComplete, Tween.ONESHOT);
 		}
 		
 		public override void Added()

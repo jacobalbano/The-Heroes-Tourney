@@ -15,13 +15,20 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class SuperSpeed : Upgrade
 	{
-		public const float SUPER_SPEED = 12.0f;
+		public float NewSpeed { get; private set; }// = 12.0f;
 		public Dictionary<Player, Emitter> emitters;
 		
 		public SuperSpeed()
 		{
 			Icon  = new Image(Library.GetTexture("assets/speed.png"));
 			emitters = new Dictionary<Player, Emitter>();
+		}
+		
+		public override void Added()
+		{
+			base.Added();
+			NewSpeed = float.Parse(GameWorld.gameManager.Config["SuperSpeed", "NewSpeed"]);
+			Lifetime = float.Parse(GameWorld.gameManager.Config["SuperSpeed", "Lifetime"]);
 		}
 		
 		public override EffectMessage MakeEffect()
@@ -41,7 +48,7 @@ namespace SNHU.GameObject.Upgrades
 				emitters[to as Player] = emitter;
 				
 				to.AddGraphic(emitter);
-				to.OnMessage(Movement.SPEED, SUPER_SPEED);
+				to.OnMessage(Movement.SPEED, NewSpeed);
 			};
 			
 			return new EffectMessage(owner, callback);

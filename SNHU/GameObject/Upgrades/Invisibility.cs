@@ -10,12 +10,21 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class Invisibility : Upgrade
 	{
-		const float INVIS_ALPHA = 0.03f;
-		const float PUNCH_MULT = 2f;
+		public float InvisibleAlpha { get; private set; }
+		public float PunchMultiplier { get; private set; }
 		
 		public Invisibility()
 		{
 			Icon = new Image(Library.GetTexture("assets/invisibility.png"));
+		}
+		
+		public override void Added()
+		{
+			base.Added();
+			
+			InvisibleAlpha = float.Parse(GameWorld.gameManager.Config["Invisibility", "InvisibleAlpha"]);
+			PunchMultiplier = float.Parse(GameWorld.gameManager.Config["Invisibility", "PunchMultiplier"]);
+			Lifetime = float.Parse(GameWorld.gameManager.Config["Invisibility", "Lifetime"]);
 		}
 		
 		public override EffectMessage MakeEffect()
@@ -30,18 +39,18 @@ namespace SNHU.GameObject.Upgrades
 				base.Use();
 			
 				var tweenPlayer = new VarTween(null, Tween.ONESHOT);
-				tweenPlayer.Tween(owner.player, "Alpha", INVIS_ALPHA, 0.25f);
+				tweenPlayer.Tween(owner.player, "Alpha", InvisibleAlpha, 0.25f);
 				AddTween(tweenPlayer, true);
 				
 				var tweenFist1 = new VarTween(null, Tween.ONESHOT);
-				tweenFist1.Tween(owner.left.Graphic, "Alpha", INVIS_ALPHA, 0.25f);
+				tweenFist1.Tween(owner.left.Graphic, "Alpha", InvisibleAlpha, 0.25f);
 				AddTween(tweenFist1, true);
 				
 				var tweenFist2 = new VarTween(null, Tween.ONESHOT);
-				tweenFist2.Tween(owner.right.Graphic, "Alpha", INVIS_ALPHA, 0.25f);
+				tweenFist2.Tween(owner.right.Graphic, "Alpha", InvisibleAlpha, 0.25f);
 				AddTween(tweenFist2, true);
 				
-				owner.right.ForceMultiplier = owner.left.ForceMultiplier = PUNCH_MULT;
+				owner.right.ForceMultiplier = owner.left.ForceMultiplier = PunchMultiplier;
 			}
 		}
 		

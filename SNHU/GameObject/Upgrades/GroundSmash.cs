@@ -12,8 +12,8 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class GroundSmash : Upgrade
 	{
-		public const float SMASH_RADIUS = 300.0f;
-		const float FALL_SPEED = 50.0f;
+		public float SmashRadius { get; private set; }
+		public float FallSpeed { get; private set; }
 		
 		public GroundSmash()
 		{
@@ -21,12 +21,19 @@ namespace SNHU.GameObject.Upgrades
 			AddResponse(Player.OnLand, OnPlayerLand);
 		}
 		
+		public override void Added()
+		{
+			base.Added();
+			
+			SmashRadius = float.Parse(GameWorld.gameManager.Config["GroundSmash", "SmashRadius"]);
+			FallSpeed = float.Parse(GameWorld.gameManager.Config["GroundSmash", "FallSpeed"]);
+		}
+		
 		public override EffectMessage MakeEffect()
 		{
-			FP.Log("create");
 			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
 			{
-				if (to.CollideRect(to.X, to.Y, from.X - SMASH_RADIUS, from.Y - 10, SMASH_RADIUS * 2, 10))
+				if (to.CollideRect(to.X, to.Y, from.X - SmashRadius, from.Y - 10, SmashRadius * 2, 10))
 				{
 					to.OnMessage(Player.Damage);
 				}
@@ -51,7 +58,7 @@ namespace SNHU.GameObject.Upgrades
 			
 			if (Activated)
 			{
-				Parent.OnMessage(PhysicsBody.IMPULSE, 0, FALL_SPEED, true);
+				Parent.OnMessage(PhysicsBody.IMPULSE, 0, FallSpeed, true);
 			}
 		}
 		
@@ -74,7 +81,7 @@ namespace SNHU.GameObject.Upgrades
 				var emitterEnt = Parent.World.AddGraphic(emitter, -9010);
 				emitterEnt.AddTween(new Alarm(3, () => FP.World.Remove(emitterEnt), Tween.ONESHOT), true);
 				
-				for (float i = -SMASH_RADIUS; i < SMASH_RADIUS; i++)
+				for (float i = -SmashRadius; i < SmashRadius; i++)
 				{
 					emitter.Emit(FP.Choose("0", "1", "2", "3"), Parent.X + i + FP.Random - FP.Random, Parent.Y + FP.Rand(10) - 5);
 				}

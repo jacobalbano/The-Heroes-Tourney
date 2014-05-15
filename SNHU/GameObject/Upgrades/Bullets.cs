@@ -197,6 +197,7 @@ namespace SNHU.GameObject.Upgrades
 			base.Added();
 			
 			BulletCount = int.Parse(GameWorld.gameManager.Config["Bullets", "Count"]);
+			Lifetime = float.Parse(GameWorld.gameManager.Config["Bullets", "Lifetime"]);
 			
 			var modeString = Regex.Replace(GameWorld.gameManager.Config["Bullets", "Mode"], @"\s", "");
 			

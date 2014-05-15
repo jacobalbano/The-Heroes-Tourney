@@ -21,7 +21,7 @@ namespace SNHU.Components
 		public const string CANCEL_DODGE = "dodge_cancelDodge";
 		public const string CANCEL_COOLDOWN = "dodge_cancelCooldown";
 		
-		private const int DODGE_DURATION = 5;
+		public int DodgeDuration { get; private set; } //= 5;
 		
 		int duration;
 		int cooldown;
@@ -45,6 +45,13 @@ namespace SNHU.Components
 			AddResponse(CANCEL_COOLDOWN, OnCancelCooldown);
 		}
 		
+		public override void Added()
+		{
+			base.Added();
+			
+			DodgeDuration = int.Parse(GameWorld.gameManager.Config["Player", "DodgeDuration"]);
+		}
+		
 		public override void Update()
 		{
 			base.Update();
@@ -64,7 +71,7 @@ namespace SNHU.Components
 					CanDodge = false;
 					IsDodging = true;
 					
-					duration = DODGE_DURATION;
+					duration = DodgeDuration;
 					SetCooldown();
 					dodgeDirection.X = (int) Math.Round(1f * FP.Sign(facing)) * 0.7f;
 					dodgeDirection.Y = (int) Math.Round(1f * FP.Sign(axis.Y)) * 0.3f;
@@ -106,7 +113,7 @@ namespace SNHU.Components
 		
 		void SetCooldown(params object[] args)
 		{
-			cooldown = DODGE_DURATION + 30;
+			cooldown = DodgeDuration + 30;
 		}
 		
 		void OnCancelCooldown(params object[] args)

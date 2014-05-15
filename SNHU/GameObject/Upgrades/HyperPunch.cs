@@ -20,9 +20,9 @@ namespace SNHU.GameObject.Upgrades
 {	
 	public class HyperFist : Entity
 	{
-		public float FIST_SPEED { get; private set; }
 		
 		public Vector2f direction;
+		public float FistSpeed { get; private set; }
 		public float ForceMultiplier { get; private set; }
 		public float FistScale { get; private set; }
 		
@@ -34,7 +34,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			FistScale = float.Parse(GameWorld.gameManager.Config["HyperPunch", "FistScale"]);
 			ForceMultiplier = float.Parse(GameWorld.gameManager.Config["HyperPunch", "PunchMultiplier"]);
-			FIST_SPEED = float.Parse(GameWorld.gameManager.Config["HyperPunch", "FistSpeed"]);
+			FistSpeed = float.Parse(GameWorld.gameManager.Config["HyperPunch", "FistSpeed"]);
 			
 			this.owner = originalOwner = owner;
 			
@@ -117,9 +117,9 @@ namespace SNHU.GameObject.Upgrades
 			
 			image.Angle = FP.Angle(0, 0, direction.X, direction.Y);
 			
-			var moveBy = VectorHelper.Normalized(direction, FIST_SPEED);
+			var moveBy = VectorHelper.Normalized(direction, FistSpeed);
 			
-			var rainbow = World.Add(new RainbowTrail(X, Y, moveBy, image.Scale, FIST_SPEED, Layer));
+			var rainbow = World.Add(new RainbowTrail(X, Y, moveBy, image.Scale, FistSpeed, Layer));
 			
 			X += moveBy.X;
 			Y += moveBy.Y;

@@ -21,6 +21,13 @@ namespace SNHU.GameObject.Upgrades
 			Icon = new Image(Library.GetTexture("assets/shield.png"));
 		}
 		
+		public override void Added()
+		{
+			base.Added();
+			
+			Lifetime = float.Parse(GameWorld.gameManager.Config["Shield", "Lifetime"]);
+		}
+		
 		public override EffectMessage MakeEffect()
 		{
 			throw new NotImplementedException();

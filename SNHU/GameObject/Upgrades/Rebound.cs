@@ -21,6 +21,13 @@ namespace SNHU.GameObject.Upgrades
 			Icon = new Image(Library.GetTexture("assets/rebound.png"));
 		}
 		
+		public override void Added()
+		{
+			base.Added();
+			
+			Lifetime = float.Parse(GameWorld.gameManager.Config["Rebound", "Lifetime"]);
+		}
+		
 		public override EffectMessage MakeEffect()
 		{
 			throw new NotImplementedException();
