@@ -469,9 +469,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35355339"
-     inkscape:cx="1530.1634"
-     inkscape:cy="-82.700961"
+     inkscape:zoom="2"
+     inkscape:cx="960.45446"
+     inkscape:cy="41.221074"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -494,7 +494,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -503,6 +503,16 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-0.99407743,-992.19339)">
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       y="1003.1962"
+       x="965.2088"
+       height="73.994682"
+       width="36.78508"
+       id="rect3385"
+       style="fill:#000000;fill-opacity:1;stroke:none" />
     <path
        style="fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:2.20539999;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 880.25828,953.97177 11.19843,11.50523 -14.85878,9.56252 -13.93058,1.00957 -4.13876,-10.35666 6.98579,-7.15258 z"
@@ -3625,5 +3635,360 @@
          inkscape:export-xdpi="90"
          inkscape:export-ydpi="90" />
     </g>
+    <path
+       sodipodi:nodetypes="sscccs"
+       inkscape:connector-curvature="0"
+       id="path3886"
+       d="m 1000.3051,936.59144 c 6.1512,4.6765 10.4811,6.43736 12.5149,13.8919 1.7532,6.42653 8.8025,22.14603 8.8025,22.14603 l -9.6313,0.0777 c -5.8294,-16.89903 -17.14365,-32.18579 -31.16474,-42.14853 0,0 10.89331,-0.49409 19.47864,6.03293 z"
+       style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:#e9e9e9;stroke-width:0.93875664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#e9e9e9;stroke-width:0.93875664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0"
+       d="m 1014.4288,980.53216 c -0.9578,-3.98285 -3.7227,-7.83294 -0.5859,-11.58792 2.9538,-3.53604 4.7444,-0.39143 10.1874,1.02292 4.8708,1.26559 6.8595,7.1585 3.5556,10.95325 -3.304,3.79474 -11.98,4.50634 -13.1571,-0.38825 z"
+       id="path3830"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sssss"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.33546448;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 962.21539,995.95734 c 0,0 -4.5127,4.14476 -2.60119,0.92754 0,0 0.0647,-3.59207 -3.85146,-3.07082"
+       id="path3760"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#d2ac93;fill-opacity:1;fill-rule:nonzero;stroke:#4d4d4d;stroke-width:0.93875664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0"
+       d="m 1007.1359,954.64397 c 0,0 -32.9833,-6.94167 -41.96208,3.86621 -14.52794,17.48751 0.75332,46.61982 0.75332,46.61982 l 26.05208,14.9368 19.77618,-5.1688 4.3348,-30.31394 z"
+       id="rect3764"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.33546448;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 997.05056,1019.2062 c 0.6744,-0.3199 -24.50394,-5.502 -36.27493,-22.30776"
+       id="path3758"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path3762"
+       d="m 957.243,998.0231 c 0,0 3.91892,-5.46323 3.29527,-0.76406"
+       style="fill:none;stroke:#000000;stroke-width:1.33546448;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0"
+       id="path3767"
+       d="m 977.82243,1011.9502 14.15679,8.1166 19.77618,-5.1688 2.2555,-15.77324 -6.7919,-8.50463 -20.03663,4.45821 z"
+       style="fill:#979797;fill-opacity:0.33510634;fill-rule:nonzero;stroke:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#e9e9e9;stroke-width:2.34689164;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 1022.3771,999.75491 -6.13,-7.63827 c 0,0 -3.4387,12.95146 -11.283,15.97646 -9.9209,3.8259 -36.69226,-5.084 -36.69226,-5.084 l -7.17409,25.9602 c 13.40842,-16.7508 22.26154,34.2247 50.00215,44.8721 -10.0476,-36.278 5.986,-48.6839 11.2772,-74.08649 z"
+       id="rect2985"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccscccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#cc8684;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       d="m 993.12242,977.50823 -0.82558,11.13825 2.16292,3.3767 c 0,0 3.09091,2.23454 4.83178,2.05456 1.67206,-0.17287 4.13896,-2.88109 4.13896,-2.88109 l -1.7346,-5.90757 c 0,0 1.3797,-2.35263 0.8757,-3.41382 -1.4885,-3.13434 -9.44918,-4.36703 -9.44918,-4.36703 z"
+       id="rect3769"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccsccsc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#333333;fill-opacity:1;stroke:none;stroke-width:0.99999994px;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
+       d="m 996.6946,998.64255 c 2.14722,0.20236 4.2577,1.49455 6.4359,0.72639 1.5115,-0.36984 3.8268,-1.01056 4.7202,0.72786 0.6212,0.5293 -1.4472,-0.39163 -2.5611,-0.15001 -1.7615,0.24461 -3.7655,0.53391 -5.54053,-0.10431 -1.57445,-0.42736 -3.38008,-1.23631 -4.92316,-0.27578 -0.66428,0.41007 0.0809,-1.14515 1.86869,-0.92415 z"
+       id="path3772"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="translate(0.99407743,992.19339)"
+       style="fill:#800000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       d="m 957.50765,-17.352606 17.55485,-1.413084 0.0625,5.5 -17.70351,-0.998944 z"
+       id="rect4155"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:0.93875664;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 974.16704,972.21839 c 0,0 6.91082,-1.40638 10.33354,-0.95209 3.82654,0.50792 12.44635,3.70973 12.44635,3.70973 0,0 4.53307,-4.46896 8.22047,-5.61389 3.2997,-1.02451 10.3613,-0.6501 10.3613,-0.6501 0,0 1.307,4.33121 0.5843,6.34144 -0.5974,1.6614 -0.3669,3.23617 -1.4358,4.30784 -2.259,2.26479 -9.0963,3.0578 -9.0963,3.0578 l -6.72887,-2.69205 -9.55375,4.32844 c 0,0 -8.79665,0.85719 -10.91482,-0.34868 -1.77479,-1.01046 -2.88693,-2.97937 -3.60432,-4.84502 -0.80021,-2.08108 -0.6121,-6.64342 -0.6121,-6.64342 z"
+       id="rect3800"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cscscsscccssc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       d="m 1006.8507,977.8948 c -2.8276,0.4642 -5.4156,-1.42726 -5.4156,-1.42726 0,0 3.425,-2.32175 6.0908,-2.75479 2.6657,-0.43301 3.7862,0.85007 3.7862,0.85007 0,0 -1.6337,2.86773 -4.4614,3.33198 z"
+       id="rect3803"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="zczcz"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="zczcz"
+       inkscape:connector-curvature="0"
+       id="path3806"
+       d="m 986.13524,979.72727 c 2.86486,-0.0602 5.06373,-2.39279 5.06373,-2.39279 0,0 -3.7917,-1.65679 -6.49166,-1.59544 -2.69996,0.0614 -3.56719,1.52759 -3.56719,1.52759 0,0 2.13026,2.52086 4.99512,2.46064 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#e9e9e9;stroke-width:0.46937832px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 987.23477,1033.7605 2.93709,6.0384 1.35886,-3.3393 0.93496,1.1043"
+       id="path3808"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path3810"
+       d="m 982.21963,1031.0085 2.93709,6.0384 1.35887,-3.3392 0.93505,1.1042"
+       style="fill:none;stroke:#e9e9e9;stroke-width:0.46937832px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#e9e9e9;stroke-width:0.46937832px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 999.2858,1050.863 -1.78431,6.4734 -1.94614,-3.0348 -0.71755,1.2565"
+       id="path3812"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:#e9e9e9;stroke-width:0.93875664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0"
+       d="m 981.59853,930.6928 c -7.71796,0.37375 -10.50017,11.39237 -16.396,16.38684 -5.08291,4.30571 -5.52977,19.62523 -5.52977,19.62523 l 6.28081,0.90272 40.63193,-16.3617 c 0,0 -14.2149,-21.07476 -24.98697,-20.55309 z"
+       id="rect3817"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sscccs"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#e9e9e9;stroke-width:0.93875664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0"
+       d="m 1011.4324,949.5886 c -11.51015,-4.82855 -11.3501,1.5655 -32.35865,6.1782 -12.0741,2.65105 -26.72329,7.84244 -22.04961,12.23674 0.2809,1.75603 0.52618,3.54079 2.53368,3.90092 6.14009,0.90455 28.05385,0.71526 35.35513,-2.83815 15.04545,-7.32238 22.41385,-8.82725 20.28625,-16.40461 -0.4835,-1.33058 -0.3932,-0.39899 -3.7668,-3.0731 z"
+       id="rect3814"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csccscc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       d="m 987.26386,931.54872 c -1.26679,-0.11272 -3.29414,-0.50727 -4.89679,-0.40904 -1.29168,0.0791 7.48165,15.21675 7.48165,15.21675 l 13.74798,1.21638 c -2.7672,-3.85285 -11.18197,-15.56577 -16.33284,-16.02409 z"
+       id="rect3933"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ssccs"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:#e9e9e9;stroke-width:0.37143061;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0"
+       d="m 702.22554,869.18555 c 2.43381,1.85032 4.14698,2.54702 4.95169,5.49651 0.69366,2.54273 3.48281,8.76234 3.48281,8.76234 l -3.81075,0.0307 c -2.30646,-6.68631 -6.78309,-12.7347 -12.3307,-16.67658 0,0 4.31007,-0.19549 7.70695,2.387 z"
+       id="path4159"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sscccs" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       sodipodi:nodetypes="sssss"
+       inkscape:connector-curvature="0"
+       id="path4161"
+       d="m 707.81376,886.57124 c -0.37896,-1.57587 -1.47292,-3.0992 -0.23182,-4.5849 1.16871,-1.39909 1.87718,-0.15488 4.03077,0.40472 1.9272,0.50075 2.71405,2.83235 1.40682,4.3338 -1.30727,1.50143 -4.74003,1.78299 -5.20577,-0.15362 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#e9e9e9;stroke-width:0.37143061;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path4163"
+       d="m 687.15489,892.6744 c 0,0 -1.78551,1.63993 -1.0292,0.36699 0,0 0.0256,-1.42125 -1.52387,-1.21501"
+       style="fill:none;stroke:#000000;stroke-width:0.52839291;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       sodipodi:nodetypes="csccccc"
+       inkscape:connector-curvature="0"
+       id="path4165"
+       d="m 704.92824,876.32826 c 0,0 -13.05025,-2.74656 -16.60281,1.52971 -5.74816,6.91915 0.29805,18.44571 0.29805,18.44571 l 10.30783,5.90993 7.82469,-2.0451 1.71512,-11.99409 z"
+       style="fill:#d2ac93;fill-opacity:1;fill-rule:nonzero;stroke:#4d4d4d;stroke-width:0.37143061;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path4167"
+       d="m 700.93785,901.8731 c 0.26683,-0.12658 -9.69528,-2.17694 -14.35263,-8.82635"
+       style="fill:none;stroke:#000000;stroke-width:0.52839291;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       sodipodi:nodetypes="cc"
+       style="fill:none;stroke:#000000;stroke-width:0.52839291;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 685.1875,893.49174 c 0,0 1.55057,-2.16159 1.30381,-0.3023"
+       id="path4170"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       style="fill:#979797;fill-opacity:0.33510634;fill-rule:nonzero;stroke:none"
+       d="m 693.33,899.00217 5.60131,3.21144 7.82469,-2.0451 0.89242,-6.24088 -2.6873,-3.36496 -7.92774,1.76395 z"
+       id="path4172"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       sodipodi:nodetypes="ccscccc"
+       inkscape:connector-curvature="0"
+       id="path4174"
+       d="m 710.9586,894.17695 -2.4254,-3.02217 c 0,0 -1.36057,5.1244 -4.46426,6.32129 -3.92532,1.51375 -14.51774,-2.01156 -14.51774,-2.01156 l -2.83852,10.27148 c 5.3052,-6.62766 8.80805,13.54142 19.78397,17.7542 -3.97546,-14.35384 2.36843,-19.26239 4.46195,-29.31324 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#e9e9e9;stroke-width:0.92857653;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       sodipodi:nodetypes="cccsccsc"
+       inkscape:connector-curvature="0"
+       id="path4176"
+       d="m 699.38363,885.37478 -0.32664,4.40699 0.85578,1.33604 c 0,0 1.22295,0.88411 1.91176,0.8129 0.66156,-0.0684 1.63762,-1.13993 1.63762,-1.13993 l -0.68631,-2.33741 c 0,0 0.5459,-0.93085 0.34648,-1.35072 -0.58894,-1.24014 -3.73869,-1.72787 -3.73869,-1.72787 z"
+       style="fill:#cc8684;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0"
+       id="path4178"
+       d="m 700.79701,893.73684 c 0.84958,0.0801 1.68461,0.59133 2.54645,0.2874 0.59804,-0.14633 1.51411,-0.39984 1.8676,0.28799 0.24578,0.20942 -0.5726,-0.15496 -1.01333,-0.0594 -0.69696,0.0968 -1.48987,0.21126 -2.19218,-0.0413 -0.62295,-0.16908 -1.33737,-0.48915 -1.94791,-0.1091 -0.26283,0.16224 0.032,-0.4531 0.73937,-0.36566 z"
+       style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#333333;fill-opacity:1;stroke:none;stroke-width:0.99999994px;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0"
+       id="path4180"
+       d="m 685.68553,884.31938 6.94579,-0.55911 0.0247,2.17614 -7.00461,-0.39524 z"
+       style="fill:#800000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       sodipodi:nodetypes="cscscsscccssc"
+       inkscape:connector-curvature="0"
+       id="path4182"
+       d="m 691.88371,883.28179 c 0,0 2.73435,-0.55644 4.08859,-0.3767 1.51402,0.20097 4.92455,1.4678 4.92455,1.4678 0,0 1.79357,-1.7682 3.25253,-2.22121 1.30556,-0.40536 4.09957,-0.25722 4.09957,-0.25722 0,0 0.51713,1.7137 0.23119,2.50908 -0.23637,0.65734 -0.14517,1.28042 -0.56809,1.70444 -0.89381,0.89609 -3.59906,1.20985 -3.59906,1.20985 l -2.66236,-1.06514 -3.78006,1.71261 c 0,0 -3.48051,0.33916 -4.31858,-0.13797 -0.70223,-0.3998 -1.14225,-1.17882 -1.4261,-1.91699 -0.31662,-0.82341 -0.24218,-2.62855 -0.24218,-2.62855 z"
+       style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:0.37143061;stroke-miterlimit:4;stroke-dasharray:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       sodipodi:nodetypes="zczcz"
+       inkscape:connector-curvature="0"
+       id="path4184"
+       d="m 704.8154,885.52773 c -1.11878,0.18368 -2.14275,-0.56471 -2.14275,-0.56471 0,0 1.35515,-0.91863 2.4099,-1.08997 1.05471,-0.17132 1.49806,0.33634 1.49806,0.33634 0,0 -0.6464,1.13465 -1.76521,1.31834 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       d="m 696.61907,886.25278 c 1.13352,-0.0238 2.00352,-0.94675 2.00352,-0.94675 0,0 -1.50022,-0.65553 -2.5685,-0.63125 -1.06827,0.0242 -1.4114,0.60441 -1.4114,0.60441 0,0 0.84286,0.99741 1.97638,0.97359 z"
+       id="path4186"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="zczcz" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       inkscape:connector-curvature="0"
+       id="path4188"
+       d="m 697.05411,907.63169 1.1621,2.38916 0.53764,-1.32123 0.36994,0.43693"
+       style="fill:none;stroke:#e9e9e9;stroke-width:0.1857153px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       style="fill:none;stroke:#e9e9e9;stroke-width:0.1857153px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 695.06981,906.54283 1.1621,2.38916 0.53765,-1.32119 0.36996,0.43689"
+       id="path4190"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       inkscape:connector-curvature="0"
+       id="path4192"
+       d="m 701.82225,914.3985 -0.70599,2.56128 -0.77001,-1.20075 -0.28391,0.49714"
+       style="fill:none;stroke:#e9e9e9;stroke-width:0.1857153px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       sodipodi:nodetypes="sscccs"
+       inkscape:connector-curvature="0"
+       id="path4194"
+       d="m 694.82407,866.85168 c -3.05371,0.14789 -4.15453,4.50754 -6.48728,6.48366 -2.01112,1.70361 -2.18792,7.76496 -2.18792,7.76496 l 2.48508,0.35718 16.07652,-6.47371 c 0,0 -5.62431,-8.33849 -9.8864,-8.13209 z"
+       style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:#e9e9e9;stroke-width:0.37143061;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       sodipodi:nodetypes="csccscc"
+       inkscape:connector-curvature="0"
+       id="path4196"
+       d="m 706.6282,874.32804 c -4.55413,-1.91048 -4.49081,0.61941 -12.8031,2.44448 -4.77726,1.04892 -10.57339,3.10296 -8.7242,4.84162 0.11115,0.69479 0.2082,1.40095 1.00249,1.54344 2.4294,0.3579 11.09985,0.28301 13.98869,-1.12294 5.95292,-2.89719 8.86831,-3.49261 8.0265,-6.49069 -0.1913,-0.52646 -0.15557,-0.15787 -1.49038,-1.21591 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#e9e9e9;stroke-width:0.37143061;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa_head.png"
+       sodipodi:nodetypes="ssccs"
+       inkscape:connector-curvature="0"
+       id="path4198"
+       d="m 697.06562,867.19033 c -0.50122,-0.0446 -1.30337,-0.2007 -1.93747,-0.16184 -0.51107,0.0313 2.96021,6.0207 2.96021,6.0207 l 5.43955,0.48128 c -1.09487,-1.52443 -4.42429,-6.15879 -6.46229,-6.34014 z"
+       style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
   </g>
 </svg>

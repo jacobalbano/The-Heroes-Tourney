@@ -74,7 +74,9 @@ namespace SNHU.GameObject
 			hand = false;
 			InitController();
 				
-			player = new Image(Library.GetTexture("assets/players/" + imageName + ".png"));
+			var tex = Library.GetTexture("assets/players/" + imageName + ".png");
+			tex.Smooth = true;
+			player = new Image(tex);
 			player.Scale = 0.5f;
 			AddGraphic(player);
 			
@@ -82,10 +84,8 @@ namespace SNHU.GameObject
 			isOffscreen = false;
 			
 			player.CenterOO();
-			SetHitbox(player.ScaledWidth, player.ScaledHeight, (int) player.OriginX, player.ScaledHeight);
-			CenterOrigin();
+			SetHitbox(30, 60, 15, 60);
 			
-			OriginY = player.ScaledHeight;
 			player.OriginY = player.Height;
 			
 			left = new Fist(true, this);
@@ -459,6 +459,12 @@ namespace SNHU.GameObject
 		
 		public void SetUpgrade(Upgrade upgrade)
 		{
+			if (World == null)
+			{
+				FP.Tweener.AddTween(new Alarm(0.01f, () => SetUpgrade(upgrade), ONESHOT), true);
+				return;
+			}
+			
 			if (this.CurrentUpgrade != null)
 			{
 				World.BroadcastMessage(Upgrade.Used, PlayerId);

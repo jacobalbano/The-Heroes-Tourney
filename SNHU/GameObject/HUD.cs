@@ -25,6 +25,8 @@ namespace SNHU.GameObject
 			gm = gameManager;
 			players = new List<Entity>();
 			upgradeIcons = new List<Stack<Entity>>();
+			
+			Layer = -10000;
 		}
 		
 		public void AddPlayer(Player p)
@@ -131,14 +133,14 @@ namespace SNHU.GameObject
 				
 				// Tweens
 				var scaleTween = new VarTween(null, ONESHOT);
-				scaleTween.Tween(upgradeImg, "Scale", upgradeImg.Scale * 0.5f, 0.5f);
+				scaleTween.Tween(upgradeImg, "Scale", upgradeImg.Scale * 0.5f, 0.5f, Ease.ExpoOut);
 				AddTween(scaleTween, true);
 				
 				var offsetX = 10;//-20;
 				var offsetY = GameWorld.gameManager.StartingHealth != 0 ? 80 : 60;
 				
 				var posTween = new MultiVarTween(null, ONESHOT);
-				posTween.Tween(upgradeEnt, new { X = hudEnt.X + offsetX, Y = hudEnt.Y + offsetY }, 0.5f);
+				posTween.Tween(upgradeEnt, new { X = hudEnt.X + offsetX, Y = hudEnt.Y + offsetY }, 0.5f, Ease.ExpoOut);
 				AddTween(posTween, true);
 			};
 		}
