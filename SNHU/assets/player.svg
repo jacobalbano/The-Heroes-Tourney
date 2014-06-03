@@ -22,6 +22,18 @@
   <defs
      id="defs3927">
     <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5690">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop5692" />
+      <stop
+         style="stop-color:#b3b3b3;stop-opacity:1"
+         offset="1"
+         id="stop5694" />
+    </linearGradient>
+    <linearGradient
        id="linearGradient4450"
        inkscape:collect="always">
       <stop
@@ -485,26 +497,24 @@
        y2="1011.6777" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient4450-8"
-       id="linearGradient4114-9"
+       xlink:href="#linearGradient5690"
+       id="linearGradient5696"
+       x1="1053.994"
+       y1="1020.6777"
+       x2="1051.494"
+       y2="958.17767"
        gradientUnits="userSpaceOnUse"
-       x1="21.240284"
-       y1="999.80267"
-       x2="20.381683"
-       y2="1011.6777"
-       gradientTransform="matrix(1.9887869,-0.21148704,0.21148704,1.9887869,315.21637,-971.6468)" />
+       gradientTransform="translate(137.50536,0.35355337)" />
     <linearGradient
-       id="linearGradient4450-8"
-       inkscape:collect="always">
-      <stop
-         id="stop4452-80"
-         offset="0"
-         style="stop-color:#00ffff;stop-opacity:1" />
-      <stop
-         id="stop4454-8"
-         offset="1"
-         style="stop-color:#ff7a00;stop-opacity:0.60106385" />
-    </linearGradient>
+       inkscape:collect="always"
+       xlink:href="#linearGradient5690"
+       id="linearGradient5739"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(32.5,0)"
+       x1="1053.994"
+       y1="1020.6777"
+       x2="1051.494"
+       y2="958.17767" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -513,9 +523,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2"
-     inkscape:cx="724.50631"
-     inkscape:cy="38.085991"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="1184.7124"
+     inkscape:cy="37.984873"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -547,6 +557,24 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-0.99407743,-992.19339)">
+    <path
+       style="fill:#e3e3e3;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 1079.2934,1026.2508 c 16.2941,15.3949 35.5414,4.4281 35.5414,4.4281 l 6.4877,-25.6309 c 2.3266,-8.23856 -4.3013,-13.39286 -3.3632,-23.0787 -6.098,-8.13324 -16.7896,-6.16061 -25.1914,-9.2254 l -20.8953,9.2254 c 0,0 -8.8734,28.8865 7.4208,44.2815 z"
+       id="path5701"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="scccccs"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       sodipodi:nodetypes="cccccsc"
+       inkscape:connector-curvature="0"
+       id="path5703"
+       d="m 1072.8249,1029.5418 18.9204,-1.9148 -25.4984,32.675 -11.7047,-4.4549 2.0014,-9.464 c 0,0 4.8318,-8.4829 8.3181,-11.8003 2.2759,-2.1656 7.9632,-5.041 7.9632,-5.041 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
     <path
        style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 961.8691,952.24054 c -6.5246,1.23045 -8.9706,11.56244 -14.7188,16.3125 -3.2154,2.6571 -4.5371,9.67693 -5.0624,14.31251 -3.34352,1.8329 -4.87522,3.7878 -2.90632,5.5937 0.2631,1.6043 0.49732,3.2268 2.25002,3.6563 -2.44072,15.16895 6.4063,31.65665 6.4063,31.65665 0,0 46.6566,-8.7571 47.1562,-6.4063 l 2.5,-11.3751 -1.4062,-3.0315 c 2.5802,2.6795 10.3766,1.9853 13.125,-1.0937 3.221,-3.60915 0.78,-10.07765 -3.9688,-11.28135 -1.7197,-0.4359 -2.9308,-1.5219 -4.0625,-2.0312 -1.3072,-2.945 -3.0121,-6.5141 -4.5,-10.28126 0.5228,-1.2087 0.7109,-2.45022 0.219,-4.15625 -0.39,-1.04622 -0.9319,-2.39752 -2.7812,-3.65625 0.735,-2.0525 -5.1273,-8.1773 -11.1245,-12.625 -8.1303,-6.02961 -16.7346,-6.12225 -17.2188,-6.09375 -0.3861,-0.0336 -3.907,0.5 -3.907,0.5 z m 36.9062,59.06286 c 0,0 -12.2542,-0.9774 -20.3124,1.3438 -9.9267,2.8594 -27.9688,11.1875 -27.9688,11.1875 -0.3473,0.1042 10.6181,17.2762 43.9375,26 9.7456,-35.0565 5.1745,-6.2989 10.4687,-31.0938 z"
@@ -3539,5 +3567,678 @@
        inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\santa.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#aa0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="rect5065"
+       width="31.25"
+       height="21.5"
+       x="1317.2057"
+       y="1040.8016" />
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       y="1018.5978"
+       x="1076.95"
+       height="73.064392"
+       width="36.322605"
+       id="rect5705"
+       style="fill:#000000;fill-opacity:1;stroke:none" />
+    <g
+       id="g5053-1"
+       transform="matrix(0.30779383,0,0,0.30779383,390.20621,581.83277)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         style="fill:#800000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 1135.8691,1040.6777 26.076,2.6464 23.174,-2.7714 0,16.3125 -23.174,-3.5411 -26.076,3.4786 z"
+         id="path5046-0"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccc" />
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="rect4993-6"
+         d="m 1136.4941,1040.6777 25.4142,2.6464 22.5858,-2.6464 0,16 -22.5858,-3.3536 -25.4142,3.3536 z"
+         style="fill:#aa0000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <path
+         style="fill:#aa4400;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 1136.4941,1046.6777 25.4142,0.6464 22.5858,-0.6464 0,4 -22.5858,-1.3536 -25.4142,1.3536 z"
+         id="path5025-7"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccc" />
+      <path
+         style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 1136.7441,1041.6777 25.1274,2.3156 22.3726,-2.3156 0,3.0656 -22.3726,1.9344 -25.1274,-1.9344 z"
+         id="path5021-5"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccc" />
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="path5023-0"
+         d="m 1136.7441,1055.6777 25.1274,-2.3156 22.3726,2.3156 0,-3.0656 -22.3726,-1.9344 -25.1274,1.9344 z"
+         style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="rect4996-0"
+         d="m 1153.0437,1041.6971 14.6011,0 c 1.7631,4.3519 1.9989,8.7039 0,13.0558 l -14.6011,0 c 0.084,-4.0598 -0.073,-8.257 0,-13.0558 z"
+         style="fill:#d40000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path5029-4"
+         d="m 1159.4003,1041.6934 c 0.8388,4.7401 0.9614,9.1548 -0.031,13.0625 l 2.5938,0 c 1.1231,-4.1022 1.1372,-8.4603 0.094,-13.0625 z"
+         style="fill:#aa4400;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path5031-5"
+         d="m 1163.1503,1041.6934 c 0.7492,4.5623 0.9895,8.9974 -0.25,13.0625 l 2.7813,0 c 1.1158,-4.0397 1.3308,-8.3566 0.2813,-13.0625 z"
+         style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path5033-4"
+         d="m 1155.0253,1041.6934 c 0.4953,4.5088 1.0559,9.0394 0.094,13.0625 l 2.7813,0 c 0.6038,-4.2649 0.4991,-8.6311 -0.062,-13.0625 z"
+         style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    </g>
+    <path
+       style="fill:#800000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.38507223;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 743.88838,876.21052 c 0,0 -6.21874,1.29942 -8.10845,4.08789 -1.99324,2.94121 -0.38478,10.04177 -0.38478,10.04177 l 2.62588,-1.68323 0.48096,4.61688 0.92336,0.37514 0.29819,-3.1741 c -1.01215,-6.29346 3.26688,-8.20447 9.39731,-8.57977 0,0 0.0415,-0.12403 0.0577,-0.1635 7.38101,-1.73713 6.74188,3.07164 7.22359,2.99133 0,0 1.06982,-1.48331 -0.92342,-4.42452 -1.70827,-2.52069 -5.00028,-4.0224 -6.4348,-3.07792 -1.62529,-1.08004 -5.15552,-1.00997 -5.15552,-1.00997 z"
+       id="path4986-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#e3dbdb;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.61558765;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 736.78025,880.52443 c 0,0 3.83736,-2.10172 5.93904,-2.61171 2.23875,-0.54327 9.39603,0.0974 11.19313,1.90436 1.43473,1.44267 3.0973,3.71354 1.90883,6.74885 -1.35848,3.46957 -0.28248,6.88253 -0.38537,9.36792 -0.0934,2.25814 -1.04255,6.6359 -1.43426,6.41206 -0.50999,-0.0908 -2.10151,1.44459 -4.98664,1.21606 -2.53811,-0.20109 -6.75109,-1.28737 -9.23472,-1.05161 -1.29366,-2.02897 -1.28184,-4.05789 -1.92273,-6.08682 0,0 -2.8265,-1.14741 -3.4823,-2.3941 -0.91192,-1.73356 0,-5.87635 0,-5.87635 1.06705,-0.57656 2.24861,-0.23673 3.52075,0.82777 l -1.73132,-1.0694 z"
+       id="rect4925-5"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csssscsccscccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.2849094px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 753.49627,897.12557 -0.17948,5.3006"
+       id="path4949-6"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.2849094px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 745.74709,897.12557 0.1103,6.18226"
+       id="path4951-4"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#2b0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       d="m 749.08214,886.15697 -0.65293,1.0882 c -2.17645,-0.97716 -4.35289,-0.0234 -6.52928,0.0918 0,0 3.04426,-1.73068 4.73687,-2.00038 0.8078,-0.12872 2.44534,0.82042 2.44534,0.82042 z"
+       id="rect4953-8"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccsc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="cccsc"
+       inkscape:connector-curvature="0"
+       id="path4956-2"
+       d="m 751.40189,886.15697 0.40811,1.0882 c 0.96368,-0.76269 2.515,-0.35 4.0809,0.0918 0,0 -1.90275,-1.73068 -2.96064,-2.00038 -0.50488,-0.12872 -1.52837,0.82042 -1.52837,0.82042 z"
+       style="fill:#2b0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.15389691;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 746.25431,887.50016 c 2.63344,0 2.17644,2.93818 2.17644,2.93818 -1.41801,0.91995 -3.84785,0.32225 -6.09395,0 0,0 1.28412,-2.93818 3.91751,-2.93818 z"
+       id="rect4958-1"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="zccz"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path4961-6"
+       sodipodi:cx="1148.375"
+       sodipodi:cy="7.7968102"
+       sodipodi:rx="3.625"
+       sodipodi:ry="4.3125"
+       d="m 1152,7.7968102 a 3.625,4.3125 0 1 1 -7.25,0 3.625,4.3125 0 1 1 7.25,0 z"
+       transform="matrix(0.30779383,0,0,0.30779383,393.01301,886.95444)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.13221209;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 753.04524,887.50272 c -0.42031,0.0261 -0.79342,0.15812 -1.11573,0.3655 -0.005,0 -0.006,0.007 -0.01,0.01 -0.8062,0.80007 -0.60595,2.56814 -0.60595,2.56814 0.18634,0.16531 0.41955,0.28365 0.68291,0.3655 0.3427,0.0799 0.70075,0.12952 1.04841,0.13464 0.34761,-0.005 0.70565,-0.0548 1.04841,-0.13464 0.2633,-0.0819 0.49652,-0.20019 0.68291,-0.3655 0,0 0.2002,-1.76807 -0.60595,-2.56814 -0.005,-0.005 -0.006,-0.006 -0.01,-0.01 -0.32236,-0.20738 -0.69548,-0.33914 -1.11573,-0.3655 z"
+       id="path4963-8"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(-0.30779383,0,0,0.30779383,1106.7494,886.95444)"
+       d="m 1152,7.7968102 a 3.625,4.3125 0 1 1 -7.25,0 3.625,4.3125 0 1 1 7.25,0 z"
+       sodipodi:ry="4.3125"
+       sodipodi:rx="3.625"
+       sodipodi:cy="7.7968102"
+       sodipodi:cx="1148.375"
+       id="path4965-3"
+       style="fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="arc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#aa0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       d="m 745.45716,897.08169 c 0,0 3.83097,1.11424 5.27578,1.11424 1.4448,0 3.10156,-1.11424 3.10156,-1.11424 -1.24258,-0.29589 -1.46142,-0.54119 -2.35762,-1.11429 l -0.74394,0.48922 -0.69644,-0.48922 c -1.02243,0.79656 -3.34485,0.95415 -4.57934,1.11429 z"
+       id="rect4942-1"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="cccccc"
+       inkscape:connector-curvature="0"
+       id="path4947-4"
+       d="m 745.45716,897.08169 c 2.99122,0.27827 5.74774,0.22794 8.37734,0 -1.24258,-0.29589 -1.46142,-0.54119 -2.35762,-1.11429 l -0.74394,0.48922 -0.69644,-0.48922 c -1.02243,0.79656 -3.34485,0.95415 -4.57934,1.11429 z"
+       style="fill:#800000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="ssccs"
+       inkscape:connector-curvature="0"
+       id="path4984-8"
+       d="m 755.48136,880.30059 c -1.88971,-2.78841 -5.72047,-4.33095 -6.82725,-2.69319 -0.77707,1.14992 0.49066,4.13459 0.49066,4.13459 7.42329,-1.76392 6.77734,3.06072 7.2599,2.9803 0,0 1.06993,-1.48043 -0.92331,-4.4217 z"
+       style="fill:#800000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#aa0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       d="m 735.78014,880.30059 c 1.88971,-2.78841 8.1052,-4.08741 8.1052,-4.08741 0,0 4.61758,-0.0897 5.72436,1.54813 0.77707,1.14992 2.8192,3.99085 -1.41402,4.25 -6.13044,0.3753 -9.48471,2.17032 -8.47257,8.46372 l -0.30084,3.17229 -0.92092,-0.3713 -0.47894,-4.62194 -2.62694,1.68547 c 0,0 -1.60857,-7.09769 0.38467,-10.03896 z"
+       id="rect4970-4"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="scsscccccs"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:nodetypes="csccc"
+       inkscape:connector-curvature="0"
+       id="path4973-9"
+       d="m 737.85753,896.42354 c 0,0 -2.8265,-1.14741 -3.4823,-2.3941 -0.91192,-1.73356 0,-5.87635 0,-5.87635 1.06705,-0.57656 2.24861,-0.23673 3.52075,0.82777 0,0 0.60244,9.47161 -0.0383,7.44268 z"
+       style="fill:#e3dbdb;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
+       d="m 735.40479,887.57003 c -0.0806,0 -0.16052,0.0101 -0.24045,0.0192 -0.31992,0.0373 -0.63424,0.12712 -0.93301,0.2886 l -0.12505,0.0673 -0.0288,0.14427 c 0,0 -0.23033,1.05364 -0.34627,2.3277 -0.11599,1.27401 -0.14758,2.75763 0.37509,3.75124 0.39458,0.75012 1.29898,1.34532 2.10646,1.79864 0.74213,0.41663 1.30053,0.6401 1.40433,0.68292 0.0256,0.0682 0.0495,0.1383 0.0962,0.202 0.0383,0.0527 0.0986,0.14315 0.25009,0.1635 0.15147,0.0202 0.29137,-0.0885 0.33664,-0.15386 0.0905,-0.13085 0.0883,-0.21383 0.10577,-0.32705 0.0176,-0.11323 0.0298,-0.24733 0.0383,-0.40395 l -0.61559,-0.0577 c -0.11669,-0.0485 -0.62343,-0.25468 -1.31773,-0.64446 -0.76962,-0.43202 -1.60479,-1.04245 -1.86601,-1.53897 -0.3892,-0.73994 -0.41977,-2.19343 -0.30778,-3.42419 0.10338,-1.13586 0.27774,-1.937 0.30778,-2.0776 0.19385,-0.0901 0.38744,-0.1693 0.58678,-0.19236 0.24146,-0.0282 0.4881,-0.007 0.75017,0.0577 0.49598,0.12313 1.04032,0.42915 1.61592,0.89456 0.006,0.0911 0.60601,-0.18278 0.60601,-0.18278 l -0.01,-0.13463 -0.0962,-0.0866 c -0.65964,-0.55201 -1.31092,-0.92518 -1.96219,-1.08686 -0.24419,-0.0607 -0.48906,-0.0918 -0.73101,-0.0866 z"
+       id="path4975-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccsccccccccsccccccccccsc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#808080;stroke-width:0.30779383px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 750.42144,889.83323 c 0,0 0.12648,1.26347 0.32651,1.86048 0.27832,0.83064 1.01023,0.97752 1.27396,1.60862 0.26378,0.63114 0.24567,1.9731 -0.13522,2.19077 -2.15855,0.55951 -2.71237,0.78878 -3.20867,-0.45514"
+       id="path4991-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csscc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid_head.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       d="m 1094.8504,1032.3568 12.9736,-0.2438 -5.6995,32.6992 z"
+       id="path5707"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g5709"
+       transform="matrix(0.57794329,0,0,0.57794329,431.40158,430.70011)"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         style="fill:#800000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 1135.8691,1040.6777 26.076,2.6464 23.174,-2.7714 0,16.3125 -23.174,-3.5411 -26.076,3.4786 z"
+         id="path5711"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccc" />
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="path5713"
+         d="m 1136.4941,1040.6777 25.4142,2.6464 22.5858,-2.6464 0,16 -22.5858,-3.3536 -25.4142,3.3536 z"
+         style="fill:#aa0000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <path
+         style="fill:#aa4400;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 1136.4941,1046.6777 25.4142,0.6464 22.5858,-0.6464 0,4 -22.5858,-1.3536 -25.4142,1.3536 z"
+         id="path5715"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccc" />
+      <path
+         style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 1136.7441,1041.6777 25.1274,2.3156 22.3726,-2.3156 0,3.0656 -22.3726,1.9344 -25.1274,-1.9344 z"
+         id="path5717"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccc" />
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="path5719"
+         d="m 1136.7441,1055.6777 25.1274,-2.3156 22.3726,2.3156 0,-3.0656 -22.3726,-1.9344 -25.1274,1.9344 z"
+         style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path5721"
+         d="m 1153.0437,1041.6971 14.6011,0 c 1.7631,4.3519 1.9989,8.7039 0,13.0558 l -14.6011,0 c 0.084,-4.0598 -0.073,-8.257 0,-13.0558 z"
+         style="fill:#d40000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path5723"
+         d="m 1159.4003,1041.6934 c 0.8388,4.7401 0.9614,9.1548 -0.031,13.0625 l 2.5938,0 c 1.1231,-4.1022 1.1372,-8.4603 0.094,-13.0625 z"
+         style="fill:#aa4400;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path5725"
+         d="m 1163.1503,1041.6934 c 0.7492,4.5623 0.9895,8.9974 -0.25,13.0625 l 2.7813,0 c 1.1158,-4.0397 1.3308,-8.3566 0.2813,-13.0625 z"
+         style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path5727"
+         d="m 1155.0253,1041.6934 c 0.4953,4.5088 1.0559,9.0394 0.094,13.0625 l 2.7813,0 c 0.6038,-4.2649 0.4991,-8.6311 -0.062,-13.0625 z"
+         style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    </g>
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       sodipodi:nodetypes="ccccsc"
+       inkscape:connector-curvature="0"
+       id="path5729"
+       d="m 1065.3208,1077.8418 15.1806,-5.399 -14.4664,-27.5483 -9.5074,2.1575 c 0,0 -2.5408,6.8765 -2.251,9.7588 0.7922,7.8784 11.0442,21.031 11.0442,21.031 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0"
+       id="path5731"
+       d="m 1075.8579,1066.5468 8.0881,6.6922 3.4407,5.5436 -8.5236,12.0591 -6.5537,-5.3695 -5.6822,-9.518 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       transform="matrix(1.382898,-0.37054638,0.37054638,1.382898,-516.18795,1417.1892)"
+       d="m 1189,-3.6553001 a 25.455845,8.485281 0 1 1 -50.9117,0 25.455845,8.485281 0 1 1 50.9117,0 z"
+       sodipodi:ry="8.485281"
+       sodipodi:rx="25.455845"
+       sodipodi:cy="-3.6553001"
+       sodipodi:cx="1163.5442"
+       id="path5733"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       sodipodi:type="arc" />
+    <path
+       style="fill:#d38d5f;fill-opacity:1;stroke:none"
+       d="m 1079.2934,1026.2508 c 16.2941,15.3949 35.5414,4.4281 35.5414,4.4281 l 6.4877,-25.6309 c 2.3266,-8.23856 -4.3013,-13.39286 -3.3632,-23.0787 -6.098,-8.13324 -16.7896,-6.16061 -25.1914,-9.2254 l -20.8953,9.2254 c 0,0 -8.8734,28.8865 7.4208,44.2815 z"
+       id="path5735"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="scccccs"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       sodipodi:nodetypes="scccccs"
+       inkscape:connector-curvature="0"
+       id="path5737"
+       d="m 1079.2934,1026.2508 c 16.2941,15.3949 35.5414,4.4281 35.5414,4.4281 l 6.4877,-25.6309 c 2.3266,-8.23856 -4.3013,-13.39286 -3.3632,-23.0787 -6.098,-8.13324 -16.7896,-6.16061 -25.1914,-9.2254 l -20.8953,9.2254 c 0,0 -8.8734,28.8865 7.4208,44.2815 z"
+       style="fill:url(#linearGradient5739);fill-opacity:1;stroke:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0"
+       id="path5741"
+       d="m 1059.793,947.64812 c 10.3775,-9.01669 24.6171,-13.068 43.1739,-11.56844 l 5.5315,35.6714 9.4497,8.28232 c -12.4253,-1.569 -38.7153,2.40314 -50.8863,13.59787 l 1.7149,-10.84212 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    <path
+       style="fill:#800000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       d="m 1106.5115,955.29175 1.0806,4.15871 0.7015,3.33564 1.8239,5.17148 -1.6191,3.7935 -39.0296,11.53247 -2.6562,-4.51684 -0.368,-3.37725 -1.2031,-7.13281 c 8.0732,-7.79983 24.3306,-11.07586 41.27,-12.9649 z"
+       id="path5743"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccc"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       sodipodi:nodetypes="sssss"
+       inkscape:connector-curvature="0"
+       id="path5745"
+       d="m 1126.7233,971.55468 c 1.7365,6.48066 -13.4556,1.4144 -32.8976,6.62388 -19.4421,5.20947 -35.7716,18.72193 -37.5081,12.24126 -1.7364,-6.48065 12.6167,-15.95739 32.0587,-21.16687 19.442,-5.20946 36.6106,-4.17894 38.347,2.30173 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path5747"
+       d="m 1102.0397,978.63859 c 10.3904,21.20294 2.1655,37.54971 2.8284,56.21501"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       sodipodi:nodetypes="sssscs"
+       inkscape:connector-curvature="0"
+       id="path5749"
+       d="m 1102.4816,996.7582 c 0,0.67453 0.069,0.98002 -0.3136,1.45083 -0.1412,0.1737 -0.2869,-0.76851 -0.538,-0.68761 -0.9948,0.32053 -3.1644,1.44649 -4.8936,1.44649 -3.5147,0 -5.3917,-2.39689 -6.364,-3.18198 3.182,-2.55286 12.1092,-0.78509 12.1092,0.97227 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0"
+       id="path5751"
+       d="m 1096.0293,986.23999 2.6516,10.96016 -0.707,11.31375 -1.591,-11.31375 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       d="m 1109.5131,996.3863 c 0.2386,0.61605 0.2928,0.90675 0.7577,1.27217 0.1717,0.13471 -0.048,-0.75027 0.1763,-0.71876 0.8892,0.12491 2.9791,0.78733 4.3275,0.4957 2.7407,-0.59294 3.3568,-3.09878 3.8373,-3.97984 -3.384,-1.79497 -9.7201,1.32554 -9.0988,2.93073 z"
+       id="path5753"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sssscs" />
+    <g
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       transform="matrix(0.74174102,0,0,0.74174102,305.44506,274.91341)"
+       id="g5755">
+      <path
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 1072.2559,1031.4043 15.2711,-4.7211 19.1782,5.2094 3.1357,27.962 -1.777,6.4656 -35.2836,0.7042 -2.2995,-8.9832 z"
+         id="path5757"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccccccc"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 1091.2077,1037.2765 10.1106,0.4176 -5.39,14.1562 z"
+         id="path5759"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccc"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="fill:#800000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.93029237;stroke-miterlimit:4;stroke-dasharray:none"
+         d="m 1086.3447,986.75401 c 0,0 -13.1565,2.74911 -17.1545,8.64838 -4.2169,6.22251 -0.814,21.24461 -0.814,21.24461 l 5.5554,-3.5611 1.0175,9.7676 1.9535,0.7937 0.6308,-6.7152 c -2.1413,-13.3146 6.9115,-17.35763 19.8812,-18.15163 0,0 0.088,-0.2624 0.122,-0.3459 15.6155,-3.67499 14.2633,6.49843 15.2824,6.32853 0,0 2.2634,-3.1381 -1.9536,-9.36061 -3.614,-5.33275 -10.5787,-8.50983 -13.6136,-6.5117 -3.4385,-2.28492 -10.9071,-2.13668 -10.9071,-2.13668 z"
+         id="path5761"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="fill:#e3dbdb;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.30235219;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         d="m 1071.3065,995.88056 c 0,0 8.1185,-4.44644 12.5648,-5.52536 4.7364,-1.14932 19.8785,0.20605 23.6805,4.02898 3.0353,3.05199 6.5527,7.85632 4.0383,14.27792 -2.874,7.3403 -0.5976,10.054 -0.8153,15.3122 -0.1976,4.7774 -2.2056,9.5322 -3.0343,9.0586 -1.079,-0.1921 -4.446,3.0562 -10.5499,2.5728 -5.3697,-0.4255 -14.2827,-2.7236 -19.5372,-2.2248 -2.7369,-4.2926 -2.7119,-4.0782 -4.0677,-8.3706 0,0 -2.6101,-13.4912 0.081,-11.2391 l -3.6629,-2.2624 z"
+         id="path5763"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="csssscsccccc"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.46515191px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 1103.0784,1027.2487 -0.383,6.6227"
+         id="path5765"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.46515191px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 1089.6448,1027.2487 0.2354,7.7243"
+         id="path5767"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="fill:#2b0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 1097.3327,1007.7969 -1.3813,2.3022 c -4.6046,-2.0672 -9.2091,-0.049 -13.8135,0.1942 0,0 6.4405,-3.6615 10.0214,-4.2321 1.709,-0.2723 5.1734,1.7357 5.1734,1.7357 z"
+         id="path5769"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccsc"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         sodipodi:nodetypes="cccsc"
+         inkscape:connector-curvature="0"
+         id="path5771"
+         d="m 1102.2404,1007.7969 0.8634,2.3022 c 2.0388,-1.6135 5.3208,-0.7404 8.6337,0.1942 0,0 -4.0255,-3.6615 -6.2636,-4.2321 -1.0681,-0.2723 -3.2335,1.7357 -3.2335,1.7357 z"
+         style="fill:#2b0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.32558805;stroke-miterlimit:4;stroke-dasharray:none"
+         d="m 1091.3501,1010.6386 c 5.5714,0 4.6045,6.2161 4.6045,6.2161 -3,1.9463 -8.1406,0.6818 -12.8925,0 0,0 2.7167,-6.2161 8.288,-6.2161 z"
+         id="path5773"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="zccz"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         sodipodi:type="arc"
+         style="fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="path5775"
+         sodipodi:cx="1148.375"
+         sodipodi:cy="7.7968102"
+         sodipodi:rx="3.625"
+         sodipodi:ry="4.3125"
+         d="m 1152,7.7968102 c 0,2.3817278 -1.623,4.3124998 -3.625,4.3124998 -2.002,0 -3.625,-1.930772 -3.625,-4.3124998 0,-2.381728 1.623,-4.3125 3.625,-4.3125 2.002,0 3.625,1.930772 3.625,4.3125 z"
+         transform="matrix(0.6511761,0,0,0.6511761,344.02428,1009.4841)"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2797111;stroke-miterlimit:4;stroke-dasharray:none"
+         d="m 1105.7171,1010.644 c -0.8892,0.055 -1.6785,0.3345 -2.3604,0.7733 -0.011,0 -0.012,0.016 -0.02,0.02 -1.7056,1.6926 -1.282,5.4332 -1.282,5.4332 0.3943,0.3497 0.8876,0.6001 1.4448,0.7733 0.725,0.169 1.4825,0.274 2.2181,0.2848 0.7354,-0.011 1.4928,-0.1158 2.218,-0.2848 0.557,-0.1732 1.0504,-0.4236 1.4448,-0.7733 0,0 0.4235,-3.7406 -1.282,-5.4332 -0.011,-0.011 -0.013,-0.014 -0.02,-0.02 -0.682,-0.4388 -1.4713,-0.7175 -2.3604,-0.7733 z"
+         id="path5777"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         transform="matrix(-0.6511761,0,0,0.6511761,1854.0222,1009.4841)"
+         d="m 1152,7.7968102 c 0,2.3817278 -1.623,4.3124998 -3.625,4.3124998 -2.002,0 -3.625,-1.930772 -3.625,-4.3124998 0,-2.381728 1.623,-4.3125 3.625,-4.3125 2.002,0 3.625,1.930772 3.625,4.3125 z"
+         sodipodi:ry="4.3125"
+         sodipodi:rx="3.625"
+         sodipodi:cy="7.7968102"
+         sodipodi:cx="1148.375"
+         id="path5779"
+         style="fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.5;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         sodipodi:type="arc"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="fill:#aa0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 1089.1003,1027.2247 c 0,0 6.5591,1.9078 9.0328,1.9078 2.4737,0 5.3103,-1.9078 5.3103,-1.9078 -2.1274,-0.5065 -2.5022,-0.9266 -4.0365,-1.9078 l -1.2738,0.8376 -1.1924,-0.8376 c -1.7506,1.3639 -5.7268,1.6336 -7.8404,1.9078 z"
+         id="path5781"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="csccccc"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         sodipodi:nodetypes="cccccc"
+         inkscape:connector-curvature="0"
+         id="path5783"
+         d="m 1089.1003,1027.2247 c 5.1213,0.4764 9.8409,0.3903 14.3431,0 -2.1274,-0.5065 -2.5022,-0.9266 -4.0365,-1.9078 l -1.2738,0.8376 -1.1924,-0.8376 c -1.7506,1.3639 -5.7268,1.6336 -7.8404,1.9078 z"
+         style="fill:#800000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         sodipodi:nodetypes="ssccs"
+         inkscape:connector-curvature="0"
+         id="path5785"
+         d="m 1110.8711,995.40712 c -3.998,-5.89936 -12.1024,-9.16273 -14.4439,-5.69782 -1.644,2.43273 1.038,8.74717 1.038,8.74717 15.7049,-3.7318 14.3383,6.47533 15.3592,6.30523 0,0 2.2636,-3.1321 -1.9533,-9.35458 z"
+         style="fill:#800000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="fill:#aa0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 1069.1907,995.40712 c 3.9979,-5.89936 17.1475,-8.64749 17.1475,-8.64749 0,0 9.7691,-0.18966 12.1106,3.27525 1.644,2.43277 5.9644,8.44309 -2.9915,8.99139 -12.9697,0.794 -20.0661,4.59153 -17.9248,17.90603 l -0.6364,6.7114 -1.9484,-0.7855 -1.0132,-9.7783 -5.5576,3.5658 c 0,0 -3.4032,-15.0161 0.8138,-21.23858 z"
+         id="path5787"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="scsscccccs"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         sodipodi:nodetypes="cscccc"
+         inkscape:connector-curvature="0"
+         id="path5789"
+         d="m 1073.5857,1025.0103 c 0,0 -5.9798,-2.4275 -7.3673,-5.065 -1.9293,-3.6676 0,-7.9253 0,-7.9253 2.2575,-1.2198 4.7572,-0.5009 7.4486,1.7512 0,0 1.2745,15.5315 -0.081,11.2391 z"
+         style="fill:#e3dbdb;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
+         d="m 1068.3966,1010.7864 c -0.9647,0.027 -2.7278,1.2328 -3.3053,2.4842 -0.933,2.0213 -0.5157,4.5106 0.4104,6.6662 0.8,1.7288 2.4621,2.8266 4.0382,3.782 1.1373,0.6686 2.3155,1.2709 3.5372,1.7703 0.081,0.7631 1.1456,1.0776 1.5078,0.3484 0.1284,-0.4068 0.4073,-1.2422 0.095,-1.461 -0.5435,-0.081 -1.1255,-0.011 -1.6152,-0.3039 -2.031,-0.9314 -4.0577,-2.0088 -5.6544,-3.6003 -1.0674,-1.0556 -1.4637,-2.9399 -1.5933,-4.3549 -0.1294,-2.4921 1.3877,-4.606 4.199,-3.7705 1.1401,0.3801 2.1501,1.0849 3.0792,1.8156 0.3667,-0.1517 1.247,-0.1487 1.2076,-0.6468 -0.1589,-0.3001 -0.542,-0.4792 -0.7958,-0.7167 -1.4689,-1.1172 -3.2208,-2.0398 -5.1099,-2.0126 z"
+         id="path5791"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cacccccccccccccc"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="fill:none;stroke:#808080;stroke-width:0.44562712px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 1099.0805,1016.6669 c 0,0 0.1962,1.7065 0.5066,2.513 0.432,1.1219 1.5678,1.3204 1.977,2.1727 0.4094,0.8526 0.3813,2.6653 -0.2098,2.9592 -3.3497,0.756 -4.2092,1.0656 -4.9793,-0.6147"
+         id="path5793"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="csscc"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <g
+         id="g5795"
+         transform="matrix(0.40697495,0,0,0.40697495,623.87026,611.49261)"
+         inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90">
+        <path
+           style="fill:#800000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 1135.8691,1040.6777 26.076,2.6464 23.174,-2.7714 0,16.3125 -23.174,-3.5411 -26.076,3.4786 z"
+           id="path5797"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccccc" />
+        <path
+           sodipodi:nodetypes="ccccccc"
+           inkscape:connector-curvature="0"
+           id="path5799"
+           d="m 1136.4941,1040.6777 25.4142,2.6464 22.5858,-2.6464 0,16 -22.5858,-3.3536 -25.4142,3.3536 z"
+           style="fill:#aa0000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+        <path
+           style="fill:#aa4400;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 1136.4941,1046.6777 25.4142,0.6464 22.5858,-0.6464 0,4 -22.5858,-1.3536 -25.4142,1.3536 z"
+           id="path5801"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccccc" />
+        <path
+           style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 1136.7441,1041.6777 25.1274,2.3156 22.3726,-2.3156 0,3.0656 -22.3726,1.9344 -25.1274,-1.9344 z"
+           id="path5803"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccccc" />
+        <path
+           sodipodi:nodetypes="ccccccc"
+           inkscape:connector-curvature="0"
+           id="path5805"
+           d="m 1136.7441,1055.6777 25.1274,-2.3156 22.3726,2.3156 0,-3.0656 -22.3726,-1.9344 -25.1274,1.9344 z"
+           style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path5807"
+           d="m 1153.0437,1041.6971 14.6011,0 c 1.7631,4.3519 1.9989,8.7039 0,13.0558 l -14.6011,0 c 0.084,-4.0598 -0.073,-8.257 0,-13.0558 z"
+           style="fill:#d40000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path5809"
+           d="m 1159.4003,1041.6934 c 0.8388,4.7401 0.9614,9.1548 -0.031,13.0625 l 2.5938,0 c 1.1231,-4.1022 1.1372,-8.4603 0.094,-13.0625 z"
+           style="fill:#aa4400;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path5811"
+           d="m 1163.1503,1041.6934 c 0.7492,4.5623 0.9895,8.9974 -0.25,13.0625 l 2.7813,0 c 1.1158,-4.0397 1.3308,-8.3566 0.2813,-13.0625 z"
+           style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+        <path
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path5813"
+           d="m 1155.0253,1041.6934 c 0.4953,4.5088 1.0559,9.0394 0.094,13.0625 l 2.7813,0 c 0.6038,-4.2649 0.4991,-8.6311 -0.062,-13.0625 z"
+           style="fill:#000080;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      </g>
+    </g>
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\players\doubledavid.png"
+       sodipodi:nodetypes="cccccc"
+       inkscape:connector-curvature="0"
+       id="path5815"
+       d="m 1104.4941,1061.6777 15.875,0 0.875,8.75 -7.875,2.75 -8.875,0 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
   </g>
 </svg>
