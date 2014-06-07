@@ -10,10 +10,13 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class ChunkManager : Entity
 	{
-		public const string Advance = "chunkManager_advance";
-		public const string AdvanceComplete = "chunkManager_advanceComplete";
-		public const string UnloadCurrent = "chunkManager_unloadCurrentChunk";
-		public const string SpawnPlayers = "chunkManager_spawnPlayers";
+		public enum Message
+		{
+			Advance,
+			AdvanceComplete,
+			UnloadCurrent,
+			SpawnPlayers
+		}
 		
 		private Chunk currentChunk;
 		private Chunk nextChunk;
@@ -24,9 +27,9 @@ namespace SNHU.GameObject
 		{
 			y = (FP.Camera.Y - FP.HalfHeight) - FP.Height;
 			
-			AddResponse(Advance, OnAdvance);
-			AddResponse(UnloadCurrent, OnUnloadCurrent);
-			AddResponse(SpawnPlayers, OnSpawnPlayers);
+			AddResponse(Message.Advance, OnAdvance);
+			AddResponse(Message.UnloadCurrent, OnUnloadCurrent);
+			AddResponse(Message.SpawnPlayers, OnSpawnPlayers);
 		}
 		
 		private void OnAdvance(params object[] args)
@@ -34,7 +37,7 @@ namespace SNHU.GameObject
 			var gameManager = GameWorld.gameManager;
 			if (!gameManager.GameEnding)
 			{
-				RemoveResponse(Advance, OnAdvance);
+				RemoveResponse(Message.Advance, OnAdvance);
 				foreach (var player in gameManager.Players)
 				{
 					if (player.IsAlive)
@@ -69,12 +72,12 @@ namespace SNHU.GameObject
 					player.X = currentChunk.SpawnPoints[player.PlayerId].X;
 					player.Y = currentChunk.SpawnPoints[player.PlayerId].Y;
 					World.Add(player);
-					World.BroadcastMessage(HUD.UpdateDamage, player);
+					World.BroadcastMessage(HUD.Message.UpdateDamage, player);
 				}
 			}
 			
-			AddResponse(Advance, OnAdvance);
-			World.BroadcastMessage(AdvanceComplete);
+			AddResponse(Message.Advance, OnAdvance);
+			World.BroadcastMessage(Message.AdvanceComplete);
 		}
 		
 		private void OnUnloadCurrent(params object[] args)

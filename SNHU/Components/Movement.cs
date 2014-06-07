@@ -9,14 +9,14 @@ namespace SNHU.Components
 	/// <summary>
 	/// Description of Movement.
 	/// </summary>
-	public class Movement : Logic
+	public class Movement : Component
 	{
 		PhysicsBody physics;
 		Axis axis;
 		
 		public float Speed { get; private set; }
 		
-		public const string SPEED = "movement_speed";
+		public enum Message { Speed }
 		
 		public Movement(PhysicsBody physics, Axis axis)
 		{
@@ -24,7 +24,7 @@ namespace SNHU.Components
 			this.axis = axis;
 			
 			Speed = Player.SPEED;
-			AddResponse(SPEED, onChangeSpeed);
+			AddResponse(Message.Speed, onChangeSpeed);
 		}
 		
 		public override void Update()
@@ -44,11 +44,11 @@ namespace SNHU.Components
 				
 				if (delta == 0 || delta == ax)
 				{
-					Parent.OnMessage(PhysicsBody.IMPULSE, ax * speed, 0, true);
+					Parent.OnMessage(PhysicsBody.Message.Impulse, ax * speed, 0, true);
 				}
 				else
 				{
-					Parent.OnMessage(PhysicsBody.IMPULSE, ax * (speed / 3f), 0, true);
+					Parent.OnMessage(PhysicsBody.Message.Impulse, ax * (speed / 3f), 0, true);
 				}
 			}
 		}

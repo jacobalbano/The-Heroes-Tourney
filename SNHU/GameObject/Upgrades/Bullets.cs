@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using GlideTween;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 using SFML.Window;
 using SNHU.GameObject.Platforms;
@@ -20,11 +20,10 @@ namespace SNHU.GameObject.Upgrades
 		private Vector2f dir;
 		private MessageResult result;
 		
-		private Tween bounceTween;
-		
 		private Image image;
 		private Entity emitterEnt;
 		private Emitter emitter;
+		private Glide bounceTween;
 		
 		private static string[] colliders;
 		static Bullet()
@@ -39,7 +38,7 @@ namespace SNHU.GameObject.Upgrades
 		public Bullet(Vector2f initialDir, Player owner)
 		{	
 			image = new Image(Library.GetTexture("assets/bullet.png"));
-			Graphic = image;
+			AddComponent(image);
 			image.CenterOO();
 			
 			var size = Math.Min(image.Width, image.Height);
@@ -58,7 +57,7 @@ namespace SNHU.GameObject.Upgrades
 			emitter.SetAlpha(name, 1, 0);
 			emitter.SetMotion(name, 0, 0, 0.5f, 0, 0, 0.25f, Ease.CircOut);
 			
-			AddResponse(ChunkManager.Advance, OnAdvance);
+			AddResponse(ChunkManager.Message.Advance, OnAdvance);
 			
 			result = new MessageResult();
 		}
@@ -87,7 +86,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Removed();
 			
-			World.AddTween(new Alarm(3, () => FP.World.Remove(emitterEnt), Tween.ONESHOT), true);
+			World.Tweener.Timer(3).OnComplete(() => FP.World.Remove(emitterEnt));
 			
 			for (int i = 0; i < 10; i++)
 			{
@@ -130,8 +129,8 @@ namespace SNHU.GameObject.Upgrades
 		bool ShouldBounce(Entity e)
 		{
 			result.Value = false;
-			e.OnMessage(EffectMessage.ON_EFFECT, MakeEffect(result));
-			e.OnMessage(Platform.ObjectCollide);
+			e.OnMessage(EffectMessage.Message.OnEffect, MakeEffect(result));
+			e.OnMessage(Platform.Message.ObjectCollide);
 			
 			var bounce = e != lastBounce && (bool) result.Value;
 			lastBounce = e;
@@ -145,7 +144,7 @@ namespace SNHU.GameObject.Upgrades
 			{
 				if (from != null)	//	hit
 				{
-					from.OnMessage(Player.Damage);
+					from.OnMessage(Player.Message.Damage);
 				}
 				else //	rebound
 				{
@@ -162,9 +161,8 @@ namespace SNHU.GameObject.Upgrades
 			image.ScaleX = 0.5f;
 			image.ScaleY = 1.5f;
 			
-			var tween = new MultiVarTween(null, ONESHOT);
-			tween.Tween(Graphic, new { ScaleX = 1, ScaleY = 1 }, 0.75f, Ease.ElasticOut);
-			bounceTween = AddTween(tween, true);
+			bounceTween = Tweener.Tween(image, new {ScaleX = 1, ScaleY = 1}, 0.75f)
+				.Ease(Ease.ElasticOut);
 		}
 		
 		private void OnAdvance(params object[] args)
@@ -189,7 +187,7 @@ namespace SNHU.GameObject.Upgrades
 			Icon = new Image(Library.GetTexture("assets/bullets.png"));
 			bullets = new List<Entity>();
 			
-			AddResponse(ChunkManager.Advance, OnAdvance);
+			AddResponse(ChunkManager.Message.Advance, OnAdvance);
 		}
 		
 		public override void Added()

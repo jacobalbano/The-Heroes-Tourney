@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 using SFML.Window;
 using SNHU.Components;
@@ -16,11 +15,14 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class Player : Entity
 	{
-		public const string Die = "player_lose";	//	wot
-		public const string Lose = "player_die";
-		public const string OnLand = "player_onLand";
-		public const string Damage = "player_damage";
-		public const string UpgradeAcquired = "player_upgradeAcquired";
+		public enum Message
+		{
+			Die,
+			Lose,
+			OnLand,
+			Damage,
+			UpgradeAcquired
+		}
 		
 		public const string Collision = "player";
 		private HashSet<Entity> excludeCollision;
@@ -78,7 +80,7 @@ namespace SNHU.GameObject
 			tex.Smooth = true;
 			player = new Image(tex);
 			player.Scale = 0.5f;
-			AddGraphic(player);
+			AddComponent(player);
 			
 			cursor = new OffscreenCursor(this);
 			isOffscreen = false;
@@ -103,15 +105,15 @@ namespace SNHU.GameObject
 			UpgradeQueue = new Queue<Upgrade>();
 			UpgradeCapacity = 1;
 			
-			AddLogic(physics = new PhysicsBody(Platform.Collision, Type));
-			AddLogic(movement = new Movement(physics, axis));
-			AddLogic(dodge = new DodgeController(Controller, axis));
+			AddComponent(physics = new PhysicsBody(Platform.Collision, Type));
+			AddComponent(movement = new Movement(physics, axis));
+			AddComponent(dodge = new DodgeController(Controller, axis));
 			
-			AddResponse(Damage, OnDamage);
-			AddResponse(Fist.PUNCH_CONNECTED, OnPunchConnected);
-			AddResponse(EffectMessage.ON_EFFECT, OnEffect);
-			AddResponse(Shield.SET, SetShield);
-			AddResponse(Rebound.SET, SetRebound);
+			AddResponse(Message.Damage, OnDamage);
+			AddResponse(Fist.Message.PunchConnected, OnPunchConnected);
+			AddResponse(EffectMessage.Message.OnEffect, OnEffect);
+			AddResponse(Shield.Message.Set, SetShield);
+			AddResponse(Rebound.Message.Set, SetRebound);
 		}
 		
 		void InitController()
@@ -148,7 +150,7 @@ namespace SNHU.GameObject
 		{
 			base.Added();
 			
-			OnMessage(DodgeController.CANCEL_DODGE);
+			OnMessage(DodgeController.Message.CancelDodge);
 			World.AddList(left, right);
 			IsAlive = true;
 			
@@ -160,7 +162,7 @@ namespace SNHU.GameObject
 			base.Removed();
 			World.RemoveList(left, right);
 			
-			OnMessage(PhysicsBody.CANCEL);
+			OnMessage(PhysicsBody.Message.Cancel);
 		}
 		
 		void FaceLeft()
@@ -231,16 +233,18 @@ namespace SNHU.GameObject
 				}
 				else
 				{
-					OnMessage(PhysicsBody.FRICTION, 0.75f);
+					OnMessage(PhysicsBody.Message.Friction, 0.75f);
 				}
 				
 				
 				if (!OnGround && dodge.IsDodging)
 				{
+					FP.Log("whoa");
 					Entity result = 
 						Collide(Platform.Collision, X + 1, Y) ??
 						Collide(Platform.Collision, X - 1, Y) ??
 						null;
+					
 					if (result != null)
 					{
 						dodge.CanDodge = true;
@@ -265,9 +269,9 @@ namespace SNHU.GameObject
 				if (!IsPunching())
 			    {
 					if (newGuard)
-						physics.OnMessage(PhysicsBody.IMPULSE_MULT, 0.3);
+						physics.OnMessage(PhysicsBody.Message.ImpulseMult, 0.3);
 					else
-						physics.OnMessage(PhysicsBody.IMPULSE_MULT, 1);
+						physics.OnMessage(PhysicsBody.Message.ImpulseMult, 1);
 					
 					left.SetGuarding(newGuard);
 					right.SetGuarding(newGuard);
@@ -278,7 +282,7 @@ namespace SNHU.GameObject
 			
 			if (Controller.Pressed("jump"))
 			{
-				OnMessage(DodgeController.CANCEL_DODGE);
+				OnMessage(DodgeController.Message.CancelDodge);
 				
 				if (OnGround)
 				{
@@ -294,16 +298,14 @@ namespace SNHU.GameObject
 						FP.Choose(Mixer.Jump1, Mixer.Jump2, Mixer.Jump3).Play();
 					}
 					
-					OnMessage(PhysicsBody.IMPULSE, 0, JumpForce * jumpMult, true);
+					OnMessage(PhysicsBody.Message.Impulse, 0, JumpForce * jumpMult, true);
 					
-					ClearTweens();
+					Tweener.Cancel();
 					
 					player.ScaleX = 1 - JUMP_JUICE_FORCE;
 					player.ScaleY = 1 + JUMP_JUICE_FORCE;
 					
-					var tween = new MultiVarTween(null, ONESHOT);
-					tween.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
-					AddTween(tween, true);	
+					Tweener.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
 				}
 			}
 			
@@ -361,9 +363,7 @@ namespace SNHU.GameObject
 					player.ScaleX = 1 + JUMP_JUICE_FORCE;
 					player.ScaleY = 1 - JUMP_JUICE_FORCE;
 					
-					var tween = new MultiVarTween(null, ONESHOT);
-					tween.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
-					AddTween(tween, true);
+					Tweener.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
 					
 					OnGround = true;
 					
@@ -371,27 +371,26 @@ namespace SNHU.GameObject
 					
 					if (e.Y >= Y)
 					{
-						e.OnMessage(Platform.ObjectCollide, this);
+						e.OnMessage(Platform.Message.ObjectCollide, this);
 					}
 					else
 					{
-						OnMessage(PhysicsBody.IMPULSE, 0, 1, true);
+						OnMessage(PhysicsBody.Message.Impulse, 0, 1, true);
 					}
 				}
 				
-				
-				OnMessage(OnLand);
+				OnMessage(Message.OnLand);
 			}
 			else if (e.Type == Type)
 			{
 				if (e.Top >= Bottom)
 				{
-					OnMessage(PhysicsBody.IMPULSE, FP.Rand(10) - 5, JumpForce);
-					e.OnMessage(PhysicsBody.IMPULSE, FP.Rand(10) - 5, -JumpForce);
+					OnMessage(PhysicsBody.Message.Impulse, FP.Rand(10) - 5, JumpForce);
+					e.OnMessage(PhysicsBody.Message.Impulse, FP.Rand(10) - 5, -JumpForce);
 				}
 				else if (e.Bottom <= Top && Math.Abs(X - e.X) < HalfWidth)
 				{
-					e.OnMessage(PhysicsBody.IMPULSE, FP.Rand(10) - 5, JumpForce * 1.1);
+					e.OnMessage(PhysicsBody.Message.Impulse, FP.Rand(10) - 5, JumpForce * 1.1);
 				}
 				else return false;
 			}
@@ -439,12 +438,12 @@ namespace SNHU.GameObject
 				
 				if (Lives <= 0)
 				{
-					World.BroadcastMessage(Player.Lose, this);
+					World.BroadcastMessage(Player.Message.Lose, this);
 				}
 				
 				IsAlive = false;
-				World.BroadcastMessage(Player.Die, this);
-				World.BroadcastMessage(CameraShake.SHAKE, 20.0f, 1.0f);
+				World.BroadcastMessage(Player.Message.Die, this);
+				World.BroadcastMessage(CameraShake.Message.Shake, 20.0f, 1.0f);
 				World.Remove(this);
 				
 				Mixer.Death1.Play();
@@ -461,14 +460,14 @@ namespace SNHU.GameObject
 		{
 			if (World == null)
 			{
-				FP.Tweener.AddTween(new Alarm(0.01f, () => SetUpgrade(upgrade), ONESHOT), true);
+				FP.Tweener.Timer(0.01f).OnComplete(() => SetUpgrade(upgrade));
 				return;
 			}
 			
 			if (this.CurrentUpgrade != null)
 			{
-				World.BroadcastMessage(Upgrade.Used, PlayerId);
-				RemoveLogic(this.CurrentUpgrade);
+				World.BroadcastMessage(Upgrade.Message.Used, PlayerId);
+				RemoveComponent(this.CurrentUpgrade);
 			}
 			
 			this.CurrentUpgrade = upgrade;
@@ -476,8 +475,8 @@ namespace SNHU.GameObject
 			if (player != null && left != null && right != null)
 			{
 				player.Alpha = 1.0f;
-				(left.Graphic as Image).Alpha = 1.0f;
-				(right.Graphic as Image).Alpha = 1.0f;
+				left.Image.Alpha = 1.0f;
+				right.Image.Alpha = 1.0f;
 			}
 			
 			Rebounding = false;
@@ -485,8 +484,8 @@ namespace SNHU.GameObject
 			
 			if (this.CurrentUpgrade != null)
 			{
-				AddLogic(this.CurrentUpgrade);
-				World.BroadcastMessage(Player.UpgradeAcquired, this, this.CurrentUpgrade);
+				AddComponent(this.CurrentUpgrade);
+				World.BroadcastMessage(Player.Message.UpgradeAcquired, this, this.CurrentUpgrade);
 			}
 		}
 		
@@ -501,7 +500,7 @@ namespace SNHU.GameObject
 				return;
 			
 			Health -= GameWorld.gameManager.PunchDamage;
-			World.BroadcastMessage(HUD.UpdateDamage, this);
+			World.BroadcastMessage(HUD.Message.UpdateDamage, this);
 			if (Health <= 0)
 				Kill();
 		}

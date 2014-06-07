@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using GlideTween;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 
 namespace SNHU.GameObject.Upgrades
@@ -14,13 +14,14 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class PotatoThinker : Entity
 	{
+		Glide alarm;
+		
 		List<Player> opponents;
 		Player target;
 		Player parent;
 		
 		Image image;
 		float totalTime;
-		Alarm alarm;
 		
 		enum Mode { Furthest, Nearest, Random }
 		Mode mode;
@@ -41,28 +42,26 @@ namespace SNHU.GameObject.Upgrades
 			image = new Image(Library.GetTexture("assets/hotpotato.png"));
 			image.CenterOO();
 			image.Color = FP.Color(0xff0000);
-			Graphic = image;
+			AddComponent(image);
 			
 			CenterOrigin();
 			X = parent.X;
 			Y = parent.Top - 40;
 			
-			AddResponse(Player.Die, OnPlayerDie);
+			AddResponse(Player.Message.Die, OnPlayerDie);
 			
-			AddResponse(ChunkManager.Advance, OnAdvance);
-			AddResponse(ChunkManager.AdvanceComplete, OnAdvanceComplete);
+			AddResponse(ChunkManager.Message.Advance, OnAdvance);
+			AddResponse(ChunkManager.Message.AdvanceComplete, OnAdvanceComplete);
 			
-			AddTween(alarm = new Alarm(totalTime, OnGoBoom, ONESHOT), true);
+			alarm = Tweener.Timer(totalTime).OnComplete(OnGoBoom);
 			Tick();
 		}
 		
 		private void Tick()
 		{
 			image.Scale = 1.25f;
-			
-			var tween = new VarTween(Tick, ONESHOT);
-			tween.Tween(image, "Scale", 1, alarm.Remaining / 5f);
-			AddTween(tween, true);
+			Tweener.Tween(image, new { Scale = 1}, alarm.TimeRemaining / 5)
+				.OnComplete(Tick);
 			
 			Mixer.TimeTick.Play();
 		}
@@ -110,7 +109,7 @@ namespace SNHU.GameObject.Upgrades
 			}
 			
 			var e = World.AddGraphic(emitter, -9010);
-			e.AddTween(new Alarm(3, () => FP.World.Remove(e), Tween.ONESHOT), true);
+			e.Tweener.Timer(3).OnComplete(() => FP.World.Remove(e));
 			
 			var radius = 200;
 			var t = 4;
@@ -125,8 +124,8 @@ namespace SNHU.GameObject.Upgrades
 				}
 			}
 			
-			FP.World.BroadcastMessageIf(ent => ent.DistanceToPoint(x, y, true) <= radius, EffectMessage.ON_EFFECT, MakeEffect());
-			FP.World.BroadcastMessage(CameraShake.SHAKE, 20, 0.5f);
+			FP.World.BroadcastMessageIf(ent => ent.DistanceToPoint(x, y, true) <= radius, EffectMessage.Message.OnEffect, MakeEffect());
+			FP.World.BroadcastMessage(CameraShake.Message.Shake, 20, 0.5f);
 			Mixer.Explode.Play();
 		}
 		
@@ -137,10 +136,10 @@ namespace SNHU.GameObject.Upgrades
 				if (to == parent)
 				{
 					if (from.DistanceToPoint(to.X, to.Y, true) <= 200)
-						from.OnMessage(Player.Damage);
+						from.OnMessage(Player.Message.Damage);
 				}
 				
-				to.OnMessage(Player.Damage);
+				to.OnMessage(Player.Message.Damage);
 			};
 			
 			return new EffectMessage(parent, callback);

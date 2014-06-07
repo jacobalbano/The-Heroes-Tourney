@@ -10,16 +10,19 @@ namespace SNHU.Components
 	/// <summary>
 	/// Description of Dodge.
 	/// </summary>
-	public class DodgeController : Logic
+	public class DodgeController : Component
 	{
 		public bool CanDodge;
 		public bool IsDodging { get; private set;}
 		public bool RecentlyDodged { get; private set;}
 		
-		public const string START_DODGE = "dodge_dodged";
-		public const string DODGE_COMPLETE = "dodge_complete";
-		public const string CANCEL_DODGE = "dodge_cancelDodge";
-		public const string CANCEL_COOLDOWN = "dodge_cancelCooldown";
+		public enum Message
+		{
+			StartDodge,
+			DodgeComplete,
+			CancelDodge,
+			CancelCooldown
+		}
 		
 		public int DodgeDuration { get; private set; } //= 5;
 		
@@ -38,11 +41,11 @@ namespace SNHU.Components
 			this.controller = controller;
 			this.axis = axis;
 			
-			AddResponse(Fist.PUNCH_CONNECTED, SetCooldown);
-			AddResponse(Player.OnLand, OnPlayerLand);
+			AddResponse(Fist.Message.PunchConnected, SetCooldown);
+			AddResponse(Player.Message.OnLand, OnPlayerLand);
 			
-			AddResponse(CANCEL_DODGE, OnCancelDodge);
-			AddResponse(CANCEL_COOLDOWN, OnCancelCooldown);
+			AddResponse(Message.CancelDodge, OnCancelDodge);
+			AddResponse(Message.CancelCooldown, OnCancelCooldown);
 		}
 		
 		public override void Added()
@@ -65,8 +68,9 @@ namespace SNHU.Components
 			{
 				if (axis.X != 0 && facing != 0)
 				{
-					Parent.OnMessage(PhysicsBody.USE_GRAVITY, false);
-					Parent.OnMessage(START_DODGE);
+					FP.Log("hi");
+					Parent.OnMessage(PhysicsBody.Message.UseGravity, false);
+					Parent.OnMessage(Message.StartDodge);
 					
 					CanDodge = false;
 					IsDodging = true;
@@ -81,7 +85,7 @@ namespace SNHU.Components
 			
 			if (duration --> 0)
 			{
-				Parent.OnMessage(PhysicsBody.IMPULSE, dodgeDirection.X, dodgeDirection.Y, true);
+				Parent.OnMessage(PhysicsBody.Message.Impulse, dodgeDirection.X, dodgeDirection.Y, true);
 				
 				if (duration == 0)
 				{
@@ -101,14 +105,14 @@ namespace SNHU.Components
 			duration = 0;
 			RecentlyDodged = true;
 			OnCancelDodge();
-			Parent.OnMessage(DODGE_COMPLETE);
+			Parent.OnMessage(Message.DodgeComplete);
 		}
 		
 		void OnCancelDodge(params object[] args)
 		{
 			IsDodging = false;
 			duration = 0;
-			Parent.OnMessage(PhysicsBody.USE_GRAVITY, true);
+			Parent.OnMessage(PhysicsBody.Message.UseGravity, true);
 		}
 		
 		void SetCooldown(params object[] args)

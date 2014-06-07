@@ -1,7 +1,6 @@
 ﻿using System;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 using SNHU.Components;
 
@@ -15,7 +14,9 @@ namespace SNHU.GameObject.Platforms
 		public JumpPad() : base()
 		{
 			Type = "JumpPad";
-			AddTween(new Alarm(0.5f, () => emitter.Emit("p", FP.Rand((int) Width), -5), LOOPING), true);
+			Tweener.Timer(0.5f)
+				.OnComplete(() => emitter.Emit("p", FP.Rand((int) Width), -5))
+				.Repeat();
 		}
 		
 		public override void Load(System.Xml.XmlNode node)
@@ -34,8 +35,8 @@ namespace SNHU.GameObject.Platforms
 			
 			Height = 3;
 			
-			AddGraphic(emitter);
-			AddGraphic(image);
+			AddComponent(emitter);
+			AddComponent(image);
 			
 			Layer = -1000;
 		}

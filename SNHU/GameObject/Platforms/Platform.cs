@@ -8,8 +8,8 @@ namespace SNHU.GameObject.Platforms
 	public class Platform : Entity
 	{
 		public const string Collision = "platform";
-		public const string NotifyCamera = "platform_cameraNotification";
-		public const string ObjectCollide = "player_land";
+		
+		public enum Message { ObjectCollide }
 		
 		private Player owner;
 		
@@ -26,8 +26,7 @@ namespace SNHU.GameObject.Platforms
 		{
 			Type = Collision;
 			
-			AddResponse(NotifyCamera, OnNotifyCamera);
-			AddResponse(ObjectCollide, OnPlayerLandResponse);
+			AddResponse(Message.ObjectCollide, OnPlayerLandResponse);
 		}
 		
 		public void OnPlayerLandResponse(params object[]args)
@@ -45,14 +44,9 @@ namespace SNHU.GameObject.Platforms
 			image.ScaleX = Width / image.Width;
 			image.ScaleY = Height / image.Height;
 			
-			Graphic = image;
+			AddComponent(image);
 		}
 		
-		private void OnNotifyCamera(params object[] args)
-		{
-			World.Remove(this);
-		}
-
         public virtual void OnLand()
         {
         	

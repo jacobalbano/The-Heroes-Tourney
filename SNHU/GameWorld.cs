@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using GlideTween;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 using SFML.Window;
 using SNHU.GameObject;
@@ -46,7 +46,12 @@ namespace SNHU
 			
 			if (Input.Down(Keyboard.Key.LAlt) && Input.Pressed(Keyboard.Key.F4))
 			{
-				FP.Screen.Close();
+				FP.Engine.Quit();
+			}
+			
+			if (Input.Pressed(Keyboard.Key.F))
+			{
+				FP.Screen.Fullscreen = !FP.Screen.Fullscreen;
 			}
 			
 			if (Input.Pressed(Keyboard.Key.F5) || Input.Pressed(Keyboard.Key.R))
@@ -63,7 +68,7 @@ namespace SNHU
 			
 			if (Input.Pressed(Keyboard.Key.Return))
 			{
-				chunkManager.OnMessage(ChunkManager.Advance);
+				chunkManager.OnMessage(ChunkManager.Message.Advance);
 			}
 			
 			if (Input.Pressed(Keyboard.Key.Escape))
@@ -88,15 +93,15 @@ namespace SNHU
 			
 			AddGraphic(black, -100);
 			
-			var tween = new VarTween(StartGame, ONESHOT);
-			tween.Tween(black, "Alpha", 0, 0.25f, Ease.SineOut);
-			AddTween(tween, true);
+			Tweener.Tween(black, new { Alpha = 0 }, 0.25f)
+				.Ease(Ease.SineOut)
+				.OnComplete(StartGame);
 		}
 		
 		private void StartGame()
 		{
 			gameManager.StartGame();
-			chunkManager.OnMessage(ChunkManager.Advance);
+			chunkManager.OnMessage(ChunkManager.Message.Advance);
 		}
 		
 		public override void End()

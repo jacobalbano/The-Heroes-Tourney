@@ -9,55 +9,55 @@ namespace SNHU.Components
 	/// <summary>
 	/// Description of PhysicsBody.
 	/// </summary>
-	public class PhysicsBody : Logic
+	public class PhysicsBody : Component
 	{
-		/// <summary>
-		/// Activate the body;
-		/// </summary>
-		public const string ACTIVATE = "physics_activate";
-		
-		/// <summary>
-		/// Deactivate the body;
-		/// </summary>
-		public const string DEACTIVATE = "physics_deactivate";
-		
-		/// <summary>
-		/// <para>Used to send a physics impulse.</para>
-		/// <para>Arguments: (float X = 0, float Y = 0, bool absolute = false).</para>
-		/// <para>Arguments' value will be added to the movement vector.</para>
-		/// <para>If absolute, the movement vector will be set to the values of the arguments for any value but zero.</para>
-		/// </summary>
-		public const string IMPULSE = "impulse";
-		
-		/// <summary>
-		/// <para>Used to set the value by which physics impulses will be scaled.</para>
-		/// </summary>
-		public const string IMPULSE_MULT = "physics_impulsemult";
-		
-		/// <summary>
-		/// <para>Used to set whether the body will move when impulses are applied.</para>
-		/// <para>Arguments: (bool fixPosition)</para>
-		/// </summary>
-		public const string FIX_POSITION = "fixPosition";
-		
-		/// <summary>
-		/// <para>Used to set whether gravity is active on the body.</para>
-		/// <para>Arguments: (bool useGravity)</para>
-		/// </summary>
-		public const string USE_GRAVITY = "useGravity";
-		
-		/// <summary>
-		/// <para>Used to apply friction to the body.</para>
-		/// <para>Arguments: (float frictionFactor)</para>
-		/// <para>1 means no slowdown, 0 means complete slowdown.</para>
-		/// </summary>
-		public const string FRICTION = "friction";
-		
-		/// <summary>
-		/// Cancel all movement.
-		/// Arguments: None.
-		/// </summary>
-		public const string CANCEL = "cancel";
+		public enum Message
+		{
+			/// <summary>Activate the body;</summary>
+			Activate,
+			
+			/// <summary>Deactivate the body;</summary>
+			Deactivate,
+			
+			/// <summary>
+			/// <para>Used to send a physics impulse.</para>
+			/// <para>Arguments: (float X = 0, float Y = 0, bool absolute = false).</para>
+			/// <para>Arguments' value will be added to the movement vector.</para>
+			/// <para>If absolute, the movement vector will be set to the values of the arguments for any value but zero.</para>
+			/// </summary>
+			Impulse,
+			
+			/// <summary>Used to set the value by which physics impulses will be scaled.</summary>
+			ImpulseMult,
+			
+			/// <summary>
+			/// <para>Used to set whether the body will move when impulses are applied.</para>
+			/// <para>Arguments: (bool fixPosition)</para>
+			/// </summary>
+			FixPosition,
+			
+			
+			/// <summary>
+			/// <para>Used to set whether gravity is active on the body.</para>
+			/// <para>Arguments: (bool useGravity)</para>
+			/// </summary>
+			UseGravity,
+			
+			
+			/// <summary>
+			/// <para>Used to apply friction to the body.</para>
+			/// <para>Arguments: (float frictionFactor)</para>
+			/// <para>1 means no slowdown, 0 means complete slowdown.</para>
+			/// </summary>
+			Friction,
+			
+			
+			/// <summary>
+			/// Cancel all movement.
+			/// Arguments: None.
+			/// </summary>
+			Cancel
+		}
 		
 		// Movement/Physics
 		/// <summary>
@@ -86,7 +86,7 @@ namespace SNHU.Components
 		private const float airFriction = 0.9f;
 		
 		public PhysicsBody(params string[] colliders)
-		{
+		{	
 			Colliders = new List<string>(colliders);
 			MoveDelta = new Vector2f();
 			Gravity = 0.75f;
@@ -96,16 +96,16 @@ namespace SNHU.Components
 			hasGravity = true;
 			canMove = true;
 			
-			AddResponse(IMPULSE, OnImpulse);
-			AddResponse(IMPULSE_MULT, OnImpulseMult);
-			AddResponse(FIX_POSITION, OnFixPosition);
-			AddResponse(USE_GRAVITY, OnUseGravity);
-			AddResponse(FRICTION, OnApplyFriction);
-			AddResponse(Player.OnLand, OnLand);
-			AddResponse(CANCEL, OnCancel);
+			AddResponse(Message.Impulse, OnImpulse);
+			AddResponse(Message.ImpulseMult, OnImpulseMult);
+			AddResponse(Message.FixPosition, OnFixPosition);
+			AddResponse(Message.UseGravity, OnUseGravity);
+			AddResponse(Message.Friction, OnApplyFriction);
+			AddResponse(Message.Cancel, OnCancel);
 			
-			AddResponse(ACTIVATE, a => Active = true);
-			AddResponse(DEACTIVATE, a => Active = false);
+			AddResponse(Message.Activate, a => Active = true);
+			AddResponse(Message.Deactivate, a => Active = false);
+			AddResponse(Player.Message.OnLand, OnLand);
 		}
 		
 		public override void Update()

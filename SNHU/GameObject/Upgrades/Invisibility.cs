@@ -1,7 +1,6 @@
 ﻿using System;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -38,17 +37,9 @@ namespace SNHU.GameObject.Upgrades
 			{
 				base.Use();
 			
-				var tweenPlayer = new VarTween(null, Tween.ONESHOT);
-				tweenPlayer.Tween(owner.player, "Alpha", InvisibleAlpha, 0.25f);
-				AddTween(tweenPlayer, true);
-				
-				var tweenFist1 = new VarTween(null, Tween.ONESHOT);
-				tweenFist1.Tween(owner.left.Graphic, "Alpha", InvisibleAlpha, 0.25f);
-				AddTween(tweenFist1, true);
-				
-				var tweenFist2 = new VarTween(null, Tween.ONESHOT);
-				tweenFist2.Tween(owner.right.Graphic, "Alpha", InvisibleAlpha, 0.25f);
-				AddTween(tweenFist2, true);
+				Tweener.Tween(owner.left.Image, new { Alpha = InvisibleAlpha }, 0.25f);
+				Tweener.Tween(owner.right.Image, new { Alpha = InvisibleAlpha }, 0.25f);
+				Tweener.Tween(owner.player, new { Alpha = InvisibleAlpha }, 0.25f);
 				
 				owner.right.ForceMultiplier = owner.left.ForceMultiplier = PunchMultiplier;
 			}
@@ -59,18 +50,11 @@ namespace SNHU.GameObject.Upgrades
 			base.OnLifetimeComplete();
 			
 			owner.right.ForceMultiplier = owner.left.ForceMultiplier = Fist.DEFAULT_PUNCH_MULT;
-		
-			var tweenPlayer = new VarTween(() => owner.SetUpgrade(null), Tween.ONESHOT);
-			tweenPlayer.Tween(owner.player, "Alpha", 1.0f, 0.25f);
-			AddTween(tweenPlayer, true);
 			
-			var tweenFist1 = new VarTween(null, Tween.ONESHOT);
-			tweenFist1.Tween(owner.left.Graphic, "Alpha", 1.0f, 0.25f);
-			AddTween(tweenFist1, true);
-			
-			var tweenFist2 = new VarTween(null, Tween.ONESHOT);
-			tweenFist2.Tween(owner.right.Graphic, "Alpha", 1.0f, 0.25f);
-			AddTween(tweenFist2, true);
+			Tweener.Tween(owner.left.Image, new { Alpha = 1 }, 0.25f);
+			Tweener.Tween(owner.right.Image, new { Alpha = 1 }, 0.25f);
+			Tweener.Tween(owner.player, new { Alpha = 1 }, 0.25f)
+				.OnComplete(() => owner.SetUpgrade(null));
 		}
 	}
 }

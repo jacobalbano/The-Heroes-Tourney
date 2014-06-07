@@ -20,11 +20,11 @@ namespace SNHU
 			image = new Image(Library.GetTexture("assets/cursor.png"));
 			image.CenterOrigin();
 			image.OriginX = image.Width * 0.35f;
-			AddGraphic(image);
+			AddComponent(image);
 			
 			var face = new Image(Library.GetTexture("assets/players/" + target.ImageName + "_head.png"));
 			face.CenterOO();
-			AddGraphic(face);
+			AddComponent(face);
 		}
 		
 		public override void Added()

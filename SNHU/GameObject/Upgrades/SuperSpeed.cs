@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using GlideTween;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 using SNHU.Components;
 
@@ -47,8 +47,8 @@ namespace SNHU.GameObject.Upgrades
 				emitter.SetAlpha("r", 0.5f, 0, Ease.QuintOut);
 				emitters[to as Player] = emitter;
 				
-				to.AddGraphic(emitter);
-				to.OnMessage(Movement.SPEED, NewSpeed);
+				to.AddComponent(emitter);
+				to.OnMessage(Movement.Message.Speed, NewSpeed);
 			};
 			
 			return new EffectMessage(owner, callback);
@@ -60,7 +60,7 @@ namespace SNHU.GameObject.Upgrades
 			{
 				base.Use();
 				
-				Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.ON_EFFECT, MakeEffect());	
+				Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.Message.OnEffect, MakeEffect());	
 			}
 		}
 		
@@ -75,7 +75,7 @@ namespace SNHU.GameObject.Upgrades
 				var player = pair.Key;
 				var emitter = pair.Value;
 				
-				if (lifeTimer.Percent < 1.0f)
+				if (lifeTimer.Completion < 1.0f)
 				{
 					var delta = player.physics.MoveDelta.X;
 					if (delta < 0)
@@ -99,13 +99,11 @@ namespace SNHU.GameObject.Upgrades
 				var player = pair.Key;
 				var emitter = pair.Value;
 				
-				player.OnMessage(Movement.SPEED, Player.SPEED);
+				player.OnMessage(Movement.Message.Speed, Player.SPEED);
 				
 				if (emitters.ContainsKey(player))
 				{
-					FP.Tweener.AddTween(new Alarm(1, () => {
-						(player.Graphic as Graphiclist).Remove(emitter);
-	              	}, ONESHOT));
+					FP.Tweener.Timer(1).OnComplete(() => player.RemoveComponent(emitter));
 				};
 			}
 			

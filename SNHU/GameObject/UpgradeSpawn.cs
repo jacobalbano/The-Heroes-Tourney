@@ -2,7 +2,6 @@
 using System.Text.RegularExpressions;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using SNHU.GameObject.Upgrades;
 
 namespace SNHU.GameObject
@@ -21,7 +20,7 @@ namespace SNHU.GameObject
 		public UpgradeSpawn()
 		{
 			numRespawns = -1;
-			AddResponse("Upgrade Used", OnPlayerUsed);
+			AddResponse(Upgrade.Message.Used, OnPlayerUsed);
 		}
 		
 		private void OnPlayerUsed(params object[] args)
@@ -58,10 +57,10 @@ namespace SNHU.GameObject
 				throw new Exception(string.Format("Invalid upgrade type: '{0}'", name));
 			
 			upgrade = (Upgrade) type.GetConstructor(System.Type.EmptyTypes).Invoke(null);
-			Graphic = upgrade.Icon;
+			AddComponent(upgrade.Icon);
 			
-			SetHitbox((Graphic as Image).ScaledWidth, (Graphic as Image).ScaledHeight);
-			(Graphic as Image).CenterOO();
+			SetHitbox(upgrade.Icon.ScaledWidth, upgrade.Icon.ScaledHeight);
+			upgrade.Icon.CenterOO();
 			CenterOrigin();
 			
 			numRespawns++;
@@ -77,8 +76,9 @@ namespace SNHU.GameObject
 				var p = Collide(Player.Collision, X, Y) as Player;
 				if (p != null && p.CurrentUpgrade == null)
 				{
-					// Give the player the upgrade and remove the spawner's
+					// Give the player the upgrade and remove the spawners <-- you spelled this with an apostrophe Chris :(
 					p.SetUpgrade(upgrade);
+					RemoveComponent(upgrade.Icon);
 					upgrade = null;
 					
 					// If the max respawns is 0, remove it from the world now
@@ -91,9 +91,8 @@ namespace SNHU.GameObject
 						// If the max respawns is infinite (< 0) or if we have not yet reached max respawns
 						if (MaxRespawns < 0 || numRespawns < MaxRespawns)
 						{
-							Graphic = null;
 							// Start the respawn timer
-							AddTween(new Alarm(RespawnTime, SpawnUpgrade, ONESHOT), true);
+							Tweener.Timer(RespawnTime).OnComplete(SpawnUpgrade);
 						}
 						else if (numRespawns >= MaxRespawns)
 						{

@@ -2,7 +2,6 @@
 using System;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 using SNHU.Components;
 
@@ -25,15 +24,14 @@ namespace SNHU.GameObject
 			
 			image = new Image(Library.GetTexture("assets/happy.png"));
 			image.CenterOO();
-			Graphic = image;
+			AddComponent(image);
 			
-			var angle = new VarTween(() => image.Angle = 0, LOOPING);
-			angle.Tween(image, "Angle", 359, 20);
-			AddTween(angle, true);
+			hypeTween = new HypeTween(1, Tweener);
+			Tweener.Tween(image, new { Angle = 359 }, 20)
+				.Repeat();
 			
 			ticks = 0;
 			
-			AddTween(hypeTween = new HypeTween(1), true);
 		}
 		
 		
@@ -42,7 +40,7 @@ namespace SNHU.GameObject
 			base.Update();
 			
 			image.Scale = 0.7f + (float) (Math.Sin(ticks += 0.1f) + 1) / 2f;
-			image.Color = hypeTween.Color;
+			image.Color = FP.Color(hypeTween.Color);
 		}
 	}
 }

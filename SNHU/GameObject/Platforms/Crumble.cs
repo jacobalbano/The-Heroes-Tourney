@@ -1,7 +1,6 @@
 ﻿using System;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 
 namespace SNHU.GameObject.Platforms
 {
@@ -40,13 +39,15 @@ namespace SNHU.GameObject.Platforms
         {
 			if (canMakeAHellaRacket)
 			{
-				AddTween(new Alarm(crumbleTime, OnCrumble, ONESHOT), true);
+				Tweener.Timer(crumbleTime).OnComplete(OnCrumble);
 				canMakeAHellaRacket = false;
 			}
         }
 		
 		public void OnCrumble()
 		{
+			Collidable = false;
+			
 			//Anim here
 			image.OriginX = image.ScaledWidth / 2f;
 			image.OriginY = image.ScaledHeight / 2f;
@@ -54,24 +55,16 @@ namespace SNHU.GameObject.Platforms
 			Y += image.OriginY;
 			CenterOrigin();
 			
-			var tween = new MultiVarTween(null, ONESHOT);
-			tween.Tween(image, new { Scale = 0, Alpha = 0, Y = image.Y + 200}, 1);
-			AddTween(tween, true);
-			
-			Collidable = false;
+			Tweener.Tween(image, new { Scale = 0, Alpha = 0, Y = image.Y + 200}, 1);
 		}
 		
 		public override void Load(System.Xml.XmlNode node)
-		{
-			base.Load(node);
-			
-			image = new Nineslice(Library.GetTexture("assets/crumble.png"), 3, 3);
-			image.Columns = (int) (Width / 5f);
-			image.Rows = (int) (Height / 5f);
+		{	
+			image = new Nineslice(Library.GetTexture("assets/crumble.png"), (int) (Width / 5f), (int) (Height / 5f));
 			image.ScaleX = Width / image.Width;
 			image.ScaleY = Height / image.Height;
 			
-			Graphic = image;
+			AddComponent(image);
 		}
 	}
 }

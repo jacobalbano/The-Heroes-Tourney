@@ -1,7 +1,6 @@
 ﻿using System;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 using SFML.Window;
 using SNHU.Components;
@@ -31,7 +30,7 @@ namespace SNHU.GameObject.Upgrades
 				Vector2f dir = new Vector2f(to.X - from.X, to.Y - from.Y)
 					.Normalized(MagnetStrength);
 				
-				to.OnMessage(PhysicsBody.IMPULSE, -dir.X, -dir.Y);
+				to.OnMessage(PhysicsBody.Message.Impulse, -dir.X, -dir.Y);
 			};
 			
 			return new EffectMessage(owner, callback);
@@ -45,8 +44,8 @@ namespace SNHU.GameObject.Upgrades
 				
 				if (Parent.World != null)
 				{
-					Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.ON_EFFECT, MakeEffect());
-					Parent.World.BroadcastMessage(CameraShake.SHAKE, 60.0f, 0.5f);
+					Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.Message.OnEffect, MakeEffect());
+					Parent.World.BroadcastMessage(CameraShake.Message.Shake, 60.0f, 0.5f);
 					owner.SetUpgrade(null);
 					Mixer.Fus.Play();
 				}

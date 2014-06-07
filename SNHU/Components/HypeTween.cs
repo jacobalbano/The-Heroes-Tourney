@@ -1,16 +1,16 @@
 ﻿
 using System;
+using GlideTween;
 using Punk;
-using Punk.Tweens.Misc;
 
 namespace SNHU.Components
 {
 	/// <summary>
 	/// Description of HypeTween.
 	/// </summary>
-	public class HypeTween : ColorTween
+	public class HypeTween
 	{
-		private float duration;
+		public int Color;
 		
 		static int[] colors;
 		static HypeTween()
@@ -30,17 +30,16 @@ namespace SNHU.Components
 			};
 		}
 		
-		public HypeTween(float duration) : base(null, Tweener.LOOPING)
+		public HypeTween(float duration, GlideManager tweener)
 		{
-			Complete = NewColorPls;
-			this.duration = duration;
-			Color = FP.Color(FP.Choose(colors));
-			NewColorPls();
+			StartHype(duration, tweener);
 		}
 		
-		void NewColorPls()
+		void StartHype(float duration, GlideManager tweener)
 		{
-			Tween(duration, Color, FP.Color(FP.Choose(colors)));
+			tweener.Tween(this, new {Color = FP.Choose(colors)}, duration)
+				.OnComplete(() => StartHype(duration, tweener))
+				.HexColor();
 		}
 	}
 }

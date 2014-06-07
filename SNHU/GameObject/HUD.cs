@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using GlideTween;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 using SNHU.GameObject.Upgrades;
 
@@ -13,7 +13,7 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class HUD : Entity
 	{
-		public const string UpdateDamage = "player_takeDamage";
+		public enum Message { UpdateDamage }
 		
 		private GameManager gm;
 		
@@ -46,8 +46,8 @@ namespace SNHU.GameObject
 			head.ScrollX = head.ScrollY = 0;
 			
 			var graphics = new Graphiclist(lives, head);
-			e.Graphic = graphics;
-			e.Graphic.ScrollX = e.Graphic.ScrollY = 0;
+			graphics.ScrollX = graphics.ScrollY = 0;
+			e.AddComponent(graphics);
 			
 			if (GameWorld.gameManager.StartingHealth != 0)
 			{
@@ -60,18 +60,18 @@ namespace SNHU.GameObject
 				health.ScrollX = health.ScrollY = 0;
 				graphics.Add(health);
 				
-				e.AddResponse(HUD.UpdateDamage, OnDamage(p, health));
+				e.AddResponse(HUD.Message.UpdateDamage, OnDamage(p, health));
 			}
 			
-			e.AddResponse(Player.Die, OnDeath(p, lives, head));
-			e.AddResponse(Player.UpgradeAcquired, OnUpgradeAcquired(p, lives, head));
-			e.AddResponse(Upgrade.Used, OnUpgradeUsed());
+			e.AddResponse(Player.Message.Die, OnDeath(p, lives, head));
+			e.AddResponse(Player.Message.UpgradeAcquired, OnUpgradeAcquired(p, lives, head));
+			e.AddResponse(Upgrade.Message.Used, OnUpgradeUsed());
 			
 			players.Add(e);
 			upgradeIcons.Add(new Stack<Entity>());
 		}
 		
-		Entity.MessageResponse OnDamage(Player p, Text health)
+		Action<object[]>  OnDamage(Player p, Text health)
 		{
 			return args => {
 				var player = args[0] as Player;
@@ -81,15 +81,11 @@ namespace SNHU.GameObject
 				
 				health.ScaleY = 1.3f;
 				
-				var textTween = new VarTween(null, ONESHOT);
-				textTween.Tween(health, "ScaleY", 1, 0.15f);
-				AddTween(textTween, true);
-				
-//				if (player.Health < GameWorld.gameManager.StartingHealth / 25)
+				Tweener.Tween(health, new { ScaleY = 1 }, 0.15f);
 			};
 		}
 		
-		Entity.MessageResponse OnDeath(Player p, Text text, Image image)
+		Action<object[]> OnDeath(Player p, Text text, Image image)
 		{
 			return args => {
 				var player = args[0] as Player;
@@ -104,17 +100,12 @@ namespace SNHU.GameObject
 				text.Scale = 1.5f;
 				image.Scale = 1.5f;
 				
-				var textTween = new VarTween(null, ONESHOT);
-				textTween.Tween(text, "Scale", 1, 0.5f);
-				AddTween(textTween, true);
-				
-				var imageTween = new VarTween(null, ONESHOT);
-				imageTween.Tween(image, "Scale", 1, 0.5f);
-				AddTween(imageTween, true);
+				Tweener.Tween(text, new { Scale = 1 }, 0.5f);
+				Tweener.Tween(image, new { Scale = 1 }, 0.5f);
 			};
 		}
 		
-		Entity.MessageResponse OnUpgradeAcquired(Player p, Text text, Image image)
+		Action<object[]> OnUpgradeAcquired(Player p, Text text, Image image)
 		{
 			return args => {
 				var player = args[0] as Player;
@@ -131,21 +122,18 @@ namespace SNHU.GameObject
 				
 				upgradeIcons[player.PlayerId].Push(upgradeEnt);
 				
-				// Tweens
-				var scaleTween = new VarTween(null, ONESHOT);
-				scaleTween.Tween(upgradeImg, "Scale", upgradeImg.Scale * 0.5f, 0.5f, Ease.ExpoOut);
-				AddTween(scaleTween, true);
-				
 				var offsetX = 10;//-20;
 				var offsetY = GameWorld.gameManager.StartingHealth != 0 ? 80 : 60;
 				
-				var posTween = new MultiVarTween(null, ONESHOT);
-				posTween.Tween(upgradeEnt, new { X = hudEnt.X + offsetX, Y = hudEnt.Y + offsetY }, 0.5f, Ease.ExpoOut);
-				AddTween(posTween, true);
+				Tweener.Tween(upgradeEnt, new { X = hudEnt.X + offsetX, Y = hudEnt.Y + offsetY }, 0.5f)
+					.Ease(Ease.ExpoOut);
+				
+				Tweener.Tween(upgradeImg, new { Scale = upgradeImg.Scale * 0.5f }, 0.5f)
+					.Ease(Ease.ExpoOut);
 			};
 		}
 		
-		Entity.MessageResponse OnUpgradeUsed()
+		Action<object[]> OnUpgradeUsed()
 		{
 			return args => {
 				var pId = (int)args[0];

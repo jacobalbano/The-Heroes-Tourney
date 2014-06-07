@@ -1,5 +1,6 @@
 ﻿using System;
 using Punk;
+using Punk.Utils;
 using SFML.Window;
 
 namespace SNHU
@@ -14,12 +15,11 @@ namespace SNHU
 			
 			#if DEBUG
 			FP.Console.Enable();
-			FP.Screen.GainedFocus += delegate { Library.Reload(); };
 			#endif
 			
 			FP.World = new MenuWorld();
-			FP.Screen.SetTitle("The Heroes' Tourney");
-			FP.Screen.SetMouseCursorVisible(false);
+			FP.Screen.Title = "The Heroes' Tourney";
+			Input.CursorVisible = false;
 		}
 		
 		public static void Main(string[] args)

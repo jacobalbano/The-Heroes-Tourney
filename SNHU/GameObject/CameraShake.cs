@@ -1,8 +1,8 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using GlideTween;
 using Punk;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 
 namespace SNHU.GameObject
@@ -12,22 +12,25 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class CameraShake : Entity
 	{
-		/// <summary>
-		/// Broadcast when the camera should shake
-		/// Arguments: (float strength = 10.0f, float duration = 1.0f)
-		/// </summary>
-		public const string SHAKE = "cameraShake";
+		
+		public enum Message
+		{
+			/// <summary>
+			/// Broadcast when the camera should shake
+			/// Arguments: (float strength = 10.0f, float duration = 1.0f)
+			/// </summary>
+			Shake
+		}
 		
 		private float OffsetX, OffsetY;
-		
-		private MultiVarTween shaker;
+		private Glide shaker;
 		
 		public CameraShake(float x, float y) : base(x, y)
 		{
 			Type = "camerashake";
 			
-			AddResponse(SHAKE, OnCameraShake);
-			AddResponse(ChunkManager.Advance, OnAdvance);
+			AddResponse(Message.Shake, OnCameraShake);
+			AddResponse(ChunkManager.Message.Advance, OnAdvance);
 		}
 		
 		public override void Update()
@@ -59,15 +62,10 @@ namespace SNHU.GameObject
 			OffsetX = str * (randX);
 			OffsetY = str * (randY);
 			
-			if (shaker != null)
-			{
-				shaker.Cancel();
-			}
-			
-			shaker = new MultiVarTween(() => shaker = null, Tween.ONESHOT);
-			AddTween(shaker);
-			shaker.Tween(this, new { OffsetX = 0.0f, OffsetY = 0.0f }, dur, Ease .ElasticOut);
-			shaker.Start();
+			if (shaker != null) shaker.Cancel();
+			shaker = Tweener.Tween(this, new { OffsetX = 0.0f, OffsetY = 0.0f }, dur)
+				.Ease(Ease.ElasticOut)
+				.OnComplete(() => shaker = null);
 		}
 		
 		private void OnAdvance(params object[] args)

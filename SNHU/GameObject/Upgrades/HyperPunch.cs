@@ -1,17 +1,8 @@
-﻿/*
- * Created by SharpDevelop.
- * User: Chris
- * Date: 5/10/2014
- * Time: 4:46 PM
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 using SFML.Window;
 using SNHU.Components;
@@ -38,20 +29,19 @@ namespace SNHU.GameObject.Upgrades
 			
 			this.owner = originalOwner = owner;
 			
-			hypeTween = new HypeTween(0.1f);
-			AddTween(hypeTween, true);
+			hypeTween = new HypeTween(0.1f, Tweener);
 			
 			image = new Image(Library.GetTexture("assets/hyperPunch.png"));
 			image.Scale = 0.1f * this.FistScale;
 			image.CenterOO();
-			Graphic = image;
+			AddComponent(image);
 			
 			SetHitbox(image.ScaledWidth, image.ScaledHeight);
 			CenterOrigin();
 			
 			direction = new Vector2f();
 			
-			AddResponse(ChunkManager.Advance, OnAdvance);
+			AddResponse(ChunkManager.Message.Advance, OnAdvance);
 		}
 		
 		public override void Added()
@@ -79,7 +69,7 @@ namespace SNHU.GameObject.Upgrades
 					World.Remove(this);
 			}
 			
-			image.Color = hypeTween.Color;
+			image.Color = FP.Color(hypeTween.Color);
 			
 			var l = new List<Entity>();
 			CollideInto(Player.Collision, X, Y, l);
@@ -92,7 +82,7 @@ namespace SNHU.GameObject.Upgrades
 				{
 					if (player.Rebounding)
 					{
-						World.BroadcastMessage(CameraShake.SHAKE, 10.0f, 0.5f);
+						World.BroadcastMessage(CameraShake.Message.Shake, 10.0f, 0.5f);
 		 				Mixer.Hit1.Play();
 						
 						var angle = FP.Angle(player.X, player.Y, owner.X, owner.Y);
@@ -106,11 +96,11 @@ namespace SNHU.GameObject.Upgrades
 			 	{
 					if (!player.Invincible)
 					{
-						World.BroadcastMessage(CameraShake.SHAKE, 10.0f, 0.5f);
+						World.BroadcastMessage(CameraShake.Message.Shake, 10.0f, 0.5f);
 		 				Mixer.Hit1.Play();
 		 				
 		 				var force = ForceMultiplier * Fist.BASE_PUNCH_FORCE;
-		 				player.OnMessage(PhysicsBody.IMPULSE, force * direction.X, force * direction.Y);
+		 				player.OnMessage(PhysicsBody.Message.Impulse, force * direction.X, force * direction.Y);
 					}
 			 	}
 			}
@@ -147,7 +137,7 @@ namespace SNHU.GameObject.Upgrades
 			Icon = new Image(Library.GetTexture("assets/hyperPunch.png"));
 			Icon.Scale = 0.1f * PICKUP_IMAGE_SCALE;
 			
-			AddResponse(ChunkManager.Advance, OnAdvance);
+			AddResponse(ChunkManager.Message.Advance, OnAdvance);
 		}
 		
 		public override void Added()
@@ -214,22 +204,18 @@ namespace SNHU.GameObject.Upgrades
 			sineticks = 0;
 			
 			rainbow = new Image(Library.GetTexture("assets/rainbow.png"));
-			Graphic = rainbow;
 			rainbow.CenterOO();
 			rainbow.Alpha = 0.5f;
 			rainbow.Scale = scale;
 			rainbow.Angle = FP.Angle(0, 0, direction.X, direction.Y);
 			rainbow.ScaleX = rainbow.ScaledWidth / (FIST_SPEED / 2);
 			rainbow.ScaleY = 0.75f;
+			AddComponent(rainbow);
 			
 			var duration = 0.75f;
 			
-			Tween.OnComplete complete = () => World.Remove(this);
-			var fader = new MultiVarTween(complete, ONESHOT);
-			fader.Tween(rainbow, new {Alpha = 0, ScaleY = 0}, duration);
-			AddTween(fader, true);
-			
-//			var mover = new MultiVar5
+			Tweener.Tween(rainbow, new {Alpha = 0, ScaleY = 0}, duration)
+				.OnComplete(() => World.Remove(this));
 			
 		}
 		

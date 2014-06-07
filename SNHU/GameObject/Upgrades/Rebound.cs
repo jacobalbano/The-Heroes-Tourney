@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using SNHU.Components;
 
 namespace SNHU.GameObject.Upgrades
@@ -12,7 +11,7 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class Rebound : Upgrade
 	{
-		public const string SET = "rebound_set";
+		public new enum Message { Set }
 		
 		private Image shield_1, shield_2;
 		
@@ -48,21 +47,16 @@ namespace SNHU.GameObject.Upgrades
 				shield_1.Alpha = 0.0f;
 				shield_2.Alpha = 0.0f;
 			
-				Parent.AddGraphic(shield_1);
-				Parent.AddGraphic(shield_2);
+				Parent.AddComponent(shield_1);
+				Parent.AddComponent(shield_2);
 				
 				shield_1.Y = 10 - (shield_1.Height / 2);
 				shield_2.Y = 10 - (shield_2.Height / 2);
 				
-				var tween1 = new VarTween(null, Tween.ONESHOT);
-				tween1.Tween(shield_1, "Alpha", 0.6f, 0.45f);
-				AddTween(tween1, true);
+				Tweener.Tween(shield_1, new { Alpha = 0.6f }, 0.45f);
+				Tweener.Tween(shield_2, new { Alpha = 0.6f }, 0.45f);
 				
-				var tween2 = new VarTween(null, Tween.ONESHOT);
-				tween2.Tween(shield_2, "Alpha", 0.6f, 0.45f);
-				AddTween(tween2, true);
-				
-				owner.OnMessage(Rebound.SET, true);
+				owner.OnMessage(Rebound.Message.Set, true);
 				
 				Mixer.ReboundUp.Play();
 				
@@ -70,7 +64,7 @@ namespace SNHU.GameObject.Upgrades
 				Parent.CollideInto(Parent.Type, Parent.X, Parent.Y, existingCollisions);
 				foreach (var player in existingCollisions)
 				{
-					player.OnMessage(PhysicsBody.IMPULSE, 0, -Fist.BASE_PUNCH_FORCE);
+					player.OnMessage(PhysicsBody.Message.Impulse, 0, -Fist.BASE_PUNCH_FORCE);
 				}
 			}
 		}
@@ -78,7 +72,7 @@ namespace SNHU.GameObject.Upgrades
 		public override void Removed()
 		{
 			base.Removed();
-			owner.OnMessage(Rebound.SET, false);
+			owner.OnMessage(Rebound.Message.Set, false);
 		}
 		
 		public override void Update()
@@ -87,8 +81,9 @@ namespace SNHU.GameObject.Upgrades
 			
 			if (shield_1 != null)
 			{
-				shield_1.Alpha = 0.6f - (0.6f * lifeTimer.Percent);
-				shield_2.Alpha = 0.6f - (0.6f * lifeTimer.Percent);
+				FP.Log(lifeTimer.TimeRemaining, lifeTimer.Completion);
+				shield_1.Alpha = 0.6f - (0.6f * lifeTimer.Completion);
+				shield_2.Alpha = 0.6f - (0.6f * lifeTimer.Completion);
 				
 				shield_1.Angle++;
 				shield_2.Angle--;
@@ -99,13 +94,9 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.OnLifetimeComplete();
 			
-			var tween1 = new VarTween(OnFadeOutComplete, Tween.ONESHOT);
-			tween1.Tween(shield_1, "Alpha", 0.0f, 0.45f);
-			AddTween(tween1, true);
-			
-			var tween2 = new VarTween(OnFadeOutComplete, Tween.ONESHOT);
-			tween2.Tween(shield_2, "Alpha", 0.0f, 0.45f);
-			AddTween(tween2, true);
+			Tweener.Tween(shield_1, new { Alpha = 0 }, 0.45f);
+			Tweener.Tween(shield_2, new { Alpha = 0 }, 0.45f)
+				.OnComplete(OnFadeOutComplete);
 		}
 		
 		public void OnFadeOutComplete()

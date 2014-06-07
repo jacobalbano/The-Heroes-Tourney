@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using SNHU.Components;
 
 namespace SNHU.GameObject.Upgrades
@@ -12,7 +11,7 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class Shield : Upgrade
 	{
-		public const string SET = "shield_set";
+		public new enum Message { Set }
 		
 		private Image shieldImg;
 		
@@ -45,13 +44,10 @@ namespace SNHU.GameObject.Upgrades
 				
 				shieldImg.Y = 10 - (shieldImg.Height / 2);
 			
-				Parent.AddGraphic(shieldImg);
+				Parent.AddComponent(shieldImg);
+				Tweener.Tween(shieldImg, new { Alpha = 0.6f }, 0.45f);
 				
-				var tween = new VarTween(null, Tween.ONESHOT);
-				tween.Tween(shieldImg, "Alpha", 0.6f, 0.45f);
-				AddTween(tween, true);
-				
-				owner.OnMessage(Shield.SET, true);
+				owner.OnMessage(Shield.Message.Set, true);
 				
 				Mixer.ShieldUp.Play();
 			}
@@ -60,7 +56,7 @@ namespace SNHU.GameObject.Upgrades
 		public override void Removed()
 		{
 			base.Removed();
-			owner.OnMessage(Shield.SET, false);
+			owner.OnMessage(Shield.Message.Set, false);
 		}
 		
 		public override void Update()
@@ -69,7 +65,7 @@ namespace SNHU.GameObject.Upgrades
 			
 			if (shieldImg != null)
 			{
-				shieldImg.Alpha = 0.6f - (0.6f * lifeTimer.Percent);
+				shieldImg.Alpha = 0.6f - (0.6f * lifeTimer.Completion);
 			}
 		}
 		
@@ -77,9 +73,8 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.OnLifetimeComplete();
 			
-			var tween = new VarTween(OnFadeOutComplete, Tween.ONESHOT);
-			tween.Tween(shieldImg, "Alpha", 0.0f, 0.45f);
-			AddTween(tween, true);
+			Tweener.Tween(shieldImg, new { Alpha = 0 }, 0.45f)
+				.OnComplete(OnFadeOutComplete);
 		}
 		
 		public void OnFadeOutComplete()

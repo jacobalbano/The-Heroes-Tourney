@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 using SFML.Window;
 using SNHU.Components;
@@ -15,14 +14,17 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class Fist : Entity
 	{
-		public const string PUNCH_CONNECTED = "fist_punchConnected";
-		public const string PUNCH_SUCCESS = "fist_punchSuccess";
+		public enum Message
+		{
+			PunchConnected,
+			PunchSuccess
+		}
 		
 		public const float DEFAULT_PUNCH_MULT = 1;
 		
 		public float ForceMultiplier;
 		
-		protected Image image;
+		public Image Image { get; private set; }
 		protected Player parent;
 		
 		
@@ -56,11 +58,11 @@ namespace SNHU.GameObject
 			Punching = false;
 			canPunch = true;
 			
-			image = new Image(Library.GetTexture("assets/glove" + (backHand ? "2" : "1") + ".png"));
-			image.CenterOO();
-			Graphic = image;
+			Image = new Image(Library.GetTexture("assets/glove" + (backHand ? "2" : "1") + ".png"));
+			Image.CenterOO();
+			AddComponent(Image);
 			
-			SetHitboxTo(image);
+			SetHitboxTo(Image);
 			CenterOrigin();
 			
 			Type = Collision;
@@ -90,12 +92,12 @@ namespace SNHU.GameObject
 			
 			Punching = false;
 			canPunch = true;
-			image.Angle = 0;
+			Image.Angle = 0;
 		}
 		
 		public void FaceLeft()
 		{
-			image.FlippedX = true;
+			Image.FlippedX = true;
 			
 			if (backHand)
 			{
@@ -109,7 +111,7 @@ namespace SNHU.GameObject
 		
 		public void FaceRight()
 		{
-			image.FlippedX = false;
+			Image.FlippedX = false;
 			
 			if (backHand)
 			{
@@ -129,7 +131,7 @@ namespace SNHU.GameObject
 			forceVector.Y = directionY;
 			
 			if (Math.Abs(forceVector.X) < float.Epsilon)
-				forceVector.X = image.FlippedX ? -1f : 1f;
+				forceVector.X = Image.FlippedX ? -1f : 1f;
 						
 			var to = new {
 				offsetX = offsetX + (backHand ? 40 : 50) * forceVector.X,
@@ -143,9 +145,8 @@ namespace SNHU.GameObject
 			punchy = true;
 			Punching = true;
 			
-			var tween = new MultiVarTween(() => UnPunch(image.FlippedX), ONESHOT);
-			tween.Tween(this, to, 0.05f);
-			AddTween(tween, true);
+			Tweener.Tween(this, to, 0.05f)
+				.OnComplete(() => UnPunch(Image.FlippedX));
 			
 			return true;
 		}
@@ -159,9 +160,8 @@ namespace SNHU.GameObject
 			
 			punchy = false;
 			
-			var tween = new MultiVarTween(() => FinishPunch(facing), ONESHOT);
-			tween.Tween(this, to, 0.07f);
-			AddTween(tween, true);
+			Tweener.Tween(this, to, 0.07f)
+				.OnComplete(() => FinishPunch(facing));
 		}
 		
 		public override void Update()
@@ -177,7 +177,7 @@ namespace SNHU.GameObject
 				foreach (var p in l)
 				{
 					var player = p as Player;
-					if (image.FlippedX)
+					if (Image.FlippedX)
 					{
 						if (player.Left > parent.Left) continue;
 					}
@@ -188,7 +188,7 @@ namespace SNHU.GameObject
 					
 					if (player != parent)
 				 	{
-						player.OnMessage(EffectMessage.ON_EFFECT, MakeEffect(player));
+						player.OnMessage(EffectMessage.Message.OnEffect, MakeEffect(player));
 				 	}
 				}
 			 	
@@ -204,8 +204,8 @@ namespace SNHU.GameObject
 			{
 				canPunch = false;
 				
-				parent.OnMessage(Fist.PUNCH_SUCCESS, player);
-				World.BroadcastMessage(CameraShake.SHAKE, 10.0f, 0.5f);
+				parent.OnMessage(Fist.Message.PunchSuccess, player);
+				World.BroadcastMessage(CameraShake.Message.Shake, 10.0f, 0.5f);
 		 		Mixer.Hit1.Play();
 		 		
 		 		if (FP.Sign(from.X - to.X) == FP.Sign(forceVector.X))
@@ -213,8 +213,8 @@ namespace SNHU.GameObject
 		 		
 		 		var force = ForceMultiplier * BASE_PUNCH_FORCE * scalar;
 		 		
-		 		to.OnMessage(PUNCH_CONNECTED);
-	 			to.OnMessage(PhysicsBody.IMPULSE, force * forceVector.X, force * forceVector.Y);
+		 		to.OnMessage(Message.PunchConnected);
+	 			to.OnMessage(PhysicsBody.Message.Impulse, force * forceVector.X, force * forceVector.Y);
 			};
 			
 			return new EffectMessage(parent, callback);

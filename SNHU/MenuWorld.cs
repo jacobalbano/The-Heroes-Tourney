@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using GlideTween;
 using SNHU.MenuObject;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 using SFML.Window;
 
@@ -94,7 +94,12 @@ namespace SNHU
 			
 			if (Input.Down(Keyboard.Key.LAlt) && Input.Pressed(Keyboard.Key.F4))
 			{
-				FP.Screen.Close();
+				FP.Engine.Quit();
+			}
+			
+			if (Input.Pressed(Keyboard.Key.F))
+			{
+				FP.Screen.Fullscreen = !FP.Screen.Fullscreen;
 			}
 			
 			if (Input.Pressed(Keyboard.Key.F5))
@@ -119,12 +124,11 @@ namespace SNHU
 				
 				for (int i = 0; i < menus.Count; i++)
 				{
-					var tween = new VarTween(null, ONESHOT);
-					tween.Tween(menus[i], "Y", -FP.Height, 0.25f, Ease.QuadOut);
-					AddTween(tween, true);
+					Tweener.Tween(menus[i], new { Y = -FP.Height }, 0.25f)
+						.Ease(Ease.QuadOut);
 				}
 				
-				AddTween(new Alarm(0.25f, Ready, ONESHOT), true);
+				Tweener.Timer(0.25f).OnComplete(Ready);
 			}
 		}
 		
@@ -135,9 +139,9 @@ namespace SNHU
 			
 			AddGraphic(i, -100);
 			
-			var tween = new VarTween(AllReady, ONESHOT);
-			tween.Tween(i, "Alpha", 1, 0.25f, Ease.SineOut);
-			AddTween(tween, true);
+			Tweener.Tween(i, new { Alpha = 1 }, 0.25f)
+				.Ease(Ease.SineOut)
+				.OnComplete(AllReady);
 		}
 		
 		void AllReady()
@@ -174,9 +178,8 @@ namespace SNHU
 			controllerMenus[joystickId] = menu;
 			Add(menu);
 			
-			var tween = new VarTween(null, ONESHOT);
-			tween.Tween(menu, "X", 10 + (menu.Width / 2) + slot * menu.Width, 1.6f + FP.Random, Ease.ElasticOut);
-			AddTween(tween, true);
+			Tweener.Tween(menu, new { X = 10 + (menu.Width / 2) + slot * menu.Width}, 1.6f + FP.Random)
+				.Ease(Ease.ElasticOut);
 		}
 		
 		private int GetSlot()
@@ -198,9 +201,9 @@ namespace SNHU
 			
 			pool.Push(menu.Slot);
 			
-			var tween = new VarTween(() => Remove(menu), ONESHOT);
-			tween.Tween(menu, "Y", -menu.Height, 0.75f + FP.Random / 2, Ease.ElasticOut);
-			AddTween(tween, true);
+			Tweener.Tween(menu, new { Y = -menu.Height}, 0.75f + FP.Random / 2f)
+				.Ease(Ease.ElasticOut)
+				.OnComplete(() => Remove(menu));
 		}
 		
 		public string GetImageName()

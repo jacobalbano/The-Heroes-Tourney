@@ -1,7 +1,6 @@
 ﻿using System;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 using SFML.Window;
 using SNHU.Components;
@@ -35,9 +34,9 @@ namespace SNHU.GameObject.Upgrades
 				
 				if (Parent.World != null)
 				{
-					Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.ON_EFFECT, MakeEffect());
+					Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.Message.OnEffect, MakeEffect());
 					
-					Parent.World.BroadcastMessage(CameraShake.SHAKE, 60.0f, 0.5f);
+					Parent.World.BroadcastMessage(CameraShake.Message.Shake, 60.0f, 0.5f);
 					owner.SetUpgrade(null);
 					Mixer.Fus.Play();
 					
@@ -53,7 +52,7 @@ namespace SNHU.GameObject.Upgrades
 				Vector2f dir = new Vector2f(to.X - from.X, to.Y - from.Y)
 					.Normalized(FusStrength);
 				
-				to.OnMessage(PhysicsBody.IMPULSE, dir.X, dir.Y);
+				to.OnMessage(PhysicsBody.Message.Impulse, dir.X, dir.Y);
 			};
 			
 			return new EffectMessage(owner, callback);
@@ -70,11 +69,10 @@ namespace SNHU.GameObject.Upgrades
 				i.Scale = 0.1f;
 				i.CenterOO();
 				
-				Graphic = i;
+				AddComponent(i);
 				
-				var tween = new VarTween(() => World.Remove(this), ONESHOT);
-				tween.Tween(i, "Scale", 50, 0.5f);
-				AddTween(tween, true);
+				Tweener.Tween(i, new { Scale = 50 }, 0.5f)
+					.OnComplete(() => World.Remove(this));
 			}
 		}
 	}

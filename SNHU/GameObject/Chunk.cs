@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using GlideTween;
 using Punk;
-using Punk.Tweens.Misc;
+using Punk.Loaders;
 using Punk.Utils;
 using SNHU.GameObject.Platforms;
 
@@ -15,7 +16,6 @@ namespace SNHU.GameObject
 	/// </summary>
 	public class Chunk : Entity
 	{
-		public const string LOAD_COMPLETE = "loadComplete";
 		public List<Entity> SpawnPoints;
 		private Entity[] ents;
 		private string level;
@@ -42,16 +42,18 @@ namespace SNHU.GameObject
 		{
 			var world = new World();
 			SpawnPoints = new List<Entity>();
-			world.RegisterClass<Platform>("platform");
-			world.RegisterClass<JumpPad>("jumpPad");
-			world.RegisterClass<Crumble>("crumble");
-			world.RegisterClass<Razor>("deadlyAnchor");
-			world.RegisterClass<SpawnPoint>("spawnPoint");
-			world.RegisterClass<UpgradeSpawn>("Upgrade");
 			
 			level = FP.Choose(levels);
 			
-			ents = world.BuildWorldAsArray("assets/Levels/" + level);
+			var loader = new OgmoLoader();
+			loader.RegisterClassAlias<Platform>("platform");
+			loader.RegisterClassAlias<JumpPad>("jumpPad");
+			loader.RegisterClassAlias<Crumble>("crumble");
+			loader.RegisterClassAlias<Razor>("deadlyAnchor");
+			loader.RegisterClassAlias<SpawnPoint>("spawnPoint");
+			loader.RegisterClassAlias<UpgradeSpawn>("Upgrade");
+			
+			ents = loader.BuildWorldAsArray(Library.GetXml("assets/Levels/" + level));
 			
 			int spawns = 0;
 			foreach (var e in ents)
@@ -83,9 +85,9 @@ namespace SNHU.GameObject
 			
 			World.AddList(ents);
 			
-			var tween = new VarTween(OnFinishAdvance, ONESHOT);
-			tween.Tween(FP.Camera, "Y", Y + FP.HalfHeight, 1, Ease.ElasticOut);
-			AddTween(tween, true);
+			Tweener.Tween(FP.Camera, new { Y = Y + FP.HalfHeight}, 1)
+				.Ease(Ease.ElasticOut)
+				.OnComplete(OnFinishAdvance);
 		}
 		
 		public override void Removed()
@@ -102,7 +104,7 @@ namespace SNHU.GameObject
 		private void OnFinishAdvance()
 		{
 			World.Add(new CameraShake(FP.HalfWidth, FP.Camera.Y));
-			World.BroadcastMessage(ChunkManager.SpawnPlayers);
+			World.BroadcastMessage(ChunkManager.Message.SpawnPlayers);
 		}
 	}
 }

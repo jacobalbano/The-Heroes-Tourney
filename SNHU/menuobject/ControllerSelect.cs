@@ -1,9 +1,9 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using GlideTween;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 using SFML.Window;
 using SNHU;
@@ -22,10 +22,10 @@ namespace SNHU.MenuObject
 		
 		public Controller Controller { get; private set; }
 		
-		public bool Ready {get; private set; }
+		public bool Ready { get; private set; }
 		
 		public int Color { get; private set; }
-		public Image Image {get; private set; }
+		public Image Image { get; private set; }
 		private Text pressStart;
 		private Image player;
 		private Image lArrow, rArrow;
@@ -66,6 +66,7 @@ namespace SNHU.MenuObject
 			this.Slot = slot;
 			
 			Image = new Image(Library.GetTexture("assets/menu.png"));
+			Image.Alpha = 0.5f;
 			Image.Color = FP.Color(Color = colors[slot]);
 			pressStart = new Text("PRESS START");
 			pressStart.Font = font;
@@ -86,8 +87,8 @@ namespace SNHU.MenuObject
 			
 			Controller.Define("Start", (int) JoyId, (Controller.Button) 9, Controller.Button.Start);
 			
-			AddGraphic(Image);
-			AddGraphic(pressStart);
+			AddComponent(Image);
+			AddComponent(pressStart);
 			if (wins.ContainsKey(JoyId))
 			{
 				var score = new Text(wins[joyId].ToString("Wins: 0"));
@@ -96,7 +97,7 @@ namespace SNHU.MenuObject
 				score.Size = 20;
 				score.X = pressStart.X + 32;
 				score.Y = pressStart.Y + score.Size;
-				AddGraphic(score);
+				AddComponent(score);
 			}
 			
 		}
@@ -111,8 +112,7 @@ namespace SNHU.MenuObject
 				{
 					started = true;
 					
-					var list = Graphic as Graphiclist;
-					list.Remove(pressStart);
+					RemoveComponent(pressStart);
 					
 					if (Joystick.HasAxis(JoyId, Joystick.Axis.PovX) && Joystick.HasAxis(JoyId, Joystick.Axis.PovY))
 					{
@@ -130,13 +130,13 @@ namespace SNHU.MenuObject
 					confirm.CenterOO();
 					confirm.Y = Height * 0.75f;
 					
-					AddGraphic(confirm);
+					AddComponent(confirm);
 					
 					Y -= 50;
-					ClearTweens();
-					var tween = new VarTween(null, ONESHOT);
-					tween.Tween(this, "Y", 1, 0.75f, Ease.BounceOut);
-					AddTween(tween, true);
+					Tweener.Cancel();
+					
+					Tweener.Tween(this, new { Y = 1 }, 0.75f)
+						.Ease(Ease.BounceOut);
 					
 					PlayerImageName = parent.GetImageName();
 					MakePlayerImage();
@@ -150,14 +150,14 @@ namespace SNHU.MenuObject
 				{
 					if (Controller.Pressed("B"))
 					{
-						ClearTweens();
+						Tweener.Cancel();
 						
 						confirm.Scale = 1f;
 						confirm.Y = Height * 0.75f;
 					
-						var tween = new VarTween(Reselect, ONESHOT);
-						tween.Tween(check, "ScaleY", 0, 0.1f, Ease.SineOut);
-						AddTween(tween, true);
+						Tweener.Tween(check, new { ScaleY = 0 }, 0.1f)
+							.Ease(Ease.SineOut)
+							.OnComplete(Reselect);
 					}
 				}
 				else
@@ -167,10 +167,7 @@ namespace SNHU.MenuObject
 						if (Controller.LeftStick.X < 0)
 						{
 							lArrow.Scale = 0.8f;
-							
-							var tween = new VarTween(null, ONESHOT);
-							tween.Tween(lArrow, "Scale", 1, 0.3f);
-							AddTween(tween, true);
+							Tweener.Tween(lArrow, new { Scale = 1 }, 0.3f);
 							
 							PlayerImageName = parent.NextImage(PlayerImageName);
 							MakePlayerImage();
@@ -178,10 +175,7 @@ namespace SNHU.MenuObject
 						else if (Controller.LeftStick.X > 0)
 						{
 							rArrow.Scale = 0.8f;
-							
-							var tween = new VarTween(null, ONESHOT);
-							tween.Tween(rArrow, "Scale", 1, 0.3f);
-							AddTween(tween, true);
+							Tweener.Tween(rArrow, new { Scale = 1 }, 0.3f);
 							
 							PlayerImageName = parent.PrevImage(PlayerImageName);
 							MakePlayerImage();
@@ -198,15 +192,13 @@ namespace SNHU.MenuObject
 							confirm.Scale = 1f;
 							confirm.Y = Height * 0.75f;
 							
-							ClearTweens();
+							Tweener.Cancel();
 							
-							var tween = new VarTween(MakeCheckmark, ONESHOT);
-							tween.Tween(confirm, "ScaleY", 0, 0.1f, Ease.SineOut);
-							AddTween(tween, true);
+							Tweener.Tween(confirm, new { ScaleY = 0 }, 0.1f)
+								.Ease(Ease.SineOut)
+								.OnComplete(MakeCheckmark);
 							
-							var yTween = new VarTween(null, ONESHOT);
-							yTween.Tween(this, "Y", 0, 0.2f);
-							AddTween(yTween, true);
+							Tweener.Tween(this, new { Y = 0 }, 0.2f);
 						}
 					}
 				}
@@ -218,30 +210,26 @@ namespace SNHU.MenuObject
 			Ready = false;
 			changing = false;
 			
-			var list = Graphic as Graphiclist;
-			list.Add(confirm);
-			list.Remove(check);
-			list.Add(lArrow);
-			list.Add(rArrow);
+			AddComponent(confirm);
+			AddComponent(lArrow);
+			AddComponent(rArrow);
+			RemoveComponent(check);
 			
-			var tween = new VarTween(null, ONESHOT);
-			tween.Tween(confirm, "ScaleY", 1, 0.1f, Ease.SineOut);
-			AddTween(tween, true);
+			Tweener.Tween(confirm, new { ScaleY = 1 }, 0.1f)
+				.Ease(Ease.SineOut);
 			
 		}
 		
 		void MakeCheckmark()
 		{
-			var list = Graphic as Graphiclist;
-			list.Remove(lArrow);
-			list.Remove(rArrow);
+			RemoveComponent(lArrow);
+			RemoveComponent(rArrow);
 			
 			changing = true;
-			list.Add(check);
+			AddComponent(check);
 			
-			var tween = new VarTween(null, ONESHOT);
-			tween.Tween(check, "ScaleY", 1, 0.1f, Ease.SineOut);
-			AddTween(tween, true);
+			Tweener.Tween(check, new { ScaleY = 1 }, 0.1f)
+				.Ease(Ease.SineOut);
 			
 			Ready = true;
 		}
@@ -263,8 +251,8 @@ namespace SNHU.MenuObject
 			lArrow.Y = Height / 2;
 			rArrow.Y = Height / 2;
 			
-			AddGraphic(lArrow);
-			AddGraphic(rArrow);
+			AddComponent(lArrow);
+			AddComponent(rArrow);
 		}
 		
 		void MakePlayerImage()
@@ -273,9 +261,8 @@ namespace SNHU.MenuObject
 			
 			if (player != null)
 			{
-				var tween = new VarTween(ScalePlayerIn, ONESHOT);
-				tween.Tween(player, "Scale", 0, 0.1f);
-				AddTween(tween, true);
+				Tweener.Tween(player, new { Scale = 0 }, 0.1f)
+					.OnComplete(ScalePlayerIn);
 			}
 			else
 			{
@@ -287,8 +274,7 @@ namespace SNHU.MenuObject
 		{
 			if (player != null)
 			{
-				var list = Graphic as Graphiclist;
-				list.Remove(player);
+				RemoveComponent(player);
 			}
 			
 			player = new Image(Library.GetTexture("assets/players/" + PlayerImageName + ".png"));
@@ -299,11 +285,11 @@ namespace SNHU.MenuObject
 			
 			player.Scale = 0;
 			
-			var tween = new VarTween(() => changing = false, ONESHOT);
-			tween.Tween(player, "Scale", 1, 0.35f);
-			AddTween(tween, true);
+			Tweener.Tween(player, new { Scale = 1 }, 0.35f)
+				.OnComplete(() => changing = false)
+				.Ease(Ease.ExpoOut);
 			
-			AddGraphic(player);
+			AddComponent(player);
 		}
 		
 		public static void IncreaseWin(uint controllerId)

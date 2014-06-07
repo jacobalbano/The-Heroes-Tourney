@@ -1,7 +1,7 @@
 ﻿using System;
+using GlideTween;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 using SNHU.GameObject.Upgrades;
 
@@ -33,8 +33,8 @@ namespace SNHU.GameObject
 				emitter.SetAlpha(name, 1, 0, Ease.QuintOut);
 			}
 			
-			AddGraphic(blade);
-			AddGraphic(emitter);
+			AddComponent(blade);
+			AddComponent(emitter);
 			
 			Layer = -100;
 		}
@@ -54,7 +54,7 @@ namespace SNHU.GameObject
 					emitter.Emit(FP.Choose("0", "1", "2", "3"), X + randX, Y - 50 + randY);
 				}
 				
-				p.OnMessage(EffectMessage.ON_EFFECT, MakeEffect(p));
+				p.OnMessage(EffectMessage.Message.OnEffect, MakeEffect(p));
 			}
 		}
 		
@@ -62,7 +62,7 @@ namespace SNHU.GameObject
 		{
 			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
 			{
-				p.OnMessage(Player.Damage);
+				p.OnMessage(Player.Message.Damage);
 				Mixer.SawHit.Play();
 			};
 			
@@ -111,8 +111,8 @@ namespace SNHU.GameObject
 			
 			speed *= 0.5f;
 			
-			AddGraphic(razorArm);
-			AddGraphic(myImage);
+			AddComponent(razorArm);
+			AddComponent(myImage);
 			SetHitbox((int)(myImage.Width), (int)(myImage.Height), (int)(myImage.X + myImage.Width/2), (int)(myImage.Y + myImage.Height/2));	
 		}
 		

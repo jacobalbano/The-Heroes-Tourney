@@ -1,7 +1,7 @@
 ﻿using System;
+using GlideTween;
 using Punk;
 using Punk.Graphics;
-using Punk.Tweens.Misc;
 using Punk.Utils;
 using SNHU.Components;
 
@@ -18,7 +18,7 @@ namespace SNHU.GameObject.Upgrades
 		public GroundSmash()
 		{
 			Icon = new Image(Library.GetTexture("assets/groundsmash.png"));
-			AddResponse(Player.OnLand, OnPlayerLand);
+			AddResponse(Player.Message.OnLand, OnPlayerLand);
 		}
 		
 		public override void Added()
@@ -35,7 +35,7 @@ namespace SNHU.GameObject.Upgrades
 			{
 				if (to.CollideRect(to.X, to.Y, from.X - SmashRadius, from.Y - 10, SmashRadius * 2, 10))
 				{
-					to.OnMessage(Player.Damage);
+					to.OnMessage(Player.Message.Damage);
 				}
 			};
 			
@@ -48,7 +48,7 @@ namespace SNHU.GameObject.Upgrades
 			{
 				base.Use();
 				
-				owner.physics.OnMessage(PhysicsBody.USE_GRAVITY, false);
+				owner.physics.OnMessage(PhysicsBody.Message.UseGravity, false);
 			}
 		}
 		
@@ -58,7 +58,7 @@ namespace SNHU.GameObject.Upgrades
 			
 			if (Activated)
 			{
-				Parent.OnMessage(PhysicsBody.IMPULSE, 0, FallSpeed, true);
+				Parent.OnMessage(PhysicsBody.Message.Impulse, 0, FallSpeed, true);
 			}
 		}
 		
@@ -79,17 +79,18 @@ namespace SNHU.GameObject.Upgrades
 				}
 				
 				var emitterEnt = Parent.World.AddGraphic(emitter, -9010);
-				emitterEnt.AddTween(new Alarm(3, () => FP.World.Remove(emitterEnt), Tween.ONESHOT), true);
+				emitterEnt.Tweener.Timer(3)
+					.OnComplete(() => FP.World.Remove(emitterEnt));
 				
 				for (float i = -SmashRadius; i < SmashRadius; i++)
 				{
 					emitter.Emit(FP.Choose("0", "1", "2", "3"), Parent.X + i + FP.Random - FP.Random, Parent.Y + FP.Rand(10) - 5);
 				}
 				
-				Parent.World.BroadcastMessage(CameraShake.SHAKE, 100.0f, 0.5f);
-				Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.ON_EFFECT, MakeEffect());
+				Parent.World.BroadcastMessage(CameraShake.Message.Shake, 100.0f, 0.5f);
+				Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.Message.OnEffect, MakeEffect());
 				
-				owner.physics.OnMessage(PhysicsBody.USE_GRAVITY, true);
+				owner.physics.OnMessage(PhysicsBody.Message.UseGravity, true);
 				
 				owner.SetUpgrade(null);
 			}
