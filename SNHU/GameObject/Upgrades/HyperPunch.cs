@@ -36,7 +36,7 @@ namespace SNHU.GameObject.Upgrades
 			image.CenterOO();
 			AddComponent(image);
 			
-			SetHitbox(image.ScaledWidth, image.ScaledHeight);
+			SetHitbox((int) image.ScaledWidth, (int) image.ScaledHeight);
 			CenterOrigin();
 			
 			direction = new Vector2f();

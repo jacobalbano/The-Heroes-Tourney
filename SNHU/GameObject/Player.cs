@@ -45,7 +45,7 @@ namespace SNHU.GameObject
 		public Upgrade CurrentUpgrade { get; private set; }
 		public int UpgradeCapacity { get; private set; }
 		
-                public bool Invincible { get; private set; }
+		public bool Invincible { get; private set; }
 		public bool Rebounding { get; private set; }
 		public bool Guarding { get; private set; }
 		public int Facing { get { return player.FlippedX ? -1 : 1; } }
@@ -150,6 +150,9 @@ namespace SNHU.GameObject
 		{
 			base.Added();
 			
+			if (cursor.World == null)
+				World.Add(cursor);
+			
 			OnMessage(DodgeController.Message.CancelDodge);
 			World.AddList(left, right);
 			IsAlive = true;
@@ -189,29 +192,19 @@ namespace SNHU.GameObject
 			{
 				var toRemove = new List<Entity>();
 				
-				foreach (var player in excludeCollision)
+				foreach (var p in excludeCollision)
 				{
-					if (CollideWith(player, X, Y) == null)
-						toRemove.Add(player);
+					if (CollideWith(p, X, Y) == null)
+						toRemove.Add(p);
 				}
 				
-				foreach (var player in toRemove)
+				foreach (var p in toRemove)
 				{
-					excludeCollision.Remove(player);
+					excludeCollision.Remove(p);
 				}
 			}
 			
-			if (!isOffscreen && !GameWorld.OnCamera(X, Y))
-			{
-				isOffscreen = true;
-				World.Add(cursor);
-			}
-			
-			if (isOffscreen && GameWorld.OnCamera(X, Y))
-			{	
-				isOffscreen = false;
-				World.Remove(cursor);
-			}
+			cursor.Visible = !OnCamera;
 			
 			if (!GameWorld.gameManager.GameEnding)
 			{
@@ -239,11 +232,9 @@ namespace SNHU.GameObject
 				
 				if (!OnGround && dodge.IsDodging)
 				{
-					FP.Log("whoa");
 					Entity result = 
 						Collide(Platform.Collision, X + 1, Y) ??
-						Collide(Platform.Collision, X - 1, Y) ??
-						null;
+						Collide(Platform.Collision, X - 1, Y);
 					
 					if (result != null)
 					{

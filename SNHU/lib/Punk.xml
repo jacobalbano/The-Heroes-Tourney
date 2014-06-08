@@ -1446,43 +1446,6 @@
             </summary>
             <param name="targets">The objects being tweened that you want to resume.</param>
         </member>
-        <member name="T:Punk.Graphics.Anim">
-            <summary>
-            Template used by Spritemap to define animations. Don't create
-            these yourself, instead you can fetch them with Spritemap's Add().
-            </summary>
-        </member>
-        <member name="M:Punk.Graphics.Anim.Play(System.Boolean)">
-            <summary>
-            Plays the animation.
-            </summary>
-            <param name="reset">If the animation should force-restart if it is already playing.</param>
-        </member>
-        <member name="P:Punk.Graphics.Anim.Name">
-            <summary>
-            The name of the animation
-            </summary>
-        </member>
-        <member name="P:Punk.Graphics.Anim.Frames">
-            <summary>
-            Array of frame indices to animate.
-            </summary>
-        </member>
-        <member name="P:Punk.Graphics.Anim.FrameRate">
-            <summary>
-            Animation speed.
-            </summary>
-        </member>
-        <member name="P:Punk.Graphics.Anim.Loop">
-            <summary>
-            If the animation loops.
-            </summary>
-        </member>
-        <member name="P:Punk.Graphics.Anim.FrameCount">
-            <summary>
-            Amount of frames in the animation.
-            </summary>
-        </member>
         <member name="T:Punk.Graphics.Backdrop">
             <summary>
             Description of Backdrop.
@@ -1527,7 +1490,7 @@
             If the graphic should render at its position relative to its parent Entity's position.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Graphic.Shader">
+        <member name="P:Punk.Graphics.Graphic.Shader">
             <summary>
             An optional shader to draw the image with
             </summary>
@@ -1706,44 +1669,9 @@
             Non-animated image. Can be drawn to the screen with transformations.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Image.Angle">
-            <summary>
-            Rotation of the image, in degrees.
-            </summary>
-        </member>
-        <member name="F:Punk.Graphics.Image.Scale">
-            <summary>
-            Scale of the image, affects both x and y scale.
-            </summary>
-        </member>
-        <member name="F:Punk.Graphics.Image.ScaleX">
-            <summary>
-            X scale of the image.
-            </summary>
-        </member>
-        <member name="F:Punk.Graphics.Image.ScaleY">
-            <summary>
-            Y scale of the image.
-            </summary>
-        </member>
-        <member name="F:Punk.Graphics.Image.OriginX">
-            <summary>
-            X origin of the image, determines transformation point.
-            </summary>
-        </member>
-        <member name="F:Punk.Graphics.Image.OriginY">
-            <summary>
-            Y origin of the image, determines transformation point.
-            </summary>
-        </member>
         <member name="M:Punk.Graphics.Image.UpdateTextureRect">
             <summary>
             Updates the texture rectangle.
-            </summary>
-        </member>
-        <member name="F:Punk.Graphics.Image.Smooth">
-            <summary>
-            If the image should be drawn transformed with pixel smoothing.
             </summary>
         </member>
         <member name="M:Punk.Graphics.Image.#ctor">
@@ -1797,26 +1725,6 @@
             Centers the Image's originX/Y to its center.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Image._spriteMode">
-            <summary>
-            Whether the image is rendered with a sprite or a shape
-            </summary>
-        </member>
-        <member name="F:Punk.Graphics.Image._source">
-            <summary>
-            The texture to be rendered with the sprite
-            </summary>
-        </member>
-        <member name="F:Punk.Graphics.Image._sprite">
-            <summary>
-            If the image is in sprite mode, this is the sprite it will render
-            </summary>
-        </member>
-        <member name="F:Punk.Graphics.Image._shape">
-            <summary>
-            If the image is in shape mode, this is the shape it will render
-            </summary>
-        </member>
         <member name="F:Punk.Graphics.Image._sourceRect">
             <summary>
             The clipping rectangle
@@ -1850,6 +1758,36 @@
         <member name="F:Punk.Graphics.Image._flipY">
             <summary>
             Whether the image is flipped on the Y axis.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.Angle">
+            <summary>
+            Rotation of the image, in degrees.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.Scale">
+            <summary>
+            Scale of the image, affects both x and y scale.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.ScaleX">
+            <summary>
+            X scale of the image.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.ScaleY">
+            <summary>
+            Y scale of the image.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.OriginX">
+            <summary>
+            X origin of the image, determines transformation point.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Image.OriginY">
+            <summary>
+            Y origin of the image, determines transformation point.
             </summary>
         </member>
         <member name="P:Punk.Graphics.Image.FlippedX">
@@ -2106,66 +2044,6 @@
             <param name="ease">Optional easer function.</param>
             <returns>This ParticleType object.</returns>
         </member>
-        <member name="T:Punk.Graphics.Shader">
-            <summary>
-            Description of Shader.
-            </summary>
-        </member>
-        <member name="M:Punk.Graphics.Shader.SetParameter(System.String,SFML.Graphics.Color)">
-            <summary>
-            Set a parameter on the shader.
-            </summary>
-            <param name="name">The parameter in the shader to set.</param>
-            <param name="color">The color to set it to.</param>
-        </member>
-        <member name="M:Punk.Graphics.Shader.SetParameter(System.String,System.Single)">
-            <summary>
-            Set a parameter on the shader.
-            </summary>
-            <param name="name">The parameter in the shader to set.</param>
-            <param name="x">The value to set it to.</param>
-        </member>
-        <member name="M:Punk.Graphics.Shader.SetParameter(System.String,System.Single,System.Single)">
-            <summary>
-            Set a parameter on the shader.
-            </summary>
-            <param name="name">The parameter in the shader to set.</param>
-            <param name="x">The first value of a vec2.</param>
-            <param name="y">The first value of a vec2.</param>
-        </member>
-        <member name="M:Punk.Graphics.Shader.SetParameter(System.String,System.Single,System.Single,System.Single)">
-            <summary>
-            Set a parameter on the shader.
-            </summary>
-            <param name="name">The parameter in the shader to set.</param>
-            <param name="x">The first value of a vec3.</param>
-            <param name="y">The second value of a vec3.</param>
-            <param name="z">The third value of a vec3.</param>
-        </member>
-        <member name="M:Punk.Graphics.Shader.SetParameter(System.String,System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-            Set a parameter on the shader.
-            </summary>
-            <param name="name">The parameter in the shader to set.</param>
-            <param name="x">The first value of a vec4.</param>
-            <param name="y">The second value of a vec4.</param>
-            <param name="z">The third value of a vec4.</param>
-            <param name="w">The fourth value of a vec4.</param>
-        </member>
-        <member name="M:Punk.Graphics.Shader.SetParameter(System.String,SFML.Graphics.Texture)">
-            <summary>
-            Set a parameter on the shader.
-            </summary>
-            <param name="name">The parameter in the shader to set.</param>
-            <param name="texture">The texture to set it to.</param>
-        </member>
-        <member name="M:Punk.Graphics.Shader.SetParameter(System.String,Punk.Graphics.Shader.TextureType)">
-            <summary>
-            Set a parameter on the shader.
-            </summary>
-            <param name="name">The parameter in the shader to set.</param>
-            <param name="currentTexture">The texture to set it to.</param>
-        </member>
         <member name="T:Punk.Graphics.Spritemap">
             <summary>
             Animated Image. Can have multiple animations,
@@ -2304,12 +2182,49 @@
             Callback type for when animations complete.
             </summary>
         </member>
+        <member name="T:Punk.Graphics.Anim">
+            <summary>
+            Template used by Spritemap to define animations. Don't create
+            these yourself, instead you can fetch them with Spritemap's Add().
+            </summary>
+        </member>
+        <member name="M:Punk.Graphics.Anim.Play(System.Boolean)">
+            <summary>
+            Plays the animation.
+            </summary>
+            <param name="reset">If the animation should force-restart if it is already playing.</param>
+        </member>
+        <member name="P:Punk.Graphics.Anim.Name">
+            <summary>
+            The name of the animation
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Anim.Frames">
+            <summary>
+            Array of frame indices to animate.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Anim.FrameRate">
+            <summary>
+            Animation speed.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Anim.Loop">
+            <summary>
+            If the animation loops.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Anim.FrameCount">
+            <summary>
+            Amount of frames in the animation.
+            </summary>
+        </member>
         <member name="T:Punk.Graphics.Text">
             <summary>
             Used for drawing text using embedded fonts.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Text.font">
+        <member name="F:Punk.Graphics.Text.DefaultFont">
             <summary>
             The font to assign to new Text objects.
             </summary>
@@ -2334,25 +2249,37 @@
             Centers the Text's originX/Y to its center.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Text._field">
-            @private 
+        <member name="P:Punk.Graphics.Text.Angle">
+            <summary>
+            Rotation of the image, in degrees.
+            </summary>
         </member>
-        <member name="F:Punk.Graphics.Text._width">
-            @private 
+        <member name="P:Punk.Graphics.Text.Scale">
+            <summary>
+            Scale of the image, affects both x and y scale.
+            </summary>
         </member>
-        <member name="F:Punk.Graphics.Text._height">
-            @private 
+        <member name="P:Punk.Graphics.Text.ScaleX">
+            <summary>
+            X scale of the image.
+            </summary>
         </member>
-        <member name="F:Punk.Graphics.Text._text">
-            @private 
+        <member name="P:Punk.Graphics.Text.ScaleY">
+            <summary>
+            Y scale of the image.
+            </summary>
         </member>
-        <member name="F:Punk.Graphics.Text._font">
-            @private 
+        <member name="P:Punk.Graphics.Text.OriginX">
+            <summary>
+            X origin of the image, determines transformation point.
+            </summary>
         </member>
-        <member name="F:Punk.Graphics.Text._size">
-            @private 
+        <member name="P:Punk.Graphics.Text.OriginY">
+            <summary>
+            Y origin of the image, determines transformation point.
+            </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.Bolded">
+        <member name="P:Punk.Graphics.Text.Bold">
             <summary>
             If the text has bolded.
             </summary>
@@ -2365,6 +2292,12 @@
         <member name="P:Punk.Graphics.Text.Underlined">
             <summary>
             If the text is underlined.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Text.Color">
+            <summary>
+            Set the tint color of the image. Setting this to White (255, 255, 255 or 0xffffff) will disable tinting.
+            If you set the alpha of this property, it will be overwritten by the Alpha property when the color transform is updated.
             </summary>
         </member>
         <member name="P:Punk.Graphics.Text.String">
@@ -2901,6 +2834,83 @@
             Amount of Masks in the list.
             </summary>
         </member>
+        <member name="T:Punk.Rendering.RenderJob">
+            <summary>
+            Description of Class1.
+            </summary>
+        </member>
+        <member name="M:Punk.Rendering.RenderJob.DelegateRender(System.Single,System.Single,Punk.Camera)">
+            <summary>
+            Convenience function for setting up common properties.
+            Pass all parameters from the graphic's Render method.
+            </summary>
+        </member>
+        <member name="M:Punk.Rendering.RenderJob.SetCommonModifiers(Punk.Graphics.Graphic)">
+            <summary>
+            Pass 'this' from a graphic class to automatically set common variables:
+            Relative, ScrollX, ScrollY, X, Y
+            </summary>
+        </member>
+        <member name="T:Punk.Rendering.Shader">
+            <summary>
+            Description of Shader.
+            </summary>
+        </member>
+        <member name="M:Punk.Rendering.Shader.SetParameter(System.String,SFML.Graphics.Color)">
+            <summary>
+            Set a parameter on the shader.
+            </summary>
+            <param name="name">The parameter in the shader to set.</param>
+            <param name="color">The color to set it to.</param>
+        </member>
+        <member name="M:Punk.Rendering.Shader.SetParameter(System.String,System.Single)">
+            <summary>
+            Set a parameter on the shader.
+            </summary>
+            <param name="name">The parameter in the shader to set.</param>
+            <param name="x">The value to set it to.</param>
+        </member>
+        <member name="M:Punk.Rendering.Shader.SetParameter(System.String,System.Single,System.Single)">
+            <summary>
+            Set a parameter on the shader.
+            </summary>
+            <param name="name">The parameter in the shader to set.</param>
+            <param name="x">The first value of a vec2.</param>
+            <param name="y">The first value of a vec2.</param>
+        </member>
+        <member name="M:Punk.Rendering.Shader.SetParameter(System.String,System.Single,System.Single,System.Single)">
+            <summary>
+            Set a parameter on the shader.
+            </summary>
+            <param name="name">The parameter in the shader to set.</param>
+            <param name="x">The first value of a vec3.</param>
+            <param name="y">The second value of a vec3.</param>
+            <param name="z">The third value of a vec3.</param>
+        </member>
+        <member name="M:Punk.Rendering.Shader.SetParameter(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Set a parameter on the shader.
+            </summary>
+            <param name="name">The parameter in the shader to set.</param>
+            <param name="x">The first value of a vec4.</param>
+            <param name="y">The second value of a vec4.</param>
+            <param name="z">The third value of a vec4.</param>
+            <param name="w">The fourth value of a vec4.</param>
+        </member>
+        <member name="M:Punk.Rendering.Shader.SetParameter(System.String,SFML.Graphics.Texture)">
+            <summary>
+            Set a parameter on the shader.
+            </summary>
+            <param name="name">The parameter in the shader to set.</param>
+            <param name="texture">The texture to set it to.</param>
+        </member>
+        <member name="M:Punk.Rendering.Shader.SetParameter(System.String,Punk.Rendering.Shader.TextureType)">
+            <summary>
+            Set a parameter on the shader.
+            </summary>
+            <param name="name">The parameter in the shader to set.</param>
+            <param name="currentTexture">The texture to set it to.</param>
+        </member>
         <member name="F:Punk.Screen.ClearColor">
             <summary>
             The screen refresh color. Defaults to black.
@@ -3030,15 +3040,6 @@
             <param name="y1">Starting y position.</param>
             <param name="x2">Ending x position.</param>
             <param name="y2">Ending y position.</param>
-            <param name="color">Color of the line.</param>
-            <param name="alpha">Alpha of the line. Defaults to 1</param>
-        </member>
-        <member name="M:Punk.Utils.Draw.Line(SFML.Window.Vector2f,SFML.Window.Vector2f,SFML.Graphics.Color,System.Single)">
-            <summary>
-            Draws a line.
-            </summary>
-            <param name="start">Starting position.</param>
-            <param name="end">Ending position</param>
             <param name="color">Color of the line.</param>
             <param name="alpha">Alpha of the line. Defaults to 1</param>
         </member>

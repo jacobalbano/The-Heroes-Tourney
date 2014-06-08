@@ -30,7 +30,6 @@ namespace SNHU.GameObject
 				var level = levels[i];
 				level = level.Substring(level.LastIndexOf("/"));
 				levels[i] = level;
-				FP.Log(level);
 			}
 			
 			var l = levels.ToList();

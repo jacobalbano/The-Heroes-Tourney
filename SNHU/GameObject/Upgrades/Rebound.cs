@@ -81,7 +81,6 @@ namespace SNHU.GameObject.Upgrades
 			
 			if (shield_1 != null)
 			{
-				FP.Log(lifeTimer.TimeRemaining, lifeTimer.Completion);
 				shield_1.Alpha = 0.6f - (0.6f * lifeTimer.Completion);
 				shield_2.Alpha = 0.6f - (0.6f * lifeTimer.Completion);
 				

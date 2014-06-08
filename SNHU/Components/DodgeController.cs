@@ -68,7 +68,6 @@ namespace SNHU.Components
 			{
 				if (axis.X != 0 && facing != 0)
 				{
-					FP.Log("hi");
 					Parent.OnMessage(PhysicsBody.Message.UseGravity, false);
 					Parent.OnMessage(Message.StartDodge);
 					

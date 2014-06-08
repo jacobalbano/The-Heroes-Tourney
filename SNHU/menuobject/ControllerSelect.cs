@@ -66,7 +66,6 @@ namespace SNHU.MenuObject
 			this.Slot = slot;
 			
 			Image = new Image(Library.GetTexture("assets/menu.png"));
-			Image.Alpha = 0.5f;
 			Image.Color = FP.Color(Color = colors[slot]);
 			pressStart = new Text("PRESS START");
 			pressStart.Font = font;
@@ -299,8 +298,6 @@ namespace SNHU.MenuObject
 				wins[controllerId] = 0;
 			
 			wins[controllerId] = wins[controllerId] + 1;
-			
-			FP.Log("yolo", controllerId, wins[controllerId]);
 			
 		}
 	}

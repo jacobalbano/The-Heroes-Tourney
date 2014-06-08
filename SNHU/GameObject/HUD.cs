@@ -53,7 +53,7 @@ namespace SNHU.GameObject
 			{
 				var total = GameWorld.gameManager.StartingHealth.ToString();
 				var health = new Text(string.Format("{0}/{0}", total));
-				health.Bolded = true;
+				health.Bold = true;
 				health.Size = 18;
 				health.X = head.X - head.Width / 2;
 				health.Y = lives.Y + 30;

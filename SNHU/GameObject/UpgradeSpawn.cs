@@ -59,7 +59,7 @@ namespace SNHU.GameObject
 			upgrade = (Upgrade) type.GetConstructor(System.Type.EmptyTypes).Invoke(null);
 			AddComponent(upgrade.Icon);
 			
-			SetHitbox(upgrade.Icon.ScaledWidth, upgrade.Icon.ScaledHeight);
+			SetHitbox((int) upgrade.Icon.ScaledWidth, (int) upgrade.Icon.ScaledHeight);
 			upgrade.Icon.CenterOO();
 			CenterOrigin();
 			

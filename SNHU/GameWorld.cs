@@ -110,14 +110,5 @@ namespace SNHU
 			
 			Mixer.music.Stop();
 		}
-		
-		public static bool OnCamera(float x, float y)
-		{
-			return
-				x > FP.Camera.X - FP.HalfWidth &&
-				x < FP.Camera.X + FP.HalfWidth &&
-				y > FP.Camera.Y - FP.HalfHeight &&
-				y < FP.Camera.Y + FP.HalfHeight;
-		}
 	}
 }
