@@ -39,7 +39,6 @@ namespace SNHU.GameObject
 		private Axis axis;
 		
 		private OffscreenCursor cursor;
-		private bool isOffscreen;
 		
 		public Queue<Upgrade> UpgradeQueue;
 		public Upgrade CurrentUpgrade { get; private set; }
@@ -83,7 +82,6 @@ namespace SNHU.GameObject
 			AddComponent(player);
 			
 			cursor = new OffscreenCursor(this);
-			isOffscreen = false;
 			
 			player.CenterOO();
 			SetHitbox(30, 60, 15, 60);
@@ -241,11 +239,10 @@ namespace SNHU.GameObject
 						dodge.CanDodge = true;
 					}
 				}
-					
 				
 				HandleInput();
 				
-				if(this.Y - this.Height > FP.Camera.Y + FP.HalfHeight)
+				if(Top > FP.Camera.Y + FP.HalfHeight)
 				{
 					Kill();
 				}

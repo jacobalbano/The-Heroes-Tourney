@@ -60,6 +60,8 @@ namespace SNHU.GameObject.Upgrades
 		
 		public override void Update()
 		{
+			base.Update();
+			
 			if (!OnCamera)
 			{
 				var offX = Left > FP.Width || Right < 0;
