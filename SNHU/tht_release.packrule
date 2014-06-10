@@ -1,0 +1,10 @@
+[name TheHeroesTourney]
+
+bin/Release/*.dll .
+bin/Release/*.exe .
+
+assets/**
+
+csfml*.dll
+libsndfile-1.dll
+openal32.dll

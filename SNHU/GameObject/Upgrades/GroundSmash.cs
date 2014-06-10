@@ -79,6 +79,7 @@ namespace SNHU.GameObject.Upgrades
 				}
 				
 				var emitterEnt = Parent.World.AddGraphic(emitter, -9010);
+				emitterEnt.Active = true;
 				emitterEnt.Tweener.Timer(3)
 					.OnComplete(() => FP.World.Remove(emitterEnt));
 				

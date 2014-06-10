@@ -67,6 +67,7 @@ namespace SNHU.GameObject.Upgrades
 			base.Added();
 			
 			emitterEnt = World.AddGraphic(emitter, -9010);
+			emitterEnt.Active = true;
 		}
 		
 		public override void Update()

@@ -109,6 +109,7 @@ namespace SNHU.GameObject.Upgrades
 			}
 			
 			var e = World.AddGraphic(emitter, -9010);
+			e.Active = true;
 			e.Tweener.Timer(3).OnComplete(() => FP.World.Remove(e));
 			
 			var radius = 200;
