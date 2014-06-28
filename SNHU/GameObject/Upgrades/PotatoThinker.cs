@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using GlideTween;
+using Glide;
 using Punk;
 using Punk.Graphics;
 using Punk.Utils;
@@ -14,7 +14,7 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class PotatoThinker : Entity
 	{
-		Glide alarm;
+		Tween alarm;
 		
 		List<Player> opponents;
 		Player target;

@@ -1,5 +1,5 @@
 ﻿using System;
-using GlideTween;
+using Glide;
 using Punk;
 using Punk.Graphics;
 using Punk.Utils;

@@ -1,42 +1,26 @@
 ﻿using System;
 using Punk;
 using Punk.Graphics;
+using Punk.Loaders;
 using SNHU.Components;
 
 namespace SNHU.GameObject.Platforms
 {
+	[OgmoConstructor("width", "height")]
 	public class Platform : Entity
 	{
 		public const string Collision = "platform";
 		
-		public enum Message { ObjectCollide }
+		public enum Message { Bump }
 		
-		private Player owner;
-		
-		public Player myOwner
-		{
-			set
-			{
-				owner = value;
-			}
-		}
 		public Nineslice image;
 		
-		public Platform():base()
+		public Platform(int width, int height)
 		{
-			Type = Collision;
+			Width = width;
+			Height = height;
 			
-			AddResponse(Message.ObjectCollide, OnPlayerLandResponse);
-		}
-		
-		public void OnPlayerLandResponse(params object[]args)
-		{
-			OnLand();
-		}
-		
-		public override void Load(System.Xml.XmlNode node)
-		{
-			base.Load(node);
+			Type = Collision;
 			
 			image = new Nineslice(Library.GetTexture("assets/platform.png"), 3, 3);
 			image.Columns = (int) (Width / 5f);
@@ -46,10 +30,5 @@ namespace SNHU.GameObject.Platforms
 			
 			AddComponent(image);
 		}
-		
-        public virtual void OnLand()
-        {
-        	
-        }
 	}
 }

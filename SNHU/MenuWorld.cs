@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using GlideTween;
+using Glide;
 using SNHU.MenuObject;
 using Punk;
 using Punk.Graphics;

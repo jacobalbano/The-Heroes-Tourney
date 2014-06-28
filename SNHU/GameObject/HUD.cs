@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using GlideTween;
+using Glide;
 using Punk;
 using Punk.Graphics;
 using Punk.Utils;
@@ -116,19 +116,20 @@ namespace SNHU.GameObject
 				
 				var hudEnt = players[player.PlayerId];
 				
-				var upgradeImg = upgrade.Icon;
+				var icon = upgrade.Icon;
+				var upgradeImg = new Image(upgrade.Icon);
 				upgradeImg.ScrollX = upgradeImg.ScrollY = 0;
 				var upgradeEnt = World.AddGraphic(upgradeImg, Layer, player.X,  player.Top - (FP.Camera.Y - FP.HalfHeight));
 				
 				upgradeIcons[player.PlayerId].Push(upgradeEnt);
 				
-				var offsetX = 10;//-20;
+				var offsetX = 10;
 				var offsetY = GameWorld.gameManager.StartingHealth != 0 ? 80 : 60;
 				
 				Tweener.Tween(upgradeEnt, new { X = hudEnt.X + offsetX, Y = hudEnt.Y + offsetY }, 0.5f)
 					.Ease(Ease.ExpoOut);
 				
-				Tweener.Tween(upgradeImg, new { Scale = upgradeImg.Scale * 0.5f }, 0.5f)
+				Tweener.Tween(upgradeImg, new { Scale = icon.Scale * 0.5f }, 0.5f)
 					.Ease(Ease.ExpoOut);
 			};
 		}

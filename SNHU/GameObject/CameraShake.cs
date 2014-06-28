@@ -1,7 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using GlideTween;
+using Glide;
 using Punk;
 using Punk.Utils;
 
@@ -23,7 +23,7 @@ namespace SNHU.GameObject
 		}
 		
 		private float OffsetX, OffsetY;
-		private Glide shaker;
+		private Tween shaker;
 		
 		public CameraShake(float x, float y) : base(x, y)
 		{

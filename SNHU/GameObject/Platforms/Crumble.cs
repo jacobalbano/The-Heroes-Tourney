@@ -1,41 +1,37 @@
 ﻿using System;
 using Punk;
 using Punk.Graphics;
+using Punk.Loaders;
 
 namespace SNHU.GameObject.Platforms
 {
-	public class Crumble : Platform
+	[OgmoConstructor("width", "height")]
+	public class Crumble : Entity
 	{
+		private Nineslice image;
 		private float crumbleTime = 0;
 		private bool canMakeAHellaRacket;
 		
-		public Crumble()
+		public Crumble(int width, int height)
 		{
+			Width = width;
+			Height = height;
+			Type = Platform.Collision;
+			
 			canMakeAHellaRacket = true;
+			
+			image = new Nineslice(Library.GetTexture("assets/crumble.png"), (int) (Width / 5f), (int) (Height / 5f));
+			image.ScaleX = Width / image.Width;
+			image.ScaleY = Height / image.Height;
+			
+			AddComponent(image);
+			
+			AddResponse(Player.Message.OnLand, OnBump);
+			AddResponse(Platform.Message.Bump, OnBump);
 		}
 		
-		public override void Update()
-		{
-			base.Update();
-			
-			var p = Collide(Player.Collision, X - 1, Y) as Player;
-			if (p == null)
-			{
-				p = Collide(Player.Collision, X + 1, Y) as Player;
-			}
-			
-			if(p == null)
-			{
-				p = Collide(Player.Collision, X, Y + 1) as Player;
-			}
-			
-			if (p != null)
-			{
-				OnLand();
-			}
-		}
 		
-		public override void OnLand()
+		public void OnBump(params object[] args)
         {
 			if (canMakeAHellaRacket)
 			{
@@ -56,15 +52,6 @@ namespace SNHU.GameObject.Platforms
 			CenterOrigin();
 			
 			Tweener.Tween(image, new { Scale = 0, Alpha = 0, Y = image.Y + 200}, 1);
-		}
-		
-		public override void Load(System.Xml.XmlNode node)
-		{	
-			image = new Nineslice(Library.GetTexture("assets/crumble.png"), (int) (Width / 5f), (int) (Height / 5f));
-			image.ScaleX = Width / image.Width;
-			image.ScaleY = Height / image.Height;
-			
-			AddComponent(image);
 		}
 	}
 }

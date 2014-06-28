@@ -71,7 +71,7 @@ namespace SNHU.GameObject.Upgrades
 					World.Remove(this);
 			}
 			
-			image.Color = FP.Color(hypeTween.Color);
+			image.Color = hypeTween.Color;
 			
 			var l = new List<Entity>();
 			CollideInto(Player.Collision, X, Y, l);

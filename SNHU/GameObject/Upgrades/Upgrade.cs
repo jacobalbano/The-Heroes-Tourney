@@ -1,5 +1,5 @@
 ﻿using System;
-using GlideTween;
+using Glide;
 using Punk;
 using Punk.Graphics;
 
@@ -12,30 +12,24 @@ namespace SNHU.GameObject.Upgrades
 	{
 		public enum Message { Used }
 		
-		public bool Activated { get; protected set; }
-		
-		protected Glide lifeTimer;
+		protected Tween lifeTimer;
 		private float _lifetime;
 		public float Lifetime
 		{
-			get
-			{
-				return _lifetime;
-			}
-			
-			protected set
-			{
+			get { return _lifetime; }
+			protected set {
 				_lifetime = value;
 				if (lifeTimer != null)
 					lifeTimer.Cancel();
 				
-				lifeTimer = Tweener.Timer(_lifetime).OnComplete(OnLifetimeComplete);
+				lifeTimer = Tweener.Timer(Lifetime).OnComplete(OnLifetimeComplete);
 				lifeTimer.Pause();
 			}
 		}
 		
 		protected Player owner;
-		public Image Icon;
+		public Image Icon { get; protected set; }
+		public bool Activated { get; protected set; }
 		
 		public Upgrade()
 		{

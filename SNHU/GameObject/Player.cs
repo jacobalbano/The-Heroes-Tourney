@@ -276,7 +276,7 @@ namespace SNHU.GameObject
 				{
 					float jumpMult = 1;
 					
-					if(Collide("JumpPad", X, Y + 1) != null)
+					if(Collide(JumpPad.Collision, X, Y + 1) != null)
 					{
 						jumpMult = 1.4f;
 						Mixer.JumpPad.Play();
@@ -359,7 +359,8 @@ namespace SNHU.GameObject
 					
 					if (e.Y >= Y)
 					{
-						e.OnMessage(Platform.Message.ObjectCollide, this);
+						//	send OnLand only if we're above the object.
+						e.OnMessage(Message.OnLand, this);
 					}
 					else
 					{
@@ -367,6 +368,7 @@ namespace SNHU.GameObject
 					}
 				}
 				
+				e.OnMessage(Platform.Message.Bump);
 				OnMessage(Message.OnLand);
 			}
 			else if (e.Type == Type)
@@ -408,6 +410,10 @@ namespace SNHU.GameObject
 				}
 				
 				return false;
+			}
+			else if (e.Type == Platform.Collision)
+			{
+				e.OnMessage(Platform.Message.Bump);
 			}
 			
 			return base.MoveCollideX(e);

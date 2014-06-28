@@ -11,12 +11,20 @@ namespace SNHU.GameObject.Platforms
 		private Nineslice image;
 		private Emitter emitter;
 		
+		public const string Collision = "JumpPad";
+		
 		public JumpPad() : base()
 		{
-			Type = "JumpPad";
+			Type = Collision;
 			Tweener.Timer(0.5f)
 				.OnComplete(() => emitter.Emit("p", FP.Rand((int) Width), -5))
 				.Repeat();
+		}
+		
+		public override void Added()
+		{
+			base.Added();
+			Layer = -1000;
 		}
 		
 		public override void Load(System.Xml.XmlNode node)
@@ -37,8 +45,6 @@ namespace SNHU.GameObject.Platforms
 			
 			AddComponent(emitter);
 			AddComponent(image);
-			
-			Layer = -1000;
 		}
 	}
 }

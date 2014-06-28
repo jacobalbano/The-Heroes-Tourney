@@ -40,7 +40,7 @@ namespace SNHU.GameObject
 			base.Update();
 			
 			image.Scale = 0.7f + (float) (Math.Sin(ticks += 0.1f) + 1) / 2f;
-			image.Color = FP.Color(hypeTween.Color);
+			image.Color = hypeTween.Color;
 		}
 	}
 }

@@ -282,6 +282,16 @@
             Override this; called when the Engine starts up.
             </summary>
         </member>
+        <member name="M:Punk.Engine.FocusGained">
+            <summary>
+            Override this; called when the window gains focus.
+            </summary>
+        </member>
+        <member name="M:Punk.Engine.FocusLost">
+            <summary>
+            Override this; called when the window loses focus.
+            </summary>
+        </member>
         <member name="M:Punk.Engine.Update">
             <summary>
             Updates the engine.
@@ -1054,243 +1064,243 @@
             Global Tweener for tweening values across multiple worlds.
             </summary>
         </member>
-        <member name="T:GlideTween.Ease">
+        <member name="T:Glide.Ease">
             <summary>
             Static class with useful easer functions that can be used by Tweens.
             </summary>
         </member>
-        <member name="M:GlideTween.Ease.ElasticIn(System.Single)">
+        <member name="M:Glide.Ease.ElasticIn(System.Single)">
             <summary>
             Elastic in.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.ElasticOut(System.Single)">
+        <member name="M:Glide.Ease.ElasticOut(System.Single)">
             <summary>
             Elastic out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.ElasticInOut(System.Single)">
+        <member name="M:Glide.Ease.ElasticInOut(System.Single)">
             <summary>
             Elastic in and out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.QuadIn(System.Single)">
+        <member name="M:Glide.Ease.QuadIn(System.Single)">
             <summary>
             Quadratic in.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.QuadOut(System.Single)">
+        <member name="M:Glide.Ease.QuadOut(System.Single)">
             <summary>
             Quadratic out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.QuadInOut(System.Single)">
+        <member name="M:Glide.Ease.QuadInOut(System.Single)">
             <summary>
             Quadratic in and out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.CubeIn(System.Single)">
+        <member name="M:Glide.Ease.CubeIn(System.Single)">
             <summary>
             Cubic in.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.CubeOut(System.Single)">
+        <member name="M:Glide.Ease.CubeOut(System.Single)">
             <summary>
             Cubic out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.CubeInOut(System.Single)">
+        <member name="M:Glide.Ease.CubeInOut(System.Single)">
             <summary>
             Cubic in and out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.QuartIn(System.Single)">
+        <member name="M:Glide.Ease.QuartIn(System.Single)">
             <summary>
             Quart in.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.QuartOut(System.Single)">
+        <member name="M:Glide.Ease.QuartOut(System.Single)">
             <summary>
             Quart out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.QuartInOut(System.Single)">
+        <member name="M:Glide.Ease.QuartInOut(System.Single)">
             <summary>
             Quart in and out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.QuintIn(System.Single)">
+        <member name="M:Glide.Ease.QuintIn(System.Single)">
             <summary>
             Quint in.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.QuintOut(System.Single)">
+        <member name="M:Glide.Ease.QuintOut(System.Single)">
             <summary>
             Quint out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.QuintInOut(System.Single)">
+        <member name="M:Glide.Ease.QuintInOut(System.Single)">
             <summary>
             Quint in and out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.SineIn(System.Single)">
+        <member name="M:Glide.Ease.SineIn(System.Single)">
             <summary>
             Sine in.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.SineOut(System.Single)">
+        <member name="M:Glide.Ease.SineOut(System.Single)">
             <summary>
             Sine out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.SineInOut(System.Single)">
+        <member name="M:Glide.Ease.SineInOut(System.Single)">
             <summary>
             Sine in and out
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.BounceIn(System.Single)">
+        <member name="M:Glide.Ease.BounceIn(System.Single)">
             <summary>
             Bounce in.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.BounceOut(System.Single)">
+        <member name="M:Glide.Ease.BounceOut(System.Single)">
             <summary>
             Bounce out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.BounceInOut(System.Single)">
+        <member name="M:Glide.Ease.BounceInOut(System.Single)">
             <summary>
             Bounce in and out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.CircIn(System.Single)">
+        <member name="M:Glide.Ease.CircIn(System.Single)">
             <summary>
             Circle in.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.CircOut(System.Single)">
+        <member name="M:Glide.Ease.CircOut(System.Single)">
             <summary>
             Circle out
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.CircInOut(System.Single)">
+        <member name="M:Glide.Ease.CircInOut(System.Single)">
             <summary>
             Circle in and out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.ExpoIn(System.Single)">
+        <member name="M:Glide.Ease.ExpoIn(System.Single)">
             <summary>
             Exponential in.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.ExpoOut(System.Single)">
+        <member name="M:Glide.Ease.ExpoOut(System.Single)">
             <summary>
             Exponential out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.ExpoInOut(System.Single)">
+        <member name="M:Glide.Ease.ExpoInOut(System.Single)">
             <summary>
             Exponential in and out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.BackIn(System.Single)">
+        <member name="M:Glide.Ease.BackIn(System.Single)">
             <summary>
             Back in.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.BackOut(System.Single)">
+        <member name="M:Glide.Ease.BackOut(System.Single)">
             <summary>
             Back out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Ease.BackInOut(System.Single)">
+        <member name="M:Glide.Ease.BackInOut(System.Single)">
             <summary>
             Back in and out.
             </summary>
             <param name="t">Time elapsed.</param>
             <returns>Eased timescale.</returns>
         </member>
-        <member name="M:GlideTween.Glide.From(System.Object)">
+        <member name="M:Glide.Tween.From(System.Object)">
             <summary>
             Apply target values to a starting point before tweening.
             </summary>
             <param name="values">The values to apply, in an anonymous type ( new { prop1 = 100, prop2 = 0} ).</param>
             <returns>A reference to this.</returns>
         </member>
-        <member name="M:GlideTween.Glide.Ease(System.Func{System.Single,System.Single})">
+        <member name="M:Glide.Tween.Ease(System.Func{System.Single,System.Single})">
             <summary>
             Set the easing function.
             </summary>
             <param name="ease">The Easer to use.</param>
             <returns>A reference to this.</returns>
         </member>
-        <member name="M:GlideTween.Glide.OnBegin(System.Action)">
+        <member name="M:Glide.Tween.OnBegin(System.Action)">
             <summary>
             Set a function to call when the tween begins (useful when using delays).
             </summary>
             <param name="callback">The function that will be called when the tween starts, after the delay.</param>
             <returns>A reference to this.</returns>
         </member>
-        <member name="M:GlideTween.Glide.OnComplete(System.Action)">
+        <member name="M:Glide.Tween.OnComplete(System.Action)">
             <summary>
             Set a function to call when the tween finishes.
             If the tween repeats infinitely, this will be called each time; otherwise it will only run when the tween is finished repeating.
@@ -1298,76 +1308,70 @@
             <param name="callback">The function that will be called on tween completion.</param>
             <returns>A reference to this.</returns>
         </member>
-        <member name="M:GlideTween.Glide.OnUpdate(System.Action)">
+        <member name="M:Glide.Tween.OnUpdate(System.Action)">
             <summary>
             Set a function to call as the tween updates.
             </summary>
             <param name="callback">The function to use.</param>
             <returns>A reference to this.</returns>
         </member>
-        <member name="M:GlideTween.Glide.Repeat(System.Int32)">
+        <member name="M:Glide.Tween.Repeat(System.Int32)">
             <summary>
             Enable repeating.
             </summary>
             <param name="times">Number of times to repeat. Leave blank or pass a negative number to repeat infinitely.</param>
             <returns>A reference to this.</returns>
         </member>
-        <member name="M:GlideTween.Glide.Reflect">
+        <member name="M:Glide.Tween.Reflect">
             <summary>
             Sets the tween to reverse every other time it repeats. Repeating must be enabled for this to have any effect.
             </summary>
             <returns>A reference to this.</returns>
         </member>
-        <member name="M:GlideTween.Glide.HexColor">
-            <summary>
-            Whether the property should be tweened as a color.
-            </summary>
-            <returns>A reference to this.</returns>
-        </member>
-        <member name="M:GlideTween.Glide.Reverse">
+        <member name="M:Glide.Tween.Reverse">
             <summary>
             Swaps the start and end values of the tween.
             </summary>
             <returns>A reference to this.</returns>
         </member>
-        <member name="M:GlideTween.Glide.Rotation">
+        <member name="M:Glide.Tween.Rotation">
             <summary>
             Whether this tween handles rotation.
             </summary>
             <returns>A reference to this.</returns>
         </member>
-        <member name="M:GlideTween.Glide.Round">
+        <member name="M:Glide.Tween.Round">
             <summary>
             Whether tweened values should be rounded to integer values.
             </summary>
             <returns>A reference to this.</returns>
         </member>
-        <member name="M:GlideTween.Glide.Cancel">
+        <member name="M:Glide.Tween.Cancel">
             <summary>
             Remove tweens from the tweener without calling their complete functions.
             </summary>
         </member>
-        <member name="M:GlideTween.Glide.CancelAndComplete">
+        <member name="M:Glide.Tween.CancelAndComplete">
             <summary>
             Assign tweens their final value and remove them from the tweener.
             </summary>
         </member>
-        <member name="M:GlideTween.Glide.Pause">
+        <member name="M:Glide.Tween.Pause">
             <summary>
             Set tweens to pause. They won't update and their delays won't tick down.
             </summary>
         </member>
-        <member name="M:GlideTween.Glide.PauseToggle">
+        <member name="M:Glide.Tween.PauseToggle">
             <summary>
             Toggle tweens' paused value.
             </summary>
         </member>
-        <member name="M:GlideTween.Glide.Resume">
+        <member name="M:Glide.Tween.Resume">
             <summary>
             Resumes tweens from a paused state.
             </summary>
         </member>
-        <member name="M:GlideTween.Glide.GlideManagerImpl.Tween(System.Object,System.Object,System.Single,System.Single)">
+        <member name="M:Glide.Tween.TweenerImpl.Tween(System.Object,System.Object,System.Single,System.Single)">
             <summary>
             Tweens a set of numeric properties on an object.
             </summary>
@@ -1377,7 +1381,14 @@
             <param name="delay">Delay before the tween starts, in seconds.</param>
             <returns>The tween created, for setting properties on.</returns>
         </member>
-        <member name="M:GlideTween.Glide.GlideManagerImpl.Timer(System.Single,System.Single)">
+        <member name="M:Glide.Tween.TweenerImpl.AddTween(Glide.Tween)">
+            <summary>
+            Manually add a tween to the tweener.
+            Only use this to add custom tween classes!
+            </summary>
+            <param name="tween">The tween to add.</param>
+        </member>
+        <member name="M:Glide.Tween.TweenerImpl.Timer(System.Single,System.Single)">
             <summary>
             Starts a simple timer for setting up callback scheduling.
             </summary>
@@ -1385,62 +1396,62 @@
             <param name="delay">How long to wait before starting the timer, in seconds.</param>
             <returns>The tween created, for setting properties.</returns>
         </member>
-        <member name="M:GlideTween.Glide.GlideManagerImpl.Cancel">
+        <member name="M:Glide.Tween.TweenerImpl.Cancel">
             <summary>
             Remove tweens from the tweener without calling their complete functions.
             </summary>
         </member>
-        <member name="M:GlideTween.Glide.GlideManagerImpl.CancelAndComplete">
+        <member name="M:Glide.Tween.TweenerImpl.CancelAndComplete">
             <summary>
             Assign tweens their final value and remove them from the tweener.
             </summary>
         </member>
-        <member name="M:GlideTween.Glide.GlideManagerImpl.Pause">
+        <member name="M:Glide.Tween.TweenerImpl.Pause">
             <summary>
             Set tweens to pause. They won't update and their delays won't tick down.
             </summary>
         </member>
-        <member name="M:GlideTween.Glide.GlideManagerImpl.PauseToggle">
+        <member name="M:Glide.Tween.TweenerImpl.PauseToggle">
             <summary>
             Toggle tweens' paused value.
             </summary>
         </member>
-        <member name="M:GlideTween.Glide.GlideManagerImpl.Resume">
+        <member name="M:Glide.Tween.TweenerImpl.Resume">
             <summary>
             Resumes tweens from a paused state.
             </summary>
         </member>
-        <member name="M:GlideTween.Glide.GlideManagerImpl.Update(System.Single)">
+        <member name="M:Glide.Tween.TweenerImpl.Update(System.Single)">
             <summary>
             Updates the tweener and all objects it contains.
             </summary>
             <param name="secondsElapsed">Seconds elapsed since last update.</param>
         </member>
-        <member name="M:GlideTween.Glide.GlideManagerImpl.TargetCancel(System.Object[])">
+        <member name="M:Glide.Tween.TweenerImpl.TargetCancel(System.Object[])">
             <summary>
             Look up tweens by the objects they target, and cancel them.
             </summary>
             <param name="targets">The objects being tweened that you want to cancel.</param>
         </member>
-        <member name="M:GlideTween.Glide.GlideManagerImpl.TargetCancelAndComplete(System.Object[])">
+        <member name="M:Glide.Tween.TweenerImpl.TargetCancelAndComplete(System.Object[])">
             <summary>
             Look up tweens by the objects they target, cancel them, set them to their final values, and call the complete callback.
             </summary>
             <param name="targets">The objects being tweened that you want to cancel and complete.</param>
         </member>
-        <member name="M:GlideTween.Glide.GlideManagerImpl.TargetPause(System.Object[])">
+        <member name="M:Glide.Tween.TweenerImpl.TargetPause(System.Object[])">
             <summary>
             Look up tweens by the objects they target, and pause them.
             </summary>
             <param name="targets">The objects being tweened that you want to pause.</param>
         </member>
-        <member name="M:GlideTween.Glide.GlideManagerImpl.TargetPauseToggle(System.Object[])">
+        <member name="M:Glide.Tween.TweenerImpl.TargetPauseToggle(System.Object[])">
             <summary>
             Look up tweens by the objects they target, and toggle their paused states.
             </summary>
             <param name="targets">The objects being tweened that you want to toggle pause.</param>
         </member>
-        <member name="M:GlideTween.Glide.GlideManagerImpl.TargetResume(System.Object[])">
+        <member name="M:Glide.Tween.TweenerImpl.TargetResume(System.Object[])">
             <summary>
             Look up tweens by the objects they target, and resume them from paused.
             </summary>
@@ -1686,13 +1697,6 @@
             <param name="texture">Source image.</param>
             <param name="clipRect">Optional rectangle defining area of the source image to draw.</param>
         </member>
-        <member name="M:Punk.Graphics.Image.Init(SFML.Graphics.Texture,System.Nullable{SFML.Graphics.IntRect})">
-            <summary>
-            Constructor.
-            </summary>
-            <param name="texture">Source image.</param>
-            <param name="clipRect">Optional rectangle defining area of the source image to draw.</param>
-        </member>
         <member name="M:Punk.Graphics.Image.CreateRect(System.Int32,System.Int32,SFML.Graphics.Color)">
             <summary>
             Create a solid-color rectangle image.
@@ -1848,36 +1852,6 @@
             A box that automatically repeats portions of its source texture to create a seamlessly tiled image.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Nineslice.Angle">
-            <summary>
-            Rotation of the image, in degrees.
-            </summary>
-        </member>
-        <member name="F:Punk.Graphics.Nineslice.Scale">
-            <summary>
-            Scale of the image, affects both x and y scale.
-            </summary>
-        </member>
-        <member name="F:Punk.Graphics.Nineslice.ScaleX">
-            <summary>
-            X scale of the image.
-            </summary>
-        </member>
-        <member name="F:Punk.Graphics.Nineslice.ScaleY">
-            <summary>
-            Y scale of the image.
-            </summary>
-        </member>
-        <member name="F:Punk.Graphics.Nineslice.OriginX">
-            <summary>
-            X origin of the image, determines transformation point.
-            </summary>
-        </member>
-        <member name="F:Punk.Graphics.Nineslice.OriginY">
-            <summary>
-            Y origin of the image, determines transformation point.
-            </summary>
-        </member>
         <member name="M:Punk.Graphics.Nineslice.#ctor(SFML.Graphics.Texture,System.Int32,System.Int32)">
             <summary>
             Constructor.
@@ -1925,6 +1899,36 @@
         <member name="F:Punk.Graphics.Nineslice.StretchRight">
             <summary>
             Whether the texture should be stretched instead of repeating.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Nineslice.Angle">
+            <summary>
+            Rotation of the image, in degrees.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Nineslice.Scale">
+            <summary>
+            Scale of the image, affects both x and y scale.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Nineslice.ScaleX">
+            <summary>
+            X scale of the image.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Nineslice.ScaleY">
+            <summary>
+            Y scale of the image.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Nineslice.OriginX">
+            <summary>
+            X origin of the image, determines transformation point.
+            </summary>
+        </member>
+        <member name="P:Punk.Graphics.Nineslice.OriginY">
+            <summary>
+            Y origin of the image, determines transformation point.
             </summary>
         </member>
         <member name="P:Punk.Graphics.Nineslice.Columns">
@@ -2834,11 +2838,6 @@
             Amount of Masks in the list.
             </summary>
         </member>
-        <member name="T:Punk.Rendering.RenderJob">
-            <summary>
-            Description of Class1.
-            </summary>
-        </member>
         <member name="M:Punk.Rendering.RenderJob.DelegateRender(System.Single,System.Single,Punk.Camera)">
             <summary>
             Convenience function for setting up common properties.
@@ -3306,6 +3305,13 @@
             <param name="obj">The object that the property is on.</param>
             <param name="name">The name of the property.</param>
             <returns>The value of the property.</returns>
+        </member>
+        <member name="M:Punk.Utils.Reflect.Reflect.GetTypeFromAllAssemblies(System.String)">
+            <summary>
+            Searches all known assemblies for a type and returns that type.
+            </summary>
+            <param name="type">The type to search for.</param>
+            <returns>The type found.  Null if no match.</returns>
         </member>
         <member name="T:Punk.Utils.VectorHelper">
             <summary>

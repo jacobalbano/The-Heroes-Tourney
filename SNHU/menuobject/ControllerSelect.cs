@@ -1,7 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using GlideTween;
+using Glide;
 using Punk;
 using Punk.Graphics;
 using Punk.Utils;

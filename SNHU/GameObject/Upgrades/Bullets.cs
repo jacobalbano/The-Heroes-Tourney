@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using GlideTween;
+using Glide;
 using Punk;
 using Punk.Graphics;
 using Punk.Utils;
@@ -23,7 +23,7 @@ namespace SNHU.GameObject.Upgrades
 		private Image image;
 		private Entity emitterEnt;
 		private Emitter emitter;
-		private Glide bounceTween;
+		private Tween bounceTween;
 		
 		private static string[] colliders;
 		static Bullet()
@@ -131,7 +131,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			result.Value = false;
 			e.OnMessage(EffectMessage.Message.OnEffect, MakeEffect(result));
-			e.OnMessage(Platform.Message.ObjectCollide);
+			e.OnMessage(Platform.Message.Bump);
 			
 			var bounce = e != lastBounce && (bool) result.Value;
 			lastBounce = e;

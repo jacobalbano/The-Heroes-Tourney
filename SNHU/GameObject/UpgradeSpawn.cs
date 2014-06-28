@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using Punk;
 using Punk.Graphics;
+using Punk.Utils.Reflect;
 using SNHU.GameObject.Upgrades;
 
 namespace SNHU.GameObject
@@ -52,7 +53,7 @@ namespace SNHU.GameObject
 		{
 			var name = FP.Choose(Upgrades);
 			name = Regex.Replace(name, @"\s", "");
-			var type = GetTypeFromAllAssemblies(name);
+			var type = Reflect.GetTypeFromAllAssemblies(name);
 			if (type == null)
 				throw new Exception(string.Format("Invalid upgrade type: '{0}'", name));
 			
@@ -103,26 +104,5 @@ namespace SNHU.GameObject
 				}
 			}
 		}
-		
-		/// <summary>
-        /// Searches all known assemblies for a type and returns that type.
-        /// </summary>
-        /// <param name="type">The type to search for.</param>
-        /// <returns>The type found.  Null if no match.</returns>
-        public static Type GetTypeFromAllAssemblies(string type)
-        {
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            foreach (var assembly in assemblies)
-            {
-                var types = assembly.GetTypes();
-                foreach (var t in types)
-                {
-                    if (t.Name == type)
-                        return t;
-                }
-            }
-            
-            return null;
-        }
 	}
 }

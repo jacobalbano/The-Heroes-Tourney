@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using GlideTween;
+using Glide;
 using Punk;
 using Punk.Loaders;
 using Punk.Utils;

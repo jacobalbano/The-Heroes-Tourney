@@ -90,10 +90,10 @@
     <Compile Include="GameObject\Platforms\Crumble.cs" />
     <Compile Include="GameObject\Platforms\JumpPad.cs" />
     <Compile Include="GameObject\Platforms\Platform.cs" />
-    <Compile Include="GameObject\Platforms\SpawnPoint.cs" />
     <Compile Include="GameObject\Player.cs" />
     <Compile Include="GameObject\Razor.cs" />
     <Compile Include="GameObject\EffectMessage.cs" />
+    <Compile Include="GameObject\SpawnPoint.cs" />
     <Compile Include="GameObject\Upgrades\HyperPunch.cs" />
     <Compile Include="GameObject\Upgrades\Magnet.cs" />
     <Compile Include="GameObject\Upgrades\PotatoThinker.cs" />

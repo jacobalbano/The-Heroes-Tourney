@@ -1,7 +1,9 @@
 ﻿
 using System;
-using GlideTween;
+using Glide;
 using Punk;
+using Punk.Utils;
+using SFML.Graphics;
 
 namespace SNHU.Components
 {
@@ -10,7 +12,7 @@ namespace SNHU.Components
 	/// </summary>
 	public class HypeTween
 	{
-		public int Color;
+		public Color Color;
 		
 		static int[] colors;
 		static HypeTween()
@@ -30,16 +32,16 @@ namespace SNHU.Components
 			};
 		}
 		
-		public HypeTween(float duration, GlideManager tweener)
+		public HypeTween(float duration, Tweener tweener)
 		{
 			StartHype(duration, tweener);
+			Color = Color.White;
 		}
 		
-		void StartHype(float duration, GlideManager tweener)
+		void StartHype(float duration, Tweener tweener)
 		{
-			tweener.Tween(this, new {Color = FP.Choose(colors)}, duration)
-				.OnComplete(() => StartHype(duration, tweener))
-				.HexColor();
+			tweener.ColorTween(this, "Color", FP.Color(FP.Choose(colors)), duration)
+				.OnComplete(() => StartHype(duration, tweener));
 		}
 	}
 }
