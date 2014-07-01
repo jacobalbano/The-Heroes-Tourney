@@ -1,8 +1,8 @@
 ﻿
 using System;
 using Punk;
+using Punk.Core;
 using Punk.Utils;
-using SFML.Window;
 using SNHU.GameObject;
 
 namespace SNHU.Components
@@ -29,7 +29,7 @@ namespace SNHU.Components
 		int duration;
 		int cooldown;
 		float facing;
-		Vector2f dodgeDirection;
+		Point dodgeDirection;
 		Controller controller;
 		Axis axis;
 		
@@ -37,7 +37,7 @@ namespace SNHU.Components
 		{
 			facing = 0;
 			CanDodge = true;
-			dodgeDirection = new Vector2f();
+			dodgeDirection = new Point();
 			this.controller = controller;
 			this.axis = axis;
 			

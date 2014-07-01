@@ -1,8 +1,7 @@
 ﻿using System;
 using Punk;
+using Punk.Core;
 using Punk.Graphics;
-using Punk.Utils;
-using SFML.Window;
 using SNHU.Components;
 
 namespace SNHU.GameObject.Upgrades
@@ -49,8 +48,8 @@ namespace SNHU.GameObject.Upgrades
 		{
 			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
 			{
-				Vector2f dir = new Vector2f(to.X - from.X, to.Y - from.Y)
-					.Normalized(FusStrength);
+				var dir = new Point(to.X - from.X, to.Y - from.Y);
+				dir.Normalize(FusStrength);
 				
 				to.OnMessage(PhysicsBody.Message.Impulse, dir.X, dir.Y);
 			};

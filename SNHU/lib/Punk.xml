@@ -207,6 +207,46 @@
             
             </summary>
         </member>
+        <member name="M:Punk.Core.Point.Dot(Punk.Core.Point)">
+            <summary>
+            Get the dot product of this and another vector.
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Punk.Core.Point.Normalize(System.Single)">
+            <summary>
+            Scales the line segment between { 0, 0 } and the current point to a set length.
+            </summary>
+            <param name="length">The length to scale the vector to (default 1).</param>
+        </member>
+        <member name="M:Punk.Core.Point.Normalized(System.Single)">
+            <summary>
+            Returns a normalized copy of this vector. The original vector is unmodified.
+            </summary>
+            <param name="length">The length to scale the vector to (default 1).</param>
+            <returns>The normalized vector.</returns>
+        </member>
+        <member name="F:Punk.Core.Point.X">
+            <summary>
+            Position component.
+            </summary>
+        </member>
+        <member name="F:Punk.Core.Point.Y">
+            <summary>
+            Position component.
+            </summary>
+        </member>
+        <member name="P:Punk.Core.Point.IsZero">
+            <summary>
+            Whether this is a zero vector { 0, 0 }.
+            </summary>
+        </member>
+        <member name="P:Punk.Core.Point.Length">
+            <summary>
+            The length of the vector.
+            </summary>
+        </member>
         <member name="T:Punk.Debugging.Console">
             <summary>
             Description of Class.
@@ -2903,12 +2943,12 @@
             <param name="name">The parameter in the shader to set.</param>
             <param name="texture">The texture to set it to.</param>
         </member>
-        <member name="M:Punk.Rendering.Shader.SetParameter(System.String,Punk.Rendering.Shader.TextureType)">
+        <member name="M:Punk.Rendering.Shader.SetAsCurrentTexture(System.String)">
             <summary>
             Set a parameter on the shader.
+            This will cause the named parameter to use the texture assigned to the drawable.
             </summary>
             <param name="name">The parameter in the shader to set.</param>
-            <param name="currentTexture">The texture to set it to.</param>
         </member>
         <member name="F:Punk.Screen.ClearColor">
             <summary>
@@ -3313,41 +3353,6 @@
             <param name="type">The type to search for.</param>
             <returns>The type found.  Null if no match.</returns>
         </member>
-        <member name="T:Punk.Utils.VectorHelper">
-            <summary>
-            Helper class that adds some common math functions to SFML's Vector2f type.
-            </summary>
-        </member>
-        <member name="M:Punk.Utils.VectorHelper.Dot(SFML.Window.Vector2f,SFML.Window.Vector2f)">
-            <summary>
-            Computes the dot product of two vectors.
-            </summary>
-            <param name="vec">Self</param>
-            <param name="other">The other vector to compute with.</param>
-            <returns>The dot product of the two vectors.</returns>
-        </member>
-        <member name="M:Punk.Utils.VectorHelper.Length(SFML.Window.Vector2f)">
-            <summary>
-            Get the length of a vector
-            </summary>
-            <param name="vec">Self</param>
-            <returns>The length of the vector</returns>
-        </member>
-        <member name="M:Punk.Utils.VectorHelper.Normalized(SFML.Window.Vector2f,System.Single)">
-            <summary>
-            Scales the line segment between (0,0) and the current point to a set length. 
-            </summary>
-            <param name="vec">Self</param>
-            <param name="amount">The length to scale the vector to</param>
-            <returns>The normalized vector</returns>
-        </member>
-        <member name="M:Punk.Utils.VectorHelper.IsZero(SFML.Window.Vector2f)">
-            <summary>
-            If the vector is a zero vector.
-            </summary>
-            <param name="vec">Self</param>
-            <returns>Whether the vector is a zero vector.</returns>
-        </member>
         <member name="T:Punk.World">
             <summary>
             Updated by Engine, main game container that holds all currently active Entities.
@@ -3381,11 +3386,6 @@
             Performed by the game loop, updates all contained Entities.
             If you override this to give your World update code, remember
             to call base.update() or your Entities will not be updated.
-            </summary>
-        </member>
-        <member name="F:Punk.World.Camera">
-            <summary>
-            The world camera.
             </summary>
         </member>
         <member name="M:Punk.World.Add(Punk.Entity)">
@@ -3788,6 +3788,11 @@
         <member name="F:Punk.World.Active">
             <summary>
             Whether the world should update.
+            </summary>
+        </member>
+        <member name="P:Punk.World.Camera">
+            <summary>
+            The world camera.
             </summary>
         </member>
         <member name="P:Punk.World.MouseX">

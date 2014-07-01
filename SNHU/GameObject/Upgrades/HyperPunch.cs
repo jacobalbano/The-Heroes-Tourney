@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using Punk;
+using Punk.Core;
 using Punk.Graphics;
-using Punk.Utils;
-using SFML.Window;
 using SNHU.Components;
 
 namespace SNHU.GameObject.Upgrades
@@ -12,7 +10,7 @@ namespace SNHU.GameObject.Upgrades
 	public class HyperFist : Entity
 	{
 		
-		public Vector2f direction;
+		public Point direction;
 		public float FistSpeed { get; private set; }
 		public float ForceMultiplier { get; private set; }
 		public float FistScale { get; private set; }
@@ -39,7 +37,7 @@ namespace SNHU.GameObject.Upgrades
 			SetHitbox((int) image.ScaledWidth, (int) image.ScaledHeight);
 			CenterOrigin();
 			
-			direction = new Vector2f();
+			direction = new Point();
 			
 			AddResponse(ChunkManager.Message.Advance, OnAdvance);
 		}
@@ -109,12 +107,12 @@ namespace SNHU.GameObject.Upgrades
 			
 			image.Angle = FP.Angle(0, 0, direction.X, direction.Y);
 			
-			var moveBy = VectorHelper.Normalized(direction, FistSpeed);
+			direction.Normalize(FistSpeed);
 			
-			var rainbow = World.Add(new RainbowTrail(X, Y, moveBy, image.Scale, FistSpeed, Layer));
+			var rainbow = World.Add(new RainbowTrail(X, Y, direction, image.Scale, FistSpeed, Layer));
 			
-			X += moveBy.X;
-			Y += moveBy.Y;
+			X += direction.X;
+			Y += direction.Y;
 			
 		}
 		
@@ -157,7 +155,7 @@ namespace SNHU.GameObject.Upgrades
 				
 				fist.X = (Parent as Player).Facing == -1 ? Parent.Left : Parent.Right;
 				fist.Y = Parent.CenterY;
-				fist.direction = new Vector2f((Parent as Player).Facing, 0.0f);
+				fist.direction = new Point((Parent as Player).Facing, 0.0f);
 				
 				
 				Parent.World.Add(fist);
@@ -198,7 +196,7 @@ namespace SNHU.GameObject.Upgrades
 		private float sineticks;
 		private Image rainbow;
 		
-		public RainbowTrail(float x, float y, Vector2f direction, float scale, float FIST_SPEED, int layer)
+		public RainbowTrail(float x, float y, Point direction, float scale, float FIST_SPEED, int layer)
 		{
 			X = x;
 			Y = y;
