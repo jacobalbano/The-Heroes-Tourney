@@ -97,6 +97,7 @@
     <Compile Include="GameObject\Upgrades\HyperPunch.cs" />
     <Compile Include="GameObject\Upgrades\Magnet.cs" />
     <Compile Include="GameObject\Upgrades\PotatoThinker.cs" />
+    <Compile Include="GameObject\Upgrades\TimeFreeze.cs" />
     <Compile Include="GameObject\Victory.cs" />
     <Compile Include="GameObject\UpgradeSpawn.cs" />
     <Compile Include="GameObject\Upgrades\Bullets.cs" />
