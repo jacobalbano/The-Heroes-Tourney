@@ -9,7 +9,7 @@ namespace SNHU.GameObject.Platforms
 	[OgmoConstructor("width", "height")]
 	public class Platform : Entity
 	{
-		public const string Collision = "platform";
+		public const string Collision = "Collision";
 		
 		public enum Message { Bump }
 		

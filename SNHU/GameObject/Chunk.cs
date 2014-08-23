@@ -5,7 +5,9 @@ using System.Linq;
 using System.Xml.Linq;
 using Glide;
 using Indigo;
+using Indigo.Graphics;
 using Indigo.Loaders;
+using Indigo.Masks;
 using Indigo.Utils;
 using SNHU.GameObject.Platforms;
 
@@ -45,7 +47,8 @@ namespace SNHU.GameObject
 			level = FP.Choose(levels);
 			
 			var loader = new OgmoLoader();
-			loader.RegisterClassAlias<Platform>("platform");
+			loader.RegisterGridType("Collision", 16, 16);
+			
 			loader.RegisterClassAlias<JumpPad>("jumpPad");
 			loader.RegisterClassAlias<Crumble>("crumble");
 			loader.RegisterClassAlias<Razor>("deadlyAnchor");
@@ -69,6 +72,18 @@ namespace SNHU.GameObject
 					++spawns;
 					SpawnPoints.Add(e);
 				}
+				
+				if (e.Mask is Grid)
+				{
+					var grid = e.Mask as Grid;
+					
+					var map = new Tilemap(Library.GetTexture("assets/tiles/Tileset.png"), FP.Width, FP.Height, 16, 16);
+					AutoTileSet.CreateFromGrid(map, grid);
+					
+					e.AddComponent(map);
+					e.Visible = true;
+				}
+				
 			}
 			
 			if (spawns != 4)
@@ -84,7 +99,7 @@ namespace SNHU.GameObject
 			
 			World.AddList(ents);
 			
-			Tweener.Tween(FP.Camera, new { Y = Y + FP.HalfHeight}, 1)
+			Tweener.Tween(FP.Camera, new { Y = (int) (Y + FP.HalfHeight) }, 1)
 				.Ease(Ease.ElasticOut)
 				.OnComplete(OnFinishAdvance);
 		}
