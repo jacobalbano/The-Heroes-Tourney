@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Punk;
-using Punk.Graphics;
+using Indigo;
+using Indigo.Graphics;
 using SNHU.Components;
 
 namespace SNHU.GameObject.Upgrades

@@ -1,7 +1,7 @@
 ﻿using System;
-using Punk;
-using Punk.Utils;
-using SFML.Window;
+using Indigo;
+using Indigo.Inputs;
+using Indigo.Utils;
 
 namespace SNHU
 {
@@ -19,7 +19,7 @@ namespace SNHU
 			
 			FP.World = new MenuWorld();
 			FP.Screen.Title = "The Heroes' Tourney";
-			Input.CursorVisible = false;
+			Mouse.CursorVisible = false;
 		}
 		
 		public static void Main(string[] args)

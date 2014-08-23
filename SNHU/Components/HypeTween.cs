@@ -1,8 +1,8 @@
 ﻿
 using System;
 using Glide;
-using Punk;
-using Punk.Utils;
+using Indigo;
+using Indigo.Utils;
 using SFML.Graphics;
 
 namespace SNHU.Components

@@ -1,7 +1,8 @@
 ﻿
 using System;
-using Punk;
-using Punk.Utils;
+using Indigo;
+using Indigo.Inputs;
+using Indigo.Utils;
 using SNHU.GameObject;
 
 namespace SNHU.Components
@@ -12,13 +13,13 @@ namespace SNHU.Components
 	public class Movement : Component
 	{
 		PhysicsBody physics;
-		Axis axis;
+		Directional axis;
 		
 		public float Speed { get; private set; }
 		
 		public enum Message { Speed }
 		
-		public Movement(PhysicsBody physics, Axis axis)
+		public Movement(PhysicsBody physics, Directional axis)
 		{
 			this.physics = physics;
 			this.axis = axis;

@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Glide;
+using Indigo.Inputs;
 using SNHU.MenuObject;
-using Punk;
-using Punk.Graphics;
-using Punk.Utils;
-using SFML.Window;
+using Indigo;
+using Indigo.Graphics;
+using Indigo.Utils;
 
 namespace SNHU
 {
@@ -17,7 +17,7 @@ namespace SNHU
 	/// </summary>
 	public class MenuWorld : World
 	{
-		private Dictionary<uint, ControllerSelect> controllerMenus;
+		private Dictionary<int, ControllerSelect> controllerMenus;
 		private Stack<int> pool;
 		
 		private List<string> allImages, takenImages;
@@ -31,12 +31,12 @@ namespace SNHU
 			allImages = LoadAllPlayers();
 			takenImages = new List<string>();
 			
-			controllerMenus = new Dictionary<uint, ControllerSelect>();
+			controllerMenus = new Dictionary<int, ControllerSelect>();
 			pool = new Stack<int>();
 			
-			for (uint i = 0; i < Joystick.Count; i++)
+			for (int i = 0; i < 4; i++)
 			{
-				if (Joystick.IsConnected(i))
+				if (GamepadManager.GetSlot(i).IsConnected)
 				{
 					AddController(i);
 				}
@@ -77,32 +77,34 @@ namespace SNHU
 		public override void Begin()
 		{
 			base.Begin();
-			Input.ControllerConnected += OnControllerAdded;
-			Input.ControllerDisconnected += OnControllerRemoved;
+			
+			GamepadManager.Connected += OnControllerAdded;
+			GamepadManager.Disconnected += OnControllerRemoved;
 		}
 		
 		public override void End()
 		{
 			base.End();
-			Input.ControllerConnected -= OnControllerAdded;
-			Input.ControllerDisconnected -= OnControllerRemoved;
+			
+			GamepadManager.Connected -= OnControllerAdded;
+			GamepadManager.Disconnected -= OnControllerRemoved;
 		}
 		
 		public override void Update()
 		{
 			base.Update();
 			
-			if (Input.Down(Keyboard.Key.LAlt) && Input.Pressed(Keyboard.Key.F4))
+			if ((Keyboard.LAlt.Down || Keyboard.RAlt.Down) && Keyboard.F4.Pressed)
 			{
 				FP.Engine.Quit();
 			}
 			
-			if (Input.Pressed(Keyboard.Key.F))
+			if (Keyboard.F.Pressed)
 			{
 				FP.Screen.Fullscreen = !FP.Screen.Fullscreen;
 			}
 			
-			if (Input.Pressed(Keyboard.Key.F5))
+			if (Keyboard.R.Pressed)
 			{
 				FP.World = new MenuWorld();
 			}
@@ -146,7 +148,7 @@ namespace SNHU
 		
 		void AllReady()
 		{
-			var playerGraphics = new Dictionary<uint, string>();
+			var playerGraphics = new Dictionary<int, string>();
 			foreach (var menu in controllerMenus.Values)
 			{
 				playerGraphics[menu.JoyId] = menu.PlayerImageName;
@@ -156,14 +158,15 @@ namespace SNHU
 			gameWorld.Init(playerGraphics);
 		}
 		
-		private void OnControllerAdded(object sender, JoystickConnectEventArgs e)
+		private void OnControllerAdded(int joystickID)
 		{
-			if (controllerMenus.ContainsKey(e.JoystickId))	return;
+			if (controllerMenus.ContainsKey(joystickID))
+				return;
 			
-			AddController(e.JoystickId);
+			AddController(joystickID);
 		}
 		
-		void AddController(uint joystickId)
+		void AddController(int joystickId)
 		{
 			var slot = GetSlot();
 			if (slot > 3)
@@ -192,14 +195,15 @@ namespace SNHU
 			return controllerMenus.Count;
 		}
 		
-		private void OnControllerRemoved(object sender, JoystickConnectEventArgs e)
+		private void OnControllerRemoved(int joystickID)
 		{
-			if (!controllerMenus.ContainsKey(e.JoystickId))	return;
+			if (!controllerMenus.ContainsKey(joystickID))
+				return;
 			
-			var menu = controllerMenus[e.JoystickId];
-			controllerMenus.Remove(e.JoystickId);
+			var menu = controllerMenus[joystickID];
+			controllerMenus.Remove(joystickID);
 			
-			pool.Push(menu.Slot);
+			pool.Push(menu.PlayerSlot);
 			
 			Tweener.Tween(menu, new { Y = -menu.Height}, 0.75f + FP.Random / 2f)
 				.Ease(Ease.ElasticOut)

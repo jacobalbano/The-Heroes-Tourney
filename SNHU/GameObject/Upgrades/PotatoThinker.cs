@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Glide;
-using Punk;
-using Punk.Graphics;
-using Punk.Utils;
+using Indigo;
+using Indigo.Graphics;
+using Indigo.Utils;
 
 namespace SNHU.GameObject.Upgrades
 {

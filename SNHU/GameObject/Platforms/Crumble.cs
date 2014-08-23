@@ -1,7 +1,7 @@
 ﻿using System;
-using Punk;
-using Punk.Graphics;
-using Punk.Loaders;
+using Indigo;
+using Indigo.Graphics;
+using Indigo.Loaders;
 
 namespace SNHU.GameObject.Platforms
 {
