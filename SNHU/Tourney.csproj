@@ -87,6 +87,9 @@
     <Compile Include="GameObject\GameManager.cs" />
     <Compile Include="GameObject\HUD.cs" />
     <Compile Include="GameObject\Mixer.cs" />
+    <Compile Include="GameObject\Triggers\FloorButton.cs" />
+    <Compile Include="GameObject\Triggers\Trigger.cs" />
+    <Compile Include="GameObject\Triggers\Triggerable.cs" />
     <Compile Include="GameObject\Platforms\Crumble.cs" />
     <Compile Include="GameObject\Platforms\JumpPad.cs" />
     <Compile Include="GameObject\Platforms\Platform.cs" />
@@ -121,6 +124,7 @@
   <ItemGroup>
     <Folder Include="GameObject" />
     <Folder Include="Components" />
+    <Folder Include="GameObject\Triggers" />
     <Folder Include="GameObject\Upgrades" />
     <Folder Include="GameObject\Platforms" />
     <Folder Include="GameObject\Upgrades\Helper" />
