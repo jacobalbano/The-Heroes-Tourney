@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Glide;
-using Punk;
-using Punk.Graphics;
-using Punk.Utils;
-using SFML.Window;
+using Indigo;
+using Indigo.Graphics;
+using Indigo.Inputs;
+using Indigo.Utils;
 using SNHU.GameObject;
 using SNHU.GameObject.Platforms;
 
@@ -20,7 +20,7 @@ namespace SNHU
 		
 		private Image bg;
 		
-		private Dictionary<uint, string> playerImageNames;
+		private Dictionary<int, string> playerImageNames;
 		
 		public GameWorld()
 		{
@@ -35,7 +35,7 @@ namespace SNHU
 			Add(chunkManager = new ChunkManager());
 		}
 		
-		public void Init(Dictionary<uint, string> playerImageNames)
+		public void Init(Dictionary<int, string> playerImageNames)
 		{
 			this.playerImageNames = playerImageNames;
 		}
@@ -44,34 +44,34 @@ namespace SNHU
 		{
 			base.Update();
 			
-			if (Input.Down(Keyboard.Key.LAlt) && Input.Pressed(Keyboard.Key.F4))
+			if ((Keyboard.LAlt.Down || Keyboard.RAlt.Down) && Keyboard.F4.Pressed)
 			{
 				FP.Engine.Quit();
 			}
 			
-			if (Input.Pressed(Keyboard.Key.F))
+			if (Keyboard.F.Pressed)
 			{
 				FP.Screen.Fullscreen = !FP.Screen.Fullscreen;
 			}
 			
-			if (Input.Pressed(Keyboard.Key.F5) || Input.Pressed(Keyboard.Key.R))
+			if (Keyboard.R.Pressed)
 			{
 				var gameWorld = new GameWorld();
 				gameWorld.Init(playerImageNames);
 				FP.World = gameWorld;
 			}
 			
-			if (Input.Pressed(Keyboard.Key.P))
+			if (Keyboard.P.Pressed)
 			{
 				gameManager.TogglePauseGame(true);
 			}
 			
-			if (Input.Pressed(Keyboard.Key.Return))
+			if (Keyboard.Return.Pressed)
 			{
 				chunkManager.OnMessage(ChunkManager.Message.Advance);
 			}
 			
-			if (Input.Pressed(Keyboard.Key.Escape))
+			if (Keyboard.Escape.Pressed)
 			{
 				FP.World = new MenuWorld();
 			}
@@ -83,7 +83,7 @@ namespace SNHU
 			
 			foreach (var i in playerImageNames.Keys)
 			{
-				if (Joystick.IsConnected(i))
+				if (GamepadManager.GetSlot(i).IsConnected)
 				{
 					gameManager.AddPlayer(0, 0, i, playerImageNames[i]);
 				}

@@ -1,8 +1,9 @@
 ﻿
 using System;
-using Punk;
-using Punk.Core;
-using Punk.Utils;
+using Indigo;
+using Indigo.Core;
+using Indigo.Inputs;
+using Indigo.Utils;
 using SNHU.GameObject;
 
 namespace SNHU.Components
@@ -30,15 +31,15 @@ namespace SNHU.Components
 		int cooldown;
 		float facing;
 		Point dodgeDirection;
-		Controller controller;
-		Axis axis;
+		Input Button;
+		Directional axis;
 		
-		public DodgeController(Controller controller, Axis axis)
+		public DodgeController(Input button, Directional axis)
 		{
 			facing = 0;
 			CanDodge = true;
 			dodgeDirection = new Point();
-			this.controller = controller;
+			Button = button;
 			this.axis = axis;
 			
 			AddResponse(Fist.Message.PunchConnected, SetCooldown);
@@ -64,7 +65,7 @@ namespace SNHU.Components
 				facing = FP.Sign(axis.X);
 			}
 			
-			if (cooldown <= 0 && CanDodge && controller.Pressed("dodge"))
+			if (cooldown <= 0 && CanDodge && Button.Pressed)
 			{
 				if (axis.X != 0 && facing != 0)
 				{

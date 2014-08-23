@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Glide;
-using Punk;
-using Punk.Graphics;
-using Punk.Utils;
+using Indigo;
+using Indigo.Graphics;
+using Indigo.Utils;
 using SNHU.GameObject.Upgrades;
 
 namespace SNHU.GameObject

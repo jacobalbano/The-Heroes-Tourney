@@ -1,7 +1,7 @@
 ﻿using System;
 using Glide;
-using Punk;
-using Punk.Graphics;
+using Indigo;
+using Indigo.Graphics;
 
 namespace SNHU.GameObject.Upgrades
 {

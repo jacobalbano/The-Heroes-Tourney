@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using Punk;
-using Punk.Graphics;
-using Punk.Utils.Reflect;
+using Indigo;
+using Indigo.Graphics;
+using Indigo.Utils.Reflect;
 using SNHU.GameObject.Upgrades;
 
 namespace SNHU.GameObject

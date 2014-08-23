@@ -49,8 +49,8 @@
     <OutputType>WinExe</OutputType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Punk">
-      <HintPath>lib\Punk.dll</HintPath>
+    <Reference Include="Indigo">
+      <HintPath>lib\Indigo.dll</HintPath>
     </Reference>
     <Reference Include="sfmlnet-audio-2">
       <HintPath>lib\sfmlnet-audio-2.dll</HintPath>
@@ -76,7 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\DodgeController.cs" />
-    <Compile Include="Components\GrabLock.cs" />
     <Compile Include="Components\HypeTween.cs" />
     <Compile Include="Components\Movement.cs" />
     <Compile Include="Components\PhysicsBody.cs" />

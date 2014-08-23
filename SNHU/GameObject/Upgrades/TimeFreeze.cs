@@ -1,15 +1,7 @@
-﻿/*
- * Created by SharpDevelop.
- * User: Chris
- * Date: 7/12/2014
- * Time: 5:59 PM
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Punk;
-using Punk.Graphics;
+using Indigo;
+using Indigo.Graphics;
 
 namespace SNHU.GameObject.Upgrades
 {

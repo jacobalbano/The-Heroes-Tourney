@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Punk;
-using Punk.Graphics;
-using Punk.Utils;
+using Indigo;
+using Indigo.Graphics;
+using Indigo.Inputs;
+using Indigo.Inputs.Gamepads;
+using Indigo.Utils;
 using SFML.Window;
 using SNHU.Components;
 using SNHU.GameObject.Platforms;
@@ -35,8 +37,7 @@ namespace SNHU.GameObject
 		private bool hand;
 		public Fist left, right;
 		
-		public Controller Controller { get; private set; }
-		private Axis axis;
+		private Directional axis;
 		
 		private OffscreenCursor cursor;
 		
@@ -44,13 +45,16 @@ namespace SNHU.GameObject
 		public Upgrade CurrentUpgrade { get; private set; }
 		public int UpgradeCapacity { get; private set; }
 		
+		public bool Frozen;
 		public bool Invincible { get; private set; }
 		public bool Rebounding { get; private set; }
 		public bool Guarding { get; private set; }
 		public int Facing { get { return player.FlippedX ? -1 : 1; } }
 		
+		public Input Jump, Attack, Dodge, ActivateUpgrade, Guard, Start;
+		
 		public PhysicsBody physics;
-		public DodgeController dodge;
+		public DodgeController DodgeController;
 		public Movement movement;
 		public bool OnGround { get; private set; }
 		
@@ -60,14 +64,12 @@ namespace SNHU.GameObject
 		public int Health;
 		public int Lives { get; private set; }
 		public int PlayerId { get; private set; }
-		public uint ControllerId { get; private set; }
+		public int ControllerId { get; private set; }
 		public bool IsAlive { get; private set; }
 		
 		public string ImageName { get; private set; }
 		
-		public bool Frozen { get; set; }
-		
-		public Player(float x, float y, uint jid, int id, string imageName) : base(x, y)
+		public Player(float x, float y, int jid, int id, string imageName) : base(x, y)
 		{
 			Frozen = false;
 			
@@ -109,7 +111,7 @@ namespace SNHU.GameObject
 			
 			AddComponent(physics = new PhysicsBody(Platform.Collision, Type));
 			AddComponent(movement = new Movement(physics, axis));
-			AddComponent(dodge = new DodgeController(Controller, axis));
+			AddComponent(DodgeController = new DodgeController(Dodge, axis));
 			
 			AddResponse(Message.Damage, OnDamage);
 			AddResponse(Fist.Message.PunchConnected, OnPunchConnected);
@@ -120,32 +122,37 @@ namespace SNHU.GameObject
 		
 		void InitController()
 		{
-			Controller = new Controller(ControllerId);
-			
-			if (Joystick.HasAxis(ControllerId, Joystick.Axis.PovX))	//	xbox
+			var slot = GamepadManager.GetSlot(ControllerId);
+			if (SnesController.IsMatch(slot))
 			{
-				Controller.Define("jump", PlayerId, Controller.Button.A);
+				var snes = new SnesController(slot);
+				Jump = snes.B;
+				Attack = snes.Y;
+				Dodge = snes.R;
+				ActivateUpgrade = snes.X;
+				Guard = snes.L;
+				Start = snes.Start;
 				
-				Controller.Define("punch", PlayerId, Controller.Button.X);
-				Controller.Define("dodge", PlayerId, Controller.Button.RB);
-				Controller.Define("upgrade", PlayerId, Controller.Button.Y);
-				Controller.Define("guard", PlayerId, Controller.Button.LB);
-				
-				Controller.Define("start", PlayerId, Controller.Button.Start);
+				axis = snes.Dpad;
 			}
-			else	//	snes
+			else if (Xbox360Controller.IsMatch(slot))
 			{
-				Controller.Define("jump", PlayerId, Controller.Button.X);
+				var xbox = new Xbox360Controller(slot);
 				
-				Controller.Define("punch", PlayerId, Controller.Button.Y);
-				Controller.Define("dodge", PlayerId, (Controller.Button) 5);
-				Controller.Define("upgrade", PlayerId, Controller.Button.A);
-				Controller.Define("guard", PlayerId, (Controller.Button) 4);
+				Jump = xbox.A;
+				Attack = xbox.X;
+				Dodge = xbox.RB;
+				ActivateUpgrade = xbox.Y;
+				Guard = xbox.LB;
+				Start = xbox.Start;
 				
-				Controller.Define("start", PlayerId, (Controller.Button) 9);
+				axis = xbox.LeftStick;
+			}
+			else
+			{
+				throw new Exception("invalid controller woh");
 			}
 			
-			axis = Controller.LeftStick;
 		}
 		
 		public override void Added()
@@ -239,7 +246,7 @@ namespace SNHU.GameObject
 					}
 					
 					
-					if (!OnGround && dodge.IsDodging)
+				if (!OnGround && DodgeController.IsDodging)
 					{
 						Entity result = 
 							Collide(Platform.Collision, X + 1, Y) ??
@@ -247,7 +254,7 @@ namespace SNHU.GameObject
 						
 						if (result != null)
 						{
-							dodge.CanDodge = true;
+						DodgeController.CanDodge = true;
 						}
 					}
 					
@@ -263,7 +270,7 @@ namespace SNHU.GameObject
 		
 		private void HandleInput()
 		{
-			var newGuard = Controller.Check("guard");
+			var newGuard = Guard.Down;
 			if (newGuard != Guarding)
 			{
 				if (!IsPunching())
@@ -280,7 +287,7 @@ namespace SNHU.GameObject
 				}
 			}
 			
-			if (Controller.Pressed("jump"))
+			if (Jump.Pressed)
 			{
 				OnMessage(DodgeController.Message.CancelDodge);
 				
@@ -309,7 +316,7 @@ namespace SNHU.GameObject
 				}
 			}
 			
-			if (Controller.Pressed("upgrade"))
+			if (ActivateUpgrade.Pressed)
 			{
 				if (CurrentUpgrade != null)
 				{
@@ -319,13 +326,13 @@ namespace SNHU.GameObject
 			
 			if (!Guarding)
 			{
-				if (Controller.Pressed("punch"))
+				if (Attack.Pressed)
 				{
 					Punch(hand = !hand);
 				}
 			}
 			
-			if (Controller.Pressed("start"))
+			if (Start.Pressed)
 			{
 				GameWorld.gameManager.StartGame();
 			}
@@ -409,7 +416,7 @@ namespace SNHU.GameObject
 				if (p.Invincible)
 					return true;
 				
-				if (dodge.IsDodging)
+				if (DodgeController.IsDodging)
 					return false;
 				
 				if (excludeCollision.Contains(e) || p.excludeCollision.Contains(this))

@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using Glide;
-using Punk;
-using Punk.Graphics;
-using Punk.Utils;
+using Indigo;
+using Indigo.Graphics;
+using Indigo.Inputs;
+using Indigo.Inputs.Gamepads;
+using Indigo.Utils;
 using SFML.Window;
 using SNHU;
 
@@ -15,12 +17,13 @@ namespace SNHU.MenuObject
 	/// </summary>
 	public class ControllerSelect : Entity
 	{
-		private static Dictionary<uint, int> wins;
+		private static Dictionary<int, int> wins;
 		
-		public int Slot { get; private set; }
-		public uint JoyId { get; private set; }
+		public int PlayerSlot { get; private set; }
+		public int JoyId { get; private set; }
 		
-		public Controller Controller { get; private set; }
+		private Input Start, Back, Confirm;
+		private Directional Cursor;
 		
 		public bool Ready { get; private set; }
 		
@@ -41,7 +44,7 @@ namespace SNHU.MenuObject
 		private static int[] colors;
 		static ControllerSelect()
 		{
-			wins = new Dictionary<uint, int>();
+			wins = new Dictionary<int, int>();
 			
 			colors = new int[]
 			{
@@ -52,7 +55,7 @@ namespace SNHU.MenuObject
 			};
 		}
 		
-		public ControllerSelect(MenuWorld parent, int slot, uint joyId)
+		public ControllerSelect(MenuWorld parent, int playerSlot, int joyId)
 		{
 			var font = Library.GetFont("assets/Laffayette_Comic_Pro.ttf");
 			
@@ -63,10 +66,10 @@ namespace SNHU.MenuObject
 			Width = 250;
 			
 			this.JoyId = joyId;
-			this.Slot = slot;
+			this.PlayerSlot = playerSlot;
 			
 			Image = new Image(Library.GetTexture("assets/menu.png"));
-			Image.Color = FP.Color(Color = colors[slot]);
+			Image.Color = FP.Color(Color = colors[PlayerSlot]);
 			pressStart = new Text("PRESS START");
 			pressStart.Font = font;
 			pressStart.X -= 80;
@@ -82,9 +85,29 @@ namespace SNHU.MenuObject
 			OriginX = Width / 2;
 			Image.OriginX = Image.Width / 2;
 			
-			Controller = new Controller(joyId);
-			
-			Controller.Define("Start", (int) JoyId, (Controller.Button) 9, Controller.Button.Start);
+			var slot = GamepadManager.GetSlot(joyId);
+			if (SnesController.IsMatch(slot))
+			{
+				var snes = new SnesController(slot);
+				confirm = new Image(Library.GetTexture("assets/Snes_1.png"));
+				Cursor = snes.Dpad;
+				Start = snes.Start;
+				Back = snes.A;
+				Confirm = snes.B;
+			}
+			else if (Xbox360Controller.IsMatch(slot))
+			{
+				var xbox = new Xbox360Controller(slot);
+				confirm = new Image(Library.GetTexture("assets/Xbox_1.png"));
+				Cursor = xbox.LeftStick;
+				Start = xbox.Start;
+				Confirm = xbox.A;
+				Back = xbox.B;
+			}
+			else
+			{
+				throw new Exception("Invalid gamepad type, sorry D:");
+			}
 			
 			AddComponent(Image);
 			AddComponent(pressStart);
@@ -107,24 +130,11 @@ namespace SNHU.MenuObject
 			
 			if (!started)
 			{
-				if (Controller.Pressed("Start"))
+				if (Start.Pressed)
 				{
 					started = true;
 					
 					RemoveComponent(pressStart);
-					
-					if (Joystick.HasAxis(JoyId, Joystick.Axis.PovX) && Joystick.HasAxis(JoyId, Joystick.Axis.PovY))
-					{
-						confirm = new Image(Library.GetTexture("assets/Xbox_1.png"));
-						Controller.Define("A", (int) JoyId, Controller.Button.A);
-						Controller.Define("B", (int) JoyId, Controller.Button.B);
-					}
-					else
-					{
-						confirm = new Image(Library.GetTexture("assets/Snes_1.png"));
-						Controller.Define("A", (int) JoyId, Controller.Button.X);
-						Controller.Define("B", (int) JoyId, Controller.Button.B);
-					}
 					
 					confirm.CenterOO();
 					confirm.Y = Height * 0.75f;
@@ -147,7 +157,7 @@ namespace SNHU.MenuObject
 			{
 				if (Ready)
 				{
-					if (Controller.Pressed("B"))
+					if (Back.Pressed)
 					{
 						Tweener.Cancel();
 						
@@ -163,7 +173,7 @@ namespace SNHU.MenuObject
 				{
 					if (!changing)
 					{
-						if (Controller.LeftStick.X < 0)
+						if (Cursor.X < 0)
 						{
 							lArrow.Scale = 0.8f;
 							Tweener.Tween(lArrow, new { Scale = 1 }, 0.3f);
@@ -171,7 +181,7 @@ namespace SNHU.MenuObject
 							PlayerImageName = parent.NextImage(PlayerImageName);
 							MakePlayerImage();
 						}
-						else if (Controller.LeftStick.X > 0)
+						else if (Cursor.X > 0)
 						{
 							rArrow.Scale = 0.8f;
 							Tweener.Tween(rArrow, new { Scale = 1 }, 0.3f);
@@ -180,13 +190,13 @@ namespace SNHU.MenuObject
 							MakePlayerImage();
 						}
 						
-						if (Controller.Pressed("A"))
+						if (Confirm.Pressed)
 						{
 							confirm.Scale = 0.8f;
 							confirm.Y = Height * 0.75f + 20;
 						}
 						
-						if (Controller.Released("A"))
+						if (Confirm.Pressed)
 						{
 							confirm.Scale = 1f;
 							confirm.Y = Height * 0.75f;
@@ -291,7 +301,7 @@ namespace SNHU.MenuObject
 			AddComponent(player);
 		}
 		
-		public static void IncreaseWin(uint controllerId)
+		public static void IncreaseWin(int controllerId)
 		{
 			
 			if (!wins.ContainsKey(controllerId))

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Glide;
-using Punk;
-using Punk.Utils;
-using Punk.Graphics;
+using Indigo;
+using Indigo.Audio;
+using Indigo.Utils;
+using Indigo.Graphics;
 using SNHU.MenuObject;
 
 namespace SNHU.GameObject
@@ -23,7 +24,7 @@ namespace SNHU.GameObject
 		public int StartingHealth { get; private set; }
 		public int PunchDamage { get; private set; }
 		
-		private Music GameMusic;
+		private Sound GameMusic;
 		private GameWorld gameWorld;
 		
 		public List<Player> Players;
@@ -76,7 +77,7 @@ namespace SNHU.GameObject
 			{
 				foreach (var p in Players)
 				{
-					if (p.Controller.Pressed("start"))
+					if (p.Start.Pressed)
 					{
 						if (NobodyWon || p.Lives > 0)
 						{
@@ -87,7 +88,7 @@ namespace SNHU.GameObject
 			}
 		}
 		
-		public void AddPlayer(float x, float y, uint controllerId, string imageName)
+		public void AddPlayer(float x, float y, int controllerId, string imageName)
 		{
 			if (Players.Find(p => p.ControllerId == controllerId) != null)	return;
 			
@@ -104,7 +105,8 @@ namespace SNHU.GameObject
 			if (!GameStarted)
 			{
 				GameStarted = true;
-				GameMusic.Loop();
+				GameMusic.Looping = true;
+				GameMusic.Play();
 				PlayersInMatch = Players.Count;
 			}
 		}

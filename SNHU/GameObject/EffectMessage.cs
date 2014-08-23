@@ -1,6 +1,6 @@
 ﻿
 using System;
-using Punk;
+using Indigo;
 
 namespace SNHU.GameObject.Upgrades
 {

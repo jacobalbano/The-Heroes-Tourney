@@ -1,315 +1,302 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Punk</name>
+        <name>Indigo</name>
     </assembly>
     <members>
-        <member name="T:Punk.Music">
+        <member name="T:Indigo.Audio.Sound">
             <summary>
-            A wrapper for SFML.Music, which provides OnComplete callback
-            functionality, and a few other helpful features.
+            Basic sound class.
+            Supports streaming for large files, or memory buffers for small ones.
             </summary>
         </member>
-        <member name="F:Punk.Music.Complete">
-            <summary>
-            Optional callback function for when the sound finishes playing.
-            </summary>
-        </member>
-        <member name="M:Punk.Music.Loop">
-            <summary>
-            Plays the music and loops it infinitely when it finshes.
-            </summary>
-        </member>
-        <member name="M:Punk.Music.Stop">
-            <summary>
-            Stops the playback of the music.
-            </summary>
-        </member>
-        <member name="P:Punk.Music.IsPaused">
-            <summary>
-            If the music is paused.
-            </summary>
-        </member>
-        <member name="P:Punk.Music.IsPlaying">
-            <summary>
-            If the music is playing.
-            </summary>
-        </member>
-        <member name="P:Punk.Music.IsStopped">
-            <summary>
-            If the music is stopped (not playing, not paused).
-            </summary>
-        </member>
-        <member name="T:Punk.Music.OnComplete">
-            <summary>
-            Delegate for optional callback function for when the sound finishes playing.
-            </summary>
-        </member>
-        <member name="T:Punk.Sfx">
-            <summary>
-            A wrapper for SFML.Sound, which provides OnComplete callback
-            functionality, and a few other helpful features.
-            </summary>
-        </member>
-        <member name="F:Punk.Sfx.Complete">
-            <summary>
-            Optional callback function for when the sound finishes playing.
-            </summary>
-        </member>
-        <member name="M:Punk.Sfx.#ctor(SFML.Audio.Sound,Punk.Sfx.OnComplete)">
+        <member name="M:Indigo.Audio.Sound.#ctor(Indigo.Audio.SoundBuffer)">
             <summary>
             Constructor.
+            Create a sound from an audio buffer in memory.
             </summary>
-            <param name="source">The SFML Sound object.</param>
-            <param name="complete">Optional callback function for when the sound finishes playing.</param>
+            <param name="buffer">The sound buffer to use.</param>
         </member>
-        <member name="M:Punk.Sfx.#ctor(SFML.Audio.SoundBuffer,Punk.Sfx.OnComplete)">
+        <member name="M:Indigo.Audio.Sound.#ctor(Indigo.Audio.SoundStream)">
             <summary>
             Constructor.
+            Create a sound that streams a file from the disk.
             </summary>
-            <param name="source">The SFML SoundBuffer object. Can be retrieved with Library.GetBuffer().</param>
-            <param name="complete">Optional callback function for when the sound finishes playing.</param>
+            <param name="stream">The sound stream to use.</param>
         </member>
-        <member name="M:Punk.Sfx.Loop">
+        <member name="M:Indigo.Audio.Sound.Play">
             <summary>
-            Plays the sound and loops it infinitely when it finshes.
+            <para>If playback hasn't yet begun, play it from the beginning.</para>
+            <para>If playback is paused, resume it from its last position.</para>
             </summary>
         </member>
-        <member name="M:Punk.Sfx.Stop">
+        <member name="M:Indigo.Audio.Sound.Stop">
             <summary>
-            Stops the playback of the sound.
+            Stop playback.
             </summary>
         </member>
-        <member name="P:Punk.Sfx.IsPaused">
+        <member name="M:Indigo.Audio.Sound.DisposeSound">
             <summary>
-            If the sound is paused.
+            Disposes the SoundProvider, allowing it to release the OpenAL handle.
+            This is NOT the same as the Disposable pattern.
             </summary>
         </member>
-        <member name="P:Punk.Sfx.IsPlaying">
+        <member name="P:Indigo.Audio.Sound.Playing">
             <summary>
-            If the sound is playing.
+            Whether the sound is currently playing.
             </summary>
         </member>
-        <member name="P:Punk.Sfx.IsStopped">
+        <member name="P:Indigo.Audio.Sound.Looping">
             <summary>
-            If the sound is stopped (not playing and not paused).
+            <para>Whether the sound should repeat when it completes.</para>
+            <para>If this is set to true, the OnComplete event will fire each time the sound restarts.</para>
             </summary>
         </member>
-        <member name="T:Punk.Sfx.OnComplete">
+        <member name="P:Indigo.Audio.Sound.Volume">
             <summary>
-            Delegate for optional callback function for when the sound finishes playing.
+            The volume of the sound, from 0 (fully silent) to 1 (max volume).
             </summary>
         </member>
-        <member name="T:Punk.Camera">
+        <member name="P:Indigo.Audio.Sound.Position">
+            <summary>
+            Current position of the playhead, in seconds.
+            </summary>
+        </member>
+        <member name="P:Indigo.Audio.Sound.Length">
+            <summary>
+            Length of the sound, in seconds.
+            </summary>
+        </member>
+        <member name="P:Indigo.Audio.Sound.Completion">
+            <summary>
+            The completion value of the playing sound, from 0 (no progress) to 1 (completely finished).
+            </summary>
+        </member>
+        <member name="T:Indigo.Audio.SoundStream">
+            <summary>
+            Description of SoundStream.
+            </summary>
+        </member>
+        <member name="T:Indigo.Camera">
             <summary>
             Camera class. Allows rotation, scale and positioning of the render view.
             Also supports viewports for split-screen, minimaps, etc.
             </summary>
         </member>
-        <member name="P:Punk.Camera.X">
+        <member name="P:Indigo.Camera.X">
             <summary>
             X position of the camera.
             </summary>
         </member>
-        <member name="P:Punk.Camera.Y">
+        <member name="P:Indigo.Camera.Y">
             <summary>
             Y position of the camera.
             </summary>
         </member>
-        <member name="P:Punk.Camera.Angle">
+        <member name="P:Indigo.Camera.Angle">
             <summary>
             Rotation of the camera.
             </summary>
         </member>
-        <member name="P:Punk.Camera.Scale">
+        <member name="P:Indigo.Camera.Scale">
             <summary>
             Scale of the camera.
             </summary>
         </member>
-        <member name="T:Punk.Component">
+        <member name="T:Indigo.Component">
             <summary>
             Description of Component.
             </summary>
         </member>
-        <member name="T:Punk.MessageListener">
-            <summary>
-            Description of MessageListener.
-            </summary>
-        </member>
-        <member name="M:Punk.MessageListener.OnMessage(System.Enum,System.Object[])">
+        <member name="M:Indigo.MessageListener.OnMessage(System.Enum,System.Object[])">
             <summary>
             Called when this recieves a message broadcast from the World
             </summary>
             <param name="message">The type of the message.</param>
             <param name="arguments">A set of arguments.</param>
         </member>
-        <member name="M:Punk.MessageListener.AddResponse(System.Enum,System.Action{System.Object[]})">
+        <member name="M:Indigo.MessageListener.AddResponse(System.Enum,System.Action{System.Object[]})">
             <summary>
             Add a message response.
             </summary>
             <param name="message">The message type.</param>
             <param name="response">The response callback to add.</param>
         </member>
-        <member name="M:Punk.MessageListener.RemoveResponse(System.Enum,System.Action{System.Object[]})">
+        <member name="M:Indigo.MessageListener.RemoveResponse(System.Enum,System.Action{System.Object[]})">
             <summary>
             Remove a message response.
             </summary>
             <param name="message">The message type to remove the response from.</param>
             <param name="response">The response callback to remove.</param>
         </member>
-        <member name="F:Punk.Component.Active">
+        <member name="F:Indigo.Component.Active">
             <summary>
             Whether this component should update.
             </summary>
         </member>
-        <member name="F:Punk.Component.Visible">
+        <member name="F:Indigo.Component.Visible">
             <summary>
             Whether this component should be rendered.
             </summary>
         </member>
-        <member name="M:Punk.Component.Update">
+        <member name="M:Indigo.Component.Update">
             <summary>
             Override this.
             Called every frame when Active and added to an Active Entity in an Active World.
             </summary>
         </member>
-        <member name="M:Punk.Component.Added">
+        <member name="M:Indigo.Component.Added">
             <summary>
             Override this.
             Called after being added to an Entity.
             </summary>
         </member>
-        <member name="M:Punk.Component.Removed">
+        <member name="M:Indigo.Component.Removed">
             <summary>
             Override this.
             Called just before being removed from an Entity.
             </summary>
         </member>
-        <member name="M:Punk.Component.Render(System.Single,System.Single,Punk.Camera)">
+        <member name="M:Indigo.Component.Render(System.Single,System.Single,Indigo.Camera)">
             <summary>
             Override this.
             Used to draw the Component.
             </summary>
         </member>
-        <member name="M:Punk.Component.RenderDebug">
+        <member name="M:Indigo.Component.RenderDebug">
             <summary>
             Override this.
             Used to display debug information to the Console.
             </summary>
         </member>
-        <member name="P:Punk.Component.Parent">
+        <member name="P:Indigo.Component.Parent">
             <summary>
             The Entity that this component has been added to.
             </summary>
         </member>
-        <member name="P:Punk.Component.Tweener">
+        <member name="P:Indigo.Component.Tweener">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Punk.Core.Point.Dot(Punk.Core.Point)">
+        <member name="M:Indigo.Core.Rectangle.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Indigo.Core.Rectangle.Union(Indigo.Core.Rectangle,Indigo.Core.Rectangle)">
+            <summary>
+            Create a rectangle from the combined bounds of two rectangles.
+            </summary>
+            <param name="a">The first rectangle.</param>
+            <param name="b">The second rectangle.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Indigo.Core.Rectangle.Intersects(Indigo.Core.Rectangle)">
+            <summary>
+            Whether this rectangle overlaps with another.
+            </summary>
+            <param name="other">The rectangle to check overlap against.</param>
+        </member>
+        <member name="P:Indigo.Core.Rectangle.Left">
+            <summary>
+            X coordinate of the rectangle.
+            </summary>
+        </member>
+        <member name="P:Indigo.Core.Rectangle.Top">
+            <summary>
+            Y coordinate of the rectangle.
+            </summary>
+        </member>
+        <member name="P:Indigo.Core.Rectangle.Right">
+            <summary>
+            X cordinate of the rectangle's right edge.
+            </summary>
+        </member>
+        <member name="P:Indigo.Core.Rectangle.Bottom">
+            <summary>
+            Y coordinate of the rectangle's bottom edge.
+            </summary>
+        </member>
+        <member name="M:Indigo.Core.Point.Dot(Indigo.Core.Point)">
             <summary>
             Get the dot product of this and another vector.
             </summary>
             <param name="other"></param>
             <returns></returns>
         </member>
-        <member name="M:Punk.Core.Point.Normalize(System.Single)">
+        <member name="M:Indigo.Core.Point.Normalize(System.Single)">
             <summary>
             Scales the line segment between { 0, 0 } and the current point to a set length.
             </summary>
             <param name="length">The length to scale the vector to (default 1).</param>
         </member>
-        <member name="M:Punk.Core.Point.Normalized(System.Single)">
+        <member name="M:Indigo.Core.Point.Normalized(System.Single)">
             <summary>
             Returns a normalized copy of this vector. The original vector is unmodified.
             </summary>
             <param name="length">The length to scale the vector to (default 1).</param>
             <returns>The normalized vector.</returns>
         </member>
-        <member name="F:Punk.Core.Point.X">
+        <member name="F:Indigo.Core.Point.X">
             <summary>
             Position component.
             </summary>
         </member>
-        <member name="F:Punk.Core.Point.Y">
+        <member name="F:Indigo.Core.Point.Y">
             <summary>
             Position component.
             </summary>
         </member>
-        <member name="P:Punk.Core.Point.IsZero">
+        <member name="P:Indigo.Core.Point.IsZero">
             <summary>
             Whether this is a zero vector { 0, 0 }.
             </summary>
         </member>
-        <member name="P:Punk.Core.Point.Length">
+        <member name="P:Indigo.Core.Point.Length">
             <summary>
             The length of the vector.
             </summary>
         </member>
-        <member name="T:Punk.Debugging.Console">
+        <member name="T:Indigo.Debugging.Console">
             <summary>
             Description of Class.
             </summary>
         </member>
-        <member name="F:Punk.Debugging.Console._visible">
-            @private 
-        </member>
-        <member name="F:Punk.Debugging.Console._enabled">
-            @private 
-        </member>
-        <member name="F:Punk.Debugging.Console._paused">
-            @private 
-        </member>
-        <member name="F:Punk.Debugging.Console._debug">
-            @private 
-        </member>
-        <member name="F:Punk.Debugging.Console._scrolling">
-            @private 
-        </member>
-        <member name="F:Punk.Debugging.Console._selecting">
-            @private 
-        </member>
-        <member name="F:Punk.Debugging.Console._dragging">
-            @private 
-        </member>
-        <member name="F:Punk.Debugging.Console._panning">
-            @private 
-        </member>
-        <member name="P:Punk.Debugging.Console.Paused">
+        <member name="P:Indigo.Debugging.Console.Paused">
             If the Console is currently in paused mode.
         </member>
-        <member name="T:Punk.Engine">
+        <member name="T:Indigo.Engine">
             <summary>
             Main game class. Manages the game loop.
             </summary>
         </member>
-        <member name="F:Punk.Engine.Paused">
+        <member name="F:Indigo.Engine.Paused">
             <summary>
             If the game should stop updating/rendering.
             </summary>
         </member>
-        <member name="F:Punk.Engine.Running">
+        <member name="F:Indigo.Engine.Running">
             <summary>
             Whether the program is running.
             </summary>
         </member>
-        <member name="F:Punk.Engine.MaxElapsed">
+        <member name="F:Indigo.Engine.MaxElapsed">
             <summary>
             Cap on the elapsed time (default at 30 FPS). Raise this to allow for lower framerates (eg. 1 / 10).
             </summary>
         </member>
-        <member name="F:Punk.Engine.MaxFrameSkip">
+        <member name="F:Indigo.Engine.MaxFrameSkip">
             <summary>
             The max amount of frames that can be skipped in fixed framerate mode.
             </summary>
         </member>
-        <member name="F:Punk.Engine.SkipRate">
+        <member name="F:Indigo.Engine.SkipRate">
             <summary>
             The amount of milliseconds between ticks in fixed framerate mode.
             </summary>
         </member>
-        <member name="M:Punk.Engine.#ctor(System.Int32,System.Int32,System.Single)">
+        <member name="M:Indigo.Engine.#ctor(System.Int32,System.Int32,System.Single)">
             <summary>
             Engine constructor
             </summary>
@@ -317,61 +304,61 @@
             <param name="height">The height of your game.</param>
             <param name="framerate">The game framerate, in frames per second (default 60).</param>
         </member>
-        <member name="M:Punk.Engine.Init">
+        <member name="M:Indigo.Engine.Init">
             <summary>
             Override this; called when the Engine starts up.
             </summary>
         </member>
-        <member name="M:Punk.Engine.FocusGained">
+        <member name="M:Indigo.Engine.FocusGained">
             <summary>
             Override this; called when the window gains focus.
             </summary>
         </member>
-        <member name="M:Punk.Engine.FocusLost">
+        <member name="M:Indigo.Engine.FocusLost">
             <summary>
             Override this; called when the window loses focus.
             </summary>
         </member>
-        <member name="M:Punk.Engine.Update">
+        <member name="M:Indigo.Engine.Update">
             <summary>
             Updates the engine.
             </summary>
         </member>
-        <member name="T:Punk.Entity">
+        <member name="T:Indigo.Entity">
             <summary>
             Main game Entity class updated by World.
             </summary>
         </member>
-        <member name="F:Punk.Entity.Visible">
+        <member name="F:Indigo.Entity.Visible">
             If the Entity should render.
         </member>
-        <member name="F:Punk.Entity.Active">
+        <member name="F:Indigo.Entity.Active">
             <summary>
             If the Entity should update.
             </summary>
         </member>
-        <member name="F:Punk.Entity.Collidable">
+        <member name="F:Indigo.Entity.Collidable">
             If the Entity should respond to collision checks.
         </member>
-        <member name="F:Punk.Entity.X">
+        <member name="F:Indigo.Entity.X">
             X position of the Entity in the World.
         </member>
-        <member name="F:Punk.Entity.Y">
+        <member name="F:Indigo.Entity.Y">
             Y position of the Entity in the World.
         </member>
-        <member name="F:Punk.Entity.Width">
+        <member name="F:Indigo.Entity.Width">
             Width of the Entity's hitbox.
         </member>
-        <member name="F:Punk.Entity.Height">
+        <member name="F:Indigo.Entity.Height">
             Height of the Entity's hitbox.
         </member>
-        <member name="F:Punk.Entity.OriginX">
+        <member name="F:Indigo.Entity.OriginX">
             X origin of the Entity's hitbox.
         </member>
-        <member name="F:Punk.Entity.OriginY">
+        <member name="F:Indigo.Entity.OriginY">
             Y origin of the Entity's hitbox.
         </member>
-        <member name="M:Punk.Entity.#ctor(System.Single,System.Single,Punk.Graphics.Graphic,Punk.Masks.Mask)">
+        <member name="M:Indigo.Entity.#ctor(System.Single,System.Single,Indigo.Graphics.Graphic,Indigo.Masks.Mask)">
             <summary>
             Constructor. Can be usd to place the Entity and assign a graphic and mask.
             </summary>
@@ -380,39 +367,39 @@
             <param name="graphic">Graphic to assign to the Entity (default null).</param>
             <param name="mask">Mask to assign to the Entity (default null).</param>
         </member>
-        <member name="M:Punk.Entity.Added">
+        <member name="M:Indigo.Entity.Added">
             <summary>
             Override this, called when the Entity is added to a World.
             </summary>
         </member>
-        <member name="M:Punk.Entity.Removed">
+        <member name="M:Indigo.Entity.Removed">
             <summary>
             Override this, called when the Entity is removed from a World.
             </summary>
         </member>
-        <member name="M:Punk.Entity.Update">
+        <member name="M:Indigo.Entity.Update">
             <summary>
             Updates the Entity.
             </summary>
         </member>
-        <member name="M:Punk.Entity.Render">
+        <member name="M:Indigo.Entity.Render">
             <summary>
             Renders the Entity. If you override this for special behaviour,
             remember to call base.render() to render the Entity's graphic.
             </summary>
         </member>
-        <member name="M:Punk.Entity.RenderDebug">
+        <member name="M:Indigo.Entity.RenderDebug">
             <summary>
             Override this to render debug information in the debug console.
             </summary>
         </member>
-        <member name="M:Punk.Entity.Load(System.Xml.XmlNode)">
+        <member name="M:Indigo.Entity.Load(System.Xml.XmlNode)">
             <summary>
             Override this to specify behavior when this is being loaded from an Ogmo XML Entity.
             </summary>
             <param name="node">The XML node that describes the entity.</param>
         </member>
-        <member name="M:Punk.Entity.Collide(System.String,System.Single,System.Single)">
+        <member name="M:Indigo.Entity.Collide(System.String,System.Single,System.Single)">
             <summary>
             Checks for a collision against an Entity type.
             </summary>
@@ -421,7 +408,7 @@
             <param name="y">Virtual y position to place this Entity.</param>
             <returns>The first Entity collided with, or null if none were collided.</returns>
         </member>
-        <member name="M:Punk.Entity.CollideTypes(System.Collections.Generic.IEnumerable{System.String},System.Single,System.Single)">
+        <member name="M:Indigo.Entity.CollideTypes(System.Collections.Generic.IEnumerable{System.String},System.Single,System.Single)">
             <summary>
             Checks for collision against multiple Entity types.
             </summary>
@@ -430,7 +417,7 @@
             <param name="y">Virtual y position to place this Entity.</param>
             <returns>The first Entity collided with, or null if none were collided.</returns>
         </member>
-        <member name="M:Punk.Entity.CollideWith(Punk.Entity,System.Single,System.Single)">
+        <member name="M:Indigo.Entity.CollideWith(Indigo.Entity,System.Single,System.Single)">
             <summary>
             Checks if this Entity collides with a specific Entity.
             </summary>
@@ -439,7 +426,7 @@
             <param name="y">Virtual y position to place this Entity.</param>
             <returns>The Entity if they overlap, or null if they don't.</returns>
         </member>
-        <member name="M:Punk.Entity.CollideRect(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.Entity.CollideRect(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Checks if this Entity overlaps the specified rectangle.
             </summary>
@@ -451,7 +438,7 @@
             <param name="rHeight">Height of the rectangle.</param>
             <returns>If they overlap.</returns>
         </member>
-        <member name="M:Punk.Entity.CollidePoint(System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.Entity.CollidePoint(System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Checks if this Entity overlaps the specified position.
             </summary>
@@ -461,7 +448,7 @@
             <param name="pY">Y position.</param>
             <returns>If the Entity intersects with the position.</returns>
         </member>
-        <member name="M:Punk.Entity.CollideInto(System.String,System.Single,System.Single,System.Collections.Generic.List{Punk.Entity})">
+        <member name="M:Indigo.Entity.CollideInto(System.String,System.Single,System.Single,System.Collections.Generic.List{Indigo.Entity})">
             <summary>
             Populates an array with all collided Entities of a type.
             </summary>
@@ -470,7 +457,7 @@
             <param name="y">Virtual y position to place this Entity.</param>
             <param name="array">The Array or Vector object to populate.</param>
         </member>
-        <member name="M:Punk.Entity.CollideTypesInto(System.Collections.Generic.IEnumerable{System.String},System.Single,System.Single,System.Collections.Generic.List{Punk.Entity})">
+        <member name="M:Indigo.Entity.CollideTypesInto(System.Collections.Generic.IEnumerable{System.String},System.Single,System.Single,System.Collections.Generic.List{Indigo.Entity})">
             <summary>
             Populates a List with all collided Entities of multiple types.
             </summary>
@@ -480,7 +467,7 @@
             <param name="array">The List to populate.</param>
             <returns></returns>
         </member>
-        <member name="M:Punk.Entity.MoveBy(System.Single,System.Single,System.Object,System.Boolean)">
+        <member name="M:Indigo.Entity.MoveBy(System.Single,System.Single,System.Object,System.Boolean)">
             <summary>
             Moves the Entity by the amount, retaining integer values for its x and y.
             </summary>
@@ -489,7 +476,7 @@
             <param name="solidType">An optional collision type (or array of types) to stop flush against upon collision.</param>
             <param name="sweep">If sweeping should be used (prevents fast-moving objects from going through solidType).</param>
         </member>
-        <member name="M:Punk.Entity.MoveTo(System.Single,System.Single,System.Object,System.Boolean)">
+        <member name="M:Indigo.Entity.MoveTo(System.Single,System.Single,System.Object,System.Boolean)">
             <summary>
             Moves the Entity to the position, retaining integer values for its x and y.
             </summary>
@@ -498,7 +485,7 @@
             <param name="solidType">An optional collision type (or array of types) to stop flush against upon collision.</param>
             <param name="sweep">If sweeping should be used (prevents fast-moving objects from going through solidType).</param>
         </member>
-        <member name="M:Punk.Entity.MoveTowards(System.Single,System.Single,System.Single,System.Object,System.Boolean)">
+        <member name="M:Indigo.Entity.MoveTowards(System.Single,System.Single,System.Single,System.Object,System.Boolean)">
             <summary>
             Moves towards the target position, retaining integer values for its x and y.
             </summary>
@@ -508,21 +495,21 @@
             <param name="solidType">An optional collision type (or array of types) to stop flush against upon collision.</param>
             <param name="sweep">If sweeping should be used (prevents fast-moving objects from going through solidType).</param>
         </member>
-        <member name="M:Punk.Entity.MoveCollideX(Punk.Entity)">
+        <member name="M:Indigo.Entity.MoveCollideX(Indigo.Entity)">
             <summary>
             When this collide with an Entity on the x-axis with moveTo() or moveBy().
             </summary>
             <param name="e">The Entity this collided with.</param>
             <returns>Whether movement should be halted.</returns>
         </member>
-        <member name="M:Punk.Entity.MoveCollideY(Punk.Entity)">
+        <member name="M:Indigo.Entity.MoveCollideY(Indigo.Entity)">
             <summary>
             When this collide with an Entity on the y-axis with moveTo() or moveBy().
             </summary>
             <param name="e">The Entity this collided with.</param>
             <returns>Whether movement should be halted.</returns>
         </member>
-        <member name="M:Punk.Entity.SetHitbox(System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:Indigo.Entity.SetHitbox(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Sets the Entity's hitbox properties.
             </summary>
@@ -531,25 +518,25 @@
             <param name="originX">X origin of the hitbox.</param>
             <param name="originY">Y origin of the hitbox.</param>
         </member>
-        <member name="M:Punk.Entity.SetHitboxTo(System.Object)">
+        <member name="M:Indigo.Entity.SetHitboxTo(System.Object)">
             <summary>
             Sets the Entity's hitbox to match that of the provided object.
             </summary>
             <param name="o">The object defining the hitbox (eg. an Image or Rectangle).</param>
         </member>
-        <member name="M:Punk.Entity.SetOrigin(System.Int32,System.Int32)">
+        <member name="M:Indigo.Entity.SetOrigin(System.Int32,System.Int32)">
             <summary>
             Sets the origin of the Entity.
             </summary>
             <param name="x">X origin.</param>
             <param name="y">Y origin.</param>
         </member>
-        <member name="M:Punk.Entity.CenterOrigin">
+        <member name="M:Indigo.Entity.CenterOrigin">
             <summary>
             Center's the Entity's origin (half width and height).
             </summary>
         </member>
-        <member name="M:Punk.Entity.DistanceFrom(Punk.Entity,System.Boolean)">
+        <member name="M:Indigo.Entity.DistanceFrom(Indigo.Entity,System.Boolean)">
             <summary>
             Calculates the distance from another Entity.
             </summary>
@@ -557,7 +544,7 @@
             <param name="useHitboxes">If hitboxes should be used to determine the distance. If not, the Entities' x/y positions are used.</param>
             <returns>The distance.</returns>
         </member>
-        <member name="M:Punk.Entity.DistanceToPoint(System.Single,System.Single,System.Boolean)">
+        <member name="M:Indigo.Entity.DistanceToPoint(System.Single,System.Single,System.Boolean)">
             <summary>
             Calculates the distance from this Entity to the point.
             </summary>
@@ -566,7 +553,7 @@
             <param name="useHitbox">If hitboxes should be used to determine the distance. If not, the Entities' x/y positions are used.</param>
             <returns>The distance.</returns>
         </member>
-        <member name="M:Punk.Entity.DistanceToRect(System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.Entity.DistanceToRect(System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Calculates the distance from this Entity to the rectangle.
             </summary>
@@ -576,13 +563,13 @@
             <param name="rheight">Height of the rectangle.</param>
             <returns>The distance.</returns>
         </member>
-        <member name="M:Punk.Entity.ToString">
+        <member name="M:Indigo.Entity.ToString">
             <summary>
             Gets the class name as a string.
             </summary>
             <returns>A string representing the class name.</returns>
         </member>
-        <member name="M:Punk.Entity.ClampHorizontal(System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.Entity.ClampHorizontal(System.Single,System.Single,System.Single)">
             <summary>
             Clamps the Entity's hitbox on the x-axis.
             </summary>
@@ -590,7 +577,7 @@
             <param name="right">Right bounds.</param>
             <param name="padding">Optional padding on the clamp.</param>
         </member>
-        <member name="M:Punk.Entity.ClampVertical(System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.Entity.ClampVertical(System.Single,System.Single,System.Single)">
             <summary>
             Clamps the Entity's hitbox on the y axis.
             </summary>
@@ -598,154 +585,154 @@
             <param name="bottom">Max bounds.</param>
             <param name="padding">Optional padding on the clamp.</param>
         </member>
-        <member name="P:Punk.Entity.OnCamera">
+        <member name="P:Indigo.Entity.OnCamera">
             <summary>
             If the Entity's position is contained within the camera rectangle.
             </summary>
         </member>
-        <member name="P:Punk.Entity.World">
+        <member name="P:Indigo.Entity.World">
             <summary>
             The World object this Entity has been added to.
             </summary>
         </member>
-        <member name="P:Punk.Entity.HalfWidth">
+        <member name="P:Indigo.Entity.HalfWidth">
             <summary>
             Half the Entity's width.
             </summary>
         </member>
-        <member name="P:Punk.Entity.HalfHeight">
+        <member name="P:Indigo.Entity.HalfHeight">
             <summary>
             Half the Entity's height.
             </summary>
         </member>
-        <member name="P:Punk.Entity.CenterX">
+        <member name="P:Indigo.Entity.CenterX">
             <summary>
             The center x position of the Entity's hitbox.
             </summary>
         </member>
-        <member name="P:Punk.Entity.CenterY">
+        <member name="P:Indigo.Entity.CenterY">
             <summary>
             The center y position of the Entity's hitbox.
             </summary>
         </member>
-        <member name="P:Punk.Entity.Left">
+        <member name="P:Indigo.Entity.Left">
             <summary>
             The leftmost position of the Entity's hitbox.
             </summary>
         </member>
-        <member name="P:Punk.Entity.Right">
+        <member name="P:Indigo.Entity.Right">
             <summary>
             The rightmost position of the Entity's hitbox.
             </summary>
         </member>
-        <member name="P:Punk.Entity.Top">
+        <member name="P:Indigo.Entity.Top">
             <summary>
             The topmost position of the Entity's hitbox.
             </summary>
         </member>
-        <member name="P:Punk.Entity.Bottom">
+        <member name="P:Indigo.Entity.Bottom">
             <summary>
             The bottommost position of the Entity's hitbox.
             </summary>
         </member>
-        <member name="P:Punk.Entity.Layer">
+        <member name="P:Indigo.Entity.Layer">
             <summary>
             The rendering layer of this Entity. Higher layers are rendered first.
             </summary>
         </member>
-        <member name="P:Punk.Entity.Type">
+        <member name="P:Indigo.Entity.Type">
             <summary>
             The collision type, used for collision checking.
             </summary>
         </member>
-        <member name="P:Punk.Entity.Mask">
+        <member name="P:Indigo.Entity.Mask">
             <summary>
             An optional Mask component, used for specialized collision. If this is
             not assigned, collision checks will use the Entity's hitbox by default.
             </summary>
         </member>
-        <member name="P:Punk.Entity.Name">
+        <member name="P:Indigo.Entity.Name">
             <summary>
             The Entity's instance name. Use this to uniquely identify single
             game Entities, which can then be looked-up with World.GetInstance().
             </summary>
         </member>
-        <member name="T:Punk.FP">
+        <member name="T:Indigo.FP">
             <summary>
             Static catch-all class used to access global properties and functions.
             </summary>
         </member>
-        <member name="F:Punk.FP.DEG">
+        <member name="F:Indigo.FP.DEG">
             <summary>
             Multiply a radian angle value by this to convert it to degrees.
             </summary>
         </member>
-        <member name="F:Punk.FP.RAD">
+        <member name="F:Indigo.FP.RAD">
             <summary>
             Multiply a degree angle by this to convert it to radians.
             </summary>
         </member>
-        <member name="F:Punk.FP.Width">
+        <member name="F:Indigo.FP.Width">
             <summary>
             Width of the game.
             </summary>
         </member>
-        <member name="F:Punk.FP.Height">
+        <member name="F:Indigo.FP.Height">
             <summary>
             Height of the game.
             </summary>
         </member>
-        <member name="F:Punk.FP.Fixed">
+        <member name="F:Indigo.FP.Fixed">
             <summary>
             If the game is running at a fixed framerate.
             </summary>
         </member>
-        <member name="F:Punk.FP.TimeInFrames">
+        <member name="F:Indigo.FP.TimeInFrames">
             <summary>
             If times should be given in frames (as opposed to seconds).
             Default is true in fixed timestep mode and false in variable timestep mode.
             </summary>
         </member>
-        <member name="F:Punk.FP.Framerate">
+        <member name="F:Indigo.FP.Framerate">
             <summary>
             The assigned framerate
             </summary>
         </member>
-        <member name="F:Punk.FP.Elapsed">
+        <member name="F:Indigo.FP.Elapsed">
             <summary>
             Time elapsed since the last frame (in seconds).
             </summary>
         </member>
-        <member name="F:Punk.FP.Timescale">
+        <member name="F:Indigo.FP.Timescale">
             <summary>
             Timescale assigned to Elapsed.
             </summary>
         </member>
-        <member name="F:Punk.FP.Camera">
+        <member name="F:Indigo.FP.Camera">
             <summary>
             The view camera. Can be rotated or scaled as well as positioned.
             </summary>
         </member>
-        <member name="F:Punk.FP.Focused">
+        <member name="F:Indigo.FP.Focused">
             <summary>
             If the game currently has input focus or not.
             </summary>
         </member>
-        <member name="M:Punk.FP.Choose``1(``0[])">
+        <member name="M:Indigo.FP.Choose``1(``0[])">
             <summary>
             Randomly chooses and returns one of the provided values.
             </summary>
             <param name="choices">The Objects you want to randomly choose from. Can be ints, floats, Points, etc.</param>
             <returns>A randomly chosen one of the provided parameters.</returns>
         </member>
-        <member name="M:Punk.FP.Sign(System.Single)">
+        <member name="M:Indigo.FP.Sign(System.Single)">
             <summary>
             Finds the sign of the provided value.
             </summary>
             <param name="value">The value to evaluate.</param>
             <returns>1 if value is greater than 0, -1 if value is less than 0, and 0 when value == 0.</returns>
         </member>
-        <member name="M:Punk.FP.Approach(System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.FP.Approach(System.Single,System.Single,System.Single)">
             <summary>
             Approaches the value towards the target, by the specified amount, without overshooting the target.
             </summary>
@@ -754,7 +741,7 @@
             <param name="amount">How much you want the value to approach target by.</param>
             <returns>The new value.</returns>
         </member>
-        <member name="M:Punk.FP.Lerp(System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.FP.Lerp(System.Single,System.Single,System.Single)">
             <summary>
             Linear interpolation between two values.
             </summary>
@@ -763,7 +750,7 @@
             <param name="t">Interpolation factor</param>
             <returns>When t=0, returns a. When t=1, returns b. When t=0.5, will return halfway between a and b. Etc.</returns>
         </member>
-        <member name="M:Punk.FP.ColorLerp(System.Int32,System.Int32,System.Single)">
+        <member name="M:Indigo.FP.ColorLerp(System.Int32,System.Int32,System.Single)">
             <summary>
             Linear interpolation between two colors.
             </summary>
@@ -772,7 +759,7 @@
             <param name="t">Interpolation value. Clamped to the range [0, 1].</param>
             <returns>RGB component-interpolated color value.</returns>
         </member>
-        <member name="M:Punk.FP.StepTowards(System.Single@,System.Single@,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.FP.StepTowards(System.Single@,System.Single@,System.Single,System.Single,System.Single)">
             <summary>
             Steps X and Y coordinates towards a point.
             </summary>
@@ -782,7 +769,7 @@
             <param name="toY">Y position to step towards.</param>
             <param name="distance">The distance to step (will not overshoot target).</param>
         </member>
-        <member name="M:Punk.FP.AnchorTo(System.Single@,System.Single@,System.Single,System.Single,System.Single,System.Nullable{System.Single})">
+        <member name="M:Indigo.FP.AnchorTo(System.Single@,System.Single@,System.Single,System.Single,System.Single,System.Nullable{System.Single})">
             <summary>
             Anchors the object to a position
             </summary>
@@ -793,7 +780,7 @@
             <param name="maxDistance">The max distance that the object can be from the anchor</param>
             <param name="minDistance">The minimum distance that the object can be from the anchor</param>
         </member>
-        <member name="M:Punk.FP.RotateAround(System.Single@,System.Single@,System.Single,System.Single,System.Single,System.Boolean)">
+        <member name="M:Indigo.FP.RotateAround(System.Single@,System.Single@,System.Single,System.Single,System.Single,System.Boolean)">
             <summary>
             Rotates the object around the anchor by the specified amount.
             </summary>
@@ -804,7 +791,7 @@
             <param name="angle">The amount of degrees to rotate by.</param>
             <param name="relative">Whether the rotation is relative (default true).</param>
         </member>
-        <member name="M:Punk.FP.Angle(System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.FP.Angle(System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Finds the angle (in degrees) from point 1 to point 2.
             </summary>
@@ -814,7 +801,7 @@
             <param name="y2">The second y-position.</param>
             <returns>The angle from (x1, y1) to (x2, y2).</returns>
         </member>
-        <member name="M:Punk.FP.AngleXY(System.Single@,System.Single@,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.FP.AngleXY(System.Single@,System.Single@,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Sets the x/y values of an object to a vector of the specified angle and length.
             </summary>
@@ -825,7 +812,7 @@
             <param name="xOffset">X offset.</param>
             <param name="yOffset">Y offset.</param>
         </member>
-        <member name="M:Punk.FP.AngleDiff(System.Single,System.Single)">
+        <member name="M:Indigo.FP.AngleDiff(System.Single,System.Single)">
             <summary>
             Gets the difference of two angles, wrapped around to the range -180 to 180.
             </summary>
@@ -833,7 +820,7 @@
             <param name="b">Second angle in degrees.</param>
             <returns>Difference in angles, wrapped around to the range -180 to 180.</returns>
         </member>
-        <member name="M:Punk.FP.Distance(System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.FP.Distance(System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Find the distance between two points.
             </summary>
@@ -843,7 +830,7 @@
             <param name="y2">The second y-position.</param>
             <returns>The distance.</returns>
         </member>
-        <member name="M:Punk.FP.DistanceRects(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.FP.DistanceRects(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Find the distance between two rectangles. Will return 0 if the rectangles overlap.
             </summary>
@@ -857,7 +844,7 @@
             <param name="h2">The height of the second rect.</param>
             <returns>The distance.</returns>
         </member>
-        <member name="M:Punk.FP.DistanceRectPoint(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.FP.DistanceRectPoint(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Find the distance between a point and a rectangle. Returns 0 if the point is within the rectangle.
             </summary>
@@ -869,7 +856,7 @@
             <param name="rh">The height of the rect.</param>
             <returns>The distance.</returns>
         </member>
-        <member name="M:Punk.FP.Clamp``1(``0,``0,``0)">
+        <member name="M:Indigo.FP.Clamp``1(``0,``0,``0)">
             <summary>
             Clamps the value within the minimum and maximum values.
             </summary>
@@ -878,7 +865,7 @@
             <param name="max">The maximum range.</param>
             <returns>The clamped value.</returns>
         </member>
-        <member name="M:Punk.FP.ClampInRect(System.Single@,System.Single@,System.Single,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.FP.ClampInRect(System.Single@,System.Single@,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Clamps the object inside the rectangle.
             </summary>
@@ -890,7 +877,7 @@
             <param name="height">Rectangle's height.</param>
             <param name="padding">Optional padding around the edges.</param>
         </member>
-        <member name="M:Punk.FP.Scale(System.Single,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.FP.Scale(System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Transfers a value from one scale to another scale. For example, scale(.5, 0, 1, 10, 20) == 15, and scale(3, 0, 5, 100, 0) == 40.
             </summary>
@@ -901,7 +888,7 @@
             <param name="max2">The maximum range of the second scale.</param>
             <returns>The scaled value.</returns>
         </member>
-        <member name="M:Punk.FP.ScaleClamped(System.Single,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.FP.ScaleClamped(System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Transfers a value from one scale to another scale, but clamps the return value within the second scale.
             </summary>
@@ -912,19 +899,19 @@
             <param name="max2">The maximum range of the second scale.</param>
             <returns>The scaled and clamped value.</returns>
         </member>
-        <member name="M:Punk.FP.RandomizeSeed">
+        <member name="M:Indigo.FP.RandomizeSeed">
             <summary>
             Randomizes the random seed using C#'s Random class.
             </summary>
         </member>
-        <member name="M:Punk.FP.Rand(System.Int32)">
+        <member name="M:Indigo.FP.Rand(System.Int32)">
             <summary>
             Returns a pseudo-random int.
             </summary>
             <param name="amount">The returned value will always be [0, result, amount].</param>
             <returns>The value.</returns>
         </member>
-        <member name="M:Punk.FP.Next``1(``0,System.Collections.Generic.IList{``0},System.Boolean)">
+        <member name="M:Indigo.FP.Next``1(``0,System.Collections.Generic.IList{``0},System.Boolean)">
             <summary>
             Returns the next item after current in the list of options.
             </summary>
@@ -933,7 +920,7 @@
             <param name="loop">If true, will jump to the first item after the last item is reached.</param>
             <returns>The next item in the list.</returns>
         </member>
-        <member name="M:Punk.FP.Prev``1(``0,System.Collections.Generic.IList{``0},System.Boolean)">
+        <member name="M:Indigo.FP.Prev``1(``0,System.Collections.Generic.IList{``0},System.Boolean)">
             <summary>
             Returns the previous item before current in the list of options.
             </summary>
@@ -942,7 +929,7 @@
             <param name="loop">If true, will jump to the last item after the first item is reached.</param>
             <returns>The next item in the list.</returns>
         </member>
-        <member name="M:Punk.FP.Swap``1(``0,``0,``0)">
+        <member name="M:Indigo.FP.Swap``1(``0,``0,``0)">
             <summary>
             Swaps the current item between a and b. Useful for quick state/string/value swapping.
             </summary>
@@ -951,7 +938,7 @@
             <param name="b">Item b</param>
             <returns>Returns a if current is b, and b if current is a.</returns>
         </member>
-        <member name="M:Punk.FP.GetColorRGB(System.Int32,System.Int32,System.Int32)">
+        <member name="M:Indigo.FP.GetColorRGB(System.Int32,System.Int32,System.Int32)">
             <summary>
             Creates a color value by combining the chosen RGB values.
             </summary>
@@ -960,7 +947,7 @@
             <param name="b">The blue value of the color, from 0 to 255.</param>
             <returns>The combined color.</returns>
         </member>
-        <member name="M:Punk.FP.GetColorHSV(System.Int32,System.Int32,System.Int32)">
+        <member name="M:Indigo.FP.GetColorHSV(System.Int32,System.Int32,System.Int32)">
             <summary>
             Creates a color value with the chosen HSV values.
             </summary>
@@ -969,54 +956,54 @@
             <param name="v">The value of the color (from 0 to 1).</param>
             <returns>The created color</returns>
         </member>
-        <member name="M:Punk.FP.GetRed(System.Int32)">
+        <member name="M:Indigo.FP.GetRed(System.Int32)">
             <summary>
             Finds the red factor of a color.
             </summary>
             <param name="color">The color to evaluate.</param>
             <returns>A int from 0 to 255.</returns>
         </member>
-        <member name="M:Punk.FP.GetGreen(System.Int32)">
+        <member name="M:Indigo.FP.GetGreen(System.Int32)">
             <summary>
             Finds the green factor of a color.
             </summary>
             <param name="color">The color to evaluate.</param>
             <returns>A int from 0 to 255.</returns>
         </member>
-        <member name="M:Punk.FP.GetBlue(System.Int32)">
+        <member name="M:Indigo.FP.GetBlue(System.Int32)">
             <summary>
             Finds the blue factor of a color.
             </summary>
             <param name="color">The color to evaluate.</param>
             <returns>A int from 0 to 255.</returns>
         </member>
-        <member name="M:Punk.FP.Color(System.Int32)">
+        <member name="M:Indigo.FP.Color(System.Int32)">
             <summary>
             Create an SFML color instance from a Flash-style int (0xRRGGBB)
             </summary>
             <param name="color">A Flash-style color (0xRRGGBB)</param>
             <returns>The converted color</returns>
         </member>
-        <member name="M:Punk.FP.HexColor(SFML.Graphics.Color)">
+        <member name="M:Indigo.FP.HexColor(SFML.Graphics.Color)">
             <summary>
             Create a Flash-style color (0xRRGGBB) from an SFML color instance.
             </summary>
             <param name="color">An SFML color instance.</param>
             <returns>The converted color.</returns>
         </member>
-        <member name="M:Punk.FP.TimeFlag">
+        <member name="M:Indigo.FP.TimeFlag">
             <summary>
             Sets a time flag.
             </summary>
             <returns>Time elapsed (in milliseconds) since the last time flag was set.</returns>
         </member>
-        <member name="M:Punk.FP.Log(System.Object[])">
+        <member name="M:Indigo.FP.Log(System.Object[])">
             <summary>
             Logs data to the console
             </summary>
             <param name="data">The data parameters to log, can be variables, objects, etc. Parameters will be separated by a space (" ").</param>
         </member>
-        <member name="M:Punk.FP.MakeFrames(System.Int32,System.Int32,System.Int32)">
+        <member name="M:Indigo.FP.MakeFrames(System.Int32,System.Int32,System.Int32)">
             <summary>
             Gets an array of frame indices.
             </summary>
@@ -1025,81 +1012,81 @@
             <param name="skip">Skip amount every frame (eg. use 1 for every 2nd frame).</param>
             <returns></returns>
         </member>
-        <member name="M:Punk.FP.Frames(System.Int32[])">
+        <member name="M:Indigo.FP.Frames(System.Int32[])">
             <summary>
             Create a frame array.
             </summary>
             <param name="frames">The frames to insert into the array</param>
             <returns>The frame array.</returns>
         </member>
-        <member name="M:Punk.FP.Shuffle``1(System.Collections.Generic.List{``0})">
+        <member name="M:Indigo.FP.Shuffle``1(System.Collections.Generic.List{``0})">
             <summary>
             Shuffles the elements in a list.
             </summary>
             <param name="shuffle">The list to shuffle</param>
         </member>
-        <member name="M:Punk.FP.GetTimer">
+        <member name="M:Indigo.FP.GetTimer">
             <summary>
             High-resolution timer.
             </summary>
             <returns>Milliseconds since the Engine started up.</returns>
         </member>
-        <member name="F:Punk.FP.Timer">
+        <member name="F:Indigo.FP.Timer">
             <summary>
             Time since the game started
             </summary>
         </member>
-        <member name="F:Punk.FP.Engine">
+        <member name="F:Indigo.FP.Engine">
             <summary>
             The currently active Engine.
             </summary>
         </member>
-        <member name="P:Punk.FP.HalfWidth">
+        <member name="P:Indigo.FP.HalfWidth">
             <summary>
             Half width of the game.
             </summary>
         </member>
-        <member name="P:Punk.FP.HalfHeight">
+        <member name="P:Indigo.FP.HalfHeight">
             <summary>
             Half height of the game.
             </summary>
         </member>
-        <member name="P:Punk.FP.Screen">
+        <member name="P:Indigo.FP.Screen">
             <summary>
             The display window.
             </summary>
         </member>
-        <member name="P:Punk.FP.Bounds">
+        <member name="P:Indigo.FP.Bounds">
             <summary>
             A rectangle representing the size of the screen.
             </summary>
         </member>
-        <member name="P:Punk.FP.World">
+        <member name="P:Indigo.FP.World">
             <summary>
             The currently active World.
             </summary>
         </member>
-        <member name="P:Punk.FP.Volume">
+        <member name="P:Indigo.FP.Volume">
             <summary>
             Global sound volume. All sounds will be multiplied by this value.
             </summary>
         </member>
-        <member name="P:Punk.FP.Pan">
+        <member name="P:Indigo.FP.Pan">
             <summary>
             Global sound pan. All sounds will be offset by this value.
             </summary>
         </member>
-        <member name="P:Punk.FP.RandomSeed">
+        <member name="P:Indigo.FP.RandomSeed">
             <summary>
             The random seed used by FP's random functions.
             </summary>
         </member>
-        <member name="P:Punk.FP.Random">
+        <member name="P:Indigo.FP.Random">
             <summary>
             A pseudo-random float produced using FP's random seed, where the result is greater than 0 and less than 1.
             </summary>
         </member>
-        <member name="P:Punk.FP.Tweener">
+        <member name="P:Indigo.FP.Tweener">
             <summary>
             Global Tweener for tweening values across multiple worlds.
             </summary>
@@ -1414,8 +1401,10 @@
         <member name="M:Glide.Tween.TweenerImpl.Tween(System.Object,System.Object,System.Single,System.Single)">
             <summary>
             Tweens a set of numeric properties on an object.
+            To tween instance properties/fields, pass the object.
+            To tween static properties/fields, pass the type of the object, using typeof(ObjectType) or object.GetType().
             </summary>
-            <param name="target">The object to tween.</param>
+            <param name="target">The object or type to tween.</param>
             <param name="values">The values to tween to, in an anonymous type ( new { prop1 = 100, prop2 = 0} ).</param>
             <param name="duration">Duration of the tween in seconds.</param>
             <param name="delay">Delay before the tween starts, in seconds.</param>
@@ -1497,62 +1486,62 @@
             </summary>
             <param name="targets">The objects being tweened that you want to resume.</param>
         </member>
-        <member name="T:Punk.Graphics.Backdrop">
+        <member name="T:Indigo.Graphics.Backdrop">
             <summary>
             Description of Backdrop.
             </summary>
         </member>
-        <member name="T:Punk.Graphics.Graphic">
+        <member name="T:Indigo.Graphics.Graphic">
             <summary>
             Base class for all graphical types that can be drawn by Entity.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Graphic.#ctor">
+        <member name="M:Indigo.Graphics.Graphic.#ctor">
             <summary>
             Constructor.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Graphic.X">
+        <member name="F:Indigo.Graphics.Graphic.X">
             <summary>
             X offset.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Graphic.Y">
+        <member name="F:Indigo.Graphics.Graphic.Y">
             <summary>
             Y offset.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Graphic.ScrollX">
+        <member name="F:Indigo.Graphics.Graphic.ScrollX">
             <summary>
             X scrollfactor, effects how much the camera offsets the drawn graphic.
             Can be used for parallax effect, eg. Set to 0 to follow the camera,
             0.5 to move at half-speed of the camera, or 1 (default) to stay still.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Graphic.ScrollY">
+        <member name="F:Indigo.Graphics.Graphic.ScrollY">
             <summary>
             Y scrollfactor, effects how much the camera offsets the drawn graphic.
             Can be used for parallax effect, eg. Set to 0 to follow the camera,
             0.5 to move at half-speed of the camera, or 1 (default) to stay still.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Graphic.Relative">
+        <member name="F:Indigo.Graphics.Graphic.Relative">
             <summary>
             If the graphic should render at its position relative to its parent Entity's position.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Graphic.Shader">
+        <member name="P:Indigo.Graphics.Graphic.Shader">
             <summary>
             An optional shader to draw the image with
             </summary>
         </member>
-        <member name="T:Punk.Graphics.Emitter">
+        <member name="T:Indigo.Graphics.Emitter">
             <summary>
             Particle emitter used for emitting and rendering particle sprites.
             Good rendering performance with large amounts of particles.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Emitter.#ctor(SFML.Graphics.Texture,System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Emitter.#ctor(SFML.Graphics.Texture,System.Int32,System.Int32)">
             <summary>
             Constructor. Sets the source image to use for newly added particle types.
             </summary>
@@ -1560,7 +1549,7 @@
             <param name="frameWidth">Frame width.</param>
             <param name="frameHeight">Frame height.</param>
         </member>
-        <member name="M:Punk.Graphics.Emitter.SetSource(SFML.Graphics.Texture,System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Emitter.SetSource(SFML.Graphics.Texture,System.Int32,System.Int32)">
             <summary>
             Changes the source image to use for newly added particle types.
             </summary>
@@ -1568,19 +1557,19 @@
             <param name="frameWidth">Frame width.</param>
             <param name="frameHeight">Frame height.</param>
         </member>
-        <member name="M:Punk.Graphics.Emitter.Update">
+        <member name="M:Indigo.Graphics.Emitter.Update">
             <summary>
             Update the graphic.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Emitter.Render(System.Single,System.Single,Punk.Camera)">
+        <member name="M:Indigo.Graphics.Emitter.Render(System.Single,System.Single,Indigo.Camera)">
             <summary>
             Renders the particles.
             </summary>
             <param name="x">X position of the owning entity.</param>
             <param name="y">Y position of the owning entity.</param>
         </member>
-        <member name="M:Punk.Graphics.Emitter.NewType(System.String,System.Int32[])">
+        <member name="M:Indigo.Graphics.Emitter.NewType(System.String,System.Int32[])">
             <summary>
             Creates a new Particle type for this Emitter.
             </summary>
@@ -1588,7 +1577,7 @@
             <param name="frames">Array of frame indices for the particles to animate.</param>
             <returns>A new ParticleType object.</returns>
         </member>
-        <member name="M:Punk.Graphics.Emitter.SetMotion(System.String,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,Punk.Graphics.Emitter.Easer)">
+        <member name="M:Indigo.Graphics.Emitter.SetMotion(System.String,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Func{System.Single,System.Single})">
             <summary>
             Defines the motion range for a particle type.
             </summary>
@@ -1602,7 +1591,7 @@
             <param name="ease">Optional easer function.</param>
             <returns>The ParticleType object being modified.</returns>
         </member>
-        <member name="M:Punk.Graphics.Emitter.SetGravity(System.String,System.Single,System.Single)">
+        <member name="M:Indigo.Graphics.Emitter.SetGravity(System.String,System.Single,System.Single)">
             <summary>
             Sets the gravity range for a particle type.
             </summary>
@@ -1611,7 +1600,7 @@
             <param name="gravityRange">Random amount to add to the particle's gravity.</param>
             <returns>The ParticleType object being modified.</returns>
         </member>
-        <member name="M:Punk.Graphics.Emitter.SetAlpha(System.String,System.Single,System.Single,Punk.Graphics.Emitter.Easer)">
+        <member name="M:Indigo.Graphics.Emitter.SetAlpha(System.String,System.Single,System.Single,System.Func{System.Single,System.Single})">
             <summary>
             Sets the alpha range of the particle type.
             </summary>
@@ -1621,7 +1610,7 @@
             <param name="ease">Optional easer function.</param>
             <returns>The ParticleType object being modified.</returns>
         </member>
-        <member name="M:Punk.Graphics.Emitter.SetColor(System.String,SFML.Graphics.Color,SFML.Graphics.Color,Punk.Graphics.Emitter.Easer)">
+        <member name="M:Indigo.Graphics.Emitter.SetColor(System.String,SFML.Graphics.Color,SFML.Graphics.Color,System.Func{System.Single,System.Single})">
             <summary>
             Sets the color range of the particle type.
             </summary>
@@ -1631,7 +1620,7 @@
             <param name="ease">Optional easer function.</param>
             <returns>The ParticleType object being modified.</returns>
         </member>
-        <member name="M:Punk.Graphics.Emitter.Emit(System.String,System.Single,System.Single)">
+        <member name="M:Indigo.Graphics.Emitter.Emit(System.String,System.Single,System.Single)">
             <summary>
             Emits a particle.
             </summary>
@@ -1640,104 +1629,104 @@
             <param name="y">Y point to emit from.</param>
             <returns></returns>
         </member>
-        <member name="P:Punk.Graphics.Emitter.ParticleCount">
+        <member name="P:Indigo.Graphics.Emitter.ParticleCount">
             <summary>
             Amount of currently existing particles.
             </summary>
         </member>
-        <member name="T:Punk.Graphics.Graphiclist">
+        <member name="T:Indigo.Graphics.Graphiclist">
             <summary>
             A Graphic that can contain multiple Graphics of one or various types.
             Useful for drawing sprites with multiple different parts, etc.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Graphiclist.#ctor(Punk.Graphics.Graphic[])">
+        <member name="M:Indigo.Graphics.Graphiclist.#ctor(Indigo.Graphics.Graphic[])">
             <summary>
             Constructor
             </summary>
             <param name="graphics">Graphic objects to add to the list.</param>
         </member>
-        <member name="M:Punk.Graphics.Graphiclist.Update">
+        <member name="M:Indigo.Graphics.Graphiclist.Update">
             <summary>
             Updates the graphics in the list.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Graphiclist.First``1">
+        <member name="M:Indigo.Graphics.Graphiclist.First``1">
             <summary>
             Get the first graphic of a type.
             </summary>
             <returns>The first graphic found, or null if none exist.</returns>
         </member>
-        <member name="M:Punk.Graphics.Graphiclist.Render(System.Single,System.Single,Punk.Camera)">
+        <member name="M:Indigo.Graphics.Graphiclist.Render(System.Single,System.Single,Indigo.Camera)">
             <summary>
             Render the Graphic.
             </summary>
             <param name="x">X position of the owning Entity.</param>
             <param name="y">Y position of the owning Entity.</param>
         </member>
-        <member name="M:Punk.Graphics.Graphiclist.Add(Punk.Graphics.Graphic)">
+        <member name="M:Indigo.Graphics.Graphiclist.Add(Indigo.Graphics.Graphic)">
             <summary>
             Adds the Graphic to the list.
             </summary>
             <param name="graphic">The Graphic to add.</param>
             <returns>The added Graphic.</returns>
         </member>
-        <member name="M:Punk.Graphics.Graphiclist.Remove(Punk.Graphics.Graphic)">
+        <member name="M:Indigo.Graphics.Graphiclist.Remove(Indigo.Graphics.Graphic)">
             <summary>
             Removes the Graphic from the list.
             </summary>
             <param name="graphic">The Graphic to remove.</param>
             <returns>The removed Graphic.</returns>
         </member>
-        <member name="M:Punk.Graphics.Graphiclist.RemoveAt(System.Int32)">
+        <member name="M:Indigo.Graphics.Graphiclist.RemoveAt(System.Int32)">
             <summary>
             Removes the Graphic from the position in the list.
             </summary>
             <param name="index">Index to remove.</param>
         </member>
-        <member name="M:Punk.Graphics.Graphiclist.RemoveAll">
+        <member name="M:Indigo.Graphics.Graphiclist.RemoveAll">
             <summary>
             Removes all Graphics from the list.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Graphiclist.UpdateCheck">
+        <member name="M:Indigo.Graphics.Graphiclist.UpdateCheck">
             <summary>
             Check if the Graphiclist should update.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Graphiclist.Children">
+        <member name="P:Indigo.Graphics.Graphiclist.Children">
             <summary>
             All Graphics in this list.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Graphiclist.Count">
+        <member name="P:Indigo.Graphics.Graphiclist.Count">
             <summary>
             Amount of Graphics in this list.
             </summary>
         </member>
-        <member name="T:Punk.Graphics.Image">
+        <member name="T:Indigo.Graphics.Image">
             <summary>
             Non-animated image. Can be drawn to the screen with transformations.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Image.UpdateTextureRect">
+        <member name="M:Indigo.Graphics.Image.UpdateTextureRect">
             <summary>
             Updates the texture rectangle.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Image.#ctor">
+        <member name="M:Indigo.Graphics.Image.#ctor">
             <summary>
             Simple constructor for shape functions lol
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Image.#ctor(SFML.Graphics.Texture,System.Nullable{SFML.Graphics.IntRect})">
+        <member name="M:Indigo.Graphics.Image.#ctor(SFML.Graphics.Texture,System.Nullable{SFML.Graphics.IntRect})">
             <summary>
             Constructor.
             </summary>
             <param name="texture">Source image.</param>
             <param name="clipRect">Optional rectangle defining area of the source image to draw.</param>
         </member>
-        <member name="M:Punk.Graphics.Image.CreateRect(System.Int32,System.Int32,SFML.Graphics.Color)">
+        <member name="M:Indigo.Graphics.Image.CreateRect(System.Int32,System.Int32,SFML.Graphics.Color)">
             <summary>
             Create a solid-color rectangle image.
             </summary>
@@ -1746,7 +1735,7 @@
             <param name="color">The color of the image.</param>
             <returns>The created image.</returns>
         </member>
-        <member name="M:Punk.Graphics.Image.CreateCircle(System.Int32,SFML.Graphics.Color)">
+        <member name="M:Indigo.Graphics.Image.CreateCircle(System.Int32,SFML.Graphics.Color)">
             <summary>
             Create a solid-color circle image.
             </summary>
@@ -1754,145 +1743,145 @@
             <param name="color">The color of the image.</param>
             <returns>The created image.</returns>
         </member>
-        <member name="M:Punk.Graphics.Image.Render(System.Single,System.Single,Punk.Camera)">
+        <member name="M:Indigo.Graphics.Image.Render(System.Single,System.Single,Indigo.Camera)">
             <summary>
             Renders the graphic to the screen buffer.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Image.CenterOrigin">
+        <member name="M:Indigo.Graphics.Image.CenterOrigin">
             <summary>
             Centers the Image's originX/Y to its center.
             </summary>		
         </member>
-        <member name="M:Punk.Graphics.Image.CenterOO">
+        <member name="M:Indigo.Graphics.Image.CenterOO">
             <summary>
             Centers the Image's originX/Y to its center.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Image._sourceRect">
+        <member name="F:Indigo.Graphics.Image._sourceRect">
             <summary>
             The clipping rectangle
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Image._sourceRectSize">
+        <member name="F:Indigo.Graphics.Image._sourceRectSize">
             <summary>
             The size of the clipping rectangle, used for accurate flipping.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Image._sourceSize">
+        <member name="F:Indigo.Graphics.Image._sourceSize">
             <summary>
             The size of the image's texture or shape.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Image._alpha">
+        <member name="F:Indigo.Graphics.Image._alpha">
             <summary>
             The transparency of the image
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Image._color">
+        <member name="F:Indigo.Graphics.Image._color">
             <summary>
             The tint color of the image.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Image._flipX">
+        <member name="F:Indigo.Graphics.Image._flipX">
             <summary>
             Whether the image is flipped on the X axis.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Image._flipY">
+        <member name="F:Indigo.Graphics.Image._flipY">
             <summary>
             Whether the image is flipped on the Y axis.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.Angle">
+        <member name="P:Indigo.Graphics.Image.Angle">
             <summary>
             Rotation of the image, in degrees.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.Scale">
+        <member name="P:Indigo.Graphics.Image.Scale">
             <summary>
             Scale of the image, affects both x and y scale.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.ScaleX">
+        <member name="P:Indigo.Graphics.Image.ScaleX">
             <summary>
             X scale of the image.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.ScaleY">
+        <member name="P:Indigo.Graphics.Image.ScaleY">
             <summary>
             Y scale of the image.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.OriginX">
+        <member name="P:Indigo.Graphics.Image.OriginX">
             <summary>
             X origin of the image, determines transformation point.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.OriginY">
+        <member name="P:Indigo.Graphics.Image.OriginY">
             <summary>
             Y origin of the image, determines transformation point.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.FlippedX">
+        <member name="P:Indigo.Graphics.Image.FlippedX">
             <summary>
             If you want to draw the image horizontally flipped.
             This will flip the texture without moving it, as would happen if you set ScaleX to -1.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.FlippedY">
+        <member name="P:Indigo.Graphics.Image.FlippedY">
             <summary>
             If you want to draw the image vertically flipped.
             This will flip the texture without moving it, as would happen if you set ScaleY to -1.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.Width">
+        <member name="P:Indigo.Graphics.Image.Width">
             <summary>
             The width of the image
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.Height">
+        <member name="P:Indigo.Graphics.Image.Height">
             <summary>
             The height of the image
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.ScaledWidth">
+        <member name="P:Indigo.Graphics.Image.ScaledWidth">
             <summary>
             The scaled width of the image.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.ScaledHeight">
+        <member name="P:Indigo.Graphics.Image.ScaledHeight">
             <summary>
             The scaled height of the image.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.ClipRect">
+        <member name="P:Indigo.Graphics.Image.ClipRect">
             <summary>
             Clipping rectangle for the image.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.Source">
+        <member name="P:Indigo.Graphics.Image.Source">
             <summary>
             The texture that the image uses (null if in Shape mode).
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.Alpha">
+        <member name="P:Indigo.Graphics.Image.Alpha">
             <summary>
             The alpha of the image
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Image.Color">
+        <member name="P:Indigo.Graphics.Image.Color">
             <summary>
             Set the tint color of the image. Setting this to White (255, 255, 255 or 0xffffff) will disable tinting.
             If you set the alpha of this property, it will be overwritten by the Alpha property when the color transform is updated.
             </summary>
         </member>
-        <member name="T:Punk.Graphics.Nineslice">
+        <member name="T:Indigo.Graphics.Nineslice">
             <summary>
             A box that automatically repeats portions of its source texture to create a seamlessly tiled image.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Nineslice.#ctor(SFML.Graphics.Texture,System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Nineslice.#ctor(SFML.Graphics.Texture,System.Int32,System.Int32)">
             <summary>
             Constructor.
             </summary>
@@ -1900,7 +1889,7 @@
             <param name="columns">How many columns wide the graphic is.</param>
             <param name="rows">How many rows high the graphic is.</param>
         </member>
-        <member name="M:Punk.Graphics.Nineslice.Render(System.Single,System.Single,Punk.Camera)">
+        <member name="M:Indigo.Graphics.Nineslice.Render(System.Single,System.Single,Indigo.Camera)">
             <summary>
             Renders the graphic.
             </summary>
@@ -1908,7 +1897,7 @@
             <param name="y"></param>
             <param name="camera"></param>
         </member>
-        <member name="M:Punk.Graphics.Nineslice.BuildCornerTopLeft(SFML.Window.Vector2f[])">
+        <member name="M:Indigo.Graphics.Nineslice.BuildCornerTopLeft(SFML.Window.Vector2f[])">
              All vertices are wound clockwise beginning at the top-left corner.
              Slices correspond to array indices thusly:
              0, 1, 2
@@ -1916,119 +1905,109 @@
              6, 7, 8
             
         </member>
-        <member name="F:Punk.Graphics.Nineslice.StretchCenter">
+        <member name="F:Indigo.Graphics.Nineslice.StretchCenter">
             <summary>
             Whether the texture should be stretched instead of repeating.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Nineslice.StretchTop">
+        <member name="F:Indigo.Graphics.Nineslice.StretchTop">
             <summary>
             Whether the texture should be stretched instead of repeating.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Nineslice.StretchLeft">
+        <member name="F:Indigo.Graphics.Nineslice.StretchLeft">
             <summary>
             Whether the texture should be stretched instead of repeating.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Nineslice.StretchBottom">
+        <member name="F:Indigo.Graphics.Nineslice.StretchBottom">
             <summary>
             Whether the texture should be stretched instead of repeating.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Nineslice.StretchRight">
+        <member name="F:Indigo.Graphics.Nineslice.StretchRight">
             <summary>
             Whether the texture should be stretched instead of repeating.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Nineslice.Angle">
+        <member name="P:Indigo.Graphics.Nineslice.Angle">
             <summary>
             Rotation of the image, in degrees.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Nineslice.Scale">
+        <member name="P:Indigo.Graphics.Nineslice.Scale">
             <summary>
             Scale of the image, affects both x and y scale.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Nineslice.ScaleX">
+        <member name="P:Indigo.Graphics.Nineslice.ScaleX">
             <summary>
             X scale of the image.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Nineslice.ScaleY">
+        <member name="P:Indigo.Graphics.Nineslice.ScaleY">
             <summary>
             Y scale of the image.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Nineslice.OriginX">
+        <member name="P:Indigo.Graphics.Nineslice.OriginX">
             <summary>
             X origin of the image, determines transformation point.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Nineslice.OriginY">
+        <member name="P:Indigo.Graphics.Nineslice.OriginY">
             <summary>
             Y origin of the image, determines transformation point.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Nineslice.Columns">
+        <member name="P:Indigo.Graphics.Nineslice.Columns">
             <summary>
             How many columns to render
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Nineslice.Rows">
+        <member name="P:Indigo.Graphics.Nineslice.Rows">
             <summary>
             How many rows to render
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Nineslice.Width">
+        <member name="P:Indigo.Graphics.Nineslice.Width">
             <summary>
             The width of the graphic
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Nineslice.Height">
+        <member name="P:Indigo.Graphics.Nineslice.Height">
             <summary>
             The height of the graphic
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Nineslice.ScaledWidth">
+        <member name="P:Indigo.Graphics.Nineslice.ScaledWidth">
             <summary>
             The scaled width of the image.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Nineslice.ScaledHeight">
+        <member name="P:Indigo.Graphics.Nineslice.ScaledHeight">
             <summary>
             The scaled height of the image.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Nineslice.Alpha">
+        <member name="P:Indigo.Graphics.Nineslice.Alpha">
             <summary>
             The alpha of the image
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Nineslice.Color">
+        <member name="P:Indigo.Graphics.Nineslice.Color">
             <summary>
             Set the tint color of the image. Setting this to White (255, 255, 255 or 0xffffff) will disable tinting.
             If you set the alpha of this property, it will be overwritten by the Alpha property when the color transform is updated.
             </summary>
         </member>
-        <member name="T:Punk.Graphics.Particle">
+        <member name="T:Indigo.Graphics.ParticleType">
             <summary>
-            Description of Particle.
+            Template used to define a particle type used by the Emitter class.
+             Instead of creating this object yourself, fetch one with Emitter's NewType() function.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Particle.#ctor">
-            <summary>
-            Constructor.
-            </summary>
-        </member>
-        <member name="T:Punk.Graphics.ParticleType">
-            <summary>
-            Template used to define a particle type used by the Emitter class. Instead
-            of creating this object yourself, fetch one with Emitter's NewType() function.
-            </summary>
-        </member>
-        <member name="M:Punk.Graphics.ParticleType.#ctor(System.String,System.Int32[],SFML.Graphics.Texture,System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.ParticleType.#ctor(System.String,System.Int32[],SFML.Graphics.Texture,System.Int32,System.Int32)">
             <summary>
             Constructor.
             </summary>
@@ -2038,7 +2017,7 @@
             <param name="frameWidth">Frame width.</param>
             <param name="frameHeight">Frame height.</param>
         </member>
-        <member name="M:Punk.Graphics.ParticleType.SetMotion(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,Punk.Graphics.Emitter.Easer)">
+        <member name="M:Indigo.Graphics.ParticleType.SetMotion(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Func{System.Single,System.Single})">
             <summary>
             Defines the motion range for this particle type.
             </summary>
@@ -2051,7 +2030,7 @@
             <param name="ease">Optional easer function.</param>
             <returns>This ParticleType object.</returns>
         </member>
-        <member name="M:Punk.Graphics.ParticleType.SetMotionVector(System.Single,System.Single,System.Single,System.Single,Punk.Graphics.Emitter.Easer)">
+        <member name="M:Indigo.Graphics.ParticleType.SetMotionVector(System.Single,System.Single,System.Single,System.Single,System.Func{System.Single,System.Single})">
             <summary>
             Defines the motion range for this particle type based on the vector.
             </summary>
@@ -2062,7 +2041,7 @@
             <param name="ease">Optional easer function.</param>
             <returns>This ParticleType object.</returns>
         </member>
-        <member name="M:Punk.Graphics.ParticleType.SetGravity(System.Single,System.Single)">
+        <member name="M:Indigo.Graphics.ParticleType.SetGravity(System.Single,System.Single)">
             <summary>
             Sets the gravity range of this particle type.
             </summary>
@@ -2070,7 +2049,7 @@
             <param name="gravityRange">Random amount to add to the particle's gravity.</param>
             <returns>This ParticleType object.</returns>
         </member>
-        <member name="M:Punk.Graphics.ParticleType.SetAlpha(System.Single,System.Single,Punk.Graphics.Emitter.Easer)">
+        <member name="M:Indigo.Graphics.ParticleType.SetAlpha(System.Single,System.Single,System.Func{System.Single,System.Single})">
             <summary>
             Sets the alpha range of this particle type.
             </summary>
@@ -2079,7 +2058,7 @@
             <param name="ease">Optional easer function.</param>
             <returns>This ParticleType object.</returns>
         </member>
-        <member name="M:Punk.Graphics.ParticleType.SetColor(SFML.Graphics.Color,SFML.Graphics.Color,Punk.Graphics.Emitter.Easer)">
+        <member name="M:Indigo.Graphics.ParticleType.SetColor(SFML.Graphics.Color,SFML.Graphics.Color,System.Func{System.Single,System.Single})">
             <summary>
             Sets the color range of this particle type.
             </summary>
@@ -2088,28 +2067,28 @@
             <param name="ease">Optional easer function.</param>
             <returns>This ParticleType object.</returns>
         </member>
-        <member name="T:Punk.Graphics.Spritemap">
+        <member name="T:Indigo.Graphics.Spritemap">
             <summary>
             Animated Image. Can have multiple animations,
             which draw frames from the provided source image to the screen.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Spritemap.Complete">
+        <member name="F:Indigo.Graphics.Spritemap.Complete">
             <summary>
             If the animation has stopped.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Spritemap.Callback">
+        <member name="F:Indigo.Graphics.Spritemap.Callback">
             <summary>
             Optional callback function for animation end.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Spritemap.Rate">
+        <member name="F:Indigo.Graphics.Spritemap.Rate">
             <summary>
             Animation speed factor, alter this to speed up/slow down all animations.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Spritemap.#ctor(SFML.Graphics.Texture,System.Int32,System.Int32,Punk.Graphics.Spritemap.OnComplete)">
+        <member name="M:Indigo.Graphics.Spritemap.#ctor(SFML.Graphics.Texture,System.Int32,System.Int32,Indigo.Graphics.Spritemap.OnComplete)">
             <summary>
             Constructor
             </summary>
@@ -2118,17 +2097,17 @@
             <param name="frameHeight">Frame height.</param>
             <param name="complete">Optional callback function for animation end.</param>
         </member>
-        <member name="M:Punk.Graphics.Spritemap.UpdateBuffer">
+        <member name="M:Indigo.Graphics.Spritemap.UpdateBuffer">
             <summary>
             Updates the spritemap's buffer.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Spritemap.Update">
+        <member name="M:Indigo.Graphics.Spritemap.Update">
             <summary>
             Updates the animation.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Spritemap.Add(System.String,System.Int32[],System.Single,System.Boolean)">
+        <member name="M:Indigo.Graphics.Spritemap.Add(System.String,System.Int32[],System.Single,System.Boolean)">
             <summary>
             Add an Animation.
             </summary>
@@ -2138,7 +2117,7 @@
             <param name="loop">If the animation should loop.</param>
             <returns>A new Anim object for the animation.</returns>
         </member>
-        <member name="M:Punk.Graphics.Spritemap.Play(System.String,System.Boolean,System.Int32)">
+        <member name="M:Indigo.Graphics.Spritemap.Play(System.String,System.Boolean,System.Int32)">
             <summary>
             Plays an animation.
             </summary>
@@ -2147,7 +2126,7 @@
             <param name="frame">Frame of the animation to start from, if restarted.</param>
             <returns>Anim object representing the played animation.</returns>
         </member>
-        <member name="M:Punk.Graphics.Spritemap.GetFrame(System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Spritemap.GetFrame(System.Int32,System.Int32)">
             <summary>
             Gets the frame index based on the column and row of the source image.
             </summary>
@@ -2155,7 +2134,7 @@
             <param name="row">Frame row.</param>
             <returns>Frame index.</returns>
         </member>
-        <member name="M:Punk.Graphics.Spritemap.SetFrame(System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Spritemap.SetFrame(System.Int32,System.Int32)">
             <summary>
             Sets the current display frame based on the column and row of the source image.
             When you set the frame, any animations playing will be stopped to force the frame.
@@ -2163,122 +2142,122 @@
             <param name="column">Frame column.</param>
             <param name="row">Frame row.</param>
         </member>
-        <member name="M:Punk.Graphics.Spritemap.RandFrame">
+        <member name="M:Indigo.Graphics.Spritemap.RandFrame">
             <summary>
             Assigns the Spritemap to a random frame.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Spritemap.SetAnimFrame(System.String,System.Int32)">
+        <member name="M:Indigo.Graphics.Spritemap.SetAnimFrame(System.String,System.Int32)">
             <summary>
             Sets the frame to the frame index of an animation.
             </summary>
             <param name="name">Animation to draw the frame frame.</param>
             <param name="index">Index of the frame of the animation to set to.</param>
         </member>
-        <member name="F:Punk.Graphics.Spritemap._width">
+        <member name="F:Indigo.Graphics.Spritemap._width">
             <summary>
             The width of the Spritemap.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Spritemap._height">
+        <member name="F:Indigo.Graphics.Spritemap._height">
             <summary>
             The height of the Spritemap.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Spritemap._frame">
+        <member name="F:Indigo.Graphics.Spritemap._frame">
             <summary>
             The current animation frame.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Spritemap.Frame">
+        <member name="P:Indigo.Graphics.Spritemap.Frame">
             <summary>
             The current frame index. When you set this, any
             animations playing will be stopped to force the frame.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Spritemap.Index">
+        <member name="P:Indigo.Graphics.Spritemap.Index">
             <summary>
             Current index of the playing animation.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Spritemap.FrameCount">
+        <member name="P:Indigo.Graphics.Spritemap.FrameCount">
             <summary>
             The amount of frames in the Spritemap.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Spritemap.Columns">
+        <member name="P:Indigo.Graphics.Spritemap.Columns">
             <summary>
             Columns in the Spritemap.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Spritemap.Rows">
+        <member name="P:Indigo.Graphics.Spritemap.Rows">
             <summary>
             Rows in the Spritemap.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Spritemap.CurrentAnim">
+        <member name="P:Indigo.Graphics.Spritemap.CurrentAnim">
             <summary>
             The currently playing animation.
             </summary>
         </member>
-        <member name="T:Punk.Graphics.Spritemap.OnComplete">
+        <member name="T:Indigo.Graphics.Spritemap.OnComplete">
             <summary>
             Callback type for when animations complete.
             </summary>
         </member>
-        <member name="T:Punk.Graphics.Anim">
+        <member name="T:Indigo.Graphics.Anim">
             <summary>
-            Template used by Spritemap to define animations. Don't create
-            these yourself, instead you can fetch them with Spritemap's Add().
+            Template used by Spritemap to define animations. 
+            Don't create these yourself, instead you can fetch them with Spritemap's Add().
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Anim.Play(System.Boolean)">
+        <member name="M:Indigo.Graphics.Anim.Play(System.Boolean)">
             <summary>
             Plays the animation.
             </summary>
             <param name="reset">If the animation should force-restart if it is already playing.</param>
         </member>
-        <member name="P:Punk.Graphics.Anim.Name">
+        <member name="P:Indigo.Graphics.Anim.Name">
             <summary>
             The name of the animation
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Anim.Frames">
+        <member name="P:Indigo.Graphics.Anim.Frames">
             <summary>
             Array of frame indices to animate.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Anim.FrameRate">
+        <member name="P:Indigo.Graphics.Anim.FrameRate">
             <summary>
             Animation speed.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Anim.Loop">
+        <member name="P:Indigo.Graphics.Anim.Loop">
             <summary>
             If the animation loops.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Anim.FrameCount">
+        <member name="P:Indigo.Graphics.Anim.FrameCount">
             <summary>
             Amount of frames in the animation.
             </summary>
         </member>
-        <member name="T:Punk.Graphics.Text">
+        <member name="T:Indigo.Graphics.Text">
             <summary>
             Used for drawing text using embedded fonts.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Text.DefaultFont">
+        <member name="F:Indigo.Graphics.Text.DefaultFont">
             <summary>
             The font to assign to new Text objects.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Text.size">
+        <member name="F:Indigo.Graphics.Text.size">
             <summary>
             The font size to assign to new Text objects.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Text.#ctor(System.String,System.Single,System.Single,System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Text.#ctor(System.String,System.Single,System.Single,System.Int32,System.Int32)">
             <summary>
             Constructor
             </summary>
@@ -2288,103 +2267,103 @@
             <param name="width">Image width (leave as 0 to size to the starting text string).</param>
             <param name="height">Image height (leave as 0 to size to the starting text string).</param>
         </member>
-        <member name="M:Punk.Graphics.Text.CenterOrigin">
+        <member name="M:Indigo.Graphics.Text.CenterOrigin">
             <summary>
             Centers the Text's originX/Y to its center.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.Angle">
+        <member name="P:Indigo.Graphics.Text.Angle">
             <summary>
             Rotation of the image, in degrees.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.Scale">
+        <member name="P:Indigo.Graphics.Text.Scale">
             <summary>
             Scale of the image, affects both x and y scale.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.ScaleX">
+        <member name="P:Indigo.Graphics.Text.ScaleX">
             <summary>
             X scale of the image.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.ScaleY">
+        <member name="P:Indigo.Graphics.Text.ScaleY">
             <summary>
             Y scale of the image.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.OriginX">
+        <member name="P:Indigo.Graphics.Text.OriginX">
             <summary>
             X origin of the image, determines transformation point.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.OriginY">
+        <member name="P:Indigo.Graphics.Text.OriginY">
             <summary>
             Y origin of the image, determines transformation point.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.Bold">
+        <member name="P:Indigo.Graphics.Text.Bold">
             <summary>
             If the text has bolded.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.Italicized">
+        <member name="P:Indigo.Graphics.Text.Italicized">
             <summary>
             If the text is italicized.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.Underlined">
+        <member name="P:Indigo.Graphics.Text.Underlined">
             <summary>
             If the text is underlined.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.Color">
+        <member name="P:Indigo.Graphics.Text.Color">
             <summary>
             Set the tint color of the image. Setting this to White (255, 255, 255 or 0xffffff) will disable tinting.
             If you set the alpha of this property, it will be overwritten by the Alpha property when the color transform is updated.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.String">
+        <member name="P:Indigo.Graphics.Text.String">
             <summary>
             Text string.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.Font">
+        <member name="P:Indigo.Graphics.Text.Font">
             <summary>
             Font family.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.Size">
+        <member name="P:Indigo.Graphics.Text.Size">
             <summary>
             Font size.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.Width">
+        <member name="P:Indigo.Graphics.Text.Width">
             <summary>
             Width of the text image.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Text.Height">
+        <member name="P:Indigo.Graphics.Text.Height">
             <summary>
             Height of the text image.
             </summary>
         </member>
-        <member name="T:Punk.Graphics.Text.Styles">
+        <member name="T:Indigo.Graphics.Text.Styles">
             <summary>
             Text style types.
             </summary>
         </member>
-        <member name="T:Punk.Graphics.Tilemap">
+        <member name="T:Indigo.Graphics.Tilemap">
             <summary>
             Description of Tilemap.
             </summary>
         </member>
-        <member name="F:Punk.Graphics.Tilemap.UsePositions">
+        <member name="F:Indigo.Graphics.Tilemap.UsePositions">
             <summary>
             If x/y positions should be used instead of columns/rows.
             </summary>
         </member>
-        <member name="M:Punk.Graphics.Tilemap.#ctor(SFML.Graphics.Texture,System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Tilemap.#ctor(SFML.Graphics.Texture,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Constructor.
             </summary>
@@ -2394,7 +2373,7 @@
             <param name="tileWidth">Tile width.</param>
             <param name="tileHeight">Tile height.</param>
         </member>
-        <member name="M:Punk.Graphics.Tilemap.SetTile(System.Int32,System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Tilemap.SetTile(System.Int32,System.Int32,System.Int32)">
             <summary>
             Set the tile at the position.
             </summary>
@@ -2402,21 +2381,21 @@
             <param name="row">Column of the tile.</param>
             <param name="index">The tile index.</param>
         </member>
-        <member name="M:Punk.Graphics.Tilemap.ClearTile(System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Tilemap.ClearTile(System.Int32,System.Int32)">
             <summary>
             Clears the tile at the position.
             </summary>
             <param name="column">Column of the tile.</param>
             <param name="row">Column of the tile.</param>
         </member>
-        <member name="M:Punk.Graphics.Tilemap.GetTile(System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Tilemap.GetTile(System.Int32,System.Int32)">
             <summary>
             Get the index of a tile at the position.
             </summary>
             <param name="column">Column of the tile.</param>
             <param name="row">Column of the tile.</param>
         </member>
-        <member name="M:Punk.Graphics.Tilemap.SetRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Tilemap.SetRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Fills the rectangular region with tiles.
             </summary>
@@ -2426,7 +2405,7 @@
             <param name="height">Height in tiles.</param>
             <param name="index">Index of the tile.</param>
         </member>
-        <member name="M:Punk.Graphics.Tilemap.ClearRect(System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Tilemap.ClearRect(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Clears the rectangular region of tiles.
             </summary>
@@ -2435,7 +2414,7 @@
             <param name="width">Width in tiles.</param>
             <param name="height">Height in tiles.</param>
         </member>
-        <member name="M:Punk.Graphics.Tilemap.LoadFromString(System.String,System.String,System.String)">
+        <member name="M:Indigo.Graphics.Tilemap.LoadFromString(System.String,System.String,System.String)">
             <summary>
             Loads the Tilemap tile index data from a string.
             The implicit array should not be bigger than the Tilemap.
@@ -2444,7 +2423,7 @@
             <param name="columnSep">The string that separates each tile value on a row, default is ",".</param>
             <param name="rowSep">The string that separates each row of tiles, default is "\n".</param>
         </member>
-        <member name="M:Punk.Graphics.Tilemap.SaveToString(System.String,System.String)">
+        <member name="M:Indigo.Graphics.Tilemap.SaveToString(System.String,System.String)">
             <summary>
             Saves the Tilemap tile index data to a string.
             </summary>
@@ -2452,14 +2431,14 @@
             <param name="rowSep">The string that separates each row of tiles, default is "\n".</param>
             <returns>The string version of the array.</returns>
         </member>
-        <member name="M:Punk.Graphics.Tilemap.CreateGrid(System.Int32[])">
+        <member name="M:Indigo.Graphics.Tilemap.CreateGrid(System.Int32[])">
             <summary>
             Create a grid based on this tilemap.
             </summary>
             <param name="solidTiles">The tile indeces to be treated as solid.</param>
             <returns></returns>
         </member>
-        <member name="M:Punk.Graphics.Tilemap.GetIndex(System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Tilemap.GetIndex(System.Int32,System.Int32)">
             <summary>
             Gets the index of a tile, based on its column and row in the tileset.
             </summary>
@@ -2467,107 +2446,433 @@
             <param name="tilesRow">Tileset row.</param>
             <returns>Index of the tile.</returns>
         </member>
-        <member name="M:Punk.Graphics.Tilemap.SetVertexPositions(System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Tilemap.SetVertexPositions(System.Int32,System.Int32)">
             <summary>
             Calculate vertex positions for a given position.
             </summary>
             <param name="x">Position x.</param>
             <param name="y">Position y.</param>
         </member>
-        <member name="M:Punk.Graphics.Tilemap.SetTexCoords(System.Int32)">
+        <member name="M:Indigo.Graphics.Tilemap.SetTexCoords(System.Int32)">
             <summary>
             Calulate texture coordinates for a given index
             </summary>
             <param name="index">The tile index.</param>
         </member>
-        <member name="P:Punk.Graphics.Tilemap.Width">
+        <member name="P:Indigo.Graphics.Tilemap.Width">
             <summary>
             Width of the graphic.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Tilemap.Height">
+        <member name="P:Indigo.Graphics.Tilemap.Height">
             <summary>
             Height of the graphic.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Tilemap.TileWidth">
+        <member name="P:Indigo.Graphics.Tilemap.TileWidth">
             <summary>
             The tile width.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Tilemap.TileHeight">
+        <member name="P:Indigo.Graphics.Tilemap.TileHeight">
             <summary>
             The tile height.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Tilemap.TileCount">
+        <member name="P:Indigo.Graphics.Tilemap.TileCount">
             <summary>
             How many tiles the tilemap has.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Tilemap.Columns">
+        <member name="P:Indigo.Graphics.Tilemap.Columns">
             <summary>
             How many columns the tilemap has.
             </summary>
         </member>
-        <member name="P:Punk.Graphics.Tilemap.Rows">
+        <member name="P:Indigo.Graphics.Tilemap.Rows">
             <summary>
             How many rows the tilemap has.
             </summary>
         </member>
-        <member name="T:Punk.Library">
+        <member name="T:Indigo.Inputs.Axis">
+            <summary>
+            Description of Axis.
+            </summary>
+        </member>
+        <member name="M:Indigo.Inputs.Directional.WSAD">
+            <summary> Shortcut for creating a Directional with the W, S, A, and D keys. </summary>
+        </member>
+        <member name="M:Indigo.Inputs.Directional.ArrowKeys">
+            <summary> Shortcut for creating a Directional with the Up, Down, Left, and Right keys. </summary>
+        </member>
+        <member name="M:Indigo.Inputs.Directional.#ctor(Indigo.Inputs.Input,Indigo.Inputs.Input,Indigo.Inputs.Input,Indigo.Inputs.Input)">
+            <summary>
+            Constructor.
+            Get directional input from four inputs.
+            </summary>
+            <param name="up">The input to use for Up.</param>
+            <param name="down">The input to use for Down.</param>
+            <param name="left">The input to use for Left.</param>
+            <param name="right">The input to use for Right.</param>
+        </member>
+        <member name="M:Indigo.Inputs.Directional.#ctor(Indigo.Inputs.Axis,Indigo.Inputs.Axis)">
+            <summary>
+            Constructor.
+            Get input from a pair of axes, for use with a thumbstick.
+            A directional in this mode will not update automatically!
+            It must be attacked to a Gamepad or joystick.
+            </summary>
+            <param name="y">The axis to set the X value.</param>
+            <param name="x">The axis to set the Y value.</param>
+        </member>
+        <member name="M:Indigo.Inputs.Directional.#ctor(Indigo.Inputs.JoystickHat)">
+            <summary>
+            Constructor.
+            Get input from a hat, for use with a dpad.
+            A directional in this mode will not update automatically!
+            It must be attacked to a Gamepad or joystick.
+            </summary>
+            <param name="hat">The hat (on a joystick or Gamepad) with which to set the values of this object.</param>
+        </member>
+        <member name="F:Indigo.Inputs.Directional.FlipX">
+            <summary>
+            Whether the value of the axis should be flipped.
+            Useful for gamepad axes that don't face the right way by default.
+            </summary>
+        </member>
+        <member name="F:Indigo.Inputs.Directional.FlipY">
+            <summary>
+            Whether the value of the axis should be flipped.
+            Useful for gamepad axes that don't face the right way by default.
+            </summary>
+        </member>
+        <member name="T:Indigo.Inputs.Gamepad.JoystickAxis">
+            <summary> Alias for axes to hopefully be backend-agnostic.</summary>
+        </member>
+        <member name="T:Indigo.Inputs.Gamepad.JoystickHat">
+            <summary> Alias for hats to hopefully be backend-agnostic.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.GamepadTrigger.Threshold">
+            <summary>
+            The minimum value the trigger can hold before it counts as Pressed, and the maximum before it counts as Released.
+            </summary>
+        </member>
+        <member name="P:Indigo.Inputs.GamepadTrigger.Value">
+            <summary>
+            The state of the trigger, from 0 (fully relaxed) to 1 (fully pressed).
+            </summary>
+        </member>
+        <member name="T:Indigo.Inputs.Keyboard">
+            <summary>
+            Description of Keyboard.
+            </summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.KeyString">
+            <summary>
+            An updated string containing the last 100 characters pressed on the keyboard.
+            Useful for creating text input fields, such as highscore entries, etc.
+            </summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.A">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.B">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.C">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.D">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.E">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.G">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.H">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.I">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.J">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.K">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.L">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.M">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.N">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.O">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.P">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Q">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.R">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.S">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.T">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.U">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.V">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.W">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.X">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Y">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Z">
+            <summary>Alphabet keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Num0">
+            <summary>Number keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Num1">
+            <summary>Number keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Num2">
+            <summary>Number keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Num3">
+            <summary>Number keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Num4">
+            <summary>Number keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Num5">
+            <summary>Number keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Num6">
+            <summary>Number keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Num7">
+            <summary>Number keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Num8">
+            <summary>Number keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Num9">
+            <summary>Number keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Keypad0">
+            <summary>Number pad keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Keypad1">
+            <summary>Number pad keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Keypad2">
+            <summary>Number pad keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Keypad3">
+            <summary>Number pad keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Keypad4">
+            <summary>Number pad keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Keypad5">
+            <summary>Number pad keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Keypad6">
+            <summary>Number pad keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Keypad7">
+            <summary>Number pad keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Keypad8">
+            <summary>Number pad keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Keypad9">
+            <summary>Number pad keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.LControl">
+            <summary>Modifier keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.LShift">
+            <summary>Modifier keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.LAlt">
+            <summary>Modifier keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.LSystem">
+            <summary>Modifier keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.RControl">
+            <summary>Modifier keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.RShift">
+            <summary>Modifier keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.RAlt">
+            <summary>Modifier keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.RSystem">
+            <summary>Modifier keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Left">
+            <summary>Arrow keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Right">
+            <summary>Arrow keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Up">
+            <summary>Arrow keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.Down">
+            <summary>Arrow keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F1">
+            <summary>Function keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F2">
+            <summary>Function keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F3">
+            <summary>Function keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F4">
+            <summary>Function keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F5">
+            <summary>Function keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F6">
+            <summary>Function keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F7">
+            <summary>Function keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F8">
+            <summary>Function keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F9">
+            <summary>Function keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F10">
+            <summary>Function keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F11">
+            <summary>Function keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F12">
+            <summary>Function keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F13">
+            <summary>Function keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F14">
+            <summary>Function keys.</summary>
+        </member>
+        <member name="F:Indigo.Inputs.Keyboard.F15">
+            <summary>Function keys.</summary>
+        </member>
+        <member name="P:Indigo.Inputs.Keyboard.Any">
+            <summary>
+            The "Any" key is set when any key on the keyboard is pressed, but only if its state is set to Up.
+            Once the Any key is pressed, it will not be set again until its state is set to Up again.
+            </summary>
+        </member>
+        <member name="P:Indigo.Inputs.Mouse.ScreenX">
+            <summary> X position of the mouse on the screen. </summary>
+        </member>
+        <member name="P:Indigo.Inputs.Mouse.ScreenY">
+            <summary> Y position of the mouse on the screen.</summary>
+        </member>
+        <member name="P:Indigo.Inputs.Mouse.DeltaX">
+            <summary> Difference between the last position of the mouse and its current position. </summary>
+        </member>
+        <member name="P:Indigo.Inputs.Mouse.DeltaY">
+            <summary> Difference between the last position of the mouse and its current position. </summary>
+        </member>
+        <member name="P:Indigo.Inputs.Mouse.WheelDelta">
+            <summary>
+            If the mouse wheel was moved this frame, this was the delta.
+            </summary>
+        </member>
+        <member name="P:Indigo.Inputs.Mouse.WheelMoved">
+            <summary>
+            If the mouse wheel was moved this frame.
+            </summary>
+        </member>
+        <member name="T:Indigo.Library">
             <summary>
             Content management and caching.
             </summary>
         </member>
-        <member name="M:Punk.Library.GetXml(System.String)">
+        <member name="M:Indigo.Library.GetXml(System.String)">
             <summary>
             Load an XML document.
             </summary>
             <param name="filename">The filename of the document to load.</param>
             <returns>The loaded document.</returns>
         </member>
-        <member name="M:Punk.Library.GetTexture(System.String)">
+        <member name="M:Indigo.Library.GetTexture(System.String)">
             <summary>
             Load a texture.
             </summary>
             <param name="filename">The filename of the texture to load.</param>
             <returns>The loaded texture.</returns>
         </member>
-        <member name="M:Punk.Library.GetBuffer(System.String)">
+        <member name="M:Indigo.Library.GetSoundBuffer(System.String)">
             <summary>
             Load sound data.
             </summary>
             <param name="filename">The filename of the sound file to load.</param>
             <returns>The loaded sound file.</returns>
         </member>
-        <member name="M:Punk.Library.GetMusic(System.String)">
+        <member name="M:Indigo.Library.GetSoundStream(System.String)">
             <summary>
-            Loads a "music" which, internally is a stream.
+            Load a sound stream.
             </summary>
-            <param name="filename">The filename of the music to load.</param>
-            <returns>The loaded music file.</returns>
+            <param name="filename">The filename of the sound file to load.</param>
+            <returns>A stream that reads the requested file.</returns>
         </member>
-        <member name="M:Punk.Library.GetFont(System.String)">
+        <member name="M:Indigo.Library.GetFont(System.String)">
             <summary>
             Load a font.
             </summary>
             <param name="filename">The filename of the font to load.</param>
             <returns>The loaded font.</returns>
         </member>
-        <member name="M:Punk.Library.GetText(System.String)">
+        <member name="M:Indigo.Library.GetText(System.String)">
             <summary>
             Load a text file and return its contents
             </summary>
             <param name="filename">The name of the file</param>
             <returns>The loaded text.</returns>
         </member>
-        <member name="T:Punk.Loaders.OgmoConstructorAttribute">
+        <member name="T:Indigo.Loaders.OgmoConstructorAttribute">
             <summary>
             Doodah!
             </summary>
         </member>
-        <member name="M:Punk.Loaders.OgmoConstructorAttribute.#ctor(System.String[])">
+        <member name="M:Indigo.Loaders.OgmoConstructorAttribute.#ctor(System.String[])">
             <summary>
             Enables the OgmoLoader class to pass parameters to the constructor of an Entity class.
             </summary>
@@ -2576,12 +2881,12 @@
             <para>They must appear in the same order as they appear in the constructor of the Entity!</para>
             </param>
         </member>
-        <member name="T:Punk.Loaders.OgmoLoader">
+        <member name="T:Indigo.Loaders.OgmoLoader">
             <summary>
             Loads an Ogmo Editor level file (.oel) and creates an array of entities to add to a world.
             </summary>
         </member>
-        <member name="M:Punk.Loaders.OgmoLoader.RegisterClassAlias``1(System.String)">
+        <member name="M:Indigo.Loaders.OgmoLoader.RegisterClassAlias``1(System.String)">
             <summary>
             Register an Entity class under a different name than it appears in code.
             This is only needed if you're using a single class to represent multiple Ogmo types,
@@ -2589,7 +2894,7 @@
             </summary>
             <param name="name">The name to register the alias with.</param>
         </member>
-        <member name="M:Punk.Loaders.OgmoLoader.RegisterClassAlias(System.Type,System.String)">
+        <member name="M:Indigo.Loaders.OgmoLoader.RegisterClassAlias(System.Type,System.String)">
             <summary>
             Register an Entity class under a different name than it appears in code.
             This is only needed if you're using a single class to represent multiple Ogmo types,
@@ -2598,103 +2903,103 @@
             <param name="type">The Type to register.</param>
             <param name="name">The name to register the alias with.</param>
         </member>
-        <member name="M:Punk.Loaders.OgmoLoader.BuildWorldAsArray(System.Xml.XmlDocument)">
+        <member name="M:Indigo.Loaders.OgmoLoader.BuildWorldAsArray(System.Xml.XmlDocument)">
             <summary>
             Load Entities from an Ogmo level file into an array.
             </summary>
             <param name="level">The xml of the level.</param>
             <returns>An array containing all Entities loaded.</returns>
         </member>
-        <member name="T:Punk.Masks.Grid">
+        <member name="T:Indigo.Masks.Grid">
             <summary>
             Description of Grid.
             </summary>
         </member>
-        <member name="T:Punk.Masks.Hitbox">
+        <member name="T:Indigo.Masks.Hitbox">
             <summary>
             Uses Parent's hitbox to determine collision. This class is used
-            internally by FlashPunk, you don't need to use this class becaus
+            internally by FlashIndigo, you don't need to use this class becaus
             this is the default behaviour of Entities without a Mask object.
             </summary>
         </member>
-        <member name="T:Punk.Masks.Mask">
+        <member name="T:Indigo.Masks.Mask">
             <summary>
             Base class for Entity collision masks.
             </summary>
         </member>
-        <member name="F:Punk.Masks.Mask.Parent">
+        <member name="F:Indigo.Masks.Mask.Parent">
             <summary>
             The Parent entity of this mask.
             </summary>
         </member>
-        <member name="F:Punk.Masks.Mask.List">
+        <member name="F:Indigo.Masks.Mask.List">
             <summary>
             The Parent Masklist of this mask.
             </summary>
         </member>
-        <member name="M:Punk.Masks.Mask.#ctor">
+        <member name="M:Indigo.Masks.Mask.#ctor">
             <summary>
             Constructor.
             </summary>
         </member>
-        <member name="M:Punk.Masks.Mask.Collide(Punk.Masks.Mask)">
+        <member name="M:Indigo.Masks.Mask.Collide(Indigo.Masks.Mask)">
             <summary>
             Check for collision with another Mask.
             </summary>
             <param name="other">The other Mask to check against.</param>
             <returns>If the Masks overlap.</returns>
         </member>
-        <member name="M:Punk.Masks.Mask.CollideMask(Punk.Masks.Mask)">
+        <member name="M:Indigo.Masks.Mask.CollideMask(Indigo.Masks.Mask)">
             <summary>
             Collide against an Entity.
             </summary>
         </member>
-        <member name="M:Punk.Masks.Mask.CollideMasklist(Punk.Masks.Mask)">
+        <member name="M:Indigo.Masks.Mask.CollideMasklist(Indigo.Masks.Mask)">
             <summary>
             Collide against a Masklist.
             </summary>
         </member>
-        <member name="M:Punk.Masks.Mask.AssignTo(Punk.Entity)">
+        <member name="M:Indigo.Masks.Mask.AssignTo(Indigo.Entity)">
             <summary>
             Assign this mask to an Entity.
             </summary>
         </member>
-        <member name="M:Punk.Masks.Mask.RenderDebug">
+        <member name="M:Indigo.Masks.Mask.RenderDebug">
             <summary>
             Override this; called to render mask in the debugger.
             </summary>
         </member>
-        <member name="M:Punk.Masks.Mask.Update">
+        <member name="M:Indigo.Masks.Mask.Update">
             <summary>
             Update the parent's bounds for this Mask.
             </summary>
         </member>
-        <member name="P:Punk.Masks.Hitbox.X">
+        <member name="P:Indigo.Masks.Hitbox.X">
             <summary>
             X offset.
             </summary>
         </member>
-        <member name="P:Punk.Masks.Hitbox.Y">
+        <member name="P:Indigo.Masks.Hitbox.Y">
             <summary>
             Y offset.
             </summary>
         </member>
-        <member name="P:Punk.Masks.Hitbox.Width">
+        <member name="P:Indigo.Masks.Hitbox.Width">
             <summary>
             Width of the hitbox.
             </summary>
         </member>
-        <member name="P:Punk.Masks.Hitbox.Height">
+        <member name="P:Indigo.Masks.Hitbox.Height">
             <summary>
             Height of the hitbox.
             </summary>
         </member>
-        <member name="F:Punk.Masks.Grid.UsePositions">
+        <member name="F:Indigo.Masks.Grid.UsePositions">
             <summary>
             If x/y positions should be used instead of columns/rows.
             </summary>
         </member>
-        <member name="M:Punk.Masks.Grid.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:Indigo.Masks.Grid.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Constructor.
             </summary>
@@ -2705,7 +3010,7 @@
             <param name="x">X offset of the grid.</param>
             <param name="y">Y offset of the grid.</param>
         </member>
-        <member name="M:Punk.Masks.Grid.SetTile(System.Int32,System.Int32,System.Boolean)">
+        <member name="M:Indigo.Masks.Grid.SetTile(System.Int32,System.Int32,System.Boolean)">
             <summary>
             Sets the value of the tile.
             </summary>
@@ -2713,14 +3018,14 @@
             <param name="row">Tile row.</param>
             <param name="solid">If the tile should be solid.</param>
         </member>
-        <member name="M:Punk.Masks.Grid.ClearTile(System.Int32,System.Int32)">
+        <member name="M:Indigo.Masks.Grid.ClearTile(System.Int32,System.Int32)">
             <summary>
             Makes the tile non-solid.
             </summary>
             <param name="column">Tile column.</param>
             <param name="row">Tile row.</param>
         </member>
-        <member name="M:Punk.Masks.Grid.GetTile(System.Int32,System.Int32)">
+        <member name="M:Indigo.Masks.Grid.GetTile(System.Int32,System.Int32)">
             <summary>
             Gets the value of a tile.
             </summary>
@@ -2728,7 +3033,7 @@
             <param name="row">Tile row.</param>
             <returns>Tile value.</returns>
         </member>
-        <member name="M:Punk.Masks.Grid.SetRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+        <member name="M:Indigo.Masks.Grid.SetRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
             <summary>
             Sets the value of a rectangle region of tiles.
             </summary>
@@ -2738,7 +3043,7 @@
             <param name="height">Rows to fill.</param>
             <param name="solid">Value to fill with.</param>
         </member>
-        <member name="M:Punk.Masks.Grid.ClearRect(System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:Indigo.Masks.Grid.ClearRect(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Clear a rectangle region of tiles.
             </summary>
@@ -2747,7 +3052,7 @@
             <param name="width">Columns to clear.</param>
             <param name="height">Rows to clear.</param>
         </member>
-        <member name="M:Punk.Masks.Grid.LoadFromString(System.String,System.String,System.String)">
+        <member name="M:Indigo.Masks.Grid.LoadFromString(System.String,System.String,System.String)">
             <summary>
             Loads the Grid tile index data from a string.
             The implicit array should not be bigger than the Grid.
@@ -2756,7 +3061,7 @@
             <param name="columnSep">The string that separates each tile value on a row, default is ",".</param>
             <param name="rowSep">The string that separates each row of tiles, default is "\n".</param>
         </member>
-        <member name="M:Punk.Masks.Grid.SaveToString(System.String,System.String)">
+        <member name="M:Indigo.Masks.Grid.SaveToString(System.String,System.String)">
             <summary>
             Saves the Grid tile index data to a string.
             </summary>
@@ -2764,152 +3069,152 @@
             <param name="rowSep">The string that separates each row of tiles, default is "\n".</param>
             <returns>The string version of the array.</returns>
         </member>
-        <member name="M:Punk.Masks.Grid.Clone">
+        <member name="M:Indigo.Masks.Grid.Clone">
             <summary>
             Create a clone of this grid.
             </summary>
             <returns>The cloned grid.</returns>
         </member>
-        <member name="F:Punk.Masks.Grid.data">
+        <member name="F:Indigo.Masks.Grid.data">
             <summary>
             The grid data.
             </summary>
         </member>
-        <member name="P:Punk.Masks.Grid.TileWidth">
+        <member name="P:Indigo.Masks.Grid.TileWidth">
             <summary>
             The tile width.
             </summary>
         </member>
-        <member name="P:Punk.Masks.Grid.TileHeight">
+        <member name="P:Indigo.Masks.Grid.TileHeight">
             <summary>
             The tile height.
             </summary>
         </member>
-        <member name="P:Punk.Masks.Grid.Columns">
+        <member name="P:Indigo.Masks.Grid.Columns">
             <summary>
             How many columns the grid has.
             </summary>
         </member>
-        <member name="P:Punk.Masks.Grid.Rows">
+        <member name="P:Indigo.Masks.Grid.Rows">
             <summary>
             How many rows the grid has.
             </summary>
         </member>
-        <member name="T:Punk.Masks.Masklist">
+        <member name="T:Indigo.Masks.Masklist">
             <summary>
             A Mask that can contain multiple Masks of one or various types.
             </summary>
         </member>
-        <member name="M:Punk.Masks.Masklist.#ctor(Punk.Masks.Mask[])">
+        <member name="M:Indigo.Masks.Masklist.#ctor(Indigo.Masks.Mask[])">
             <summary>
             Constructor.
             </summary>
             <param name="masks">Masks to add to the list.</param>
         </member>
-        <member name="M:Punk.Masks.Masklist.Collide(Punk.Masks.Mask)">
+        <member name="M:Indigo.Masks.Masklist.Collide(Indigo.Masks.Mask)">
             <summary>
             Collide against a mask.
             </summary>
             <param name="mask">The mask to collide against.</param>
             <returns>Whether this returns with the Mask.</returns>
         </member>
-        <member name="M:Punk.Masks.Masklist.CollideMasklist(Punk.Masks.Mask)">
+        <member name="M:Indigo.Masks.Masklist.CollideMasklist(Indigo.Masks.Mask)">
             <summary>
             Collide against a Masklist.
             </summary>
             <param name="other">The Masklist to collide with.</param>
             <returns>Whether this returns with the Masklist.</returns>
         </member>
-        <member name="M:Punk.Masks.Masklist.Add(Punk.Masks.Mask)">
+        <member name="M:Indigo.Masks.Masklist.Add(Indigo.Masks.Mask)">
             <summary>
             Adds a Mask to the list.
             </summary>
             <param name="mask">The Mask to add.</param>
             <returns>The added Mask.</returns>
         </member>
-        <member name="M:Punk.Masks.Masklist.Remove(Punk.Masks.Mask)">
+        <member name="M:Indigo.Masks.Masklist.Remove(Indigo.Masks.Mask)">
             <summary>
             Removes a Mask from the list.
             </summary>
             <param name="mask">The Mask to remove.</param>
             <returns>The removed Mask.</returns>
         </member>
-        <member name="M:Punk.Masks.Masklist.RemoveAt(System.Int32)">
+        <member name="M:Indigo.Masks.Masklist.RemoveAt(System.Int32)">
             <summary>
             Removes the Mask at the index.
             </summary>
             <param name="index">The Mask index.</param>
         </member>
-        <member name="M:Punk.Masks.Masklist.RemoveAll">
+        <member name="M:Indigo.Masks.Masklist.RemoveAll">
             <summary>
             Removes all Masks from the list.
             </summary>
         </member>
-        <member name="M:Punk.Masks.Masklist.GetMask(System.Int32)">
+        <member name="M:Indigo.Masks.Masklist.GetMask(System.Int32)">
             <summary>
             Gets a Mask from the list.
             </summary>
             <param name="index">The Mask index.</param>
             <returns>The Mask at the index.</returns>
         </member>
-        <member name="M:Punk.Masks.Masklist.AssignTo(Punk.Entity)">
+        <member name="M:Indigo.Masks.Masklist.AssignTo(Indigo.Entity)">
             <summary>
             Assigns the mask to the parent.
             </summary>
             <param name="parent"></param>
         </member>
-        <member name="M:Punk.Masks.Masklist.Update">
+        <member name="M:Indigo.Masks.Masklist.Update">
             <summary>
             Updates the parent's bounds for this mask.
             </summary>
         </member>
-        <member name="M:Punk.Masks.Masklist.RenderDebug">
+        <member name="M:Indigo.Masks.Masklist.RenderDebug">
             <summary>
             Used to render debug information in console.
             </summary>
         </member>
-        <member name="F:Punk.Masks.Masklist._masks">
+        <member name="F:Indigo.Masks.Masklist._masks">
             <summary>
             All masks contained by this.
             </summary>
         </member>
-        <member name="P:Punk.Masks.Masklist.Count">
+        <member name="P:Indigo.Masks.Masklist.Count">
             <summary>
             Amount of Masks in the list.
             </summary>
         </member>
-        <member name="M:Punk.Rendering.RenderJob.DelegateRender(System.Single,System.Single,Punk.Camera)">
+        <member name="M:Indigo.Rendering.RenderJob.DelegateRender(System.Single,System.Single,Indigo.Camera)">
             <summary>
             Convenience function for setting up common properties.
             Pass all parameters from the graphic's Render method.
             </summary>
         </member>
-        <member name="M:Punk.Rendering.RenderJob.SetCommonModifiers(Punk.Graphics.Graphic)">
+        <member name="M:Indigo.Rendering.RenderJob.SetCommonModifiers(Indigo.Graphics.Graphic)">
             <summary>
             Pass 'this' from a graphic class to automatically set common variables:
             Relative, ScrollX, ScrollY, X, Y
             </summary>
         </member>
-        <member name="T:Punk.Rendering.Shader">
+        <member name="T:Indigo.Rendering.Shader">
             <summary>
             Description of Shader.
             </summary>
         </member>
-        <member name="M:Punk.Rendering.Shader.SetParameter(System.String,SFML.Graphics.Color)">
+        <member name="M:Indigo.Rendering.Shader.SetParameter(System.String,SFML.Graphics.Color)">
             <summary>
             Set a parameter on the shader.
             </summary>
             <param name="name">The parameter in the shader to set.</param>
             <param name="color">The color to set it to.</param>
         </member>
-        <member name="M:Punk.Rendering.Shader.SetParameter(System.String,System.Single)">
+        <member name="M:Indigo.Rendering.Shader.SetParameter(System.String,System.Single)">
             <summary>
             Set a parameter on the shader.
             </summary>
             <param name="name">The parameter in the shader to set.</param>
             <param name="x">The value to set it to.</param>
         </member>
-        <member name="M:Punk.Rendering.Shader.SetParameter(System.String,System.Single,System.Single)">
+        <member name="M:Indigo.Rendering.Shader.SetParameter(System.String,System.Single,System.Single)">
             <summary>
             Set a parameter on the shader.
             </summary>
@@ -2917,7 +3222,7 @@
             <param name="x">The first value of a vec2.</param>
             <param name="y">The first value of a vec2.</param>
         </member>
-        <member name="M:Punk.Rendering.Shader.SetParameter(System.String,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.Rendering.Shader.SetParameter(System.String,System.Single,System.Single,System.Single)">
             <summary>
             Set a parameter on the shader.
             </summary>
@@ -2926,7 +3231,7 @@
             <param name="y">The second value of a vec3.</param>
             <param name="z">The third value of a vec3.</param>
         </member>
-        <member name="M:Punk.Rendering.Shader.SetParameter(System.String,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.Rendering.Shader.SetParameter(System.String,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Set a parameter on the shader.
             </summary>
@@ -2936,142 +3241,106 @@
             <param name="z">The third value of a vec4.</param>
             <param name="w">The fourth value of a vec4.</param>
         </member>
-        <member name="M:Punk.Rendering.Shader.SetParameter(System.String,SFML.Graphics.Texture)">
+        <member name="M:Indigo.Rendering.Shader.SetParameter(System.String,SFML.Graphics.Texture)">
             <summary>
             Set a parameter on the shader.
             </summary>
             <param name="name">The parameter in the shader to set.</param>
             <param name="texture">The texture to set it to.</param>
         </member>
-        <member name="M:Punk.Rendering.Shader.SetAsCurrentTexture(System.String)">
+        <member name="M:Indigo.Rendering.Shader.SetAsCurrentTexture(System.String)">
             <summary>
             Set a parameter on the shader.
             This will cause the named parameter to use the texture assigned to the drawable.
             </summary>
             <param name="name">The parameter in the shader to set.</param>
         </member>
-        <member name="F:Punk.Screen.ClearColor">
+        <member name="T:Indigo.Resources.Embeds">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Indigo.Resources.Embeds.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Indigo.Resources.Embeds.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Indigo.Resources.Embeds.console_debug">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Indigo.Resources.Embeds.console_logo">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Indigo.Resources.Embeds.console_output">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Indigo.Resources.Embeds.console_pause">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Indigo.Resources.Embeds.console_play">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Indigo.Resources.Embeds.console_step">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Indigo.Resources.Embeds.ConsoleFont">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Indigo.Resources.Embeds.DefaultFont">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="F:Indigo.Screen.ClearColor">
             <summary>
             The screen refresh color. Defaults to black.
             </summary>
         </member>
-        <member name="M:Punk.Screen.Resize(System.Int32,System.Int32)">
+        <member name="M:Indigo.Screen.Resize(System.Int32,System.Int32)">
             <summary>
             Resize the window.
             </summary>
             <param name="width">New width</param>
             <param name="height">New height</param>
         </member>
-        <member name="P:Punk.Screen.Title">
+        <member name="P:Indigo.Screen.Title">
             <summary>
             The window title.
             </summary>
         </member>
-        <member name="P:Punk.Screen.Fullscreen">
+        <member name="P:Indigo.Screen.Fullscreen">
             <summary>
             Whether the display mode should be fullscreen.
             </summary>
         </member>
-        <member name="T:Punk.Utils.Controller">
-            <summary>
-            Description of Controller.
-            </summary>
-        </member>
-        <member name="F:Punk.Utils.Controller.DeadZone">
-            <summary>
-            Value thumbstick must reach before registering it's position. Defaults to 10.0f.
-            </summary>
-        </member>
-        <member name="M:Punk.Utils.Controller.#ctor(System.UInt32)">
-            <summary>
-            Constructor.
-            </summary>
-            <param name="Id">Controller ID (zero-based)</param>
-        </member>
-        <member name="M:Punk.Utils.Controller.Define(System.String,System.Int32,Punk.Utils.Controller.Button[])">
-            <summary>
-            Defines a new input.
-            </summary>
-            <param name="name">String to map the input to.</param>
-            <param name="controllerID">Controller ID.</param>
-            <param name="inputs">The keys or buttons to use for the Input.</param>
-        </member>
-        <member name="M:Punk.Utils.Controller.Check(System.String)">
-            <summary>
-            If the input is held down.
-            </summary>
-            <param name="input">An input name, key or button to check for.</param>
-            <returns>If the input or key is held down.</returns>
-        </member>
-        <member name="M:Punk.Utils.Controller.Check(Punk.Utils.Controller.Button)">
-            <summary>
-            If the key is held down.
-            </summary>
-            <param name="input">The key to check.</param>
-            <returns>If the key is held down.</returns>
-        </member>
-        <member name="M:Punk.Utils.Controller.Down(System.String)">
-            <summary>
-            If the input is held down.
-            </summary>
-            <param name="input">An input name, key or button to check for.</param>
-            <returns>If the input or key is held down.</returns>
-        </member>
-        <member name="M:Punk.Utils.Controller.Down(Punk.Utils.Controller.Button)">
-            <summary>
-            If the key is held down.
-            </summary>
-            <param name="input">The key to check.</param>
-            <returns>If the key is held down.</returns>
-        </member>
-        <member name="M:Punk.Utils.Controller.Pressed(System.String)">
-            <summary>
-            If the input was pressed this frame
-            </summary>
-            <param name="input">An input name, key or button to check for.</param>
-            <returns>If the input, key or button was pressed this frame.</returns>
-        </member>
-        <member name="M:Punk.Utils.Controller.Pressed(Punk.Utils.Controller.Button)">
-            <summary>
-            If the key was pressed this frame.
-            </summary>
-            <param name="input">The key to check.</param>
-            <returns>If the key was pressed this frame.</returns>
-        </member>
-        <member name="M:Punk.Utils.Controller.Released(System.String)">
-            <summary>
-            If the input was released this frame.
-            </summary>
-            <param name="input">The input to check.</param>
-            <returns>If the input was released this frame.</returns>
-        </member>
-        <member name="M:Punk.Utils.Controller.Released(Punk.Utils.Controller.Button)">
-            <summary>
-            If the key was released this frame.
-            </summary>
-            <param name="input">The key to check.</param>
-            <returns>If the key was released this frame.</returns>
-        </member>
-        <member name="M:Punk.Utils.Controller.Inputs(System.String)">
-            <summary>
-            Returns the inputs mapped to the input name.
-            </summary>
-            <param name="name">The input name.</param>
-            <returns>A list of InputSources</returns>
-        </member>
-        <member name="T:Punk.Utils.Controller.Button">
-            <summary>
-            Controller buttons!
-            </summary>
-        </member>
-        <member name="T:Punk.Utils.Draw">
+        <member name="T:Indigo.Utils.Draw">
             <summary>
             Static class with access to miscellaneous drawing functions.
             These functions are not meant to replace Graphic components
             for Entities, but rather to help with testing and debugging.
             </summary>
         </member>
-        <member name="M:Punk.Utils.Draw.Line(System.Single,System.Single,System.Single,System.Single,SFML.Graphics.Color,System.Single)">
+        <member name="M:Indigo.Utils.Draw.Line(System.Single,System.Single,System.Single,System.Single,SFML.Graphics.Color,System.Single)">
             <summary>
             Draws a line.
             </summary>
@@ -3082,20 +3351,20 @@
             <param name="color">Color of the line.</param>
             <param name="alpha">Alpha of the line. Defaults to 1</param>
         </member>
-        <member name="M:Punk.Utils.Ini.#ctor">
+        <member name="M:Indigo.Utils.Ini.#ctor">
             <summary>
             Constructor.
             Initializes the Ini with no data.
             </summary>
         </member>
-        <member name="M:Punk.Utils.Ini.#ctor(System.String)">
+        <member name="M:Indigo.Utils.Ini.#ctor(System.String)">
             <summary>
             Constructor.
             Content is parsed into Ini data.
             </summary>
             <param name="content">The text containing the Ini data.</param>
         </member>
-        <member name="M:Punk.Utils.Ini.GetValue(System.String,System.String)">
+        <member name="M:Indigo.Utils.Ini.GetValue(System.String,System.String)">
             <summary>
             Get a specific value from the .ini file
             </summary>
@@ -3103,7 +3372,7 @@
             <param name="key"></param>
             <returns>The value of the given key in the given section, or null if not found</returns>
         </member>
-        <member name="M:Punk.Utils.Ini.SetValue(System.String,System.String,System.String)">
+        <member name="M:Indigo.Utils.Ini.SetValue(System.String,System.String,System.String)">
             <summary>
             Set a specific value in a section
             </summary>
@@ -3111,226 +3380,44 @@
             <param name="key"></param>
             <param name="value"></param>
         </member>
-        <member name="M:Punk.Utils.Ini.GetSection(System.String)">
+        <member name="M:Indigo.Utils.Ini.GetSection(System.String)">
             <summary>
             Get all the Values for a section
             </summary>
             <param name="sectionName"></param>
             <returns>A Dictionary with all the Key/Values for that section (maybe empty but never null)</returns>
         </member>
-        <member name="M:Punk.Utils.Ini.SetSection(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+        <member name="M:Indigo.Utils.Ini.SetSection(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
             <summary>
             Set an entire sections values
             </summary>
             <param name="sectionName"></param>
             <param name="sectionValues"></param>
         </member>
-        <member name="M:Punk.Utils.Ini.Parse(System.String)">
+        <member name="M:Indigo.Utils.Ini.Parse(System.String)">
             <summary>
             Parse an .INI File
             </summary>
             <param name="content">The Ini source data.</param>
             <returns></returns>
         </member>
-        <member name="T:Punk.Utils.Input">
-            <summary>
-            Static class updated by Engine. Use for defining and checking keyboard/mouse input.
-            </summary>
-        </member>
-        <member name="F:Punk.Utils.Input.KeyString">
-            <summary>
-            An updated string containing the last 100 characters pressed on the keyboard.
-            Useful for creating text input fields, such as highscore entries, etc.
-            </summary>
-        </member>
-        <member name="F:Punk.Utils.Input.LastKey">
-            <summary>
-            The last key pressed.
-            </summary>
-        </member>
-        <member name="M:Punk.Utils.Input.Init">
-            <summary>
-            Called by engine. Sets up event listeners
-            </summary>
-        </member>
-        <member name="M:Punk.Utils.Input.Define(System.String,System.Object[])">
-            <summary>
-            Defines a new input.
-            </summary>
-            <param name="name">String to map the input to.</param>
-            <param name="inputs">The keys or buttons to use for the Input.</param>
-        </member>
-        <member name="M:Punk.Utils.Input.Check(System.String)">
-            <summary>
-            If the input is held down.
-            </summary>
-            <param name="input">An input name, key or button to check for.</param>
-            <returns>If the input or key is held down.</returns>
-        </member>
-        <member name="M:Punk.Utils.Input.Check(SFML.Window.Keyboard.Key)">
-            <summary>
-            If the key is held down.
-            </summary>
-            <param name="input">The key to check.</param>
-            <returns>If the key is held down.</returns>
-        </member>
-        <member name="M:Punk.Utils.Input.Check(SFML.Window.Mouse.Button)">
-            <summary>
-            If the mouse button is held down.
-            </summary>
-            <param name="input">The button to check.</param>
-            <returns>If the key is held down.</returns>
-        </member>
-        <member name="M:Punk.Utils.Input.Down(System.String)">
-            <summary>
-            If the input is held down.
-            </summary>
-            <param name="input">An input name, key or button to check for.</param>
-            <returns>If the input or key is held down.</returns>
-        </member>
-        <member name="M:Punk.Utils.Input.Down(SFML.Window.Keyboard.Key)">
-            <summary>
-            If the key is held down.
-            </summary>
-            <param name="input">The key to check.</param>
-            <returns>If the key is held down.</returns>
-        </member>
-        <member name="M:Punk.Utils.Input.Down(SFML.Window.Mouse.Button)">
-            <summary>
-            If the mouse button is held down.
-            </summary>
-            <param name="input">The button to check.</param>
-            <returns>If the button is held down.</returns>
-        </member>
-        <member name="M:Punk.Utils.Input.Pressed(System.String)">
-            <summary>
-            If the input was pressed this frame
-            </summary>
-            <param name="input">An input name, key or button to check for.</param>
-            <returns>If the input, key or button was pressed this frame.</returns>
-        </member>
-        <member name="M:Punk.Utils.Input.Pressed(SFML.Window.Keyboard.Key)">
-            <summary>
-            If the key was pressed this frame.
-            </summary>
-            <param name="input">The key to check.</param>
-            <returns>If the key was pressed this frame.</returns>
-        </member>
-        <member name="M:Punk.Utils.Input.Pressed(SFML.Window.Mouse.Button)">
-            <summary>
-            If the button was pressed this frame.
-            </summary>
-            <param name="input">The button to check.</param>
-            <returns>If the button was pressed this frame.</returns>
-        </member>
-        <member name="M:Punk.Utils.Input.Released(System.String)">
-            <summary>
-            If the input was released this frame.
-            </summary>
-            <param name="input">The input to check.</param>
-            <returns>If the input was released this frame.</returns>
-        </member>
-        <member name="M:Punk.Utils.Input.Released(SFML.Window.Keyboard.Key)">
-            <summary>
-            If the key was released this frame.
-            </summary>
-            <param name="input">The key to check.</param>
-            <returns>If the key was released this frame.</returns>
-        </member>
-        <member name="M:Punk.Utils.Input.Released(SFML.Window.Mouse.Button)">
-            <summary>
-            If the button was released this frame.
-            </summary>
-            <param name="input">The button to check.</param>
-            <returns>If the button was released this frame.</returns>
-        </member>
-        <member name="M:Punk.Utils.Input.Inputs(System.String)">
-            <summary>
-            Returns the inputs mapped to the input name.
-            </summary>
-            <param name="name">The input name.</param>
-            <returns>A list of InputSources</returns>
-        </member>
-        <member name="M:Punk.Utils.Input.Update">
-            <summary>
-            Called by Engine to update the input.
-            </summary>
-        </member>
-        <member name="P:Punk.Utils.Input.MouseWheelDelta">
-            <summary>
-            If the mouse wheel was moved this frame, this was the delta.
-            </summary>
-        </member>
-        <member name="P:Punk.Utils.Input.MouseWheel">
-            <summary>
-            If the mouse wheel was moved this frame.
-            </summary>
-        </member>
-        <member name="P:Punk.Utils.Input.MouseX">
-            <summary>
-            X position of the mouse on the screen.
-            </summary>
-        </member>
-        <member name="P:Punk.Utils.Input.MouseY">
-            <summary>
-            Y position of the mouse on the screen.
-            </summary>
-        </member>
-        <member name="T:Punk.Utils.Axis">
-            <summary>
-            Description of Axis.
-            </summary>
-        </member>
-        <member name="T:Punk.Utils.InputList">
-            <summary>
-            Description of InputList.
-            </summary>
-        </member>
-        <member name="T:Punk.Utils.InputStates`1">
-            <summary>
-            Description of InputStates.
-            </summary>
-        </member>
-        <member name="T:Punk.Utils.VirtualAxis">
-            <summary>
-            An axis that responds to keyboard input.
-            Operates on values between -1 and 1, although modifier keys can be set to define multipliers.
-            </summary>
-        </member>
-        <member name="M:Punk.Utils.VirtualAxis.WSAD">
-            <summary>
-            Create a new axis for the W, S, A, and D keys.
-            </summary>
-            <returns>The new Axis.</returns>
-        </member>
-        <member name="M:Punk.Utils.VirtualAxis.ARROWS">
-            <summary>
-            Create a new axis for the arrow keys.
-            </summary>
-            <returns>The new Axis.</returns>
-        </member>
-        <member name="M:Punk.Utils.VirtualAxis.#ctor">
-            <summary>
-            Constructor.
-            </summary>
-        </member>
-        <member name="T:Punk.Utils.MessageResult">
+        <member name="T:Indigo.Utils.MessageResult">
             <summary>
             A small utility class to allow messages to "return" values. Functionally similar to out and ref parameters.
             Pass a MessageResult instance to a message call and set the value from the message response.
             </summary>
         </member>
-        <member name="F:Punk.Utils.MessageResult.Value">
+        <member name="F:Indigo.Utils.MessageResult.Value">
             <summary>
             The payload value.
             </summary>
         </member>
-        <member name="T:Punk.Utils.Reflect.Reflect">
+        <member name="T:Indigo.Utils.Reflect.Reflect">
             <summary>
             A simple class for basic reflection.
             </summary>
         </member>
-        <member name="M:Punk.Utils.Reflect.Reflect.HasOwnProperty(System.Object,System.String)">
+        <member name="M:Indigo.Utils.Reflect.Reflect.HasOwnProperty(System.Object,System.String)">
             <summary>
             Whether a property or field exists on an object.
             </summary>
@@ -3338,7 +3425,7 @@
             <param name="name">The name of the property.</param>
             <returns>Whether the property exists.</returns>
         </member>
-        <member name="M:Punk.Utils.Reflect.Reflect.GetProp``1(System.Object,System.String)">
+        <member name="M:Indigo.Utils.Reflect.Reflect.GetProp``1(System.Object,System.String)">
             <summary>
             Get the value of a property or field with reflection.
             </summary>
@@ -3346,92 +3433,92 @@
             <param name="name">The name of the property.</param>
             <returns>The value of the property.</returns>
         </member>
-        <member name="M:Punk.Utils.Reflect.Reflect.GetTypeFromAllAssemblies(System.String)">
+        <member name="M:Indigo.Utils.Reflect.Reflect.GetTypeFromAllAssemblies(System.String)">
             <summary>
             Searches all known assemblies for a type and returns that type.
             </summary>
             <param name="type">The type to search for.</param>
             <returns>The type found.  Null if no match.</returns>
         </member>
-        <member name="T:Punk.World">
+        <member name="T:Indigo.World">
             <summary>
             Updated by Engine, main game container that holds all currently active Entities.
             Useful for organization, eg. "Menu", "Level1", etc.
             </summary>
         </member>
-        <member name="M:Punk.World.#ctor">
+        <member name="M:Indigo.World.#ctor">
             <summary>
             Constructor.
             </summary>
         </member>
-        <member name="M:Punk.World.Begin">
+        <member name="M:Indigo.World.Begin">
             <summary>
             Override this; called when the World is switched to, and set to the currently active world.
             </summary>
         </member>
-        <member name="M:Punk.World.End">
+        <member name="M:Indigo.World.End">
             <summary>
             Override this; called when World is changed, and the active world is no longer this.
             </summary>
         </member>
-        <member name="M:Punk.World.Update">
+        <member name="M:Indigo.World.Update">
             <summary>
             Performed by the game loop, updates all contained Entities.
             If you override this to give your World update code, remember
             to call base.update() or your Entities will not be updated.
             </summary>
         </member>
-        <member name="M:Punk.World.Render">
+        <member name="M:Indigo.World.Render">
             <summary>
             Performed by the game loop, updates all contained Entities.
             If you override this to give your World update code, remember
             to call base.update() or your Entities will not be updated.
             </summary>
         </member>
-        <member name="M:Punk.World.Add(Punk.Entity)">
+        <member name="M:Indigo.World.Add(Indigo.Entity)">
             <summary>
             Adds the Entity to the World at the end of the frame
             </summary>
             <param name="e">Entity object you want to add.</param>
             <returns>The added Entity object.</returns>
         </member>
-        <member name="M:Punk.World.Remove(Punk.Entity)">
+        <member name="M:Indigo.World.Remove(Indigo.Entity)">
             <summary>
             Removes the Entity from the World at the end of the frame.
             </summary>
             <param name="e">Entity object you want to remove.</param>
             <returns>The removed Entity object.</returns>
         </member>
-        <member name="M:Punk.World.RemoveAll">
+        <member name="M:Indigo.World.RemoveAll">
             <summary>
             Removes all Entities from the World at the end of the frame.
             </summary>
         </member>
-        <member name="M:Punk.World.AddList(Punk.Entity[])">
+        <member name="M:Indigo.World.AddList(Indigo.Entity[])">
             <summary>
             Adds multiple Entities to the world.
             </summary>
             <param name="list">Several Entities as arguments</param>
         </member>
-        <member name="M:Punk.World.AddList(System.Collections.Generic.List{Punk.Entity})">
+        <member name="M:Indigo.World.AddList(System.Collections.Generic.List{Indigo.Entity})">
             <summary>
             Adds multiple Entities to the world.
             </summary>
             <param name="list">A List of Entities to add.</param>
         </member>
-        <member name="M:Punk.World.RemoveList(Punk.Entity[])">
+        <member name="M:Indigo.World.RemoveList(Indigo.Entity[])">
             <summary>
             Removes multiple Entities from the world.
             </summary>
             <param name="list">Several Entities as arguments.</param>
         </member>
-        <member name="M:Punk.World.RemoveList(System.Collections.Generic.List{Punk.Entity})">
+        <member name="M:Indigo.World.RemoveList(System.Collections.Generic.List{Indigo.Entity})">
             <summary>
             Removes multiple Entities to the world.
             </summary>
             <param name="list">A List of Entities to remove.</param>
         </member>
-        <member name="M:Punk.World.AddGraphic(Punk.Graphics.Graphic,System.Int32,System.Single,System.Single)">
+        <member name="M:Indigo.World.AddGraphic(Indigo.Graphics.Graphic,System.Int32,System.Single,System.Single)">
             <summary>
             Adds an Entity to the World with the Graphic object.
             </summary>
@@ -3441,7 +3528,7 @@
             <param name="y">Y position of the Entity.</param>
             <returns>The Entity that was added.</returns>
         </member>
-        <member name="M:Punk.World.AddMask(Punk.Masks.Mask,System.String,System.Int32,System.Int32)">
+        <member name="M:Indigo.World.AddMask(Indigo.Masks.Mask,System.String,System.Int32,System.Int32)">
             <summary>
             Adds an Entity to the World with the Mask object.
             </summary>
@@ -3451,14 +3538,14 @@
             <param name="y">Y position of the Entity.</param>
             <returns>The Entity that was added.</returns>
         </member>
-        <member name="M:Punk.World.BroadcastMessage(System.Enum,System.Object[])">
+        <member name="M:Indigo.World.BroadcastMessage(System.Enum,System.Object[])">
             <summary>
             Broadcasts a message to all entities in the world.
             </summary>
             <param name="message">The type of the message.</param>
             <param name="arguments">A set of arguments to pass to the message reciever.</param>
         </member>
-        <member name="M:Punk.World.BroadcastMessageIf(System.Func{Punk.Entity,System.Boolean},System.Enum,System.Object[])">
+        <member name="M:Indigo.World.BroadcastMessageIf(System.Func{Indigo.Entity,System.Boolean},System.Enum,System.Object[])">
             <summary>
             Broadcasts a message to all entities that meet a certain criteria.
             </summary>
@@ -3466,7 +3553,7 @@
             <param name="message">The type of the message.</param>
             <param name="arguments">A set of arguments to pass to the message reciever.</param>
         </member>
-        <member name="M:Punk.World.BroadcastMessageToType(System.String,System.Enum,System.Object[])">
+        <member name="M:Indigo.World.BroadcastMessageToType(System.String,System.Enum,System.Object[])">
             <summary>
             Broadcasts a message to all entities with a certain type.
             </summary>
@@ -3474,7 +3561,7 @@
             <param name="message">The type of the message.</param>
             <param name="arguments">A set of arguments to pass to the message reciever.</param>
         </member>
-        <member name="M:Punk.World.BroadcastMessageInCircle(System.Single,System.Single,System.Single,System.Enum,System.Object[])">
+        <member name="M:Indigo.World.BroadcastMessageInCircle(System.Single,System.Single,System.Single,System.Enum,System.Object[])">
             <summary>
             Broadcasts a message to all entities within a certain distance of a position.
             </summary>
@@ -3484,7 +3571,7 @@
             <param name="message">The type of the message.</param>
             <param name="arguments">A set of arguments to pass to the message reciever.</param>
         </member>
-        <member name="M:Punk.World.BroadcastMessageInRect(System.Single,System.Single,System.Single,System.Single,System.Enum,System.Object[])">
+        <member name="M:Indigo.World.BroadcastMessageInRect(System.Single,System.Single,System.Single,System.Single,System.Enum,System.Object[])">
             <summary>
             Broadcasts a message to all entities within a rectangle.
             </summary>
@@ -3495,56 +3582,56 @@
             <param name="message">The type of the message.</param>
             <param name="arguments">A set of arguments to pass to the message reciever.</param>
         </member>
-        <member name="M:Punk.World.BroadcastMessageToClass``1(System.Enum,System.Object[])">
+        <member name="M:Indigo.World.BroadcastMessageToClass``1(System.Enum,System.Object[])">
             <summary>
             Broadcasts a message to all entities of a certain class
             </summary>
             <param name="message">The type of the message.</param>
             <param name="arguments">A set of arguments to pass to the message reciever.</param>
         </member>
-        <member name="M:Punk.World.BringToFront(Punk.Entity)">
+        <member name="M:Indigo.World.BringToFront(Indigo.Entity)">
             <summary>
             Brings the Entity to the front of its contained layer.
             </summary>
             <param name="e">The Entity to shift.</param>
             <returns>If the Entity changed position.</returns>
         </member>
-        <member name="M:Punk.World.SendToBack(Punk.Entity)">
+        <member name="M:Indigo.World.SendToBack(Indigo.Entity)">
             <summary>
             Sends the Entity to the back of its contained layer.
             </summary>
             <param name="e">The Entity to shift.</param>
             <returns>If the Entity changed position.</returns>
         </member>
-        <member name="M:Punk.World.BringForward(Punk.Entity)">
+        <member name="M:Indigo.World.BringForward(Indigo.Entity)">
             <summary>
             Shifts the Entity one place towards the front of its contained layer.
             </summary>
             <param name="e">The Entity to shift.</param>
             <returns>If the Entity changed position.</returns>
         </member>
-        <member name="M:Punk.World.SendBackward(Punk.Entity)">
+        <member name="M:Indigo.World.SendBackward(Indigo.Entity)">
             <summary>
             Shifts the Entity one place towards the back of its contained layer.
             </summary>
             <param name="e">The Entity to shift.</param>
             <returns>If the Entity changed position.</returns>
         </member>
-        <member name="M:Punk.World.IsAtFront(Punk.Entity)">
+        <member name="M:Indigo.World.IsAtFront(Indigo.Entity)">
             <summary>
             If the Entity as at the front of its layer.
             </summary>
             <param name="e">The Entity to check.</param>
             <returns>Whether the entity is at front</returns>
         </member>
-        <member name="M:Punk.World.IsAtBack(Punk.Entity)">
+        <member name="M:Indigo.World.IsAtBack(Indigo.Entity)">
             <summary>
             If the Entity as at the back of its layer.
             </summary>
             <param name="e">The Entity to check.</param>
             <returns>Whether the entity is at back</returns>
         </member>
-        <member name="M:Punk.World.CollideRect(System.String,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.World.CollideRect(System.String,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Returns the first Entity that collides with the rectangular area.
             </summary>
@@ -3555,7 +3642,7 @@
             <param name="rHeight">Height of the rectangle.</param>
             <returns>The first Entity to collide, or null if none collide.</returns>
         </member>
-        <member name="M:Punk.World.CollidePoint(System.String,System.Single,System.Single)">
+        <member name="M:Indigo.World.CollidePoint(System.String,System.Single,System.Single)">
             <summary>
             Returns the first Entity found that collides with the position.
             </summary>
@@ -3564,7 +3651,7 @@
             <param name="pY">Y position.</param>
             <returns>The collided Entity, or null if none collide.</returns>
         </member>
-        <member name="M:Punk.World.CollideLine(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:Indigo.World.CollideLine(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Returns the first Entity found that collides with the line.
             </summary>
@@ -3576,7 +3663,7 @@
             <param name="precision">How far to check each step along the line.</param>
             <returns>The collided Entity, or null if none collide</returns>
         </member>
-        <member name="M:Punk.World.CollideRectInto(System.String,System.Single,System.Single,System.Single,System.Single,System.Collections.Generic.List{Punk.Entity})">
+        <member name="M:Indigo.World.CollideRectInto(System.String,System.Single,System.Single,System.Single,System.Single,System.Collections.Generic.List{Indigo.Entity})">
             <summary>
             Populates an array with all Entities that collide with the rectangle. This
             function does not empty the array, that responsibility is left to the user.
@@ -3588,7 +3675,7 @@
             <param name="rHeight">Height of the rectangle.</param>
             <param name="into">The List to populate with collided Entities.</param>
         </member>
-        <member name="M:Punk.World.CollidePointInto(System.String,System.Single,System.Single,System.Collections.Generic.List{Punk.Entity})">
+        <member name="M:Indigo.World.CollidePointInto(System.String,System.Single,System.Single,System.Collections.Generic.List{Indigo.Entity})">
             <summary>
             Populates an array with all Entities that collide with the rectangle. This
             function does not empty the array, that responsibility is left to the user.
@@ -3598,7 +3685,7 @@
             <param name="pY">Y position to check nearby.</param>
             <param name="into">The List to populate with collided Entities.</param>
         </member>
-        <member name="M:Punk.World.NearestToRect(System.String,System.Single,System.Single,System.Single,System.Single,Punk.Entity)">
+        <member name="M:Indigo.World.NearestToRect(System.String,System.Single,System.Single,System.Single,System.Single,Indigo.Entity)">
             <summary>
             Finds the Entity nearest to the rectangle.
             </summary>
@@ -3610,7 +3697,7 @@
             <param name="ignore">Ignore this entity.</param>
             <returns>The nearest Entity to the rectangle.</returns>
         </member>
-        <member name="M:Punk.World.NearestToEntity(System.String,Punk.Entity,System.Boolean)">
+        <member name="M:Indigo.World.NearestToEntity(System.String,Indigo.Entity,System.Boolean)">
             <summary>
             Finds the Entity nearest to another.
             </summary>
@@ -3619,7 +3706,7 @@
             <param name="useHitboxes">If the Entities' hitboxes should be used to determine the distance. If false, their x/y coordinates are used.</param>
             <returns>The nearest Entity to e.</returns>
         </member>
-        <member name="M:Punk.World.NearestToPoint(System.String,System.Single,System.Single,System.Boolean)">
+        <member name="M:Indigo.World.NearestToPoint(System.String,System.Single,System.Single,System.Boolean)">
             <summary>
             Finds the Entity nearest to the position.
             </summary>
@@ -3629,122 +3716,122 @@
             <param name="useHitboxes">If the Entities' hitboxes should be used to determine the distance. If false, their x/y coordinates are used.</param>
             <returns>The nearest Entity to the position.</returns>
         </member>
-        <member name="M:Punk.World.TypeCount(System.String)">
+        <member name="M:Indigo.World.TypeCount(System.String)">
             <summary>
             Returns the amount of Entities of the type are in the World.
             </summary>
             <param name="type">The type to count.</param>
             <returns>How many Entities of type exist in the World.</returns>
         </member>
-        <member name="M:Punk.World.LayerCount(System.Int32)">
+        <member name="M:Indigo.World.LayerCount(System.Int32)">
             <summary>
             Returns the amount of Entities are on the layer in the World.
             </summary>
             <param name="layer">The layer to count Entities on.</param>
             <returns>How many Entities are on the layer.</returns>
         </member>
-        <member name="M:Punk.World.TypeFirst(System.String)">
+        <member name="M:Indigo.World.TypeFirst(System.String)">
             <summary>
             The first Entity of the type.
             </summary>
             <param name="type">The type to check.</param>
             <returns>The Entity.</returns>
         </member>
-        <member name="M:Punk.World.LayerFirst(System.Int32)">
+        <member name="M:Indigo.World.LayerFirst(System.Int32)">
             <summary>
             The first Entity on the layer.
             </summary>
             <param name="layer">The layer to check.</param>
             <returns>The Entity.</returns>
         </member>
-        <member name="M:Punk.World.LayerLast(System.Int32)">
+        <member name="M:Indigo.World.LayerLast(System.Int32)">
             <summary>
             The last Entity on the layer.
             </summary>
             <param name="layer">The layer to check.</param>
             <returns>The Entity.</returns>
         </member>
-        <member name="M:Punk.World.GetType(System.String,System.Collections.Generic.List{Punk.Entity})">
+        <member name="M:Indigo.World.GetType(System.String,System.Collections.Generic.List{Indigo.Entity})">
             <summary>
             Pushes all Entities in the World of the type into the Array or Vector.
             </summary>
             <param name="type">The type to check.</param>
             <param name="into">The List to populate</param>
         </member>
-        <member name="M:Punk.World.GetLayer(System.Int32,System.Collections.Generic.List{Punk.Entity})">
+        <member name="M:Indigo.World.GetLayer(System.Int32,System.Collections.Generic.List{Indigo.Entity})">
             <summary>
             Pushes all Entities in the World on the layer into the Array or Vector.
             </summary>
             <param name="layer">The layer to check.</param>
             <param name="into">The List to populate</param>
         </member>
-        <member name="M:Punk.World.GetAll(System.Collections.Generic.List{Punk.Entity})">
+        <member name="M:Indigo.World.GetAll(System.Collections.Generic.List{Indigo.Entity})">
             <summary>
             Pushes all Entities in the World into the Array or Vector.
             </summary>
             <param name="into">The List to populate</param>
         </member>
-        <member name="M:Punk.World.GetInstance(System.String)">
+        <member name="M:Indigo.World.GetInstance(System.String)">
             <summary>
             Returns the Entity with the instance name, or null if none exists.
             </summary>
             <param name="name">Instance name of the Entity.</param>
             <returns>The named Entity, or null if it doesn't exist.</returns>
         </member>
-        <member name="M:Punk.World.UpdateLists">
+        <member name="M:Indigo.World.UpdateLists">
             <summary>
             Updates the add/remove lists at the end of the frame.
             </summary>
         </member>
-        <member name="M:Punk.World.AddUpdate(Punk.Entity)">
+        <member name="M:Indigo.World.AddUpdate(Indigo.Entity)">
             <summary>
             Adds an Entity to the update list.
             </summary>
             <param name="e">The Entity to add.</param>
         </member>
-        <member name="M:Punk.World.RemoveUpdate(Punk.Entity)">
+        <member name="M:Indigo.World.RemoveUpdate(Indigo.Entity)">
             <summary>
             Removes an Entity from the update list.
             </summary>
             <param name="e">The Entity to remove.</param>
         </member>
-        <member name="M:Punk.World.AddRender(Punk.Entity)">
+        <member name="M:Indigo.World.AddRender(Indigo.Entity)">
             <summary>
             Adds Entity to the render
             </summary>
             <param name="e">The Entity to add</param>
         </member>
-        <member name="M:Punk.World.RemoveRender(Punk.Entity)">
+        <member name="M:Indigo.World.RemoveRender(Indigo.Entity)">
             <summary>
             Removes Entity from the render list.
             </summary>
             <param name="e">The Entity to remove</param>
         </member>
-        <member name="M:Punk.World.AddType(Punk.Entity)">
+        <member name="M:Indigo.World.AddType(Indigo.Entity)">
             <summary>
             Adds Entity to the type list.
             </summary>
             <param name="e">The Entity to add</param>
         </member>
-        <member name="M:Punk.World.RemoveType(Punk.Entity)">
+        <member name="M:Indigo.World.RemoveType(Indigo.Entity)">
             <summary>
             Removes Entity from the type list.
             </summary>
             <param name="e">The Entity to remove</param>
         </member>
-        <member name="M:Punk.World.RegisterName(Punk.Entity)">
+        <member name="M:Indigo.World.RegisterName(Indigo.Entity)">
             <summary>
             Register's the Entity's instance name.
             </summary>
             <param name="e"></param>
         </member>
-        <member name="M:Punk.World.UnregisterName(Punk.Entity)">
+        <member name="M:Indigo.World.UnregisterName(Indigo.Entity)">
             <summary>
             Unregister's the Entity's instance name.
             </summary>
             <param name="e"></param>
         </member>
-        <member name="M:Punk.World.SquareRects(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.World.SquareRects(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Calculates the squared distance between two rectangles.
             </summary>
@@ -3758,7 +3845,7 @@
             <param name="h2"></param>
             <returns></returns>
         </member>
-        <member name="M:Punk.World.SquarePoints(System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.World.SquarePoints(System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Calculates the squared distance between two points.
             </summary>
@@ -3768,7 +3855,7 @@
             <param name="y2"></param>
             <returns></returns>
         </member>
-        <member name="M:Punk.World.SquarePointRect(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Indigo.World.SquarePointRect(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Calculates the squared distance between a rectangle and a point.
             </summary>
@@ -3780,57 +3867,57 @@
             <param name="rh"></param>
             <returns></returns>
         </member>
-        <member name="F:Punk.World.Visible">
+        <member name="F:Indigo.World.Visible">
             <summary>
             Whether to render the world.
             </summary>
         </member>
-        <member name="F:Punk.World.Active">
+        <member name="F:Indigo.World.Active">
             <summary>
             Whether the world should update.
             </summary>
         </member>
-        <member name="P:Punk.World.Camera">
+        <member name="P:Indigo.World.Camera">
             <summary>
             The world camera.
             </summary>
         </member>
-        <member name="P:Punk.World.MouseX">
+        <member name="P:Indigo.World.MouseX">
             <summary>
             X position of the mouse in the World.
             </summary>
         </member>
-        <member name="P:Punk.World.MouseY">
+        <member name="P:Indigo.World.MouseY">
             <summary>
             Y position of the mouse in the World.
             </summary>
         </member>
-        <member name="P:Punk.World.Count">
+        <member name="P:Indigo.World.Count">
             <summary>
             How many Entities are in the World.
             </summary>
         </member>
-        <member name="P:Punk.World.First">
+        <member name="P:Indigo.World.First">
             <summary>
             The first Entity in the World.
             </summary>
         </member>
-        <member name="P:Punk.World.Layers">
+        <member name="P:Indigo.World.Layers">
             <summary>
             How many Entity layers the World has.
             </summary>
         </member>
-        <member name="P:Punk.World.Farthest">
+        <member name="P:Indigo.World.Farthest">
             <summary>
             The Entity that will be rendered first by the World.
             </summary>
         </member>
-        <member name="P:Punk.World.Nearest">
+        <member name="P:Indigo.World.Nearest">
             <summary>
             The Entity that will be rendered last by the World.
             </summary>
         </member>
-        <member name="P:Punk.World.UniqueTypes">
+        <member name="P:Indigo.World.UniqueTypes">
             <summary>
             How many different types have been added to the World.
             </summary>
