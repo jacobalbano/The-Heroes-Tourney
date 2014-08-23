@@ -48,7 +48,7 @@ namespace SNHU.GameObject.Upgrades
 			{
 				base.Use();
 				
-				owner.physics.OnMessage(PhysicsBody.Message.UseGravity, false);
+				owner.OnMessage(PhysicsBody.Message.UseGravity, false);
 			}
 		}
 		
@@ -91,7 +91,7 @@ namespace SNHU.GameObject.Upgrades
 				Parent.World.BroadcastMessage(CameraShake.Message.Shake, 100.0f, 0.5f);
 				Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.Message.OnEffect, MakeEffect());
 				
-				owner.physics.OnMessage(PhysicsBody.Message.UseGravity, true);
+				owner.OnMessage(PhysicsBody.Message.UseGravity, true);
 				
 				owner.SetUpgrade(null);
 			}

@@ -212,9 +212,10 @@ namespace SNHU.GameObject
 				Text txt = new Text("     PLAYER " + (winner.PlayerId + 1) + "\nIS THE TRUE HERO!!!");
 				txt.Size = 64;
 				txt.ScrollX = txt.ScrollY = 0;
+				txt.CenterOrigin();
 				World.AddGraphic(txt, -9001, 0, 50);
 				
-				Tweener.Tween(txt, new { X = FP.Width / 5f }, 0.25f)
+				Tweener.Tween(txt, new { X = FP.HalfWidth }, 0.25f)
 					.Ease(Ease.BounceOut);
 				
 				Tweener.Tween(winner, new { X = FP.Camera.X, Y = FP.Camera.Y }, 1.5f)
@@ -233,6 +234,7 @@ namespace SNHU.GameObject
 				Text txt = new Text("IT'S A DRAW!");
 				txt.Size = 64;
 				txt.ScrollX = txt.ScrollY = 0;
+				txt.CenterOrigin();
 				World.AddGraphic(txt, -9001, 0, 50);
 				
 				World.Tweener.Tween(txt, new { X = FP.HalfWidth }, 0.25f)

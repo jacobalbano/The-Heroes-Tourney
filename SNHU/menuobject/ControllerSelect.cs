@@ -57,7 +57,7 @@ namespace SNHU.MenuObject
 		
 		public ControllerSelect(MenuWorld parent, int playerSlot, int joyId)
 		{
-			var font = Library.GetFont("assets/Laffayette_Comic_Pro.ttf");
+			var font = Library.GetFont("assets/fonts/Laffayette_Comic_Pro.ttf");
 			
 			changing = false;
 			
@@ -231,6 +231,7 @@ namespace SNHU.MenuObject
 		
 		void MakeCheckmark()
 		{
+			RemoveComponent(confirm);
 			RemoveComponent(lArrow);
 			RemoveComponent(rArrow);
 			

@@ -13,7 +13,7 @@ namespace SNHU.GameObject.Platforms
 		
 		public enum Message { Bump }
 		
-		public Nineslice image;
+		private Nineslice image;
 		
 		public Platform(int width, int height)
 		{

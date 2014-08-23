@@ -37,7 +37,7 @@ namespace SNHU.GameObject
 		private bool hand;
 		public Fist left, right;
 		
-		private Directional axis;
+		private Directional Direction;
 		
 		private OffscreenCursor cursor;
 		
@@ -52,9 +52,9 @@ namespace SNHU.GameObject
 		
 		public Input Jump, Attack, Dodge, ActivateUpgrade, Guard, Start;
 		
-		public PhysicsBody physics;
+		private PhysicsBody Physics;
 		public DodgeController DodgeController;
-		public Movement movement;
+		public Movement Movement;
 		public bool OnGround { get; private set; }
 		
 		public const float SPEED = 5.5f;
@@ -106,15 +106,16 @@ namespace SNHU.GameObject
 			UpgradeQueue = new Queue<Upgrade>();
 			UpgradeCapacity = 1;
 			
-			AddComponent(physics = new PhysicsBody(Platform.Collision, Type));
-			AddComponent(movement = new Movement(physics, axis));
-			AddComponent(DodgeController = new DodgeController(Dodge, axis));
+			AddComponent(Physics = new PhysicsBody(Platform.Collision, Type));
+			AddComponent(Movement = new Movement(Physics, Direction));
+			AddComponent(DodgeController = new DodgeController(Dodge, Direction));
 			
 			AddResponse(Message.Damage, OnDamage);
 			AddResponse(Fist.Message.PunchConnected, OnPunchConnected);
 			AddResponse(EffectMessage.Message.OnEffect, OnEffect);
 			AddResponse(Shield.Message.Set, SetShield);
 			AddResponse(Rebound.Message.Set, SetRebound);
+			AddResponse(Fist.Message.PunchSuccess, OnPunchSuccess);
 		}
 		
 		void InitController()
@@ -130,7 +131,7 @@ namespace SNHU.GameObject
 				Guard = snes.L;
 				Start = snes.Start;
 				
-				axis = snes.Dpad;
+				Direction = snes.Dpad;
 			}
 			else if (Xbox360Controller.IsMatch(slot))
 			{
@@ -143,7 +144,7 @@ namespace SNHU.GameObject
 				Guard = xbox.LB;
 				Start = xbox.Start;
 				
-				axis = xbox.LeftStick;
+				Direction = xbox.LeftStick;
 			}
 			else
 			{
@@ -216,11 +217,11 @@ namespace SNHU.GameObject
 			{
 				if (!Guarding)
 				{
-				 	if (axis.X < 0)
+				 	if (Direction.X < 0)
 				 	{
 				 		FaceLeft();
 				 	}
-				 	else if (axis.X > 0)
+				 	else if (Direction.X > 0)
 				 	{
 				 		FaceRight();
 				 	}
@@ -265,9 +266,9 @@ namespace SNHU.GameObject
 				if (!IsPunching())
 			    {
 					if (newGuard)
-						physics.OnMessage(PhysicsBody.Message.ImpulseMult, 0.3);
+						Physics.OnMessage(PhysicsBody.Message.ImpulseMult, 0.3);
 					else
-						physics.OnMessage(PhysicsBody.Message.ImpulseMult, 1);
+						Physics.OnMessage(PhysicsBody.Message.ImpulseMult, 1);
 					
 					left.SetGuarding(newGuard);
 					right.SetGuarding(newGuard);
@@ -337,11 +338,11 @@ namespace SNHU.GameObject
 			bool success = false;
 			if (hand)
 			{
-				success = left.Punch(axis.X, axis.Y);
+				success = left.Punch(Direction.X, Direction.Y);
 			}
 			else
 			{
-				success = right.Punch(axis.X, axis.Y);
+				success = right.Punch(Direction.X, Direction.Y);
 			}
 			
 			if (success)
@@ -413,7 +414,7 @@ namespace SNHU.GameObject
 				
 				if (Invincible)
 				{
-					p.MoveBy(axis.X * movement.Speed, 0, p.physics.Colliders);
+					p.MoveBy(Direction.X * Movement.Speed, 0, p.Physics.Colliders);
 					return true;
 				}
 				
@@ -505,6 +506,12 @@ namespace SNHU.GameObject
 			World.BroadcastMessage(HUD.Message.UpdateDamage, this);
 			if (Health <= 0)
 				Kill();
+		}
+		
+		private void OnPunchSuccess(params object[] args)
+		{
+			if (GetComponent<HitFreeze>() == null)
+				AddComponent(new HitFreeze(X, Y));
 		}
 		
 		private void OnEffect(params object[] args)

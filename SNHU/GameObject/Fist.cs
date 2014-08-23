@@ -204,7 +204,7 @@ namespace SNHU.GameObject
 			{
 				canPunch = false;
 				
-				parent.OnMessage(Fist.Message.PunchSuccess, player);
+				from.OnMessage(Fist.Message.PunchSuccess, player);
 				World.BroadcastMessage(CameraShake.Message.Shake, 10.0f, 0.5f);
 		 		Mixer.Hit1.Play();
 		 		
