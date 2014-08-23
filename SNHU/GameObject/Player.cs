@@ -45,7 +45,6 @@ namespace SNHU.GameObject
 		public Upgrade CurrentUpgrade { get; private set; }
 		public int UpgradeCapacity { get; private set; }
 		
-		public bool Frozen;
 		public bool Invincible { get; private set; }
 		public bool Rebounding { get; private set; }
 		public bool Guarding { get; private set; }
@@ -71,8 +70,6 @@ namespace SNHU.GameObject
 		
 		public Player(float x, float y, int jid, int id, string imageName) : base(x, y)
 		{
-			Frozen = false;
-			
 			excludeCollision = new HashSet<Entity>();
 			ImageName = imageName;
 			this.PlayerId = id;
@@ -195,75 +192,67 @@ namespace SNHU.GameObject
 		
 		public override void Update()
 		{
-			if (Frozen)
+			base.Update();
+			
+			if (excludeCollision.Count > 0)
 			{
-				CurrentUpgrade.Update();
-				CurrentUpgrade.Tweener.Update(FP.Elapsed);
-			}
-			else
-			{
-				base.Update();
+				var toRemove = new List<Entity>();
 				
-				if (excludeCollision.Count > 0)
+				foreach (var p in excludeCollision)
 				{
-					var toRemove = new List<Entity>();
+					if (CollideWith(p, X, Y) == null)
+						toRemove.Add(p);
+				}
+				
+				foreach (var p in toRemove)
+				{
+					excludeCollision.Remove(p);
+				}
+			}
+			
+			cursor.Visible = !OnCamera;
+			
+			if (!GameWorld.gameManager.GameEnding)
+			{
+				if (!Guarding)
+				{
+				 	if (axis.X < 0)
+				 	{
+				 		FaceLeft();
+				 	}
+				 	else if (axis.X > 0)
+				 	{
+				 		FaceRight();
+				 	}
+				}
+				
+				if (Collide(Platform.Collision, X, Y + 1) == null)
+				{
+					OnGround = false;
+				}
+				else
+				{
+					OnMessage(PhysicsBody.Message.Friction, 0.75f);
+				}
+				
+				
+			if (!OnGround && DodgeController.IsDodging)
+				{
+					Entity result = 
+						Collide(Platform.Collision, X + 1, Y) ??
+						Collide(Platform.Collision, X - 1, Y);
 					
-					foreach (var p in excludeCollision)
+					if (result != null)
 					{
-						if (CollideWith(p, X, Y) == null)
-							toRemove.Add(p);
-					}
-					
-					foreach (var p in toRemove)
-					{
-						excludeCollision.Remove(p);
+					DodgeController.CanDodge = true;
 					}
 				}
 				
-				cursor.Visible = !OnCamera;
+				HandleInput();
 				
-				if (!GameWorld.gameManager.GameEnding)
+				if(Top > FP.Camera.Y + FP.HalfHeight)
 				{
-					if (!Guarding)
-					{
-					 	if (axis.X < 0)
-					 	{
-					 		FaceLeft();
-					 	}
-					 	else if (axis.X > 0)
-					 	{
-					 		FaceRight();
-					 	}
-					}
-					
-					if (Collide(Platform.Collision, X, Y + 1) == null)
-					{
-						OnGround = false;
-					}
-					else
-					{
-						OnMessage(PhysicsBody.Message.Friction, 0.75f);
-					}
-					
-					
-				if (!OnGround && DodgeController.IsDodging)
-					{
-						Entity result = 
-							Collide(Platform.Collision, X + 1, Y) ??
-							Collide(Platform.Collision, X - 1, Y);
-						
-						if (result != null)
-						{
-						DodgeController.CanDodge = true;
-						}
-					}
-					
-					HandleInput();
-					
-					if(Top > FP.Camera.Y + FP.HalfHeight)
-					{
-						Kill();
-					}
+					Kill();
 				}
 			}
 		}
