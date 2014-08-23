@@ -16,7 +16,7 @@
     <Width>1000</Width>
     <Height>600</Height>
   </LevelMaximumSize>
-  <Filename>C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\SNHULevel.oep</Filename>
+  <Filename>C:\Users\Chris\Desktop\Current Dev\the-heroes-tourney\SNHU\assets\SNHULevel.oep</Filename>
   <AngleMode>Degrees</AngleMode>
   <CameraEnabled>false</CameraEnabled>
   <CameraSize>
@@ -36,6 +36,19 @@
         <X>1</X>
         <Y>1</Y>
       </ScrollFactor>
+    </LayerDefinition>
+    <LayerDefinition xsi:type="GridLayerDefinition">
+      <Name>Collision</Name>
+      <Grid>
+        <Width>16</Width>
+        <Height>16</Height>
+      </Grid>
+      <ScrollFactor>
+        <X>1</X>
+        <Y>1</Y>
+      </ScrollFactor>
+      <Color A="255" R="0" G="0" B="0" />
+      <ExportMode>Bitstring</ExportMode>
     </LayerDefinition>
   </LayerDefinitions>
   <Tilesets />
