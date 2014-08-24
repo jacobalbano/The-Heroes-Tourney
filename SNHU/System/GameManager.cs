@@ -196,6 +196,7 @@ namespace SNHU.GameObject
 			
 			if (remainingPlayers.Count == 1)
 			{
+				hud.Visible = false;
 				var winner = remainingPlayers[0];
 				if (winner.World == null)
 				{
@@ -227,6 +228,7 @@ namespace SNHU.GameObject
 			}
 			else if (remainingPlayers.Count <= 0)
 			{
+				hud.Visible = false;
 				GameEnding = true;
 				World.BroadcastMessage(ChunkManager.Message.UnloadCurrent);
 				

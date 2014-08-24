@@ -18,13 +18,13 @@ namespace SNHU.GameObject
 		private GameManager gm;
 		
 		private List<Entity> players;
-		private List<Stack<Entity>> upgradeIcons;
+		private List<Stack<Image>> upgradeIcons;
 		
 		public HUD(GameManager gameManager)
 		{
 			gm = gameManager;
 			players = new List<Entity>();
-			upgradeIcons = new List<Stack<Entity>>();
+			upgradeIcons = new List<Stack<Image>>();
 			
 			Layer = -10000;
 		}
@@ -68,7 +68,7 @@ namespace SNHU.GameObject
 			e.AddResponse(Upgrade.Message.Used, OnUpgradeUsed());
 			
 			players.Add(e);
-			upgradeIcons.Add(new Stack<Entity>());
+			upgradeIcons.Add(new Stack<Image>());
 		}
 		
 		Action<object[]>  OnDamage(Player p, Text health)
@@ -119,14 +119,17 @@ namespace SNHU.GameObject
 				var icon = upgrade.Icon;
 				var upgradeImg = new Image(upgrade.Icon);
 				upgradeImg.ScrollX = upgradeImg.ScrollY = 0;
-				var upgradeEnt = World.AddGraphic(upgradeImg, Layer, player.X,  player.Top - (FP.Camera.Y - FP.HalfHeight));
+				upgradeImg.X = player.X;
+				upgradeImg.Y = player.Top - (FP.Camera.Y - FP.HalfHeight);
+				upgradeImg.Relative = false;
+				AddComponent(upgradeImg);
 				
-				upgradeIcons[player.PlayerId].Push(upgradeEnt);
+				upgradeIcons[player.PlayerId].Push(upgradeImg);
 				
 				var offsetX = 10;
 				var offsetY = GameWorld.gameManager.StartingHealth != 0 ? 80 : 60;
 				
-				Tweener.Tween(upgradeEnt, new { X = hudEnt.X + offsetX, Y = hudEnt.Y + offsetY }, 0.5f)
+				Tweener.Tween(upgradeImg, new { X = hudEnt.X + offsetX, Y = hudEnt.Y + offsetY }, 0.5f)
 					.Ease(Ease.ExpoOut);
 				
 				Tweener.Tween(upgradeImg, new { Scale = icon.Scale * 0.5f }, 0.5f)
@@ -141,7 +144,7 @@ namespace SNHU.GameObject
 				
 				if (pId >= 0 && pId < upgradeIcons.Count && upgradeIcons[pId] != null && upgradeIcons[pId].Count > 0)
 				{
-					World.Remove(upgradeIcons[pId].Pop());
+					RemoveComponent(upgradeIcons[pId].Pop());
 				}
 			};
 		}
