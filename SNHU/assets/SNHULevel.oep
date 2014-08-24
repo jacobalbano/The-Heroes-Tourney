@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <OgmoVersion>2.1.0.6</OgmoVersion>
-  <Name>New Project</Name>
+  <Name>The Heroes' Tourney</Name>
   <BackgroundColor A="255" R="192" G="192" B="192" />
   <GridColor A="255" R="0" G="0" B="0" />
   <LevelDefaultSize>
@@ -16,7 +16,7 @@
     <Width>1000</Width>
     <Height>600</Height>
   </LevelMaximumSize>
-  <Filename>C:\Users\Chris\Desktop\Current Dev\the-heroes-tourney\SNHU\assets\SNHULevel.oep</Filename>
+  <Filename>C:\Users\Jake\Documents\Sharpdevelop projects\SNHU\SNHU\assets\SNHULevel.oep</Filename>
   <AngleMode>Degrees</AngleMode>
   <CameraEnabled>false</CameraEnabled>
   <CameraSize>
@@ -179,6 +179,59 @@
         <RectColor A="255" R="0" G="128" B="64" />
       </ImageDefinition>
       <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="TimerTrigger" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>32</Width>
+        <Height>32</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Image" ImagePath="ogmo\timer.png" Tiled="false">
+        <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions>
+        <ValueDefinition xsi:type="FloatValueDefinition" Name="Duration" Default="0" Min="0" Max="1E+08" Round="0.1" />
+        <ValueDefinition xsi:type="StringValueDefinition" Name="Group" Default="default" MaxChars="-1" MultiLine="false" />
+      </ValueDefinitions>
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="TriggeredPlatform" Limit="-1" ResizableX="true" ResizableY="true" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>16</Width>
+        <Height>16</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Rectangle" ImagePath="" Tiled="false">
+        <RectColor A="255" R="64" G="0" B="128" />
+      </ImageDefinition>
+      <ValueDefinitions>
+        <ValueDefinition xsi:type="StringValueDefinition" Name="Group" Default="default" MaxChars="-1" MultiLine="false" />
+      </ValueDefinitions>
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="FloorButton" Limit="-1" ResizableX="true" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>32</Width>
+        <Height>16</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>-16</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Rectangle" ImagePath="" Tiled="false">
+        <RectColor A="255" R="0" G="255" B="255" />
+      </ImageDefinition>
+      <ValueDefinitions>
+        <ValueDefinition xsi:type="StringValueDefinition" Name="Group" Default="default" MaxChars="-1" MultiLine="false" />
+        <ValueDefinition xsi:type="FloatValueDefinition" Name="Duration" Default="0" Min="0" Max="1E+09" Round="0.1" />
+      </ValueDefinitions>
       <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
     </EntityDefinition>
   </EntityDefinitions>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Indigo;
 using Indigo.Graphics;
 using Indigo.Utils;
+using SNHU.GameObject.Upgrades.Helper;
 
 namespace SNHU.GameObject.Upgrades
 {

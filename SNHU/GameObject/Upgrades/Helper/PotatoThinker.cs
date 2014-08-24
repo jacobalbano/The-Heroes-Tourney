@@ -7,7 +7,7 @@ using Indigo;
 using Indigo.Graphics;
 using Indigo.Utils;
 
-namespace SNHU.GameObject.Upgrades
+namespace SNHU.GameObject.Upgrades.Helper
 {
 	/// <summary>
 	/// Description of PotatoThinker.

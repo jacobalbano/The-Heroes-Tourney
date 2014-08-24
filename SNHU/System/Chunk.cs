@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Glide;
 using Indigo;
@@ -9,6 +10,7 @@ using Indigo.Graphics;
 using Indigo.Loaders;
 using Indigo.Masks;
 using Indigo.Utils;
+using Indigo.Utils.Reflect;
 using SNHU.GameObject.Platforms;
 
 namespace SNHU.GameObject
@@ -23,6 +25,7 @@ namespace SNHU.GameObject
 		private string level;
 		
 		private static string[] levels;
+		private static OgmoLoader loader;
 		
 		static Chunk()
 		{
@@ -37,6 +40,17 @@ namespace SNHU.GameObject
 			var l = levels.ToList();
 			l.Remove("/bawks.oel");
 			levels = l.ToArray();
+			
+			levels = new string[] { "Real_3.oel" };
+			
+			loader = new OgmoLoader();
+			loader.RegisterGridType("Collision", 16, 16);
+			
+			loader.RegisterClassAlias<JumpPad>("jumpPad");
+			loader.RegisterClassAlias<Crumble>("crumble");
+			loader.RegisterClassAlias<Razor>("deadlyAnchor");
+			loader.RegisterClassAlias<SpawnPoint>("spawnPoint");
+			loader.RegisterClassAlias<UpgradeSpawn>("Upgrade");
 		}
 		
 		public Chunk(float posX, float posY) : base(posX, posY)
@@ -45,15 +59,6 @@ namespace SNHU.GameObject
 			SpawnPoints = new List<Entity>();
 			
 			level = FP.Choose(levels);
-			
-			var loader = new OgmoLoader();
-			loader.RegisterGridType("Collision", 16, 16);
-			
-			loader.RegisterClassAlias<JumpPad>("jumpPad");
-			loader.RegisterClassAlias<Crumble>("crumble");
-			loader.RegisterClassAlias<Razor>("deadlyAnchor");
-			loader.RegisterClassAlias<SpawnPoint>("spawnPoint");
-			loader.RegisterClassAlias<UpgradeSpawn>("Upgrade");
 			
 			ents = loader.BuildWorldAsArray(Library.GetXml("assets/Levels/" + level));
 			

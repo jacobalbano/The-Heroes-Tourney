@@ -14,10 +14,6 @@ using Indigo.Loaders;
 
 namespace SNHU.GameObject.Triggers
 {
-	/// <summary>
-	/// Description of Triggerable.
-	/// </summary>
-	[OgmoConstructor("group")]
 	public class Triggerable : Entity
 	{
 		public string Group { get; set; }
@@ -27,22 +23,34 @@ namespace SNHU.GameObject.Triggers
 			Group = group;
 			Type = Platform.Collision;
 			
-			var img = Image.CreateRect(32, 32, FP.Color(0xFF00FF));
-			SetHitboxTo(img);
-			AddComponent(img);
-			
 			AddResponse(Trigger.Message.On, OnTriggerOn);
 			AddResponse(Trigger.Message.Off, OnTriggerOff);
 		}
 		
-		public void OnTriggerOn(params object[] args)
+		protected virtual void TriggerOn()
+		{
+		}
+		
+		protected virtual void TriggerOff()
+		{
+		}
+		
+		private void OnTriggerOn(params object[] args)
         {
-			FP.Log("I was triggered on. Group: " + Group);
+			if (String.Equals(args[0] as string, Group))
+			{
+				FP.Log("I was triggered on. Group: " + Group);
+				TriggerOn();
+			}
         }
 		
-		public void OnTriggerOff(params object[] args)
+		private void OnTriggerOff(params object[] args)
         {
-			FP.Log("I was triggered off. Group: " + Group);
+			if (String.Equals(args[0] as string, Group))
+			{
+				FP.Log("I was triggered off. Group: " + Group);
+				TriggerOff();
+			}
         }
 		
 	}

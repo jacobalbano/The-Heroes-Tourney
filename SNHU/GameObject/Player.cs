@@ -357,12 +357,12 @@ namespace SNHU.GameObject
 			{
 				if (!OnGround)
 				{
+					OnGround = true;
+					
 					player.ScaleX = 1 + JUMP_JUICE_FORCE;
 					player.ScaleY = 1 - JUMP_JUICE_FORCE;
 					
 					Tweener.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
-					
-					OnGround = true;
 					
 					Mixer.Land1.Play();
 					
@@ -378,7 +378,7 @@ namespace SNHU.GameObject
 				}
 				
 				e.OnMessage(Platform.Message.Bump);
-				OnMessage(Message.OnLand);
+				OnMessage(Message.OnLand, this);
 			}
 			else if (e.Type == Type)
 			{

@@ -40,12 +40,6 @@ namespace SNHU.GameObject.Upgrades.Helper
 			lastX = Parent.X;
 		}
 		
-		public override void Removed()
-		{
-			base.Removed();
-			FP.Tweener.Timer(1).OnComplete(() => Parent.RemoveComponent(emitter));
-		}
-		
 		public override void Update()
 		{
 			base.Update();
@@ -66,6 +60,9 @@ namespace SNHU.GameObject.Upgrades.Helper
 		{
 			Parent.OnMessage(Movement.Message.Speed, Player.SPEED);
 			Parent.RemoveComponent(this);
+			
+			var parent = Parent;	//	gg ty
+			FP.Tweener.Timer(1).OnComplete(() => parent.RemoveComponent(emitter));
 		}
 	}
 }

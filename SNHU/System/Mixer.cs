@@ -55,7 +55,7 @@ namespace SNHU.GameObject
 			
 			music = new Sound(Library.GetSoundStream("assets/audio/music2.ogg")); // lol wot pls
 			
-//			music.Volume = 0;
+			music.Volume = 0;
 		}
 	}
 }
