@@ -17,8 +17,8 @@ namespace SNHU.GameObject.Upgrades
 			
 		public FUS()
 		{
-			Icon = new Image(Library.GetTexture("assets/fus.png"));
-			FusStrength = Library.GetConfig<FusConfig>("assets/config/upgrades/fus.ini").Strength;
+			Icon = new Image(Library.GetTexture("fus.png"));
+			FusStrength = Library.GetConfig<FusConfig>("config/upgrades/fus.ini").Strength;
 		}
 		
 		public override void Use()
@@ -62,7 +62,7 @@ namespace SNHU.GameObject.Upgrades
 				this.X = X;
 				this.Y = Y;
 				
-				var i = new Image(Library.GetTexture("assets/fus_active.png"));
+				var i = new Image(Library.GetTexture("fus_active.png"));
 				i.Scale = 0.1f;
 				i.CenterOO();
 				

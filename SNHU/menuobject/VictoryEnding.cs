@@ -26,13 +26,13 @@ namespace SNHU.MenuObject
 			var bg = AddComponent(Image.CreateRect(FP.Width, FP.Height, new Color()));
           	bg.CenterOO();
 
-			var image = AddComponent(new Image(Library.GetTexture("assets/happy.png")));
+			var image = AddComponent(new Image(Library.GetTexture("happy.png")));
 			image.CenterOO();
 			
 			// YOU WIN!
 			var text = AddComponent(new Text("\tPlayer " + (Winner.PlayerId + 1) + "\nis the true hero!"));
 			text.Y = -(FP.Height / 4);
-			text.Font = Library.GetFont("assets/fonts/Laffayette_Comic_Pro.ttf");
+			text.Font = Library.GetFont("fonts/Laffayette_Comic_Pro.ttf");
 			text.Size = 64;
 			text.CenterOrigin();
 			

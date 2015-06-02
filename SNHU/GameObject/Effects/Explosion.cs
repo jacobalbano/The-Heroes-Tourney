@@ -14,7 +14,7 @@ namespace SNHU.GameObject.Effects
 		
 		public Explosion(float x, float y) : base(x, y)
 		{
-			Emitter = AddComponent(new Emitter(Library.GetTexture("assets/explosion.png"), 60, 60));
+			Emitter = AddComponent(new Emitter(Library.GetTexture("explosion.png"), 60, 60));
 			
 			for (int i = 0; i < 4; i++)
 			{

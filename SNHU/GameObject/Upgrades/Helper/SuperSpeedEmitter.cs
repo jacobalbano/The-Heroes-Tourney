@@ -17,7 +17,7 @@ namespace SNHU.GameObject.Upgrades.Helper
 		
 		public SuperSpeedEmitter(float duration)
 		{
-			emitter = new Emitter(Library.GetTexture("assets/speed_particle.png"), 68, 30);
+			emitter = new Emitter(Library.GetTexture("speed_particle.png"), 68, 30);
 			emitter.Relative = false;
 			
 			emitter.NewType("l", FP.Frames(0));

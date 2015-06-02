@@ -62,7 +62,7 @@ namespace SNHU.GameObject
 			
 			Layer = ObjectLayers.JustAbove(ObjectLayers.Players);
 			
-			Image = new Image(Library.GetTexture("assets/glove" + (backHand ? "2" : "1") + ".png"));
+			Image = new Image(Library.GetTexture("glove" + (backHand ? "2" : "1") + ".png"));
 			Image.CenterOO();
 			AddComponent(Image);
 			

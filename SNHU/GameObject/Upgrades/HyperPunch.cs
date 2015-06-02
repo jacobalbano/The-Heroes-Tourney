@@ -23,14 +23,14 @@ namespace SNHU.GameObject.Upgrades
 		
 		public HyperFist(Player owner)
 		{
-			var config = Library.GetConfig<HyperPunchConfig>("assets/config/upgrades/hyperpunch.ini");
+			var config = Library.GetConfig<HyperPunchConfig>("config/upgrades/hyperpunch.ini");
 			FistScale = config.Scale;
 			ForceMultiplier = config.ForceMultiplier;
 			FistSpeed = config.Speed;
 			
 			this.owner = originalOwner = owner;
 			
-			image = new Image(Library.GetTexture("assets/hyperPunch.png"));
+			image = new Image(Library.GetTexture("hyperPunch.png"));
 			image.Scale = 0.1f * this.FistScale;
 			image.CenterOO();
 			AddComponent(image);
@@ -136,7 +136,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public HyperPunch()
 		{
-			Icon = new Image(Library.GetTexture("assets/hyperPunch.png"));
+			Icon = new Image(Library.GetTexture("hyperPunch.png"));
 			Icon.Scale = 0.1f * PICKUP_IMAGE_SCALE;
 			
 			AddResponse(ChunkManager.Message.Advance, OnAdvance);
@@ -205,7 +205,7 @@ namespace SNHU.GameObject.Upgrades
 			Layer = layer + 1;
 			sineticks = 0;
 			
-			rainbow = new Image(Library.GetTexture("assets/rainbow.png"));
+			rainbow = new Image(Library.GetTexture("rainbow.png"));
 			rainbow.CenterOO();
 			rainbow.Alpha = 0.5f;
 			rainbow.Scale = scale;

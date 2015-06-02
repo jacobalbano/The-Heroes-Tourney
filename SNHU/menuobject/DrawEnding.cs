@@ -19,7 +19,7 @@ namespace SNHU.MenuObject
           	bg.CenterOO();
 
 			var text = AddComponent(new Text("Draw!"));
-			text.Font = Library.GetFont("assets/fonts/Laffayette_Comic_Pro.ttf");
+			text.Font = Library.GetFont("fonts/Laffayette_Comic_Pro.ttf");
 			text.Italicized = true;
 			text.Y = -(FP.Height / 4);
 			text.Size = 64;

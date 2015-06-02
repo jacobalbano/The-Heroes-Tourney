@@ -21,13 +21,13 @@ namespace SNHU.GameObject.Upgrades
 		
 		public SuperSpeed()
 		{
-			Icon  = new Image(Library.GetTexture("assets/speed.png"));
+			Icon  = new Image(Library.GetTexture("speed.png"));
 		}
 		
 		public override void Added()
 		{
 			base.Added();
-			var config = Library.GetConfig<SuperSpeedConfig>("assets/config/upgrades/superspeed.ini");
+			var config = Library.GetConfig<SuperSpeedConfig>("config/upgrades/superspeed.ini");
 			NewSpeed = config.NewSpeed;
 			Lifetime = config.Lifetime;
 		}

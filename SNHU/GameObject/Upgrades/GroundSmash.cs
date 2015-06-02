@@ -20,7 +20,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public GroundSmash()
 		{
-			Icon = new Image(Library.GetTexture("assets/groundsmash.png"));
+			Icon = new Image(Library.GetTexture("groundsmash.png"));
 			AddResponse(Player.Message.OnLand, OnPlayerLand);
 		}
 		
@@ -28,7 +28,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Added();
 			
-			var config = Library.GetConfig<GroundSmashConfig>("assets/config/upgrades/groundSmash.ini");
+			var config = Library.GetConfig<GroundSmashConfig>("config/upgrades/groundSmash.ini");
 			SmashRadius = config.SmashRadius;
 			FallSpeed = config.FallSpeed;
 		}
@@ -72,7 +72,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			if (Activated)
 			{
-				var emitter = new Emitter(Library.GetTexture("assets/groundsmash_particle.png"), 3, 3);
+				var emitter = new Emitter(Library.GetTexture("groundsmash_particle.png"), 3, 3);
 				emitter.Relative = false;
 				
 				for (int i = 0; i < 4; i++)

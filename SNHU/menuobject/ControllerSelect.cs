@@ -57,7 +57,7 @@ namespace SNHU.MenuObject
 		
 		public ControllerSelect(MenuWorld parent, int playerSlot, int joyId)
 		{
-			var font = Library.GetFont("assets/fonts/Laffayette_Comic_Pro.ttf");
+			var font = Library.GetFont("fonts/Laffayette_Comic_Pro.ttf");
 			
 			changing = false;
 			
@@ -68,7 +68,7 @@ namespace SNHU.MenuObject
 			this.JoyId = joyId;
 			this.PlayerSlot = playerSlot;
 			
-			Image = new Image(Library.GetTexture("assets/menu.png"));
+			Image = new Image(Library.GetTexture("menu.png"));
 			Image.Color = new Color(Color = colors[PlayerSlot]);
 			pressStart = new Text("PRESS START");
 			pressStart.Font = font;
@@ -77,7 +77,7 @@ namespace SNHU.MenuObject
 			pressStart.Size = 20;
 			pressStart.Color = new Color(0);
 			
-			check = new Image(Library.GetTexture("assets/ready.png"));
+			check = new Image(Library.GetTexture("ready.png"));
 			check.CenterOO();
 			check.Y = Height * 0.75f;
 			check.ScaleY = 0;
@@ -89,7 +89,7 @@ namespace SNHU.MenuObject
 			if (SnesController.IsMatch(slot))
 			{
 				var snes = new SnesController(slot);
-				confirm = new Image(Library.GetTexture("assets/Snes_1.png"));
+				confirm = new Image(Library.GetTexture("Snes_1.png"));
 				Cursor = snes.Dpad;
 				Start = snes.Start;
 				Back = snes.A;
@@ -98,7 +98,7 @@ namespace SNHU.MenuObject
 			else if (Xbox360Controller.IsMatch(slot))
 			{
 				var xbox = new Xbox360Controller(slot);
-				confirm = new Image(Library.GetTexture("assets/Xbox_1.png"));
+				confirm = new Image(Library.GetTexture("Xbox_1.png"));
 				Cursor = xbox.LeftStick;
 				Start = xbox.Start;
 				Confirm = xbox.A;
@@ -246,7 +246,7 @@ namespace SNHU.MenuObject
 		
 		void StartCursors()
 		{
-			var texture = Library.GetTexture("assets/change.png");
+			var texture = Library.GetTexture("change.png");
 			lArrow = new Image(texture);
 			rArrow = new Image(texture);
 			
@@ -287,7 +287,7 @@ namespace SNHU.MenuObject
 				RemoveComponent(player);
 			}
 			
-			player = new Image(Library.GetTexture("assets/players/" + PlayerImageName + ".png"));
+			player = new Image(Library.GetTexture("players/" + PlayerImageName + ".png"));
 			player.CenterOrigin();
 			
 			player.X = 0;

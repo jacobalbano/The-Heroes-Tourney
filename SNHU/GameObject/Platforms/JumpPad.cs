@@ -31,12 +31,12 @@ namespace SNHU.GameObject.Platforms
 		
 		public void NodeHandler(System.Xml.XmlNode entity)
 		{
-			image = new Nineslice(Library.GetTexture("assets/bouncepad.png"), 3, 3);
+			image = new Nineslice(Library.GetTexture("bouncepad.png"), 3, 3);
 			image.Columns = (int) (Width / 5f);
 			image.ScaleX = Width / image.Width;
 			image.Y -= 3;
 			
-			emitter = new Emitter(Library.GetTexture("assets/jumpparticle.png"));
+			emitter = new Emitter(Library.GetTexture("jumpparticle.png"));
 			emitter.NewType("p");
 			emitter.SetMotion("p", 90, 32, 1, 45, 0.5f, 0.25f);
 			emitter.SetAlpha("p", 1, 0);

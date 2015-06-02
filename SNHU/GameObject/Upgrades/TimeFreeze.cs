@@ -17,14 +17,14 @@ namespace SNHU.GameObject.Upgrades
 		
 		public TimeFreeze()
 		{
-			Icon  = new Image(Library.GetTexture("assets/timeFreeze.png"));
+			Icon  = new Image(Library.GetTexture("timeFreeze.png"));
 			players = new List<Player>();
 		}
 		
 		public override void Added()
 		{
 			base.Added();
-			Lifetime = Library.GetConfig<TimeFreezeConfig>("assets/config/upgrades/timefreeze.ini").Lifetime;
+			Lifetime = Library.GetConfig<TimeFreezeConfig>("config/upgrades/timefreeze.ini").Lifetime;
 		}
 		
 		public override EffectMessage MakeEffect()

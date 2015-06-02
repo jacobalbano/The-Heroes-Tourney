@@ -83,7 +83,7 @@ namespace SNHU.GameObject
 			hand = false;
 			InitController();
 				
-			var tex = Library.GetTexture("assets/players/" + imageName + ".png");
+			var tex = Library.GetTexture("players/" + imageName + ".png");
 			tex.Smooth = true;
 			player = new Image(tex);
 			player.Scale = 0.5f;
@@ -170,7 +170,7 @@ namespace SNHU.GameObject
 			World.AddList(left, right);
 			IsAlive = true;
 			
-			UpgradeCapacity = Library.GetConfig<PlayerConfig>("assets/config/player.ini").UpgradeCapacity;
+			UpgradeCapacity = Library.GetConfig<PlayerConfig>("config/player.ini").UpgradeCapacity;
 		}
 		
 		public override void Removed()

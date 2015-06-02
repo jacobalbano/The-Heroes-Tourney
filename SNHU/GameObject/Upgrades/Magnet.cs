@@ -14,14 +14,14 @@ namespace SNHU.GameObject.Upgrades
 			
 		public Magnet()
 		{
-			Icon = new Image(Library.GetTexture("assets/magnet.png"));
+			Icon = new Image(Library.GetTexture("magnet.png"));
 		}
 		
 		public override void Added()
 		{
 			base.Added();
 			
-			MagnetStrength = Library.GetConfig<MagnetConfig>("assets/config/upgrades/magnet.ini").Strength;
+			MagnetStrength = Library.GetConfig<MagnetConfig>("config/upgrades/magnet.ini").Strength;
 		}
 		
 		public override EffectMessage MakeEffect()

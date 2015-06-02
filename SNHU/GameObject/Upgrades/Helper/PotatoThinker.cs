@@ -29,10 +29,10 @@ namespace SNHU.GameObject.Upgrades.Helper
 			X = Target.X;
 			Y = Target.Top - 40;
 		
-			var config = Library.GetConfig<HotPotatoConfig>("assets/config/upgrades/hotpotato.ini");
+			var config = Library.GetConfig<HotPotatoConfig>("config/upgrades/hotpotato.ini");
 			totalTime = Math.Max(0.01f, config.Duration);
 			
-			image = AddComponent(new Image(Library.GetTexture("assets/hotpotato.png")));
+			image = AddComponent(new Image(Library.GetTexture("hotpotato.png")));
 			image.Color = new Color(0xff0000);
 			image.CenterOrigin();
 			CenterOrigin();

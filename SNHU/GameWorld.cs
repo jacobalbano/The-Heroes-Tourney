@@ -33,7 +33,7 @@ namespace SNHU
 			
 			this.playerImageNames = playerImageNames;
 			
-			bg = new Image(Library.GetTexture("assets/bg.png"));
+			bg = new Image(Library.GetTexture("bg.png"));
 			bg.ScrollX = bg.ScrollY = 0;
 			AddGraphic(bg, 0, 0, ObjectLayers.Background);
 			

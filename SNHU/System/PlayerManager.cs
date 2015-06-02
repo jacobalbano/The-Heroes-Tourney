@@ -30,7 +30,7 @@ namespace SNHU.Systems
 		
 		public PlayerManager()
 		{
-			var Config = Library.GetConfig<PlayerConfig>("assets/config/player.ini");
+			var Config = Library.GetConfig<PlayerConfig>("config/player.ini");
 			StartingLives = Config.StartingLives;
 			StartingHealth = Config.StartingHealth;
 			PunchDamage = Config.PunchDamage;

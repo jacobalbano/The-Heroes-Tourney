@@ -54,7 +54,7 @@ namespace SNHU.Components
 		{
 			base.Added();
 			
-			DodgeDuration = Library.GetConfig<PlayerConfig>("assets/config/player.ini").DodgeDuration;
+			DodgeDuration = Library.GetConfig<PlayerConfig>("config/player.ini").DodgeDuration;
 		}
 		
 		public override void Update()

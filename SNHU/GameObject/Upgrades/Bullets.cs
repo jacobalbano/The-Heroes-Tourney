@@ -39,7 +39,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public Bullet(Vector2f initialDir, Player owner)
 		{	
-			image = new Image(Library.GetTexture("assets/bullet.png"));
+			image = new Image(Library.GetTexture("bullet.png"));
 			AddComponent(image);
 			image.CenterOO();
 			
@@ -51,7 +51,7 @@ namespace SNHU.GameObject.Upgrades
 			dir = initialDir;
 			this.owner = owner;
 			
-			emitter = new Emitter(Library.GetTexture("assets/bullet_sparkle.png"), 20, 20);
+			emitter = new Emitter(Library.GetTexture("bullet_sparkle.png"), 20, 20);
 			emitter.Relative = false;
 			
 			var name = "spark";
@@ -185,7 +185,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public Bullets()
 		{
-			Icon = new Image(Library.GetTexture("assets/bullets.png"));
+			Icon = new Image(Library.GetTexture("bullets.png"));
 			bullets = new List<Entity>();
 			
 			AddResponse(ChunkManager.Message.Advance, OnAdvance);
@@ -195,7 +195,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Added();
 			
-			var config = Library.GetConfig<BulletConfig>("assets/config/upgrades/bullets.ini");
+			var config = Library.GetConfig<BulletConfig>("config/upgrades/bullets.ini");
 			BulletCount = config.Count;
 			Lifetime = config.Lifetime;
 			var mode = config.Mode;

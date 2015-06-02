@@ -27,7 +27,7 @@ namespace SNHU.GameObject
 			upgradeIcons = new List<Stack<Image>>();
 			Layer = ObjectLayers.HUD;
 			
-			var Config = Library.GetConfig<PlayerConfig>("assets/config/player.ini");
+			var Config = Library.GetConfig<PlayerConfig>("config/player.ini");
 			StartingLives = Config.StartingLives;
 			StartingHealth = Config.StartingHealth;
 			PunchDamage = Config.PunchDamage;
@@ -59,7 +59,7 @@ namespace SNHU.GameObject
 				lives.Y = 15;
 				lives.ScrollX = lives.ScrollY = 0;
 						
-				var head = new Image(Library.GetTexture("assets/players/" + p.ImageName + "_head.png"));
+				var head = new Image(Library.GetTexture("players/" + p.ImageName + "_head.png"));
 				head.CenterOO();
 				head.X = -10;
 				head.Y = 25;

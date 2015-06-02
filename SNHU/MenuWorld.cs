@@ -25,8 +25,6 @@ namespace SNHU
 		
 		private bool readying;
 		
-		private GameWorld gameWorld;
-		
 		public MenuWorld()
 		{
 			allImages = LoadAllPlayers();
@@ -46,19 +44,10 @@ namespace SNHU
 		
 		List<string> LoadAllPlayers()
 		{
-			List<string> result = new List<string>();
+			var result = Library.GetFilenames("players/", "*.ini")
+				.ToList();
 			
-			try
-			{
-				result.AddRange(Directory.GetFiles("assets/players", "*.ini"));
-			}
-			catch
-			{
-				FP.Log("error");
-				// Could not open the directory for some inexplicable reason
-			}
-			
-			var regex = new Regex(@"assets/players/(?<Name>.+).ini");
+			var regex = new Regex(@"players/(?<Name>.+).ini");
 			
 			for (int i = 0; i < result.Count; i++)
 			{
@@ -67,6 +56,7 @@ namespace SNHU
 				file = file.Replace('\\', '/');
 				
 				var match = regex.Match(file);
+				
 				
 				file = match.Groups["Name"].Value;
 				result[i] = file;

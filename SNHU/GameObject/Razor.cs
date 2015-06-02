@@ -16,13 +16,13 @@ namespace SNHU.GameObject
 		
 		public RazorBlade(float size)
 		{
-			blade = new Image(Library.GetTexture("assets/razor.png"));
+			blade = new Image(Library.GetTexture("razor.png"));
 			blade.Scale = size;
 			blade.CenterOO();
 			SetHitboxTo(blade);
 			CenterOrigin();
 			
-			emitter = new Emitter(Library.GetTexture("assets/blood.png"), 15, 15);
+			emitter = new Emitter(Library.GetTexture("blood.png"), 15, 15);
 			emitter.Relative = false;
 			
 			for (int i = 0; i < 4; ++i)
@@ -89,8 +89,8 @@ namespace SNHU.GameObject
 		
 		public void NodeHandler(System.Xml.XmlNode entity)
 		{
-			myImage = new Image(Library.GetTexture("assets/pivot.png"));
-			razorArm = new Image(Library.GetTexture("assets/razorArm.png"));
+			myImage = new Image(Library.GetTexture("pivot.png"));
+			razorArm = new Image(Library.GetTexture("razorArm.png"));
 			
 			razorArm.ScaleX = distance * 32 / razorArm.Width;
 			

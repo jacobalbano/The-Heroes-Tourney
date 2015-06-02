@@ -21,7 +21,7 @@ namespace SNHU.GameObject.Platforms
 			
 			canMakeAHellaRacket = true;
 			
-			image = new Nineslice(Library.GetTexture("assets/crumble.png"), (int) (Width / 5f), (int) (Height / 5f));
+			image = new Nineslice(Library.GetTexture("crumble.png"), (int) (Width / 5f), (int) (Height / 5f));
 			image.ScaleX = Width / image.Width;
 			image.ScaleY = Height / image.Height;
 			

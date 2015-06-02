@@ -15,6 +15,9 @@ namespace SNHU
 			FP.Console.MirrorToSystemOut = true;
 			#endif
 			
+			Library.AddPath("assets/");
+			Library.AddPath("assets/mods");
+			
 			FP.World = new MenuWorld();
 			Mixer.Preload();
 			

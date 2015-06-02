@@ -18,14 +18,14 @@ namespace SNHU.GameObject.Upgrades
 		
 		public Shield()
 		{
-			Icon = new Image(Library.GetTexture("assets/shield.png"));
+			Icon = new Image(Library.GetTexture("shield.png"));
 		}
 		
 		public override void Added()
 		{
 			base.Added();
 			
-			Lifetime = Library.GetConfig<ShieldConfig>("assets/config/upgrades/shield.ini").Lifetime;
+			Lifetime = Library.GetConfig<ShieldConfig>("config/upgrades/shield.ini").Lifetime;
 		}
 		
 		public override EffectMessage MakeEffect()
@@ -39,7 +39,7 @@ namespace SNHU.GameObject.Upgrades
 			{
 				base.Use();
 				
-				shieldImg = new Image(Library.GetTexture("assets/shield_active.png"));
+				shieldImg = new Image(Library.GetTexture("shield_active.png"));
 				shieldImg.CenterOO();
 				shieldImg.Alpha = 0.0f;
 				

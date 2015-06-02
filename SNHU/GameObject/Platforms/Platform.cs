@@ -23,7 +23,7 @@ namespace SNHU.GameObject.Platforms
 			
 			Type = Collision;
 			
-			image = new Nineslice(Library.GetTexture("assets/platform.png"), 3, 3);
+			image = new Nineslice(Library.GetTexture("platform.png"), 3, 3);
 			image.Columns = (int) (Width / 5f);
 			image.Rows = (int) (Height / 5f);
 			image.ScaleX = Width / image.Width;

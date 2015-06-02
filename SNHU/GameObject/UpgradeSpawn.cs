@@ -34,7 +34,7 @@ namespace SNHU.GameObject
 			base.Added();
 			
 			// Determine if this upgrade spawner will be spawning upgrades for this chunk
-			var config = Library.GetConfig<UpgradeConfig>("assets/config/upgrades.ini");
+			var config = Library.GetConfig<UpgradeConfig>("config/upgrades.ini");
 			Upgrades = config.EnabledUpgrades;
 			if (FP.Random.Chance(config.SpawnChance))
 			{

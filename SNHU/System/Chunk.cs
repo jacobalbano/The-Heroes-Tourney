@@ -31,7 +31,9 @@ namespace SNHU.GameObject
 		
 		static Chunk()
 		{
-			levels = Directory.GetFiles("assets/Levels/");
+			levels = Library.GetFilenames("Levels/", "*")
+				.ToList();
+			
 			for (int i = 0; i < levels.Length; i++)
 			{
 				var level = levels[i];
@@ -39,7 +41,6 @@ namespace SNHU.GameObject
 				levels[i] = level;
 			}
 			
-			var l = levels.ToList();
 			l.Remove("/bawks.oel");
 			l.Remove("/Real_3.oel");
 			levels = l.ToArray();
@@ -62,7 +63,7 @@ namespace SNHU.GameObject
 			SpawnPoints = new List<Entity>();
 			
 			level = FP.Choose.From(levels);
-			ents = loader.BuildLevelAsArray(Library.GetXml("assets/Levels/" + level));
+			ents = loader.BuildLevelAsArray(Library.GetXml("Levels/" + level));
 			
 			int spawns = 0;
 			foreach (var e in ents)
@@ -83,7 +84,7 @@ namespace SNHU.GameObject
 				{
 					var grid = e.GetComponent<Grid>();
 					
-					var map = new Tilemap(Library.GetTexture("assets/tiles/Tileset.png"), FP.Width, FP.Height, 16, 16);
+					var map = new Tilemap(Library.GetTexture("tiles/Tileset.png"), FP.Width, FP.Height, 16, 16);
 					AutoTileSet.CreateFromGrid(map, grid);
 					
 					e.AddComponent(map);

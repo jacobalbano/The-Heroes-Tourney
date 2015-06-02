@@ -18,12 +18,12 @@ namespace SNHU
 		{
 			this.target = target;
 			
-			image = new Image(Library.GetTexture("assets/cursor.png"));
+			image = new Image(Library.GetTexture("cursor.png"));
 			image.CenterOrigin();
 			image.OriginX = image.Width * 0.35f;
 			AddComponent(image);
 			
-			var face = new Image(Library.GetTexture("assets/players/" + target.ImageName + "_head.png"));
+			var face = new Image(Library.GetTexture("players/" + target.ImageName + "_head.png"));
 			face.CenterOO();
 			AddComponent(face);
 		}
