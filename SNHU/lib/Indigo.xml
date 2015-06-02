@@ -74,7 +74,7 @@
         </member>
         <member name="T:Indigo.Audio.SoundStream">
             <summary>
-            Description of SoundStream.
+            Sound provider for steaming large files.
             </summary>
         </member>
         <member name="T:Indigo.Camera">
@@ -82,6 +82,42 @@
             Camera class. Allows rotation, scale and positioning of the render view.
             Also supports viewports for split-screen, minimaps, etc.
             </summary>
+        </member>
+        <member name="M:Indigo.Camera.SetRenderX(Indigo.Graphics.Graphic,System.Single)">
+            <summary>
+            Set the position of a Graphic relative to the screen, compensating for its scroll factor.
+            </summary>
+            <param name="graphic">The graphic to set position on.</param>
+            <param name="x"></param>
+        </member>
+        <member name="M:Indigo.Camera.SetRenderY(Indigo.Graphics.Graphic,System.Single)">
+            <summary>
+            Set the position of a Graphic relative to the screen, compensating for its scroll factor.
+            </summary>
+            <param name="graphic">The graphic to set position on.</param>
+            <param name="y">Y position.</param>
+        </member>
+        <member name="M:Indigo.Camera.GetRenderX(Indigo.Graphics.Graphic,Indigo.Entity)">
+            <summary>
+            Get the position of a Graphic relative to the screen, compensating for its scroll factor.
+            </summary>
+            <param name="graphic">The graphic to get position from.</param>
+            <param name="parent">The entity the graphic is attached to.</param>
+            <returns>The relative position.</returns>
+        </member>
+        <member name="M:Indigo.Camera.GetRenderY(Indigo.Graphics.Graphic)">
+            <summary>
+            Get the position of a Graphic relative to the screen, compensating for its scroll factor.
+            </summary>
+            <param name="graphic">The graphic to get position from.</param>
+            <returns>The relative position.</returns>
+        </member>
+        <member name="M:Indigo.Camera.ContainsPoint(System.Single,System.Single)">
+            <summary>
+            Whether a given point is in view of the camera.
+            </summary>
+            <param name="x">Point x.</param>
+            <param name="y">Point Y.</param>
         </member>
         <member name="P:Indigo.Camera.X">
             <summary>
@@ -91,6 +127,26 @@
         <member name="P:Indigo.Camera.Y">
             <summary>
             Y position of the camera.
+            </summary>
+        </member>
+        <member name="P:Indigo.Camera.Left">
+            <summary>
+            Left edge of the camera.
+            </summary>
+        </member>
+        <member name="P:Indigo.Camera.Top">
+            <summary>
+            Top edge of the camera.
+            </summary>
+        </member>
+        <member name="P:Indigo.Camera.Right">
+            <summary>
+            Right edge of the camera.
+            </summary>
+        </member>
+        <member name="P:Indigo.Camera.Bottom">
+            <summary>
+            Bottom edge of the camera.
             </summary>
         </member>
         <member name="P:Indigo.Camera.Angle">
@@ -105,7 +161,7 @@
         </member>
         <member name="T:Indigo.Component">
             <summary>
-            Description of Component.
+            Base class for graphics, masks, and other things that add functionality to Entities.
             </summary>
         </member>
         <member name="M:Indigo.MessageListener.OnMessage(System.Enum,System.Object[])">
@@ -151,10 +207,22 @@
             Called after being added to an Entity.
             </summary>
         </member>
+        <member name="M:Indigo.Component.ParentAdded">
+            <summary>
+            Override this.
+            Called when the entity this is attached to is added to the world.
+            </summary>
+        </member>
         <member name="M:Indigo.Component.Removed">
             <summary>
             Override this.
             Called just before being removed from an Entity.
+            </summary>
+        </member>
+        <member name="M:Indigo.Component.ParentRemoved">
+            <summary>
+            Override this.
+            Called when the entity this is attached to is removed from the world.
             </summary>
         </member>
         <member name="M:Indigo.Component.Render(System.Single,System.Single,Indigo.Camera)">
@@ -177,6 +245,186 @@
         <member name="P:Indigo.Component.Tweener">
             <summary>
             
+            </summary>
+        </member>
+        <member name="T:Indigo.Components.CoroutineHost">
+            <summary>
+            Simple coroutine manager.
+            </summary>
+        </member>
+        <member name="M:Indigo.Components.CoroutineHost.WaitForMessage(System.Enum)">
+            <summary>
+            Causes the calling coroutine to wait until its host recieves a message of the specified type.
+            </summary>
+            <param name="message">The message type to wait for.</param>
+            <returns>IEnumerator</returns>
+        </member>
+        <member name="M:Indigo.Components.CoroutineHost.WaitForSeconds(System.Single)">
+            <summary>
+            Causes the calling coroutine to wait for a given number of seconds.
+            </summary>
+            <param name="seconds">The amount of seconds to wait.</param>
+            <returns>IEnumerator</returns>
+        </member>
+        <member name="M:Indigo.Components.CoroutineHost.WaitForFrames(System.Int32)">
+            <summary>Causes the calling coroutine to wait for a given number of frames.
+            <para>If you want to wait a single frame, it's better to use <code>yield return null;</code></para>
+            </summary>
+            <param name="frames">The number of frames to wait.</param>
+            <returns>IEnumerator</returns>
+        </member>
+        <member name="M:Indigo.Components.CoroutineHost.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Indigo.Components.CoroutineHost.Start(System.Collections.IEnumerator)">
+            <summary>
+            Start a new coroutine.
+            </summary>
+            <param name="routine">An IEnumerator (created by calling a function which yields).</param>
+            <returns>The coroutine that was started, used to stop it running.</returns>
+        </member>
+        <member name="M:Indigo.Components.CoroutineHost.Stop(System.Collections.IEnumerator)">
+            <summary>
+            Stop the given coroutine.
+            </summary>
+            <param name="routine">The coroutine to stop.</param>
+            <returns>Whether the stopped coroutine was contained in this host.</returns>
+        </member>
+        <member name="M:Indigo.Components.CoroutineHost.StopAll">
+            <summary>
+            Stop all coroutines in the host.
+            </summary>
+        </member>
+        <member name="P:Indigo.Components.CoroutineHost.Count">
+            <summary>
+            How many coroutines are currently running.
+            </summary>
+        </member>
+        <member name="P:Indigo.Components.CoroutineHost.Running">
+            <summary>
+            Whether any coroutines are currently running.
+            </summary>
+        </member>
+        <member name="T:Indigo.Components.FrameScript">
+            <summary>
+            Simple class that allows a lambda function to run every frame.
+            </summary>
+        </member>
+        <member name="M:Indigo.Components.FrameScript.#ctor(System.Action)">
+            <summary>
+            <para>Constructor.</para>
+            </summary>
+            <param name="script">The function to run each frame.</param>
+        </member>
+        <member name="T:Indigo.Graphics.Graphic">
+            <summary>
+            Base class for all graphical types that can be drawn by Entity.
+            </summary>
+        </member>
+        <member name="M:Indigo.Graphics.Graphic.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="F:Indigo.Graphics.Graphic.X">
+            <summary>
+            X offset.
+            </summary>
+        </member>
+        <member name="F:Indigo.Graphics.Graphic.Y">
+            <summary>
+            Y offset.
+            </summary>
+        </member>
+        <member name="F:Indigo.Graphics.Graphic.ScrollX">
+            <summary>
+            X scrollfactor, effects how much the camera offsets the drawn graphic.
+            Can be used for parallax effect, eg. Set to 0 to follow the camera,
+            0.5 to move at half-speed of the camera, or 1 (default) to stay still.
+            </summary>
+        </member>
+        <member name="F:Indigo.Graphics.Graphic.ScrollY">
+            <summary>
+            Y scrollfactor, effects how much the camera offsets the drawn graphic.
+            Can be used for parallax effect, eg. Set to 0 to follow the camera,
+            0.5 to move at half-speed of the camera, or 1 (default) to stay still.
+            </summary>
+        </member>
+        <member name="F:Indigo.Graphics.Graphic.Relative">
+            <summary>
+            If the graphic should render at its position relative to its parent Entity's position.
+            </summary>
+        </member>
+        <member name="P:Indigo.Graphics.Graphic.Shader">
+            <summary>
+            An optional shader to draw the image with
+            </summary>
+        </member>
+        <member name="F:Indigo.Components.StateMachine.InvalidState">
+            <summary>
+            Constant value equalling -1.
+            </summary>
+        </member>
+        <member name="M:Indigo.Components.StateMachine.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Indigo.Components.StateMachine.AddState(System.Action,System.Action,System.Action)">
+            <summary>
+            Add a new state to the state machine.
+            </summary>
+            <param name="begin">The function to call when the state begins. Can be null.</param>
+            <param name="update">The function to call while the state is active. Can be null.</param>
+            <param name="end">The function to call when the state ends. Can be null.</param>
+            <returns>The state ID.</returns>
+        </member>
+        <member name="M:Indigo.Components.StateMachine.AddState(System.Action)">
+            <summary>
+            Add a new state to the state machine.
+            </summary>
+            <param name="update">The function to call while the state updates. Can be null.</param>
+            <returns>The state ID.</returns>
+        </member>
+        <member name="M:Indigo.Components.StateMachine.PushState(System.Int32)">
+            <summary>
+            Push a state onto a stack, preserving the existing state or states.
+            </summary>
+            <param name="state">The state to push.</param>
+        </member>
+        <member name="M:Indigo.Components.StateMachine.PopState">
+            <summary>
+            Removes the current state and transitions to the next one on the stack.
+            </summary>
+            <returns>The ID of the state that was removed, or -1 if the stack was empty.</returns>
+        </member>
+        <member name="M:Indigo.Components.StateMachine.ChangeState(System.Int32)">
+            <summary>
+            <para>Switches to a different state.</para>
+            <para>If the stack is not empty, this will cause an error.</para>
+            </summary>
+            <param name="state">The state to switch to.</param>
+        </member>
+        <member name="M:Indigo.Components.StateMachine.ResetState">
+            <summary>
+            Reset the current state's timers and call its begin function, if it exists.
+            </summary>
+        </member>
+        <member name="P:Indigo.Components.StateMachine.StateFrames">
+            <summary>
+            How many frames the current state has been active for.
+            </summary>
+        </member>
+        <member name="P:Indigo.Components.StateMachine.StateTime">
+            <summary>
+            How long (in seconds) the current state has been active for.
+            </summary>
+        </member>
+        <member name="T:Indigo.Utils.IHitboxInformer">
+            <summary>
+            Classes which implement this interface can be used for the 
             </summary>
         </member>
         <member name="M:Indigo.Core.Rectangle.#ctor(System.Single,System.Single,System.Single,System.Single)">
@@ -218,6 +466,20 @@
             Y coordinate of the rectangle's bottom edge.
             </summary>
         </member>
+        <member name="F:Indigo.Core.Point.Zero">
+            <summary>
+            Zero vector {0, 0}.
+            </summary>
+        </member>
+        <member name="M:Indigo.Core.Point.FromAngle(System.Single,System.Single)">
+            <summary>
+            <para>Creates a new Point as a direction vector.</para>
+            <para>This is a shortcut for using FP.AngleXY()</para>
+            </summary>
+            <param name="angle">The angle to represent.</param>
+            <param name="length">The length of the angle.</param>
+            <returns>The created Point.</returns>
+        </member>
         <member name="M:Indigo.Core.Point.Dot(Indigo.Core.Point)">
             <summary>
             Get the dot product of this and another vector.
@@ -238,6 +500,19 @@
             <param name="length">The length to scale the vector to (default 1).</param>
             <returns>The normalized vector.</returns>
         </member>
+        <member name="M:Indigo.Core.Point.Truncated(System.Single)">
+            <summary>
+            Returns a truncated copy of this vector. The original vector is unmodified.
+            </summary>
+            <param name="max">The maximum length of the resulting vector.</param>
+            <returns>The truncated vector.</returns>
+        </member>
+        <member name="M:Indigo.Core.Point.Truncate(System.Single)">
+            <summary>
+            Scales this vector so that its length is not greater then "max" parameter.
+            </summary>
+            <param name="max">The maximum length of the resulting vector.</param>
+        </member>
         <member name="F:Indigo.Core.Point.X">
             <summary>
             Position component.
@@ -248,23 +523,134 @@
             Position component.
             </summary>
         </member>
-        <member name="P:Indigo.Core.Point.IsZero">
-            <summary>
-            Whether this is a zero vector { 0, 0 }.
-            </summary>
-        </member>
         <member name="P:Indigo.Core.Point.Length">
             <summary>
             The length of the vector.
             </summary>
         </member>
-        <member name="T:Indigo.Debugging.Console">
+        <member name="P:Indigo.Core.Point.SquaredLength">
             <summary>
-            Description of Class.
+            The squared length of the vector. Faster than calculating length.
             </summary>
         </member>
-        <member name="P:Indigo.Debugging.Console.Paused">
+        <member name="T:Indigo.Content.Data.Config.Hex">
+            <summary>
+            Format an int property as a hex value.
+            </summary>
+        </member>
+        <member name="T:Indigo.Content.Data.Config.Ignore">
+            <summary>
+            Ignore this property when saving and loading.
+            </summary>
+        </member>
+        <member name="T:Indigo.Content.Data.Config.Comment">
+            <summary>
+            Add a comment to the configuration file before this property. Not supported with all formats!
+            </summary>
+        </member>
+        <member name="T:Indigo.Content.Data.Config.EnumComment">
+            <summary>
+            Generates a comment containing the names of the enum for this field.
+            </summary>
+        </member>
+        <member name="T:Indigo.Content.Data.Config.Default">
+            <summary>
+            Set the default value of a property.
+            </summary>
+        </member>
+        <member name="T:Indigo.Library">
+            <summary>
+            Content management and caching.
+            </summary>
+        </member>
+        <member name="M:Indigo.Library.GetXml(System.String)">
+            <summary>
+            Load an XML document.
+            </summary>
+            <param name="filename">The filename of the document to load.</param>
+            <returns>The loaded document.</returns>
+        </member>
+        <member name="M:Indigo.Library.GetTexture(System.String)">
+            <summary>
+            Load a texture.
+            </summary>
+            <param name="filename">The filename of the texture to load.</param>
+            <returns>The loaded texture.</returns>
+        </member>
+        <member name="M:Indigo.Library.GetSoundBuffer(System.String)">
+            <summary>
+            Load sound data.
+            </summary>
+            <param name="filename">The filename of the sound file to load.</param>
+            <returns>The loaded sound file.</returns>
+        </member>
+        <member name="M:Indigo.Library.GetSoundStream(System.String)">
+            <summary>
+            Load a sound stream.
+            </summary>
+            <param name="filename">The filename of the sound file to load.</param>
+            <returns>A stream that reads the requested file.</returns>
+        </member>
+        <member name="M:Indigo.Library.GetFont(System.String)">
+            <summary>
+            Load a font.
+            </summary>
+            <param name="filename">The filename of the font to load.</param>
+            <returns>The loaded font.</returns>
+        </member>
+        <member name="M:Indigo.Library.GetText(System.String)">
+            <summary>
+            Load a text file and return its contents
+            </summary>
+            <param name="filename">The name of the file</param>
+            <returns>The loaded text.</returns>
+        </member>
+        <member name="M:Indigo.Library.GetFolders(System.String)">
+            <summary>
+            Gets an enumerable of folders, taking search paths into consideration. An Indigo-friendly alias for Directory.GetDirectories()
+            </summary>
+        </member>
+        <member name="M:Indigo.Library.GetFilenames(System.String,System.String)">
+            <summary>
+            Gets an enumerable of files, taking search paths into consideration. An Indigo-friendly alias for Directory.GetFiles()
+            </summary>
+        </member>
+        <member name="M:Indigo.Library.Unload">
+            <summary>
+            Releases all cached assets.
+            No memory disposal is done immediately.
+            </summary>
+        </member>
+        <member name="M:Indigo.Library.Reload">
+            <summary>
+            <para>Reloads all loaded assets.</para>
+            <para>Textures' contents will be updated from disk.</para>
+            </summary>
+        </member>
+        <member name="F:Indigo.Debugging.DebugConsole.MirrorToSystemOut">
+            <summary>
+            Whether System.Console.WriteLine() should be used in addition to the in-game console.
+            </summary>
+        </member>
+        <member name="F:Indigo.Debugging.DebugConsole.DisplayCallingMethod">
+            <summary>
+            Whether the method calling Log() should be displayed before the message.
+            </summary>
+        </member>
+        <member name="P:Indigo.Debugging.DebugConsole.IsOpen">
+            <summary>
+            Whether the console is expanded.
+            </summary>
+        </member>
+        <member name="P:Indigo.Debugging.DebugConsole.Enabled">
+            <summary>
+            Whether the console has been enabled.
+            </summary>
+        </member>
+        <member name="P:Indigo.Debugging.DebugConsole.Paused">
+            <summary>
             If the Console is currently in paused mode.
+            </summary>
         </member>
         <member name="T:Indigo.Engine">
             <summary>
@@ -304,11 +690,6 @@
             <param name="height">The height of your game.</param>
             <param name="framerate">The game framerate, in frames per second (default 60).</param>
         </member>
-        <member name="M:Indigo.Engine.Init">
-            <summary>
-            Override this; called when the Engine starts up.
-            </summary>
-        </member>
         <member name="M:Indigo.Engine.FocusGained">
             <summary>
             Override this; called when the window gains focus.
@@ -324,13 +705,20 @@
             Updates the engine.
             </summary>
         </member>
+        <member name="P:Indigo.Engine.Interval">
+            <summary>
+            The ideal interval (in fractional seconds) between frames.
+            </summary>
+        </member>
         <member name="T:Indigo.Entity">
             <summary>
             Main game Entity class updated by World.
             </summary>
         </member>
         <member name="F:Indigo.Entity.Visible">
+            <summary>
             If the Entity should render.
+            </summary>
         </member>
         <member name="F:Indigo.Entity.Active">
             <summary>
@@ -338,34 +726,47 @@
             </summary>
         </member>
         <member name="F:Indigo.Entity.Collidable">
+            <summary>
             If the Entity should respond to collision checks.
+            </summary>
         </member>
         <member name="F:Indigo.Entity.X">
-            X position of the Entity in the World.
+            <summary>
+            X position of the Entity in the World. 
+            </summary>
         </member>
         <member name="F:Indigo.Entity.Y">
-            Y position of the Entity in the World.
+            <summary>
+            Y position of the Entity in the World. 
+            </summary>
         </member>
         <member name="F:Indigo.Entity.Width">
+            <summary>
             Width of the Entity's hitbox.
+            </summary>
         </member>
         <member name="F:Indigo.Entity.Height">
+            <summary>
             Height of the Entity's hitbox.
+            </summary>
         </member>
         <member name="F:Indigo.Entity.OriginX">
+            <summary>
             X origin of the Entity's hitbox.
+            </summary>
         </member>
         <member name="F:Indigo.Entity.OriginY">
+            <summary>
             Y origin of the Entity's hitbox.
+            </summary>
         </member>
-        <member name="M:Indigo.Entity.#ctor(System.Single,System.Single,Indigo.Graphics.Graphic,Indigo.Masks.Mask)">
+        <member name="M:Indigo.Entity.#ctor(System.Single,System.Single,Indigo.Component[])">
             <summary>
             Constructor. Can be usd to place the Entity and assign a graphic and mask.
             </summary>
             <param name="x">X position to place the Entity (default 0).</param>
             <param name="y">Y position to place the Entity (default 0).</param>
-            <param name="graphic">Graphic to assign to the Entity (default null).</param>
-            <param name="mask">Mask to assign to the Entity (default null).</param>
+            <param name="components">Optional list of components to add to the Entity.</param>
         </member>
         <member name="M:Indigo.Entity.Added">
             <summary>
@@ -393,11 +794,35 @@
             Override this to render debug information in the debug console.
             </summary>
         </member>
-        <member name="M:Indigo.Entity.Load(System.Xml.XmlNode)">
+        <member name="M:Indigo.Entity.AddComponent``1(``0)">
             <summary>
-            Override this to specify behavior when this is being loaded from an Ogmo XML Entity.
+            Add a component and return it.
             </summary>
-            <param name="node">The XML node that describes the entity.</param>
+        </member>
+        <member name="M:Indigo.Entity.RemoveComponent``1(``0)">
+            <summary>
+            Remove a component and return it.
+            </summary>
+        </member>
+        <member name="M:Indigo.Entity.GetComponent(System.Type)">
+            <summary>
+            Get the first component of a given type.
+            </summary>
+        </member>
+        <member name="M:Indigo.Entity.GetComponent``1">
+            <summary>
+            Get the first component of a given type.
+            </summary>
+        </member>
+        <member name="M:Indigo.Entity.GetComponents(System.Type)">
+            <summary>
+            Get an array containing all components of a given type.
+            </summary>
+        </member>
+        <member name="M:Indigo.Entity.GetComponents``1">
+            <summary>
+            Get an array containing all components of a given type.
+            </summary>
         </member>
         <member name="M:Indigo.Entity.Collide(System.String,System.Single,System.Single)">
             <summary>
@@ -450,12 +875,12 @@
         </member>
         <member name="M:Indigo.Entity.CollideInto(System.String,System.Single,System.Single,System.Collections.Generic.List{Indigo.Entity})">
             <summary>
-            Populates an array with all collided Entities of a type.
+            Populates a list with all collided Entities of a type.
             </summary>
             <param name="type">The Entity type to check for.</param>
             <param name="x">Virtual x position to place this Entity.</param>
             <param name="y">Virtual y position to place this Entity.</param>
-            <param name="array">The Array or Vector object to populate.</param>
+            <param name="list">The List to populate.</param>
         </member>
         <member name="M:Indigo.Entity.CollideTypesInto(System.Collections.Generic.IEnumerable{System.String},System.Single,System.Single,System.Collections.Generic.List{Indigo.Entity})">
             <summary>
@@ -464,8 +889,8 @@
             <param name="types">A collection (array, List, etc) of Entity types to check for.</param>
             <param name="x">Virtual x position to place this Entity.</param>
             <param name="y">Virtual y position to place this Entity.</param>
-            <param name="array">The List to populate.</param>
-            <returns></returns>
+            <param name="list">The List to populate.</param>
+            <returns>The passed List.</returns>
         </member>
         <member name="M:Indigo.Entity.MoveBy(System.Single,System.Single,System.Object,System.Boolean)">
             <summary>
@@ -474,7 +899,7 @@
             <param name="x">Horizontal offset.</param>
             <param name="y">Vertical offset.</param>
             <param name="solidType">An optional collision type (or array of types) to stop flush against upon collision.</param>
-            <param name="sweep">If sweeping should be used (prevents fast-moving objects from going through solidType).</param>
+            <returns>Whether the entity finished moving to its destination.</returns>
         </member>
         <member name="M:Indigo.Entity.MoveTo(System.Single,System.Single,System.Object,System.Boolean)">
             <summary>
@@ -484,6 +909,7 @@
             <param name="y">Y position.</param>
             <param name="solidType">An optional collision type (or array of types) to stop flush against upon collision.</param>
             <param name="sweep">If sweeping should be used (prevents fast-moving objects from going through solidType).</param>
+            <returns>Whether the entity finished moving to its destination.</returns>
         </member>
         <member name="M:Indigo.Entity.MoveTowards(System.Single,System.Single,System.Single,System.Object,System.Boolean)">
             <summary>
@@ -518,11 +944,17 @@
             <param name="originX">X origin of the hitbox.</param>
             <param name="originY">Y origin of the hitbox.</param>
         </member>
-        <member name="M:Indigo.Entity.SetHitboxTo(System.Object)">
+        <member name="M:Indigo.Entity.SetHitboxTo(Indigo.Utils.IHitboxInformer)">
             <summary>
             Sets the Entity's hitbox to match that of the provided object.
             </summary>
-            <param name="o">The object defining the hitbox (eg. an Image or Rectangle).</param>
+            <param name="informer">An instance of a class that implements the IHitboxInformer interface.</param>
+        </member>
+        <member name="M:Indigo.Entity.SetHitboxTo(Indigo.Entity)">
+            <summary>
+            Sets the Entity's hitbox to match another Entity.
+            </summary>
+            <param name="e">The Entity whose hitbox to copy.</param>
         </member>
         <member name="M:Indigo.Entity.SetOrigin(System.Int32,System.Int32)">
             <summary>
@@ -585,6 +1017,11 @@
             <param name="bottom">Max bounds.</param>
             <param name="padding">Optional padding on the clamp.</param>
         </member>
+        <member name="P:Indigo.Entity.Tweener">
+            <summary>
+            The Glide tweener managed by this Entity.
+            </summary>
+        </member>
         <member name="P:Indigo.Entity.OnCamera">
             <summary>
             If the Entity's position is contained within the camera rectangle.
@@ -607,12 +1044,12 @@
         </member>
         <member name="P:Indigo.Entity.CenterX">
             <summary>
-            The center x position of the Entity's hitbox.
+            The center x position of the Entity's hitbox, in world space.
             </summary>
         </member>
         <member name="P:Indigo.Entity.CenterY">
             <summary>
-            The center y position of the Entity's hitbox.
+            The center y position of the Entity's hitbox, in world space.
             </summary>
         </member>
         <member name="P:Indigo.Entity.Left">
@@ -645,12 +1082,6 @@
             The collision type, used for collision checking.
             </summary>
         </member>
-        <member name="P:Indigo.Entity.Mask">
-            <summary>
-            An optional Mask component, used for specialized collision. If this is
-            not assigned, collision checks will use the Entity's hitbox by default.
-            </summary>
-        </member>
         <member name="P:Indigo.Entity.Name">
             <summary>
             The Entity's instance name. Use this to uniquely identify single
@@ -671,59 +1102,6 @@
             <summary>
             Multiply a degree angle by this to convert it to radians.
             </summary>
-        </member>
-        <member name="F:Indigo.FP.Width">
-            <summary>
-            Width of the game.
-            </summary>
-        </member>
-        <member name="F:Indigo.FP.Height">
-            <summary>
-            Height of the game.
-            </summary>
-        </member>
-        <member name="F:Indigo.FP.Fixed">
-            <summary>
-            If the game is running at a fixed framerate.
-            </summary>
-        </member>
-        <member name="F:Indigo.FP.TimeInFrames">
-            <summary>
-            If times should be given in frames (as opposed to seconds).
-            Default is true in fixed timestep mode and false in variable timestep mode.
-            </summary>
-        </member>
-        <member name="F:Indigo.FP.Framerate">
-            <summary>
-            The assigned framerate
-            </summary>
-        </member>
-        <member name="F:Indigo.FP.Elapsed">
-            <summary>
-            Time elapsed since the last frame (in seconds).
-            </summary>
-        </member>
-        <member name="F:Indigo.FP.Timescale">
-            <summary>
-            Timescale assigned to Elapsed.
-            </summary>
-        </member>
-        <member name="F:Indigo.FP.Camera">
-            <summary>
-            The view camera. Can be rotated or scaled as well as positioned.
-            </summary>
-        </member>
-        <member name="F:Indigo.FP.Focused">
-            <summary>
-            If the game currently has input focus or not.
-            </summary>
-        </member>
-        <member name="M:Indigo.FP.Choose``1(``0[])">
-            <summary>
-            Randomly chooses and returns one of the provided values.
-            </summary>
-            <param name="choices">The Objects you want to randomly choose from. Can be ints, floats, Points, etc.</param>
-            <returns>A randomly chosen one of the provided parameters.</returns>
         </member>
         <member name="M:Indigo.FP.Sign(System.Single)">
             <summary>
@@ -830,6 +1208,16 @@
             <param name="y2">The second y-position.</param>
             <returns>The distance.</returns>
         </member>
+        <member name="M:Indigo.FP.DistanceSquared(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Find the squared distance between two points.
+            </summary>
+            <param name="x1">The first x-position.</param>
+            <param name="y1">The first y-position.</param>
+            <param name="x2">The second x-position.</param>
+            <param name="y2">The second y-position.</param>
+            <returns>The squared distance.</returns>
+        </member>
         <member name="M:Indigo.FP.DistanceRects(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Find the distance between two rectangles. Will return 0 if the rectangles overlap.
@@ -860,7 +1248,7 @@
             <summary>
             Clamps the value within the minimum and maximum values.
             </summary>
-            <param name="value">The Number to evaluate.</param>
+            <param name="value">The value to evaluate.</param>
             <param name="min">The minimum range.</param>
             <param name="max">The maximum range.</param>
             <returns>The clamped value.</returns>
@@ -899,36 +1287,6 @@
             <param name="max2">The maximum range of the second scale.</param>
             <returns>The scaled and clamped value.</returns>
         </member>
-        <member name="M:Indigo.FP.RandomizeSeed">
-            <summary>
-            Randomizes the random seed using C#'s Random class.
-            </summary>
-        </member>
-        <member name="M:Indigo.FP.Rand(System.Int32)">
-            <summary>
-            Returns a pseudo-random int.
-            </summary>
-            <param name="amount">The returned value will always be [0, result, amount].</param>
-            <returns>The value.</returns>
-        </member>
-        <member name="M:Indigo.FP.Next``1(``0,System.Collections.Generic.IList{``0},System.Boolean)">
-            <summary>
-            Returns the next item after current in the list of options.
-            </summary>
-            <param name="current">The currently selected item (must be one of the options).</param>
-            <param name="options">An array of all the items to cycle through.</param>
-            <param name="loop">If true, will jump to the first item after the last item is reached.</param>
-            <returns>The next item in the list.</returns>
-        </member>
-        <member name="M:Indigo.FP.Prev``1(``0,System.Collections.Generic.IList{``0},System.Boolean)">
-            <summary>
-            Returns the previous item before current in the list of options.
-            </summary>
-            <param name="current">The currently selected item (must be one of the options).</param>
-            <param name="options">An array of all the items to cycle through.</param>
-            <param name="loop">If true, will jump to the last item after the first item is reached.</param>
-            <returns>The next item in the list.</returns>
-        </member>
         <member name="M:Indigo.FP.Swap``1(``0,``0,``0)">
             <summary>
             Swaps the current item between a and b. Useful for quick state/string/value swapping.
@@ -937,59 +1295,6 @@
             <param name="a">Item a</param>
             <param name="b">Item b</param>
             <returns>Returns a if current is b, and b if current is a.</returns>
-        </member>
-        <member name="M:Indigo.FP.GetColorRGB(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Creates a color value by combining the chosen RGB values.
-            </summary>
-            <param name="r">The red value of the color, from 0 to 255.</param>
-            <param name="g">The green value of the color, from 0 to 255.</param>
-            <param name="b">The blue value of the color, from 0 to 255.</param>
-            <returns>The combined color.</returns>
-        </member>
-        <member name="M:Indigo.FP.GetColorHSV(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Creates a color value with the chosen HSV values.
-            </summary>
-            <param name="h">The hue of the color (from 0 to 1).</param>
-            <param name="s">The saturation of the color (from 0 to 1).</param>
-            <param name="v">The value of the color (from 0 to 1).</param>
-            <returns>The created color</returns>
-        </member>
-        <member name="M:Indigo.FP.GetRed(System.Int32)">
-            <summary>
-            Finds the red factor of a color.
-            </summary>
-            <param name="color">The color to evaluate.</param>
-            <returns>A int from 0 to 255.</returns>
-        </member>
-        <member name="M:Indigo.FP.GetGreen(System.Int32)">
-            <summary>
-            Finds the green factor of a color.
-            </summary>
-            <param name="color">The color to evaluate.</param>
-            <returns>A int from 0 to 255.</returns>
-        </member>
-        <member name="M:Indigo.FP.GetBlue(System.Int32)">
-            <summary>
-            Finds the blue factor of a color.
-            </summary>
-            <param name="color">The color to evaluate.</param>
-            <returns>A int from 0 to 255.</returns>
-        </member>
-        <member name="M:Indigo.FP.Color(System.Int32)">
-            <summary>
-            Create an SFML color instance from a Flash-style int (0xRRGGBB)
-            </summary>
-            <param name="color">A Flash-style color (0xRRGGBB)</param>
-            <returns>The converted color</returns>
-        </member>
-        <member name="M:Indigo.FP.HexColor(SFML.Graphics.Color)">
-            <summary>
-            Create a Flash-style color (0xRRGGBB) from an SFML color instance.
-            </summary>
-            <param name="color">An SFML color instance.</param>
-            <returns>The converted color.</returns>
         </member>
         <member name="M:Indigo.FP.TimeFlag">
             <summary>
@@ -1019,12 +1324,6 @@
             <param name="frames">The frames to insert into the array</param>
             <returns>The frame array.</returns>
         </member>
-        <member name="M:Indigo.FP.Shuffle``1(System.Collections.Generic.List{``0})">
-            <summary>
-            Shuffles the elements in a list.
-            </summary>
-            <param name="shuffle">The list to shuffle</param>
-        </member>
         <member name="M:Indigo.FP.GetTimer">
             <summary>
             High-resolution timer.
@@ -1041,6 +1340,16 @@
             The currently active Engine.
             </summary>
         </member>
+        <member name="P:Indigo.FP.Width">
+            <summary>
+            Width of the game.
+            </summary>
+        </member>
+        <member name="P:Indigo.FP.Height">
+            <summary>
+            Height of the game.
+            </summary>
+        </member>
         <member name="P:Indigo.FP.HalfWidth">
             <summary>
             Half width of the game.
@@ -1051,14 +1360,50 @@
             Half height of the game.
             </summary>
         </member>
+        <member name="P:Indigo.FP.Fixed">
+            <summary>
+            If the game is running at a fixed framerate.
+            </summary>
+        </member>
+        <member name="P:Indigo.FP.TimeInFrames">
+            <summary>
+            If times should be given in frames (as opposed to seconds).
+            Default is true in fixed timestep mode and false in variable timestep mode.
+            </summary>
+        </member>
+        <member name="P:Indigo.FP.Framerate">
+            <summary>
+            The assigned framerate
+            </summary>
+        </member>
+        <member name="P:Indigo.FP.Elapsed">
+            <summary>
+            Time elapsed since the last frame (in seconds).
+            </summary>
+        </member>
+        <member name="P:Indigo.FP.Timescale">
+            <summary>
+            Timescale assigned to Elapsed.
+            </summary>
+        </member>
         <member name="P:Indigo.FP.Screen">
             <summary>
             The display window.
             </summary>
         </member>
-        <member name="P:Indigo.FP.Bounds">
+        <member name="P:Indigo.FP.Camera">
             <summary>
-            A rectangle representing the size of the screen.
+            The view camera. Can be rotated or scaled as well as positioned.
+            </summary>
+        </member>
+        <member name="P:Indigo.FP.GlobalKeys">
+            <summary>
+            Global keys. Allows setting callbacks that will trigger regardless of world or debug state.
+            </summary>
+        </member>
+        <member name="P:Indigo.FP.Focused">
+            <summary>
+            If the game currently has input focus or not.
             </summary>
         </member>
         <member name="P:Indigo.FP.World">
@@ -1066,24 +1411,14 @@
             The currently active World.
             </summary>
         </member>
-        <member name="P:Indigo.FP.Volume">
+        <member name="P:Indigo.FP.Choose">
             <summary>
-            Global sound volume. All sounds will be multiplied by this value.
-            </summary>
-        </member>
-        <member name="P:Indigo.FP.Pan">
-            <summary>
-            Global sound pan. All sounds will be offset by this value.
-            </summary>
-        </member>
-        <member name="P:Indigo.FP.RandomSeed">
-            <summary>
-            The random seed used by FP's random functions.
+            A collection of functions to choose from lists, options, enums, etc.
             </summary>
         </member>
         <member name="P:Indigo.FP.Random">
             <summary>
-            A pseudo-random float produced using FP's random seed, where the result is greater than 0 and less than 1.
+            A collection of functions to create pseudo-random values.
             </summary>
         </member>
         <member name="P:Indigo.FP.Tweener">
@@ -1361,7 +1696,7 @@
             </summary>
             <returns>A reference to this.</returns>
         </member>
-        <member name="M:Glide.Tween.Rotation">
+        <member name="M:Glide.Tween.Rotation(Glide.Tween.RotationUnit)">
             <summary>
             Whether this tween handles rotation.
             </summary>
@@ -1398,24 +1733,27 @@
             Resumes tweens from a paused state.
             </summary>
         </member>
-        <member name="M:Glide.Tween.TweenerImpl.Tween(System.Object,System.Object,System.Single,System.Single)">
+        <member name="P:Glide.Tween.TimeRemaining">
             <summary>
-            Tweens a set of numeric properties on an object.
-            To tween instance properties/fields, pass the object.
-            To tween static properties/fields, pass the type of the object, using typeof(ObjectType) or object.GetType().
+            The time remaining before the tween ends or repeats.
+            </summary>
+        </member>
+        <member name="P:Glide.Tween.Completion">
+            <summary>
+            A value between 0 and 1, where 0 means the tween has not been started and 1 means that it has completed.
+            </summary>
+        </member>
+        <member name="M:Glide.Tween.TweenerImpl.Tween``1(``0,System.Object,System.Single,System.Single)">
+            <summary>
+            <para>Tweens a set of properties on an object.</para>
+            <para>To tween instance properties/fields, pass the object.</para>
+            <para>To tween static properties/fields, pass the type of the object, using typeof(ObjectType) or object.GetType().</para>
             </summary>
             <param name="target">The object or type to tween.</param>
             <param name="values">The values to tween to, in an anonymous type ( new { prop1 = 100, prop2 = 0} ).</param>
             <param name="duration">Duration of the tween in seconds.</param>
             <param name="delay">Delay before the tween starts, in seconds.</param>
             <returns>The tween created, for setting properties on.</returns>
-        </member>
-        <member name="M:Glide.Tween.TweenerImpl.AddTween(Glide.Tween)">
-            <summary>
-            Manually add a tween to the tweener.
-            Only use this to add custom tween classes!
-            </summary>
-            <param name="tween">The tween to add.</param>
         </member>
         <member name="M:Glide.Tween.TweenerImpl.Timer(System.Single,System.Single)">
             <summary>
@@ -1488,51 +1826,33 @@
         </member>
         <member name="T:Indigo.Graphics.Backdrop">
             <summary>
-            Description of Backdrop.
+            <para>A background texture that can be repeated horizontally and vertically when drawn.</para>
+            <para>Really useful for parallax backgrounds, textures, etc.</para>
             </summary>
         </member>
-        <member name="T:Indigo.Graphics.Graphic">
+        <member name="F:Indigo.Graphics.Backdrop.PageWidth">
             <summary>
-            Base class for all graphical types that can be drawn by Entity.
+            Size of a single repetition of the texture.
             </summary>
         </member>
-        <member name="M:Indigo.Graphics.Graphic.#ctor">
+        <member name="F:Indigo.Graphics.Backdrop.PageHeight">
             <summary>
-            Constructor.
+            Size of a single repetition of the texture.
             </summary>
         </member>
-        <member name="F:Indigo.Graphics.Graphic.X">
+        <member name="F:Indigo.Graphics.Backdrop.Scale">
             <summary>
-            X offset.
+            Scale of the texture page, affects both x and y scale.
             </summary>
         </member>
-        <member name="F:Indigo.Graphics.Graphic.Y">
+        <member name="F:Indigo.Graphics.Backdrop.ScaleX">
             <summary>
-            Y offset.
+            X scale of the texture page.
             </summary>
         </member>
-        <member name="F:Indigo.Graphics.Graphic.ScrollX">
+        <member name="F:Indigo.Graphics.Backdrop.ScaleY">
             <summary>
-            X scrollfactor, effects how much the camera offsets the drawn graphic.
-            Can be used for parallax effect, eg. Set to 0 to follow the camera,
-            0.5 to move at half-speed of the camera, or 1 (default) to stay still.
-            </summary>
-        </member>
-        <member name="F:Indigo.Graphics.Graphic.ScrollY">
-            <summary>
-            Y scrollfactor, effects how much the camera offsets the drawn graphic.
-            Can be used for parallax effect, eg. Set to 0 to follow the camera,
-            0.5 to move at half-speed of the camera, or 1 (default) to stay still.
-            </summary>
-        </member>
-        <member name="F:Indigo.Graphics.Graphic.Relative">
-            <summary>
-            If the graphic should render at its position relative to its parent Entity's position.
-            </summary>
-        </member>
-        <member name="P:Indigo.Graphics.Graphic.Shader">
-            <summary>
-            An optional shader to draw the image with
+            Y scale of the texture page.
             </summary>
         </member>
         <member name="T:Indigo.Graphics.Emitter">
@@ -1543,17 +1863,16 @@
         </member>
         <member name="M:Indigo.Graphics.Emitter.#ctor(SFML.Graphics.Texture,System.Int32,System.Int32)">
             <summary>
-            Constructor. Sets the source image to use for newly added particle types.
+            Constructor.
             </summary>
             <param name="source">Source texture.</param>
             <param name="frameWidth">Frame width.</param>
             <param name="frameHeight">Frame height.</param>
         </member>
-        <member name="M:Indigo.Graphics.Emitter.SetSource(SFML.Graphics.Texture,System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Emitter.#ctor(System.Int32,System.Int32)">
             <summary>
-            Changes the source image to use for newly added particle types.
+            Constructor. Create an emitter with no texture.
             </summary>
-            <param name="source">Source image.</param>
             <param name="frameWidth">Frame width.</param>
             <param name="frameHeight">Frame height.</param>
         </member>
@@ -1610,7 +1929,7 @@
             <param name="ease">Optional easer function.</param>
             <returns>The ParticleType object being modified.</returns>
         </member>
-        <member name="M:Indigo.Graphics.Emitter.SetColor(System.String,SFML.Graphics.Color,SFML.Graphics.Color,System.Func{System.Single,System.Single})">
+        <member name="M:Indigo.Graphics.Emitter.SetColor(System.String,Indigo.Graphics.Color,Indigo.Graphics.Color,System.Func{System.Single,System.Single})">
             <summary>
             Sets the color range of the particle type.
             </summary>
@@ -1629,9 +1948,129 @@
             <param name="y">Y point to emit from.</param>
             <returns></returns>
         </member>
+        <member name="M:Indigo.Graphics.Emitter.Simulate(System.Single)">
+            <summary>
+            <para>Simulate the emitter running for a given amount of time.</para>
+            </summary>
+            <param name="time">The time to run for, in seconds or frames depending on Engine timestep mode.</param>
+        </member>
         <member name="P:Indigo.Graphics.Emitter.ParticleCount">
             <summary>
             Amount of currently existing particles.
+            </summary>
+        </member>
+        <member name="F:Indigo.Graphics.Flipbook.Complete">
+            <summary>
+            If the animation has stopped.
+            </summary>
+        </member>
+        <member name="F:Indigo.Graphics.Flipbook.Callback">
+            <summary>
+            Optional callback function for animation end.
+            </summary>
+        </member>
+        <member name="F:Indigo.Graphics.Flipbook.Rate">
+            <summary>
+            Animation speed factor, alter this to speed up/slow down all animations.
+            </summary>
+        </member>
+        <member name="M:Indigo.Graphics.Flipbook.Update">
+            <summary>
+            Updates the animation.
+            </summary>
+        </member>
+        <member name="M:Indigo.Graphics.Flipbook.Add(System.String,System.Int32[],System.Single,System.Boolean)">
+            <summary>
+            Add an Animation.
+            </summary>
+            <param name="name">Name of the animation.</param>
+            <param name="frames">Array of frame indices to animate through.</param>
+            <param name="frameRate">Animation speed.</param>
+            <param name="loop">If the animation should loop.</param>
+            <returns>A new Anim object for the animation.</returns>
+        </member>
+        <member name="M:Indigo.Graphics.Flipbook.Play(System.String,System.Boolean,System.Int32)">
+            <summary>
+            Plays an animation.
+            </summary>
+            <param name="name">Name of the animation to play.</param>
+            <param name="reset">If the animation should force-restart if it is already playing.</param>
+            <param name="frame">Frame of the animation to start from, if restarted.</param>
+            <returns>Anim object representing the played animation.</returns>
+        </member>
+        <member name="M:Indigo.Graphics.Flipbook.RandFrame">
+            <summary>
+            Assigns the Flipbook to a random frame.
+            </summary>
+        </member>
+        <member name="M:Indigo.Graphics.Flipbook.SetAnimFrame(System.String,System.Int32)">
+            <summary>
+            Sets the frame to the frame index of an animation.
+            </summary>
+            <param name="name">Animation to draw the frame frame.</param>
+            <param name="index">Index of the frame of the animation to set to.</param>
+        </member>
+        <member name="F:Indigo.Graphics.Flipbook._frame">
+            <summary>
+            The current animation frame.
+            </summary>
+        </member>
+        <member name="P:Indigo.Graphics.Flipbook.Frame">
+            <summary>
+            The current frame index. When you set this, any
+            animations playing will be stopped to force the frame.
+            </summary>
+        </member>
+        <member name="P:Indigo.Graphics.Flipbook.Index">
+            <summary>
+            Current index of the playing animation.
+            </summary>
+        </member>
+        <member name="P:Indigo.Graphics.Flipbook.FrameCount">
+            <summary>
+            The amount of frames in the Flipbook.
+            </summary>
+        </member>
+        <member name="P:Indigo.Graphics.Flipbook.CurrentAnim">
+            <summary>
+            The currently playing animation.
+            </summary>
+        </member>
+        <member name="T:Indigo.Graphics.Flipbook.Anim">
+            <summary>
+            Template used by Flipbook to define animations. 
+            Don't create these yourself, instead you can fetch them with Flipbook's Add().
+            </summary>
+        </member>
+        <member name="M:Indigo.Graphics.Flipbook.Anim.Play(System.Boolean)">
+            <summary>
+            Plays the animation.
+            </summary>
+            <param name="reset">If the animation should force-restart if it is already playing.</param>
+        </member>
+        <member name="P:Indigo.Graphics.Flipbook.Anim.Name">
+            <summary>
+            The name of the animation
+            </summary>
+        </member>
+        <member name="P:Indigo.Graphics.Flipbook.Anim.Frames">
+            <summary>
+            Array of frame indices to animate.
+            </summary>
+        </member>
+        <member name="P:Indigo.Graphics.Flipbook.Anim.FrameRate">
+            <summary>
+            Animation speed.
+            </summary>
+        </member>
+        <member name="P:Indigo.Graphics.Flipbook.Anim.Loop">
+            <summary>
+            If the animation loops.
+            </summary>
+        </member>
+        <member name="P:Indigo.Graphics.Flipbook.Anim.FrameCount">
+            <summary>
+            Amount of frames in the animation.
             </summary>
         </member>
         <member name="T:Indigo.Graphics.Graphiclist">
@@ -1664,14 +2103,14 @@
             <param name="x">X position of the owning Entity.</param>
             <param name="y">Y position of the owning Entity.</param>
         </member>
-        <member name="M:Indigo.Graphics.Graphiclist.Add(Indigo.Graphics.Graphic)">
+        <member name="M:Indigo.Graphics.Graphiclist.Add``1(``0)">
             <summary>
             Adds the Graphic to the list.
             </summary>
             <param name="graphic">The Graphic to add.</param>
             <returns>The added Graphic.</returns>
         </member>
-        <member name="M:Indigo.Graphics.Graphiclist.Remove(Indigo.Graphics.Graphic)">
+        <member name="M:Indigo.Graphics.Graphiclist.Remove``1(``0)">
             <summary>
             Removes the Graphic from the list.
             </summary>
@@ -1694,11 +2133,6 @@
             Check if the Graphiclist should update.
             </summary>
         </member>
-        <member name="P:Indigo.Graphics.Graphiclist.Children">
-            <summary>
-            All Graphics in this list.
-            </summary>
-        </member>
         <member name="P:Indigo.Graphics.Graphiclist.Count">
             <summary>
             Amount of Graphics in this list.
@@ -1719,14 +2153,14 @@
             Simple constructor for shape functions lol
             </summary>
         </member>
-        <member name="M:Indigo.Graphics.Image.#ctor(SFML.Graphics.Texture,System.Nullable{SFML.Graphics.IntRect})">
+        <member name="M:Indigo.Graphics.Image.#ctor(SFML.Graphics.Texture,System.Nullable{Indigo.Core.Rectangle})">
             <summary>
             Constructor.
             </summary>
             <param name="texture">Source image.</param>
             <param name="clipRect">Optional rectangle defining area of the source image to draw.</param>
         </member>
-        <member name="M:Indigo.Graphics.Image.CreateRect(System.Int32,System.Int32,SFML.Graphics.Color)">
+        <member name="M:Indigo.Graphics.Image.CreateRect(System.Int32,System.Int32,Indigo.Graphics.Color)">
             <summary>
             Create a solid-color rectangle image.
             </summary>
@@ -1735,7 +2169,7 @@
             <param name="color">The color of the image.</param>
             <returns>The created image.</returns>
         </member>
-        <member name="M:Indigo.Graphics.Image.CreateCircle(System.Int32,SFML.Graphics.Color)">
+        <member name="M:Indigo.Graphics.Image.CreateCircle(System.Int32,Indigo.Graphics.Color)">
             <summary>
             Create a solid-color circle image.
             </summary>
@@ -1758,12 +2192,12 @@
             Centers the Image's originX/Y to its center.
             </summary>
         </member>
-        <member name="F:Indigo.Graphics.Image._sourceRect">
+        <member name="F:Indigo.Graphics.Image._sourceRectSize">
             <summary>
-            The clipping rectangle
+            The size of the clipping rectangle, used for accurate flipping.
             </summary>
         </member>
-        <member name="F:Indigo.Graphics.Image._sourceRectSize">
+        <member name="F:Indigo.Graphics.Image._sourceRect">
             <summary>
             The size of the clipping rectangle, used for accurate flipping.
             </summary>
@@ -1875,6 +2309,22 @@
             Set the tint color of the image. Setting this to White (255, 255, 255 or 0xffffff) will disable tinting.
             If you set the alpha of this property, it will be overwritten by the Alpha property when the color transform is updated.
             </summary>
+        </member>
+        <member name="T:Indigo.Graphics.Lines">
+            <summary>
+            Utility class for drawing screen-coordinate vertices.
+            </summary>
+        </member>
+        <member name="M:Indigo.Graphics.Lines.Line(System.Single,System.Single,System.Single,System.Single,SFML.Graphics.Color,System.Single)">
+            <summary>
+            Draws a line.
+            </summary>
+            <param name="x1">Starting x position.</param>
+            <param name="y1">Starting y position.</param>
+            <param name="x2">Ending x position.</param>
+            <param name="y2">Ending y position.</param>
+            <param name="color">Color of the line.</param>
+            <param name="alpha">Alpha of the line. Defaults to 1</param>
         </member>
         <member name="T:Indigo.Graphics.Nineslice">
             <summary>
@@ -2058,7 +2508,7 @@
             <param name="ease">Optional easer function.</param>
             <returns>This ParticleType object.</returns>
         </member>
-        <member name="M:Indigo.Graphics.ParticleType.SetColor(SFML.Graphics.Color,SFML.Graphics.Color,System.Func{System.Single,System.Single})">
+        <member name="M:Indigo.Graphics.ParticleType.SetColor(Indigo.Graphics.Color,Indigo.Graphics.Color,System.Func{System.Single,System.Single})">
             <summary>
             Sets the color range of this particle type.
             </summary>
@@ -2205,39 +2655,39 @@
             Callback type for when animations complete.
             </summary>
         </member>
-        <member name="T:Indigo.Graphics.Anim">
+        <member name="T:Indigo.Graphics.Spritemap.Anim">
             <summary>
             Template used by Spritemap to define animations. 
             Don't create these yourself, instead you can fetch them with Spritemap's Add().
             </summary>
         </member>
-        <member name="M:Indigo.Graphics.Anim.Play(System.Boolean)">
+        <member name="M:Indigo.Graphics.Spritemap.Anim.Play(System.Boolean)">
             <summary>
             Plays the animation.
             </summary>
             <param name="reset">If the animation should force-restart if it is already playing.</param>
         </member>
-        <member name="P:Indigo.Graphics.Anim.Name">
+        <member name="P:Indigo.Graphics.Spritemap.Anim.Name">
             <summary>
             The name of the animation
             </summary>
         </member>
-        <member name="P:Indigo.Graphics.Anim.Frames">
+        <member name="P:Indigo.Graphics.Spritemap.Anim.Frames">
             <summary>
             Array of frame indices to animate.
             </summary>
         </member>
-        <member name="P:Indigo.Graphics.Anim.FrameRate">
+        <member name="P:Indigo.Graphics.Spritemap.Anim.FrameRate">
             <summary>
             Animation speed.
             </summary>
         </member>
-        <member name="P:Indigo.Graphics.Anim.Loop">
+        <member name="P:Indigo.Graphics.Spritemap.Anim.Loop">
             <summary>
             If the animation loops.
             </summary>
         </member>
-        <member name="P:Indigo.Graphics.Anim.FrameCount">
+        <member name="P:Indigo.Graphics.Spritemap.Anim.FrameCount">
             <summary>
             Amount of frames in the animation.
             </summary>
@@ -2252,20 +2702,18 @@
             The font to assign to new Text objects.
             </summary>
         </member>
-        <member name="F:Indigo.Graphics.Text.size">
+        <member name="F:Indigo.Graphics.Text.DefaultSize">
             <summary>
             The font size to assign to new Text objects.
             </summary>
         </member>
-        <member name="M:Indigo.Graphics.Text.#ctor(System.String,System.Single,System.Single,System.Int32,System.Int32)">
+        <member name="M:Indigo.Graphics.Text.#ctor(System.String,System.Single,System.Single)">
             <summary>
             Constructor
             </summary>
             <param name="text">Text to display</param>
             <param name="x">X offset</param>
             <param name="y">Y offset</param>
-            <param name="width">Image width (leave as 0 to size to the starting text string).</param>
-            <param name="height">Image height (leave as 0 to size to the starting text string).</param>
         </member>
         <member name="M:Indigo.Graphics.Text.CenterOrigin">
             <summary>
@@ -2304,7 +2752,7 @@
         </member>
         <member name="P:Indigo.Graphics.Text.Bold">
             <summary>
-            If the text has bolded.
+            If the text is bolded.
             </summary>
         </member>
         <member name="P:Indigo.Graphics.Text.Italicized">
@@ -2340,12 +2788,12 @@
         </member>
         <member name="P:Indigo.Graphics.Text.Width">
             <summary>
-            Width of the text image.
+            Width of the text.
             </summary>
         </member>
         <member name="P:Indigo.Graphics.Text.Height">
             <summary>
-            Height of the text image.
+            Height of the text.
             </summary>
         </member>
         <member name="T:Indigo.Graphics.Text.Styles">
@@ -2355,7 +2803,7 @@
         </member>
         <member name="T:Indigo.Graphics.Tilemap">
             <summary>
-            Description of Tilemap.
+            Batched tile rendering.
             </summary>
         </member>
         <member name="F:Indigo.Graphics.Tilemap.UsePositions">
@@ -2387,6 +2835,14 @@
             </summary>
             <param name="column">Column of the tile.</param>
             <param name="row">Column of the tile.</param>
+        </member>
+        <member name="M:Indigo.Graphics.Tilemap.CheckTile(System.Int32,System.Int32)">
+            <summary>
+            Check that the tile is valid.
+            </summary>
+            <param name="column">Tile column.</param>
+            <param name="row">Tile row.</param>
+            <returns>If the tile is valid.</returns>
         </member>
         <member name="M:Indigo.Graphics.Tilemap.GetTile(System.Int32,System.Int32)">
             <summary>
@@ -2446,19 +2902,6 @@
             <param name="tilesRow">Tileset row.</param>
             <returns>Index of the tile.</returns>
         </member>
-        <member name="M:Indigo.Graphics.Tilemap.SetVertexPositions(System.Int32,System.Int32)">
-            <summary>
-            Calculate vertex positions for a given position.
-            </summary>
-            <param name="x">Position x.</param>
-            <param name="y">Position y.</param>
-        </member>
-        <member name="M:Indigo.Graphics.Tilemap.SetTexCoords(System.Int32)">
-            <summary>
-            Calulate texture coordinates for a given index
-            </summary>
-            <param name="index">The tile index.</param>
-        </member>
         <member name="P:Indigo.Graphics.Tilemap.Width">
             <summary>
             Width of the graphic.
@@ -2496,7 +2939,7 @@
         </member>
         <member name="T:Indigo.Inputs.Axis">
             <summary>
-            Description of Axis.
+            Helper class for controllers. Represents the state of one axis of movement.
             </summary>
         </member>
         <member name="M:Indigo.Inputs.Directional.WSAD">
@@ -2552,19 +2995,19 @@
         <member name="T:Indigo.Inputs.Gamepad.JoystickHat">
             <summary> Alias for hats to hopefully be backend-agnostic.</summary>
         </member>
-        <member name="F:Indigo.Inputs.GamepadTrigger.Threshold">
+        <member name="F:Indigo.Inputs.Gamepad.Trigger.Threshold">
             <summary>
             The minimum value the trigger can hold before it counts as Pressed, and the maximum before it counts as Released.
             </summary>
         </member>
-        <member name="P:Indigo.Inputs.GamepadTrigger.Value">
+        <member name="P:Indigo.Inputs.Gamepad.Trigger.Value">
             <summary>
             The state of the trigger, from 0 (fully relaxed) to 1 (fully pressed).
             </summary>
         </member>
         <member name="T:Indigo.Inputs.Keyboard">
             <summary>
-            Description of Keyboard.
+            Access the state of keyboard keys.
             </summary>
         </member>
         <member name="F:Indigo.Inputs.Keyboard.KeyString">
@@ -2820,56 +3263,106 @@
             If the mouse wheel was moved this frame.
             </summary>
         </member>
-        <member name="T:Indigo.Library">
+        <member name="T:Indigo.Loaders.AutoTileSet">
             <summary>
-            Content management and caching.
+            Loader for tilesets created with Javi Cepa's AutoTileGen.
             </summary>
         </member>
-        <member name="M:Indigo.Library.GetXml(System.String)">
+        <member name="M:Indigo.Loaders.AutoTileSet.#ctor(Indigo.Graphics.Tilemap,Indigo.Masks.Grid,System.Boolean)">
             <summary>
-            Load an XML document.
+            Constructor.
             </summary>
-            <param name="filename">The filename of the document to load.</param>
-            <returns>The loaded document.</returns>
+            <param name="tilemap">The tilemap to set tiles in.</param>
+            <param name="grid">The grid to get tile data from.</param>
+            <param name="setImmediately">Whether the tilemap should be filled in immediately.</param>
         </member>
-        <member name="M:Indigo.Library.GetTexture(System.String)">
+        <member name="M:Indigo.Loaders.AutoTileSet.Refresh">
             <summary>
-            Load a texture.
+            Rebuild the tilemap with data from the Grid.
             </summary>
-            <param name="filename">The filename of the texture to load.</param>
-            <returns>The loaded texture.</returns>
         </member>
-        <member name="M:Indigo.Library.GetSoundBuffer(System.String)">
+        <member name="M:Indigo.Loaders.AutoTileSet.RefreshTile(System.Int32,System.Int32)">
             <summary>
-            Load sound data.
+            Rebuild the given tile and the eight tiles surrounding it.
             </summary>
-            <param name="filename">The filename of the sound file to load.</param>
-            <returns>The loaded sound file.</returns>
+            <param name="column">The column of tile to rebuild.</param>
+            <param name="row">The row of the tile to rebuild.</param>
         </member>
-        <member name="M:Indigo.Library.GetSoundStream(System.String)">
+        <member name="M:Indigo.Loaders.AutoTileSet.CreateFromGrid(Indigo.Graphics.Tilemap,Indigo.Masks.Grid)">
             <summary>
-            Load a sound stream.
+            Set every tile in the tilemap based on a collision grid
             </summary>
-            <param name="filename">The filename of the sound file to load.</param>
-            <returns>A stream that reads the requested file.</returns>
+            <param name="map">The tilemap to set tiles in.</param>
+            <param name="grid">The grid to get tile data from.</param>
         </member>
-        <member name="M:Indigo.Library.GetFont(System.String)">
+        <member name="M:Indigo.Loaders.AutoTileSet.SetTile(Indigo.Graphics.Tilemap,Indigo.Masks.Grid,System.Int32,System.Int32)">
             <summary>
-            Load a font.
+            Set a single tile in a tilemap based on a collision grid.
             </summary>
-            <param name="filename">The filename of the font to load.</param>
-            <returns>The loaded font.</returns>
+            <param name="map">The tilemap to set tiles in.</param>
+            <param name="grid">The grid to get tile data from.</param>
+            <param name="x">The column of the tile to set.</param>
+            <param name="y">The row of the tile to set.</param>
         </member>
-        <member name="M:Indigo.Library.GetText(System.String)">
+        <member name="P:Indigo.Loaders.AutoTileSet.Grid">
             <summary>
-            Load a text file and return its contents
+            The grid used to set the tiles in the tilemap.
             </summary>
-            <param name="filename">The name of the file</param>
-            <returns>The loaded text.</returns>
         </member>
-        <member name="T:Indigo.Loaders.OgmoConstructorAttribute">
+        <member name="P:Indigo.Loaders.AutoTileSet.Tilemap">
             <summary>
-            Doodah!
+            The tilemap.
+            </summary>
+        </member>
+        <member name="T:Indigo.Loaders.BitwiseTileset">
+            <summary>
+            Loader for setting tiles in a Tilemap based on a bitwise sum of the tiles adjacent in a grid.
+            </summary>
+        </member>
+        <member name="M:Indigo.Loaders.BitwiseTileset.#ctor(Indigo.Graphics.Tilemap,Indigo.Masks.Grid,System.Boolean)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="tilemap">The tilemap to set tiles in.</param>
+            <param name="grid">The grid to get tile data from.</param>
+            <param name="setImmediately">Whether the tilemap should be filled in immediately.</param>
+        </member>
+        <member name="M:Indigo.Loaders.BitwiseTileset.Refresh">
+            <summary>
+            Rebuild the tilemap with data from the Grid.
+            </summary>
+        </member>
+        <member name="M:Indigo.Loaders.BitwiseTileset.RefreshTile(System.Int32,System.Int32)">
+            <summary>
+            Rebuild the given tile and the eight tiles surrounding it.
+            </summary>
+            <param name="column">The column of tile to rebuild.</param>
+            <param name="row">The row of the tile to rebuild.</param>
+        </member>
+        <member name="M:Indigo.Loaders.BitwiseTileset.CreateFromGrid(Indigo.Graphics.Tilemap,Indigo.Masks.Grid)">
+            <summary>
+            Set every tile in the tilemap based on a collision grid
+            </summary>
+            <param name="map">The tilemap to set tiles in.</param>
+            <param name="grid">The grid to get tile data from.</param>
+        </member>
+        <member name="M:Indigo.Loaders.BitwiseTileset.SetTile(Indigo.Graphics.Tilemap,Indigo.Masks.Grid,System.Int32,System.Int32)">
+            <summary>
+            Set a single tile in a tilemap based on a collision grid.
+            </summary>
+            <param name="map">The tilemap to set tiles in.</param>
+            <param name="grid">The grid to get tile data from.</param>
+            <param name="x">The column of the tile to set.</param>
+            <param name="y">The row of the tile to set.</param>
+        </member>
+        <member name="P:Indigo.Loaders.BitwiseTileset.Grid">
+            <summary>
+            The grid used to set the tiles in the tilemap.
+            </summary>
+        </member>
+        <member name="P:Indigo.Loaders.BitwiseTileset.Tilemap">
+            <summary>
+            The tilemap.
             </summary>
         </member>
         <member name="M:Indigo.Loaders.OgmoConstructorAttribute.#ctor(System.String[])">
@@ -2880,6 +3373,11 @@
             <para>A series of parameters naming the Ogmo entity attributes that should be passed to this constructor.</para>
             <para>They must appear in the same order as they appear in the constructor of the Entity!</para>
             </param>
+        </member>
+        <member name="T:Indigo.Loaders.IOgmoNodeHandler">
+            <summary>
+            Entities implementing this interface will be passed their source XML node when constructed.
+            </summary>
         </member>
         <member name="T:Indigo.Loaders.OgmoLoader">
             <summary>
@@ -2903,16 +3401,17 @@
             <param name="type">The Type to register.</param>
             <param name="name">The name to register the alias with.</param>
         </member>
-        <member name="M:Indigo.Loaders.OgmoLoader.BuildWorldAsArray(System.Xml.XmlDocument)">
+        <member name="M:Indigo.Loaders.OgmoLoader.BuildLevelAsArray(System.Xml.XmlDocument,System.Boolean)">
             <summary>
             Load Entities from an Ogmo level file into an array.
             </summary>
-            <param name="level">The xml of the level.</param>
+            <param name="oel">The xml of the level.</param>
+            <param name="autoLayer">If each entity's layer should be set based on its order in the oel. Only values of 0 will be overwritten.</param>
             <returns>An array containing all Entities loaded.</returns>
         </member>
         <member name="T:Indigo.Masks.Grid">
             <summary>
-            Description of Grid.
+            Uses a hash grid to determine collision, faster than using hundreds of Entities for tiled levels, etc. 
             </summary>
         </member>
         <member name="T:Indigo.Masks.Hitbox">
@@ -2927,12 +3426,7 @@
             Base class for Entity collision masks.
             </summary>
         </member>
-        <member name="F:Indigo.Masks.Mask.Parent">
-            <summary>
-            The Parent entity of this mask.
-            </summary>
-        </member>
-        <member name="F:Indigo.Masks.Mask.List">
+        <member name="F:Indigo.Masks.Mask.Masklist">
             <summary>
             The Parent Masklist of this mask.
             </summary>
@@ -2964,12 +3458,12 @@
             Assign this mask to an Entity.
             </summary>
         </member>
-        <member name="M:Indigo.Masks.Mask.RenderDebug">
+        <member name="M:Indigo.Masks.Mask.RenderDebug(Indigo.Graphics.Lines)">
             <summary>
             Override this; called to render mask in the debugger.
             </summary>
         </member>
-        <member name="M:Indigo.Masks.Mask.Update">
+        <member name="M:Indigo.Masks.Mask.UpdateBounds">
             <summary>
             Update the parent's bounds for this Mask.
             </summary>
@@ -3010,6 +3504,12 @@
             <param name="x">X offset of the grid.</param>
             <param name="y">Y offset of the grid.</param>
         </member>
+        <member name="M:Indigo.Masks.Grid.SetAll(System.Boolean)">
+            <summary>
+            Set the values of all tiles.
+            </summary>
+            <param name="solid">If all tiles should be solid.</param>
+        </member>
         <member name="M:Indigo.Masks.Grid.SetTile(System.Int32,System.Int32,System.Boolean)">
             <summary>
             Sets the value of the tile.
@@ -3025,6 +3525,14 @@
             <param name="column">Tile column.</param>
             <param name="row">Tile row.</param>
         </member>
+        <member name="M:Indigo.Masks.Grid.IsValid(System.Int32,System.Int32)">
+            <summary>
+            Check that the tile is valid.
+            </summary>
+            <param name="column">Tile column.</param>
+            <param name="row">Tile row.</param>
+            <returns>If the tile is valid.</returns>
+        </member>
         <member name="M:Indigo.Masks.Grid.GetTile(System.Int32,System.Int32)">
             <summary>
             Gets the value of a tile.
@@ -3032,6 +3540,30 @@
             <param name="column">Tile column.</param>
             <param name="row">Tile row.</param>
             <returns>Tile value.</returns>
+        </member>
+        <member name="M:Indigo.Masks.Grid.GetTile(Indigo.Utils.GridIndex)">
+            <summary>
+            Gets the value of a tile.
+            </summary>
+            <param name="index">Tile column and row.</param>
+            <returns>Tile value.</returns>
+        </member>
+        <member name="M:Indigo.Masks.Grid.GetRect(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Determine whether any tile in a rectangle is solid.
+            </summary>
+            <param name="column">Start column.</param>
+            <param name="row">Start row.</param>
+            <param name="width">Rectangle width.</param>
+            <param name="height">Rectangle height.</param>
+            <returns>If any tile in the rectangle is solid.</returns>
+        </member>
+        <member name="M:Indigo.Masks.Grid.GetRect(Indigo.Utils.GridRect)">
+            <summary>
+            Determine whether any tile in a rectangle is solid.
+            </summary>
+            <param name="rect">The rectangle to search.</param>
+            <returns>If any tile in the rectangle is solid.</returns>
         </member>
         <member name="M:Indigo.Masks.Grid.SetRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
             <summary>
@@ -3052,6 +3584,12 @@
             <param name="width">Columns to clear.</param>
             <param name="height">Rows to clear.</param>
         </member>
+        <member name="M:Indigo.Masks.Grid.ClearRect(Indigo.Utils.GridRect)">
+            <summary>
+            Clear a rectangular region of tiles.
+            </summary>
+            <param name="rect">The rectangle to clear.</param>
+        </member>
         <member name="M:Indigo.Masks.Grid.LoadFromString(System.String,System.String,System.String)">
             <summary>
             Loads the Grid tile index data from a string.
@@ -3069,16 +3607,17 @@
             <param name="rowSep">The string that separates each row of tiles, default is "\n".</param>
             <returns>The string version of the array.</returns>
         </member>
+        <member name="M:Indigo.Masks.Grid.Decompose">
+            <summary>
+            Decomposes the grid into a list of rectangles 
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Indigo.Masks.Grid.Clone">
             <summary>
             Create a clone of this grid.
             </summary>
             <returns>The cloned grid.</returns>
-        </member>
-        <member name="F:Indigo.Masks.Grid.data">
-            <summary>
-            The grid data.
-            </summary>
         </member>
         <member name="P:Indigo.Masks.Grid.TileWidth">
             <summary>
@@ -3125,7 +3664,7 @@
             <param name="other">The Masklist to collide with.</param>
             <returns>Whether this returns with the Masklist.</returns>
         </member>
-        <member name="M:Indigo.Masks.Masklist.Add(Indigo.Masks.Mask)">
+        <member name="M:Indigo.Masks.Masklist.Add``1(``0)">
             <summary>
             Adds a Mask to the list.
             </summary>
@@ -3163,12 +3702,12 @@
             </summary>
             <param name="parent"></param>
         </member>
-        <member name="M:Indigo.Masks.Masklist.Update">
+        <member name="M:Indigo.Masks.Masklist.UpdateBounds">
             <summary>
             Updates the parent's bounds for this mask.
             </summary>
         </member>
-        <member name="M:Indigo.Masks.Masklist.RenderDebug">
+        <member name="M:Indigo.Masks.Masklist.RenderDebug(Indigo.Graphics.Lines)">
             <summary>
             Used to render debug information in console.
             </summary>
@@ -3182,6 +3721,48 @@
             <summary>
             Amount of Masks in the list.
             </summary>
+        </member>
+        <member name="T:Indigo.Graphics.Color">
+            <summary>
+            Color struct.
+            </summary>
+        </member>
+        <member name="M:Indigo.Graphics.Color.GetRed(System.Int32)">
+            <summary>
+            Finds the red factor of a color.
+            </summary>
+            <param name="color">The color to evaluate.</param>
+            <returns>A int from 0 to 255.</returns>
+        </member>
+        <member name="M:Indigo.Graphics.Color.GetGreen(System.Int32)">
+            <summary>
+            Finds the green factor of a color.
+            </summary>
+            <param name="color">The color to evaluate.</param>
+            <returns>An int from 0 to 255.</returns>
+        </member>
+        <member name="M:Indigo.Graphics.Color.GetBlue(System.Int32)">
+            <summary>
+            Finds the blue factor of a color.
+            </summary>
+            <param name="color">The color to evaluate.</param>
+            <returns>An int from 0 to 255.</returns>
+        </member>
+        <member name="M:Indigo.Graphics.Color.ToHex(Indigo.Graphics.Color)">
+            <summary>
+            Create a Flash-style color (0xRRGGBB) from a Color instance.
+            </summary>
+            <param name="color">A Color instance.</param>
+            <returns>The converted color.</returns>
+        </member>
+        <member name="M:Indigo.Graphics.Color.FromHSV(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a color value with the chosen HSV values.
+            </summary>
+            <param name="hue">The hue of the color (from 0 to 360).</param>
+            <param name="saturation">The saturation of the color (from 0 to 100).</param>
+            <param name="value">The value of the color (from 0 to 100).</param>
+            <returns>The created color.</returns>
         </member>
         <member name="M:Indigo.Rendering.RenderJob.DelegateRender(System.Single,System.Single,Indigo.Camera)">
             <summary>
@@ -3197,7 +3778,7 @@
         </member>
         <member name="T:Indigo.Rendering.Shader">
             <summary>
-            Description of Shader.
+            GLSL shader that can be applied to Graphics.
             </summary>
         </member>
         <member name="M:Indigo.Rendering.Shader.SetParameter(System.String,SFML.Graphics.Color)">
@@ -3276,11 +3857,6 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
-        <member name="P:Indigo.Resources.Embeds.console_logo">
-            <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
-            </summary>
-        </member>
         <member name="P:Indigo.Resources.Embeds.console_output">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
@@ -3311,6 +3887,103 @@
               Looks up a localized resource of type System.Byte[].
             </summary>
         </member>
+        <member name="T:Priority_Queue.HeapPriorityQueue`1">
+            <summary>
+            An implementation of a min-Priority Queue using a heap.  Has O(1) .Contains()!
+            See https://bitbucket.org/BlueRaja/high-speed-priority-queue-for-c/wiki/Getting%20Started for more information
+            </summary>
+            <typeparam name="T">The values in the queue.  Must implement the PriorityQueueNode interface</typeparam>
+        </member>
+        <member name="T:Priority_Queue.IPriorityQueue`1">
+            <summary>
+            The IPriorityQueue interface.  This is mainly here for purists, and in case I decide to add more implementations later.
+            For speed purposes, it is actually recommended that you *don't* access the priority queue through this interface, since the JIT can
+            (theoretically?) optimize method calls from concrete-types slightly better.
+            </summary>
+        </member>
+        <member name="M:Priority_Queue.HeapPriorityQueue`1.#ctor(System.Int32)">
+            <summary>
+            Instantiate a new Priority Queue
+            </summary>
+            <param name="maxNodes">The max nodes ever allowed to be enqueued (going over this will cause an exception)</param>
+        </member>
+        <member name="M:Priority_Queue.HeapPriorityQueue`1.Clear">
+            <summary>
+            Removes every node from the queue.  O(n) (So, don't do this often!)
+            </summary>
+        </member>
+        <member name="M:Priority_Queue.HeapPriorityQueue`1.Contains(`0)">
+            <summary>
+            Returns (in O(1)!) whether the given node is in the queue.  O(1)
+            </summary>
+        </member>
+        <member name="M:Priority_Queue.HeapPriorityQueue`1.Enqueue(`0,System.Double)">
+            <summary>
+            Enqueue a node - .Priority must be set beforehand!  O(log n)
+            </summary>
+        </member>
+        <member name="M:Priority_Queue.HeapPriorityQueue`1.HasHigherPriority(`0,`0)">
+            <summary>
+            Returns true if 'higher' has higher priority than 'lower', false otherwise.
+            Note that calling HasHigherPriority(node, node) (ie. both arguments the same node) will return false
+            </summary>
+        </member>
+        <member name="M:Priority_Queue.HeapPriorityQueue`1.Dequeue">
+            <summary>
+            Removes the head of the queue (node with highest priority; ties are broken by order of insertion), and returns it.  O(log n)
+            </summary>
+        </member>
+        <member name="M:Priority_Queue.HeapPriorityQueue`1.UpdatePriority(`0,System.Double)">
+            <summary>
+            This method must be called on a node every time its priority changes while it is in the queue.  
+            <b>Forgetting to call this method will result in a corrupted queue!</b>
+            O(log n)
+            </summary>
+        </member>
+        <member name="M:Priority_Queue.HeapPriorityQueue`1.Remove(`0)">
+            <summary>
+            Removes a node from the queue.  Note that the node does not need to be the head of the queue.  O(log n)
+            </summary>
+        </member>
+        <member name="M:Priority_Queue.HeapPriorityQueue`1.IsValidQueue">
+            <summary>
+            <b>Should not be called in production code.</b>
+            Checks to make sure the queue is still in a valid state.  Used for testing/debugging the queue.
+            </summary>
+        </member>
+        <member name="P:Priority_Queue.HeapPriorityQueue`1.Count">
+            <summary>
+            Returns the number of nodes in the queue.  O(1)
+            </summary>
+        </member>
+        <member name="P:Priority_Queue.HeapPriorityQueue`1.MaxSize">
+            <summary>
+            Returns the maximum number of items that can be enqueued at once in this queue.  Once you hit this number (ie. once Count == MaxSize),
+            attempting to enqueue another item will throw an exception.  O(1)
+            </summary>
+        </member>
+        <member name="P:Priority_Queue.HeapPriorityQueue`1.First">
+            <summary>
+            Returns the head of the queue, without removing it (use Dequeue() for that).  O(1)
+            </summary>
+        </member>
+        <member name="P:Priority_Queue.PriorityQueueNode.Priority">
+            <summary>
+            The Priority to insert this node at.  Must be set BEFORE adding a node to the queue
+            </summary>
+        </member>
+        <member name="P:Priority_Queue.PriorityQueueNode.InsertionIndex">
+            <summary>
+            <b>Used by the priority queue - do not edit this value.</b>
+            Represents the order the node was inserted in
+            </summary>
+        </member>
+        <member name="P:Priority_Queue.PriorityQueueNode.QueueIndex">
+            <summary>
+            <b>Used by the priority queue - do not edit this value.</b>
+            Represents the current position in the queue
+            </summary>
+        </member>
         <member name="F:Indigo.Screen.ClearColor">
             <summary>
             The screen refresh color. Defaults to black.
@@ -3323,9 +3996,24 @@
             <param name="width">New width</param>
             <param name="height">New height</param>
         </member>
+        <member name="P:Indigo.Screen.Vsync">
+            <summary>
+            Whether vsync is enabled.
+            </summary>
+        </member>
         <member name="P:Indigo.Screen.Title">
             <summary>
             The window title.
+            </summary>
+        </member>
+        <member name="P:Indigo.Screen.Width">
+            <summary>
+            Current width of the screen.
+            </summary>
+        </member>
+        <member name="P:Indigo.Screen.Height">
+            <summary>
+            Current height of the screen.
             </summary>
         </member>
         <member name="P:Indigo.Screen.Fullscreen">
@@ -3333,73 +4021,299 @@
             Whether the display mode should be fullscreen.
             </summary>
         </member>
-        <member name="T:Indigo.Utils.Draw">
-            <summary>
-            Static class with access to miscellaneous drawing functions.
-            These functions are not meant to replace Graphic components
-            for Entities, but rather to help with testing and debugging.
-            </summary>
-        </member>
-        <member name="M:Indigo.Utils.Draw.Line(System.Single,System.Single,System.Single,System.Single,SFML.Graphics.Color,System.Single)">
-            <summary>
-            Draws a line.
-            </summary>
-            <param name="x1">Starting x position.</param>
-            <param name="y1">Starting y position.</param>
-            <param name="x2">Ending x position.</param>
-            <param name="y2">Ending y position.</param>
-            <param name="color">Color of the line.</param>
-            <param name="alpha">Alpha of the line. Defaults to 1</param>
-        </member>
-        <member name="M:Indigo.Utils.Ini.#ctor">
+        <member name="M:Indigo.Solvers.AStar.#ctor(Indigo.Solvers.PathGraph)">
             <summary>
             Constructor.
-            Initializes the Ini with no data.
             </summary>
+            <param name="graph">A graph containing the nodes to solve paths with.</param>
         </member>
-        <member name="M:Indigo.Utils.Ini.#ctor(System.String)">
+        <member name="M:Indigo.Solvers.AStar.Path.#ctor(System.Collections.Generic.List{Indigo.Solvers.PathNode})">
             <summary>
             Constructor.
-            Content is parsed into Ini data.
             </summary>
-            <param name="content">The text containing the Ini data.</param>
+            <param name="nodes">A list of nodes to use as the pathfinding mesh.</param>
         </member>
-        <member name="M:Indigo.Utils.Ini.GetValue(System.String,System.String)">
+        <member name="M:Indigo.Solvers.AStar.Path.Peek">
             <summary>
-            Get a specific value from the .ini file
+            Returns the next node in the path without removing it.
             </summary>
-            <param name="sectionName"></param>
-            <param name="key"></param>
-            <returns>The value of the given key in the given section, or null if not found</returns>
+            <returns>The next node, or null if no more exist.</returns>
         </member>
-        <member name="M:Indigo.Utils.Ini.SetValue(System.String,System.String,System.String)">
+        <member name="M:Indigo.Solvers.AStar.Path.Lookahead(System.Int32)">
             <summary>
-            Set a specific value in a section
+            Gets the node a given number of steps ahead of the current.
             </summary>
-            <param name="sectionName"></param>
-            <param name="key"></param>
-            <param name="value"></param>
+            <param name="count">How many nodes ahead the function should look, where Lookahead(0) == Peek()</param>
+            <returns>The specified node, or null if the index is greater than or equal to <see cref="P:Indigo.Solvers.AStar.Path.Remaining"/> </returns>
         </member>
-        <member name="M:Indigo.Utils.Ini.GetSection(System.String)">
+        <member name="M:Indigo.Solvers.AStar.Path.Pop">
             <summary>
-            Get all the Values for a section
+            Removes the next node in the path and returns it.
             </summary>
-            <param name="sectionName"></param>
-            <returns>A Dictionary with all the Key/Values for that section (maybe empty but never null)</returns>
+            <returns>The next node, or null if no more exist.</returns>
         </member>
-        <member name="M:Indigo.Utils.Ini.SetSection(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+        <member name="M:Indigo.Solvers.AStar.Path.Reset">
             <summary>
-            Set an entire sections values
+            <para>Resets the path to its original state.</para>
+            <para>If nodes were appended to the path by passing it to GetPath(), they will not be removed.</para>
             </summary>
-            <param name="sectionName"></param>
-            <param name="sectionValues"></param>
         </member>
-        <member name="M:Indigo.Utils.Ini.Parse(System.String)">
+        <member name="P:Indigo.Solvers.AStar.Path.Count">
             <summary>
-            Parse an .INI File
+            The number of nodes in the path.
             </summary>
-            <param name="content">The Ini source data.</param>
+        </member>
+        <member name="P:Indigo.Solvers.AStar.Path.Remaining">
+            <summary>
+            The number of nodes remaining in the path.
+            </summary>
+        </member>
+        <member name="P:Indigo.Solvers.AStar.Path.First">
+            <summary>
+            The first node in the path, or null if none exist. This will always be the same.
+            </summary>
+        </member>
+        <member name="P:Indigo.Solvers.AStar.Path.Last">
+            <summary>
+            The final node in the path, or null if none exist. May change if the path is appended to.
+            </summary>
+        </member>
+        <member name="P:Indigo.Solvers.PathNode.X">
+            <summary>
+            The X position of the node in graph space. Does not necessarily represent a screen coordinate.
+            </summary>
+        </member>
+        <member name="P:Indigo.Solvers.PathNode.Y">
+            <summary>
+            The Y position of the node in graph space. Does not necessarily represent a screen coordinate.
+            </summary>
+        </member>
+        <member name="P:Indigo.Solvers.PathNode.ConnectionCount">
+            <summary>
+            <para>The number of nodes that this node leads to.</para>
+            <para>Connections may be one-way.</para>
+            </summary>
+        </member>
+        <member name="T:Indigo.Utils.Approach">
+            <summary>
+            A collection of stateless easing functions.
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.Approach.TowardsWithDecay(System.Single@,System.Single,System.Single)">
+            <summary>
+            Approach one value to another by a constant distance scalar.
+            </summary>
+            <param name="target">The current value.</param>
+            <param name="to">The desired value.</param>
+            <param name="amount">The amount to move each time. Default to 0.1 (1/10 of the distance)</param>
+            <returns>The new value;</returns>
+        </member>
+        <member name="M:Indigo.Utils.Approach.Angle(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Smoothly change an angle to point at a position.
+            </summary>
+            <param name="x">The x position of the object to be rotated.</param>
+            <param name="y">The y position of the object to be rotated.</param>
+            <param name="targetX">The x position of the object to aim towards.</param>
+            <param name="targetY">The y position of the object to aim towards.</param>
+            <param name="currentAngle">The angle of the object to be rotated.</param>
+            <param name="lookEase">How drastic the approach should be. Default to 0.3 (3/10 of the distance).</param>
+            <returns>The resulting angle, in degrees.</returns>
+        </member>
+        <member name="T:Indigo.Utils.Choose">
+            <summary>
+            Utility class for performing selections on collections.
+            By Jacob Albano (www.jacobalbano.com)
+            MIT license (http://choosealicense.com/licenses/mit/)
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.Choose.#ctor(System.Func{System.Double})">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="rng">A method that returns a floating-point number between 0 and 1 (inclusive)</param>
+        </member>
+        <member name="M:Indigo.Utils.Choose.From``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Choose a random item from a list.
+            </summary>
+            <param name="list">The list to choose from.</param>
+            <returns>The chosen item.</returns>
+        </member>
+        <member name="M:Indigo.Utils.Choose.Option``1(``0[])">
+            <summary>
+            Choose a random item from a series of options.
+            </summary>
+            <param name="options">A parameter list of options to choose from.</param>
+            <returns>The chosen item.</returns>
+        </member>
+        <member name="M:Indigo.Utils.Choose.Character(System.String)">
+            <summary>
+            Choose a random character from a string.
+            </summary>
+            <param name="input">The string to choose from.</param>
+            <returns>The chosen character.</returns>
+        </member>
+        <member name="M:Indigo.Utils.Choose.Enum``1">
+            <summary>
+            Choose a random enum from an enum type.
+            </summary>
+            <returns>The chosen enum.</returns>
+        </member>
+        <member name="M:Indigo.Utils.Choose.Field``1(System.Object)">
+            <summary>
+            Choose a random field of a given type from an object.
+            </summary>
+            <param name="instance">The object to pull fields from.</param>
+            <typeparam name="T">The type of the field to choose.</typeparam>
+            <returns>The chosen field's value.</returns>
+        </member>
+        <member name="M:Indigo.Utils.Choose.StaticField``2">
+            <summary>
+            Choose a random static field of a given type from a class.
+            </summary>
+            <typeparam name="TResult">The type of the field to choose.</typeparam>
+            <typeparam name="TClass">The class to pull fields from.</typeparam>
+            <returns>The chosen field's value.</returns>
+        </member>
+        <member name="M:Indigo.Utils.Choose.Property``1(System.Object)">
+            <summary>
+            Choose a random property of a given type from an object.
+            </summary>
+            <param name="instance">The object to pull properties from.</param>
+            <typeparam name="T">The type of the property to choose.</typeparam>
+            <returns>The chosen property's value.</returns>
+        </member>
+        <member name="M:Indigo.Utils.Choose.StaticProperty``2">
+            <summary>
+            Choose a random static property of a given type from a class.
+            </summary>
+            <typeparam name="TResult">The type of the properties to choose.</typeparam>
+            <typeparam name="TClass">The class to pull properties from.</typeparam>
+            <returns>The chosen property's value.</returns>
+        </member>
+        <member name="M:Indigo.Utils.Choose.Weighted``1(System.Collections.Generic.IList{``0},System.Double[])">
+            <summary>
+            Choose randomly from a list where some options are more likely than others.
+            </summary>
+            <param name="options">The list of options.</param>
+            <param name="weights">
+            <para>A parameter list of weights, where higher numbers are more likely to be chosen.</para>
+            <para>The options list and weight list must be the same length.</para></param>
+            <returns>The chosen option.</returns>
+        </member>
+        <member name="M:Indigo.Utils.Choose.Weighted``1(System.Collections.Generic.IDictionary{``0,System.Double})">
+            <summary>
+            Choose a random key from a dictionary where the corresponding value determines its likelyhood of being chosen.
+            </summary>
+            <param name="weightedOptions">The dictionary to choose from.</param>
+            <returns>The chosen option.</returns>
+        </member>
+        <member name="M:Indigo.Utils.Choose.EnumWeighted``1(System.Double[])">
+            <summary>
+            Choose a random enum from an enum type where some options are more likely than others.
+            </summary>
+            <param name="weights">
+            <para>A parameter list of weights, where higher numbers are more likely to be chosen.</para>
+            <para>The enum count and weight list must be the same length.</para></param>
             <returns></returns>
+        </member>
+        <member name="M:Indigo.Utils.Choose.Next``1(``0,System.Collections.Generic.IList{``0},System.Boolean)">
+            <summary>
+            Returns the next item after current in the list of options.
+            </summary>
+            <param name="current">The currently selected item (must be one of the options).</param>
+            <param name="options">An array of all the items to cycle through.</param>
+            <param name="loop">If true, will jump to the first item after the last item is reached.</param>
+            <returns>The next item in the list.</returns>
+        </member>
+        <member name="M:Indigo.Utils.Choose.Prev``1(``0,System.Collections.Generic.IList{``0},System.Boolean)">
+            <summary>
+            Returns the previous item before current in the list of options.
+            </summary>
+            <param name="current">The currently selected item (must be one of the options).</param>
+            <param name="options">An array of all the items to cycle through.</param>
+            <param name="loop">If true, will jump to the last item after the first item is reached.</param>
+            <returns>The next item in the list.</returns>
+        </member>
+        <member name="M:Indigo.Utils.ComponentRegistry.AddSpecialized(Indigo.Component)">
+            <summary>
+            Adds the component to specific lists based on its type.
+            </summary>
+            <param name="component">The component to add.</param>
+        </member>
+        <member name="M:Indigo.Utils.ComponentRegistry.RemoveSpecialized(Indigo.Component)">
+            <summary>
+            Removes the component from specific lists based on its type.
+            </summary>
+            <param name="component">The component to remove.</param>
+        </member>
+        <member name="M:Indigo.Utils.EntityLists.UpdateLists">
+            <summary>
+            Updates the add/remove lists at the end of the frame.
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.EntityLists.AddUpdate(Indigo.Entity)">
+            <summary>
+            Adds an Entity to the update list.
+            </summary>
+            <param name="e">The Entity to add.</param>
+        </member>
+        <member name="M:Indigo.Utils.EntityLists.RemoveUpdate(Indigo.Entity)">
+            <summary>
+            Removes an Entity from the update list.
+            </summary>
+            <param name="e">The Entity to remove.</param>
+        </member>
+        <member name="M:Indigo.Utils.EntityLists.AddRender(Indigo.Entity)">
+            <summary>
+            Adds Entity to the render
+            </summary>
+            <param name="e">The Entity to add</param>
+        </member>
+        <member name="M:Indigo.Utils.EntityLists.RemoveRender(Indigo.Entity)">
+            <summary>
+            Removes Entity from the render list.
+            </summary>
+            <param name="e">The Entity to remove</param>
+        </member>
+        <member name="M:Indigo.Utils.EntityLists.AddType(Indigo.Entity)">
+            <summary>
+            Adds Entity to the type list.
+            </summary>
+            <param name="e">The Entity to add</param>
+        </member>
+        <member name="M:Indigo.Utils.EntityLists.RemoveType(Indigo.Entity)">
+            <summary>
+            Removes Entity from the type list.
+            </summary>
+            <param name="e">The Entity to remove</param>
+        </member>
+        <member name="M:Indigo.Utils.EntityLists.RegisterName(Indigo.Entity)">
+            <summary>
+            Register's the Entity's instance name.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Indigo.Utils.EntityLists.UnregisterName(Indigo.Entity)">
+            <summary>
+            Unregister's the Entity's instance name.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Indigo.Utils.GridData.LoadFromString(System.String,System.String,System.String)">
+            <summary>
+            Loads the tile index data from a string.
+            The implicit array should not be bigger than the grid.
+            </summary>
+            <param name="str">The string data, which is a set of tile values separated by the columnSep and rowSep strings.</param>
+            <param name="columnSeperator">The string that separates each tile value on a row, default is ",".</param>
+            <param name="rowSeperator">The string that separates each row of tiles, default is "\n".</param>
+        </member>
+        <member name="T:Indigo.Utils.GlideExtensions.PointLerper">
+            <summary>
+            Description of PointLerper.
+            </summary>
         </member>
         <member name="T:Indigo.Utils.MessageResult">
             <summary>
@@ -3412,38 +4326,128 @@
             The payload value.
             </summary>
         </member>
+        <member name="M:Indigo.Utils.SeededRandom.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.#ctor(System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.Randomize">
+            <summary>
+            Randomizes the seed.
+            </summary>
+            <returns>The seed's value prior to randomizing it.</returns>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.Chance(System.Single)">
+            <summary>
+            Determines the chance of a condition.
+            </summary>
+            <param name="percentage">A value between 0 and 100.</param>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.InCircle(System.Single)">
+            <summary>
+            Point within radiusMax from (0, 0).
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.InCircle(System.Single,System.Single)">
+            <summary>
+            Point within radiusMax from (0, 0), and no closer than radiusMin.
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.Bool">
+            <summary>
+            Either true or false.
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.Angle">
+            <summary>
+            Value from 0 to 360. Lower inclusive, upper exclusive.
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.Sign">
+            <summary>
+            Either -1 or 1.
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.Int">
+            <summary>
+            Value from 0 to int.MaxValue.
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.Int(System.Int32)">
+            <summary>
+            Value from 0 to max. Lower inclusive, upper exclusive.
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.Int(System.Int32,System.Int32)">
+            <summary>
+            Value from min to max. Lower inclusive, upper exclusive.
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.Float">
+            <summary>
+            Value from 0 to 1.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.Float(System.Single)">
+            <summary>
+            Value from 0 to max. Lower inclusive, upper exclusive.
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.Float(System.Single,System.Single)">
+            <summary>
+            Value from min to max. Lower inclusive, upper exclusive.
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.Color">
+            <summary>
+            Color with random components.
+            </summary>
+        </member>
+        <member name="M:Indigo.Utils.SeededRandom.Shuffle``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Shuffles the order of the elements in a list.
+            </summary>
+        </member>
         <member name="T:Indigo.Utils.Reflect.Reflect">
             <summary>
             A simple class for basic reflection.
             </summary>
         </member>
-        <member name="M:Indigo.Utils.Reflect.Reflect.HasOwnProperty(System.Object,System.String)">
-            <summary>
-            Whether a property or field exists on an object.
-            </summary>
-            <param name="obj">The object that the property should exist on.</param>
-            <param name="name">The name of the property.</param>
-            <returns>Whether the property exists.</returns>
-        </member>
-        <member name="M:Indigo.Utils.Reflect.Reflect.GetProp``1(System.Object,System.String)">
-            <summary>
-            Get the value of a property or field with reflection.
-            </summary>
-            <param name="obj">The object that the property is on.</param>
-            <param name="name">The name of the property.</param>
-            <returns>The value of the property.</returns>
-        </member>
         <member name="M:Indigo.Utils.Reflect.Reflect.GetTypeFromAllAssemblies(System.String)">
             <summary>
             Searches all known assemblies for a type and returns that type.
             </summary>
-            <param name="type">The type to search for.</param>
-            <returns>The type found.  Null if no match.</returns>
+            <param name="type">The name of the type to search for.</param>
+            <returns>The type found, or null if no match.</returns>
+        </member>
+        <member name="M:Indigo.Utils.Reflect.Reflect.GetTypeFromAllAssemblies``1(System.String)">
+            <summary>
+            <para>Searches all known assemblies for a type and returns that type.</para>
+            <para>This overload checks that the type implements or inherits from the type parameter.</para>
+            </summary>
+            <param name="type">The name of the type to search for.</param>
+            <returns>The type found, or null if no match.</returns>
         </member>
         <member name="T:Indigo.World">
             <summary>
             Updated by Engine, main game container that holds all currently active Entities.
             Useful for organization, eg. "Menu", "Level1", etc.
+            </summary>
+        </member>
+        <member name="F:Indigo.World.Visible">
+            <summary>
+            Whether to render the world.
+            </summary>
+        </member>
+        <member name="F:Indigo.World.Active">
+            <summary>
+            Whether the world should update.
             </summary>
         </member>
         <member name="M:Indigo.World.#ctor">
@@ -3475,14 +4479,14 @@
             to call base.update() or your Entities will not be updated.
             </summary>
         </member>
-        <member name="M:Indigo.World.Add(Indigo.Entity)">
+        <member name="M:Indigo.World.Add``1(``0)">
             <summary>
             Adds the Entity to the World at the end of the frame
             </summary>
             <param name="e">Entity object you want to add.</param>
             <returns>The added Entity object.</returns>
         </member>
-        <member name="M:Indigo.World.Remove(Indigo.Entity)">
+        <member name="M:Indigo.World.Remove``1(``0)">
             <summary>
             Removes the Entity from the World at the end of the frame.
             </summary>
@@ -3500,7 +4504,7 @@
             </summary>
             <param name="list">Several Entities as arguments</param>
         </member>
-        <member name="M:Indigo.World.AddList(System.Collections.Generic.List{Indigo.Entity})">
+        <member name="M:Indigo.World.AddList``1(System.Collections.Generic.List{``0})">
             <summary>
             Adds multiple Entities to the world.
             </summary>
@@ -3512,20 +4516,27 @@
             </summary>
             <param name="list">Several Entities as arguments.</param>
         </member>
-        <member name="M:Indigo.World.RemoveList(System.Collections.Generic.List{Indigo.Entity})">
+        <member name="M:Indigo.World.RemoveList``1(System.Collections.Generic.List{``0})">
             <summary>
             Removes multiple Entities to the world.
             </summary>
             <param name="list">A List of Entities to remove.</param>
         </member>
-        <member name="M:Indigo.World.AddGraphic(Indigo.Graphics.Graphic,System.Int32,System.Single,System.Single)">
+        <member name="M:Indigo.World.AddGraphic(Indigo.Graphics.Graphic,System.Single,System.Single,System.Int32)">
             <summary>
             Adds an Entity to the World with the Graphic object.
             </summary>
             <param name="graphic">Graphic to assign the Entity.</param>
-            <param name="layer">Layer of the Entity.</param>
             <param name="x">X position of the Entity.</param>
             <param name="y">Y position of the Entity.</param>
+            <param name="layer">Layer of the Entity.</param>
+            <returns>The Entity that was added.</returns>
+        </member>
+        <member name="M:Indigo.World.AddComponent(Indigo.Component)">
+            <summary>
+            Adds an Entity to the World with the Graphic object.
+            </summary>
+            <param name="component">Component to assign the Entity.</param>
             <returns>The Entity that was added.</returns>
         </member>
         <member name="M:Indigo.World.AddMask(Indigo.Masks.Mask,System.String,System.Int32,System.Int32)">
@@ -3541,50 +4552,6 @@
         <member name="M:Indigo.World.BroadcastMessage(System.Enum,System.Object[])">
             <summary>
             Broadcasts a message to all entities in the world.
-            </summary>
-            <param name="message">The type of the message.</param>
-            <param name="arguments">A set of arguments to pass to the message reciever.</param>
-        </member>
-        <member name="M:Indigo.World.BroadcastMessageIf(System.Func{Indigo.Entity,System.Boolean},System.Enum,System.Object[])">
-            <summary>
-            Broadcasts a message to all entities that meet a certain criteria.
-            </summary>
-            <param name="condition">A callback that returns true if the entity passed to it should recieve the message.</param>
-            <param name="message">The type of the message.</param>
-            <param name="arguments">A set of arguments to pass to the message reciever.</param>
-        </member>
-        <member name="M:Indigo.World.BroadcastMessageToType(System.String,System.Enum,System.Object[])">
-            <summary>
-            Broadcasts a message to all entities with a certain type.
-            </summary>
-            <param name="type">The type of entity to recieve the message.</param>
-            <param name="message">The type of the message.</param>
-            <param name="arguments">A set of arguments to pass to the message reciever.</param>
-        </member>
-        <member name="M:Indigo.World.BroadcastMessageInCircle(System.Single,System.Single,System.Single,System.Enum,System.Object[])">
-            <summary>
-            Broadcasts a message to all entities within a certain distance of a position.
-            </summary>
-            <param name="x">The X coordinate of the center of the circle.</param>
-            <param name="y">The Y coordinate of the center of the circle.</param>
-            <param name="radius">The radius of the circle.</param>
-            <param name="message">The type of the message.</param>
-            <param name="arguments">A set of arguments to pass to the message reciever.</param>
-        </member>
-        <member name="M:Indigo.World.BroadcastMessageInRect(System.Single,System.Single,System.Single,System.Single,System.Enum,System.Object[])">
-            <summary>
-            Broadcasts a message to all entities within a rectangle.
-            </summary>
-            <param name="x">The left of the rectangle.</param>
-            <param name="y">The top of the rectangle.</param>
-            <param name="width">The width of the rectangle.</param>
-            /// <param name="height">The height of the rectangle.</param>
-            <param name="message">The type of the message.</param>
-            <param name="arguments">A set of arguments to pass to the message reciever.</param>
-        </member>
-        <member name="M:Indigo.World.BroadcastMessageToClass``1(System.Enum,System.Object[])">
-            <summary>
-            Broadcasts a message to all entities of a certain class
             </summary>
             <param name="message">The type of the message.</param>
             <param name="arguments">A set of arguments to pass to the message reciever.</param>
@@ -3651,7 +4618,7 @@
             <param name="pY">Y position.</param>
             <returns>The collided Entity, or null if none collide.</returns>
         </member>
-        <member name="M:Indigo.World.CollideLine(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:Indigo.World.CollideLine(System.String,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Returns the first Entity found that collides with the line.
             </summary>
@@ -3723,6 +4690,16 @@
             <param name="type">The type to count.</param>
             <returns>How many Entities of type exist in the World.</returns>
         </member>
+        <member name="M:Indigo.World.ClassCount``1">
+            <summary>
+            How many entities of this Type exist in the world.
+            </summary>
+        </member>
+        <member name="M:Indigo.World.ClassCount(System.Type)">
+            <summary>
+            How many entities of this Type exist in the world.
+            </summary>
+        </member>
         <member name="M:Indigo.World.LayerCount(System.Int32)">
             <summary>
             Returns the amount of Entities are on the layer in the World.
@@ -3760,7 +4737,7 @@
         </member>
         <member name="M:Indigo.World.GetLayer(System.Int32,System.Collections.Generic.List{Indigo.Entity})">
             <summary>
-            Pushes all Entities in the World on the layer into the Array or Vector.
+            Pushes all Entities in the World on the layer into a List.
             </summary>
             <param name="layer">The layer to check.</param>
             <param name="into">The List to populate</param>
@@ -3777,59 +4754,6 @@
             </summary>
             <param name="name">Instance name of the Entity.</param>
             <returns>The named Entity, or null if it doesn't exist.</returns>
-        </member>
-        <member name="M:Indigo.World.UpdateLists">
-            <summary>
-            Updates the add/remove lists at the end of the frame.
-            </summary>
-        </member>
-        <member name="M:Indigo.World.AddUpdate(Indigo.Entity)">
-            <summary>
-            Adds an Entity to the update list.
-            </summary>
-            <param name="e">The Entity to add.</param>
-        </member>
-        <member name="M:Indigo.World.RemoveUpdate(Indigo.Entity)">
-            <summary>
-            Removes an Entity from the update list.
-            </summary>
-            <param name="e">The Entity to remove.</param>
-        </member>
-        <member name="M:Indigo.World.AddRender(Indigo.Entity)">
-            <summary>
-            Adds Entity to the render
-            </summary>
-            <param name="e">The Entity to add</param>
-        </member>
-        <member name="M:Indigo.World.RemoveRender(Indigo.Entity)">
-            <summary>
-            Removes Entity from the render list.
-            </summary>
-            <param name="e">The Entity to remove</param>
-        </member>
-        <member name="M:Indigo.World.AddType(Indigo.Entity)">
-            <summary>
-            Adds Entity to the type list.
-            </summary>
-            <param name="e">The Entity to add</param>
-        </member>
-        <member name="M:Indigo.World.RemoveType(Indigo.Entity)">
-            <summary>
-            Removes Entity from the type list.
-            </summary>
-            <param name="e">The Entity to remove</param>
-        </member>
-        <member name="M:Indigo.World.RegisterName(Indigo.Entity)">
-            <summary>
-            Register's the Entity's instance name.
-            </summary>
-            <param name="e"></param>
-        </member>
-        <member name="M:Indigo.World.UnregisterName(Indigo.Entity)">
-            <summary>
-            Unregister's the Entity's instance name.
-            </summary>
-            <param name="e"></param>
         </member>
         <member name="M:Indigo.World.SquareRects(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
@@ -3866,16 +4790,6 @@
             <param name="rw"></param>
             <param name="rh"></param>
             <returns></returns>
-        </member>
-        <member name="F:Indigo.World.Visible">
-            <summary>
-            Whether to render the world.
-            </summary>
-        </member>
-        <member name="F:Indigo.World.Active">
-            <summary>
-            Whether the world should update.
-            </summary>
         </member>
         <member name="P:Indigo.World.Camera">
             <summary>

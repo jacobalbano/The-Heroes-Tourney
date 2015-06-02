@@ -69,13 +69,13 @@ namespace SNHU.MenuObject
 			this.PlayerSlot = playerSlot;
 			
 			Image = new Image(Library.GetTexture("assets/menu.png"));
-			Image.Color = FP.Color(Color = colors[PlayerSlot]);
+			Image.Color = new Color(Color = colors[PlayerSlot]);
 			pressStart = new Text("PRESS START");
 			pressStart.Font = font;
 			pressStart.X -= 80;
 			pressStart.Y = Height - 100;
 			pressStart.Size = 20;
-			pressStart.Color = FP.Color(0);
+			pressStart.Color = new Color(0);
 			
 			check = new Image(Library.GetTexture("assets/ready.png"));
 			check.CenterOO();
@@ -115,7 +115,7 @@ namespace SNHU.MenuObject
 			{
 				var score = new Text(wins[joyId].ToString("Wins: 0"));
 				score.Font = font;
-				score.Color = FP.Color(0);
+				score.Color = new Color(0);
 				score.Size = 20;
 				score.X = pressStart.X + 32;
 				score.Y = pressStart.Y + score.Size;

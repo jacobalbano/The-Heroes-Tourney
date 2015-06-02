@@ -8,7 +8,7 @@ namespace SNHU.GameObject
 	/// <summary>
 	/// Description of Mixer.
 	/// </summary>
-	public static class Mixer
+	public class Mixer
 	{
 		public static readonly Sound
 			Jump1,
@@ -30,7 +30,7 @@ namespace SNHU.GameObject
 			Swing1,
 			Swing2;
 		
-		public static Indigo.Audio.Sound music;
+		public static Sound Music;
 		
 		static Mixer()
 		{
@@ -53,9 +53,10 @@ namespace SNHU.GameObject
 			Swing1 = new Sound(Library.GetSoundBuffer("assets/audio/swing1.wav"));
 			Swing2 = new Sound(Library.GetSoundBuffer("assets/audio/swing2.wav"));
 			
-			music = new Sound(Library.GetSoundStream("assets/audio/music2.ogg")); // lol wot pls
-			
-			music.Volume = 0;
+			Music = new Sound(Library.GetSoundStream("assets/audio/music2.ogg")); // lol wot pls
+//			Music.Volume = 0;
 		}
+		
+		public static void Preload() { }
 	}
 }

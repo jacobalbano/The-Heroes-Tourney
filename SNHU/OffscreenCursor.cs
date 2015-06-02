@@ -1,6 +1,7 @@
 ﻿using System;
 using Indigo;
 using Indigo.Graphics;
+using SNHU.Config;
 using SNHU.GameObject;
 
 namespace SNHU
@@ -31,12 +32,14 @@ namespace SNHU
 		{
 			base.Added();
 			
-			Layer = -1000;
+			Layer = ObjectLayers.JustBelow(ObjectLayers.HUD);
 		}
 		
 		public override void Update()
 		{
 			base.Update();
+			
+			Visible = target.World != null && !target.OnCamera;
 			
 			X = target.X - target.HalfWidth;
 			Y = target.Y - target.HalfHeight;

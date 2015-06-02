@@ -3,10 +3,10 @@ using Indigo;
 using Indigo.Graphics;
 using Indigo.Loaders;
 using SNHU.Components;
+using SNHU.Config;
 
 namespace SNHU.GameObject.Platforms
 {
-	[OgmoConstructor("width", "height")]
 	public class Platform : Entity
 	{
 		public const string Collision = "Collision";
@@ -15,6 +15,7 @@ namespace SNHU.GameObject.Platforms
 		
 		private Nineslice image;
 		
+		[OgmoConstructor("width", "height")]
 		public Platform(int width, int height)
 		{
 			Width = width;
@@ -29,6 +30,8 @@ namespace SNHU.GameObject.Platforms
 			image.ScaleY = Height / image.Height;
 			
 			AddComponent(image);
+			
+			Layer = ObjectLayers.Platforms;
 		}
 	}
 }

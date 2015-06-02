@@ -10,6 +10,9 @@ namespace SNHU.GameObject.Upgrades
 	/// </summary>
 	public class Upgrade : Component
 	{
+		[AttributeUsage(AttributeTargets.Class)]
+		public class DisabledInBuildAttribute : Attribute {}
+		
 		public enum Message { Used }
 		
 		protected Tween lifeTimer;

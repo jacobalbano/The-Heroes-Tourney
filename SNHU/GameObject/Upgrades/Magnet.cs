@@ -3,6 +3,8 @@ using Indigo;
 using Indigo.Core;
 using Indigo.Graphics;
 using SNHU.Components;
+using SNHU.Config.Upgrades;
+using SNHU.Systems;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -19,13 +21,15 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Added();
 			
-			MagnetStrength = float.Parse(GameWorld.gameManager.Config["Magnet", "Strength"]);
+			MagnetStrength = Library.GetConfig<MagnetConfig>("assets/config/upgrades/magnet.ini").Strength;
 		}
 		
 		public override EffectMessage MakeEffect()
 		{
 			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
 			{
+				if (to == from) return; // sender;
+				
 				var dir = new Point(to.X - from.X, to.Y - from.Y);
 				dir.Normalize(MagnetStrength);
 				
@@ -43,8 +47,8 @@ namespace SNHU.GameObject.Upgrades
 				
 				if (Parent.World != null)
 				{
-					Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.Message.OnEffect, MakeEffect());
-					Parent.World.BroadcastMessage(CameraShake.Message.Shake, 60.0f, 0.5f);
+					Parent.World.BroadcastMessage(EffectMessage.Message.OnEffect, MakeEffect());
+					Parent.World.BroadcastMessage(CameraManager.Message.Shake, 60.0f, 0.5f);
 					owner.SetUpgrade(null);
 					Mixer.Fus.Play();
 				}

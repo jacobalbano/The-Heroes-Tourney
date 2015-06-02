@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Indigo;
 using Indigo.Graphics;
 using SNHU.Components;
+using SNHU.Config.Upgrades;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -24,7 +25,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Added();
 			
-			Lifetime = float.Parse(GameWorld.gameManager.Config["Shield", "Lifetime"]);
+			Lifetime = Library.GetConfig<ShieldConfig>("assets/config/upgrades/shield.ini").Lifetime;
 		}
 		
 		public override EffectMessage MakeEffect()

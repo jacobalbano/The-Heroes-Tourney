@@ -3,7 +3,7 @@ using System;
 using Glide;
 using Indigo;
 using Indigo.Utils;
-using SFML.Graphics;
+using Indigo.Graphics;
 
 namespace SNHU.Components
 {
@@ -12,8 +12,6 @@ namespace SNHU.Components
 	/// </summary>
 	public class HypeTween
 	{
-		public Color Color;
-		
 		static int[] colors;
 		static HypeTween()
 		{
@@ -32,16 +30,18 @@ namespace SNHU.Components
 			};
 		}
 		
-		public HypeTween(float duration, Tweener tweener)
+		public static void StartHype(Tweener tweener, Image image, float duration)
 		{
-			StartHype(duration, tweener);
-			Color = Color.White;
+			ContinueHype(tweener, image, duration, new HypeTween());
 		}
 		
-		void StartHype(float duration, Tweener tweener)
+		private static void ContinueHype(Tweener tweener, Image image, float duration, HypeTween hype)
 		{
-			tweener.ColorTween(this, "Color", FP.Color(FP.Choose(colors)), duration)
-				.OnComplete(() => StartHype(duration, tweener));
+			tweener.Tween(hype, new { Color = new Color(FP.Choose.From(colors)) }, duration)
+				.OnComplete(() => ContinueHype(tweener, image, duration, hype))
+				.OnUpdate(() => image.Color = hype.Color);
 		}
+		
+		private Color Color = Color.White;
 	}
 }

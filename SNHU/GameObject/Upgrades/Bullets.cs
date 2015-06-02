@@ -7,6 +7,8 @@ using Indigo;
 using Indigo.Graphics;
 using Indigo.Utils;
 using SFML.Window;
+using SNHU.Config;
+using SNHU.Config.Upgrades;
 using SNHU.GameObject.Platforms;
 
 namespace SNHU.GameObject.Upgrades
@@ -66,7 +68,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Added();
 			
-			emitterEnt = World.AddGraphic(emitter, -9010);
+			emitterEnt = World.AddGraphic(emitter, 0, 0, ObjectLayers.JustAbove(ObjectLayers.Players));
 			emitterEnt.Active = true;
 		}
 		
@@ -74,8 +76,8 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Update();
 			
-			var randX = FP.Rand(50) - 25;
-			var randY = FP.Rand(50) - 25;
+			var randX = FP.Random.Int(50) - 25;
+			var randY = FP.Random.Int(50) - 25;
 			emitter.Emit("spark", X + randX, Y + randY);
 			
 			image.Angle = FP.Angle(0, 0, dir.X, dir.Y);
@@ -91,8 +93,8 @@ namespace SNHU.GameObject.Upgrades
 			
 			for (int i = 0; i < 10; i++)
 			{
-				var randX = FP.Rand(100) - 50;
-				var randY = FP.Rand(100) - 50;
+				var randX = FP.Random.Int(100) - 50;
+				var randY = FP.Random.Int(100) - 50;
 				emitter.Emit("spark", X + randX, Y + randY);		
 			}
 		}
@@ -181,8 +183,6 @@ namespace SNHU.GameObject.Upgrades
 		
 		public int BulletCount { get; private set; }
 		
-		private enum Mode { Cone, Radial, Random };
-		
 		public Bullets()
 		{
 			Icon = new Image(Library.GetTexture("assets/bullets.png"));
@@ -195,19 +195,18 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Added();
 			
-			BulletCount = int.Parse(GameWorld.gameManager.Config["Bullets", "Count"]);
-			Lifetime = float.Parse(GameWorld.gameManager.Config["Bullets", "Lifetime"]);
+			var config = Library.GetConfig<BulletConfig>("assets/config/upgrades/bullets.ini");
+			BulletCount = config.Count;
+			Lifetime = config.Lifetime;
+			var mode = config.Mode;
 			
-			var modeString = Regex.Replace(GameWorld.gameManager.Config["Bullets", "Mode"], @"\s", "");
-			
-			Mode mode = (Mode) Util.GetEnumFromName(typeof(Mode), modeString);
-			if (mode == Mode.Random)
-				mode = FP.Choose(Mode.Radial, Mode.Cone);
+			while (mode == BulletConfig.BulletMode.Random)
+				mode = FP.Choose.Enum<BulletConfig.BulletMode>();
 			
 			for (int i = 0; i < BulletCount; i++)
 			{
 				var vec = new Vector2f();
-				if (mode == Mode.Radial)
+				if (mode == BulletConfig.BulletMode.Radial)
 				{
 					var angle = FP.Scale(i, 0, BulletCount, 0, 360);
 					angle += 45;

@@ -4,6 +4,9 @@ using Indigo;
 using Indigo.Core;
 using Indigo.Graphics;
 using SNHU.Components;
+using SNHU.Config;
+using SNHU.Config.Upgrades;
+using SNHU.Systems;
 
 namespace SNHU.GameObject.Upgrades
 {	
@@ -17,17 +20,15 @@ namespace SNHU.GameObject.Upgrades
 		
 		private Player owner, originalOwner;
 		private Image image;
-		private HypeTween hypeTween;
 		
 		public HyperFist(Player owner)
 		{
-			FistScale = float.Parse(GameWorld.gameManager.Config["HyperPunch", "FistScale"]);
-			ForceMultiplier = float.Parse(GameWorld.gameManager.Config["HyperPunch", "PunchMultiplier"]);
-			FistSpeed = float.Parse(GameWorld.gameManager.Config["HyperPunch", "FistSpeed"]);
+			var config = Library.GetConfig<HyperPunchConfig>("assets/config/upgrades/hyperpunch.ini");
+			FistScale = config.Scale;
+			ForceMultiplier = config.ForceMultiplier;
+			FistSpeed = config.Speed;
 			
 			this.owner = originalOwner = owner;
-			
-			hypeTween = new HypeTween(0.1f, Tweener);
 			
 			image = new Image(Library.GetTexture("assets/hyperPunch.png"));
 			image.Scale = 0.1f * this.FistScale;
@@ -40,13 +41,15 @@ namespace SNHU.GameObject.Upgrades
 			direction = new Point();
 			
 			AddResponse(ChunkManager.Message.Advance, OnAdvance);
+			
+			HypeTween.StartHype(Tweener, image, 0.1f);
 		}
 		
 		public override void Added()
 		{
 			base.Added();
 			
-			Layer = -9001;
+			Layer = ObjectLayers.JustAbove(ObjectLayers.Players);
 		}
 		
 		public override void Removed()
@@ -69,8 +72,6 @@ namespace SNHU.GameObject.Upgrades
 					World.Remove(this);
 			}
 			
-			image.Color = hypeTween.Color;
-			
 			var l = new List<Entity>();
 			CollideInto(Player.Collision, X, Y, l);
 			
@@ -82,7 +83,7 @@ namespace SNHU.GameObject.Upgrades
 				{
 					if (player.Rebounding)
 					{
-						World.BroadcastMessage(CameraShake.Message.Shake, 10.0f, 0.5f);
+						World.BroadcastMessage(CameraManager.Message.Shake, 10.0f, 0.5f);
 		 				Mixer.Hit1.Play();
 						
 						var angle = FP.Angle(player.X, player.Y, owner.X, owner.Y);
@@ -96,11 +97,12 @@ namespace SNHU.GameObject.Upgrades
 			 	{
 					if (!player.Invincible)
 					{
-						World.BroadcastMessage(CameraShake.Message.Shake, 10.0f, 0.5f);
+						World.BroadcastMessage(CameraManager.Message.Shake, 10.0f, 0.5f);
 		 				Mixer.Hit1.Play();
 		 				
 		 				var force = ForceMultiplier * Fist.BASE_PUNCH_FORCE;
-		 				player.OnMessage(PhysicsBody.Message.Impulse, force * direction.X, force * direction.Y);
+		 				var dir = direction.Normalized();
+		 				player.OnMessage(PhysicsBody.Message.Impulse, force * dir.X, force * dir.Y);
 					}
 			 	}
 			}

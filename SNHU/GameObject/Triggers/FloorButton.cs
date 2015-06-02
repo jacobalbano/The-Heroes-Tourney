@@ -8,7 +8,6 @@ namespace SNHU.GameObject.Triggers
 	/// <summary>
 	/// Description of FloorButton.
 	/// </summary>
-	[OgmoConstructor("Group", "width")]
 	public class FloorButton : Trigger
 	{
 		public float Duration { get; set; }
@@ -16,9 +15,10 @@ namespace SNHU.GameObject.Triggers
 		public bool OnCooldown { get; private set; }
 		private bool collidingWithPlayer;
 		
+		[OgmoConstructor("Group", "width")]
 		public FloorButton(string group, int width) : base(group)
 		{
-			var image = Image.CreateRect(width, 16, FP.Color(0x00ffff));
+			var image = Image.CreateRect(width, 16, new Color(0x00ffff));
 			
 			Width = width;
 			Height = 16;

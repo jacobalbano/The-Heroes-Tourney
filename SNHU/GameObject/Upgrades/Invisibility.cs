@@ -1,6 +1,7 @@
 ﻿using System;
 using Indigo;
 using Indigo.Graphics;
+using SNHU.Config.Upgrades;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -21,9 +22,10 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Added();
 			
-			InvisibleAlpha = float.Parse(GameWorld.gameManager.Config["Invisibility", "InvisibleAlpha"]);
-			PunchMultiplier = float.Parse(GameWorld.gameManager.Config["Invisibility", "PunchMultiplier"]);
-			Lifetime = float.Parse(GameWorld.gameManager.Config["Invisibility", "Lifetime"]);
+			var config = Library.GetConfig<InvisibilityConfig>("assets/config/upgrades/invisibility.ini");
+			InvisibleAlpha = config.Alpha;
+			PunchMultiplier = config.PunchMultiplier;
+			Lifetime = config.Lifetime;
 		}
 		
 		public override EffectMessage MakeEffect()

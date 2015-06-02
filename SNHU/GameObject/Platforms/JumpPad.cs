@@ -1,12 +1,14 @@
 ﻿using System;
 using Indigo;
 using Indigo.Graphics;
+using Indigo.Loaders;
 using Indigo.Utils;
 using SNHU.Components;
+using SNHU.Config;
 
 namespace SNHU.GameObject.Platforms
 {
-	public class JumpPad : Entity
+	public class JumpPad : Entity, IOgmoNodeHandler
 	{
 		private Nineslice image;
 		private Emitter emitter;
@@ -17,20 +19,18 @@ namespace SNHU.GameObject.Platforms
 		{
 			Type = Collision;
 			Tweener.Timer(0.5f)
-				.OnComplete(() => emitter.Emit("p", FP.Rand((int) Width), -5))
+				.OnComplete(() => emitter.Emit("p", FP.Random.Float(Width), -5))
 				.Repeat();
 		}
 		
 		public override void Added()
 		{
 			base.Added();
-			Layer = -1000;
+			Layer = ObjectLayers.JustAbove(ObjectLayers.Platforms);
 		}
 		
-		public override void Load(System.Xml.XmlNode node)
+		public void NodeHandler(System.Xml.XmlNode entity)
 		{
-			base.Load(node);
-			
 			image = new Nineslice(Library.GetTexture("assets/bouncepad.png"), 3, 3);
 			image.Columns = (int) (Width / 5f);
 			image.ScaleX = Width / image.Width;
