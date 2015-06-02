@@ -1,6 +1,7 @@
 ﻿using System;
 using Indigo;
 using Indigo.Graphics;
+using SNHU.Config;
 using SNHU.GameObject;
 
 namespace SNHU
@@ -17,12 +18,12 @@ namespace SNHU
 		{
 			this.target = target;
 			
-			image = new Image(Library.GetTexture("assets/cursor.png"));
+			image = new Image(Library.GetTexture("cursor.png"));
 			image.CenterOrigin();
 			image.OriginX = image.Width * 0.35f;
 			AddComponent(image);
 			
-			var face = new Image(Library.GetTexture("assets/players/" + target.ImageName + "_head.png"));
+			var face = new Image(Library.GetTexture("players/" + target.ImageName + "_head.png"));
 			face.CenterOO();
 			AddComponent(face);
 		}
@@ -31,12 +32,14 @@ namespace SNHU
 		{
 			base.Added();
 			
-			Layer = -1000;
+			Layer = ObjectLayers.JustBelow(ObjectLayers.HUD);
 		}
 		
 		public override void Update()
 		{
 			base.Update();
+			
+			Visible = target.World != null && !target.OnCamera;
 			
 			X = target.X - target.HalfWidth;
 			Y = target.Y - target.HalfHeight;

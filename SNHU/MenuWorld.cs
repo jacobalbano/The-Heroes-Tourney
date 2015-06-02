@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Glide;
 using Indigo.Inputs;
+using SNHU.Config;
 using SNHU.MenuObject;
 using Indigo;
 using Indigo.Graphics;
@@ -23,8 +24,6 @@ namespace SNHU
 		private List<string> allImages, takenImages;
 		
 		private bool readying;
-		
-		private GameWorld gameWorld;
 		
 		public MenuWorld()
 		{
@@ -45,19 +44,10 @@ namespace SNHU
 		
 		List<string> LoadAllPlayers()
 		{
-			List<string> result = new List<string>();
+			var result = Library.GetFilenames("players/", "*.ini")
+				.ToList();
 			
-			try
-			{
-				result.AddRange(Directory.GetFiles("assets/players", "*.ini"));
-			}
-			catch
-			{
-				FP.Log("error");
-				// Could not open the directory for some inexplicable reason
-			}
-			
-			var regex = new Regex(@"assets/players/(?<Name>.+).ini");
+			var regex = new Regex(@"players/(?<Name>.+).ini");
 			
 			for (int i = 0; i < result.Count; i++)
 			{
@@ -66,6 +56,7 @@ namespace SNHU
 				file = file.Replace('\\', '/');
 				
 				var match = regex.Match(file);
+				
 				
 				file = match.Groups["Name"].Value;
 				result[i] = file;
@@ -136,10 +127,10 @@ namespace SNHU
 		
 		void Ready()
 		{
-			var i = Image.CreateRect(FP.Width, FP.Height, FP.Color(0));
+			var i = Image.CreateRect(FP.Width, FP.Height, new Color());
 			i.Alpha = 0;
 			
-			AddGraphic(i, -100);
+			AddGraphic(i, 0, 0, ObjectLayers.Foreground);
 			
 			Tweener.Tween(i, new { Alpha = 1 }, 0.25f)
 				.Ease(Ease.SineOut)
@@ -154,8 +145,7 @@ namespace SNHU
 				playerGraphics[menu.JoyId] = menu.PlayerImageName;
 			}
 			
-			FP.World = gameWorld = new GameWorld();
-			gameWorld.Init(playerGraphics);
+			FP.World = new GameWorld(playerGraphics);
 		}
 		
 		private void OnControllerAdded(int joystickID)
@@ -181,7 +171,7 @@ namespace SNHU
 			controllerMenus[joystickId] = menu;
 			Add(menu);
 			
-			Tweener.Tween(menu, new { X = 10 + (menu.Width / 2) + slot * menu.Width}, 1.6f + FP.Random)
+			Tweener.Tween(menu, new { X = 10 + (menu.Width / 2) + slot * menu.Width}, 1.6f + FP.Random.Float())
 				.Ease(Ease.ElasticOut);
 		}
 		
@@ -205,7 +195,7 @@ namespace SNHU
 			
 			pool.Push(menu.PlayerSlot);
 			
-			Tweener.Tween(menu, new { Y = -menu.Height}, 0.75f + FP.Random / 2f)
+			Tweener.Tween(menu, new { Y = -menu.Height}, 0.75f + FP.Random.Float() / 2f)
 				.Ease(Ease.ElasticOut)
 				.OnComplete(() => Remove(menu));
 		}
@@ -214,7 +204,7 @@ namespace SNHU
 		{
 			var choice = "";
 			do {
-				choice = FP.Choose(allImages.ToArray());
+				choice = FP.Choose.From(allImages);
 			} while (takenImages.IndexOf(choice) >= 0);
 			
 			takenImages.Add(choice);
@@ -226,7 +216,7 @@ namespace SNHU
 			var c = current;
 			var choice = "";
 			do {
-				choice = FP.Next(c, allImages, true);
+				choice = FP.Choose.Next(c, allImages, true);
 				c = choice;
 			} while (takenImages.IndexOf(choice) >= 0);
 			
@@ -240,7 +230,7 @@ namespace SNHU
 			var c = current;
 			var choice = "";
 			do {
-				choice = FP.Prev(c, allImages, true);
+				choice = FP.Choose.Prev(c, allImages, true);
 				c = choice;
 			} while (takenImages.IndexOf(choice) >= 0);
 			

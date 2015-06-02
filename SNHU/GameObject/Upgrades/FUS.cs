@@ -3,6 +3,8 @@ using Indigo;
 using Indigo.Core;
 using Indigo.Graphics;
 using SNHU.Components;
+using SNHU.Config.Upgrades;
+using SNHU.Systems;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -15,14 +17,8 @@ namespace SNHU.GameObject.Upgrades
 			
 		public FUS()
 		{
-			Icon = new Image(Library.GetTexture("assets/fus.png"));
-		}
-		
-		public override void Added()
-		{
-			base.Added();
-			
-			FusStrength = float.Parse(GameWorld.gameManager.Config["Fus", "Strength"]);
+			Icon = new Image(Library.GetTexture("fus.png"));
+			FusStrength = Library.GetConfig<FusConfig>("config/upgrades/fus.ini").Strength;
 		}
 		
 		public override void Use()
@@ -33,9 +29,9 @@ namespace SNHU.GameObject.Upgrades
 				
 				if (Parent.World != null)
 				{
-					Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.Message.OnEffect, MakeEffect());
+					Parent.World.BroadcastMessage(EffectMessage.Message.OnEffect, MakeEffect());
 					
-					Parent.World.BroadcastMessage(CameraShake.Message.Shake, 60.0f, 0.5f);
+					Parent.World.BroadcastMessage(CameraManager.Message.Shake, 60.0f, 0.5f);
 					owner.SetUpgrade(null);
 					Mixer.Fus.Play();
 					
@@ -48,6 +44,8 @@ namespace SNHU.GameObject.Upgrades
 		{
 			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
 			{
+				if (to == from) return; // sender;
+				
 				var dir = new Point(to.X - from.X, to.Y - from.Y);
 				dir.Normalize(FusStrength);
 				
@@ -64,7 +62,7 @@ namespace SNHU.GameObject.Upgrades
 				this.X = X;
 				this.Y = Y;
 				
-				var i = new Image(Library.GetTexture("assets/fus_active.png"));
+				var i = new Image(Library.GetTexture("fus_active.png"));
 				i.Scale = 0.1f;
 				i.CenterOO();
 				

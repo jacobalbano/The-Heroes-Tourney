@@ -4,6 +4,7 @@ using Indigo;
 using Indigo.Core;
 using Indigo.Inputs;
 using Indigo.Utils;
+using SNHU.Config;
 using SNHU.GameObject;
 
 namespace SNHU.Components
@@ -53,7 +54,7 @@ namespace SNHU.Components
 		{
 			base.Added();
 			
-			DodgeDuration = int.Parse(GameWorld.gameManager.Config["Player", "DodgeDuration"]);
+			DodgeDuration = Library.GetConfig<PlayerConfig>("config/player.ini").DodgeDuration;
 		}
 		
 		public override void Update()

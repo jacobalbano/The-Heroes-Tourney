@@ -14,73 +14,40 @@ namespace SNHU.GameObject
 		{
 			Advance,
 			AdvanceComplete,
-			UnloadCurrent,
-			SpawnPlayers
+			Unload,
 		}
 		
 		private Chunk currentChunk;
 		private Chunk nextChunk;
 		
-		private float y;
+		private float position;
 		
 		public ChunkManager()
 		{
-			y = (FP.Camera.Y - FP.HalfHeight) - FP.Height;
+			position = (FP.Camera.Y - FP.HalfHeight) - FP.Height;
 			
 			AddResponse(Message.Advance, OnAdvance);
-			AddResponse(Message.UnloadCurrent, OnUnloadCurrent);
-			AddResponse(Message.SpawnPlayers, OnSpawnPlayers);
+			AddResponse(Message.Unload, OnUnload);
 		}
 		
 		private void OnAdvance(params object[] args)
 		{
-			var gameManager = GameWorld.gameManager;
-			if (!gameManager.GameEnding)
-			{
-				RemoveResponse(Message.Advance, OnAdvance);
-				foreach (var player in gameManager.Players)
-				{
-					if (player.IsAlive)
-					{
-						World.Remove(player);
-					}
-				}
-				
-				y -= FP.Height;
-				
-				nextChunk = new Chunk(0, y);
-				World.Add(nextChunk);
-				
-				if (currentChunk != null && currentChunk.World != null)
-				{
-					World.Remove(currentChunk);
-				}
-				
-				currentChunk = nextChunk;
-			}
+			position -= FP.Height;
+			
+			if (currentChunk != null && currentChunk.World != null)
+				World.Remove(currentChunk);
+			
+			nextChunk = new Chunk(0, position);
+			World.Add(nextChunk);
+			currentChunk = nextChunk;
 		}
 		
-		private void OnSpawnPlayers(params object[] args)
+		private void OnAdvanceComplete(params object[] args)
 		{
-			FP.Shuffle(currentChunk.SpawnPoints);
-			
-			foreach (var player in GameWorld.gameManager.Players)
-			{
-				if (player.Lives > 0)
-				{
-					if (player.Health <= 0) player.Health = GameWorld.gameManager.StartingHealth;
-					player.X = currentChunk.SpawnPoints[player.PlayerId].X;
-					player.Y = currentChunk.SpawnPoints[player.PlayerId].Y;
-					World.Add(player);
-					World.BroadcastMessage(HUD.Message.UpdateDamage, player);
-				}
-			}
-			
 			AddResponse(Message.Advance, OnAdvance);
-			World.BroadcastMessage(Message.AdvanceComplete);
 		}
 		
-		private void OnUnloadCurrent(params object[] args)
+		private void OnUnload(params object[] args)
 		{
 			World.Remove(currentChunk);
 		}

@@ -6,6 +6,8 @@ using Glide;
 using Indigo;
 using Indigo.Graphics;
 using Indigo.Utils;
+using SNHU.Config.Upgrades;
+using SNHU.GameObject.Effects;
 
 namespace SNHU.GameObject.Upgrades.Helper
 {
@@ -16,44 +18,31 @@ namespace SNHU.GameObject.Upgrades.Helper
 	{
 		Tween alarm;
 		
-		List<Player> opponents;
-		Player target;
-		Player parent;
-		
 		Image image;
 		float totalTime;
 		
-		enum Mode { Furthest, Nearest, Random }
-		Mode mode;
+		Player Parent, Target;
 		
-		public PotatoThinker(Player parent)
+		public PotatoThinker(Player target)
 		{
-			this.parent = parent;
-			var modeString = Regex.Replace(GameWorld.gameManager.Config["HotPotato", "Mode"], @"\s", "");
-			totalTime = Math.Max(0.01f, float.Parse(GameWorld.gameManager.Config["HotPotato", "Duration"]));
+			Parent = Target = target;
+			X = Target.X;
+			Y = Target.Top - 40;
+		
+			var config = Library.GetConfig<HotPotatoConfig>("config/upgrades/hotpotato.ini");
+			totalTime = Math.Max(0.01f, config.Duration);
 			
-			mode = (Mode) Util.GetEnumFromName(typeof(Mode), modeString);
-			if (mode == Mode.Random)
-				mode = FP.Choose(Mode.Furthest, Mode.Nearest);
-			
-			opponents = new List<Player>();
-			target = parent;
-						          
-			image = new Image(Library.GetTexture("assets/hotpotato.png"));
-			image.CenterOO();
-			image.Color = FP.Color(0xff0000);
-			AddComponent(image);
-			
+			image = AddComponent(new Image(Library.GetTexture("hotpotato.png")));
+			image.Color = new Color(0xff0000);
+			image.CenterOrigin();
 			CenterOrigin();
-			X = parent.X;
-			Y = parent.Top - 40;
 			
 			AddResponse(Player.Message.Die, OnPlayerDie);
-			
+			AddResponse(Player.Message.Hit, OnPlayerHit);
 			AddResponse(ChunkManager.Message.Advance, OnAdvance);
 			AddResponse(ChunkManager.Message.AdvanceComplete, OnAdvanceComplete);
 			
-			alarm = Tweener.Timer(totalTime).OnComplete(OnGoBoom);
+			alarm = Tweener.Timer(totalTime).OnComplete(OnExplode);
 			Tick();
 		}
 		
@@ -66,174 +55,42 @@ namespace SNHU.GameObject.Upgrades.Helper
 			Mixer.TimeTick.Play();
 		}
 		
-		public override void Added()
-		{
-			base.Added();
-			UpdateOpponents();
-		}
-		
 		public override void Removed()
 		{
 			base.Removed();
-			
-			var emitter = new Emitter(Library.GetTexture("assets/explosion.png"), 60, 60);
-			emitter.Relative = false;
-			
-			for (int i = 0; i < 4; i++)
-			{
-				var name = i.ToString();
-				emitter.NewType(name, FP.Frames(i));
-				emitter.SetAlpha(name, 1, 0);
-				emitter.SetMotion(name, 0, 50, 0.4f, 360, 15,  0.1f, Ease.CubeOut);
-			}
-			
-			float x = 0, y = 0;
-			
-			if(target != null)
-			{
-				if (target.Rebounding)
-				{
-					x = parent.X;
-					y = parent.Y;
-				}
-				else
-				{
-					x = X;
-					y = Y;
-				}
-			}
-			else
-			{
-				x = parent.X;
-				y = parent.Y;
-			}
-			
-			var e = World.AddGraphic(emitter, -9010);
-			e.Active = true;
-			e.Tweener.Timer(3).OnComplete(() => FP.World.Remove(e));
-			
-			var radius = 200;
-			var t = 4;
-			while (t --> 0)
-			{
-				var name = t.ToString();
-				for (int j = 0; j < radius; j++)
-				{
-					var randX = FP.Rand(radius) - radius / 2;
-					var randY = FP.Rand(radius) - radius / 2;
-					emitter.Emit(name, x + randX, y + randY);
-				}
-			}
-			
-			FP.World.BroadcastMessageIf(ent => ent.DistanceToPoint(x, y, true) <= radius, EffectMessage.Message.OnEffect, MakeEffect());
-			FP.World.BroadcastMessage(CameraShake.Message.Shake, 20, 0.5f);
-			Mixer.Explode.Play();
-		}
-		
-		EffectMessage MakeEffect()
-		{
-			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
-			{
-				if (to == parent)
-				{
-					if (from.DistanceToPoint(to.X, to.Y, true) <= 200)
-						from.OnMessage(Player.Message.Damage);
-				}
-				
-				to.OnMessage(Player.Message.Damage);
-			};
-			
-			return new EffectMessage(parent, callback);
+			World.Add(new Explosion(X, Y));
+			Parent.SetUpgrade(null);
 		}
 		
 		public override void Update()
 		{
 			base.Update();
 			
-			UpdateOpponents();
-			
-			if (mode == Mode.Furthest)
-				GetFurthestTarget();
-			else
-				GetNearestTarget();
-				
-			if (target != null)
+			if (Target != null)
 			{
-				float x = target.X, y = target.Top - 40;
-				MoveTowards(x, y, FP.Distance(X, Y, x, y) * 0.2f);
-			}
-		}
-		
-		private void UpdateOpponents()
-		{
-			opponents.Clear();
-			opponents = GameWorld.gameManager.Players.FindAll(p => p.World != null);
-			
-			for (int i = 0; i < opponents.Count; i++)
-			{
-				if (opponents[i] == parent)
-				{
-					opponents.RemoveAt(i);
-				}
-			}
-		}
-		
-		private void GetNearestTarget()
-		{
-			float minDist = 9999.0f;
-			foreach (var p in opponents)
-			{
-				var currentDist = FP.Distance(parent.X, parent.Y - parent.HalfHeight, p.X, p.Y - p.HalfHeight);
-				
-				if (currentDist < minDist)
-				{
-					minDist = currentDist;
-					target = p;
-				}
-			}
-		}
-		
-		private void GetFurthestTarget()
-		{
-			float maxDist = 0f;
-			foreach (var p in opponents)
-			{
-				var currentDist = FP.Distance(parent.X, parent.Y - parent.HalfHeight, p.X, p.Y - p.HalfHeight);
-				
-				if (currentDist > maxDist)
-				{
-					maxDist = currentDist;
-					target = p;
-				}
+				float x = Target.X, y = Target.Top - 40;
+				MoveTowards(x, y, FP.Distance(X, Y, x, y) * 0.3f);
 			}
 		}
 		
 		private void OnPlayerDie(params object[] args)
 		{
 			var p = args[0] as Player;
-			opponents.Remove(p);
-			
-			if (p != parent)
-			{
-				if (opponents.Count == 0)
-				{
-					//	no more enemies
-					if (parent.World == null)
-					{
-						//	the player is no longer in the world either
-						Active = false;
-					}
-					else
-					{
-						target = parent;
-					}
-				}
-			}
+			if (p == Target)
+				World.Remove(this);
 		}
 		
-		private void OnGoBoom()
+		public void OnPlayerHit(params object[] args)
 		{
-			parent.SetUpgrade(null);
+			var from = args[0] as Player;
+			var to = args[1] as Player;
+			
+			if (from == Target)
+				Target = to;
+		}
+		
+		private void OnExplode()
+		{
 			World.Remove(this);
 		}
 		

@@ -7,22 +7,22 @@ using Indigo.Loaders;
 
 namespace SNHU.GameObject.Triggers
 {
-	[OgmoConstructor("Duration", "Group")]
 	public class TimerTrigger : Trigger
 	{
 		private float Duration;
 		private Message lastMessage;
 		private Image face, hand;
-		
+	
+		[OgmoConstructor("Duration", "Group")]		
 		public TimerTrigger(float duration, string group) : base(group)
 		{
 			Duration = duration;
 			lastMessage = Message.On;
 			
-			face = Image.CreateCircle(30, FP.Color(0xffffff));
+			face = Image.CreateCircle(30, new Color(0xffffff));
 			face.CenterOO();
 			
-			hand = Image.CreateRect(5, 30, FP.Color(0));
+			hand = Image.CreateRect(5, 30, new Color(0));
 			hand.OriginX = hand.Width / 2;
 			hand.OriginY = hand.Height - hand.OriginX;
 			

@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using Indigo;
 using Indigo.Graphics;
 using SNHU.Components;
+using SNHU.Config.Upgrades;
 
 namespace SNHU.GameObject.Upgrades
 {
 	/// <summary>
 	/// Description of TimeFreeze.
 	/// </summary>
+	[DisabledInBuild]
 	public class TimeFreeze : Upgrade
 	{
 		public List<Player> players;
 		
 		public TimeFreeze()
 		{
-			Icon  = new Image(Library.GetTexture("assets/timeFreeze.png"));
+			Icon  = new Image(Library.GetTexture("timeFreeze.png"));
 			players = new List<Player>();
 		}
 		
 		public override void Added()
 		{
 			base.Added();
-			Lifetime = float.Parse(GameWorld.gameManager.Config["TimeFreeze", "Lifetime"]);
+			Lifetime = Library.GetConfig<TimeFreezeConfig>("config/upgrades/timefreeze.ini").Lifetime;
 		}
 		
 		public override EffectMessage MakeEffect()

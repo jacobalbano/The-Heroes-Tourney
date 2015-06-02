@@ -1,28 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using Indigo;
+using Indigo.Components;
 using Indigo.Graphics;
 using Indigo.Inputs;
 using Indigo.Inputs.Gamepads;
 using Indigo.Utils;
 using SFML.Window;
 using SNHU.Components;
+using SNHU.Config;
 using SNHU.GameObject.Platforms;
 using SNHU.GameObject.Upgrades;
+using SNHU.Systems;
 
 namespace SNHU.GameObject
 {
-	/// <summary>
-	/// Description of Player.
-	/// </summary>
 	public class Player : Entity
 	{
 		public enum Message
 		{
 			Die,
-			Lose,
 			OnLand,
 			Damage,
+			Hit,
 			UpgradeAcquired
 		}
 		
@@ -52,6 +52,9 @@ namespace SNHU.GameObject
 		
 		public Input Jump, Attack, Dodge, ActivateUpgrade, Guard, Start;
 		
+		private StateMachine inputState;
+		private int Standing, Jumping, Falling;
+		
 		private PhysicsBody Physics;
 		public DodgeController DodgeController;
 		public Movement Movement;
@@ -60,25 +63,27 @@ namespace SNHU.GameObject
 		public const float SPEED = 5.5f;
 		private const float GUARD_SPEED_MULT = 0.6f;
 		
-		public int Health;
-		public int Lives { get; private set; }
+		public int Health, PunchDamage, Lives;
+		
 		public int PlayerId { get; private set; }
 		public int ControllerId { get; private set; }
 		public bool IsAlive { get; private set; }
 		
 		public string ImageName { get; private set; }
 		
-		public Player(float x, float y, int jid, int id, string imageName) : base(x, y)
+		public Player(int slot, int playerId, string imageName)
 		{
 			excludeCollision = new HashSet<Entity>();
 			ImageName = imageName;
-			this.PlayerId = id;
-			this.ControllerId = jid;
+			PlayerId = playerId;
+			ControllerId = slot;
+			
+			Layer = ObjectLayers.Players;
 			
 			hand = false;
 			InitController();
 				
-			var tex = Library.GetTexture("assets/players/" + imageName + ".png");
+			var tex = Library.GetTexture("players/" + imageName + ".png");
 			tex.Smooth = true;
 			player = new Image(tex);
 			player.Scale = 0.5f;
@@ -95,9 +100,6 @@ namespace SNHU.GameObject
 			right = new Fist(false, this);
 			
 			Type = Collision;
-			
-			Lives = GameWorld.gameManager.StartingLives;
-			Health = GameWorld.gameManager.StartingHealth;
 			IsAlive = false;
 			
 			Invincible = false;
@@ -106,9 +108,10 @@ namespace SNHU.GameObject
 			UpgradeQueue = new Queue<Upgrade>();
 			UpgradeCapacity = 1;
 			
-			AddComponent(Physics = new PhysicsBody(Platform.Collision, Type));
-			AddComponent(Movement = new Movement(Physics, Direction));
-			AddComponent(DodgeController = new DodgeController(Dodge, Direction));
+			Physics = AddComponent(new PhysicsBody(Platform.Collision, Type));
+			Movement = AddComponent(new Movement(Physics, Direction));
+			DodgeController = AddComponent(new DodgeController(Dodge, Direction));
+			inputState = AddComponent(new StateMachine());
 			
 			AddResponse(Message.Damage, OnDamage);
 			AddResponse(Fist.Message.PunchConnected, OnPunchConnected);
@@ -116,11 +119,14 @@ namespace SNHU.GameObject
 			AddResponse(Shield.Message.Set, SetShield);
 			AddResponse(Rebound.Message.Set, SetRebound);
 			AddResponse(Fist.Message.PunchSuccess, OnPunchSuccess);
+			
 		}
 		
 		void InitController()
 		{
 			var slot = GamepadManager.GetSlot(ControllerId);
+			if (!slot.IsConnected) return;
+			
 			if (SnesController.IsMatch(slot))
 			{
 				var snes = new SnesController(slot);
@@ -164,7 +170,7 @@ namespace SNHU.GameObject
 			World.AddList(left, right);
 			IsAlive = true;
 			
-			UpgradeCapacity = int.Parse(GameWorld.gameManager.Config["Player", "UpgradeCapacity"]);
+			UpgradeCapacity = Library.GetConfig<PlayerConfig>("config/player.ini").UpgradeCapacity;
 		}
 		
 		public override void Removed()
@@ -201,7 +207,7 @@ namespace SNHU.GameObject
 				
 				foreach (var p in excludeCollision)
 				{
-					if (CollideWith(p, X, Y) == null)
+					if (!CollideWith(p, X, Y))
 						toRemove.Add(p);
 				}
 				
@@ -211,50 +217,44 @@ namespace SNHU.GameObject
 				}
 			}
 			
-			cursor.Visible = !OnCamera;
-			
-			if (!GameWorld.gameManager.GameEnding)
+			if (!Guarding)
 			{
-				if (!Guarding)
-				{
-				 	if (Direction.X < 0)
-				 	{
-				 		FaceLeft();
-				 	}
-				 	else if (Direction.X > 0)
-				 	{
-				 		FaceRight();
-				 	}
-				}
-				
-				if (Collide(Platform.Collision, X, Y + 1) == null)
-				{
-					OnGround = false;
-				}
-				else
-				{
-					OnMessage(PhysicsBody.Message.Friction, 0.75f);
-				}
-				
-				
+			 	if (Direction.X < 0)
+			 	{
+			 		FaceLeft();
+			 	}
+			 	else if (Direction.X > 0)
+			 	{
+			 		FaceRight();
+			 	}
+			}
+			
+			if (Collide(Platform.Collision, X, Y + 1) == null)
+			{
+				OnGround = false;
+			}
+			else
+			{
+				OnMessage(PhysicsBody.Message.Friction, 0.75f);
+			}
+			
 			if (!OnGround && DodgeController.IsDodging)
-				{
-					Entity result = 
-						Collide(Platform.Collision, X + 1, Y) ??
-						Collide(Platform.Collision, X - 1, Y);
-					
-					if (result != null)
-					{
-					DodgeController.CanDodge = true;
-					}
-				}
+			{
+				Entity result = 
+					Collide(Platform.Collision, X + 1, Y) ??
+					Collide(Platform.Collision, X - 1, Y);
 				
-				HandleInput();
-				
-				if(Top > FP.Camera.Y + FP.HalfHeight)
+				if (result != null)
 				{
-					Kill();
+				DodgeController.CanDodge = true;
 				}
+			}
+			
+			HandleInput();
+			
+			if(Top > FP.Camera.Y + FP.HalfHeight)
+			{
+				Kill();
 			}
 		}
 		
@@ -292,7 +292,7 @@ namespace SNHU.GameObject
 					}
 					else
 					{
-						FP.Choose(Mixer.Jump1, Mixer.Jump2, Mixer.Jump3).Play();
+						FP.Choose.Option(Mixer.Jump1, Mixer.Jump2, Mixer.Jump3).Play();
 					}
 					
 					OnMessage(PhysicsBody.Message.Impulse, 0, JumpForce * jumpMult, true);
@@ -321,11 +321,6 @@ namespace SNHU.GameObject
 					Punch(hand = !hand);
 				}
 			}
-			
-			if (Start.Pressed)
-			{
-				GameWorld.gameManager.StartGame();
-			}
 		}
 		
 		bool IsPunching()
@@ -347,7 +342,7 @@ namespace SNHU.GameObject
 			
 			if (success)
 			{
-				FP.Choose(Mixer.Swing1, Mixer.Swing2).Play();
+				FP.Choose.Option(Mixer.Swing1, Mixer.Swing2).Play();
 			}
 		}
 		
@@ -384,12 +379,12 @@ namespace SNHU.GameObject
 			{
 				if (e.Top >= Bottom)
 				{
-					OnMessage(PhysicsBody.Message.Impulse, FP.Rand(10) - 5, JumpForce);
-					e.OnMessage(PhysicsBody.Message.Impulse, FP.Rand(10) - 5, -JumpForce);
+					OnMessage(PhysicsBody.Message.Impulse, FP.Random.Int(10) - 5, JumpForce);
+					e.OnMessage(PhysicsBody.Message.Impulse, FP.Random.Int(10) - 5, -JumpForce);
 				}
 				else if (e.Bottom <= Top && Math.Abs(X - e.X) < HalfWidth)
 				{
-					e.OnMessage(PhysicsBody.Message.Impulse, FP.Rand(10) - 5, JumpForce * 1.1);
+					e.OnMessage(PhysicsBody.Message.Impulse, FP.Random.Int(10) - 5, JumpForce * 1.1);
 				}
 				else return false;
 			}
@@ -430,33 +425,18 @@ namespace SNHU.GameObject
 		
 		private void Kill()
 		{
-			if (IsAlive && !GameWorld.gameManager.GameEnding)
+			if (IsAlive)
 			{
 				if (Lives > 0)
-				{
 					Lives -= 1;
-				}
-				
-				Health = GameWorld.gameManager.StartingHealth;
-				
-				if (Lives <= 0)
-				{
-					World.BroadcastMessage(Player.Message.Lose, this);
-				}
 				
 				IsAlive = false;
 				World.BroadcastMessage(Player.Message.Die, this);
-				World.BroadcastMessage(CameraShake.Message.Shake, 20.0f, 1.0f);
+				World.BroadcastMessage(CameraManager.Message.Shake, 20.0f, 1.0f);
 				World.Remove(this);
 				
 				Mixer.Death1.Play();
 			}
-		}
-		
-		public void SetGlovesLayer(int layer)
-		{
-			left.Layer = layer;
-			right.Layer = layer;
 		}
 		
 		public void SetUpgrade(Upgrade upgrade)
@@ -499,10 +479,10 @@ namespace SNHU.GameObject
 		
 		private void OnPunchConnected(params object[] args)
 		{
-			if (GameWorld.gameManager.StartingHealth == 0)
+			if (PunchDamage == 0)
 				return;
 			
-			Health -= GameWorld.gameManager.PunchDamage;
+			Health -= PunchDamage;
 			World.BroadcastMessage(HUD.Message.UpdateDamage, this);
 			if (Health <= 0)
 				Kill();

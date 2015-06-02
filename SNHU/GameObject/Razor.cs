@@ -2,7 +2,9 @@
 using Glide;
 using Indigo;
 using Indigo.Graphics;
+using Indigo.Loaders;
 using Indigo.Utils;
+using SNHU.Config;
 using SNHU.GameObject.Upgrades;
 
 namespace SNHU.GameObject
@@ -14,13 +16,13 @@ namespace SNHU.GameObject
 		
 		public RazorBlade(float size)
 		{
-			blade = new Image(Library.GetTexture("assets/razor.png"));
-			blade.Scale = size;//FP.Random + 1f;
+			blade = new Image(Library.GetTexture("razor.png"));
+			blade.Scale = size;
 			blade.CenterOO();
 			SetHitboxTo(blade);
 			CenterOrigin();
 			
-			emitter = new Emitter(Library.GetTexture("assets/blood.png"), 15, 15);
+			emitter = new Emitter(Library.GetTexture("blood.png"), 15, 15);
 			emitter.Relative = false;
 			
 			for (int i = 0; i < 4; ++i)
@@ -35,8 +37,6 @@ namespace SNHU.GameObject
 			
 			AddComponent(blade);
 			AddComponent(emitter);
-			
-			Layer = -100;
 		}
 		
 		public override void Update()
@@ -49,9 +49,9 @@ namespace SNHU.GameObject
 			{
 				for (int i = 0; i < 150; ++i)
 				{
-					var randX = FP.Rand(Width) - HalfWidth;
-					var randY = FP.Rand(Height) - HalfHeight;
-					emitter.Emit(FP.Choose("0", "1", "2", "3"), X + randX, Y - 50 + randY);
+					var randX = FP.Random.Int(Width) - HalfWidth;
+					var randY = FP.Random.Int(Height) - HalfHeight;
+					emitter.Emit(FP.Choose.Character("0123"), X + randX, Y - 50 + randY);
 				}
 				
 				p.OnMessage(EffectMessage.Message.OnEffect, MakeEffect(p));
@@ -70,7 +70,7 @@ namespace SNHU.GameObject
 		}
 	}
 	
-	public class Razor : Entity
+	public class Razor : Entity, IOgmoNodeHandler
 	{
 		public Image myImage;
 		
@@ -81,20 +81,16 @@ namespace SNHU.GameObject
 		private float distance = 0;
 		
 		public Image razorArm;
-		
 		private RazorBlade theRazor;
-		
 		
 		public Razor()
 		{
-			Layer = -101;
 		}
 		
-		public override void Load(System.Xml.XmlNode node)
+		public void NodeHandler(System.Xml.XmlNode entity)
 		{
-			base.Load(node);
-			myImage = new Image(Library.GetTexture("assets/pivot.png"));
-			razorArm = new Image(Library.GetTexture("assets/razorArm.png"));
+			myImage = new Image(Library.GetTexture("pivot.png"));
+			razorArm = new Image(Library.GetTexture("razorArm.png"));
 			
 			razorArm.ScaleX = distance * 32 / razorArm.Width;
 			
@@ -105,9 +101,12 @@ namespace SNHU.GameObject
 			theRazor.X = X;
 			theRazor.Y = Y;
 			
+			Layer = ObjectLayers.JustAbove(ObjectLayers.Players);
+			theRazor.Layer = ObjectLayers.JustAbove(Layer);
+			
 			theRazor.X += razorArm.ScaledWidth;
 
-//			rotation = FP.Rand(360);
+			rotation = -90;
 			
 			speed *= 0.5f;
 			

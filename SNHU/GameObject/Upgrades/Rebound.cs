@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Indigo;
 using Indigo.Graphics;
 using SNHU.Components;
+using SNHU.Config.Upgrades;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -17,14 +18,14 @@ namespace SNHU.GameObject.Upgrades
 		
 		public Rebound()
 		{
-			Icon = new Image(Library.GetTexture("assets/rebound.png"));
+			Icon = new Image(Library.GetTexture("rebound.png"));
 		}
 		
 		public override void Added()
 		{
 			base.Added();
 			
-			Lifetime = float.Parse(GameWorld.gameManager.Config["Rebound", "Lifetime"]);
+			Lifetime = Library.GetConfig<ReboundConfig>("config/upgrades/rebound.ini").Lifetime;
 		}
 		
 		public override EffectMessage MakeEffect()
@@ -38,8 +39,8 @@ namespace SNHU.GameObject.Upgrades
 			{
 				base.Use();
 				
-				shield_1 = new Image(Library.GetTexture("assets/rebound_active_1.png"));
-				shield_2 = new Image(Library.GetTexture("assets/rebound_active_2.png"));
+				shield_1 = new Image(Library.GetTexture("rebound_active_1.png"));
+				shield_2 = new Image(Library.GetTexture("rebound_active_2.png"));
 				
 				shield_1.CenterOO();
 				shield_2.CenterOO();

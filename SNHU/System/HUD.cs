@@ -4,6 +4,7 @@ using Glide;
 using Indigo;
 using Indigo.Graphics;
 using Indigo.Utils;
+using SNHU.Config;
 using SNHU.GameObject.Upgrades;
 
 namespace SNHU.GameObject
@@ -15,60 +16,79 @@ namespace SNHU.GameObject
 	{
 		public enum Message { UpdateDamage }
 		
-		private GameManager gm;
+		private List<Entity> Players;
+		private List<Stack<Image>> upgradeIcons;
 		
-		private List<Entity> players;
-		private List<Stack<Entity>> upgradeIcons;
+		private int StartingHealth, StartingLives, PunchDamage;
 		
-		public HUD(GameManager gameManager)
+		public HUD()
 		{
-			gm = gameManager;
-			players = new List<Entity>();
-			upgradeIcons = new List<Stack<Entity>>();
+			Players = new List<Entity>();
+			upgradeIcons = new List<Stack<Image>>();
+			Layer = ObjectLayers.HUD;
 			
-			Layer = -10000;
+			var Config = Library.GetConfig<PlayerConfig>("config/player.ini");
+			StartingLives = Config.StartingLives;
+			StartingHealth = Config.StartingHealth;
+			PunchDamage = Config.PunchDamage;
 		}
 		
-		public void AddPlayer(Player p)
+		public override void Added()
 		{
-			var e = new Entity();	
-			var lives = new Text(GameWorld.gameManager.StartingLives.ToString("x 0"));
-			lives.Italicized = true;
-			lives.Size = 18;
-			lives.X = 10;
-			lives.Y = 15;
-			lives.ScrollX = lives.ScrollY = 0;
-					
-			var head = new Image(Library.GetTexture("assets/players/" + p.ImageName + "_head.png"));
-			head.CenterOO();
-			head.X = -10;
-			head.Y = 25;
-			head.ScrollX = head.ScrollY = 0;
+			base.Added();
 			
-			var graphics = new Graphiclist(lives, head);
-			graphics.ScrollX = graphics.ScrollY = 0;
-			e.AddComponent(graphics);
-			
-			if (GameWorld.gameManager.StartingHealth != 0)
+			var interval = FP.Width / (Players.Count + 1f);
+			for (int i = 0; i < Players.Count; ++i)
 			{
-				var total = GameWorld.gameManager.StartingHealth.ToString();
-				var health = new Text(string.Format("{0}/{0}", total));
-				health.Bold = true;
-				health.Size = 18;
-				health.X = head.X - head.Width / 2;
-				health.Y = lives.Y + 30;
-				health.ScrollX = health.ScrollY = 0;
-				graphics.Add(health);
-				
-				e.AddResponse(HUD.Message.UpdateDamage, OnDamage(p, health));
+				var e = Players[i];
+				e.X = (1 + i) * interval;
+				e.Layer = Layer;
+				World.Add(e);
 			}
-			
-			e.AddResponse(Player.Message.Die, OnDeath(p, lives, head));
-			e.AddResponse(Player.Message.UpgradeAcquired, OnUpgradeAcquired(p, lives, head));
-			e.AddResponse(Upgrade.Message.Used, OnUpgradeUsed());
-			
-			players.Add(e);
-			upgradeIcons.Add(new Stack<Entity>());
+		}
+		
+		public void AddPlayers(List<Player> players)
+		{
+			foreach (var p in players)
+			{
+				var e = new Entity();	
+				var lives = new Text(StartingLives.ToString());
+				lives.Italicized = true;
+				lives.Size = 18;
+				lives.X = 10;
+				lives.Y = 15;
+				lives.ScrollX = lives.ScrollY = 0;
+						
+				var head = new Image(Library.GetTexture("players/" + p.ImageName + "_head.png"));
+				head.CenterOO();
+				head.X = -10;
+				head.Y = 25;
+				head.ScrollX = head.ScrollY = 0;
+				
+				var graphics = new Graphiclist(lives, head);
+				graphics.ScrollX = graphics.ScrollY = 0;
+				e.AddComponent(graphics);
+				
+				if (StartingHealth != 0 && PunchDamage != 0)
+				{
+					var health = new Text(string.Format("{0}/{0}", StartingHealth));
+					health.Bold = true;
+					health.Size = 18;
+					health.X = head.X - head.Width / 2;
+					health.Y = lives.Y + 30;
+					health.ScrollX = health.ScrollY = 0;
+					graphics.Add(health);
+					
+					e.AddResponse(HUD.Message.UpdateDamage, OnDamage(p, health));
+				}
+				
+				e.AddResponse(Player.Message.Die, OnDeath(p, lives, head));
+				e.AddResponse(Player.Message.UpgradeAcquired, OnUpgradeAcquired(p, lives, head));
+				e.AddResponse(Upgrade.Message.Used, OnUpgradeUsed());
+				
+				Players.Add(e);
+				upgradeIcons.Add(new Stack<Image>());
+			}
 		}
 		
 		Action<object[]>  OnDamage(Player p, Text health)
@@ -77,7 +97,7 @@ namespace SNHU.GameObject
 				var player = args[0] as Player;
 				if (player != p)	return;
 				
-				health.String = string.Format("{0}/{1}", player.Health, GameWorld.gameManager.StartingHealth);
+				health.String = string.Format("{0}/{1}", player.Health, StartingHealth);
 				
 				health.ScaleY = 1.3f;
 				
@@ -94,7 +114,7 @@ namespace SNHU.GameObject
 				text.String = player.Lives.ToString("x 0");
 				if (player.Lives == 1)
 				{
-					text.Color = FP.Color(0xff0000);
+					text.Color = new Color(0xff0000);
 				}
 				
 				text.Scale = 1.5f;
@@ -114,19 +134,22 @@ namespace SNHU.GameObject
 				var upgrade = args[1] as Upgrade;
 				if (upgrade == null)	return;
 				
-				var hudEnt = players[player.PlayerId];
+				var hudEnt = Players[player.PlayerId];
 				
 				var icon = upgrade.Icon;
 				var upgradeImg = new Image(upgrade.Icon);
 				upgradeImg.ScrollX = upgradeImg.ScrollY = 0;
-				var upgradeEnt = World.AddGraphic(upgradeImg, Layer, player.X,  player.Top - (FP.Camera.Y - FP.HalfHeight));
+				upgradeImg.X = player.X;
+				upgradeImg.Y = player.Top - (FP.Camera.Y - FP.HalfHeight);
+				upgradeImg.Relative = false;
+				AddComponent(upgradeImg);
 				
-				upgradeIcons[player.PlayerId].Push(upgradeEnt);
+				upgradeIcons[player.PlayerId].Push(upgradeImg);
 				
 				var offsetX = 10;
-				var offsetY = GameWorld.gameManager.StartingHealth != 0 ? 80 : 60;
+				var offsetY = StartingHealth != 0 ? 80 : 60;
 				
-				Tweener.Tween(upgradeEnt, new { X = hudEnt.X + offsetX, Y = hudEnt.Y + offsetY }, 0.5f)
+				Tweener.Tween(upgradeImg, new { X = hudEnt.X + offsetX, Y = hudEnt.Y + offsetY }, 0.5f)
 					.Ease(Ease.ExpoOut);
 				
 				Tweener.Tween(upgradeImg, new { Scale = icon.Scale * 0.5f }, 0.5f)
@@ -141,26 +164,9 @@ namespace SNHU.GameObject
 				
 				if (pId >= 0 && pId < upgradeIcons.Count && upgradeIcons[pId] != null && upgradeIcons[pId].Count > 0)
 				{
-					World.Remove(upgradeIcons[pId].Pop());
+					RemoveComponent(upgradeIcons[pId].Pop());
 				}
 			};
-		}
-		
-		public override void Added()
-		{
-			base.Added();
-			
-			var interval = FP.Width / (players.Count + 1);
-			for (int i = 0; i < players.Count; ++i)
-			{
-				var e = players[i];
-				
-				e.X = (1 + i) * interval;
-				
-				e.Layer = -1000;
-				
-				World.Add(e);
-			}
 		}
 	}
 }

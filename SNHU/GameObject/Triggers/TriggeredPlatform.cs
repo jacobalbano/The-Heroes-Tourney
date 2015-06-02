@@ -6,15 +6,15 @@ using Indigo.Loaders;
 
 namespace SNHU.GameObject.Triggers
 {
-	[OgmoConstructor("Group", "width", "height")]
 	public class TriggeredPlatform : Triggerable
 	{
 		private Image image;
 		private const float Duration = 0.25f;
 		
+		[OgmoConstructor("Group", "width", "height")]
 		public TriggeredPlatform(string group, int width, int height)
 		{
-			AddComponent(image = Image.CreateRect(width, height, FP.Color(0x400080)));
+			AddComponent(image = Image.CreateRect(width, height, new Color(0x400080)));
 			SetHitbox(width, height);
 		}
 		

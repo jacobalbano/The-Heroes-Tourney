@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using Indigo;
 using Indigo.Graphics;
 using Indigo.Utils.Reflect;
+using SNHU.Config;
 using SNHU.GameObject.Upgrades;
 
 namespace SNHU.GameObject
@@ -33,12 +34,12 @@ namespace SNHU.GameObject
 			base.Added();
 			
 			// Determine if this upgrade spawner will be spawning upgrades for this chunk
-			var spawnChance = int.Parse(GameWorld.gameManager.Config["Upgrades", "SpawnChance"]);
-			if (FP.Rand(100) < spawnChance)
+			var config = Library.GetConfig<UpgradeConfig>("config/upgrades.ini");
+			Upgrades = config.EnabledUpgrades;
+			if (FP.Random.Chance(config.SpawnChance))
 			{
-				Upgrades = Regex.Split(GameWorld.gameManager.Config["Upgrades", "Enabled"], ", ");
-				RespawnTime = float.Parse(GameWorld.gameManager.Config["Upgrades", "RespawnTime"]);
-				MaxRespawns = int.Parse(GameWorld.gameManager.Config["Upgrades", "MaxRespawns"]);
+				RespawnTime = config.RespawnTime;
+				MaxRespawns = config.MaxRespawns;
 				
 				SpawnUpgrade();
 			}
@@ -51,7 +52,7 @@ namespace SNHU.GameObject
 		
 		private void SpawnUpgrade()
 		{
-			var name = FP.Choose(Upgrades);
+			var name = FP.Choose.From(Upgrades);
 			name = Regex.Replace(name, @"\s", "");
 			var type = Reflect.GetTypeFromAllAssemblies(name);
 			if (type == null)

@@ -5,6 +5,7 @@ using Indigo;
 using Indigo.Graphics;
 using Indigo.Utils;
 using SNHU.Components;
+using SNHU.Config.Upgrades;
 using SNHU.GameObject.Upgrades.Helper;
 
 //using SFML.Graphics;
@@ -20,20 +21,23 @@ namespace SNHU.GameObject.Upgrades
 		
 		public SuperSpeed()
 		{
-			Icon  = new Image(Library.GetTexture("assets/speed.png"));
+			Icon  = new Image(Library.GetTexture("speed.png"));
 		}
 		
 		public override void Added()
 		{
 			base.Added();
-			NewSpeed = float.Parse(GameWorld.gameManager.Config["SuperSpeed", "NewSpeed"]);
-			Lifetime = float.Parse(GameWorld.gameManager.Config["SuperSpeed", "Lifetime"]);
+			var config = Library.GetConfig<SuperSpeedConfig>("config/upgrades/superspeed.ini");
+			NewSpeed = config.NewSpeed;
+			Lifetime = config.Lifetime;
 		}
 		
 		public override EffectMessage MakeEffect()
 		{
 			EffectMessage.Callback callback = delegate(Entity from, Entity to, float scalar)
 			{
+				if (to == from) return; // sender;
+				
 				to.AddComponent(new SuperSpeedEmitter(Lifetime));
 				to.OnMessage(Movement.Message.Speed, NewSpeed);
 			};
@@ -46,7 +50,7 @@ namespace SNHU.GameObject.Upgrades
 			if (!Activated)
 			{
 				base.Use();
-				Parent.World.BroadcastMessageIf(e => e != owner, EffectMessage.Message.OnEffect, MakeEffect());	
+				Parent.World.BroadcastMessage(EffectMessage.Message.OnEffect, MakeEffect());	
 			}
 		}
 		

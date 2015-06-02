@@ -11,7 +11,9 @@ using Indigo.Loaders;
 using Indigo.Masks;
 using Indigo.Utils;
 using Indigo.Utils.Reflect;
+using SNHU.Config;
 using SNHU.GameObject.Platforms;
+using SNHU.Systems;
 
 namespace SNHU.GameObject
 {
@@ -29,7 +31,9 @@ namespace SNHU.GameObject
 		
 		static Chunk()
 		{
-			levels = Directory.GetFiles("assets/Levels/");
+			levels = Library.GetFilenames("Levels/", "*")
+				.ToList();
+			
 			for (int i = 0; i < levels.Length; i++)
 			{
 				var level = levels[i];
@@ -37,14 +41,15 @@ namespace SNHU.GameObject
 				levels[i] = level;
 			}
 			
-			var l = levels.ToList();
 			l.Remove("/bawks.oel");
+			l.Remove("/Real_3.oel");
+			l.Remove("/bigYucky.oel");
 			levels = l.ToArray();
 			
-			levels = new string[] { "Real_3.oel" };
+//			levels = new string[] { "Real_3.oel" };
 			
 			loader = new OgmoLoader();
-			loader.RegisterGridType("Collision", 16, 16);
+			loader.RegisterGridType("Collision", "Collision", 16, 16);
 			
 			loader.RegisterClassAlias<JumpPad>("jumpPad");
 			loader.RegisterClassAlias<Crumble>("crumble");
@@ -53,14 +58,13 @@ namespace SNHU.GameObject
 			loader.RegisterClassAlias<UpgradeSpawn>("Upgrade");
 		}
 		
-		public Chunk(float posX, float posY) : base(posX, posY)
+		public Chunk(float x, float y) : base(x, y)
 		{
 			var world = new World();
 			SpawnPoints = new List<Entity>();
 			
-			level = FP.Choose(levels);
-			
-			ents = loader.BuildWorldAsArray(Library.GetXml("assets/Levels/" + level));
+			level = FP.Choose.From(levels);
+			ents = loader.BuildLevelAsArray(Library.GetXml("Levels/" + level));
 			
 			int spawns = 0;
 			foreach (var e in ents)
@@ -69,7 +73,6 @@ namespace SNHU.GameObject
 				{
 					e.X += X;
 					e.Y += Y;
-					e.Layer = -100;
 				}
 				
 				if (e is SpawnPoint)
@@ -78,23 +81,22 @@ namespace SNHU.GameObject
 					SpawnPoints.Add(e);
 				}
 				
-				if (e.Mask is Grid)
+				if (e.GetComponent<Grid>() != null)
 				{
-					var grid = e.Mask as Grid;
+					var grid = e.GetComponent<Grid>();
 					
-					var map = new Tilemap(Library.GetTexture("assets/tiles/Tileset.png"), FP.Width, FP.Height, 16, 16);
+					var map = new Tilemap(Library.GetTexture("tiles/Tileset.png"), FP.Width, FP.Height, 16, 16);
 					AutoTileSet.CreateFromGrid(map, grid);
 					
 					e.AddComponent(map);
 					e.Visible = true;
+					e.Layer = ObjectLayers.Platforms;
 				}
 				
 			}
 			
 			if (spawns != 4)
-			{
 				throw new Exception("too few spawn points in" + level + ";" + spawns + "found, 4 required.");
-			}
 		}
 		
 		
@@ -104,7 +106,7 @@ namespace SNHU.GameObject
 			
 			World.AddList(ents);
 			
-			Tweener.Tween(FP.Camera, new { Y = (int) (Y + FP.HalfHeight) }, 1)
+			Tweener.Tween(FP.Camera, new { Y = Y + FP.HalfHeight }, 1)
 				.Ease(Ease.ElasticOut)
 				.OnComplete(OnFinishAdvance);
 		}
@@ -122,8 +124,9 @@ namespace SNHU.GameObject
 		
 		private void OnFinishAdvance()
 		{
-			World.Add(new CameraShake(FP.HalfWidth, FP.Camera.Y));
-			World.BroadcastMessage(ChunkManager.Message.SpawnPlayers);
+			World.Add(new CameraManager(World.Camera.X, World.Camera.Y));
+			
+			World.BroadcastMessage(PlayerManager.Message.SpawnPlayers, SpawnPoints);
 		}
 	}
 }

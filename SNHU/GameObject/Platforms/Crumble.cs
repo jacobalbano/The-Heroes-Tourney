@@ -2,16 +2,17 @@
 using Indigo;
 using Indigo.Graphics;
 using Indigo.Loaders;
+using SNHU.Config;
 
 namespace SNHU.GameObject.Platforms
 {
-	[OgmoConstructor("width", "height")]
 	public class Crumble : Entity
 	{
 		private Nineslice image;
 		private float crumbleTime = 0;
 		private bool canMakeAHellaRacket;
-		
+
+		[OgmoConstructor("width", "height")]		
 		public Crumble(int width, int height)
 		{
 			Width = width;
@@ -20,7 +21,7 @@ namespace SNHU.GameObject.Platforms
 			
 			canMakeAHellaRacket = true;
 			
-			image = new Nineslice(Library.GetTexture("assets/crumble.png"), (int) (Width / 5f), (int) (Height / 5f));
+			image = new Nineslice(Library.GetTexture("crumble.png"), (int) (Width / 5f), (int) (Height / 5f));
 			image.ScaleX = Width / image.Width;
 			image.ScaleY = Height / image.Height;
 			
@@ -28,6 +29,8 @@ namespace SNHU.GameObject.Platforms
 			
 			AddResponse(Player.Message.OnLand, OnBump);
 			AddResponse(Platform.Message.Bump, OnBump);
+			
+			Layer = ObjectLayers.Platforms;
 		}
 		
 		

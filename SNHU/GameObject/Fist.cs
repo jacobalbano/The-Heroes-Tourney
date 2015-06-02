@@ -5,7 +5,9 @@ using Indigo.Graphics;
 using Indigo.Utils;
 using SFML.Window;
 using SNHU.Components;
+using SNHU.Config;
 using SNHU.GameObject.Upgrades;
+using SNHU.Systems;
 
 namespace SNHU.GameObject
 {
@@ -58,7 +60,9 @@ namespace SNHU.GameObject
 			Punching = false;
 			canPunch = true;
 			
-			Image = new Image(Library.GetTexture("assets/glove" + (backHand ? "2" : "1") + ".png"));
+			Layer = ObjectLayers.JustAbove(ObjectLayers.Players);
+			
+			Image = new Image(Library.GetTexture("glove" + (backHand ? "2" : "1") + ".png"));
 			Image.CenterOO();
 			AddComponent(Image);
 			
@@ -205,7 +209,8 @@ namespace SNHU.GameObject
 				canPunch = false;
 				
 				from.OnMessage(Fist.Message.PunchSuccess, player);
-				World.BroadcastMessage(CameraShake.Message.Shake, 10.0f, 0.5f);
+				World.BroadcastMessage(Player.Message.Hit, from, to);
+				World.BroadcastMessage(CameraManager.Message.Shake, 10.0f, 0.5f);
 		 		Mixer.Hit1.Play();
 		 		
 		 		if (FP.Sign(from.X - to.X) == FP.Sign(forceVector.X))

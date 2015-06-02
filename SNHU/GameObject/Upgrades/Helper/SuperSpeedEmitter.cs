@@ -17,7 +17,7 @@ namespace SNHU.GameObject.Upgrades.Helper
 		
 		public SuperSpeedEmitter(float duration)
 		{
-			emitter = new Emitter(Library.GetTexture("assets/speed_particle.png"), 68, 30);
+			emitter = new Emitter(Library.GetTexture("speed_particle.png"), 68, 30);
 			emitter.Relative = false;
 			
 			emitter.NewType("l", FP.Frames(0));
@@ -48,11 +48,11 @@ namespace SNHU.GameObject.Upgrades.Helper
 			lastX = Parent.X;
 			if (delta < 0)
 			{
-				emitter.Emit("l", Parent.Left - 38, Parent.Top + FP.Rand(Parent.Height));
+				emitter.Emit("l", Parent.Left - 38, Parent.Top + FP.Random.Int(Parent.Height));
 			}
 			else if (delta > 0)
 			{
-				emitter.Emit("r", Parent.Left, Parent.Top + FP.Rand(Parent.Height));
+				emitter.Emit("r", Parent.Left, Parent.Top + FP.Random.Int(Parent.Height));
 			}
 		}
 		
