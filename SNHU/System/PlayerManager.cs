@@ -106,7 +106,7 @@ namespace SNHU.Systems
 			if (ActivePlayers.Count > 0)
 			{
 				var remaining = ActivePlayers.Count(p => p.IsAlive);
-				if (remaining > 0)
+				if (remaining <= 1)
 					World.Tweener.Timer(1).OnComplete(CheckAdvance);
 			}
 		}
@@ -123,6 +123,7 @@ namespace SNHU.Systems
 		private void SpawnPlayers(params object[] args)
 		{
 			var SpawnPoints = args[0] as List<Entity>;
+			FP.Random.Shuffle(SpawnPoints);
 			
 			foreach (var player in ActivePlayers)
 			{

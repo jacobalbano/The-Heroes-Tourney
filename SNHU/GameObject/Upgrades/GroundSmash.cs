@@ -6,6 +6,7 @@ using Indigo.Utils;
 using SNHU.Components;
 using SNHU.Config;
 using SNHU.Config.Upgrades;
+using SNHU.GameObject.Platforms;
 using SNHU.Systems;
 
 namespace SNHU.GameObject.Upgrades
@@ -50,10 +51,9 @@ namespace SNHU.GameObject.Upgrades
 		
 		public override void Use()
 		{
-			if (!Activated && !owner.OnGround)
+			if (!Activated && owner.Collide(Platform.Collision, owner.X, owner.Y + 1) == null)	//	TODO: fix me
 			{
 				base.Use();
-				
 				owner.OnMessage(PhysicsBody.Message.UseGravity, false);
 			}
 		}
@@ -72,27 +72,12 @@ namespace SNHU.GameObject.Upgrades
 		{
 			if (Activated)
 			{
-				var emitter = new Emitter(Library.GetTexture("groundsmash_particle.png"), 3, 3);
-				emitter.Relative = false;
-				
-				for (int i = 0; i < 4; i++)
-				{
-					var name = i.ToString();
-					emitter.NewType(name, FP.Frames(i));
-					emitter.SetAlpha(name, 0, 1f);
-					emitter.SetMotion(name, -90, 100, 0.5f, 10, 10, 0.1f, Ease.SineOut);
-					emitter.SetGravity(name, 5, 2);
-				}
-				
-				var emitterEnt = Parent.World.AddGraphic(emitter, 0, 0, ObjectLayers.JustAbove(ObjectLayers.Players));
-				emitterEnt.Active = true;
-				emitterEnt.Tweener.Timer(3)
-					.OnComplete(() => FP.World.Remove(emitterEnt));
-				
 				for (float i = -SmashRadius; i < SmashRadius; i++)
 				{
-					var c = FP.Choose.Character("0123");
-					emitter.Emit(c, Parent.X + i + FP.Random.Float() - FP.Random.Float(), Parent.Y - FP.Random.Int(10));
+					var x = Parent.X + i + FP.Random.Float() - FP.Random.Float();
+					var y = Parent.Y - FP.Random.Int(10);
+					var type = FP.Choose.Character("0123");
+					Parent.World.BroadcastMessage(GlobalEmitter.Message.GroundSmash, type, x, y);
 				}
 				
 				Parent.World.BroadcastMessage(CameraManager.Message.Shake, 100.0f, 0.5f);

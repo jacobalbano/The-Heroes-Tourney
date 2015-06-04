@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Indigo;
+using Indigo.Core;
 using SFML.Window;
 using SNHU.GameObject;
 
@@ -73,10 +74,10 @@ namespace SNHU.Components
 		/// <summary>
 		/// The amount that the body has moved since the last update.
 		/// </summary>
-		public Vector2f MoveDelta;
-		public Vector2f LastMoveDelta;
+		public Point MoveDelta;
+		public Point LastMoveDelta;
 		
-		private Vector2f movement;
+		private Point movement;
 		private bool hasGravity;
 		private bool canMove;
 		
@@ -88,11 +89,11 @@ namespace SNHU.Components
 		public PhysicsBody(params string[] colliders)
 		{	
 			Colliders = new List<string>(colliders);
-			MoveDelta = new Vector2f();
+			MoveDelta = new Point();
 			Gravity = 0.75f;
 			impulseMult = 1;
 			
-			movement = new Vector2f();
+			movement = new Point();
 			hasGravity = true;
 			canMove = true;
 			

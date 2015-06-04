@@ -10,6 +10,7 @@ using SFML.Window;
 using SNHU.Config;
 using SNHU.Config.Upgrades;
 using SNHU.GameObject.Platforms;
+using SNHU.Systems;
 
 namespace SNHU.GameObject.Upgrades
 {
@@ -23,8 +24,6 @@ namespace SNHU.GameObject.Upgrades
 		private MessageResult result;
 		
 		private Image image;
-		private Entity emitterEnt;
-		private Emitter emitter;
 		private Tween bounceTween;
 		
 		private static string[] colliders;
@@ -51,34 +50,17 @@ namespace SNHU.GameObject.Upgrades
 			dir = initialDir;
 			this.owner = owner;
 			
-			emitter = new Emitter(Library.GetTexture("bullet_sparkle.png"), 20, 20);
-			emitter.Relative = false;
-			
-			var name = "spark";
-			emitter.NewType(name, FP.Frames(0, 1, 2, 3, 4));
-			emitter.SetAlpha(name, 1, 0);
-			emitter.SetMotion(name, 0, 0, 0.5f, 0, 0, 0.25f, Ease.CircOut);
-			
 			AddResponse(ChunkManager.Message.Advance, OnAdvance);
 			
 			result = new MessageResult();
-		}
-		
-		public override void Added()
-		{
-			base.Added();
-			
-			emitterEnt = World.AddGraphic(emitter, 0, 0, ObjectLayers.JustAbove(ObjectLayers.Players));
-			emitterEnt.Active = true;
 		}
 		
 		public override void Update()
 		{
 			base.Update();
 			
-			var randX = FP.Random.Int(50) - 25;
-			var randY = FP.Random.Int(50) - 25;
-			emitter.Emit("spark", X + randX, Y + randY);
+			var rand = FP.Random.InCircle(25);
+			World.BroadcastMessage(GlobalEmitter.Message.BulletTrail, "spark", X + rand.X, Y + rand.Y);
 			
 			image.Angle = FP.Angle(0, 0, dir.X, dir.Y);
 			
@@ -89,13 +71,10 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Removed();
 			
-			World.Tweener.Timer(3).OnComplete(() => FP.World.Remove(emitterEnt));
-			
 			for (int i = 0; i < 10; i++)
 			{
-				var randX = FP.Random.Int(100) - 50;
-				var randY = FP.Random.Int(100) - 50;
-				emitter.Emit("spark", X + randX, Y + randY);		
+				var rand = FP.Random.InCircle(50);
+				World.BroadcastMessage(GlobalEmitter.Message.BulletTrail, "spark", X + rand.X, Y + rand.Y);	
 			}
 		}
 		

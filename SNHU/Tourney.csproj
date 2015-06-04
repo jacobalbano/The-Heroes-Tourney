@@ -75,10 +75,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Components\DodgeController.cs" />
-    <Compile Include="Components\HitFreeze.cs" />
+    <Compile Include="Components\Fists.cs" />
     <Compile Include="Components\HypeTween.cs" />
     <Compile Include="Components\Movement.cs" />
+    <Compile Include="Components\OffscreenCursor.cs" />
     <Compile Include="Components\PhysicsBody.cs" />
     <Compile Include="Config\ObjectLayers.cs" />
     <Compile Include="Config\PlayerConfig.cs" />
@@ -100,7 +102,6 @@
     <Compile Include="GameObject\Triggers\Trigger.cs" />
     <Compile Include="GameObject\Triggers\Triggerable.cs" />
     <Compile Include="GameObject\Platforms\Crumble.cs" />
-    <Compile Include="GameObject\Platforms\JumpPad.cs" />
     <Compile Include="GameObject\Platforms\Platform.cs" />
     <Compile Include="GameObject\Player.cs" />
     <Compile Include="GameObject\Razor.cs" />
@@ -123,22 +124,21 @@
     <Compile Include="GameObject\Upgrades\SuperSpeed.cs" />
     <Compile Include="GameObject\Upgrades\Upgrade.cs" />
     <Compile Include="GameWorld.cs" />
-    <Compile Include="menuobject\ControllerSelect.cs" />
-    <Compile Include="menuobject\DrawEnding.cs" />
-    <Compile Include="menuobject\VictoryEnding.cs" />
+    <Compile Include="MenuObject\ControllerSelect.cs" />
+    <Compile Include="MenuObject\DrawEnding.cs" />
+    <Compile Include="MenuObject\VictoryEnding.cs" />
     <Compile Include="MenuWorld.cs" />
-    <Compile Include="OffscreenCursor.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\CameraManager.cs" />
     <Compile Include="System\Chunk.cs" />
     <Compile Include="System\ChunkManager.cs" />
     <Compile Include="System\EffectMessage.cs" />
     <Compile Include="System\GameManager.cs" />
+    <Compile Include="System\GlobalEmitter.cs" />
     <Compile Include="System\HUD.cs" />
     <Compile Include="System\Mixer.cs" />
     <Compile Include="System\PlayerManager.cs" />
-    <Compile Include="Util.cs" />
+    <Compile Include="System\SoundVariant.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Config\Upgrades" />
@@ -149,7 +149,7 @@
     <Folder Include="GameObject\Platforms" />
     <Folder Include="GameObject\Upgrades\Helper" />
     <Folder Include="GameObject\Effects" />
-    <Folder Include="menuobject" />
+    <Folder Include="MenuObject" />
     <Folder Include="Config" />
     <Folder Include="System" />
   </ItemGroup>

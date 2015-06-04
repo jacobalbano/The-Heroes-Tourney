@@ -39,11 +39,10 @@ namespace SNHU.GameObject.Upgrades
 			{
 				base.Use();
 			
-				Tweener.Tween(owner.left.Image, new { Alpha = InvisibleAlpha }, 0.25f);
-				Tweener.Tween(owner.right.Image, new { Alpha = InvisibleAlpha }, 0.25f);
+				Tweener.Tween(owner.Fists, new { Alpha = InvisibleAlpha }, 0.25f);
 				Tweener.Tween(owner.player, new { Alpha = InvisibleAlpha }, 0.25f);
 				
-				owner.right.ForceMultiplier = owner.left.ForceMultiplier = PunchMultiplier;
+				owner.Fists.ForceMultiplier = PunchMultiplier;
 			}
 		}
 		
@@ -51,10 +50,9 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.OnLifetimeComplete();
 			
-			owner.right.ForceMultiplier = owner.left.ForceMultiplier = Fist.DEFAULT_PUNCH_MULT;
+			owner.Fists.ForceMultiplier = Fist.DEFAULT_PUNCH_MULT;
 			
-			Tweener.Tween(owner.left.Image, new { Alpha = 1 }, 0.25f);
-			Tweener.Tween(owner.right.Image, new { Alpha = 1 }, 0.25f);
+			Tweener.Tween(owner.Fists, new { Alpha = 1 }, 0.25f);
 			Tweener.Tween(owner.player, new { Alpha = 1 }, 0.25f)
 				.OnComplete(() => owner.SetUpgrade(null));
 		}

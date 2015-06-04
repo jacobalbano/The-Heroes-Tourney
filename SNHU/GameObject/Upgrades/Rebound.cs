@@ -4,6 +4,7 @@ using Indigo;
 using Indigo.Graphics;
 using SNHU.Components;
 using SNHU.Config.Upgrades;
+using SNHU.Systems;
 
 namespace SNHU.GameObject.Upgrades
 {

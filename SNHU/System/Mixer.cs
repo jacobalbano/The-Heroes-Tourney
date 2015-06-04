@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Indigo;
 using Indigo.Audio;
 
-namespace SNHU.GameObject
+namespace SNHU.Systems
 {
 	/// <summary>
 	/// Description of Mixer.
@@ -11,9 +11,6 @@ namespace SNHU.GameObject
 	public class Mixer
 	{
 		public static readonly Sound
-			Jump1,
-			Jump2,
-			Jump3,
 			Hit1,
 			Land1,
 			Death1,
@@ -26,17 +23,21 @@ namespace SNHU.GameObject
 			Explode,
 			TimeTick,
 			SawHit,
-			Fus,
-			Swing1,
-			Swing2;
+			Fus;
+			
+		public static readonly SoundVariant
+			Jump,
+			Swing,
+			DoubleJump;
 		
 		public static Sound Music;
 		
 		static Mixer()
 		{
-			Jump1 =  new Sound(Library.GetSoundBuffer("audio/jump1.wav"));
-			Jump2 = new Sound(Library.GetSoundBuffer("audio/jump2.wav"));
-			Jump3 = new Sound(Library.GetSoundBuffer("audio/jump3.wav"));
+			Jump = new SoundVariant(Library.GetFilenames("audio/", "jump*.wav"));
+			Swing = new SoundVariant(Library.GetFilenames("audio/", "swing*.wav"));
+			DoubleJump = new SoundVariant(Library.GetFilenames("audio/", "doublejump*.wav"));
+			
 			Hit1 = new Sound(Library.GetSoundBuffer("audio/hit1.wav"));
 			Land1 =  new Sound(Library.GetSoundBuffer("audio/land1.wav"));
 			Death1 = new Sound(Library.GetSoundBuffer("audio/death1.wav"));
@@ -50,8 +51,6 @@ namespace SNHU.GameObject
 			TimeTick = new Sound(Library.GetSoundBuffer("audio/timeTick.wav"));
 			SawHit = new Sound(Library.GetSoundBuffer("audio/sawHit.wav"));
 			Fus = new Sound(Library.GetSoundBuffer("audio/fus.wav"));
-			Swing1 = new Sound(Library.GetSoundBuffer("audio/swing1.wav"));
-			Swing2 = new Sound(Library.GetSoundBuffer("audio/swing2.wav"));
 			
 			Music = new Sound(Library.GetSoundStream("audio/music2.ogg")); // lol wot pls
 //			Music.Volume = 0;

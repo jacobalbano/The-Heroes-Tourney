@@ -39,6 +39,7 @@ namespace SNHU
 			
 			AddManager(playerManager = new PlayerManager());
 			Add(chunkManager = new ChunkManager());
+			Add(new GlobalEmitter());
 			Add(hud = new HUD());
 			
 			playerManager.CreatePlayers(playerImageNames);
@@ -48,6 +49,8 @@ namespace SNHU
 		public override void Begin()
 		{
 			base.Begin();
+			
+			Mixer.Music.Play();
 			
 			var black = Image.CreateRect(FP.Width, FP.Height, new Color());
 			AddGraphic(black, 0, 0, ObjectLayers.Foreground);

@@ -35,11 +35,9 @@ namespace SNHU.GameObject
 		
 		public Image player;
 		private bool hand;
-		public Fist left, right;
+		public Fists Fists;
 		
 		private Directional Direction;
-		
-		private OffscreenCursor cursor;
 		
 		public Queue<Upgrade> UpgradeQueue;
 		public Upgrade CurrentUpgrade { get; private set; }
@@ -48,22 +46,23 @@ namespace SNHU.GameObject
 		public bool Invincible { get; private set; }
 		public bool Rebounding { get; private set; }
 		public bool Guarding { get; private set; }
+		
 		public int Facing { get { return player.FlippedX ? -1 : 1; } }
 		
 		public Input Jump, Attack, Dodge, ActivateUpgrade, Guard, Start;
 		
-		private StateMachine inputState;
-		private int Standing, Jumping, Falling;
+		private StateMachine states;
+		private int Standing, Jumping, Falling, Dodging;
 		
 		private PhysicsBody Physics;
 		public DodgeController DodgeController;
 		public Movement Movement;
-		public bool OnGround { get; private set; }
 		
 		public const float SPEED = 5.5f;
 		private const float GUARD_SPEED_MULT = 0.6f;
 		
 		public int Health, PunchDamage, Lives;
+		private int JumpsRemaining;
 		
 		public int PlayerId { get; private set; }
 		public int ControllerId { get; private set; }
@@ -73,53 +72,139 @@ namespace SNHU.GameObject
 		
 		public Player(int slot, int playerId, string imageName)
 		{
-			excludeCollision = new HashSet<Entity>();
-			ImageName = imageName;
-			PlayerId = playerId;
 			ControllerId = slot;
+			PlayerId = playerId;
+			ImageName = imageName;
 			
 			Layer = ObjectLayers.Players;
-			
-			hand = false;
-			InitController();
-				
-			var tex = Library.GetTexture("players/" + imageName + ".png");
-			tex.Smooth = true;
-			player = new Image(tex);
-			player.Scale = 0.5f;
-			AddComponent(player);
-			
-			cursor = new OffscreenCursor(this);
-			
-			player.CenterOO();
-			SetHitbox(30, 60, 15, 60);
-			
-			player.OriginY = player.Height;
-			
-			left = new Fist(true, this);
-			right = new Fist(false, this);
-			
-			Type = Collision;
-			IsAlive = false;
-			
-			Invincible = false;
-			Rebounding = false;
-			
+			excludeCollision = new HashSet<Entity>();
 			UpgradeQueue = new Queue<Upgrade>();
 			UpgradeCapacity = 1;
+			
+			InitController();
+			
+			SetHitbox(30, 60, 15, 60);
+			
+			Type = Collision;
+			
+			IsAlive = false;
+			Invincible = false;
+			Rebounding = false;
 			
 			Physics = AddComponent(new PhysicsBody(Platform.Collision, Type));
 			Movement = AddComponent(new Movement(Physics, Direction));
 			DodgeController = AddComponent(new DodgeController(Dodge, Direction));
-			inputState = AddComponent(new StateMachine());
+			
+			player = AddComponent(new Image(Library.GetTexture("players/" + imageName + ".png")));
+			player.Source.Smooth = true;
+			player.Scale = 0.5f;
+			player.OriginX = player.Width / 2;
+			player.OriginY = player.Height;
+			
+			AddComponent(new OffscreenCursor(ImageName));
+			Fists = AddComponent(new Fists());
+			
+			states = AddComponent(new StateMachine());
+			Standing = states.AddState(BeginStand, WhileStanding, null);
+			Jumping = states.AddState(BeginJump, WhileJumping, null);
+			Falling = states.AddState(BeginFalling, WhileFalling, null);
+			Dodging = states.AddState(WhileDodging);
 			
 			AddResponse(Message.Damage, OnDamage);
 			AddResponse(Fist.Message.PunchConnected, OnPunchConnected);
 			AddResponse(EffectMessage.Message.OnEffect, OnEffect);
 			AddResponse(Shield.Message.Set, SetShield);
 			AddResponse(Rebound.Message.Set, SetRebound);
-			AddResponse(Fist.Message.PunchSuccess, OnPunchSuccess);
+		}
+		
+		void BeginStand()
+		{
+			player.ScaleX = 1 + JUMP_JUICE_FORCE;
+			player.ScaleY = 1 - JUMP_JUICE_FORCE;
 			
+			Tweener.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
+			Mixer.Land1.Play();
+			
+			JumpsRemaining = 2;
+		}
+		
+		void WhileStanding()
+		{
+			if (!Guarding)
+				UpdateFacing();
+			
+			if (Jump.Pressed)
+				states.ChangeState(Jumping);
+			
+			OnMessage(PhysicsBody.Message.Friction, 0.75f);
+			
+			if (Collide(Platform.Collision, X, Y + 1) == null)
+				states.ChangeState(Falling);
+		}
+		
+		void BeginJump()
+		{
+			Tweener.Cancel();
+			
+			OnMessage(PhysicsBody.Message.Impulse, 0, JumpForce, true);
+			
+			if (JumpsRemaining == 2)
+			{
+				Mixer.Jump.Play();
+			}
+			else
+			{
+				Mixer.DoubleJump.Play();
+				
+				for (int i = 0; i < 5; i++)
+				{
+					var randX = FP.Random.Int(-12, 12);
+					var randY = FP.Random.Int(3);
+					World.BroadcastMessage(GlobalEmitter.Message.DoubleJump, "dust", X + randX, Y + randY - 15);
+				}
+			}
+			
+			Tweener.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION)
+				.From(new { ScaleX = 1 - JUMP_JUICE_FORCE, ScaleY = 1 + JUMP_JUICE_FORCE});
+		}
+		
+		void WhileJumping()
+		{
+			UpdateFacing();
+			
+			var delta = Physics.MoveDelta.Y;
+			if (delta >= -5)
+				states.ChangeState(Falling);
+		}
+		
+		void BeginFalling()
+		{
+			JumpsRemaining--;
+		}
+		
+		void WhileFalling()
+		{
+			UpdateFacing();
+			if (Jump.Pressed && JumpsRemaining > 0)
+				states.ChangeState(Jumping);
+		}
+		
+		void WhileDodging()
+		{
+		}
+		
+		private void UpdateFacing()
+		{
+			if (Direction.X < 0)
+		 	{
+				player.FlippedX = true;
+				Fists.FaceLeft();
+		 	}
+		 	else if (Direction.X > 0)
+		 	{
+				player.FlippedX = false;
+				Fists.FaceRight();
+		 	}
 		}
 		
 		void InitController()
@@ -163,11 +248,7 @@ namespace SNHU.GameObject
 		{
 			base.Added();
 			
-			if (cursor.World == null)
-				World.Add(cursor);
-			
-			OnMessage(DodgeController.Message.CancelDodge);
-			World.AddList(left, right);
+			states.ChangeState(Falling);
 			IsAlive = true;
 			
 			UpgradeCapacity = Library.GetConfig<PlayerConfig>("config/player.ini").UpgradeCapacity;
@@ -176,25 +257,8 @@ namespace SNHU.GameObject
 		public override void Removed()
 		{
 			base.Removed();
-			World.RemoveList(left, right);
 			
 			OnMessage(PhysicsBody.Message.Cancel);
-		}
-		
-		void FaceLeft()
-		{
-			player.FlippedX = true;
-			
-			left.FaceLeft();
-			right.FaceLeft();
-		}
-		
-		void FaceRight()
-		{
-			player.FlippedX = false;
-			
-			left.FaceRight();
-			right.FaceRight();
 		}
 		
 		public override void Update()
@@ -206,56 +270,17 @@ namespace SNHU.GameObject
 				var toRemove = new List<Entity>();
 				
 				foreach (var p in excludeCollision)
-				{
 					if (!CollideWith(p, X, Y))
 						toRemove.Add(p);
-				}
 				
 				foreach (var p in toRemove)
-				{
 					excludeCollision.Remove(p);
-				}
-			}
-			
-			if (!Guarding)
-			{
-			 	if (Direction.X < 0)
-			 	{
-			 		FaceLeft();
-			 	}
-			 	else if (Direction.X > 0)
-			 	{
-			 		FaceRight();
-			 	}
-			}
-			
-			if (Collide(Platform.Collision, X, Y + 1) == null)
-			{
-				OnGround = false;
-			}
-			else
-			{
-				OnMessage(PhysicsBody.Message.Friction, 0.75f);
-			}
-			
-			if (!OnGround && DodgeController.IsDodging)
-			{
-				Entity result = 
-					Collide(Platform.Collision, X + 1, Y) ??
-					Collide(Platform.Collision, X - 1, Y);
-				
-				if (result != null)
-				{
-				DodgeController.CanDodge = true;
-				}
 			}
 			
 			HandleInput();
 			
 			if(Top > FP.Camera.Y + FP.HalfHeight)
-			{
 				Kill();
-			}
 		}
 		
 		private void HandleInput()
@@ -263,46 +288,14 @@ namespace SNHU.GameObject
 			var newGuard = Guard.Down;
 			if (newGuard != Guarding)
 			{
-				if (!IsPunching())
+				if (!Fists.Punching)
 			    {
 					if (newGuard)
 						Physics.OnMessage(PhysicsBody.Message.ImpulseMult, 0.3);
 					else
 						Physics.OnMessage(PhysicsBody.Message.ImpulseMult, 1);
 					
-					left.SetGuarding(newGuard);
-					right.SetGuarding(newGuard);
-					
-					Guarding = newGuard;
-				}
-			}
-			
-			if (Jump.Pressed)
-			{
-				OnMessage(DodgeController.Message.CancelDodge);
-				
-				if (OnGround)
-				{
-					float jumpMult = 1;
-					
-					if(Collide(JumpPad.Collision, X, Y + 1) != null)
-					{
-						jumpMult = 1.4f;
-						Mixer.JumpPad.Play();
-					}
-					else
-					{
-						FP.Choose.Option(Mixer.Jump1, Mixer.Jump2, Mixer.Jump3).Play();
-					}
-					
-					OnMessage(PhysicsBody.Message.Impulse, 0, JumpForce * jumpMult, true);
-					
-					Tweener.Cancel();
-					
-					player.ScaleX = 1 - JUMP_JUICE_FORCE;
-					player.ScaleY = 1 + JUMP_JUICE_FORCE;
-					
-					Tweener.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
+					Guarding = Fists.Guarding = newGuard;
 				}
 			}
 			
@@ -314,35 +307,10 @@ namespace SNHU.GameObject
 				}
 			}
 			
-			if (!Guarding)
+			if (!Guarding && Attack.Pressed)
 			{
-				if (Attack.Pressed)
-				{
-					Punch(hand = !hand);
-				}
-			}
-		}
-		
-		bool IsPunching()
-		{
-			return left.Punching || right.Punching;
-		}
-		
-		private void Punch(bool hand)
-		{
-			bool success = false;
-			if (hand)
-			{
-				success = left.Punch(Direction.X, Direction.Y);
-			}
-			else
-			{
-				success = right.Punch(Direction.X, Direction.Y);
-			}
-			
-			if (success)
-			{
-				FP.Choose.Option(Mixer.Swing1, Mixer.Swing2).Play();
+				if (Fists.Punch(Direction.X, Direction.Y))
+					Mixer.Swing.Play();
 			}
 		}
 		
@@ -350,25 +318,19 @@ namespace SNHU.GameObject
 		{
 			if (e.Type == Platform.Collision)
 			{
-				if (!OnGround)
-				{
-					OnGround = true;
-					
-					player.ScaleX = 1 + JUMP_JUICE_FORCE;
-					player.ScaleY = 1 - JUMP_JUICE_FORCE;
-					
-					Tweener.Tween(player, new { ScaleX = 1, ScaleY = 1}, JUMP_JUICE_DURATION);
-					
-					Mixer.Land1.Play();
-					
-					if (e.Y >= Y)
+				if (states.CurrentState != Standing)
+				{	
+					if (Physics.MoveDelta.Y > 0)
 					{
 						//	send OnLand only if we're above the object.
+						states.ChangeState(Standing);
 						e.OnMessage(Message.OnLand, this);
 					}
 					else
 					{
+						JumpsRemaining--;
 						OnMessage(PhysicsBody.Message.Impulse, 0, 1, true);
+						states.ChangeState(Falling);
 					}
 				}
 				
@@ -400,9 +362,6 @@ namespace SNHU.GameObject
 				
 				if (p.Invincible)
 					return true;
-				
-				if (DodgeController.IsDodging)
-					return false;
 				
 				if (excludeCollision.Contains(e) || p.excludeCollision.Contains(this))
 					return false;
@@ -454,13 +413,7 @@ namespace SNHU.GameObject
 			}
 			
 			this.CurrentUpgrade = upgrade;
-			
-			if (player != null && left != null && right != null)
-			{
-				player.Alpha = 1.0f;
-				left.Image.Alpha = 1.0f;
-				right.Image.Alpha = 1.0f;
-			}
+			player.Alpha = Fists.Alpha = 1;
 			
 			Rebounding = false;
 			Invincible = false;
@@ -486,12 +439,6 @@ namespace SNHU.GameObject
 			World.BroadcastMessage(HUD.Message.UpdateDamage, this);
 			if (Health <= 0)
 				Kill();
-		}
-		
-		private void OnPunchSuccess(params object[] args)
-		{
-			if (GetComponent<HitFreeze>() == null)
-				AddComponent(new HitFreeze(X, Y));
 		}
 		
 		private void OnEffect(params object[] args)

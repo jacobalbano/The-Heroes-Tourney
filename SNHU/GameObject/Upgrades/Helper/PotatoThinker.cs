@@ -8,6 +8,7 @@ using Indigo.Graphics;
 using Indigo.Utils;
 using SNHU.Config.Upgrades;
 using SNHU.GameObject.Effects;
+using SNHU.Systems;
 
 namespace SNHU.GameObject.Upgrades.Helper
 {

@@ -18,6 +18,7 @@ namespace SNHU.MenuObject
 	public class ControllerSelect : Entity
 	{
 		private static Dictionary<int, int> wins;
+		private static Dictionary<int, string> skins;
 		
 		public int PlayerSlot { get; private set; }
 		public int JoyId { get; private set; }
@@ -26,6 +27,7 @@ namespace SNHU.MenuObject
 		private Directional Cursor;
 		
 		public bool Ready { get; private set; }
+		public bool Started { get; private set; }
 		
 		public int Color { get; private set; }
 		public Image Image { get; private set; }
@@ -37,14 +39,13 @@ namespace SNHU.MenuObject
 		public string PlayerImageName { get; private set; }
 		private bool changing;
 		
-		private bool started;
-		
 		private MenuWorld parent;
 		
 		private static int[] colors;
 		static ControllerSelect()
 		{
 			wins = new Dictionary<int, int>();
+			skins = new Dictionary<int, string>();
 			
 			colors = new int[]
 			{
@@ -128,11 +129,11 @@ namespace SNHU.MenuObject
 		{
 			base.Update();
 			
-			if (!started)
+			if (!Started)
 			{
 				if (Start.Pressed)
 				{
-					started = true;
+					Started = true;
 					
 					RemoveComponent(pressStart);
 					
@@ -147,7 +148,7 @@ namespace SNHU.MenuObject
 					Tweener.Tween(this, new { Y = 1 }, 0.75f)
 						.Ease(Ease.BounceOut);
 					
-					PlayerImageName = parent.GetImageName();
+					PlayerImageName = parent.GetImageName(GetLastSkin(PlayerSlot));
 					MakePlayerImage();
 					
 					StartCursors();
@@ -304,12 +305,22 @@ namespace SNHU.MenuObject
 		
 		public static void IncreaseWin(int controllerId)
 		{
-			
 			if (!wins.ContainsKey(controllerId))
 				wins[controllerId] = 0;
 			
 			wins[controllerId] = wins[controllerId] + 1;
-			
+		}
+		
+		public static void SetLastSkin(int playerId, string imageName)
+		{
+			skins[playerId] = imageName;
+		}
+		
+		public static string GetLastSkin(int playerId)
+		{
+			var result = "";
+			skins.TryGetValue(playerId, out result);
+			return result;
 		}
 	}
 }

@@ -85,35 +85,25 @@ namespace SNHU
 		{
 			base.Update();
 			
-			if ((Keyboard.LAlt.Down || Keyboard.RAlt.Down) && Keyboard.F4.Pressed)
-			{
-				FP.Engine.Quit();
-			}
-			
-			if (Keyboard.F.Pressed)
-			{
-				FP.Screen.Fullscreen = !FP.Screen.Fullscreen;
-			}
-			
 			if (Keyboard.R.Pressed)
-			{
 				FP.World = new MenuWorld();
-			}
 			
 			if (readying)	return;
+			if (controllerMenus.Count == 0) return;
 			
+			int total = controllerMenus.Count, ready = 0, started = 0;
 			foreach (var menu in controllerMenus.Values)
 			{
-				if (!menu.Ready)
-				{
-					return;
-				}
+				if (menu.Ready) ready++;
+				if (menu.Started) started++;
 			}
 			
-			if (controllerMenus.Count > 0)
+			if ((started > 1 && ready == started) || total == ready)
 			{
 				readying = true;
-				var menus = new List<ControllerSelect>(controllerMenus.Values);
+				var menus = controllerMenus.Values
+					.Where(menu => menu.Ready)
+					.ToList();
 				
 				for (int i = 0; i < menus.Count; i++)
 				{
@@ -142,7 +132,9 @@ namespace SNHU
 			var playerGraphics = new Dictionary<int, string>();
 			foreach (var menu in controllerMenus.Values)
 			{
+				if (!menu.Ready) continue;
 				playerGraphics[menu.JoyId] = menu.PlayerImageName;
+				ControllerSelect.SetLastSkin(menu.PlayerSlot, menu.PlayerImageName);
 			}
 			
 			FP.World = new GameWorld(playerGraphics);
@@ -160,9 +152,7 @@ namespace SNHU
 		{
 			var slot = GetSlot();
 			if (slot > 3)
-			{
 				return;
-			}
 			
 			var menu = new ControllerSelect(this, slot, joystickId);
 			
@@ -178,9 +168,7 @@ namespace SNHU
 		private int GetSlot()
 		{
 			if (pool.Count > 0)
-			{
 				return pool.Pop();
-			}
 			
 			return controllerMenus.Count;
 		}
@@ -200,12 +188,15 @@ namespace SNHU
 				.OnComplete(() => Remove(menu));
 		}
 		
-		public string GetImageName()
+		public string GetImageName(string preferredChoice)
 		{
-			var choice = "";
-			do {
-				choice = FP.Choose.From(allImages);
-			} while (takenImages.IndexOf(choice) >= 0);
+			var choice = preferredChoice;
+			if (choice == null || takenImages.IndexOf(choice) >= 0)
+			{
+				do {
+					choice = FP.Choose.From(allImages);
+				} while (takenImages.IndexOf(choice) >= 0);
+			}
 			
 			takenImages.Add(choice);
 			return choice;

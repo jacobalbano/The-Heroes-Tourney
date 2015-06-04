@@ -26,7 +26,7 @@ namespace SNHU.GameObject
 		private Entity[] ents;
 		private string level;
 		
-		private static string[] levels;
+		private static List<string> levels;
 		private static OgmoLoader loader;
 		
 		static Chunk()
@@ -34,24 +34,22 @@ namespace SNHU.GameObject
 			levels = Library.GetFilenames("Levels/", "*")
 				.ToList();
 			
-			for (int i = 0; i < levels.Length; i++)
+			for (int i = 0; i < levels.Count; i++)
 			{
 				var level = levels[i];
 				level = level.Substring(level.LastIndexOf("/"));
 				levels[i] = level;
 			}
 			
-			l.Remove("/bawks.oel");
-			l.Remove("/Real_3.oel");
-			l.Remove("/bigYucky.oel");
-			levels = l.ToArray();
+			levels.Remove("/bawks.oel");
+			levels.Remove("/Real_3.oel");
+			levels.Remove("/bigYucky.oel");
 			
 //			levels = new string[] { "Real_3.oel" };
 			
 			loader = new OgmoLoader();
 			loader.RegisterGridType("Collision", "Collision", 16, 16);
 			
-			loader.RegisterClassAlias<JumpPad>("jumpPad");
 			loader.RegisterClassAlias<Crumble>("crumble");
 			loader.RegisterClassAlias<Razor>("deadlyAnchor");
 			loader.RegisterClassAlias<SpawnPoint>("spawnPoint");
