@@ -31,7 +31,7 @@ namespace SNHU.Systems
 		
 		public void Play()
 		{
-			CurrentSound = FP.Choose.From(Sounds);
+			CurrentSound = Engine.Choose.From(Sounds);
 			CurrentSound.Play();
 		}
 		

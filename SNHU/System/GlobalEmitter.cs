@@ -24,14 +24,14 @@ namespace SNHU.Systems
 			AddResponse(Message.SuperSpeed, DelegateEmit(InitSpeed()));
 			AddResponse(Message.DoubleJump, DelegateEmit(InitDoubleJump()));
 			
-			Layer = ObjectLayers.JustAbove(ObjectLayers.Players);
+			RenderStep = ObjectLayers.JustAbove(ObjectLayers.Players);
 		}
 		
 		private Emitter InitDoubleJump()
 		{
-			var emitter = new Emitter(Library.GetTexture("dust.png"), 24, 24);
+			var emitter = new Emitter(Library.Get<Texture>("dust.png"), 24, 24);
 			
-			emitter.NewType("dust", FP.Frames(0, 1));
+			emitter.NewType("dust", Engine.Frames(0, 1));
 			emitter.SetAlpha("dust", 0.9f, 0, Ease.QuintOut);
 			emitter.SetMotion("dust", 80, 3, 0.5f, 10, 3, 0.2f, Ease.QuintOut);
 			emitter.SetScaling("dust", 1.8f, 1.5f, Ease.QuintOut);
@@ -41,13 +41,13 @@ namespace SNHU.Systems
 		
 		private Emitter InitSpeed()
 		{
-			var emitter = new Emitter(Library.GetTexture("speed_particle.png"), 68, 30);
+			var emitter = new Emitter(Library.Get<Texture>("speed_particle.png"), 68, 30);
 			
-			emitter.NewType("l", FP.Frames(0));
+			emitter.NewType("l", Engine.Frames(0));
 			emitter.SetMotion("l", 0, 50, 0.5f, 0, 15, 1, Ease.QuintOut);
 			emitter.SetAlpha("l", 0.5f, 0, Ease.QuintOut);
 			
-			emitter.NewType("r", FP.Frames(1));
+			emitter.NewType("r", Engine.Frames(1));
 			emitter.SetMotion("r", 0, 50, 0.5f, 0, 15, 1, Ease.QuintOut);
 			emitter.SetAlpha("r", 0.5f, 0, Ease.QuintOut);
 			
@@ -56,10 +56,10 @@ namespace SNHU.Systems
 		
 		private Emitter InitBulletTrail()
 		{
-			var emitter = new Emitter(Library.GetTexture("bullet_sparkle.png"), 20, 20);
+			var emitter = new Emitter(Library.Get<Texture>("bullet_sparkle.png"), 20, 20);
 			
 			var name = "spark";
-			emitter.NewType(name, FP.Frames(0, 1, 2, 3, 4));
+			emitter.NewType(name, Engine.Frames(0, 1, 2, 3, 4));
 			emitter.SetAlpha(name, 1, 0);
 			emitter.SetMotion(name, 0, 0, 0.5f, 0, 0, 0.25f, Ease.CircOut);
 			
@@ -68,13 +68,13 @@ namespace SNHU.Systems
 		
 		private Emitter InitGroundSmash()
 		{
-			var emitter = new Emitter(Library.GetTexture("groundsmash_particle.png"), 3, 3);
+			var emitter = new Emitter(Library.Get<Texture>("groundsmash_particle.png"), 3, 3);
 			emitter.Relative = false;
 			
 			for (int i = 0; i < 4; i++)
 			{
 				var name = i.ToString();
-				emitter.NewType(name, FP.Frames(i));
+				emitter.NewType(name, Engine.Frames(i));
 				emitter.SetAlpha(name, 0, 1f);
 				emitter.SetMotion(name, -90, 100, 0.5f, 10, 10, 0.1f, Ease.SineOut);
 				emitter.SetGravity(name, 5, 2);

@@ -1,6 +1,7 @@
 ﻿using System;
 using Glide;
 using Indigo;
+using Indigo.Content;
 using Indigo.Graphics;
 using Indigo.Loaders;
 using Indigo.Utils;
@@ -17,19 +18,19 @@ namespace SNHU.GameObject
 		
 		public RazorBlade(float size)
 		{
-			blade = new Image(Library.GetTexture("razor.png"));
+			blade = new Image(Library.Get<Texture>("razor.png"));
 			blade.Scale = size;
-			blade.CenterOO();
+			blade.CenterOrigin();
 			SetHitboxTo(blade);
 			CenterOrigin();
 			
-			emitter = new Emitter(Library.GetTexture("blood.png"), 15, 15);
+			emitter = new Emitter(Library.Get<Texture>("blood.png"), 15, 15);
 			emitter.Relative = false;
 			
 			for (int i = 0; i < 4; ++i)
 			{
 				var name = i.ToString();
-				emitter.NewType(name, FP.Frames(i));
+				emitter.NewType(name, Engine.Frames(i));
 				
 				emitter.SetGravity(name, 10, 10);
 				emitter.SetMotion(name, 0, 50, 0.5f, 360, 15, 1, Ease.QuintOut);
@@ -40,9 +41,9 @@ namespace SNHU.GameObject
 			AddComponent(emitter);
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			blade.Angle += 15;
 			
 			var p = Collide(Player.Collision, X, Y) as Player;
@@ -50,9 +51,9 @@ namespace SNHU.GameObject
 			{
 				for (int i = 0; i < 150; ++i)
 				{
-					var randX = FP.Random.Int(Width) - HalfWidth;
-					var randY = FP.Random.Int(Height) - HalfHeight;
-					emitter.Emit(FP.Choose.Character("0123"), X + randX, Y - 50 + randY);
+					var randX = Engine.Random.Int(Width) - HalfWidth;
+					var randY = Engine.Random.Int(Height) - HalfHeight;
+					emitter.Emit(Engine.Choose.Character("0123"), X + randX, Y - 50 + randY);
 				}
 				
 				p.OnMessage(EffectMessage.Message.OnEffect, MakeEffect(p));
@@ -90,20 +91,20 @@ namespace SNHU.GameObject
 		
 		public void NodeHandler(System.Xml.XmlNode entity)
 		{
-			myImage = new Image(Library.GetTexture("pivot.png"));
-			razorArm = new Image(Library.GetTexture("razorArm.png"));
+			myImage = new Image(Library.Get<Texture>("pivot.png"));
+			razorArm = new Image(Library.Get<Texture>("razorArm.png"));
 			
 			razorArm.ScaleX = distance * 32 / razorArm.Width;
 			
-			myImage.CenterOO();
+			myImage.CenterOrigin();
 			razorArm.OriginY = razorArm.Height /2;
 			
 			theRazor = new RazorBlade(size);
 			theRazor.X = X;
 			theRazor.Y = Y;
 			
-			Layer = ObjectLayers.JustAbove(ObjectLayers.Players);
-			theRazor.Layer = ObjectLayers.JustAbove(Layer);
+			RenderStep = ObjectLayers.JustAbove(ObjectLayers.Players);
+			theRazor.RenderStep = ObjectLayers.JustAbove(RenderStep);
 			
 			theRazor.X += razorArm.ScaledWidth;
 
@@ -128,12 +129,12 @@ namespace SNHU.GameObject
 			World.Remove(theRazor);
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			rotation += speed;
-			FP.AnchorTo(ref theRazor.X, ref theRazor.Y, X, Y, razorArm.ScaledWidth);
-			FP.RotateAround(ref theRazor.X, ref theRazor.Y, X, Y, rotation, false);
+			Engine.AnchorTo(ref theRazor.X, ref theRazor.Y, X, Y, razorArm.ScaledWidth);
+			Engine.RotateAround(ref theRazor.X, ref theRazor.Y, X, Y, rotation, false);
 			razorArm.Angle = rotation;
 		}
 	}

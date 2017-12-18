@@ -30,7 +30,7 @@ namespace SNHU.Systems
 		
 		public PlayerManager()
 		{
-			var Config = Library.GetConfig<PlayerConfig>("config/player.ini");
+			var Config = Library.Get<PlayerConfig>("config/player.ini");
 			StartingLives = Config.StartingLives;
 			StartingHealth = Config.StartingHealth;
 			PunchDamage = Config.PunchDamage;
@@ -42,7 +42,7 @@ namespace SNHU.Systems
 			AddResponse(ChunkManager.Message.Advance, OnAdvance);
 			AddResponse(ChunkManager.Message.AdvanceComplete, OnFinishAdvance);
 		}
-		
+
 		public override void Update()
 		{
 			base.Update();
@@ -54,7 +54,7 @@ namespace SNHU.Systems
 					players = ActivePlayers;
 				
 				foreach (var player in players)
-					if (player.Start.Pressed) FP.World = new MenuWorld();
+					if (player.Start.Pressed) Engine.World = new MenuWorld();
 			}
 		}
 		
@@ -123,7 +123,7 @@ namespace SNHU.Systems
 		private void SpawnPlayers(params object[] args)
 		{
 			var SpawnPoints = args[0] as List<Entity>;
-			FP.Random.Shuffle(SpawnPoints);
+			Engine.Random.Shuffle(SpawnPoints);
 			
 			foreach (var player in ActivePlayers)
 			{
@@ -145,7 +145,7 @@ namespace SNHU.Systems
 			
 			if (ActivePlayers.Count <= 1)
 			{
-				var flash = Image.CreateRect(FP.Width, FP.Height, Color.White);
+				var flash = Image.CreateRect(Engine.Width, Engine.Height, Color.White);
 				flash.ScrollX = flash.ScrollY = 0;
 				World.Tweener.Tween(flash, new { Alpha = 0 }, 1f)
 					.Ease(Ease.SineOut);

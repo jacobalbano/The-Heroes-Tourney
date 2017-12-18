@@ -11,28 +11,28 @@ namespace SNHU
 	{
 		public Program() : base(1000, 600, 60)
 		{
-			#if DEBUG
-			FP.Console.Enable();
-			FP.Console.MirrorToSystemOut = true;
+#if DEBUG
+			Engine.Console.Enable();
+			//Engine.Console.MirrorToSystemOut = true;
 			#endif
 			
 			Library.AddPath("assets/");
 			Library.AddPath("assets/mods");
-			
-			FP.World = new MenuWorld();
+
+			Engine.World = new MenuWorld();
 			Mixer.Preload();
 			
-			FP.Screen.Title = "The Heroes' Tourney";
+			Engine.Screen.Title = "The Heroes' Tourney";
 			Mouse.CursorVisible = false;
-			
-			FP.GlobalKeys.Add(Quit)
+
+			Engine.GlobalKeys.Add(Quit)
 				.Down(new InputList.Any(Keyboard.LAlt, Keyboard.RAlt))
 				.Pressed(Keyboard.F4);
-			
-			FP.GlobalKeys.Add(Fullscreen)
+
+			Engine.GlobalKeys.Add(Fullscreen)
 				.Pressed(Keyboard.F);
-			
-			FP.GlobalKeys.Add(Fullscreen)
+
+			Engine.GlobalKeys.Add(Fullscreen)
 				.Down(new InputList.Any(Keyboard.LAlt, Keyboard.RAlt))
 				.Pressed(Keyboard.Return);
 		}
@@ -45,7 +45,7 @@ namespace SNHU
 		
 		private void Fullscreen()
 		{
-			FP.Screen.Fullscreen = !FP.Screen.Fullscreen;
+			Engine.Screen.Fullscreen = !Engine.Screen.Fullscreen;
 		}
 	}
 }

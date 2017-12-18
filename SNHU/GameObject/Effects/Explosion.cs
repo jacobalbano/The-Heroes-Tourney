@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Glide;
 using Indigo;
+using Indigo.Content;
 using Indigo.Graphics;
 using SNHU.Systems;
 
@@ -14,12 +15,12 @@ namespace SNHU.GameObject.Effects
 		
 		public Explosion(float x, float y) : base(x, y)
 		{
-			Emitter = AddComponent(new Emitter(Library.GetTexture("explosion.png"), 60, 60));
+			Emitter = AddComponent(new Emitter(Library.Get<Texture>("explosion.png"), 60, 60));
 			
 			for (int i = 0; i < 4; i++)
 			{
 				var name = i.ToString();
-				Emitter.NewType(name, FP.Frames(i));
+				Emitter.NewType(name, Engine.Frames(i));
 				Emitter.SetAlpha(name, 1, 0);
 				Emitter.SetMotion(name, 0, 50, 0.4f, 360, 15,  0.15f, Ease.CubeOut);
 			}
@@ -33,7 +34,7 @@ namespace SNHU.GameObject.Effects
 				var name = t.ToString();
 				for (int j = 0; j < Radius; j++)
 				{
-					var pos = FP.Random.InCircle(Radius);
+					var pos = Engine.Random.InCircle(Radius);
 					Emitter.Emit(name, pos.X, pos.Y);
 				}
 			}
@@ -46,9 +47,9 @@ namespace SNHU.GameObject.Effects
 			Mixer.Explode.Play();
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			var all = new List<Entity>();
 			CollideInto(Player.Collision, X, Y, all);

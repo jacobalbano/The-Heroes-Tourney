@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Glide;
 using Indigo;
+using Indigo.Content;
 using Indigo.Graphics;
 using Indigo.Utils;
 using SNHU.Config;
@@ -25,9 +26,9 @@ namespace SNHU.GameObject
 		{
 			Players = new List<Entity>();
 			upgradeIcons = new List<Stack<Image>>();
-			Layer = ObjectLayers.HUD;
+			RenderStep = ObjectLayers.HUD;
 			
-			var Config = Library.GetConfig<PlayerConfig>("config/player.ini");
+			var Config = Library.Get<PlayerConfig>("config/player.ini");
 			StartingLives = Config.StartingLives;
 			StartingHealth = Config.StartingHealth;
 			PunchDamage = Config.PunchDamage;
@@ -37,12 +38,12 @@ namespace SNHU.GameObject
 		{
 			base.Added();
 			
-			var interval = FP.Width / (Players.Count + 1f);
+			var interval = Engine.Width / (Players.Count + 1f);
 			for (int i = 0; i < Players.Count; ++i)
 			{
 				var e = Players[i];
 				e.X = (1 + i) * interval;
-				e.Layer = Layer;
+				e.RenderStep = RenderStep;
 				World.Add(e);
 			}
 		}
@@ -59,8 +60,8 @@ namespace SNHU.GameObject
 				lives.Y = 15;
 				lives.ScrollX = lives.ScrollY = 0;
 						
-				var head = new Image(Library.GetTexture("players/" + p.ImageName + "_head.png"));
-				head.CenterOO();
+				var head = new Image(Library.Get<Texture>("players/" + p.ImageName + "_head.png"));
+				head.CenterOrigin();
 				head.X = -10;
 				head.Y = 25;
 				head.ScrollX = head.ScrollY = 0;
@@ -140,7 +141,7 @@ namespace SNHU.GameObject
 				var upgradeImg = new Image(upgrade.Icon);
 				upgradeImg.ScrollX = upgradeImg.ScrollY = 0;
 				upgradeImg.X = player.X;
-				upgradeImg.Y = player.Top - (FP.Camera.Y - FP.HalfHeight);
+				upgradeImg.Y = player.Top - (Engine.World.Camera.Y - Engine.HalfHeight);
 				upgradeImg.Relative = false;
 				AddComponent(upgradeImg);
 				

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Indigo;
+using Indigo.Colliders;
 using Indigo.Components;
+using Indigo.Content;
 using Indigo.Graphics;
 using Indigo.Inputs;
 using Indigo.Inputs.Gamepads;
@@ -34,6 +36,7 @@ namespace SNHU.GameObject
 		public const float JUMP_JUICE_DURATION = 0.17f;
 		
 		public Image player;
+		private Hitbox hitbox;
 		private bool hand;
 		public Fists Fists;
 		
@@ -56,7 +59,7 @@ namespace SNHU.GameObject
 		
 		private PhysicsBody Physics;
 		public DodgeController DodgeController;
-		public Movement Movement;
+		public HtMovement Movement;
 		
 		public const float SPEED = 5.5f;
 		private const float GUARD_SPEED_MULT = 0.6f;
@@ -76,26 +79,30 @@ namespace SNHU.GameObject
 			PlayerId = playerId;
 			ImageName = imageName;
 			
-			Layer = ObjectLayers.Players;
+			RenderStep = ObjectLayers.Players;
 			excludeCollision = new HashSet<Entity>();
 			UpgradeQueue = new Queue<Upgrade>();
 			UpgradeCapacity = 1;
 			
 			InitController();
-			
-			SetHitbox(30, 60, 15, 60);
-			
-			Type = Collision;
+			hitbox = new Hitbox
+			{
+				Width = 30,
+				Height = 60,
+				OriginX = 15,
+				OriginY = 60,
+				Type = Collision
+			};
 			
 			IsAlive = false;
 			Invincible = false;
 			Rebounding = false;
 			
-			Physics = AddComponent(new PhysicsBody(Platform.Collision, Type));
-			Movement = AddComponent(new Movement(Physics, Direction));
+			Physics = AddComponent(new PhysicsBody(Platform.Collision, hitbox.Type));
+			Movement = AddComponent(new HtMovement(Physics, Direction));
 			DodgeController = AddComponent(new DodgeController(Dodge, Direction));
 			
-			player = AddComponent(new Image(Library.GetTexture("players/" + imageName + ".png")));
+			player = AddComponent(new Image(Library.Get<Texture>("players/" + imageName + ".png")));
 			player.Source.Smooth = true;
 			player.Scale = 0.5f;
 			player.OriginX = player.Width / 2;
@@ -158,8 +165,8 @@ namespace SNHU.GameObject
 				
 				for (int i = 0; i < 5; i++)
 				{
-					var randX = FP.Random.Int(-12, 12);
-					var randY = FP.Random.Int(3);
+					var randX = Engine.Random.Int(-12, 12);
+					var randY = Engine.Random.Int(3);
 					World.BroadcastMessage(GlobalEmitter.Message.DoubleJump, "dust", X + randX, Y + randY - 15);
 				}
 			}
@@ -251,7 +258,7 @@ namespace SNHU.GameObject
 			states.ChangeState(Falling);
 			IsAlive = true;
 			
-			UpgradeCapacity = Library.GetConfig<PlayerConfig>("config/player.ini").UpgradeCapacity;
+			UpgradeCapacity = Library.Get<PlayerConfig>("config/player.ini").UpgradeCapacity;
 		}
 		
 		public override void Removed()
@@ -261,9 +268,9 @@ namespace SNHU.GameObject
 			OnMessage(PhysicsBody.Message.Cancel);
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			if (excludeCollision.Count > 0)
 			{
@@ -279,7 +286,7 @@ namespace SNHU.GameObject
 			
 			HandleInput();
 			
-			if(Top > FP.Camera.Y + FP.HalfHeight)
+			if(Top > Engine.World.Camera.Y + Engine.HalfHeight)
 				Kill();
 		}
 		
@@ -341,12 +348,12 @@ namespace SNHU.GameObject
 			{
 				if (e.Top >= Bottom)
 				{
-					OnMessage(PhysicsBody.Message.Impulse, FP.Random.Int(10) - 5, JumpForce);
-					e.OnMessage(PhysicsBody.Message.Impulse, FP.Random.Int(10) - 5, -JumpForce);
+					OnMessage(PhysicsBody.Message.Impulse, Engine.Random.Int(10) - 5, JumpForce);
+					e.OnMessage(PhysicsBody.Message.Impulse, Engine.Random.Int(10) - 5, -JumpForce);
 				}
 				else if (e.Bottom <= Top && Math.Abs(X - e.X) < HalfWidth)
 				{
-					e.OnMessage(PhysicsBody.Message.Impulse, FP.Random.Int(10) - 5, JumpForce * 1.1);
+					e.OnMessage(PhysicsBody.Message.Impulse, Engine.Random.Int(10) - 5, JumpForce * 1.1);
 				}
 				else return false;
 			}
@@ -402,7 +409,7 @@ namespace SNHU.GameObject
 		{
 			if (World == null)
 			{
-				FP.Tweener.Timer(0.01f).OnComplete(() => SetUpgrade(upgrade));
+				Engine.Tweener.Timer(0.01f).OnComplete(() => SetUpgrade(upgrade));
 				return;
 			}
 			

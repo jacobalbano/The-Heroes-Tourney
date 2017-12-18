@@ -32,9 +32,9 @@ namespace SNHU.GameObject.Triggers
 			Y += 16;
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			var player = Collide(Player.Collision, X, Y);
 			

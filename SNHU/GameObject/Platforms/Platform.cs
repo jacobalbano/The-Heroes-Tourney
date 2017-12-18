@@ -1,5 +1,6 @@
 ﻿using System;
 using Indigo;
+using Indigo.Content;
 using Indigo.Graphics;
 using Indigo.Loaders;
 using SNHU.Components;
@@ -23,7 +24,7 @@ namespace SNHU.GameObject.Platforms
 			
 			Type = Collision;
 			
-			image = new Nineslice(Library.GetTexture("platform.png"), 3, 3);
+			image = new Nineslice(Library.Get<Texture>("platform.png"), 3, 3);
 			image.Columns = (int) (Width / 5f);
 			image.Rows = (int) (Height / 5f);
 			image.ScaleX = Width / image.Width;
@@ -31,7 +32,7 @@ namespace SNHU.GameObject.Platforms
 			
 			AddComponent(image);
 			
-			Layer = ObjectLayers.Platforms;
+			RenderStep = ObjectLayers.Platforms;
 		}
 	}
 }

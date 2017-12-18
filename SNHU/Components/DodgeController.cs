@@ -1,6 +1,7 @@
 ﻿
 using System;
 using Indigo;
+using System.Xml.Serialization;
 using Indigo.Core;
 using Indigo.Inputs;
 using Indigo.Utils;
@@ -17,16 +18,14 @@ namespace SNHU.Components
 		public bool CanDodge;
 		public bool IsDodging { get; private set;}
 		public bool RecentlyDodged { get; private set;}
-		
-		public int DodgeDuration { get; private set; } //= 5;
-		
-		int duration;
-		int cooldown;
-		float facing;
-		float dodgeDirection;
-		Input Button;
-		Directional axis;
-		
+		public PlayerConfig PlayerConfig { get; set; }
+
+		private int duration;
+		private int cooldown;
+		private float facing;
+		private Input Button;
+		private Directional axis;
+
 		public DodgeController(Input button, Directional axis)
 		{
 			facing = 0;
@@ -41,17 +40,21 @@ namespace SNHU.Components
 		public override void Added()
 		{
 			base.Added();
+
+			PlayerConfig = Library.Get<PlayerConfig>("config/player.ini");
+
 			
-			DodgeDuration = Library.GetConfig<PlayerConfig>("config/player.ini").DodgeDuration;
+
+			DodgeDuration = .DodgeDuration;
 		}
-		
-		public override void Update()
+
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			if (axis.X != 0)
 			{
-				facing = FP.Sign(axis.X);
+				facing = Math.Sign(axis.X);
 			}
 			
 			if (cooldown <= 0 && CanDodge && Button.Pressed)
@@ -65,7 +68,7 @@ namespace SNHU.Components
 					
 					duration = DodgeDuration;
 					SetCooldown();
-					dodgeDirection = FP.Sign(facing) * 0.7f;
+					dodgeDirection = Math.Sign(facing) * 0.7f;
 					dodgeDirection *= 30;
 				}
 			}

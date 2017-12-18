@@ -24,7 +24,7 @@ namespace SNHU.GameObject
 		
 		public ChunkManager()
 		{
-			position = (FP.Camera.Y - FP.HalfHeight) - FP.Height;
+			position = (Engine.World.Camera.Y - Engine.HalfHeight) - Engine.Height;
 			
 			AddResponse(Message.Advance, OnAdvance);
 			AddResponse(Message.Unload, OnUnload);
@@ -32,7 +32,7 @@ namespace SNHU.GameObject
 		
 		private void OnAdvance(params object[] args)
 		{
-			position -= FP.Height;
+			position -= Engine.Height;
 			
 			if (currentChunk != null && currentChunk.World != null)
 				World.Remove(currentChunk);

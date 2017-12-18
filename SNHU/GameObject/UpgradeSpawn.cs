@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using Indigo;
 using Indigo.Graphics;
-using Indigo.Utils.Reflect;
+using Indigo.Utils;
 using SNHU.Config;
 using SNHU.GameObject.Upgrades;
 
@@ -34,9 +34,9 @@ namespace SNHU.GameObject
 			base.Added();
 			
 			// Determine if this upgrade spawner will be spawning upgrades for this chunk
-			var config = Library.GetConfig<UpgradeConfig>("config/upgrades.ini");
+			var config = Library.Get<UpgradeConfig>("config/upgrades.ini");
 			Upgrades = config.EnabledUpgrades;
-			if (FP.Random.Chance(config.SpawnChance))
+			if (Engine.Random.Chance(config.SpawnChance))
 			{
 				RespawnTime = config.RespawnTime;
 				MaxRespawns = config.MaxRespawns;
@@ -52,7 +52,7 @@ namespace SNHU.GameObject
 		
 		private void SpawnUpgrade()
 		{
-			var name = FP.Choose.From(Upgrades);
+			var name = Engine.Choose.From(Upgrades);
 			name = Regex.Replace(name, @"\s", "");
 			var type = Reflect.GetTypeFromAllAssemblies(name);
 			if (type == null)
@@ -62,15 +62,15 @@ namespace SNHU.GameObject
 			AddComponent(upgrade.Icon);
 			
 			SetHitbox((int) upgrade.Icon.ScaledWidth, (int) upgrade.Icon.ScaledHeight);
-			upgrade.Icon.CenterOO();
+			upgrade.Icon.CenterOrigin();
 			CenterOrigin();
 			
 			numRespawns++;
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			if (upgrade != null)
 			{

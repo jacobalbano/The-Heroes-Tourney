@@ -2,6 +2,7 @@
 using System;
 using Glide;
 using Indigo;
+using Indigo.Content;
 using Indigo.Graphics;
 using SNHU.Config;
 
@@ -11,17 +12,17 @@ namespace SNHU.MenuObject
 	{
 		public DrawEnding()
 		{
-			X = FP.Camera.X;
-			Y = FP.Camera.Y;
-			Layer = ObjectLayers.JustAbove(ObjectLayers.Background);
+			X = Engine.World.Camera.X;
+			Y = Engine.World.Camera.Y;
+			RenderStep = ObjectLayers.JustAbove(ObjectLayers.Background);
 			
-			var bg = AddComponent(Image.CreateRect(FP.Width, FP.Height, new Color()));
-          	bg.CenterOO();
+			var bg = AddComponent(Image.CreateRect(Engine.Width, Engine.Height, new Color()));
+          	bg.CenterOrigin();
 
 			var text = AddComponent(new Text("Draw!"));
-			text.Font = Library.GetFont("fonts/Laffayette_Comic_Pro.ttf");
+			text.Font = Library.Get<Font>("fonts/Laffayette_Comic_Pro.ttf");
 			text.Italicized = true;
-			text.Y = -(FP.Height / 4);
+			text.Y = -(Engine.Height / 4);
 			text.Size = 64;
 			text.CenterOrigin();
 		}

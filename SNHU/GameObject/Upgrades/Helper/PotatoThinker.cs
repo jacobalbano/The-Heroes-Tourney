@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Glide;
 using Indigo;
+using Indigo.Content;
 using Indigo.Graphics;
 using Indigo.Utils;
 using SNHU.Config.Upgrades;
@@ -30,10 +31,10 @@ namespace SNHU.GameObject.Upgrades.Helper
 			X = Target.X;
 			Y = Target.Top - 40;
 		
-			var config = Library.GetConfig<HotPotatoConfig>("config/upgrades/hotpotato.ini");
+			var config = Library.Get<HotPotatoConfig>("config/upgrades/hotpotato.ini");
 			totalTime = Math.Max(0.01f, config.Duration);
 			
-			image = AddComponent(new Image(Library.GetTexture("hotpotato.png")));
+			image = AddComponent(new Image(Library.Get<Texture>("hotpotato.png")));
 			image.Color = new Color(0xff0000);
 			image.CenterOrigin();
 			CenterOrigin();
@@ -63,14 +64,14 @@ namespace SNHU.GameObject.Upgrades.Helper
 			Parent.SetUpgrade(null);
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			if (Target != null)
 			{
 				float x = Target.X, y = Target.Top - 40;
-				MoveTowards(x, y, FP.Distance(X, Y, x, y) * 0.3f);
+				MoveTowards(x, y, MathHelper.Distance(X, Y, x, y) * 0.3f);
 			}
 		}
 		

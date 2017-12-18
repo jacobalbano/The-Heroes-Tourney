@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Indigo;
+using Indigo.Content;
 using Indigo.Core;
 using Indigo.Graphics;
+using Indigo.Utils;
 using SNHU.Components;
 using SNHU.Config;
 using SNHU.Config.Upgrades;
@@ -23,16 +25,16 @@ namespace SNHU.GameObject.Upgrades
 		
 		public HyperFist(Player owner)
 		{
-			var config = Library.GetConfig<HyperPunchConfig>("config/upgrades/hyperpunch.ini");
+			var config = Library.Get<HyperPunchConfig>("config/upgrades/hyperpunch.ini");
 			FistScale = config.Scale;
 			ForceMultiplier = config.ForceMultiplier;
 			FistSpeed = config.Speed;
 			
 			this.owner = originalOwner = owner;
 			
-			image = new Image(Library.GetTexture("hyperPunch.png"));
+			image = new Image(Library.Get<Texture>("hyperPunch.png"));
 			image.Scale = 0.1f * this.FistScale;
-			image.CenterOO();
+			image.CenterOrigin();
 			AddComponent(image);
 			
 			SetHitbox((int) image.ScaledWidth, (int) image.ScaledHeight);
@@ -49,7 +51,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Added();
 			
-			Layer = ObjectLayers.JustAbove(ObjectLayers.Players);
+			RenderStep = ObjectLayers.JustAbove(ObjectLayers.Players);
 		}
 		
 		public override void Removed()
@@ -59,14 +61,14 @@ namespace SNHU.GameObject.Upgrades
 			originalOwner.SetUpgrade(null);
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			if (!OnCamera)
 			{
-				var offX = Left > FP.Width || Right < 0;
-				var offY = Top > FP.Height || Bottom < 0;
+				var offX = Left > Engine.Width || Right < 0;
+				var offY = Top > Engine.Height || Bottom < 0;
 				
 				if (offX && offY)
 					World.Remove(this);
@@ -86,8 +88,8 @@ namespace SNHU.GameObject.Upgrades
 						World.BroadcastMessage(CameraManager.Message.Shake, 10.0f, 0.5f);
 		 				Mixer.Hit1.Play();
 						
-						var angle = FP.Angle(player.X, player.Y, owner.X, owner.Y);
-						FP.AngleXY(ref direction.X, ref direction.Y, angle, 1);
+						var angle = MathHelper.Angle(player.X, player.Y, owner.X, owner.Y);
+						MathHelper.AngleXY(ref direction.X, ref direction.Y, angle, 1);
 						
 						owner = player;
 					}
@@ -107,11 +109,11 @@ namespace SNHU.GameObject.Upgrades
 			 	}
 			}
 			
-			image.Angle = FP.Angle(0, 0, direction.X, direction.Y);
+			image.Angle = MathHelper.Angle(0, 0, direction.X, direction.Y);
 			
 			direction.Normalize(FistSpeed);
 			
-			var rainbow = World.Add(new RainbowTrail(X, Y, direction, image.Scale, FistSpeed, Layer));
+			var rainbow = World.Add(new RainbowTrail(X, Y, direction, image.Scale, FistSpeed, RenderStep));
 			
 			X += direction.X;
 			Y += direction.Y;
@@ -136,7 +138,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public HyperPunch()
 		{
-			Icon = new Image(Library.GetTexture("hyperPunch.png"));
+			Icon = new Image(Library.Get<Texture>("hyperPunch.png"));
 			Icon.Scale = 0.1f * PICKUP_IMAGE_SCALE;
 			
 			AddResponse(ChunkManager.Message.Advance, OnAdvance);
@@ -202,14 +204,14 @@ namespace SNHU.GameObject.Upgrades
 		{
 			X = x;
 			Y = y;
-			Layer = layer + 1;
+			RenderStep = layer - 1;
 			sineticks = 0;
 			
-			rainbow = new Image(Library.GetTexture("rainbow.png"));
-			rainbow.CenterOO();
+			rainbow = new Image(Library.Get<Texture>("rainbow.png"));
+			rainbow.CenterOrigin();
 			rainbow.Alpha = 0.5f;
 			rainbow.Scale = scale;
-			rainbow.Angle = FP.Angle(0, 0, direction.X, direction.Y);
+			rainbow.Angle = MathHelper.Angle(0, 0, direction.X, direction.Y);
 			rainbow.ScaleX = rainbow.ScaledWidth / (FIST_SPEED / 2);
 			rainbow.ScaleY = 0.75f;
 			AddComponent(rainbow);
@@ -221,11 +223,11 @@ namespace SNHU.GameObject.Upgrades
 			
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			var upndown = 25;
-			rainbow.Y = FP.Scale((float) Math.Sin(sineticks += 0.1f), -1, 1, -upndown, upndown);
+			rainbow.Y = MathHelper.Scale((float) Math.Sin(sineticks += 0.1f), -1, 1, -upndown, upndown);
 		}
 	}
 }

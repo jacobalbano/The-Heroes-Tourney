@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Xml;
 using System.Xml.Linq;
 using Glide;
 using Indigo;
+using Indigo.Content;
 using Indigo.Graphics;
 using Indigo.Loaders;
-using Indigo.Masks;
 using Indigo.Utils;
-using Indigo.Utils.Reflect;
 using SNHU.Config;
 using SNHU.GameObject.Platforms;
 using SNHU.Systems;
@@ -61,8 +61,8 @@ namespace SNHU.GameObject
 			var world = new World();
 			SpawnPoints = new List<Entity>();
 			
-			level = FP.Choose.From(levels);
-			ents = loader.BuildLevelAsArray(Library.GetXml("Levels/" + level));
+			level = Engine.Choose.From(levels);
+			ents = loader.BuildLevelAsArray(Library.Get<XmlDocument>("Levels/" + level));
 			
 			int spawns = 0;
 			foreach (var e in ents)
@@ -83,12 +83,12 @@ namespace SNHU.GameObject
 				{
 					var grid = e.GetComponent<Grid>();
 					
-					var map = new Tilemap(Library.GetTexture("tiles/Tileset.png"), FP.Width, FP.Height, 16, 16);
+					var map = new Tilemap(Library.Get<Texture>("tiles/Tileset.png"), Engine.Width, Engine.Height, 16, 16);
 					AutoTileSet.CreateFromGrid(map, grid);
 					
 					e.AddComponent(map);
 					e.Visible = true;
-					e.Layer = ObjectLayers.Platforms;
+					e.RenderStep = ObjectLayers.Platforms;
 				}
 				
 			}
@@ -104,7 +104,7 @@ namespace SNHU.GameObject
 			
 			World.AddList(ents);
 			
-			Tweener.Tween(FP.Camera, new { Y = Y + FP.HalfHeight }, 1)
+			Tweener.Tween(Engine.World.Camera, new { Y = Y + Engine.HalfHeight }, 1)
 				.Ease(Ease.ElasticOut)
 				.OnComplete(OnFinishAdvance);
 		}
@@ -117,7 +117,7 @@ namespace SNHU.GameObject
 		
 		public bool IsBelowCamera
 		{
-			get { return (FP.Camera.Y + (FP.Height / 2)) < this.Y; }
+			get { return (Engine.World.Camera.Y + (Engine.Height / 2)) < this.Y; }
 		}
 		
 		private void OnFinishAdvance()

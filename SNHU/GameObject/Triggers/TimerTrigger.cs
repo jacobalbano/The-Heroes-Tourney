@@ -20,7 +20,7 @@ namespace SNHU.GameObject.Triggers
 			lastMessage = Message.On;
 			
 			face = Image.CreateCircle(30, new Color(0xffffff));
-			face.CenterOO();
+			face.CenterOrigin();
 			
 			hand = Image.CreateRect(5, 30, new Color(0));
 			hand.OriginX = hand.Width / 2;

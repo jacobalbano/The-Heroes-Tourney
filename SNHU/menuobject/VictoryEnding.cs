@@ -1,6 +1,7 @@
 ﻿using System;
 using Glide;
 using Indigo;
+using Indigo.Content;
 using Indigo.Graphics;
 using Indigo.Utils;
 using SNHU.Components;
@@ -19,24 +20,24 @@ namespace SNHU.MenuObject
 		public VictoryEnding(Player winner)
 		{
 			Winner = winner;
-			X = FP.Camera.X;
-			Y = FP.Camera.Y;
-			Layer = ObjectLayers.JustAbove(ObjectLayers.Background);
+			X = Engine.World.Camera.X;
+			Y = Engine.World.Camera.Y;
+			RenderStep = ObjectLayers.JustAbove(ObjectLayers.Background);
 			
-			var bg = AddComponent(Image.CreateRect(FP.Width, FP.Height, new Color()));
-          	bg.CenterOO();
+			var bg = AddComponent(Image.CreateRect(Engine.Width, Engine.Height, new Color()));
+          	bg.CenterOrigin();
 
-			var image = AddComponent(new Image(Library.GetTexture("happy.png")));
-			image.CenterOO();
+			var image = AddComponent(new Image(Library.Get<Texture>("happy.png")));
+			image.CenterOrigin();
 			
 			// YOU WIN!
 			var text = AddComponent(new Text("\tPlayer " + (Winner.PlayerId + 1) + "\nis the true hero!"));
-			text.Y = -(FP.Height / 4);
-			text.Font = Library.GetFont("fonts/Laffayette_Comic_Pro.ttf");
+			text.Y = -(Engine.Height / 4);
+			text.Font = Library.Get<Font>("fonts/Laffayette_Comic_Pro.ttf");
 			text.Size = 64;
 			text.CenterOrigin();
 			
-			Tweener.Tween(Winner, new { X = FP.Camera.X, Y = FP.Camera.Y }, 1.2f)
+			Tweener.Tween(Winner, new { X = Engine.World.Camera.X, Y = Engine.World.Camera.Y }, 1.2f)
 				.Ease(Ease.ElasticOut);
 			
 			HypeTween.StartHype(Tweener, image, 1);

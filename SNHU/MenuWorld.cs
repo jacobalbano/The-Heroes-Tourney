@@ -81,12 +81,12 @@ namespace SNHU
 			GamepadManager.Disconnected -= OnControllerRemoved;
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			if (Keyboard.R.Pressed)
-				FP.World = new MenuWorld();
+				Engine.World = new MenuWorld();
 			
 			if (readying)	return;
 			if (controllerMenus.Count == 0) return;
@@ -107,7 +107,7 @@ namespace SNHU
 				
 				for (int i = 0; i < menus.Count; i++)
 				{
-					Tweener.Tween(menus[i], new { Y = -FP.Height }, 0.25f)
+					Tweener.Tween(menus[i], new { Y = -Engine.Height }, 0.25f)
 						.Ease(Ease.QuadOut);
 				}
 				
@@ -117,7 +117,7 @@ namespace SNHU
 		
 		void Ready()
 		{
-			var i = Image.CreateRect(FP.Width, FP.Height, new Color());
+			var i = Image.CreateRect(Engine.Width, Engine.Height, new Color());
 			i.Alpha = 0;
 			
 			AddGraphic(i, 0, 0, ObjectLayers.Foreground);
@@ -136,8 +136,8 @@ namespace SNHU
 				playerGraphics[menu.JoyId] = menu.PlayerImageName;
 				ControllerSelect.SetLastSkin(menu.PlayerSlot, menu.PlayerImageName);
 			}
-			
-			FP.World = new GameWorld(playerGraphics);
+
+			Engine.World = new GameWorld(playerGraphics);
 		}
 		
 		private void OnControllerAdded(int joystickID)
@@ -161,7 +161,7 @@ namespace SNHU
 			controllerMenus[joystickId] = menu;
 			Add(menu);
 			
-			Tweener.Tween(menu, new { X = 10 + (menu.Width / 2) + slot * menu.Width}, 1.6f + FP.Random.Float())
+			Tweener.Tween(menu, new { X = 10 + (menu.Width / 2) + slot * menu.Width}, 1.6f + Engine.Random.Float())
 				.Ease(Ease.ElasticOut);
 		}
 		
@@ -183,7 +183,7 @@ namespace SNHU
 			
 			pool.Push(menu.PlayerSlot);
 			
-			Tweener.Tween(menu, new { Y = -menu.Height}, 0.75f + FP.Random.Float() / 2f)
+			Tweener.Tween(menu, new { Y = -menu.Height}, 0.75f + Engine.Random.Float() / 2f)
 				.Ease(Ease.ElasticOut)
 				.OnComplete(() => Remove(menu));
 		}
@@ -194,7 +194,7 @@ namespace SNHU
 			if (choice == null || takenImages.IndexOf(choice) >= 0)
 			{
 				do {
-					choice = FP.Choose.From(allImages);
+					choice = Engine.Choose.From(allImages);
 				} while (takenImages.IndexOf(choice) >= 0);
 			}
 			
@@ -207,7 +207,7 @@ namespace SNHU
 			var c = current;
 			var choice = "";
 			do {
-				choice = FP.Choose.Next(c, allImages, true);
+				choice = Engine.Choose.Next(c, allImages, true);
 				c = choice;
 			} while (takenImages.IndexOf(choice) >= 0);
 			
@@ -221,7 +221,7 @@ namespace SNHU
 			var c = current;
 			var choice = "";
 			do {
-				choice = FP.Choose.Prev(c, allImages, true);
+				choice = Engine.Choose.Prev(c, allImages, true);
 				c = choice;
 			} while (takenImages.IndexOf(choice) >= 0);
 			

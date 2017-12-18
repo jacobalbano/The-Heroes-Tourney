@@ -14,7 +14,7 @@ namespace SNHU.GameObject.Upgrades
 	{
 		public HotPotato()
 		{
-			Icon = new Image(Library.GetTexture("hotpotato.png"));
+			Icon = new Image(Library.Get<Texture>("hotpotato.png"));
 		}
 		
 		public override void Use()

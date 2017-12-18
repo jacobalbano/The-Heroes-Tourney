@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Glide;
 using Indigo;
+using Indigo.Content;
 using Indigo.Graphics;
 using Indigo.Inputs;
 using Indigo.Inputs.Gamepads;
@@ -28,7 +29,10 @@ namespace SNHU.MenuObject
 		
 		public bool Ready { get; private set; }
 		public bool Started { get; private set; }
-		
+
+		public int Width { get; set; }
+		public int Height { get; set; }
+
 		public int Color { get; private set; }
 		public Image Image { get; private set; }
 		private Text pressStart;
@@ -58,18 +62,18 @@ namespace SNHU.MenuObject
 		
 		public ControllerSelect(MenuWorld parent, int playerSlot, int joyId)
 		{
-			var font = Library.GetFont("fonts/Laffayette_Comic_Pro.ttf");
+			var font = Library.Get<Font>("fonts/Laffayette_Comic_Pro.ttf");
 			
 			changing = false;
 			
 			this.parent = parent;
-			Height = FP.Height - 20;
+			Height = Engine.Height - 20;
 			Width = 250;
 			
 			this.JoyId = joyId;
 			this.PlayerSlot = playerSlot;
 			
-			Image = new Image(Library.GetTexture("menu.png"));
+			Image = new Image(Library.Get<Texture>("menu.png"));
 			Image.Color = new Color(Color = colors[PlayerSlot]);
 			pressStart = new Text("PRESS START");
 			pressStart.Font = font;
@@ -78,19 +82,18 @@ namespace SNHU.MenuObject
 			pressStart.Size = 20;
 			pressStart.Color = new Color(0);
 			
-			check = new Image(Library.GetTexture("ready.png"));
-			check.CenterOO();
+			check = new Image(Library.Get<Texture>("ready.png"));
+			check.CenterOrigin();
 			check.Y = Height * 0.75f;
 			check.ScaleY = 0;
 			
-			OriginX = Width / 2;
 			Image.OriginX = Image.Width / 2;
 			
 			var slot = GamepadManager.GetSlot(joyId);
 			if (SnesController.IsMatch(slot))
 			{
 				var snes = new SnesController(slot);
-				confirm = new Image(Library.GetTexture("Snes_1.png"));
+				confirm = new Image(Library.Get<Texture>("Snes_1.png"));
 				Cursor = snes.Dpad;
 				Start = snes.Start;
 				Back = snes.A;
@@ -99,7 +102,7 @@ namespace SNHU.MenuObject
 			else if (Xbox360Controller.IsMatch(slot))
 			{
 				var xbox = new Xbox360Controller(slot);
-				confirm = new Image(Library.GetTexture("Xbox_1.png"));
+				confirm = new Image(Library.Get<Texture>("Xbox_1.png"));
 				Cursor = xbox.LeftStick;
 				Start = xbox.Start;
 				Confirm = xbox.A;
@@ -125,9 +128,9 @@ namespace SNHU.MenuObject
 			
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			if (!Started)
 			{
@@ -137,7 +140,7 @@ namespace SNHU.MenuObject
 					
 					RemoveComponent(pressStart);
 					
-					confirm.CenterOO();
+					confirm.CenterOrigin();
 					confirm.Y = Height * 0.75f;
 					
 					AddComponent(confirm);
@@ -247,12 +250,12 @@ namespace SNHU.MenuObject
 		
 		void StartCursors()
 		{
-			var texture = Library.GetTexture("change.png");
+			var texture = Library.Get<Texture>("change.png");
 			lArrow = new Image(texture);
 			rArrow = new Image(texture);
 			
-			lArrow.CenterOO();
-			rArrow.CenterOO();
+			lArrow.CenterOrigin();
+			rArrow.CenterOrigin();
 			
 			lArrow.FlippedX = true;
 			
@@ -288,7 +291,7 @@ namespace SNHU.MenuObject
 				RemoveComponent(player);
 			}
 			
-			player = new Image(Library.GetTexture("players/" + PlayerImageName + ".png"));
+			player = new Image(Library.Get<Texture>("players/" + PlayerImageName + ".png"));
 			player.CenterOrigin();
 			
 			player.X = 0;

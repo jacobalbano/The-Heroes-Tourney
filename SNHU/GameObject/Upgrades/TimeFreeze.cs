@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Indigo;
+using Indigo.Content;
 using Indigo.Graphics;
 using SNHU.Components;
 using SNHU.Config.Upgrades;
@@ -17,14 +18,14 @@ namespace SNHU.GameObject.Upgrades
 		
 		public TimeFreeze()
 		{
-			Icon  = new Image(Library.GetTexture("timeFreeze.png"));
+			Icon  = new Image(Library.Get<Texture>("timeFreeze.png"));
 			players = new List<Player>();
 		}
 		
 		public override void Added()
 		{
 			base.Added();
-			Lifetime = Library.GetConfig<TimeFreezeConfig>("config/upgrades/timefreeze.ini").Lifetime;
+			Lifetime = Library.Get<TimeFreezeConfig>("config/upgrades/timefreeze.ini").Lifetime;
 		}
 		
 		public override EffectMessage MakeEffect()
@@ -34,7 +35,7 @@ namespace SNHU.GameObject.Upgrades
 				to.AddComponent(new Freeze(to.X, to.Y, Lifetime));
 			};
 			
-			FP.Log("FROZEN FOR ", Lifetime, " SECONDS YO");
+			Engine.Console.Write("FROZEN FOR ", Lifetime, " SECONDS YO");
 			
 			return new EffectMessage(owner, callback);
 		}
@@ -53,7 +54,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.OnLifetimeComplete();
 			
-			FP.Log("u can b unfrozen now bro");
+			Engine.Console.Write("u can b unfrozen now bro");
 			owner.SetUpgrade(null);
 		}
 	}
@@ -80,25 +81,25 @@ namespace SNHU.GameObject.Upgrades
 		public override void Added()
 		{
 			base.Added();
-			Parent.GetComponent<Movement>().Active = false;
+			Parent.GetComponent<HtMovement>().Active = false;
 			Parent.GetComponent<PhysicsBody>().Active = false;
 		}
 		
 		public override void Removed()
 		{
 			base.Removed();
-			Parent.GetComponent<Movement>().Active = true;
+			Parent.GetComponent<HtMovement>().Active = true;
 			Parent.GetComponent<PhysicsBody>().Active = true;
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
-			lifetime -= FP.Elapsed;
+			base.Update(gameTime);
+			lifetime -= gameTime.Elapsed;
 			
 			if (lifetime <= 0)
 			{
-				FP.Log("gone pls");
+				Engine.Console.Write("gone pls");
 				Parent.RemoveComponent(this);
 				return;
 			}

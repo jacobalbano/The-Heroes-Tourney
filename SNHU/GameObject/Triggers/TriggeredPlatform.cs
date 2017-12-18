@@ -1,6 +1,7 @@
 ﻿using System;
 using Glide;
 using Indigo;
+using Indigo.Colliders;
 using Indigo.Graphics;
 using Indigo.Loaders;
 
@@ -9,23 +10,24 @@ namespace SNHU.GameObject.Triggers
 	public class TriggeredPlatform : Triggerable
 	{
 		private Image image;
+		private Hitbox hitbox;
 		private const float Duration = 0.25f;
 		
 		[OgmoConstructor("Group", "width", "height")]
 		public TriggeredPlatform(string group, int width, int height)
 		{
 			AddComponent(image = Image.CreateRect(width, height, new Color(0x400080)));
-			SetHitbox(width, height);
+			hitbox = new Hitbox(width, height);
 		}
 		
 		public override void Added()
 		{
 			base.Added();
-			
-			CenterOrigin();
-			image.CenterOO();
-			X += HalfWidth;
-			Y += HalfHeight;
+
+			hitbox.CenterOrigin();
+			image.CenterOrigin();
+			X += hitbox.Width / 2;
+			Y += hitbox.Height / 2;
 		}
 		
 		protected override void TriggerOn()
@@ -33,7 +35,7 @@ namespace SNHU.GameObject.Triggers
 			base.TriggerOff();
 			
 			Tween tween = null;
-			if (Width < Height) tween = Tweener.Tween(image, new { ScaleX = 0 }, Duration);
+			if (hitbox.Width < hitbox.Height) tween = Tweener.Tween(image, new { ScaleX = 0 }, Duration);
 			else tween = Tweener.Tween(image, new { ScaleY = 0 }, 0.5f);
 			
 			tween.Ease(Ease.BackIn);
@@ -45,7 +47,7 @@ namespace SNHU.GameObject.Triggers
 			base.TriggerOn();
 			
 			Tween tween = null;
-			if (Width < Height) tween = Tweener.Tween(image, new { ScaleX = 1 }, Duration);
+			if (hitbox.Width < hitbox.Height) tween = Tweener.Tween(image, new { ScaleX = 1 }, Duration);
 			else tween = Tweener.Tween(image, new { ScaleY = 1 }, 0.5f);
 			
 			tween.Ease(Ease.BackOut);

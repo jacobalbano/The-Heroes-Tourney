@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Indigo;
+using Indigo.Content;
 using Indigo.Graphics;
 using Indigo.Utils;
 using SFML.Window;
@@ -60,10 +61,10 @@ namespace SNHU.GameObject
 			Punching = false;
 			canPunch = true;
 			
-			Layer = ObjectLayers.JustAbove(ObjectLayers.Players);
+			RenderStep = ObjectLayers.JustAbove(ObjectLayers.Players);
 			
-			Image = new Image(Library.GetTexture("glove" + (backHand ? "2" : "1") + ".png"));
-			Image.CenterOO();
+			Image = new Image(Library.Get<Texture>("glove" + (backHand ? "2" : "1") + ".png"));
+			Image.CenterOrigin();
 			AddComponent(Image);
 			
 			SetHitboxTo(Image);
@@ -168,9 +169,9 @@ namespace SNHU.GameObject
 				.OnComplete(() => FinishPunch(facing));
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			if (!canPunch) return;
 			if (punchy)
@@ -213,7 +214,7 @@ namespace SNHU.GameObject
 				World.BroadcastMessage(CameraManager.Message.Shake, 10.0f, 0.5f);
 		 		Mixer.Hit1.Play();
 		 		
-		 		if (FP.Sign(from.X - to.X) == FP.Sign(forceVector.X))
+		 		if (Math.Sign(from.X - to.X) == Math.Sign(forceVector.X))
 		 			forceVector *= -1;
 		 		
 		 		var force = ForceMultiplier * BASE_PUNCH_FORCE * scalar;

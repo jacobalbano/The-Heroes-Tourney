@@ -10,7 +10,7 @@ namespace SNHU.Components
 	/// <summary>
 	/// Description of Movement.
 	/// </summary>
-	public class Movement : Component
+	public class HtMovement : Component
 	{
 		PhysicsBody physics;
 		Directional axis;
@@ -19,7 +19,7 @@ namespace SNHU.Components
 		
 		public enum Message { Speed }
 		
-		public Movement(PhysicsBody physics, Directional axis)
+		public HtMovement(PhysicsBody physics, Directional axis)
 		{
 			this.physics = physics;
 			this.axis = axis;
@@ -28,14 +28,14 @@ namespace SNHU.Components
 			AddResponse(Message.Speed, onChangeSpeed);
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			if (Math.Abs(physics.MoveDelta.X) < Speed)
 			{
-				var delta = FP.Sign(physics.MoveDelta.X);
-				var ax = FP.Sign(axis.X);
+				var delta = Math.Sign(physics.MoveDelta.X);
+				var ax = Math.Sign(axis.X);
 				float speed = Speed;
 				
 				if (Parent.Collide(Parent.Type, Parent.X, Parent.Y) != null)

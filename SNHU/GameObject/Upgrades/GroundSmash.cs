@@ -21,7 +21,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public GroundSmash()
 		{
-			Icon = new Image(Library.GetTexture("groundsmash.png"));
+			Icon = new Image(Library.Get<Texture>("groundsmash.png"));
 			AddResponse(Player.Message.OnLand, OnPlayerLand);
 		}
 		
@@ -29,7 +29,7 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Added();
 			
-			var config = Library.GetConfig<GroundSmashConfig>("config/upgrades/groundSmash.ini");
+			var config = Library.Get<GroundSmashConfig>("config/upgrades/groundSmash.ini");
 			SmashRadius = config.SmashRadius;
 			FallSpeed = config.FallSpeed;
 		}
@@ -58,9 +58,9 @@ namespace SNHU.GameObject.Upgrades
 			}
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			if (Activated)
 			{
@@ -74,9 +74,9 @@ namespace SNHU.GameObject.Upgrades
 			{
 				for (float i = -SmashRadius; i < SmashRadius; i++)
 				{
-					var x = Parent.X + i + FP.Random.Float() - FP.Random.Float();
-					var y = Parent.Y - FP.Random.Int(10);
-					var type = FP.Choose.Character("0123");
+					var x = Parent.X + i + Engine.Random.Float() - Engine.Random.Float();
+					var y = Parent.Y - Engine.Random.Int(10);
+					var type = Engine.Choose.Character("0123");
 					Parent.World.BroadcastMessage(GlobalEmitter.Message.GroundSmash, type, x, y);
 				}
 				

@@ -17,19 +17,19 @@ namespace SNHU.GameObject.Upgrades.Helper
 			Lifetime = lifetime;
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
-			Lifetime -= FP.Elapsed;
+			Lifetime -= gameTime.Elapsed;
 			if (Lifetime <= 0)
 				Parent.RemoveComponent(this);
 			
-			var delta = FP.Sign(Parent.X - lastX);
+			var delta = Math.Sign(Parent.X - lastX);
 			if (delta != 0)
 			{
 				var x = Parent.X;
-				var y = Parent.Top + FP.Random.Int(Parent.Height);
+				var y = Parent.Top + Engine.Random.Int(Parent.Height);
 				var type = delta < 0 ? "l" : "r";
 				
 				Parent.World.BroadcastMessage(GlobalEmitter.Message.SuperSpeed, type, x, y);

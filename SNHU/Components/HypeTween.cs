@@ -37,7 +37,7 @@ namespace SNHU.Components
 		
 		private static void ContinueHype(Tweener tweener, Image image, float duration, HypeTween hype)
 		{
-			tweener.Tween(hype, new { Color = new Color(FP.Choose.From(colors)) }, duration)
+			tweener.Tween(hype, new { Color = new Color(Engine.Choose.From(colors)) }, duration)
 				.OnComplete(() => ContinueHype(tweener, image, duration, hype))
 				.OnUpdate(() => image.Color = hype.Color);
 		}

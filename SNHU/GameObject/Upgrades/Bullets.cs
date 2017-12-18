@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Glide;
 using Indigo;
+using Indigo.Colliders;
+using Indigo.Content;
 using Indigo.Graphics;
 using Indigo.Utils;
 using SFML.Window;
@@ -24,6 +26,7 @@ namespace SNHU.GameObject.Upgrades
 		private MessageResult result;
 		
 		private Image image;
+		private Hitbox hitbox;
 		private Tween bounceTween;
 		
 		private static string[] colliders;
@@ -38,14 +41,16 @@ namespace SNHU.GameObject.Upgrades
 		
 		public Bullet(Vector2f initialDir, Player owner)
 		{	
-			image = new Image(Library.GetTexture("bullet.png"));
+			image = new Image(Library.Get<Texture>("bullet.png"));
 			AddComponent(image);
-			image.CenterOO();
+			image.CenterOrigin();
 			
 			var size = Math.Min(image.Width, image.Height);
-			SetHitbox(size, size);
-			CenterOrigin();
-			Type = Collision;
+			hitbox = new Hitbox(size, size)
+			{
+				Type = Collision
+			};
+			hitbox.CenterOrigin();
 						                           
 			dir = initialDir;
 			this.owner = owner;
@@ -55,14 +60,14 @@ namespace SNHU.GameObject.Upgrades
 			result = new MessageResult();
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
-			var rand = FP.Random.InCircle(25);
+			var rand = Engine.Random.InCircle(25);
 			World.BroadcastMessage(GlobalEmitter.Message.BulletTrail, "spark", X + rand.X, Y + rand.Y);
 			
-			image.Angle = FP.Angle(0, 0, dir.X, dir.Y);
+			image.Angle = MathHelper.Angle(0, 0, dir.X, dir.Y);
 			
 			MoveBy(dir.X * BULLET_SPEED, dir.Y * BULLET_SPEED, colliders, true);
 		}
@@ -73,7 +78,7 @@ namespace SNHU.GameObject.Upgrades
 			
 			for (int i = 0; i < 10; i++)
 			{
-				var rand = FP.Random.InCircle(50);
+				var rand = Engine.Random.InCircle(50);
 				World.BroadcastMessage(GlobalEmitter.Message.BulletTrail, "spark", X + rand.X, Y + rand.Y);	
 			}
 		}
@@ -164,7 +169,7 @@ namespace SNHU.GameObject.Upgrades
 		
 		public Bullets()
 		{
-			Icon = new Image(Library.GetTexture("bullets.png"));
+			Icon = new Image(Library.Get<Texture>("bullets.png"));
 			bullets = new List<Entity>();
 			
 			AddResponse(ChunkManager.Message.Advance, OnAdvance);
@@ -174,28 +179,28 @@ namespace SNHU.GameObject.Upgrades
 		{
 			base.Added();
 			
-			var config = Library.GetConfig<BulletConfig>("config/upgrades/bullets.ini");
+			var config = Library.Get<BulletConfig>("config/upgrades/bullets.ini");
 			BulletCount = config.Count;
 			Lifetime = config.Lifetime;
 			var mode = config.Mode;
 			
 			while (mode == BulletConfig.BulletMode.Random)
-				mode = FP.Choose.Enum<BulletConfig.BulletMode>();
+				mode = Engine.Choose.Enum<BulletConfig.BulletMode>();
 			
 			for (int i = 0; i < BulletCount; i++)
 			{
 				var vec = new Vector2f();
 				if (mode == BulletConfig.BulletMode.Radial)
 				{
-					var angle = FP.Scale(i, 0, BulletCount, 0, 360);
+					var angle = MathHelper.Scale(i, 0, BulletCount, 0, 360);
 					angle += 45;
 					if ((angle %= 360) < 0)	angle += 360;
 				
-					FP.AngleXY(ref vec.X, ref vec.Y, angle, 1);
+					MathHelper.AngleXY(ref vec.X, ref vec.Y, angle, 1);
 				}
 				else
 				{
-					vec.X = FP.Scale(i, 0, BulletCount - 1, -1, 1);
+					vec.X = MathHelper.Scale(i, 0, BulletCount - 1, -1, 1);
 					vec.Y = -1;
 				}
 				
@@ -209,9 +214,9 @@ namespace SNHU.GameObject.Upgrades
 			throw new NotSupportedException("Don't be using this pls");
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			if (bullets.Count == 0) return;
  			

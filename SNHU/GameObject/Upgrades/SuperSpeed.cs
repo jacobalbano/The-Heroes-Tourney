@@ -21,13 +21,13 @@ namespace SNHU.GameObject.Upgrades
 		
 		public SuperSpeed()
 		{
-			Icon  = new Image(Library.GetTexture("speed.png"));
+			Icon  = new Image(Library.Get<Texture>("speed.png"));
 		}
 		
 		public override void Added()
 		{
 			base.Added();
-			var config = Library.GetConfig<SuperSpeedConfig>("config/upgrades/superspeed.ini");
+			var config = Library.Get<SuperSpeedConfig>("config/upgrades/superspeed.ini");
 			NewSpeed = config.NewSpeed;
 			Lifetime = config.Lifetime;
 		}
@@ -39,7 +39,7 @@ namespace SNHU.GameObject.Upgrades
 				if (to == from) return; // sender;
 				
 				to.AddComponent(new SuperSpeedEmitter(Lifetime));
-				to.OnMessage(Movement.Message.Speed, NewSpeed);
+				to.OnMessage(HtMovement.Message.Speed, NewSpeed);
 			};
 			
 			return new EffectMessage(owner, callback);

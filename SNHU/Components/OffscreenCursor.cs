@@ -1,6 +1,8 @@
 ﻿using System;
 using Indigo;
+using Indigo.Content;
 using Indigo.Graphics;
+using Indigo.Utils;
 using SNHU.Config;
 using SNHU.GameObject;
 
@@ -14,13 +16,13 @@ namespace SNHU.Components
 		public OffscreenCursor(string ImageName)
 		{
 			cursor = new Entity();
-			cursor.Layer = ObjectLayers.JustBelow(ObjectLayers.HUD);
-			image = cursor.AddComponent(new Image(Library.GetTexture("cursor.png")));
+			cursor.RenderStep = ObjectLayers.JustBelow(ObjectLayers.HUD);
+			image = cursor.AddComponent(new Image(Library.Get<Texture>("cursor.png")));
 			image.CenterOrigin();
 			image.OriginX = image.Width * 0.35f;
 			
-			var face = cursor.AddComponent(new Image(Library.GetTexture("players/" + ImageName + "_head.png")));
-			face.CenterOO();
+			var face = cursor.AddComponent(new Image(Library.Get<Texture>("players/" + ImageName + "_head.png")));
+			face.CenterOrigin();
 		}
 		
 		public override void ParentAdded()
@@ -35,17 +37,17 @@ namespace SNHU.Components
 			Parent.World.Remove(cursor);
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			cursor.Visible = Visible = Parent.World != null && !Parent.OnCamera;
 			
 			cursor.X = Parent.X - Parent.HalfWidth;
 			cursor.Y = Parent.Y - Parent.HalfHeight;
-			FP.ClampInRect(ref cursor.X, ref cursor.Y, FP.Camera.X - FP.HalfWidth, FP.Camera.Y - FP.HalfHeight, FP.Width, FP.Height, 25);
+			MathHelper.ClampInRect(ref cursor.X, ref cursor.Y, Engine.World.Camera.X - Engine.HalfWidth, Engine.World.Camera.Y - Engine.HalfHeight, Engine.Width, Engine.Height, 25);
 			
-			image.Angle = FP.Angle(FP.Camera.X, FP.Camera.Y, cursor.X, cursor.Y);
+			image.Angle = MathHelper.Angle(Engine.World.Camera.X, Engine.World.Camera.Y, cursor.X, cursor.Y);
 		}
 	}
 }

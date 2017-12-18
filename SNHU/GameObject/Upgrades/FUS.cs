@@ -1,5 +1,6 @@
 ﻿using System;
 using Indigo;
+using Indigo.Content;
 using Indigo.Core;
 using Indigo.Graphics;
 using SNHU.Components;
@@ -17,8 +18,8 @@ namespace SNHU.GameObject.Upgrades
 			
 		public FUS()
 		{
-			Icon = new Image(Library.GetTexture("fus.png"));
-			FusStrength = Library.GetConfig<FusConfig>("config/upgrades/fus.ini").Strength;
+			Icon = new Image(Library.Get<Texture>("fus.png"));
+			FusStrength = Library.Get<FusConfig>("config/upgrades/fus.ini").Strength;
 		}
 		
 		public override void Use()
@@ -62,9 +63,9 @@ namespace SNHU.GameObject.Upgrades
 				this.X = X;
 				this.Y = Y;
 				
-				var i = new Image(Library.GetTexture("fus_active.png"));
+				var i = new Image(Library.Get<Texture>("fus_active.png"));
 				i.Scale = 0.1f;
-				i.CenterOO();
+				i.CenterOrigin();
 				
 				AddComponent(i);
 				

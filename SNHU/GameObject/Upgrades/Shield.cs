@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Indigo;
+using Indigo.Content;
 using Indigo.Graphics;
 using SNHU.Components;
 using SNHU.Config.Upgrades;
@@ -19,14 +20,14 @@ namespace SNHU.GameObject.Upgrades
 		
 		public Shield()
 		{
-			Icon = new Image(Library.GetTexture("shield.png"));
+			Icon = new Image(Library.Get<Texture>("shield.png"));
 		}
 		
 		public override void Added()
 		{
 			base.Added();
 			
-			Lifetime = Library.GetConfig<ShieldConfig>("config/upgrades/shield.ini").Lifetime;
+			Lifetime = Library.Get<ShieldConfig>("config/upgrades/shield.ini").Lifetime;
 		}
 		
 		public override EffectMessage MakeEffect()
@@ -40,8 +41,8 @@ namespace SNHU.GameObject.Upgrades
 			{
 				base.Use();
 				
-				shieldImg = new Image(Library.GetTexture("shield_active.png"));
-				shieldImg.CenterOO();
+				shieldImg = new Image(Library.Get<Texture>("shield_active.png"));
+				shieldImg.CenterOrigin();
 				shieldImg.Alpha = 0.0f;
 				
 				shieldImg.Y = 10 - (shieldImg.Height / 2);
@@ -61,9 +62,9 @@ namespace SNHU.GameObject.Upgrades
 			owner.OnMessage(Shield.Message.Set, false);
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			if (shieldImg != null)
 			{

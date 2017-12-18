@@ -36,9 +36,9 @@ namespace SNHU.Systems
 			AddResponse(ChunkManager.Message.Advance, OnAdvance);
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			velocity.X -= velocity.X * drag;
 			velocity.Y -= velocity.Y * drag;
@@ -56,7 +56,7 @@ namespace SNHU.Systems
 		private void OnCameraShake(params object[] args)
 		{
 			float strength = args.Length > 0 ? 10f : Convert.ToSingle(args[0]);
-			velocity = Point.FromAngle(FP.Random.Angle(), strength / 3f);
+			velocity = Point.FromAngle(Engine.Random.Angle(), strength / 3f);
 		}
 		
 		private void OnAdvance(params object[] args)
@@ -68,8 +68,8 @@ namespace SNHU.Systems
 		{
 			base.Removed();
 			
-			FP.Camera.X = X;
-			FP.Camera.Y = Y;
+			Engine.World.Camera.X = X;
+			Engine.World.Camera.Y = Y;
 		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Indigo;
+using Indigo.Content;
 using Indigo.Graphics;
 using Indigo.Loaders;
 using SNHU.Config;
@@ -21,7 +22,7 @@ namespace SNHU.GameObject.Platforms
 			
 			canMakeAHellaRacket = true;
 			
-			image = new Nineslice(Library.GetTexture("crumble.png"), (int) (Width / 5f), (int) (Height / 5f));
+			image = new Nineslice(Library.Get<Texture>("crumble.png"), (int) (Width / 5f), (int) (Height / 5f));
 			image.ScaleX = Width / image.Width;
 			image.ScaleY = Height / image.Height;
 			
@@ -30,7 +31,7 @@ namespace SNHU.GameObject.Platforms
 			AddResponse(Player.Message.OnLand, OnBump);
 			AddResponse(Platform.Message.Bump, OnBump);
 			
-			Layer = ObjectLayers.Platforms;
+			RenderStep = ObjectLayers.Platforms;
 		}
 		
 		

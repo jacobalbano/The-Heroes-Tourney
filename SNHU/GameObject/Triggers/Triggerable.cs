@@ -39,7 +39,7 @@ namespace SNHU.GameObject.Triggers
         {
 			if (String.Equals(args[0] as string, Group))
 			{
-				FP.Log("I was triggered on. Group: " + Group);
+				Engine.Console.Write("I was triggered on. Group: " + Group);
 				TriggerOn();
 			}
         }
@@ -48,7 +48,7 @@ namespace SNHU.GameObject.Triggers
         {
 			if (String.Equals(args[0] as string, Group))
 			{
-				FP.Log("I was triggered off. Group: " + Group);
+				Engine.Console.Write("I was triggered off. Group: " + Group);
 				TriggerOff();
 			}
         }

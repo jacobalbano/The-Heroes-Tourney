@@ -15,14 +15,14 @@ namespace SNHU.GameObject.Upgrades
 		
 		public Invisibility()
 		{
-			Icon = new Image(Library.GetTexture("invisibility.png"));
+			Icon = new Image(Library.Get<Texture>("invisibility.png"));
 		}
 		
 		public override void Added()
 		{
 			base.Added();
 			
-			var config = Library.GetConfig<InvisibilityConfig>("config/upgrades/invisibility.ini");
+			var config = Library.Get<InvisibilityConfig>("config/upgrades/invisibility.ini");
 			InvisibleAlpha = config.Alpha;
 			PunchMultiplier = config.PunchMultiplier;
 			Lifetime = config.Lifetime;

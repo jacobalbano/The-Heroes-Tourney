@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Indigo;
+using Indigo.Content;
 using Indigo.Graphics;
 using SNHU.Components;
 using SNHU.Config.Upgrades;
@@ -19,14 +20,14 @@ namespace SNHU.GameObject.Upgrades
 		
 		public Rebound()
 		{
-			Icon = new Image(Library.GetTexture("rebound.png"));
+			Icon = new Image(Library.Get<Texture>("rebound.png"));
 		}
 		
 		public override void Added()
 		{
 			base.Added();
 			
-			Lifetime = Library.GetConfig<ReboundConfig>("config/upgrades/rebound.ini").Lifetime;
+			Lifetime = Library.Get<ReboundConfig>("config/upgrades/rebound.ini").Lifetime;
 		}
 		
 		public override EffectMessage MakeEffect()
@@ -40,11 +41,11 @@ namespace SNHU.GameObject.Upgrades
 			{
 				base.Use();
 				
-				shield_1 = new Image(Library.GetTexture("rebound_active_1.png"));
-				shield_2 = new Image(Library.GetTexture("rebound_active_2.png"));
+				shield_1 = new Image(Library.Get<Texture>("rebound_active_1.png"));
+				shield_2 = new Image(Library.Get<Texture>("rebound_active_2.png"));
 				
-				shield_1.CenterOO();
-				shield_2.CenterOO();
+				shield_1.CenterOrigin();
+				shield_2.CenterOrigin();
 				
 				shield_1.Alpha = 0.0f;
 				shield_2.Alpha = 0.0f;
@@ -77,9 +78,9 @@ namespace SNHU.GameObject.Upgrades
 			owner.OnMessage(Rebound.Message.Set, false);
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			if (shield_1 != null)
 			{

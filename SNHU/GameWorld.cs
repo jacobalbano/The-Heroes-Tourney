@@ -28,12 +28,12 @@ namespace SNHU
 		
 		public GameWorld(Dictionary<int, string> playerImageNames)
 		{
-			FP.Camera.X = FP.HalfWidth;
-			FP.Camera.Y = FP.HalfHeight;
+			Engine.World.Camera.X = Engine.HalfWidth;
+			Engine.World.Camera.Y = Engine.HalfHeight;
 			
 			this.playerImageNames = playerImageNames;
 			
-			bg = new Image(Library.GetTexture("bg.png"));
+			bg = new Image(Library.Get<Texture>("bg.png"));
 			bg.ScrollX = bg.ScrollY = 0;
 			AddGraphic(bg, 0, 0, ObjectLayers.Background);
 			
@@ -52,7 +52,7 @@ namespace SNHU
 			
 			Mixer.Music.Play();
 			
-			var black = Image.CreateRect(FP.Width, FP.Height, new Color());
+			var black = Image.CreateRect(Engine.Width, Engine.Height, new Color());
 			AddGraphic(black, 0, 0, ObjectLayers.Foreground);
 			
 			Tweener.Tween(black, new { Alpha = 0 }, 0.25f)
@@ -60,19 +60,19 @@ namespace SNHU
 				.OnComplete(StartGame);
 		}
 		
-		public override void Update()
+		public override void Update(GameTime gameTime)
 		{
-			base.Update();
+			base.Update(gameTime);
 			
 			if (Keyboard.R.Pressed)
-				FP.World = new GameWorld(playerImageNames);
+				Engine.World = new GameWorld(playerImageNames);
 			
 			if (Keyboard.Return.Pressed)
 				chunkManager.OnMessage(ChunkManager.Message.Advance);
 			
 			if (Keyboard.Escape.Pressed)
 			{
-				FP.World = new MenuWorld();
+				Engine.World = new MenuWorld();
 			}
 		}
 		
